@@ -5,7 +5,6 @@ module.exports = {
     "description": "The stream database built for event sourcing",
     "plugins": [
         "@vuepress/active-header-links",
-        "code-switcher",
         "one-click-copy"
     ],
     "themeConfig": {
@@ -55,9 +54,7 @@ module.exports = {
             md.use(require("markdown-it-mermaid").default);
             md.use(require("markdown-it-textual-uml"), {"imageFormat": "png"});
             md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
-
-            const markup = require("./theme/markup");
-            md.use(markup);
+            md.use(require("./theme/markup"));
         }
     }
 };
