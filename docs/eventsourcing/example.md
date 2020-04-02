@@ -5,27 +5,33 @@ code:
   - go
 ---
 
-# Example
+# Page switcher
 
-## Another import
+This page is configured to have one switcher for C# and Go. The switcher
+ appears at the top of the page. It affects all code snippets that have Go
+  and C# code, but has no effect on code in other languages.
 
-::: code
-@[code lang=go](@/samples/sample.go)
-@[code lang=csharp](@/samples/sample.cs)
-:::
+## First block
 
-### Transclude
-
-@[code lang=csharp transclude={2-4}](@/samples/sample.cs)
-
-## Synchronised
+These are configured languages:
 
 ::: code
 @[code lang=go](@/samples/sample.go)
 @[code lang=csharp](@/samples/sample.cs)
 :::
 
-## Alien languages
+## Second block
+
+These are configured languages:
+
+::: code
+@[code lang=go](@/samples/sample.go)
+@[code lang=csharp](@/samples/sample.cs)
+:::
+
+## Other languages
+
+Here is the block of code in not configured languages:
 
 ::: code
 ```typescript

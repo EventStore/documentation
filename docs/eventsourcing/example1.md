@@ -1,20 +1,25 @@
-# Another Example
+# Individual switcher
 
-## Another import
+On this page, code switches are individual per code block and aren't
+ synchronised.
 
-::: code
-@[code lang=go](@/samples/sample.go)
-@[code lang=csharp](@/samples/sample.cs)
-:::
-
-## Synchronised
+## First block
 
 ::: code
 @[code lang=go](@/samples/sample.go)
 @[code lang=csharp](@/samples/sample.cs)
 :::
 
-## Alien languages
+## Second block
+
+::: code
+@[code lang=go](@/samples/sample.go)
+@[code lang=csharp](@/samples/sample.cs)
+:::
+
+## Third block
+
+Here are other languages:
 
 ::: code
 ```typescript
