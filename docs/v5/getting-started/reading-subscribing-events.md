@@ -12,7 +12,7 @@ This second step covers reading events from a stream and subscribing to changes 
 
 Event Store exposes all streams as [atom feeds](http://tools.ietf.org/html/rfc4287), and you can read data from the stream by navigating to the _head URI_ of the stream <http://127.0.0.1:2113/streams/<STREAM_ID>> with cURL, [use an SDK client](~/getting-started/which-api-sdk.md), or click the _Stream Browser_ tab in the Admin UI and you see the stream you created in step 1.
 
-![The Admin UI Dashboard](~/images/es-web-admin-stream-browser.png)
+![The Admin UI Dashboard](/v5/images/es-web-admin-stream-browser.png)
 
 ### [Request](#tab/tabid-6)
 
@@ -111,7 +111,7 @@ You can create subscription and watch events as they arrive under the _Persisten
 5. Configure the other options. You can find more information about the options in the [.NET API PersistentSubscriptionSettings object](xref:EventStore.ClientAPI.PersistentSubscriptionSettings).
 6. Click _Create_ button to submit the new persistent subscription.
 
-![Subscriptions in the Admin UI](~/images/getting-started-subscriptions.png)
+![Subscriptions in the Admin UI](/v5/images/getting-started-subscriptions.png)
 
 ### Create a persistent subscription programmatically
 

@@ -23,7 +23,7 @@ Event Store ships with GUI called Admin UI, which allows browsing statistics, st
 > [!TIP]
 > The default username and password is `admin:changeit`
 
-![The Admin UI Dashboard](/v5/getting-started/images/es-web-admin-dashboard.png)
+![The Admin UI Dashboard](/v5/images/es-web-admin-dashboard.png)
 
 ## First call to HTTP API
 

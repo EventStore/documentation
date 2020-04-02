@@ -3,15 +3,16 @@
     "chalk": "^2.0.0",
     "commander": "^2.0.0",
     "esm": "^3.0.0",
+    "markdown-it-container": "latest",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
     "vuepress": "^1.4.0",
     "vuepress-plugin-one-click-copy": "^1.0.2",
-    "vuepress-plugin-tabs": "^0.3.0",
-    "markdown-it-container": "latest"
+    "vuepress-plugin-tabs": "^0.3.0"
   },
   "dependencies": {
     "markdown-it-textual-uml": "^0.1.2",
+    "markdown-it-include": "^1.1.0",
     "mermaid": "^8.4.2",
     "remove-markdown": "^0.3.0",
     "vuex": "^3.1.3"
