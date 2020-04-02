@@ -4,7 +4,7 @@ heroImage: /eventstore-waves.svg
 heroText: Event Store V5
 tagline: The stream database built for event sourcing
 actionText: Get Started →
-actionLink: /getting-started/
+actionLink: /v5/getting-started/
 features:
 - title: High availability
   details: Event Store can run as a cluster of nodes containing the same data which remains available for writes provided at least half the nodes are alive and connected.
