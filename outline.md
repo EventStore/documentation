@@ -1,0 +1,49 @@
+# WIP Outline
+
+- Introduction
+  - Event database (event sourcing database?)
+  - What is an event
+  - What is an event stream
+  - Event Store key features
+- Getting started
+  - Run Event Store in Docker
+  - Overview of the web UI
+  - Write an event using curl?
+  - View the stream in the web UI
+  - Read events using curl?
+- Event Sourcing (with code samples)
+  - Benefits
+  - Entities as event streams
+  - State mutations as events
+  - CQRS
+  - Read models
+- Streams
+  - Stream internals
+  - Stream metadata
+  - ACL
+- Installation
+  - Server with binaries
+  - Server with Docker
+  - Cloud
+  - Kubernetes
+  - SSL
+  - Production notes
+- Client SDKs
+  - ...
+- Clustering
+  - Clustering model and PAXOS
+  - Node types
+  - ???
+- Administration
+  - Admin UI
+  - Default directories
+  - Configuration
+  - Networking
+  - Scavenging
+- Operations
+  - Backup and restore
+  - Metrics
+  - Traces
+  - Logs
+- Advanced
+  - Whatever is now in the Reference
