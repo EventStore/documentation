@@ -1,8 +1,10 @@
 # WIP Outline
 
-- Introduction
+- Introduction (landing page)
+  - 10,000 foot view of why an event store / event sourcing could be useful
   - Event database (event sourcing database?)
   - What is an event
+    - Event metadata?
   - What is an event stream
   - Event Store key features
 - Getting started
@@ -21,6 +23,14 @@
   - Stream internals
   - Stream metadata
   - ACL
+  - Reading streams forwards/backwards
+  - Stream/event pagination
+  - server-side filtering
+  - Idempotency on Writes
+  - Ensuring Stream Consistency
+- Subscriptions
+- Projections
+  - If they are staying (https://github.com/EventStore/documentation-next/issues/44)
 - Installation
   - Server with binaries
   - Server with Docker
@@ -31,19 +41,26 @@
 - Client SDKs
   - ...
 - Clustering
+  - Connection options  
   - Clustering model and PAXOS
   - Node types
   - ???
+- Deployment (https://github.com/EventStore/documentation-next/issues/47)  
 - Administration
   - Admin UI
   - Default directories
   - Configuration
   - Networking
   - Scavenging
+  - Other ACL?
 - Operations
   - Backup and restore
   - Metrics
   - Traces
   - Logs
+  - SSL
+  - Index/rebuild
+  - Scaling a cluster
 - Advanced
   - Whatever is now in the Reference
+  - Common problems (https://github.com/EventStore/documentation-next/issues/63)
