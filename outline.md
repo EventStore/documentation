@@ -2,7 +2,7 @@
 
 - Introduction
   - Event database (event sourcing database?)
-  - What is an event
+  - What is an event (data, event type, metadata, etc)
   - What is an event stream
   - Event Store key features
   - Event Store vs other tools (#54)
@@ -32,6 +32,7 @@
 - Client SDKs
   - ...
 - Development best practices
+  - Dealing with eventual consistency
   - Working with Event Store connection (#51)
   - Optimising reads (read last, snapshots)
   - GDPR and privacy
