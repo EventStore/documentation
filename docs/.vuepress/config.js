@@ -21,9 +21,6 @@ module.exports = {
     ],
     "themeConfig": {
         "logo": "/es-logo.png",
-        "nav": [
-            {"text": "Get help", "link": "/get-help/"},
-        ],
         "codeLanguages": {
             csharp: "C#",
             go: "Go",
@@ -38,6 +35,11 @@ module.exports = {
                 ariaLabel: "Versions",
                 title: "EventStore",
                 description: "EventStore v6",
+                "nav": [
+                    {text: "Server", link: "/"},
+                    {text: "Drivers", link: "/drivers/"},
+                    {text: "Get help", link: "/get-help/"},
+                ],
                 sidebar: [
                     {
                         "title": "Introduction",
