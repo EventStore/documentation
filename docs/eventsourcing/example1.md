@@ -3,6 +3,17 @@
 On this page, code switches are individual per code block and aren't
  synchronised.
 
+## Snippets for Chris
+
+::: code
+```powershell PowerShell
+%AppData%/eventstore.rc
+```
+```shell sh/bash
+~/.eventstorerc
+```
+:::
+
 ## First block
 
 ::: code
