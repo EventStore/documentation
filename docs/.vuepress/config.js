@@ -36,11 +36,79 @@ module.exports = {
                 title: "EventStore",
                 description: "EventStore v6",
                 "nav": [
-                    {text: "Server", link: "/"},
+                    {text: "Guide", link: "/v6/guide/"},
+                    {text: "Server", link: "/v6/server/"},
                     {text: "Drivers", link: "/drivers/"},
                     {text: "Get help", link: "/get-help/"},
                 ],
-                sidebar: [
+                sidebar: {
+                    "/v6/guide/": [
+                        {
+                            title: "Introduction",
+                            collapsable: false,
+                            children: [
+                                "",
+                                "getting-started",
+                                "installation"
+                            ]
+                        },
+                        {
+                            title: "Event Sourcing",
+                            collapsable: false,
+                            children: [
+                                "benefits",
+                                "entities-as-streams"
+                            ]
+                        },
+                        {
+                            title: "Development",
+                            collapsable: false,
+                            children: [
+                                "eventual-consistency",
+                                "connection",
+                                "faster-reads",
+                                "scaling-read-models"
+                            ]
+                        }
+                    ],
+                    "/v6/server/": [
+                        {
+                            title: "Deployment",
+                            collapsable: false,
+                            children: [
+                                "",
+                                "cloud"
+                            ]
+                        },
+                        {
+                            title: "Clustering",
+                            collapsable: false,
+                            children: [
+                                "clustering-model",
+                                "configure-cluster"
+                            ]
+                        },
+                        {
+                            title: "Administration",
+                            collapsable: false,
+                            children: [
+                                "directories",
+                                "admin-ui",
+                                "configuration"
+                            ]
+                        },
+                        {
+                            title: "Operations",
+                            collapsable: false,
+                            children: [
+                                "upgrading",
+                                "backup",
+                                "metrics"
+                            ]
+                        }
+                    ]
+                },
+                sidebar1: [
                     {
                         "title": "Introduction",
                         "path": "/introduction/",
