@@ -1,8 +1,8 @@
 module.exports = {
-    "base": "/",
-    "dest": "public",
-    "title": "",
-    "description": "The stream database built for event sourcing",
+    base: "/",
+    dest: "public",
+    title: "",
+    description: "The stream database built for event sourcing",
     locales: {
         '/': {
             lang: "en-US",
@@ -15,19 +15,19 @@ module.exports = {
             description: "Event Store v5 Documentation"
         }
     },
-    "plugins": [
+    plugins: [
         "@vuepress/active-header-links",
         "one-click-copy"
     ],
-    "themeConfig": {
-        "logo": "/es-logo.png",
-        "codeLanguages": {
+    themeConfig: {
+        logo: "/es-logo.png",
+        codeLanguages: {
             csharp: "C#",
             go: "Go",
         },
-        "sidebarDepth": 1,
-        "searchPlaceholder": "Search...",
-        "lastUpdated": "Last Updated",
+        sidebarDepth: 1,
+        searchPlaceholder: "Search...",
+        lastUpdated: "Last Updated",
         locales: {
             "/": {
                 selectText: "Versions",
@@ -153,8 +153,11 @@ module.exports = {
             }
         },
     },
-    "markdown": {
-        "extendMarkdown": md => {
+    markdown: {
+        externalLinks: {
+            target: "_self"
+        },
+        extendMarkdown: md => {
             md.use(require("markdown-it-mermaid").default);
             md.use(require("markdown-it-textual-uml"), {"imageFormat": "png"});
             md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
