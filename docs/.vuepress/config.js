@@ -17,7 +17,8 @@ module.exports = {
     },
     plugins: [
         "@vuepress/active-header-links",
-        "one-click-copy"
+        "one-click-copy",
+        "vuepress-plugin-element-tabs"
     ],
     themeConfig: {
         logo: "/es-logo.png",
