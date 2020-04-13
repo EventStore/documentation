@@ -1,8 +1,8 @@
 module.exports = {
-    "base": "/",
-    "dest": "public",
-    "title": "",
-    "description": "The stream database built for event sourcing",
+    base: "/",
+    dest: "public",
+    title: "",
+    description: "The stream database built for event sourcing",
     locales: {
         '/': {
             lang: "en-US",
@@ -15,22 +15,20 @@ module.exports = {
             description: "Event Store v5 Documentation"
         }
     },
-    "plugins": [
+    plugins: [
         "@vuepress/active-header-links",
-        "one-click-copy"
+        "one-click-copy",
+        "vuepress-plugin-element-tabs"
     ],
-    "themeConfig": {
-        "logo": "/es-logo.png",
-        "nav": [
-            {"text": "Get help", "link": "/get-help/"},
-        ],
-        "codeLanguages": {
+    themeConfig: {
+        logo: "/es-logo.png",
+        codeLanguages: {
             csharp: "C#",
             go: "Go",
         },
-        "sidebarDepth": 1,
-        "searchPlaceholder": "Search...",
-        "lastUpdated": "Last Updated",
+        sidebarDepth: 1,
+        searchPlaceholder: "Search...",
+        lastUpdated: "Last Updated",
         locales: {
             "/": {
                 selectText: "Versions",
@@ -38,7 +36,80 @@ module.exports = {
                 ariaLabel: "Versions",
                 title: "EventStore",
                 description: "EventStore v6",
-                sidebar: [
+                "nav": [
+                    {text: "Guide", link: "/v6/guide/"},
+                    {text: "Server", link: "/v6/server/"},
+                    {text: "Drivers", link: "/drivers/"},
+                    {text: "Get help", link: "/get-help/"},
+                ],
+                sidebar: {
+                    "/v6/guide/": [
+                        {
+                            title: "Introduction",
+                            collapsable: false,
+                            children: [
+                                "",
+                                "getting-started",
+                                "installation"
+                            ]
+                        },
+                        {
+                            title: "Event Sourcing",
+                            collapsable: false,
+                            children: [
+                                "benefits",
+                                "entities-as-streams"
+                            ]
+                        },
+                        {
+                            title: "Development",
+                            collapsable: false,
+                            children: [
+                                "eventual-consistency",
+                                "connection",
+                                "faster-reads",
+                                "scaling-read-models"
+                            ]
+                        }
+                    ],
+                    "/v6/server/": [
+                        {
+                            title: "Deployment",
+                            collapsable: false,
+                            children: [
+                                "",
+                                "cloud"
+                            ]
+                        },
+                        {
+                            title: "Clustering",
+                            collapsable: false,
+                            children: [
+                                "clustering-model",
+                                "configure-cluster"
+                            ]
+                        },
+                        {
+                            title: "Administration",
+                            collapsable: false,
+                            children: [
+                                "directories",
+                                "admin-ui",
+                                "configuration"
+                            ]
+                        },
+                        {
+                            title: "Operations",
+                            collapsable: false,
+                            children: [
+                                "upgrading",
+                                "backup",
+                                "metrics"
+                            ]
+                        }
+                    ]
+                },
+                sidebar1: [
                     {
                         "title": "Introduction",
                         "path": "/introduction/",
@@ -83,8 +154,11 @@ module.exports = {
             }
         },
     },
-    "markdown": {
-        "extendMarkdown": md => {
+    markdown: {
+        externalLinks: {
+            target: "_self"
+        },
+        extendMarkdown: md => {
             md.use(require("markdown-it-mermaid").default);
             md.use(require("markdown-it-textual-uml"), {"imageFormat": "png"});
             md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
