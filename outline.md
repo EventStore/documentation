@@ -1,28 +1,38 @@
 # WIP Outline
 
-- Introduction
+- Introduction (landing page)
+  - 10,000 foot view of why an event store / event sourcing could be useful
   - Event database (event sourcing database?)
   - What is an event (data, event type, metadata, etc)
   - What is an event stream
   - Event Store key features
-  - Event Store vs other tools (#54)
+  - Event Store vs other tools [#54](https://github.com/EventStore/documentation-next/issues/54)
 - Getting started
   - Run Event Store in Docker
   - Overview of the web UI
   - Write an event using curl?
   - View the stream in the web UI
   - Read events using curl?
-- Event Sourcing (with code samples) (#40)
+- Event Sourcing (with code samples) [#40](https://github.com/EventStore/documentation-next/issues/40)
   - Benefits
-  - Entities as event streams (#52)
-  - State mutations as events (#52)
+  - Entities as event streams [#52](https://github.com/EventStore/documentation-next/issues/52)
+  - State mutations as events [#52](https://github.com/EventStore/documentation-next/issues/52)
   - CQRS
-  - Read models (#43)
+  - Read models [#43](https://github.com/EventStore/documentation-next/issues/43)
 - Streams
   - Stream internals
   - Stream metadata
   - ACL
-- Installation (#47)
+  - Reading streams forwards/backwards (AZ: not sure it belongs here, it's
+   the client docs)
+  - Stream/event pagination (AZ: same here)
+  - Server-side filtering
+  - Idempotency on writes
+  - Ensuring Stream Consistency
+- Subscriptions
+- Projections
+  - If they are staying [#44](https://github.com/EventStore/documentation-next/issues/44)
+- Installation [#47](https://github.com/EventStore/documentation-next/issues/47)
   - Server with binaries
   - Server with Docker
   - Cloud
@@ -33,30 +43,38 @@
   - ...
 - Development best practices
   - Dealing with eventual consistency
-  - Working with Event Store connection (#51)
+  - Working with Event Store connection [#51](https://github.com/EventStore/documentation-next/issues/51)
   - Optimising reads (read last, snapshots)
   - GDPR and privacy
-  - Event versioning (#54)
+  - Event versioning [#54](https://github.com/EventStore/documentation-next/issues/54)
   - Internal vs external events
   - Scaling projections
   - Distributed tracing
   - Important metrics
 - Clustering (#53)
+  - Connection options  
   - Clustering model and PAXOS
   - Node types
   - Configure Event Store cluster
   - ???
+- Deployment [#47](https://github.com/EventStore/documentation-next/issues/47)
+) (AZ: I thought it's Installation)
 - Administration
-  - Admin UI (#49)
+  - Admin UI [#49](https://github.com/EventStore/documentation-next/issues/49)
   - Default directories
   - Configuration
   - Networking
   - Scavenging
-- Operations (#48)
-  - Upgrading Event Store (#54)
+  - Other ACL?
+- Operations [#48](https://github.com/EventStore/documentation-next/issues/48)
+  - Upgrading Event Store [#54](https://github.com/EventStore/documentation-next/issues/54)
   - Backup and restore
   - Metrics
   - Traces
   - Logs
+  - SSL (AZ: it's already in the Installation, do we need to repeat?)
+  - Index/rebuild
+  - Scaling a cluster (AZ: isn't this for Clustering?)
 - Advanced
   - Whatever is now in the Reference
+  - Common problems [#63](https://github.com/EventStore/documentation-next/issues/63)
