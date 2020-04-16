@@ -1,4 +1,4 @@
-# Indexmap migration"
+# Indexmap migration
 
 From Event Store 5 onwards, the format of the indexmap file changed. The indexmap-migrate tool converts Event Store 5 indexmap files to a format compatible with previous Event Store versions. You will need this if you roll back from Event Store 5 to an earlier version.
 
