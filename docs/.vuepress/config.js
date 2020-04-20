@@ -18,7 +18,8 @@ module.exports = {
     plugins: [
         "@vuepress/active-header-links",
         "one-click-copy",
-        "vuepress-plugin-element-tabs"
+        //"vuepress-plugin-element-tabs",
+        // "element-ui"
     ],
     themeConfig: {
         logo: "/es-logo.png",
@@ -162,8 +163,9 @@ module.exports = {
             md.use(require("markdown-it-mermaid").default);
             md.use(require("markdown-it-textual-uml"), {"imageFormat": "png"});
             md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
-            md.use(require("./theme/markup"), {root: "./docs/docs"});
+            md.use(require("./theme/markup/code"), {root: "./docs/docs"});
             md.use(require("markdown-it-include"));
+            md.use(require("./theme/markup/elementui"));
         }
     }
 };

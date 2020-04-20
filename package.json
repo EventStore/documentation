@@ -2,16 +2,16 @@
   "devDependencies": {
     "chalk": "^2.0.0",
     "commander": "^2.0.0",
+    "core-js": "2",
     "esm": "^3.0.0",
     "markdown-it-container": "latest",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
     "vuepress": "^1.4.0",
-    "vuepress-plugin-element-tabs": "^0.2.8",
-    "vuepress-plugin-one-click-copy": "^1.0.2",
-    "vuepress-plugin-tabs": "^0.3.0"
+    "vuepress-plugin-one-click-copy": "^1.0.2"
   },
   "dependencies": {
+    "element-ui": "^2.13.1",
     "markdown-it-include": "^1.1.0",
     "markdown-it-textual-uml": "^0.1.2",
     "mermaid": "^8.4.2",
