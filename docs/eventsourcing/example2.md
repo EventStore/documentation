@@ -49,6 +49,8 @@ We reached the top
 
 ## Steps
 
+Show the current step along all steps.
+
 :::: el-steps :active="2" align-center
 ::: el-step title="Install" description="Install first"
 :::
