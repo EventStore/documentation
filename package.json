@@ -4,7 +4,6 @@
     "commander": "^2.0.0",
     "core-js": "2",
     "esm": "^3.0.0",
-    "markdown-it-container": "latest",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
     "vuepress": "^1.4.0",
