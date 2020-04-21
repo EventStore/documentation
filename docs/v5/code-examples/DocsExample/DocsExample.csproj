@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>docs_example_csharp</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="EventStore.Client" Version="5.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="GettingStarted\CreatePersistentSubscription.cs" />
+    <Compile Remove="GettingStarted\ConnectEventStore.cs" />
+    <Compile Remove="DotNetClient\UsersManagerExtensions.cs" />
+    <Compile Remove="DotNetClient\UsersCreateUsersManager.cs" />
+    <Compile Remove="DotNetClient\QuickStartJsonFormat.cs" />
+    <Compile Remove="DotNetClient\QuickStartPlainFormat.cs" />
+    <Compile Remove="DotNetClient\WritingSingleEvent.cs" />
+    <Compile Remove="DotNetClient\WritingListEvents.cs" />
+    <Compile Remove="DotNetClient\WritingTransactions.cs" />
+    <Compile Remove="Program.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GettingStarted\CreatePersistentSubscription.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="GettingStarted\ConnectEventStore.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\UsersManagerExtensions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\UsersCreateUsersManager.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\QuickStartJsonFormat.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\QuickStartPlainFormat.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\WritingSingleEvent.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\WritingListEvents.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="DotNetClient\WritingTransactions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <None Include="Program.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+  </ItemGroup>
+</Project>
