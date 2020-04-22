@@ -39,11 +39,23 @@ module.exports = {
                 description: "EventStore v6",
                 "nav": [
                     {text: "Guide", link: "/v6/guide/"},
+                    {text: "Event Sourcing", link: "/eventsourcing/"},
                     {text: "Server", link: "/v6/server/"},
                     {text: "Drivers", link: "/drivers/"},
                     {text: "Get help", link: "/get-help/"},
                 ],
                 sidebar: {
+                    "/eventsourcing/": [
+                        {
+                            title: "Introduction",
+                            collapsable: false,
+                            children: [
+                                "",
+                                "benefits",
+                                "entities-as-streams"
+                            ]
+                        }
+                    ],
                     "/v6/guide/": [
                         {
                             title: "Introduction",
@@ -52,14 +64,6 @@ module.exports = {
                                 "",
                                 "getting-started",
                                 "installation"
-                            ]
-                        },
-                        {
-                            title: "Event Sourcing",
-                            collapsable: false,
-                            children: [
-                                "benefits",
-                                "entities-as-streams"
                             ]
                         },
                         {
