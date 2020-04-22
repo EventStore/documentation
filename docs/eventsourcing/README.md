@@ -1,6 +1,30 @@
 # Event Sourcing basics
 
-## What is Event Sourcing?
+## What is Event Sourcing
+
+Event Sourcing is an alternative way to persist data. In contrast with state-oriented 
+persistence that only keeps the latest version of the entity state, Event Sourcing 
+stores each state mutation as a separate record called an event. 
+
+<br />
+
+::: el-divider
+<i class="el-icon-reading"></i>
+:::
+_Model information about activity in the domain as a series of discrete events.
+Represent each event as domain object._
+::: el-divider content-position="right"
+Eric Evans, Domain-Driven Design Reference
+:::
+
+<br />
+
+Further in this section, we'll stick to the definition of Event Sourcing as Greg Young 
+formulated it back in 2007, based on concepts from Domain-Driven Design. 
+Therefore, in this section, we will use the terms "domain event" and "event" 
+interchangeably.
+
+## State-oriented persistence
 
 All real-life systems store data. There is a vast number of different types of data storage, 
 but usually, developers use databases to keep the data safe. Computerised databases 
@@ -30,27 +54,9 @@ the database record gets replaced by a new record, which contains updated values
 ![Order presumably paid](./images/order-state-change-paid.png) 
 :::
 
-Event Sourcing is an alternative way to persist data. In contrast with state-oriented 
-persistence that only keeps the latest version of the entity state, Event Sourcing 
-stores each state mutation as a separate record called an event. 
+## Historical record
 
-::: el-divider
-<i class="el-icon-reading"></i>
-:::
-_Model information about activity in the domain as a series of discrete events.
-Represent each event as domain object._
-...
-::: el-divider content-position="right"
-Eric Evans, Domain-Driven Design Reference
-:::
-
-
-Further in this section, we'll stick to the definition of Event Sourcing as Greg Young 
-formulated it back in 2007, based on concepts from Domain-Driven Design. 
-Therefore, in this section, we will use the terms "domain event" and "event" 
-interchangeably.
-
-## What is a domain event?
+### Keeping the history
 
 Often keeping only the current state of an entity is not enough. 
 For example, for orders, we'd probably want to keep the history of status changes. 
@@ -68,6 +74,8 @@ other state changes. Again, all the history before the change that would keep
 such a record will be lost. Another issue with only keeping the current entity 
 state is that all the changes that happen in the database are, by nature, implicit. 
 
+<br />
+
 ::: el-divider
 <i class="el-icon-reading"></i>
 :::
@@ -78,11 +86,15 @@ pushed out of the domain layer._
 Eric Evans, Domain-Driven Design Reference
 :::
 
+<br />
+
 Any change of a persisted entity is just another update, indistinguishable from 
 all other updates. When we look, for example, at the `Order` entity and its `Status` 
 property, if it gets updated to `Paid` or `Shipped` we could figure out (implicitly) 
 what has happened. However, if the `Total` property value changes, how would we 
 possibly know what triggered that change?
+
+### Explicit mutations as events
 
 When using domain events, which, in turn, use domain terminology (Ubiquitous Language) 
 to describe state changes, we have an explicit description of the change.
@@ -122,6 +134,8 @@ When a discount is applied to the order, the total amount changes.
 Again, the total amount could also change for other reasons, like removing an 
 order item.
 
+### Domain event in code
+
 So, how would a domain event look when implemented in code? It is a simple 
 property bag. We have to ensure that we can serialise it for persistence, 
 and, also, can deserialise it back when the time comes to read the event 
@@ -135,6 +149,8 @@ public class DiscountAppliedToOrder {
 }
 ```
 
+<br />
+
 ::: el-divider
 <i class="el-icon-reading"></i>
 :::
@@ -145,6 +161,10 @@ something that happened in the domain._
 Eric Evans, Domain-Driven Design Reference
 :::
 
+<br />
+
+## Next step
+
 So, Event Sourcing is the persistence mechanism where each state transition 
 for a given entity is represented as a domain event that gets persisted to 
 an event database (event store). When the entity state mutates, a new event 
@@ -152,5 +172,7 @@ is produced and saved. When we need to restore the entity state, we read all
 the events for that entity and apply each event to change the state, reaching 
 the correct final state of the entity when all available events are read and 
 applied.
+
+In the next section, we'll see to implement the entity persistence using events.
 
 
