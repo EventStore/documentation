@@ -34,6 +34,17 @@ Event Sourcing is an alternative way to persist data. In contrast with state-ori
 persistence that only keeps the latest version of the entity state, Event Sourcing 
 stores each state mutation as a separate record called an event. 
 
+::: el-divider
+<i class="el-icon-reading"></i>
+:::
+_Model information about activity in the domain as a series of discrete events.
+Represent each event as domain object._
+...
+::: el-divider content-position="right"
+Eric Evans, Domain-Driven Design Reference
+:::
+
+
 Further in this section, we'll stick to the definition of Event Sourcing as Greg Young 
 formulated it back in 2007, based on concepts from Domain-Driven Design. 
 Therefore, in this section, we will use the terms "domain event" and "event" 
@@ -56,6 +67,16 @@ that tomorrow or next year, the business won't require keeping the record on
 other state changes. Again, all the history before the change that would keep 
 such a record will be lost. Another issue with only keeping the current entity 
 state is that all the changes that happen in the database are, by nature, implicit. 
+
+::: el-divider
+<i class="el-icon-reading"></i>
+:::
+_Change history of entities can allow access to previous states, but ignores the meaning
+of those changes, so that any manipulation of the information is procedural, and often
+pushed out of the domain layer._
+::: el-divider content-position="right"
+Eric Evans, Domain-Driven Design Reference
+:::
 
 Any change of a persisted entity is just another update, indistinguishable from 
 all other updates. When we look, for example, at the `Order` entity and its `Status` 
@@ -113,6 +134,16 @@ public class DiscountAppliedToOrder {
     public double NewTotalAmount { get; set; }
 }
 ```
+
+::: el-divider
+<i class="el-icon-reading"></i>
+:::
+_A domain event is a fully-fledged part of the domain model, a representation of
+something that happened in the domain._
+...
+::: el-divider content-position="right"
+Eric Evans, Domain-Driven Design Reference
+:::
 
 So, Event Sourcing is the persistence mechanism where each state transition 
 for a given entity is represented as a domain event that gets persisted to 
