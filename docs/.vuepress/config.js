@@ -17,7 +17,7 @@ module.exports = {
     },
     plugins: [
         "@vuepress/active-header-links",
-        "one-click-copy",
+        "one-click-copy"
         //"vuepress-plugin-element-tabs",
         // "element-ui"
     ],
@@ -51,8 +51,8 @@ module.exports = {
                             collapsable: false,
                             children: [
                                 "",
-                                "benefits",
-                                "entities-as-streams"
+                                "entities-as-streams",
+                                "benefits"
                             ]
                         }
                     ],
@@ -168,7 +168,6 @@ module.exports = {
             md.use(require("markdown-it-textual-uml"), {"imageFormat": "png"});
             md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
             md.use(require("./theme/markup/code"), {root: "./docs/docs"});
-            md.use(require("markdown-it-include"));
             md.use(require("./theme/markup/elementui"));
         }
     }

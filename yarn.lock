@@ -3203,7 +3203,7 @@ electron-to-chromium@^1.3.390:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.413.tgz#9c457a4165c7b42e59d66dff841063eb9bfe5614"
   integrity sha512-Jm1Rrd3siqYHO3jftZwDljL2LYQafj3Kki5r+udqE58d0i91SkjItVJ5RwlJn9yko8i7MOcoidVKjQlgSdd1hg==
 
-element-ui@^2.13.0, element-ui@^2.13.1:
+element-ui@^2.13.1:
   version "2.13.1"
   resolved "https://registry.yarnpkg.com/element-ui/-/element-ui-2.13.1.tgz#0cb1a45cf27aa61c601defbe192740ac5cb9df7c"
   integrity sha512-jyvJmXa2c6ElRc4NOw4V1vnjHsvfzTRhbwElZ68CyF9by2F64B+AJRzujg/HJgXCimHwd2g1Av9D04EP3mWymg==
@@ -7651,6 +7651,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typescript@^3.8.3:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
+  integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
+
 uc.micro@^1.0.1, uc.micro@^1.0.5:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/uc.micro/-/uc.micro-1.0.6.tgz#9c411a802a409a91fc6cf74081baba34b24499ac"
@@ -7991,14 +7996,6 @@ vuepress-plugin-container@^2.0.2:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-container/-/vuepress-plugin-container-2.1.3.tgz#b5873cb8d21b66bd62f7fb15ab254e55dcfeff78"
   integrity sha512-5bTtt8PKu9edNoc2Op/sRhCynjT+xKO/VuqwH7ftjdwNZUZMl/ymga7L+5lXCWNOLYAzRHaZAyYV5tY/97cl5g==
   dependencies:
-    markdown-it-container "^2.0.0"
-
-vuepress-plugin-element-ui@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-element-ui/-/vuepress-plugin-element-ui-1.0.2.tgz#dd370e336ae7b40df16e1cb2a926b806317c6ad6"
-  integrity sha512-Xs2RIXYyUCZhMuKvX4gUvRTNS71JpY1twnAiKho69WesthKUtTWMB8qGv8AtyBIhHhopPlyqBseja0cWtBuX/Q==
-  dependencies:
-    element-ui "^2.13.0"
     markdown-it-container "^2.0.0"
 
 vuepress-plugin-one-click-copy@^1.0.2:
