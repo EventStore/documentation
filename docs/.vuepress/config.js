@@ -18,7 +18,7 @@ module.exports = {
     plugins: [
         "@vuepress/active-header-links",
         "one-click-copy",
-        //"vuepress-plugin-element-tabs",
+        "vuepress-plugin-element-tabs",
         // "element-ui"
     ],
     themeConfig: {
@@ -160,6 +160,37 @@ module.exports = {
                             "/v5/getting-started/reading-subscribing-events",
                             "/v5/getting-started/projections",
                             "/v5/getting-started/which-api-sdk"
+                        ]
+                    },
+                    {
+                        title: "Server",
+                        path: "/v5/server/",
+                        "collapsable": true,
+                        "children": [
+                            "/v5/server/",
+                            "/v5/server/command-line-arguments.md",
+                            "/v5/server/configuring.md",
+                            "/v5/server/users-and-access-control-lists.md",
+                            "/v5/server/cluster-without-manager-nodes.md",
+                            "/v5/server/cluster-with-manager-nodes.md",
+                            "/v5/server/node-roles.md",
+                            "/v5/server/admin-ui.md",
+                            "/v5/server/deploy-kubernetes-aks.md",
+                            "/v5/server/deploy-kubernetes-gke.md",
+                            "/v5/server/setting-up-ssl.md",
+                            "/v5/server/stats-debug.md",
+                            "/v5/server/caching.md",
+                            "/v5/server/indexing.md",
+                            "/v5/server/database-backup.md",
+                            "/v5/server/system-streams.md",
+                            "/v5/server/metadata-and-reserved-names.md",
+                            "/v5/server/ports-and-networking.md",
+                            "/v5/server/default-directories.md",
+                            "/v5/server/64-bit-index.md",
+                            "/v5/server/scavenging.md",
+                            "/v5/server/production-checklist.md",
+                            "/v5/server/setting-up-varnish-in-linux.md",
+                            "/v5/server/uninstalling.md"
                         ]
                     }
                 ]
