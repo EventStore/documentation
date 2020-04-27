@@ -1,7 +1,3 @@
----
-outputFileName: index.html
----
-
 # Step 4 - Which API or SDK to use
 
 This getting started guide shows you how to get started with Event Store using the Atom publishing protocol as the primary interface. This final step covers the different APIs, and client SDKs Event Store has available with the aim of helping you choose which one suits your use case.
@@ -35,7 +31,7 @@ Event Store also offers an HTTP-based interface, based specifically on the [Atom
 
 ### Event Store supported clients
 
--   [HTTP API](~/http-api/index.md)
+-   [HTTP API](/v5/http-api/index.md)
 
 ### Community developed clients
 
@@ -64,12 +60,13 @@ Atom tends to operate better in a large heterogeneous environment where you have
 
 Most platforms have good existing tooling for Atom including feed readers. None of this tooling exists for analyzing traffic with the TCP protocol.
 
-> [!NOTE]
-> Our recommendation would be to use AtomPub as your primary protocol unless you have low subscriber SLAs or need higher throughput on reads and writes than Atom can offer. This is due to the open nature and ease of use of the Atom protocol. Often in integration scenarios, these are more important than raw performance.
+::: tip
+Our recommendation would be to use AtomPub as your primary protocol unless you have low subscriber SLAs or need higher throughput on reads and writes than Atom can offer. This is due to the open nature and ease of use of the Atom protocol. Often in integration scenarios, these are more important than raw performance.
+:::
 
 ## Next step
 
 Congratulations! You've reached the end of our getting started guide, what's next?
 
--   **Want to use the .NET client?** [Find more here](~/dotnet-api/index.md).
--   **Want to use the HTTP API?** [Find out more here](~/http-api/index.md).
+-   **Want to use the .NET client?** [Find more here](/v5/dotnet-api/index.md).
+-   **Want to use the HTTP API?** [Find out more here](/v5/http-api/index.md).

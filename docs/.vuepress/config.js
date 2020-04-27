@@ -153,7 +153,14 @@ module.exports = {
                 sidebar: [
                     {
                         title: "Getting Started",
-                        path: "/v5/getting-started/"
+                        path: "/v5/getting-started/",
+                        "collapsable": true,
+                        "children": [
+                            "/v5/getting-started/",
+                            "/v5/getting-started/reading-subscribing-events",
+                            "/v5/getting-started/projections",
+                            "/v5/getting-started/which-api-sdk"
+                        ]
                     }
                 ]
             }
