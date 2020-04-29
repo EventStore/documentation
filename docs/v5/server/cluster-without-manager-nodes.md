@@ -61,7 +61,9 @@ You can also use the method above for HTTP clients to avoid using a load balance
 
 Create a file _docker-compose.yaml_ with following content:
 
+::: code
 @[code lang=yaml](@/docs/v5/code-examples/server/docker-compose.yaml)
+:::
 
 Run containers:
 ```bash
