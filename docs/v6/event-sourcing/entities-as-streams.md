@@ -33,7 +33,7 @@ In this example, we use the Domain Model pattern, so the entity has both state
 and behaviour. State transitions occur when we call entity methods, so the 
 flow of execution for any operation would look like this:
 
-![State-oriented flow](images/command-flow-state-based.png)
+![State-oriented flow](./images/command-flow-state-based.png)
 
 In case our application uses Ports and Adapters architecture, we would
 have an application service, which handles the command:
@@ -221,7 +221,7 @@ we call that event set a _stream_. The stream is an ordered collection of events
 for a single object in the system. The object identifier combined with the object type
 is often used as the stream name.
 
-![Entity event stream](images/entity-stream.png)
+![Entity event stream](./images/entity-stream.png)
 
 When we read all events from a single entity stream, we can reconstruct the 
 current state by calling the `When` method for all the events, in sequence.
