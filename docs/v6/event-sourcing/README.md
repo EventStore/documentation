@@ -51,7 +51,7 @@ It means that when the object changes, and the change needs to be persisted,
 the database record gets replaced by a new record, which contains updated values.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order presumably paid](images/order-state-change-paid.png) 
+![Order presumably paid](./images/order-state-change-paid.png) 
 :::
 
 ## Historical record
@@ -65,7 +65,7 @@ update history in a separate table or document collection. Such a history,
 however, only tackles a specific use case and needs to be built upfront. 
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order history is lost](images/order-history-lost.png) 
+![Order history is lost](./images/order-history-lost.png) 
 :::
 
 Even when such a solution gets implemented and deployed, there is no guarantee 
@@ -100,7 +100,7 @@ When using domain events, which, in turn, use domain terminology (Ubiquitous Lan
 to describe state changes, we have an explicit description of the change.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](images/order-status-changed-event.png) 
+![Order paid](./images/order-status-changed-event.png) 
 :::
 
 The payment case might be a bit too simple to disclose the difference, so, 
@@ -109,7 +109,7 @@ different reason. Here is how the change would be done if we only keep the
 entity state:
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](images/order-total-changed.png) 
+![Order paid](./images/order-total-changed.png) 
 :::
 
 Here an implicit update has been applied to the entity state, and the only 
@@ -122,13 +122,13 @@ completely different operations could've happened that lead to exactly the same
 outcome if we only look at the final state.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](images/order-total-discount-applied.png) 
+![Order paid](./images/order-total-discount-applied.png) 
 :::
 
 When a discount is applied to the order, the total amount changes.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](images/order-total-item-removed.png) 
+![Order paid](./images/order-total-item-removed.png) 
 :::
 
 Again, the total amount could also change for other reasons, like removing an 
