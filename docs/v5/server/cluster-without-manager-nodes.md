@@ -1,3 +1,7 @@
+---
+title: Cluster with only database nodes
+---
+
 # Setting up a cluster using only database nodes (OSS)
 
 <!-- TODO: Needs Linux instructions -->

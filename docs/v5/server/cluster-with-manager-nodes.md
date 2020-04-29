@@ -1,5 +1,6 @@
 ---
 commercial: true
+title: Cluster with manager nodes
 ---
 
 # Setting up a cluster with manager nodes
