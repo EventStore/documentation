@@ -1,4 +1,19 @@
-# Step 2 - Read events from a stream and subscribe to changes
+---
+title: Read events from a stream and subscribe to changes
+---
+
+:::: el-steps :active="2" align-center
+::: el-step title="Install" description="Install, run, and write your first event"
+:::
+::: el-step title="Read" description="Read events and subscribe to changes"
+:::
+::: el-step title="Project" description="Use default and custom projections"
+:::
+::: el-step title="Choose SDK" description="Which SDK to use?"
+:::
+::::
+
+# Read events from a stream and subscribe to changes
 
 This getting started guide shows you how to get started with Event Store using the Atom publishing protocol as the primary interface. 
 

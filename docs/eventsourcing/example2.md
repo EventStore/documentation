@@ -10,7 +10,6 @@ Some examples of the Element UI plugin.
 __markdown content__
 :::
 
-
 ::: el-tab-pane label=javascript
 ``` javascript
 () => {

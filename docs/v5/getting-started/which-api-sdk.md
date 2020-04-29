@@ -1,4 +1,19 @@
-# Step 4 - Which API or SDK to use
+---
+title: Which API or SDK to use
+---
+
+:::: el-steps :active="4" align-center
+::: el-step title="Install" description="Install, run, and write your first event"
+:::
+::: el-step title="Read" description="Read events and subscribe to changes"
+:::
+::: el-step title="Project" description="Use default and custom projections"
+:::
+::: el-step title="Choose SDK" description="Which SDK to use?"
+:::
+::::
+
+# Which API or SDK to use
 
 This getting started guide shows you how to get started with Event Store using the Atom publishing protocol as the primary interface. This final step covers the different APIs, and client SDKs Event Store has available with the aim of helping you choose which one suits your use case.
 
