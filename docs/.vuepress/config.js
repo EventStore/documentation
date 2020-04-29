@@ -39,13 +39,13 @@ module.exports = {
                 description: "EventStore v6",
                 "nav": [
                     {text: "Guide", link: "/v6/guide/"},
-                    {text: "Event Sourcing", link: "/eventsourcing/"},
+                    {text: "Event Sourcing", link: "/v6/event-sourcing/"},
                     {text: "Server", link: "/v6/server/"},
                     {text: "Drivers", link: "/drivers/"},
                     {text: "Get help", link: "/get-help/"},
                 ],
                 sidebar: {
-                    "/eventsourcing/": [
+                    "/v6/event-sourcing/": [
                         {
                             title: "Introduction",
                             collapsable: false,
@@ -121,16 +121,28 @@ module.exports = {
                 description: "EventStore v5",
                 selectText: "Versions",
                 ariaLabel: "Versions",
-                "nav": [
+                nav: [
                     {text: "Guide", link: "/v5/getting-started/"},
+                    {text: "Event Sourcing", link: "/v5/event-sourcing/"},
                     {text: "Server", link: "/v5/server/"},
                 ],
                 sidebar: {
+                    "/v5/event-sourcing/": [
+                        {
+                            title: "Introduction",
+                            collapsable: false,
+                            children: [
+                                "",
+                                "entities-as-streams",
+                                "benefits"
+                            ]
+                        }
+                    ],
                     "/v5/getting-started/": [
                         {
                             title: "Getting Started",
-                            "collapsable": true,
-                            "children": [
+                            collapsable: true,
+                            children: [
                                 "",
                                 "reading-subscribing-events",
                                 "projections",
@@ -204,8 +216,19 @@ module.exports = {
         },
         extendMarkdown: md => {
             md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
-            md.use(require("./theme/markup/code"), {root: "./docs/docs"});
+            md.use(require("./theme/markup/code"))//, {root: "./docs"});
             md.use(require("./theme/markup/elementui"));
         }
-    }
+    },
+    // configureWebpack: (config) => {
+    //     const WebpackShellPlugin = require("webpack-shell-plugin");
+    //
+    //     return {
+    //         plugins: [
+    //             new WebpackShellPlugin({
+    //                 onBuildStart: ["cp -r docs/event-sourcing docs/v5/"]
+    //             })
+    //         ]
+    //     }
+    // }
 };
