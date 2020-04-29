@@ -197,15 +197,15 @@ module.exports = {
                 }
             },
         },
-        markdown: {
-            externalLinks: {
-                target: "_self"
-            },
-            extendMarkdown: md => {
-                md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
-                md.use(require("./theme/markup/code"), {root: "./docs/docs"});
-                md.use(require("./theme/markup/elementui"));
-            }
+    },
+    markdown: {
+        externalLinks: {
+            target: "_self"
+        },
+        extendMarkdown: md => {
+            md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
+            md.use(require("./theme/markup/code"), {root: "./docs/docs"});
+            md.use(require("./theme/markup/elementui"));
         }
     }
 };
