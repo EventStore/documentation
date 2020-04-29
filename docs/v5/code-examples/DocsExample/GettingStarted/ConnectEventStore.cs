@@ -1,20 +1,29 @@
 using EventStore.ClientAPI;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DocsExample
 {
     public class ConnectEventStore
     {
-        private static readonly IEventStoreConnection conn = null;
+        readonly IEventStoreConnection conn = null;
 
-        public static void Method(){
-            var streamName = "newstream";
-            var eventType = "event-type";
-            var data = "{ \"a\":\"2\"}";
-            var metadata = "{}";
-            var eventPayload = new EventData(Guid.NewGuid(), eventType, true, Encoding.UTF8.GetBytes(data), Encoding.UTF8.GetBytes(metadata));
-            conn.AppendToStreamAsync(streamName, ExpectedVersion.Any, eventPayload).Wait();
+        public async Task Method()
+        {
+            const string streamName = "newstream";
+            const string eventType  = "event-type";
+            const string data       = "{ \"a\":\"2\"}";
+            const string metadata   = "{}";
+
+            var eventPayload = new EventData(
+                eventId: Guid.NewGuid(),
+                type: eventType,
+                isJson: true,
+                data: Encoding.UTF8.GetBytes(data),
+                metadata: Encoding.UTF8.GetBytes(metadata)
+            );
+            var result = await conn.AppendToStreamAsync(streamName, ExpectedVersion.Any, eventPayload);
         }
     }
 }

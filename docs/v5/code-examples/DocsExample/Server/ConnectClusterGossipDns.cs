@@ -5,7 +5,8 @@ namespace DocsExample
 {
     public class ConnectClusterGossipDns
     {
-        public static void Method(){
+        public static void Method()
+        {
             var settings = ConnectionSettings.Create().KeepReconnecting();
             settings.SetDefaultUserCredentials(new UserCredentials("admin", "changeit"));
 
