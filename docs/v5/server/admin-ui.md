@@ -28,7 +28,7 @@ The buttons on the top right when you are viewing an event stream are:
 
 - _Pause_: Stop showing events arriving into this stream.
 - _Resume_: Resume showing events arriving into this stream.
-- _Edit ACL_: Edit [the access control lists](/v5/server/users-and-access-control-lists.md) for a stream.
+- _Edit ACL_: Edit [the access control lists](users-and-access-control-lists.md) for a stream.
 - _Add Event_: [Add a new event](/v5/http-api/creating-writing-a-stream.md) to the stream.
 - _Delete_: [Delete a stream](/v5/http-api/deleting-a-stream.md) to the stream.
 - _Query_:
@@ -77,7 +77,7 @@ The _Query_ tab a code editor field where you can create transient and short-liv
 
 The _Persistent Subscriptions_ tab shows an overview of [persistent subscriptions](/v5/getting-started/reading-subscribing-events.md#persistent-subscriptions) configured on streams. The button above the list do the following:
 
-- _New Subscription_: Create a new [subscriptions](/v5/getting-started/reading-subscribing-events.md)
+- _New Subscription_: Create a new [subscriptions](../getting-started/reading-subscribing-events.md)
 
 Clicking the _+_ icon next to a stream name reveals the subscription name and more buttons. The _Back_ button takes you to the parent screen. :
 
@@ -96,7 +96,7 @@ The _Admin_ tab shows sub systems enabled (currently only [projections](/v5/proj
 
 ![Web admin interface projections tab](../images/wai-users.png)
 
-The _Users_ tab shows [the users defined in Event Store](/v5/server/users-and-access-control-lists.md), clicking an individual user shows a JSON representation of that users details.
+The _Users_ tab shows [the users defined in Event Store](users-and-access-control-lists.md), clicking an individual user shows a JSON representation of that users details.
 
 ## Log out
 

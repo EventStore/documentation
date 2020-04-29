@@ -9,7 +9,7 @@ title: Cluster with only database nodes
 High availability Event Store allows you to run more than one node as a cluster. There are two modes available for clustering:
 
 -   With database nodes only (open source and commercial)
--   [With manager nodes and database nodes](/v5/server/cluster-with-manager-nodes.md) (commercial only)
+-   [With manager nodes and database nodes](cluster-with-manager-nodes) (commercial only)
 
 This document covers setting up Event Store with only database nodes.
 
@@ -20,7 +20,7 @@ Common values for the ‘ClusterSize’ setting are three or five (to have a maj
 :::
 
 ::: tip Next steps
-[Read here](/v5/server/node-roles.md) for more information on the roles available for nodes in an Event Store cluster.
+[Read here](node-roles.md) for more information on the roles available for nodes in an Event Store cluster.
 :::
 
 ## Running on the same machine
