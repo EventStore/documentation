@@ -52,6 +52,8 @@ module.exports = {
                             children: [
                                 "",
                                 "entities-as-streams",
+                                "cqrs",
+                                "projections",
                                 "benefits"
                             ]
                         }
@@ -134,6 +136,8 @@ module.exports = {
                             children: [
                                 "",
                                 "entities-as-streams",
+                                "cqrs",
+                                "projections",
                                 "benefits"
                             ]
                         }
