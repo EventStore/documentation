@@ -16,7 +16,7 @@ If the `ExpectedVersion` does not match the version of the stream, Event Store r
 In the following cURL command `ExpectedVersion` is not set, and it appends or create/append to the stream.
 
 ::::: tabs
-:::: tabRequest
+:::: tab Request
 
 @[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event.sh)
 

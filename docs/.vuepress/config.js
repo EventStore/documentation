@@ -129,6 +129,7 @@ module.exports = {
                     {text: "Guide", link: "/v5/getting-started/"},
                     {text: "Event Sourcing", link: "/v5/event-sourcing/"},
                     {text: "Server", link: "/v5/server/"},
+                    {text: "HTTP API", link: "/v5/http-api/"}
                 ],
                 sidebar: {
                     "/v5/event-sourcing/": [
@@ -213,6 +214,40 @@ module.exports = {
                                 "64-bit-index.md",
                             ]
                         }
+                    ],
+                    "/v5/http-api/": [
+                        {
+                            title: "HTTP API",
+                            path: "",
+                            "collapsable": true,
+                            "children": [
+                                "",
+                                "creating-writing-a-stream.md",
+                                "reading-streams.md",
+                                "deleting-a-stream.md",
+                                "competing-consumers.md",
+                                "description-document.md",
+                                "optimistic-concurrency-and-idempotence.md",
+                                "stream-metadata.md",
+                                {
+                                    title: "Optional HTTP headers",
+                                    path: "optional-http-headers",
+                                    "collapsable": true,
+                                    "children": [
+                                        "optional-http-headers/",
+                                        "optional-http-headers/eventid.md",
+                                        "optional-http-headers/eventtype.md",
+                                        "optional-http-headers/expected-version.md",
+                                        "optional-http-headers/harddelete.md",
+                                        "optional-http-headers/longpoll.md",
+                                        "optional-http-headers/requires-master.md",
+                                        "optional-http-headers/resolve-linkto.md",
+                                        "optional-http-headers/trusted-intermediary.md"
+                                    ]
+                                },
+                                "security.md"
+                            ]
+                    }
                     ]
                 }
             },
