@@ -36,7 +36,8 @@ If you were to use the wrong user or no user when a request requires one, you re
 
 @[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/incorrect-user.sh)
 
-### [Response](#tab/tabid-4)
+::::
+:::: tab Response
 
 @[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/incorrect-user.sh)
 

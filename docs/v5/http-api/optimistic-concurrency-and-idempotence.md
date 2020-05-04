@@ -33,7 +33,7 @@ Keep-Alive: timeout=15,max=100
 ::::
 :::::
 
-Assuming you were posting to a new stream you would get the event written once (and the stream created). The second event will return as the first but not write again.
+Assuming you were posting to a new stream you would get the event written once (and the stream created). The second event returns as the first but not write again.
 
 ::: tip
 This allows the client rule of “if you get an unknown condition, retry” to work.
@@ -42,14 +42,14 @@ This allows the client rule of “if you get an unknown condition, retry” to w
 For example:
 
 ::::: tabs
-:::: Request
+:::: tab Request
 
 ```bash
 curl -i "http://127.0.0.1:2113/streams/newstream444"
 ```
 
 ::::
-:::: Response
+:::: tab Response
 
 ```http
 HTTP/1.1 200 OK

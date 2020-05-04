@@ -1,5 +1,3 @@
-
-
 # Optional HTTP Headers: Expected Version
 
 When you write to a stream you often want to use `Expected Version` to allow for optimistic concurrency with a stream. You commonly use this for a domain object projection.
@@ -17,36 +15,45 @@ If the `ExpectedVersion` does not match the version of the stream, Event Store r
 
 In the following cURL command `ExpectedVersion` is not set, and it appends or create/append to the stream.
 
-### [Request](#tab/tabid-1)
+::::: tabs
+:::: tabRequest
 
-[!code-bash[http-api-write-event-request](~/code-examples/http-api/write-event.sh?start=1&end=1)]
+@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event.sh)
 
-### [Response](#tab/tabid-2)
+::::
+:::: tab Response
 
-[!code-json[http-api-write-event-response](~/code-examples/http-api/write-event.sh?range=3-)]
+@[code lang=bash transclude={3-12}](@/docs/v5/code-examples/http-api/write-event.sh)
 
-* * *
+::::
+:::::
 
 The stream 'newstream' has one event. If you append with an expected version of '3', you receive an error.
 
-### [Request](#tab/tabid-3)
+::::: tabs
+:::: tab Request
 
-[!code-bash[http-api-write-event-wrong-version-request](~/code-examples/http-api/write-event-wrong-version.sh?start=1&end=1)]
+@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-wrong-version.sh)
 
-### [Response](#tab/tabid-4)
+::::
+:::: tab Response
 
-[!code-json[http-api-write-event-wrong-version-response](~/code-examples/http-api/write-event-wrong-version.sh?range=3-)]
+@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event-wrong-version.sh)
 
-* * *
+::::
+:::::
 
 You can see from the `ES-CurrentVersion` header above that the stream is at version 0. Appending with an expected version of 0 works. The expected version is always the version of the last event known in the stream.
 
-### [Request](#tab/tabid-5)
+::::: tabs
+:::: tab Request
 
-[!code-bash[http-api-write-event-version-request](~/code-examples/http-api/write-event-version.sh?start=1&end=1)]
+@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-version.sh)
 
-### [Response](#tab/tabid-6)
+::::
+:::: tab Response
 
-[!code-json[http-api-write-event-version-response](~/code-examples/http-api/write-event-version.sh?range=3-)]
+@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event-version.sh)
 
-* * *
+::::
+:::::

@@ -1,5 +1,3 @@
-
-
 # Optional HTTP Headers: Trusted Intermediary
 
 The trusted intermediary header helps Event Store support a common security architecture. There are thousands of possible methods for handling authentication and it is impossible for us to support them all. The header allows you to configure a trusted intermediary to handle the authentication instead of Event Store. A sample configuration is to enable OAuth2 with the following steps:
@@ -14,5 +12,6 @@ The header has the form of `{user}; group, group1` and the Event Store ACLs use 
 ES-TrustedAuth: "root; admin, other"
 ```
 
-> [!NOTE]
-> This feature is **DISABLED** by default. You must specifically opt into this feature by running Event Store with the Enable Trusted Intermediary [configuration](~/dotnet-api/embedded-client.md) or [command line option](~/server/command-line-arguments.md).
+::: tip
+This feature is **DISABLED** by default. You must specifically opt into this feature by running Event Store with the Enable Trusted Intermediary [configuration](/docs/v5/dotnet-api/embedded-client.md) or [command line option](/docs/v5/server/command-line-arguments.md).
+:::

@@ -35,12 +35,12 @@ The accepted content types for `GET` requests are:
 The non-atom version of the event has fewer details about the event.
 
 ::::: tabs
-:::: Request
+:::: tab Request
 
 @[code lang=bash transclude={1-1}](@/docs/v5/code-examples/getting-started/read-event.sh)
 
 ::::
-:::: Response
+:::: tab Response
 
 @[code lang=bash transclude={3-17}](@/docs/v5/code-examples/getting-started/read-event.sh)
 
