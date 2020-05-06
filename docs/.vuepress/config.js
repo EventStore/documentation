@@ -129,6 +129,7 @@ module.exports = {
                     {text: "Guide", link: "/v5/getting-started/"},
                     {text: "Event Sourcing", link: "/v5/event-sourcing/"},
                     {text: "Server", link: "/v5/server/"},
+                    {text: "Projections", link: "/v5/projections/"},
                     {text: "HTTP API", link: "/v5/http-api/"}
                 ],
                 sidebar: {
@@ -215,10 +216,23 @@ module.exports = {
                             ]
                         }
                     ],
+                    "/v5/projections": [
+                        {
+                            title: "Projections",
+                            "collapsable": true,
+                            children: [
+                                "",
+                                "system-projections",
+                                "user-defined-projections",
+                                "api",
+                                "projections-config",
+                                "debugging"
+                            ]
+                        },
+                    ],
                     "/v5/http-api/": [
                         {
                             title: "HTTP API",
-                            path: "",
                             "collapsable": true,
                             "children": [
                                 "",
