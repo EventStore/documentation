@@ -54,6 +54,7 @@ module.exports = {
                                 "entities-as-streams",
                                 "cqrs",
                                 "projections",
+                                "all-stream",
                                 "benefits"
                             ]
                         }
