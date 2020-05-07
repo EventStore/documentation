@@ -123,6 +123,11 @@ of the screen.
 
 ## CQRS with Event Sourcing
 
+Back in 2016 in his talk [A Decade of DDD, CQRS, Event Sourcing](https://www.youtube.com/watch?v=LDW0QWie21s) Greg Young said the following:
+
+> You need to look at CQRS not as being the main thing. CQRS was a product of its time
+> and meant to be a stepping stone towards the ideas of Event Sourcing.
+
 It is not a coincidence that Greg proposed the CQRS pattern at the same time as
 he introduced Event Sourcing to the public. Unlike state-based persistence,
 where there might be a way to avoid using the domain model for queries, such

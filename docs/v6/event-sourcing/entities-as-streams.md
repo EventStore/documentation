@@ -191,6 +191,8 @@ public class Order {
 }
 ```
 
+Essentially, in order to restore the entity state from events, we need to apply the left [fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) on all the events in the entity stream.
+
 With all those changes, the `Order` class public API hasn't changed. It still
 exposes the `AddItem` method and only the internal implementation is different.
 
