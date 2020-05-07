@@ -22,6 +22,6 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "cp -r docs/v6/event-sourcing docs/v5/ && vuepress build docs && rm -rf docs/v5/event-sourcing/"
+    "docs:build": "cp -R docs/v6/event-sourcing docs/v5/ && vuepress build docs && rm -rf docs/v5/event-sourcing/"
   }
 }

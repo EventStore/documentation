@@ -331,3 +331,4 @@ exclusive.lck
 .vscode
 version.txt
 /public/
+/docs/v5/event-sourcing/
