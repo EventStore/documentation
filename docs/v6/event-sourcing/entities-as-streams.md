@@ -1,16 +1,16 @@
 # Entities as event streams
 
-In the previous article, we got an overview of what is Event Sourcing and what 
-is the domain event. Now, let's see how we can change the way how we persist 
+In [the xxx guide](INSERT_LINK), we got an overview of what is Event Sourcing and what 
+the domain event is. In this guide, we can change the way we persist 
 entities using events.
 
 ::: tip
-The code in this article is the C#-styled pseudo code.
+The code in this article is C#-styled pseudo code.
 :::
 
 ## Command handling flow
 
-Since we already use the order example, we can compose an entity that represents 
+Since we already used the order example in this section, we can compose an entity that represents 
 an order:
 
 ```csharp
@@ -35,7 +35,7 @@ flow of execution for any operation would look like this:
 
 ![State-oriented flow](./images/command-flow-state-based.png)
 
-In case our application uses Ports and Adapters architecture, we would
+If our application uses a Ports and Adapters architecture, we would
 have an application service, which handles the command:
 
 ```csharp
@@ -51,7 +51,7 @@ public class OrderService {
 }
 ```
 
-Most certainly, we'd also have an edge adapter, like HTTP that accepts commands
+We'd also have an edge adapter, like HTTP that accepts commands
 from the outside world, but it's out of scope for this article.
 
 ## Event-based entity
@@ -72,9 +72,9 @@ public class ItemAdded {
 
 ::: tip
 Notice that event properties are primitive types or shared complex types, which
-are used to remove code duplication. Hence, that all the types used for events,
+All the types used for events,
 including shared types, are just property bags (DTOs) and should not contain
-any logic. The main attribute of those types is that they must be serializable.
+any logic. The main attribute of these types is that they must be serializable.
 :::
 
 The event now describes the domain-specific behaviour and contains enough
@@ -129,19 +129,19 @@ public abstract class Entity {
 ```
 
 We can now change the `Order` class to inherit from the `Entity` class, and the
-code will compile. However, you'd notice that the entity state doesn't change
+code will compile. However, notice that the entity state doesn't change
 when we produce a new event. It might be not a problem if we only produce one 
 event when handling a command, but that's not always the case. For example,
 when adding a new item we could produce two events: `ItemAdded` and `TotalUpdated`
 to make state changes more explicit and atomic. In some cases, the code that
-produces consequent events, still being in the same transaction, need to know 
+produces consequent events, but still being in the same transaction, need to know 
 the new entity state, changed by the previous event. Therefore, we need to
 mutate the state in-process when we apply each event.
 
 ### Using events to mutate state
 
 Let's first implement the method that mutates the entity state using events.
-It's common to call this method `When`. So, we can add an abstract method to
+It's common to call this method `When`. We can add an abstract method to
 the base class and ensure it's called when we add new events to the list
 of changes:
 
@@ -193,7 +193,7 @@ public class Order {
 
 Essentially, in order to restore the entity state from events, we need to apply the left [fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function)) on all the events in the entity stream.
 
-With all those changes, the `Order` class public API hasn't changed. It still
+With all these changes, the `Order` class public API hasn't changed. It still
 exposes the `AddItem` method and only the internal implementation is different.
 
 ## Using events for persistence
@@ -202,10 +202,10 @@ Now, let's get back to the original command handling flow and see how it changed
 since we started using events.
 
 In fact, the overall flow is the same, so is the application service code.
-The only change would be how the `EntityStore` adapter works. For state-oriented
-persistence, it could be something like putting the entity state to a document, 
+The only change is how the `EntityStore` adapter works. For state-oriented
+persistence, it is something like putting the entity state to a document, 
 serialising it and storing it in a document database, and then reading it back.
-How would it look like when we have an event-sourced entity? We use the same
+How would it look when we have an event-sourced entity? We use the same
 port, so the API doesn't change. We need to implement an adapter that can
 use an event-oriented database, like Event Store.
 
