@@ -267,7 +267,7 @@ public class EntityStore {
 ```
 
 ::: tip
-This page doesn't cover things like optimistic concurrency using versions
+This page doesn't cover concepts like optimistic concurrency using versions
 and specific aspects like mapping event types for serialisation.
 :::
 
