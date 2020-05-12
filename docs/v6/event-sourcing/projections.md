@@ -56,7 +56,7 @@ Projections are usually dependant on specific infrastructure interfaces, since t
 
 ## Subscriptions
 
-Since the query model is used almost every time the application handles any type of query, would it be a GET HTTP request or something else, we must ensure that the information stored in the read model is up-to-date. Therefore, we need to establish a real-time connection to the event store, so the projection receives events immediately after they are stored.
+Since the query model is used almost every time the application handles any type of query, wether a GET HTTP request or something else, we must ensure that the information stored in the read model is up-to-date. Therefore, we need to establish a real-time connection to the event store, so the projection receives events immediately after they are stored.
 
 Event Store in particular provides a way to achieve that requirement. The most common implementation for client-side projections is to use catch-up subscriptions. The term "catch-up" comes from the fact that such subscriptions, when first connected to the server, will read all the historical events (catch up) and then automatically switch to real-time event processing.
 
