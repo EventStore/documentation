@@ -1,6 +1,6 @@
 # Projections
 
-By definition, projection is a representation of an object using a different perspective. For example, isometric and orthographic projections allow us to represent a 3D object on paper using different points of view.
+By definition, a projection is a representation of an object using a different perspective. For example, isometric and orthographic projections allow us to represent a 3D object on paper using different points of view.
 
 ![Geometry](./images/geometry-projections.png)
 
