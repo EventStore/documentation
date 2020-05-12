@@ -88,7 +88,7 @@ Of course, there's more plumbing involved in places like the `DeserializeEvent` 
 
 ## Checkpoints
 
-The `SubscribeToStreamFrom` function requires to specify the stream checkpoint in the `lastCheckpoint` parameter. In the example above, we used the `StreamCheckpoint.StreamStart` constant, which instructs the subscription to start reading events from the beginning of time (for that stream).
+The `SubscribeToStreamFrom` function requires you to specify the stream checkpoint in the `lastCheckpoint` parameter. In the example above, we used the `StreamCheckpoint.StreamStart` constant, which instructs the subscription to start reading events from the beginning of time (for that stream).
 
 It will work, but it's not practical. When an application that hosts this subscription eventually stops and then starts again, the subscription will start catching up from the first event in the stream again. It defeats the purpose of having the read model state persisted in a database. If we'd allow our system to re-project all the events each time the projection starts, we could just keep all the read models in memory.
 
