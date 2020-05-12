@@ -13,7 +13,7 @@ therefore segregating them.
 
 Most software systems need to persist data. Since for the scope of this guide we
 assume that the business logic of a software system is represented and executed
-by the Domain Model, we can say that an application persistence focuses on
+by the Domain Model, we can say that application persistence focuses on
 persisting domain objects, like aggregates and entities. Because domain objects
 often have complex structures, developers might need to apply advanced
 persistence techniques to overcome the impedance mismatch. The Domain Model-oriented
