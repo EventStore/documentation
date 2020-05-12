@@ -128,5 +128,5 @@ The code snippet above uses two database operations for each processed event. It
  - Make projections idempotent, so applying the same event twice won't bring the read model to an invalid state.
  :::
  
- This page covers the basics of projections, but you might've noticed that subscribing to a single stream won't deliver much of a value. Projections normally handle events of many entities. Read the next page to learn more about the `$all` stream and projections that handle events from multiple streams.
+ This page covers the basics of projections, but you might've noticed that subscribing to a single stream won't deliver much of a value. Projections normally handle events of many entities. Read the [xxx guide](url) to learn more about the `$all` stream and projections that handle events from multiple streams.
  
