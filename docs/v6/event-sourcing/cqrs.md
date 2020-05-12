@@ -1,13 +1,6 @@
 # Event Sourcing and CQRS
 
-CQRS stands for _Command-Query Segregation Principle_. Greg Young described (and named) the 
-pattern thoroughly in 2010, but the idea existed way before that time. On a high level,
-CQRS states the fact that operations that trigger state transitions should be
-described as _commands_ and any data retrieval that goes beyond the need of the
-command execution, should be named a _query_. Because the operational
-requirements for executing commands and queries are very often different, developers
-should consider using different persistence techniques for handling commands and queries,
-therefore segregating them.
+CQRS stands for _Command-Query Segregation Principle_. Greg Young [described](https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf) (and named) the pattern thoroughly in 2010, but the idea existed way before that time. On a high level, CQRS states the fact that operations that trigger state transitions should be described as _commands_ and any data retrieval that goes beyond the need of the command execution, should be named a _query_. Because the operational requirements for executing commands and queries are very often different, developers should consider using different persistence techniques for handling commands and queries, therefore segregating them.
 
 ## Operations vs Reporting
 

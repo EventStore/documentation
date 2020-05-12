@@ -19,7 +19,7 @@ The idea is that the projection will receive all the events that it is able to p
 Projections do the same thing as the `When` function in the [entity code](./entities-as-streams.md#using-events-to-mutate-state). Just as the entity state, the read model state is the left fold of all the event it processes. 
 
 ::: tip
-Unlike the entity state, which is only applying events for that single entity, projections aren't limited to only process events of a single entity and can do aggregations for multiple entities, even for different types of entities.
+Unlike the entity state, which is only applying events for that single entity, projections aren't limited to only process events of a single entity and can assemble and aggregate data for multiple entities, even for different types of entities.
 :::
 
 Keeping all this in mind, we can write code for a simple projection.
@@ -63,7 +63,7 @@ Event Store in particular provides a way to achieve that requirement. The most c
 With the Event Store .NET client, you can create a subscription like this:
 
 ```csharp
-// Presumably we got IEventStoreConnection connection from somewhere
+// Presumably we got an IEventStoreConnection instance from somewhere
 
 var subscription = connection.SubscribeToStreamFrom(
     stream: "mystream",
@@ -90,15 +90,15 @@ Of course, there's more plumbing involved in places like the `DeserializeEvent` 
 
 The `SubscribeToStreamFrom` function requires you to specify the stream checkpoint in the `lastCheckpoint` parameter. In the example above, we used the `StreamCheckpoint.StreamStart` constant, which instructs the subscription to start reading events from the beginning of time (for that stream).
 
-It will work, but it's not practical. When an application that hosts this subscription eventually stops and then starts again, the subscription will start catching up from the first event in the stream again. It defeats the purpose of having the read model state persisted in a database. If we'd allow our system to re-project all the events each time the projection starts, we could just keep all the read models in memory.
+It will work, but it's not practical. When an application that hosts this subscription eventually stops and then starts again, the subscription will start catching up from the first event in the stream again. It defeats the purpose of having the read model state persisted in a database. If it's feasible for a system to re-project all the events each time the projection starts, we could just keep all the read models in memory.
 
 ::: tip
 It is, actually, a valid technique for caching and keeping the aggregate state snapshot available for command processing. Keep in mind how much time will be required to read all the events at the startup.
 :::
 
-In order to avoid re-projecting the whole history all over again, we can store the event offset, its position in the stream, after projecting the event. By doing that, we allow our system to load the stored checkpoint when the application starts again and subscribe from the last known position instead of the stream start.
+In order to avoid re-projecting the whole history all over again, we can store the event offset (a position the event in the stream) after projecting the event. By doing that, we let the system to load the stored checkpoint when the application starts again, so it can subscribe from the last known position instead of the stream start.
 
-With that in mind, the previous code snippet can be refactored to handle the checkpoint as well.
+With this in mind, the previous code snippet can be refactored to handle the checkpoint as well.
 
 ```csharp
 // Startup code
