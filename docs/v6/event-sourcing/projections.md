@@ -110,7 +110,7 @@ var subscription = connection.SubscribeToStreamFrom(
     eventAppeared: EventAppeared);
 ```
 
-In addition to the checkpoint loading code, we'd need to persist the checkpoint for processed events.
+In addition to the checkpoint loading code, we need to persist the checkpoint for processed events.
 
 ```csharp
 Task EventSppeared(EventStoreCatchUpSubscription _, ResolvedEvent evt) {
