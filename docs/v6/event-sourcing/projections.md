@@ -12,7 +12,7 @@ The same applies to event projections with one difference. When projecting event
 
 In CQRS, the query side is always a projection, even if it is not implemented as a stateful manner. When it comes to projecting events, we really want to keep the state of our read models in a queryable store to solve the issue of events streams being hard to query ad-hoc.
 
-So, the idea is that the projection will receive all the events that it is able to project and will do the normal CRUD operations on the read model it controls, using the normal CRUD operations provided by the read model database (which could be anything).
+The idea is that the projection will receive all the events that it is able to project and will do the normal CRUD operations on the read model it controls, using the normal CRUD operations provided by the read model database (which could be anything).
 
 ![EventsProjection](./images/projections-single-stream.png)
 
