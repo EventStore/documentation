@@ -22,7 +22,7 @@ Projections do the same thing as the `When` function in the [entity code](./enti
 Unlike the entity state, which is only applying events for that single entity, projections aren't limited to only process events of a single entity and can do aggregations for multiple entities, even for different types of entities.
 :::
 
-Keeping all that in mind, we can write a simple projection code.
+Keeping all this in mind, we can write code for a simple projection.
 
 ```csharp
 public class OrderOverviewProjection {
