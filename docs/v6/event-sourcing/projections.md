@@ -60,7 +60,7 @@ Since the query model is used almost every time the application handles any type
 
 Event Store in particular provides a way to achieve that requirement. The most common implementation for client-side projections is to use catch-up subscriptions. The term "catch-up" comes from the fact that such subscriptions, when first connected to the server, will read all the historical events (catch up) and then automatically switch to real-time event processing.
 
-With Event Store .NET client, you can create a subscription like this:
+With the Event Store .NET client, you can create a subscription like this:
 
 ```csharp
 // Presumably we got IEventStoreConnection connection from somewhere
