@@ -2,7 +2,9 @@
 
 By definition, a projection is a representation of an object using a different perspective. For example, isometric and orthographic projections allow us to represent a 3D object on paper using different points of view.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Geometry](./images/geometry-projections.png)
+:::
 
 When we talk about projecting data, we usually mean representing the data differently from the form it was originally stored. For example, a relational database view is a projection. It uses a transformation query to represent a subset of data that is already available in the database, producing a derived result from that data. The view, however, is stateless and has no side effects - it doesn't change the original data in any way.
 
@@ -14,7 +16,9 @@ In CQRS, the query side is always a projection, even if it is not implemented as
 
 The idea is that the projection will receive all the events that it is able to project and will do the normal CRUD operations on the read model it controls, using the normal CRUD operations provided by the read model database (which could be anything).
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![EventsProjection](./images/projections-single-stream.png)
+:::
 
 Projections do the same thing as the `When` function in the [entity code](./entities-as-streams.md#using-events-to-mutate-state). Just as the entity state, the read model state is the left fold of all the event it processes. 
 
@@ -128,5 +132,5 @@ The code snippet above uses two database operations for each processed event. It
  - Make projections idempotent, so applying the same event twice won't bring the read model to an invalid state.
  :::
  
- This page covers the basics of projections, but you might've noticed that subscribing to a single stream won't deliver much of a value. Projections normally handle events of many entities. Read the [xxx guide](url) to learn more about the `$all` stream and projections that handle events from multiple streams.
+ This page covers the basics of projections, but you might've noticed that subscribing to a single stream won't deliver much of a value. Projections normally handle events of many entities. Read the [Global event stream](./all-stream.md) page to learn more about the `$all` stream and projections that handle events from multiple streams.
  

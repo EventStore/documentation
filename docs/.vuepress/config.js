@@ -55,6 +55,7 @@ module.exports = {
                                 "cqrs",
                                 "projections",
                                 "all-stream",
+                                "microservices",
                                 "benefits"
                             ]
                         }
@@ -139,6 +140,8 @@ module.exports = {
                                 "entities-as-streams",
                                 "cqrs",
                                 "projections",
+                                "all-stream",
+                                "microservices",
                                 "benefits"
                             ]
                         }
