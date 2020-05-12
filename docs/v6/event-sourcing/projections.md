@@ -52,7 +52,7 @@ public class OrderOverviewProjection {
 }
 ```
 
-Projections are usually depend on specific infrastructure interfaces since they work directly with databases that keep their read models.
+Projections are usually dependant on specific infrastructure interfaces, since they work directly with databases that keep their read models.
 
 ## Subscriptions
 
