@@ -1,4 +1,19 @@
-# Step 1 - Install, run, and write your first event
+---
+title: Install, run, and write your first event
+---
+
+:::: el-steps :active="1" align-center
+::: el-step title="Install" description="Install, run, and write your first event"
+:::
+::: el-step title="Read" description="Read events and subscribe to changes"
+:::
+::: el-step title="Project" description="Use default and custom projections"
+:::
+::: el-step title="Choose SDK" description="Which SDK to use?"
+:::
+::::
+
+# Install, run, and write your first event
 
 This getting started guide shows you how to get started with Event Store using the Atom publishing protocol as the primary interface. 
 
@@ -14,12 +29,12 @@ This first step covers installation and running Event Store, and writing your fi
 Unless you pass a database option with `--db`, Event Store writes to a new database created in the host system's temporary files path each time it is started. For more information on Command Line Arguments read [this guide](/server/command-line-arguments.md).
 :::
 
-::::: tabs
-:::: tab Windows
+::::: el-tabs 
+:::: el-tab-pane label=Windows
 
 The prerequisites for installing on Windows are:
 
--   NET Framework 4.0+
+- NET Framework 4.0+
 
 Event Store has [Chocolatey packages](https://chocolatey.org/packages/eventstore-oss) available that you can install with the following command in an elevated terminal:
 
@@ -46,7 +61,7 @@ For more information, refer to Microsoft's `add urlacl` [documentation](https://
 To build Event Store from source, refer to the [Event Store README](https://github.com/EventStore/EventStore#windows).
 
 ::::
-:::: tab Linux
+:::: el-tab-pane label=Linux
 
 The prerequisites for installing on Linux are:
 
@@ -67,7 +82,7 @@ We recommend that when using Linux you set the 'open file limit' to a high numbe
 :::
 
 ::::
-:::: tab Docker
+:::: el-tab-pane label=Docker
 
 Event Store has a Docker image available for any platform that supports Docker.
 
@@ -86,7 +101,7 @@ docker run --name eventstore-node -it -p 2113:2113 -p 1113:1113 eventstore/event
 Refer to the [image overview](https://hub.docker.com/r/eventstore/eventstore/) for more information.
 
 ::::
-:::: tab Docker Compose
+:::: el-tab-pane label="Docker Compose"
 
 Event Store has a Docker image available for any platform that supports Docker. In order to save keystrokes it is possible to run Event Store via docker-compose.
 
@@ -109,7 +124,7 @@ docker-compose -f docker-compose.yaml up
 Refer to the [image overview](https://hub.docker.com/r/eventstore/eventstore/) for more information.
 
 ::::
-:::: tab macOS
+:::: el-tab-pane label=macOS
 
 Event Store has a macOS package [you can download](https://eventstore.com/downloads/) and install, and we maintain a Homebrew Cask formula you can install:
 
@@ -150,8 +165,8 @@ Event Store expose HTTP API that allows cross-platform integration. API is expos
 
 Get on the fast-track with [a native SDK for your language of choice](/getting-started/which-api-sdk.md).
 
-::::: tabs
-:::: tab .NET Client
+::::: el-tabs
+:::: el-tab-pane label=".NET Client"
 
 [Install the .NET client API](https://www.nuget.org/packages/EventStore.Client) using your preferred method.
 
@@ -166,7 +181,7 @@ And require it in your code:
 @[code lang=cpp transclude={7-10}](@/docs/v5/code-examples/DocsExample/Program.cs)
 
 ::::
-:::: tab JVM client
+:::: el-tab-pane label="JVM client"
 
 [Add the JVM client](https://github.com/EventStore/EventStore.JVM#setup) using Maven:
 
@@ -179,8 +194,8 @@ And import it in your code.
 
 To use a client API, you use port `1113` and create a connection:
 
-::::: tabs
-:::: tab .NET client
+::::: el-tabs
+:::: el-tab-pane label=".NET client"
 
 When using the .NET client, you also need to give the connection a name.
 
@@ -189,7 +204,7 @@ When using the .NET client, you also need to give the connection a name.
 In this example we used the [`EventStoreConnection.Create()`](xref:EventStore.ClientAPI.EventStoreConnection.Create(System.String,System.String)) overloaded method but [others are available](xref:EventStore.ClientAPI.EventStoreConnection).
 
 ::::
-:::: tab JVM client
+:::: tab el-tab-pane="JVM client"
 
 @[code lang=java transclude={16-21}](@/docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteEventExample.java)
 
@@ -216,8 +231,8 @@ Open a text editor, copy and paste the following event definition, and save it a
 
 ### Writing events programmatically
 
-::::: tabs
-:::: tab HTTP API
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
 Use the following cURL command, passing the name of the stream and the events to write:
 
@@ -232,7 +247,7 @@ Read [this guide](/http-api/creating-writing-a-stream.md) for more information o
 :::
 
 ::::
-:::: tab .NET client
+:::: el-tab-pane label=".NET client"
 
 To use the .NET client, use the following method, passing the name of the stream, the version, and the events to write:
 
@@ -243,7 +258,7 @@ Read [this guide](/http-api/creating-writing-a-stream.md) for more information o
 :::
 
 ::::
-:::: tab JVM client
+:::: el-tab-pane label="JVM client"
 
 To use the JVM Client, use the following method, passing the name of the stream, the version, and the events to write. You also need an Akka `AbstractActor` to return the response from Event Store:
 

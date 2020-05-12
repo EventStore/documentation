@@ -6,9 +6,11 @@
     "esm": "^3.0.0",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
+    "typescript": "^3.8.3",
     "vuepress": "^1.4.0",
     "vuepress-plugin-element-tabs": "^0.2.8",
-    "vuepress-plugin-one-click-copy": "^1.0.2"
+    "vuepress-plugin-one-click-copy": "^1.0.2",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
     "element-ui": "^2.13.1",
@@ -20,6 +22,6 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "cp -R docs/v6/event-sourcing docs/v5/ && vuepress build docs && rm -rf docs/v5/event-sourcing/"
   }
 }

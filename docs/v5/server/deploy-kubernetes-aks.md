@@ -1,4 +1,4 @@
-# Deploy with Kubernetes to Azure Cloud AKS
+# Deploy to Azure Cloud AKS
 
 This guide is to show how to use [the official Event Store Helm Chart](https://github.com/EventStore/EventStore.Charts) to
 interactively deploy an Event Store Cluster in Kubernetes Azure Cloud

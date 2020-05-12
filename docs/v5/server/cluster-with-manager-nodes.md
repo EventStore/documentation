@@ -1,12 +1,13 @@
 ---
 commercial: true
+title: Cluster with manager nodes
 ---
 
 # Setting up a cluster with manager nodes
 
 High availability Event Store allows you to run more than one node as a cluster. There are two modes available for clustering:
 
--   [With database nodes only](/v5/server/cluster-without-manager-nodes.md) (open source and commercial)
+-   [With database nodes only](cluster-without-manager-nodes.md) (open source and commercial)
 -   With manager nodes and database nodes (commercial only)
 
 This document covers setting up Event Store with manager nodes and database nodes.
@@ -18,7 +19,7 @@ Common values for the ‘ClusterSize’ setting are three or five (to have a maj
 :::
 
 ::: tip Next steps
-[Read here](~/server/node-roles.md) for more information on the roles available for nodes in an Event Store cluster.
+[Read here](node-roles.md) for more information on the roles available for nodes in an Event Store cluster.
 :::
 
 ## Manager nodes
@@ -34,7 +35,7 @@ Manager nodes have a number of responsibilities:
 
 ## Configuring nodes
 
-Each database or manager node [can have a variety of configuration sources](/v5/server/command-line-arguments.md). Each source has a priority and determines running configuration by evaluating each source and applying the option from the source with the highest priority.
+Each database or manager node [can have a variety of configuration sources](command-line-arguments.md). Each source has a priority and determines running configuration by evaluating each source and applying the option from the source with the highest priority.
 
 From lowest to highest priority, the sources of configuration are:
 
