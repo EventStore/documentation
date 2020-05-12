@@ -16,7 +16,7 @@ So, the idea is that the projection will receive all the events that it is able 
 
 ![EventsProjection](./images/projections-single-stream.png)
 
-Essentially, projections do the same thing as the `When` function in the [entity code](./entities-as-streams.md#using-events-to-mutate-state). Just as the entity state, the read model state is the left fold of all the event it processes. 
+Projections do the same thing as the `When` function in the [entity code](./entities-as-streams.md#using-events-to-mutate-state). Just as the entity state, the read model state is the left fold of all the event it processes. 
 
 ::: tip
 Unlike the entity state, which is only applying events for that single entity, projections aren't limited to only process events of a single entity and can do aggregations for multiple entities, even for different types of entities.
