@@ -130,7 +130,8 @@ module.exports = {
                     {text: "Event Sourcing", link: "/v5/event-sourcing/"},
                     {text: "Server", link: "/v5/server/"},
                     {text: "Projections", link: "/v5/projections/"},
-                    {text: "HTTP API", link: "/v5/http-api/"}
+                    {text: "HTTP API", link: "/v5/http-api/"},
+                    {text: ".NET API", link: "/v5/dotnet-api/"}
                 ],
                 sidebar: {
                     "/v5/event-sourcing/": [
@@ -262,6 +263,27 @@ module.exports = {
                                 "security.md"
                             ]
                     }
+                    ],
+                    "/v5/dotnet-api/": [
+                        {
+                            title: ".NET API",
+                            "collapsable": true,
+                            "children": [
+                                "",
+                                "connecting-to-a-server.md",
+                                "streams.md",
+                                "reading-events.md",
+                                "deleting-a-stream.md",
+                                "persistent-subscriptions.md",
+                                "competing-consumers.md",
+                                "embedded-client.md",
+                                "optimistic-concurrency-and-idempotence.md",
+                                "projections.md",
+                                "stream-metadata.md",
+                                "users.md",
+                                "security.md"
+                            ]
+                        },
                     ]
                 }
             },
