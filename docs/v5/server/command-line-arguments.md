@@ -110,6 +110,7 @@ Event Store supports the following parameters.
 | -SkipIndexVerify<br/>--skip-index-verify=VALUE                           | SKIP_INDEX_VERIFY                                | SkipIndexVerify           | Skips reading and verification of PTables during start-up. (Default: False)                             |
 | -MaxAutoMergeIndexLevel<br/>--max-auto-merge-index-level=VALUE           | MAX_AUTO_MERGE_INDEX_LEVEL                       | MaxAutoMergeIndexLevel    | Maximum level of index file to merge automatically before manual merge. (Default: 1000)                 |
 | -OptimizeIndexMerge<br/>--optimize-index-merge=VALUE                     | OPTIMIZE_INDEX_MERGE                             | OptimizeIndexMerge        | Bypasses the checking of file hashes of indexes during startup and after index merges. (Default: False) |
+| -WriteStatsToDb<br/>--write-stats-to-db=VALUE                     | WRITE_STATS_TO_DB                             | WriteStatsToDb        | Write stats data to the Event Store database. (Default: False) |
 
 ### Database options
 
