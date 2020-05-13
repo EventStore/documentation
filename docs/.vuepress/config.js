@@ -216,7 +216,7 @@ module.exports = {
                             ]
                         }
                     ],
-                    "/v5/projections": [
+                    "/v5/projections/": [
                         {
                             title: "Projections",
                             "collapsable": true,
