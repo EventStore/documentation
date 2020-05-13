@@ -222,11 +222,11 @@ module.exports = {
                             "collapsable": true,
                             children: [
                                 "",
-                                "system-projections",
-                                "user-defined-projections",
-                                "api",
-                                "projections-config",
-                                "debugging"
+                                "system-projections.md",
+                                "user-defined-projections.md",
+                                "api.md",
+                                "projections-config.md",
+                                "debugging.md"
                             ]
                         },
                     ],
