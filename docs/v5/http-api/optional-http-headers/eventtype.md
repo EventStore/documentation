@@ -7,12 +7,12 @@ You use the `ES-EventType` header as follows.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::::
@@ -24,12 +24,12 @@ If you view the event in the UI or with cURL it has the `EventType` of `SomeEven
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={16-44}](@/docs/v5/code-examples/http-api/read-event.sh)
+@[code lang=bash transclude={16-44}](docs/v5/code-examples/http-api/read-event.sh)
 
 ::::
 :::::

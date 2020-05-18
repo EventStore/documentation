@@ -7,12 +7,12 @@ You can include an event ID on an event by specifying this header.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::::
@@ -22,12 +22,12 @@ If you don't add an `ES-EventId` header on an append where the body is considere
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-no-id.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-no-id.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-15}](@/docs/v5/code-examples/http-api/write-event-no-id.sh)
+@[code lang=json transclude={3-15}](docs/v5/code-examples/http-api/write-event-no-id.sh)
 
 ::::
 :::::

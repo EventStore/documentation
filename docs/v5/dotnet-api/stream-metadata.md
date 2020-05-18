@@ -47,12 +47,12 @@ This returns a `RawStreamMetadataResult`. The fields on this result are:
 | `byte[] Metadata`        | The raw data of the metadata JSON                                                                 |
 
 ::: tip
-If you enabled [enabled security](~/dotnet-api/connecting-to-a-server.md), reading metadata may require that you pass credentials. By default it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials and they are required you will receive an `AccessedDeniedException`.
+If you enabled [enabled security](/v5/dotnet-api/connecting-to-a-server.md), reading metadata may require that you pass credentials. By default it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials and they are required you will receive an `AccessedDeniedException`.
 :::
 
 ## Writing metadata
 
-You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](/dotnet-api/optimistic-concurrency-and-idempotence.md) for further details.
+You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](/v5/dotnet-api/optimistic-concurrency-and-idempotence.md) for further details.
 
 ```csharp
 Task<WriteResult> SetStreamMetadataAsync(string stream, long expectedMetastreamVersion, StreamMetadata metadata, UserCredentials userCredentials = null)
@@ -83,7 +83,7 @@ You can add user-specified metadata via the `SetCustomMetadata` overloads. Some 
 Task<WriteResult> SetStreamMetadataAsync(string stream, long expectedMetastreamVersion, byte[] metadata, UserCredentials userCredentials = null)
 ```
 
-This method will put the data that is in metadata as the stream metadata. Metadata in this case can be anything in a vector of bytes. The server only understands JSON. Read [Access Control Lists](/server/users-and-access-control-lists.md) for more information on the format in JSON for access control lists.
+This method will put the data that is in metadata as the stream metadata. Metadata in this case can be anything in a vector of bytes. The server only understands JSON. Read [Access Control Lists](/v5/server/users-and-access-control-lists.md) for more information on the format in JSON for access control lists.
 
 ::: tip
 Writing metadata may require that you pass credentials if you have security enabled by default it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials and they are required you will receive an `AccessedDeniedException`.

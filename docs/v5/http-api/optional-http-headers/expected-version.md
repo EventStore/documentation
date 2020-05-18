@@ -18,12 +18,12 @@ In the following cURL command `ExpectedVersion` is not set, and it appends or cr
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-12}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=bash transclude={3-12}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::::
@@ -33,12 +33,12 @@ The stream 'newstream' has one event. If you append with an expected version of 
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-wrong-version.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-wrong-version.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event-wrong-version.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/write-event-wrong-version.sh)
 
 ::::
 :::::
@@ -48,12 +48,12 @@ You can see from the `ES-CurrentVersion` header above that the stream is at vers
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-version.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-version.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event-version.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/write-event-version.sh)
 
 ::::
 :::::

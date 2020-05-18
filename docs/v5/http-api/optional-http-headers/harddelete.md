@@ -5,12 +5,12 @@ The `ES-HardDelete` header controls deleting a stream. By default Event Store so
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/hard-delete-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/hard-delete-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-11}](@/docs/v5/code-examples/http-api/hard-delete-stream.sh)
+@[code lang=json transclude={3-11}](docs/v5/code-examples/http-api/hard-delete-stream.sh)
 
 ::::
 :::::

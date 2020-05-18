@@ -7,12 +7,12 @@ Event Store exposes streams as a resource located at _http(s)://{yourdomain.com}
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-67} highlight={9}](@/docs/v5/code-examples/http-api/read-stream.sh)
+@[code lang=json transclude={3-67} highlight={9}](docs/v5/code-examples/http-api/read-stream.sh)
 
 ::::
 :::::
@@ -37,12 +37,12 @@ The non-atom version of the event has fewer details about the event.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/getting-started/read-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/getting-started/read-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-17}](@/docs/v5/code-examples/getting-started/read-event.sh)
+@[code lang=bash transclude={3-17}](docs/v5/code-examples/getting-started/read-event.sh)
 
 ::::
 :::::
@@ -53,7 +53,7 @@ The next step in understanding how to read a stream is the `first`/`last`/`previ
 
 In the example above the server returned the following `links` as part of its result:
 
-@[code lang=bash transclude={28-45}](@/docs/v5/code-examples/http-api/read-stream.sh)
+@[code lang=bash transclude={28-45}](docs/v5/code-examples/http-api/read-stream.sh)
 
 This shows that there is not a `next` URL as all the information is in this request and that the URL requested is the first link. When dealing with these URLs, there are two ways of reading the data in the stream.
 
@@ -65,12 +65,12 @@ If you want to follow a live stream, then you keep following the `previous` link
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples//http-api/read-stream-forwards.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples//http-api/read-stream-forwards.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-49}](@/docs/v5/code-examples//http-api/read-stream-forwards.sh)
+@[code lang=json transclude={3-49}](docs/v5/code-examples//http-api/read-stream-forwards.sh)
 
 ::::
 :::::
@@ -84,11 +84,11 @@ Let's now try an example with more than a single page. First create the multiple
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-paging-events.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-paging-events.sh)
 
 :::: tab Response
 
-@[code lang=json transclude={3-15}](@/docs/v5/code-examples/http-api/write-paging-events.sh)
+@[code lang=json transclude={3-15}](docs/v5/code-examples/http-api/write-paging-events.sh)
 
 ::::
 :::::
@@ -98,11 +98,11 @@ If you request the stream of events, you see a series of links above the events:
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/request-paging-events.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/request-paging-events.sh)
 
 :::: tab Response
 
-@[code lang=bash transclude={3-54,435-436}](@/docs/v5/code-examples/http-api/request-paging-events.sh)
+@[code lang=bash transclude={3-54,435-436}](docs/v5/code-examples/http-api/request-paging-events.sh)
 
 ::::
 :::::
@@ -114,12 +114,12 @@ For example, if you request the `last` link from above:
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/request-last-link.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/request-last-link.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-43,424-425}](@/docs/v5/code-examples/http-api/request-last-link.sh)
+@[code lang=bash transclude={3-43,424-425}](docs/v5/code-examples/http-api/request-last-link.sh)
 
 ::::
 :::::
@@ -135,18 +135,18 @@ All links except the head link are fully cacheable as you can see in the HTTP he
 `$all` is a special paged stream for all events. You can use the same paged form of reading described above to read all events for a node by pointing the stream at _/streams/\$all_. As it's a stream like any other, you can perform all operations, except posting to it.
 
 ::: tip
-To access the `$all` stream, you must use admin details. Find more information on the [security](~/http-api/security.md) page.
+To access the `$all` stream, you must use admin details. Find more information on the [security](/v5/http-api/security.md) page.
 :::
 
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-all-events.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-all-events.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-51}](@/docs/v5/code-examples/http-api/read-all-events.sh)
+@[code lang=json transclude={3-51}](docs/v5/code-examples/http-api/read-all-events.sh)
 
 ::::
 :::::
@@ -158,12 +158,12 @@ The head link supports conditional `GET`s with the use of [ETAGS](http://en.wiki
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/request-paging-events.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/request-paging-events.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={10-10}](@/docs/v5/code-examples/http-api/request-paging-events.sh)
+@[code lang=json transclude={10-10}](docs/v5/code-examples/http-api/request-paging-events.sh)
 
 ::::
 :::::
@@ -173,12 +173,12 @@ You can use this in your next request when polling the stream for changes by put
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/request-etag.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/request-etag.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12} highlight={1}](@/docs/v5/code-examples/http-api/request-etag.sh)
+@[code lang=json transclude={3-12} highlight={1}](docs/v5/code-examples/http-api/request-etag.sh)
 
 ::::
 :::::
@@ -191,7 +191,7 @@ You create Etags using the version of the stream and the media type of the strea
 
 So far in this guide, the feeds returned have contained links that refer to the actual event data. This is normally a preferable mechanism for several reasons:
 
-- They can be in a different media type than the feed, and you can negotiate them separately from the feed itself (for example, the feed in JSON, the event in XML). You can cache the event data separately from the feed, and you can point it to different feeds. If you use a `linkTo()` in your [projection](~/projections/index.md) this is what happens in your atom feeds.
+- They can be in a different media type than the feed, and you can negotiate them separately from the feed itself (for example, the feed in JSON, the event in XML). You can cache the event data separately from the feed, and you can point it to different feeds. If you use a `linkTo()` in your [projection](/v5/projections/index.md) this is what happens in your atom feeds.
 - If you are using JSON, you can embed the events into the atom feed events. This can help cut down on the number of requests in some situations, but the messages are larger.
 
 There are ways of embedding events and further metadata into your stream by using the `embed=` parameter.
@@ -203,12 +203,12 @@ The `rich` embed mode returns more properties about the event (`eventtype`, `str
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-stream-rich.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-stream-rich.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-76}](@/docs/v5/code-examples/http-api/read-stream-rich.sh)
+@[code lang=json transclude={3-76}](docs/v5/code-examples/http-api/read-stream-rich.sh)
 
 ::::
 :::::
@@ -220,12 +220,12 @@ The `body` embed mode returns the JSON/XML body of the events into the feed as w
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-stream-body.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-stream-body.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-77}](@/docs/v5/code-examples/http-api/read-stream-body.sh)
+@[code lang=json transclude={3-77}](docs/v5/code-examples/http-api/read-stream-body.sh)
 
 ::::
 :::::
@@ -244,12 +244,12 @@ The XML format embeds no additional data, as only JSON supports embedding.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-stream-xml.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-stream-xml.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-40}](@/docs/v5/code-examples/http-api/read-stream-xml.sh)
+@[code lang=bash transclude={3-40}](docs/v5/code-examples/http-api/read-stream-xml.sh)
 
 ::::
 :::::

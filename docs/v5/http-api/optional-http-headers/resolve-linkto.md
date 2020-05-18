@@ -7,12 +7,12 @@ You can see the differences in behaviour in the following cURL commands.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/resolve-links.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/resolve-links.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-46}](@/docs/v5/code-examples/http-api/resolve-links.sh)
+@[code lang=json transclude={3-46}](docs/v5/code-examples/http-api/resolve-links.sh)
 
 ::::
 :::::
@@ -24,12 +24,12 @@ The content links are pointing to the original projection stream. The linked eve
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/resolve-links-false.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/resolve-links-false.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-46}](@/docs/v5/code-examples/http-api/resolve-links-false.sh)
+@[code lang=json transclude={3-46}](docs/v5/code-examples/http-api/resolve-links-false.sh)
 
 ::::
 :::::

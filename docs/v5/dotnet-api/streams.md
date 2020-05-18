@@ -6,7 +6,7 @@ Sending events to a non-existing stream, implicitly creates the stream.
 
 You can use the client API to write one or more events to a stream atomically. You do this by appending the events to the stream in one operation, or by using transactions.
 
-It is possible to make an optimistic concurrency check during the write by specifying the version at which you expect the stream to be. Identical write operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](/dotnet-api/optimistic-concurrency-and-idempotence.md).
+It is possible to make an optimistic concurrency check during the write by specifying the version at which you expect the stream to be. Identical write operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](/v5/dotnet-api/optimistic-concurrency-and-idempotence.md).
 
 The writing methods all use a type named `EventData` to represent an event to store.
 
@@ -39,11 +39,11 @@ Parameters:
 
 Example single event in single write:
 
-@[code lang=cpp transclude={15-19}](@/docs/v5/code-examples/DocsExample/DotNetClient/WritingSingleEvent.cs)
+@[code lang=cpp transclude={15-19}](docs/v5/code-examples/DocsExample/DotNetClient/WritingSingleEvent.cs)
 
 Example list of events in single write:
 
-@[code lang=cpp transclude={11-26}](@/docs/v5/code-examples/DocsExample/DotNetClient/WritingListEvents.cs)
+@[code lang=cpp transclude={11-26}](docs/v5/code-examples/DocsExample/DotNetClient/WritingListEvents.cs)
 
 ## Using a transaction to append to a stream across multiple writes
 
@@ -77,7 +77,7 @@ void Rollback()
 
 Example:
 
-@[code lang=cpp transclude={10-33}](@/docs/v5/code-examples/DocsExample/DotNetClient/WritingTransactions.cs)
+@[code lang=cpp transclude={10-33}](docs/v5/code-examples/DocsExample/DotNetClient/WritingTransactions.cs)
 
 Events are written in the following order: `3, 1, 2, 4, 5`.
 

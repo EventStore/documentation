@@ -13,12 +13,12 @@ Event Store supports basic HTTP authentication to internal users. You create the
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/new-user.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/new-user.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-20}](@/docs/v5/code-examples/http-api/new-user.sh)
+@[code lang=json transclude={3-20}](docs/v5/code-examples/http-api/new-user.sh)
 
 ::::
 :::::
@@ -34,12 +34,12 @@ If you were to use the wrong user or no user when a request requires one, you re
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/incorrect-user.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/incorrect-user.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/incorrect-user.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/incorrect-user.sh)
 
 ::::
 :::::

@@ -37,7 +37,7 @@ Task<AllEventsSlice> ReadAllEventsBackwardAsync(Position position, int maxCount,
 ```
 
 ::: tip
-These methods also have an optional parameter which allows you to specify the `UserCredentials` to use for the request. If you don't supply any, the default credentials for the `EventStoreConnection` are used ([see Connecting to a server - user credentials](~/dotnet-api/connecting-to-a-server.md#user-credentials)).
+These methods also have an optional parameter which allows you to specify the `UserCredentials` to use for the request. If you don't supply any, the default credentials for the `EventStoreConnection` are used ([see Connecting to a server - user credentials](/v5/dotnet-api/connecting-to-a-server.md#user-credentials)).
 :::
 
 ## StreamEventsSlice
@@ -52,7 +52,7 @@ The reading methods for individual streams each return a `StreamEventsSlice`, wh
 | `long LastEventNumber`        | The sequence number of the last event in the stream                                                                                         |
 | `long NextEventNumber`        | The sequence number from which the next read should be performed to continue reading the stream                                             |
 | `bool IsEndOfStream`          | Whether this slice contained the end of the stream at the time it was created                                                               |
-| `ResolvedEvent[] Events`      | An array of the events read. See the description of how to interpret a [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) below for more information on this |
+| `ResolvedEvent[] Events`      | An array of the events read. See the description of how to interpret a [Resolved Events](/v5/dotnet-api/reading-events.md#resolvedevent) below for more information on this |
 
 ## ResolvedEvent
 
@@ -102,7 +102,7 @@ The `ReadEventAsync` method reads a single event from a stream at a specified po
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `string stream`       | The stream to read from                                                                                                                                             |
 | `long eventNumber`    | The event number to read (use `StreamPosition.End` to read the last event in the stream)                                                                            |
-| `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) for more information on this |
+| `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](/v5/dotnet-api/reading-events.md#resolvedevent) for more information on this |
 
 This method returns an instance of `EventReadResult` which indicates if the read was successful, and if so the `ResolvedEvent` that was read.
 
@@ -117,7 +117,7 @@ The parameters are:
 | `string Stream`       | The name of the stream to read                                                                                                                                      |
 | `long start`          | The earliest event to read (inclusive). For the special case of the start of the stream, you should use the constant `StreamPosition.Start`.                        |
 | `int count`           | The maximum number of events to read in this request (assuming that many exist between the start specified and the end of the stream)                               |
-| `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) for more information on this |
+| `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](/v5/dotnet-api/reading-events.md#resolvedevent) for more information on this |
 
 ### Example: Read an entire stream forwards from start to end
 
@@ -156,7 +156,7 @@ The parameters are:
 | `string Stream`       | The name of the stream to read                                                                                                                                      |
 | `long start`          | The latest event to read (inclusive). For the end of the stream use the constant `StreamPosition.End`                                                               |
 | `int count`           | The maximum number of events to read in this request (assuming that many exist between the start specified and the start of the stream)                             |
-| `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) for more information on this |
+| `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](/v5/dotnet-api/reading-events.md#resolvedevent) for more information on this |
 
 ## Read all events
 

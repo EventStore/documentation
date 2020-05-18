@@ -149,7 +149,7 @@ This example shows how to build own docker image that base on original eventstor
 
 Create file `Dockerfile` with following content:
 
-@[code lang=bash](@/docs/v5/code-examples/server/DockerfileSsl)
+@[code lang=bash](docs/v5/code-examples/server/DockerfileSsl)
 
 Build image:
 
