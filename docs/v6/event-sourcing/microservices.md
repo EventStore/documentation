@@ -55,7 +55,7 @@ The same applies to projections that all run in a single service. With microserv
 The design on the diagram above is not what you would normally do. Preferably, the order payment status gets updated by the `OrderPaid` event, which can be a reaction to the `PaymentReceived` event.
 :::
 
-In the imaginary e-commerce Bounded Context, the component landscape could look like something shown on the illustration below.
+In the imaginary e-commerce Bounded Context, the component landscape could look like something shown in the illustration below.
 
 ::: el-card :body-style="{ padding: '0px' }" 
 ![OneContextManyServices](./images/microservices-split.png)
