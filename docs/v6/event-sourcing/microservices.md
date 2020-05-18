@@ -35,7 +35,7 @@ If the context is large, operational concerns might require splitting it to mult
 - [Bounded Contexts, Microservices, and Everything in Between](https://skillsmatter.com/skillscasts/11493-functional-cqrs#video) by Vladik Khononov (requires free registration) 
 - [DDD & Microservices: At Last, Some Boundaries!](https://www.youtube.com/watch?v=yPvef9R3k-M) by Eric Evans
 
-A system that is based on Event Sourcing and CQRS, move moving parts can be separated to individual microservices. For example, a group of projections that use the same subscription, effectively work in isolation. Several concerns could trigger such a separation, like performance, deployment size and continuity, or different read model consistency SLA.
+A system that is based on Event Sourcing and CQRS, moving parts can be separated to individual microservices. For example, a group of projections that use the same subscription, effectively work in isolation. Several concerns could trigger such a separation, like performance, deployment size and continuity, or different read model consistency SLA.
 
 When deploying a projection group as an individual service, remember to keep together projections based on the functional scope of read models they produce. It is especially relevant if projections can reach out to each other data to fetch some missing data that is not conveyed by events they process. In such cases, it is important to ensure order and keep those projections in sync so read models could be stale but would never be inconsistent.
 
