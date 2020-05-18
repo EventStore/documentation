@@ -75,7 +75,7 @@ Splitting the system into individual components comes with a cost. The system be
 Read mode about the [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) before considering breaking your system into isolated components.
 :::
 
-Projections, at the same time, already have some characteristics of distributed computing. Therefore, some potential issues apply to projections even if they are hosted in a monolith. It's because projections process events that are stored in Event Store and have no direct connection to the Domain Model or the command side of CQRS. For that reason, projections are already independent, so moving them out to a separated component doesn't introduce a lot of risk.
+Projections, at the same time, already have some characteristics of distributed computing. Therefore, some potential issues apply to projections even if they are hosted in a monolith because projections process events that are stored in Event Store and have no direct connection to the Domain Model or the command side of CQRS. For this reason, projections are already independent, so moving them out to a separated component doesn't introduce a lot of risk.
 
 There is, however, a benefit in having projections isolated. First, the command side can scale horizontally because it can handle concurrency. A subscription for projections is usually a single-threaded sequential event processor because it must process events in order. So, to scale a projection horizontally would require applying more advanced patterns like partitioning streams. It might not be necessary in many cases if the projection is fast and has enough resources to project events according to the consistency SLA.
 
