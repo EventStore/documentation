@@ -72,7 +72,7 @@ The illustration doesn't represent a reference architecture and serves an an exa
 Splitting the system into individual components comes with a cost. The system becomes explicitly distributed with all the potential issues associated with distribution.
 
 ::: tip
-Read mode about [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) before considering to break your system into isolated components.
+Read mode about the [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) before considering breaking your system into isolated components.
 :::
 
 Projections, at the same time, already have some characteristics of distributed computing. Therefore, some potential issues apply to projections even if they are hosted in a monolith. It's because projections process events that are stored in Event Store and have no direct connection to the Domain Model or the command side of CQRS. For that reason, projections are already independent, so moving them out to a separated component doesn't introduce a lot of risk.
