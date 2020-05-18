@@ -44,15 +44,15 @@ These methods also have an optional parameter which allows you to specify the `U
 
 The reading methods for individual streams each return a `StreamEventsSlice`, which is immutable. The available members on `StreamEventsSlice` are:
 
-| Member                        | Description                                                                                                                                 |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `string Stream`               | The name of the stream for the slice                                                                                                        |
-| `ReadDirection ReadDirection` | Either `ReadDirection.Forward` or `ReadDirection.Backward` depending on which method was used to read                                       |
-| `long FromEventNumber`        | The sequence number of the first event in the stream                                                                                        |
-| `long LastEventNumber`        | The sequence number of the last event in the stream                                                                                         |
-| `long NextEventNumber`        | The sequence number from which the next read should be performed to continue reading the stream                                             |
-| `bool IsEndOfStream`          | Whether this slice contained the end of the stream at the time it was created                                                               |
-| `ResolvedEvent[] Events`      | An array of the events read. See the description of how to interpret a [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) below for more information on this |
+| Member | Description |
+|:-------|:------------|
+| `string Stream` | The name of the stream for the slice |
+| `ReadDirection ReadDirection` | Either `ReadDirection.Forward` or `ReadDirection.Backward` depending on which method was used to read|
+| `long FromEventNumber` | The sequence number of the first event in the stream |
+| `long LastEventNumber` | The sequence number of the last event in the stream |
+| `long NextEventNumber` | The sequence number from which the next read should be performed to continue reading the stream |
+| `bool IsEndOfStream` | Whether this slice contained the end of the stream at the time it was created |
+| `ResolvedEvent[] Events` | An array of the events read. See the description of how to interpret a [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) below for more information on this |
 
 ## ResolvedEvent
 
@@ -64,15 +64,15 @@ In situations where the event you read is a link event, `ResolvedEvent` allows y
 
 The members of this class are as follows:
 
-| Member                        | Description                                                                                                                                                                       |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `RecordedEvent Event`         | The event, or the resolved link event if this `ResolvedEvent` is a link event                                                                                                     |
-| `RecordedEvent Link`          | The link event if this `ResolvedEvent` is a link event                                                                                                                            |
+| Member | Description |
+|:-------|:------------|
+| `RecordedEvent Event` | The event, or the resolved link event if this `ResolvedEvent` is a link event |
+| `RecordedEvent Link`  | The link event if this `ResolvedEvent` is a link event |
 | `RecordedEvent OriginalEvent` | Returns the event read or which triggered the subscription. If this `ResolvedEvent` represents a link event, the link will be the `OriginalEvent`, otherwise it will be the event |
-| `bool IsResolved`             | Indicates whether this `ResolvedEvent` is a resolved link event                                                                                                                   |
-| `Position? OriginalPosition`  | The logical position of the `OriginalEvent`                                                                                                                                       |
-| `string OriginalStreamId`     | The stream name of the `OriginalEvent`                                                                                                                                            |
-| `long OriginalEventNumber`    | The event number in the stream of the `OriginalEvent`                                                                                                                             |
+| `bool IsResolved`             | Indicates whether this `ResolvedEvent` is a resolved link event |
+| `Position? OriginalPosition`  | The logical position of the `OriginalEvent` |
+| `string OriginalStreamId`     | The stream name of the `OriginalEvent` |
+| `long OriginalEventNumber`    | The event number in the stream of the `OriginalEvent` |
 
 ::: tip
 To ensure that the Event Store server follows link events when reading, ensure you set the `ResolveLinkTos` parameter to `true` when calling read methods.
@@ -82,26 +82,26 @@ To ensure that the Event Store server follows link events when reading, ensure y
 
 `RecordedEvent` contains all the data about a specific event. Instances of this class are immutable, and expose the following members:
 
-| Member                 | Description                                                                |
-| ---------------------- | -------------------------------------------------------------------------- |
-| `string EventStreamId` | The Event Stream this event belongs to                                     |
-| `Guid EventId`         | The Unique Identifier representing this event                              |
-| `long EventNumber`     | The number of this event in the stream                                     |
-| `string EventType`     | The event type (supplied when writing)                                     |
-| `byte[] Data`          | A byte array representing the data of this event                           |
-| `byte[] Metadata`      | A byte array representing the metadata associated with this event          |
-| `bool IsJson`          | Indicates whether the content was internally marked as json                |
-| `DateTime Created`     | A `datetime` representing when this event was created.                     |
-| `long CreatedEpoch`    | A long representing the milliseconds since the epoch when the was created. |
+| Member | Description  |
+|:-------|:-------------|
+| `string EventStreamId` | The Event Stream this event belongs to |
+| `Guid EventId`         | The Unique Identifier representing this |
+| `long EventNumber`     | The number of this event in the stream |
+| `string EventType`     | The event type (supplied when writing) |
+| `byte[] Data`          | A byte array representing the data of this event |
+| `byte[] Metadata`      | A byte array representing the metadata associated with this event  |
+| `bool IsJson` | Indicates whether the content was internally marked as JSON |
+| `DateTime Created` | A timestamp representing when this event was created.  |
+| `long CreatedEpoch` | A long representing the milliseconds since the epoch when the was created. |
 
 ## Read a single event
 
 The `ReadEventAsync` method reads a single event from a stream at a specified position. This is the simplest case of reading events, but is still useful for situations such as reading the last event in the stream used as a starting point for a subscription. This function accepts three parameters:
 
-| Parameter             | Description                                                                                                                                                         |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `string stream`       | The stream to read from                                                                                                                                             |
-| `long eventNumber`    | The event number to read (use `StreamPosition.End` to read the last event in the stream)                                                                            |
+| Parameter | Description |
+|:----------|:------------|
+| `string stream` | The stream to read from |
+| `long eventNumber` | The event number to read (use `StreamPosition.End` to read the last event in the stream) |
 | `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) for more information on this |
 
 This method returns an instance of `EventReadResult` which indicates if the read was successful, and if so the `ResolvedEvent` that was read.
@@ -112,11 +112,11 @@ The `ReadStreamEventsForwardAsync` method reads the requested number of events i
 
 The parameters are:
 
-| Parameter             | Description                                                                                                                                                         |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `string Stream`       | The name of the stream to read                                                                                                                                      |
-| `long start`          | The earliest event to read (inclusive). For the special case of the start of the stream, you should use the constant `StreamPosition.Start`.                        |
-| `int count`           | The maximum number of events to read in this request (assuming that many exist between the start specified and the end of the stream)                               |
+| Parameter | Description |
+|:----------|:------------|
+| `string Stream` | The name of the stream to read |
+| `long start`    | The earliest event to read (inclusive). For the special case of the start of the stream, you should use the constant `StreamPosition.Start`. |
+| `int count` | The maximum number of events to read in this request (assuming that many exist between the start specified and the end of the stream) |
 | `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) for more information on this |
 
 ### Example: Read an entire stream forwards from start to end
@@ -130,10 +130,11 @@ StreamEventsSlice currentSlice;
 long nextSliceStart = StreamPosition.Start;
 do
 {
-    currentSlice =
-    _eventStoreConnection.ReadStreamEventsForwardAsync("myStream", nextSliceStart,
-                                                  200, false)
-                                                  .Result;
+    currentSlice = await _connection.ReadStreamEventsForwardAsync(
+        "myStream", 
+        nextSliceStart, 
+        200, false
+    );
 
     nextSliceStart = currentSlice.NextEventNumber;
 
@@ -151,11 +152,11 @@ The `ReadStreamEventsBackwardAsync` method reads the requested number of events 
 
 The parameters are:
 
-| Parameter             | Description                                                                                                                                                         |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `string Stream`       | The name of the stream to read                                                                                                                                      |
-| `long start`          | The latest event to read (inclusive). For the end of the stream use the constant `StreamPosition.End`                                                               |
-| `int count`           | The maximum number of events to read in this request (assuming that many exist between the start specified and the start of the stream)                             |
+| Parameter | Description |
+|:----------|:------------|
+| `string Stream` | The name of the stream to read |
+| `long start`    | The latest event to read (inclusive). For the end of the stream use the constant `StreamPosition.End` |
+| `int count`     | The maximum number of events to read in this request (assuming that many exist between the start specified and the start of the stream) |
 | `bool resolveLinkTos` | Determines whether any link events encountered in the stream will be resolved. See the discussion on [Resolved Events](~/dotnet-api/reading-events.md#resolvedevent) for more information on this |
 
 ## Read all events
@@ -174,8 +175,10 @@ var nextSliceStart = Position.Start;
 
 do
 {
-    currentSlice =
-        connection.ReadAllEventsForwardAsync(nextSliceStart, 200, false).Result;
+    currentSlice = await connection.ReadAllEventsForwardAsync(
+        nextSliceStart, 
+        200, false
+    );
 
     nextSliceStart = currentSlice.NextPosition;
 

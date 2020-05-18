@@ -19,28 +19,31 @@ Start the node with `ClusterVNode.StartAndWaitUntilReady()` or `ClusterVNode.Sta
 For example, to build a single node with default options :
 
 ```csharp
-var nodeBuilder = EmbeddedVNodeBuilder.AsSingleNode()
-                                      .OnDefaultEndpoints()
-                                      .RunInMemory();
+var nodeBuilder = EmbeddedVNodeBuilder
+    .AsSingleNode()
+    .OnDefaultEndpoints() 
+    .RunInMemory();
+
 var node = nodeBuilder.Build();
-node.StartAndWaitUntilReady().Wait();
+await node.StartAndWaitUntilReady();
 ```
 
 To build a node to be part of a cluster with custom endpoints and gossip seeds:
 
 ```csharp
-var nodeBuilder = EmbeddedVNodeBuilder.AsClusterMember(3)
-                      .RunOnDisk("node1db")
-                      .WithInternalHttpOn(new IPEndPoint(IPAddress.Loopback, 1112))
-                      .WithExternalHttpOn(new IPEndPoint(IPAddress.Loopback, 1113))
-                      .WithExternalTcpOn(new IPEndPoint(IPAddress.Loopback, 1114))
-                      .WithInternalTcpOn(new IPEndPoint(IPAddress.Loopback, 1115))
-                      .DisableDnsDiscovery()
-                      .WithGossipSeeds(new IPEndPoint[]
-                      {
-                          new IPEndPoint(IPAddress.Loopback, 2112),
-                          new IPEndPoint(IPAddress.Loopback, 3112)
-                      });
+var nodeBuilder = EmbeddedVNodeBuilder
+    .AsClusterMember(3)
+    .RunOnDisk("node1db")
+    .WithInternalHttpOn(new IPEndPoint(IPAddress.Loopback, 1112))
+    .WithExternalHttpOn(new IPEndPoint(IPAddress.Loopback, 1113))
+    .WithExternalTcpOn(new IPEndPoint(IPAddress.Loopback, 1114))
+    .WithInternalTcpOn(new IPEndPoint(IPAddress.Loopback, 1115))
+    .DisableDnsDiscovery()
+    .WithGossipSeeds(new IPEndPoint[]
+    {
+        new IPEndPoint(IPAddress.Loopback, 2112),
+        new IPEndPoint(IPAddress.Loopback, 3112)
+    });
 var node = nodeBuilder.Build();
 node.Start();
 ```
@@ -54,13 +57,15 @@ When running an embedded cluster, the task returned by `StartAndWaitUntilReady()
 You can connect to an embedded Event Store node with the `EmbeddedEventStoreConnection` class. Calling `EmbeddedEventStoreConnection.Create(ClusterVNode)` returns an `IEventStoreConnection` configured to connect to your embedded node. From there you can use the connection as normal in the .NET Client.
 
 ```csharp
-using(var embeddedConn = EmbeddedEventStoreConnection.Create(node))
-{
-    embeddedConn.ConnectAsync().Wait();
-    embeddedConn.AppendToStreamAsync("testStream", ExpectedVersion.Any,
-                    new EventData(Guid.NewGuid(), "eventType", true,
-                    Encoding.UTF8.GetBytes("{\"Foo\":\"Bar\"}"), null)).Wait();
-}
+using var embeddedConn = EmbeddedEventStoreConnection.Create(node);
+
+await embeddedConn.ConnectAsync();
+await embeddedConn.AppendToStreamAsync(
+    "testStream", 
+    ExpectedVersion.Any,
+    new EventData(Guid.NewGuid(), "eventType", true,
+    Encoding.UTF8.GetBytes("{\"Foo\":\"Bar\"}"), null)
+);
 ```
 
 ## Logging with an embedded node

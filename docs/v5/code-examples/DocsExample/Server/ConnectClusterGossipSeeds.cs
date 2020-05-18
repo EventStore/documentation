@@ -2,12 +2,13 @@ using EventStore.ClientAPI;
 using EventStore.ClientAPI.SystemData;
 using System;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace DocsExample
 {
     public class ConnectClusterGossipSeeds
     {
-        public static void Method()
+        public static async Task Method()
         {
             var settings = ConnectionSettings.Create().KeepReconnecting();
             settings.SetDefaultUserCredentials(new UserCredentials("admin", "changeit"));
@@ -23,7 +24,7 @@ namespace DocsExample
                         new IPEndPoint(IPAddress.Parse("192.168.0.3"), 2112)
                     )
             );
-            conn.ConnectAsync().Wait();
+            await conn.ConnectAsync();
         }
     }
 }

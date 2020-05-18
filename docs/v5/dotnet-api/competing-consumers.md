@@ -77,13 +77,13 @@ Normally you wouldn't create the subscription group in your general executable c
 :::
 
 ```csharp
-PersistentSubscriptionSettings settings = PersistentSubscriptionSettings.Create()
-                                                                .DoNotResolveLinkTos()
-                                                                .StartFromCurrent();
-_result = _conn.CreatePersistentSubscriptionAsync(_stream,
-                                                  "agroup",
-                                                  settings,
-                                                  MyCredentials).Result;
+var settings = PersistentSubscriptionSettings
+    .Create()
+    .StartFromCurrent();
+
+var result = await connection.CreatePersistentSubscriptionAsync(
+    stream, "agroup", settings, MyCredentials
+);
 ```
 
 | Parameter                                 | Description                                          |
@@ -98,13 +98,14 @@ _result = _conn.CreatePersistentSubscriptionAsync(_stream,
 You can edit the settings of an existing subscription group while it is running, you don't need to delete and recreate it to change settings. When you update the subscription group, it resets itself internally dropping the connections and having them reconnect. You must have admin permissions to update a persistent subscription group.
 
 ```csharp
-PersistentSubscriptionSettings settings = PersistentSubscriptionSettings.Create()
-                                                                .DoNotResolveLinkTos()
-                                                                .StartFromCurrent();
-_result = _conn.UpdatePersistentSubscriptionAsync(_stream,
-                                                  "agroup",
-                                                  settings,
-                                                  MyCredentials).Result;
+var settings = PersistentSubscriptionSettings
+    .Create()
+    .DoNotResolveLinkTos()
+    .StartFromCurrent();
+
+var result = await connection.UpdatePersistentSubscriptionAsync(
+    stream, "agroup", settings, MyCredentials
+);
 ```
 
 ::: tip
@@ -123,9 +124,9 @@ If you change settings such as `startFromBeginning`, this doesn't reset the grou
 Remove a subscription group with the delete operation. Like the creation of groups, you rarely do this in your runtime code and is undertaken by an administrator running a script.
 
 ```csharp
-var result = _conn.DeletePersistentSubscriptionAsync(stream,
-                                                     "groupname",
-                                                     DefaultData.AdminCredentials).Result;
+var result = await connection.DeletePersistentSubscriptionAsync(
+    stream, "groupname", DefaultData.AdminCredentials
+);
 ```
 
 | Parameter                     | Description                                      |
@@ -141,10 +142,11 @@ Once you have created a subscription group, clients can connect to that subscrip
 The most important parameter to pass when connecting is the buffer size. This parameter represents how many outstanding messages the server should allow this client. If this number is too small, your subscription will spend much of its time idle as it waits for an acknowledgment to come back from the client. If it's too big, you waste resources and can start causing time out messages depending on the speed of your processing.
 
 ```csharp
-var subscription = _conn.ConnectToPersistentSubscription("foo",
-                                                         "nonexisting2",
-                                                         (sub, e) => Console.Write("appeared"),
-                                                         (sub, reason, ex) =>{});
+var subscription = connection.ConnectToPersistentSubscription(
+    "foo", "nonexisting2", 
+    (sub, e) => Console.Write("appeared"),
+    (sub, reason, ex) =>{}
+);
 ```
 
 | Parameter                     | Description                                                                |

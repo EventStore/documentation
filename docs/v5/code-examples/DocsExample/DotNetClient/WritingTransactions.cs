@@ -2,6 +2,7 @@ using EventStore.ClientAPI;
 using Newtonsoft.Json;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DocsExample
 {
@@ -16,20 +17,19 @@ namespace DocsExample
             return eventPayload;
         }
 
-        public static void Main()
+        public static async Task Main()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
-            conn.ConnectAsync().Wait();
+            await conn.ConnectAsync();
 
-            using (var transaction = conn.StartTransactionAsync("newstream", ExpectedVersion.Any).Result)
-            {
-                transaction.WriteAsync(CreateSample(1)).Wait();
-                transaction.WriteAsync(CreateSample(2)).Wait();
-                conn.AppendToStreamAsync("newstream", ExpectedVersion.Any, CreateSample(3)).Wait();
-                transaction.WriteAsync(CreateSample(4)).Wait();
-                transaction.WriteAsync(CreateSample(5)).Wait();
-                transaction.CommitAsync().Wait();
-            }
+            using var transaction = await conn.StartTransactionAsync("newstream", ExpectedVersion.Any);
+
+            await transaction.WriteAsync(CreateSample(1));
+            await transaction.WriteAsync(CreateSample(2));
+            await conn.AppendToStreamAsync("newstream", ExpectedVersion.Any, CreateSample(3));
+            await transaction.WriteAsync(CreateSample(4));
+            await transaction.WriteAsync(CreateSample(5));
+            await transaction.CommitAsync();
         }
     }
 }

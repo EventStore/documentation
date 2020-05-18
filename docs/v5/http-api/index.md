@@ -10,17 +10,17 @@ Event Store is fully compatible with the [1.0 version of the Atom Protocol](http
 
 Many environments have already implemented the AtomPub protocol, which simplifies the process.
 
-| Library     | Description                                                       |
-| ----------- | ----------------------------------------------------------------- |
-| NET (BCL)   | `System.ServiceModel.SyndicationServices`                         |
-| JVM         | <http://java-source.net/open-source/rss-rdf-tools>                |
+| Library | Description |
+| --------| ------------|
+| NET (BCL)   | `System.ServiceModel.SyndicationServices` |
+| JVM         | <http://java-source.net/open-source/rss-rdf-tools> |
 | PHP         | <http://simplepie.org/> or <https://github.com/fguillot/picoFeed> |
-| Ruby        | <https://github.com/cardmagic/simple-rss>                         |
-| Clojure     | <https://github.com/scsibug/feedparser-clj>                       |
-| Go          | <https://github.com/jteeuwen/go-pkg-rss>                          |
-| Python      | <http://code.google.com/p/feedparser/>                            |
-| node.js     | <https://github.com/danmactough/node-feedparser>                  |
-| Objective-C | <https://geekli.st/darvin/repos/MWFeedParser>                     |
+| Ruby        | <https://github.com/cardmagic/simple-rss> |
+| Clojure     | <https://github.com/scsibug/feedparser-clj> |
+| Go          | <https://github.com/jteeuwen/go-pkg-rss> |
+| Python      | <http://code.google.com/p/feedparser/> |
+| node.js     | <https://github.com/danmactough/node-feedparser> |
+| Objective-C | <https://geekli.st/darvin/repos/MWFeedParser> |
 
 ::: warning
 These are not officially supported by Event Store.
@@ -32,18 +32,18 @@ The preferred way of determining which content type responses Event Store serves
 
 The accepted content types for POST requests are:
 
--   `application/xml`
--   `application/vnd.eventstore.events+xml`
--   `application/json`
--   `application/vnd.eventstore.events+json`
--   `text/xml`
+- `application/xml`
+- `application/vnd.eventstore.events+xml`
+- `application/json`
+- `application/vnd.eventstore.events+json`
+- `text/xml`
 
 The accepted content types for GET requests are:
 
--   `application/xml`
--   `application/atom+xml`
--   `application/json`
--   `application/vnd.eventstore.atom+json`
--   `text/xml`
--   `text/html`
+- `application/xml`
+- `application/atom+xml`
+- `application/json`
+- `application/vnd.eventstore.atom+json`
+- `text/xml`
+- `text/html`
 - `application/vnd.eventstore.streamdesc+json`

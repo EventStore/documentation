@@ -1,6 +1,6 @@
 # Optimistic concurrency and idempotence
 
-## Idempotency
+## Idempotence
 
 All operations on the HTTP interface are idempotent (unless the [expected version](~/http-api/creating-writing-a-stream.md#expected-version-header) is ignored). It is the responsibility of the client to retry operations under failure conditions, ensuring that the event IDs of the events posted are the same as the first attempt.
 
