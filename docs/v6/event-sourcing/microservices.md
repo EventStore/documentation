@@ -45,7 +45,7 @@ For example, an e-commerce system could have `Order` and `Payment` aggregates ar
 ![ProjectionError](./images/microservices-projections-error.png)
 :::
 
-Therefore, those two projections need to use the same subscription. In that case, the subscription won't progress if there's a transient error with, for example, a query database, until the error is resolved. So, the projected read model will be stale (the payment status won't get updated) but it will be consistent.
+Therefore, these two projections need to use the same subscription. In that case, the subscription won't progress if there's a transient error with, for example, a query database, until the error is resolved. So, the projected read model will be stale (the payment status won't get updated) but it will be consistent.
 
 ::: tip
 The same applies to projections that all run in a single service. With microservices, however, the chance of getting a transient error caused by a deployment or a network glitch is much higher.
