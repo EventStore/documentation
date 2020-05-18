@@ -24,7 +24,7 @@ There are, though, also technical capabilities, or capabilities that balance on 
 
 The motivation for defining service boundaries around specific business needs is well-aligned with the Bounded Context pattern of Domain-Driven Design, although it's not the same. The business capability concept is closer to the definition of a _domain_, which is a part of the _problem space_. Bounded Context is an artefact of the _solution space_, so we might see the "technical authority", or the _service_ definition as something similarly defined. Each Bounded Context is a representation of a system, which doesn't necessarily consist of a single unit of deployment.
 
-When it comes to the data sharing, the service boundary indeed sets strong limitations on whw can access the service databases directly. But, if we consider a service as a representation of a single Bounded Context, it is possible to have multiple independent components to live within the boundary and therefore access service databases directly. For this documentation, we will call those components "microservices".
+When it comes to data sharing, the service boundary sets strong limitations on who can access the service databases directly. But, if we consider a service as a representation of a single Bounded Context, it is possible to have multiple independent components live within the boundary and therefore access service databases directly. For this documentation, we call those components "microservices".
 
 ## Microservice granularity
 
