@@ -69,7 +69,7 @@ The illustration doesn't represent a reference architecture and serves an an exa
 
 ## Independent projections
 
-Splitting the system into individual components comes with the cost. The system becomes explicitly distributed with all the potential issues associated with distribution.
+Splitting the system into individual components comes with a cost. The system becomes explicitly distributed with all the potential issues associated with distribution.
 
 ::: tip
 Read mode about [fallacies of distributed computing](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing) before considering to break your system into isolated components.
