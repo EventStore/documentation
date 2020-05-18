@@ -52,7 +52,7 @@ The same applies to projections that all run in a single service. With microserv
 :::
 
 ::: warning
-The design on that diagram is not what you would normally do. Preferably, the order payment status gets updated by the `OrderPaid` event, which can be a reaction to the `PaymentReceived` event.
+The design on the diagram above is not what you would normally do. Preferably, the order payment status gets updated by the `OrderPaid` event, which can be a reaction to the `PaymentReceived` event.
 :::
 
 In the imaginary e-commerce Bounded Context, the component landscape could look like something shown on the illustration below.
