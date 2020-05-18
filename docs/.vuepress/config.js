@@ -19,7 +19,10 @@ module.exports = {
         "@vuepress/active-header-links",
         "one-click-copy",
         "vuepress-plugin-element-tabs",
-        // "element-ui"
+        'check-md', {
+            pattern: '**/*.md'
+          }
+                  // "element-ui"
     ],
     themeConfig: {
         logo: "/es-logo.png",
