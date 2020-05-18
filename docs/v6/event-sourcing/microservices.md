@@ -20,7 +20,7 @@ _Any piece of data or rule must be owned by only one service._
 Udi Dahan, [The Known Unknowns of SOA](http://udidahan.com/2010/11/15/the-known-unknowns-of-soa/)
 :::
 
-There are, though, also technical capabilities, or capabilities that balance on the edge between being purely technical and serving the business still. For example, an email sending service, an authentication service, a PDF-generator - all those components can be perfectly isolated and deployed independently but don't necessarily benefit from the domain knowledge treasure since there is none. At the same time, some business capabilities might be very substantial in terms of complexity and therefore the size of the technical solution that implements such a capability.
+There are, though, also technical capabilities, or capabilities that balance on the edge between being purely technical and serving the business still. For example, an email sending service, an authentication service, or a PDF-generator. Such components can be perfectly isolated and deployed independently but don't necessarily benefit from the domain knowledge treasure since there is none. At the same time, some business capabilities might be very substantial in terms of complexity and therefore the size of the technical solution that implements such a capability.
 
 The motivation for defining service boundaries around specific business needs is well-aligned with the Bounded Context pattern of Domain-Driven Design, although it's not the same. The business capability concept is closer to the definition of a _domain_, which is a part of the _problem space_. Bounded Context is an artefact of the _solution space_, so we might see the "technical authority", or the _service_ definition as something similarly defined. Each Bounded Context is a representation of a system, which doesn't necessarily consist of a single unit of deployment.
 
@@ -61,7 +61,7 @@ In the imaginary e-commerce Bounded Context, the component landscape could look 
 ![OneContextManyServices](./images/microservices-split.png)
 :::
 
-There are a few individually deployed components and some of them share the same database. But, since they all belong to a single context or "service", such an architecture doesn't violate the fundamental SOA rule of not sharing databases across services.
+There are a few individually deployed components and some of them share the same database. But, since they all belong to a single context or "service", such an architecture doesn't violate the fundamental Service-Oriented Architecture (SOA) rule of not sharing databases across services.
 
 ::: warning
 The illustration doesn't represent a reference architecture and serves an an example only.
