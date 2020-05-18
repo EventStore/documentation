@@ -42,6 +42,15 @@ module.exports = {
                     {text: "Event Sourcing", link: "/v6/event-sourcing/"},
                     {text: "Server", link: "/v6/server/"},
                     {text: "Drivers", link: "/drivers/"},
+                    {
+                        text: 'Tools',
+                        ariaLabel: 'Tools Menu',
+                        items: [
+                          { text: 'CLI Tool', link: '/commercial-tools/cli-tool.md' },
+                          { text: 'indexMap Migration', link: '/commercial-tools/indexmap-migrate.md' },
+                          { text: 'LDAP Plugin', link: '/commercial-tools/ldap-plugin.md' }
+                        ]
+                      },
                     {text: "Get help", link: "/get-help/"},
                 ],
                 sidebar: {
@@ -131,7 +140,16 @@ module.exports = {
                     {text: "Server", link: "/v5/server/"},
                     {text: "Projections", link: "/v5/projections/"},
                     {text: "HTTP API", link: "/v5/http-api/"},
-                    {text: ".NET API", link: "/v5/dotnet-api/"}
+                    {text: ".NET API", link: "/v5/dotnet-api/"},
+                    {
+                        text: 'Tools',
+                        ariaLabel: 'Tools Menu',
+                        items: [
+                          { text: 'CLI Tool', link: '/commercial-tools/cli-tool.md' },
+                          { text: 'indexMap Migration', link: '/commercial-tools/indexmap-migrate.md' },
+                          { text: 'LDAP Plugin', link: '/commercial-tools/ldap-plugin.md' }
+                        ]
+                      }
                 ],
                 sidebar: {
                     "/v5/event-sourcing/": [
