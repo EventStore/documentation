@@ -55,14 +55,14 @@ The ACL below gives `writer` read and write permission on the stream, while `rea
 
 Inside a file named _metadata.json_:
 
-@[code lang=json](@/docs/v5/code-examples/server/metadata.json)
+@[code lang=json](docs/v5/code-examples/server/metadata.json)
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/server/update-acl.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/update-acl.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/server/update-acl.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/server/update-acl.sh)
 
 ::::
 :::: tab .NET API
@@ -112,7 +112,7 @@ The `$settings` stream has a special ACL used as the default ACL. This stream co
 
 You can rewrite these to the `$settings` stream with the following cURL command:
 
-@[code lang=bash transclude={1-23}](@/docs/v5/code-examples/http-api/default-settings.sh)
+@[code lang=bash transclude={1-23}](docs/v5/code-examples/http-api/default-settings.sh)
 
 The `$userStreamAcl` controls the default ACL for user streams, while all system streams use the `$systemStreamAcl` as the default.
 
@@ -152,9 +152,9 @@ This default ACL gives `ouro` and `$admins` create and write permissions on all 
 ::::: tabs
 :::: tab Request
 
-@[code lang=json](@/docs/v5/code-examples/server/override-default.json)
+@[code lang=json](docs/v5/code-examples/server/override-default.json)
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/server/update-default-acl.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/update-default-acl.sh)
 
 ::: warning
 You should not copy/paste the UUID in the command line above but generate a new one or not provide one (you will be redirected to a URI with one as described in [writing events](/v5/http-api/creating-writing-a-stream.md#writing-a-single-event) in the HTTP API).
@@ -163,7 +163,7 @@ You should not copy/paste the UUID in the command line above but generate a new 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/server/update-default-acl.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/server/update-default-acl.sh)
 
 ::::
 :::: tab .NET API

@@ -310,14 +310,14 @@ es-cli user [--version] [--help] <command> [<args>]
 
 | Command                                 | Description              |
 | --------------------------------------- | ------------------------ |
-| [add](user-add)                         | Add a user               |
-| [change_password](user-change_password) | Change the user password |
-| [delete](user-delete)                   | Delete a user            |
-| [disable](user-disable)                 | Disable a user           |
-| [enable](user-enable)                   | Enable a user            |
-| [list](user-list)                       | List all users           |
-| [reset_password](user-reset_password)   | Reset a user's password  |
-| [update](user-update)                   | Update a user            |
+| [add](#user-add)                         | Add a user               |
+| [change_password](#user-change_password) | Change the user password |
+| [delete](#user-delete)                   | Delete a user            |
+| [disable](#user-disable)                 | Disable a user           |
+| [enable](#user-enable)                   | Enable a user            |
+| [list](#user-list)                       | List all users           |
+| [reset_password](#user-reset_password)   | Reset a user's password  |
+| [update](#user-update)                   | Update a user            |
 
 #### user add
 
@@ -429,16 +429,16 @@ es-cli projections [--version] [--help] <command> [<args>]
 
 | Command                                              | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- |
-| [delete](projections-delete)                         | Delete a projection                                  |
-| [disable](projections-disable)                       | Disable a projection                                 |
-| [enable](projections-enable)                         | Enable a projection                                  |
-| [has_stalled](projections-has_stalled)               | Determines whether a projection has possibly stalled |
-| [list](projections-list)                             | List all of the projections                          |
-| [new](projections-new)                               | Create a new projection                              |
-| [restore_checkpoint](projections-restore_checkpoint) | Restore a previous checkpoint for a projection       |
-| [result](projections-result)                         | Get the result of a projection                       |
-| [state](projections-state)                           | Get the state of a projection                        |
-| [status](projections-status)                         | Get the status of a projection                       |
+| [delete](#projections-delete)                         | Delete a projection                                  |
+| [disable](#projections-disable)                       | Disable a projection                                 |
+| [enable](#projections-enable)                         | Enable a projection                                  |
+| [has_stalled](#projections-has_stalled)               | Determines whether a projection has possibly stalled |
+| [list](#projections-list)                             | List all of the projections                          |
+| [new](#projections-new)                               | Create a new projection                              |
+| [restore_checkpoint](#projections-restore_checkpoint) | Restore a previous checkpoint for a projection       |
+| [result](#projections-result)                         | Get the result of a projection                       |
+| [state](#projections-state)                           | Get the state of a projection                        |
+| [status](#projections-status)                         | Get the status of a projection                       |
 
 #### projections delete
 
@@ -570,10 +570,10 @@ es-cli competing [--version] [--help] <command> [<args>]
 
 | Command                    | Description                     |
 | -------------------------- | ------------------------------- |
-| [create](competing-create) | Create a new subscription       |
-| [delete](competing-delete) | Delete an existing subscription |
-| [list](competing-list)     | List the subscriptions          |
-| [update](competing-update) | Update an existing subscription |
+| [create](#competing-create) | Create a new subscription       |
+| [delete](#competing-delete) | Delete an existing subscription |
+| [list](#competing-list)     | List the subscriptions          |
+| [update](#competing-update) | Update an existing subscription |
 
 #### competing list
 

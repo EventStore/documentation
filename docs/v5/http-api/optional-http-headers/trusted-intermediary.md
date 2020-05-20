@@ -13,5 +13,5 @@ ES-TrustedAuth: "root; admin, other"
 ```
 
 ::: tip
-This feature is **DISABLED** by default. You must specifically opt into this feature by running Event Store with the Enable Trusted Intermediary [configuration](/docs/v5/dotnet-api/embedded-client.md) or [command line option](/docs/v5/server/command-line-arguments.md).
+This feature is **DISABLED** by default. You must specifically opt into this feature by running Event Store with the Enable Trusted Intermediary [configuration](/v5/dotnet-api/embedded-client.md) or [command line option](/v5/server/command-line-arguments.md).
 :::

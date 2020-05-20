@@ -11,12 +11,12 @@ To delete a stream over the Atom interface, issue a `DELETE` request to the reso
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/delete-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/delete-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/delete-stream.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/delete-stream.sh)
 
 ::::
 :::::
@@ -26,12 +26,12 @@ By default when you delete a stream, Event Store soft deletes it. This means you
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/get-deleted-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/get-deleted-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/get-deleted-stream.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/get-deleted-stream.sh)
 
 ::::
 :::::
@@ -41,12 +41,12 @@ You can recreate the stream by appending new events to it (like creating a new s
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-append.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-append.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/write-event-append.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/write-event-append.sh)
 
 ::::
 :::::
@@ -66,12 +66,12 @@ Issue the `DELETE` as before but with the permanent delete header:
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/hard-delete-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/hard-delete-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-11}](@/docs/v5/code-examples/http-api/hard-delete-stream.sh)
+@[code lang=json transclude={3-11}](docs/v5/code-examples/http-api/hard-delete-stream.sh)
 
 ::::
 :::::
@@ -81,12 +81,12 @@ The stream is now permanently deleted, and now the response is a `410`.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/get-deleted-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/get-deleted-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/get-deleted-stream.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/get-deleted-stream.sh)
 
 ::::
 :::::
@@ -96,12 +96,12 @@ If you try to recreate the stream as in the above example you also receive a `41
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-append-deleted.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-append-deleted.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/write-event-append-deleted.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/write-event-append-deleted.sh)
 
 ::::
 :::::

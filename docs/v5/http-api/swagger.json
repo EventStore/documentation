@@ -3,7 +3,7 @@
   "info": {
     "description": "The HTTP API for Event Store",
     "version": "5.0.4",
-    "title": "HTTP API",
+    "title": HTTP API ,
     "contact": {
       "email": "chris.ward@eventstore.com"
     },
@@ -898,7 +898,7 @@
           "Subscriptions"
         ],
         "summary": "Create a persistent subscription",
-        "description": "Before interacting with a subscription group, you need to create one. You will receive an error if you attempt to create a subscription group more than once. This requires [admin permissions](/server/access-control-lists).",
+        "description": "Before interacting with a subscription group, you need to create one. You will receive an error if you attempt to create a subscription group more than once. This requires [admin permissions](/v5/server/access-control-lists).",
         "operationId": "Create subscription",
         "produces": [
           "application/vnd.eventstore.competingatom+json",

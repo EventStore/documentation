@@ -22,12 +22,12 @@ The client is able to request the description document by passing `application/v
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/get-dd.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/get-dd.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-32}](@/docs/v5/code-examples/http-api/get-dd.sh)
+@[code lang=json transclude={3-32}](docs/v5/code-examples/http-api/get-dd.sh)
 
 ::::
 :::::

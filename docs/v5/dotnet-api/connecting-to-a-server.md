@@ -141,7 +141,7 @@ By default information about connection, disconnection and errors are logged, ho
 
 ### User credentials
 
-Event Store supports [Access Control Lists](~/server/users-and-access-control-lists.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+Event Store supports [Access Control Lists](/v5/server/users-and-access-control-lists.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method                                           | Description                                                                                                                       |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -157,7 +157,7 @@ UserCredentials credentials = new UserCredentials("username","password");
 
 The .NET API and Event Store can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the Event Store for SSL, see [SSL Setup](/server/setting-up-ssl.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the Event Store for SSL, see [SSL Setup](/v5/server/setting-up-ssl.md).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)

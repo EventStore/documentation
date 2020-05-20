@@ -1,6 +1,6 @@
 # Competing Consumers
 
-This document explains how to use HTTP API for setting up and consuming competing consumer subscription groups. For an overview on competing consumers and how they relate to other subscription types please see our [getting started guide](/docs/v5/getting-started/reading-subscribing-events.md).
+This document explains how to use HTTP API for setting up and consuming competing consumer subscription groups. For an overview on competing consumers and how they relate to other subscription types please see our [getting started guide](/v5/getting-started/reading-subscribing-events.md).
 
 ::: tip
 The Administration UI includes a _Competing Consumers_ section where you are able to create, update, delete and view subscriptions and their statuses.
@@ -8,7 +8,7 @@ The Administration UI includes a _Competing Consumers_ section where you are abl
 
 ## Creating a Persistent Subscription
 
-Before interacting with a subscription group, you need to create one. You receive an error if you try to create a subscription group more than once. This requires [admin permissions](/docs/v5/http-api/security.md).
+Before interacting with a subscription group, you need to create one. You receive an error if you try to create a subscription group more than once. This requires [admin permissions](/v5/http-api/security.md).
 
 <!-- TODO: File inclusion for the below? -->
 
@@ -90,7 +90,7 @@ By default, reading a stream via a persistent subscription returns a single even
 | `count`             | How many events to return for the request.                   |
 | `embed`             | `None`, `Content`, `Rich`, `Body`, `PrettyBody`, `TryHarder` |
 
-Read [Reading Streams](/docs/v5/http-api/reading-streams.md) for information on the different embed levels.
+Read [Reading Streams](/v5/http-api/reading-streams.md) for information on the different embed levels.
 
 ### Response
 

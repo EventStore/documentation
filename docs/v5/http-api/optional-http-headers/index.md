@@ -8,11 +8,11 @@ The headers supported are:
 
 | Header                                   | Description                                                                                        |
 | ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| [ES-ExpectedVersion](~/http-api/optional-http-headers/expected-version.md) | The expected version of the stream (allows optimistic concurrency)                                 |
-| [ES-ResolveLinkTo](~/http-api/optional-http-headers/resolve-linkto.md)     | Whether to resolve `linkTos` in stream                                                        |
-| [ES-RequiresMaster](~/http-api/optional-http-headers/requires-master.md)   | Whether this operation needs to run on the master node                                          |
-| [ES-TrustedAuth](~/http-api/optional-http-headers/trusted-intermediary.md) | Allows a trusted intermediary to handle authentication                                             |
-| [ES-LongPoll](~/http-api/optional-http-headers/longpoll.md)                | Instructs the server to do a long poll operation on a stream read                                  |
-| [ES-HardDelete](~/http-api/optional-http-headers/harddelete.md)            | Instructs the server to hard delete the stream when deleting as opposed to the default soft delete |
-| [ES-EventType](~/http-api/optional-http-headers/eventtype.md)              | Instructs the server the event type associated to a posted body                                    |
-| [ES-EventId](~/http-api/optional-http-headers/eventid.md)                  | Instructs the server the event id associated to a posted body                                      |
+| [ES-ExpectedVersion](/v5/http-api/optional-http-headers/expected-version.md) | The expected version of the stream (allows optimistic concurrency)                                 |
+| [ES-ResolveLinkTo](/v5/http-api/optional-http-headers/resolve-linkto.md)     | Whether to resolve `linkTos` in stream                                                        |
+| [ES-RequiresMaster](/v5/http-api/optional-http-headers/requires-master.md)   | Whether this operation needs to run on the master node                                          |
+| [ES-TrustedAuth](/v5/http-api/optional-http-headers/trusted-intermediary.md) | Allows a trusted intermediary to handle authentication                                             |
+| [ES-LongPoll](/v5/http-api/optional-http-headers/longpoll.md)                | Instructs the server to do a long poll operation on a stream read                                  |
+| [ES-HardDelete](/v5/http-api/optional-http-headers/harddelete.md)            | Instructs the server to hard delete the stream when deleting as opposed to the default soft delete |
+| [ES-EventType](/v5/http-api/optional-http-headers/eventtype.md)              | Instructs the server the event type associated to a posted body                                    |
+| [ES-EventId](/v5/http-api/optional-http-headers/eventid.md)                  | Instructs the server the event id associated to a posted body                                      |

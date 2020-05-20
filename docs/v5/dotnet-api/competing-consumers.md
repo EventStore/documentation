@@ -8,7 +8,7 @@ The Administration UI includes a _Competing Consumers_ section where a user can 
 
 ## Creating a persistent subscription
 
-Before interacting with a subscription group, you need to create one. You will receive an error if you attempt to create a subscription group more than once. This requires [admin permissions](/server/users-and-access-control-lists.md).
+Before interacting with a subscription group, you need to create one. You will receive an error if you attempt to create a subscription group more than once. This requires [admin permissions](/v5/server/users-and-access-control-lists.md).
 
 ```csharp
 Task<PersistentSubscriptionCreateResult> CreatePersistentSubscriptionAsync(string stream, string groupName, PersistentSubscriptionSettings settings, UserCredentials credentials);
@@ -16,7 +16,7 @@ Task<PersistentSubscriptionCreateResult> CreatePersistentSubscriptionAsync(strin
 
 ## Updating a persistent subscription
 
-You can edit the settings of an existing subscription while it is running. This action drops the current subscribers and resets the subscription internally. This requires [admin permissions](/server/users-and-access-control-lists.md).
+You can edit the settings of an existing subscription while it is running. This action drops the current subscribers and resets the subscription internally. This requires [admin permissions](/v5/server/users-and-access-control-lists.md).
 
 ```csharp
 Task<PersistentSubscriptionUpdateResult> UpdatePersistentSubscriptionAsync(string stream, string groupName, PersistentSubscriptionSettings settings, UserCredentials credentials);

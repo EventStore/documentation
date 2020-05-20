@@ -17,12 +17,12 @@ You should not access metadata by constructing this URL yourself, as the right t
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-metadata.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-metadata.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-46, 123-124}](@/docs/v5/code-examples/http-api/read-metadata.sh)
+@[code lang=json transclude={3-46, 123-124}](docs/v5/code-examples/http-api/read-metadata.sh)
 
 ::::
 :::::
@@ -44,12 +44,12 @@ If you have security enabled, reading metadata may require that you pass credent
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/missing-credentials.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/missing-credentials.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/missing-credentials.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/missing-credentials.sh)
 
 ::::
 :::::
@@ -60,7 +60,7 @@ To update the metadata for a stream, issue a `POST` request to the metadata reso
 
 Inside a file named _metadata.json_:
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/metadata.json)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/metadata.json)
 
 
 You can also add user-specified metadata here. Some examples user-specified metadata are:
@@ -74,12 +74,12 @@ You then post this information is then posted to the stream:
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/update-metadata.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/update-metadata.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/update-metadata.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/update-metadata.sh)
 
 ::::
 :::::

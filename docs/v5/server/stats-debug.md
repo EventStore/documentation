@@ -5,12 +5,12 @@ Event Store has a lot of debug and statistics information available about a clus
 ::::: tabs
 :::: tab HTTP API
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/server/stats.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/stats.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-393}](@/docs/v5/code-examples/server/stats.sh)
+@[code lang=bash transclude={3-393}](docs/v5/code-examples/server/stats.sh)
 
 ::::
 :::::
@@ -20,12 +20,12 @@ This returns a lot of information that you can filter using the sub-path of the 
 ::::: tabs
 :::: tab HTTP API
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/server/stats-tcp.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/stats-tcp.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-28}](@/docs/v5/code-examples/server/stats-tcp.sh)
+@[code lang=bash transclude={3-28}](docs/v5/code-examples/server/stats-tcp.sh)
 
 ::::
 :::::

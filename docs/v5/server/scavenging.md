@@ -23,7 +23,7 @@ You start a scavenge by issuing an empty `POST` request to the HTTP API with the
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/server/scavenge.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/scavenge.sh)
 
 ::: tip Next steps
 Scavenge operations have other options you can set to improve performance, [read the API docs](xref:eventstore.com%2FHTTP%20API%2F5.0.4%2FScavenge%20a%20node) for more details.
@@ -32,7 +32,7 @@ Scavenge operations have other options you can set to improve performance, [read
 ::::
 :::: tab Response
 
-@[code lang=bash transclude={3-12}](@/docs/v5/code-examples/server/scavenge.sh)
+@[code lang=bash transclude={3-12}](docs/v5/code-examples/server/scavenge.sh)
 
 ::::
 :::::
@@ -78,7 +78,7 @@ This depends on the following:
 -   How you set `$maxAge`, `$maxCount` or `$tb` metadata on your streams.
 
 ::: tip
-Read the [.NET API](/v5/dotnet-api/stream-metadata.md) or [HTTP API](~/http-api/stream-metadata.md) docs for more details on setting metadata.
+Read the [.NET API](/v5/dotnet-api/stream-metadata.md) or [HTTP API](/v5/http-api/stream-metadata.md) docs for more details on setting metadata.
 :::
 
 ## Scavenging while Event Store is online

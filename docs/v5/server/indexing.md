@@ -40,7 +40,7 @@ The configuration options that effect indexing are:
 - `MaxAutoMergeIndexLevel` : the maximum level of index file to merge automatically before manual merge
 - `OptimizeIndexMerge` : Bypasses the checking of file hashes of indexes during startup and after index merges (allows for faster startup and less disk pressure after merges)
 
-See [Command line arguments](~/server/command-line-arguments.md) for how to specify these options.
+See [Command line arguments](/v5/server/command-line-arguments.md) for how to specify these options.
 
 ### Index
 
