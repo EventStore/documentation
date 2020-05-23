@@ -39,11 +39,11 @@ Parameters:
 
 Example single event in single write:
 
-@[code lang=csharp transclude={16-20}](docs/v5/code-examples/DocsExample/DotNetClient/WritingSingleEvent.cs)
+@[code lang=csharp transcludeInner=WriteOneEvent](docs/v5/code-examples/DocsExample/DotNetClient/WriteStreamEvents.cs)
 
 Example list of events in single write:
 
-@[code lang=csharp transclude={11-32}](docs/v5/code-examples/DocsExample/DotNetClient/WritingListEvents.cs)
+@[code lang=csharp transcludeInner=CreateSampleData,WriteMultipleEvents](docs/v5/code-examples/DocsExample/DotNetClient/WriteStreamEvents.cs)
 
 ## Using a transaction to append to a stream across multiple writes
 
@@ -77,7 +77,7 @@ void Rollback()
 
 Example:
 
-@[code lang=csharp transclude={11-33}](docs/v5/code-examples/DocsExample/DotNetClient/WritingTransactions.cs)
+@[code lang=csharp transcludeInner=CreateSampleData,WriteTransaction](docs/v5/code-examples/DocsExample/DotNetClient/WriteStreamEvents.cs)
 
 Events are written in the following order: `3, 1, 2, 4, 5`.
 
