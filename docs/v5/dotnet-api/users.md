@@ -20,7 +20,7 @@ The Event Store .NET client includes helper methods that use the HTTP API to all
 
 ### Create UsersManager instance
 
-@[code lang=cpp transclude={11-12}](@/docs/v5/code-examples/DocsExample/DotNetClient/UsersCreateUsersManager.cs)
+@[code lang=cpp transclude={11-12}](docs/v5/code-examples/DocsExample/DotNetClient/UsersCreateUsersManager.cs)
 
 Resolving the host name may be especially useful if the Event Store Admin UI is not available under loopback address e.g., when container orchestrator assign dynamic DNS based on service name.
 
@@ -86,7 +86,7 @@ public Task UpdateUserAsync(string login, string fullName, string[] groups, User
 
 Although `UsersManager` does not have separate methods for indepotent adding/removing user groups it can be extended:
 
-@[code lang=cpp transclude={8-27}](@/docs/v5/code-examples/DocsExample/DotNetClient/UsersManagerExtensions.cs)
+@[code lang=cpp transclude={8-27}](docs/v5/code-examples/DocsExample/DotNetClient/UsersManagerExtensions.cs)
 
 ### Reset user password
 

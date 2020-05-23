@@ -6,7 +6,7 @@ This plugin allows any LDAP protocol based directory services the ability to act
 The LDAP plugin is included as part of the commercial builds.
 :::
 
-To configure Event Store to use the LDAP authentication plugin, make the following changes to [the configuration file of a database node](./server/cluster-with-manager-nodes/index.html#configuring-nodes). You can make these changes after installation, but you need to stop the service, change the configuration and restart the service.
+To configure Event Store to use the LDAP authentication plugin, make the following changes to [the configuration file of a database node](/v5/server/cluster-with-manager-nodes.md#configuring-nodes). You can make these changes after installation, but you need to stop the service, change the configuration and restart the service.
 
 Set the authentication type to `ldaps`, and configure the plugin with an `LdapsAuth` section..
 
@@ -63,7 +63,7 @@ If there is a misconfiguration an error is logged to the server's log file in mo
 
 ### Error authenticating with LDAPS server. System.AggregateException: One or more errors occurred. ---> System.NullReferenceException: Object reference not set to an instance of an object. at Novell.Directory.Ldap.Connection.connect(String host, Int32 port, Int32 semaphoreId)
 
--   Due to a packaging bug, this error may be thrown when setting `UseSSL: true` on Windows. The workaround is to extract [Mono.Security.dll](/downloads/Mono.Security.dll) to the _EventStore_ folder (where _EventStore.ClusterNode.exe_ is located)
+-   Due to a packaging bug, this error may be thrown when setting `UseSSL: true` on Windows. The workaround is to extract Mono.Security.dll to the _EventStore_ folder (where _EventStore.ClusterNode.exe_ is located)
 
 ### No errors in server logs but cannot login
 

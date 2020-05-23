@@ -22,7 +22,7 @@ This separation allows for more secure setups such as putting internal communica
 
 The external TCP and HTTP ports are similar to the HTTP and TCP ports of a single node deploy. Event Store runs client requests over the HTTP API through the external HTTP port. You can run without the management API on the external interface (internal only). The external and the internal interfaces support the gossip protocol.
 
-You can control whether the admin interface is available on the external HTTP interface using the `admin-on-ext` [option](/docs/server/command-line-arguments.md). You can control whether gossip is enabled on external interfaces with the `gossip-on-ext` [option](/docs/server/command-line-arguments.md) (you normally want it enabled).
+You can control whether the admin interface is available on the external HTTP interface using the `admin-on-ext` [option](/v5/server/command-line-arguments.md). You can control whether gossip is enabled on external interfaces with the `gossip-on-ext` [option](/v5/server/command-line-arguments.md) (you normally want it enabled).
 
 You configure the internal TCP and HTTP ports in the same way as the external. All internal communications for the cluster happen over these interfaces. Elections and internal gossip happen over HTTP. Replication and forwarding of client requests happens over the TCP channel.
 

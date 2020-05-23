@@ -1,6 +1,6 @@
 # Running Event Store
 
-Event Store runs as a server that clients can connect to either [over HTTP](/docs/http-api/index.md) or using [one of the client APIs](/v5/getting-started/which-api-sdk.md). You can run both the open source and commercial versions as either a single node or a highly available cluster of nodes.
+Event Store runs as a server that clients can connect to either [over HTTP](/v5/http-api/index.md) or using [one of the client APIs](/v5/getting-started/which-api-sdk.md). You can run both the open source and commercial versions as either a single node or a highly available cluster of nodes.
 
 We distribute an [open source version of Event Store](https://eventstore.com/downloads) as a console application. There are separate distributions for Windows on .NET and Linux/macOS on Mono.
 
@@ -94,7 +94,7 @@ docker pull eventstore/eventstore
 
 Create file _docker-compose.yaml_ with following content:
 
-@[code](@/docs/v5/code-examples/getting-started/docker-compose.yaml)
+@[code](docs/v5/code-examples/getting-started/docker-compose.yaml)
 
 Run the container:
 

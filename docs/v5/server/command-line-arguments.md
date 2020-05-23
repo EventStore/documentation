@@ -11,7 +11,7 @@ Event Store supports many configuration options. There are three distinct ways t
 To pass a configuration value over the command line you add the configuration to the line executing Event Store, for example:
 
 ```powershell
-EventStore.ClusterNode.exe --log ~/logs
+EventStore.ClusterNode.exe --log /v5/logs
 ```
 
 While command line arguments are useful during development, they are not the preferred way to handle configuration in a production system.
@@ -21,7 +21,7 @@ While command line arguments are useful during development, they are not the pre
 You can set all arguments can also as environment variables. This mechanism is often used in UNIX based systems. For example:
 
 ```bash
-log=~/logs
+log=/v5/logs
 ```
 
 You can reference another environment variable by setting the variable’s value to `${env:REFERENCED_ENV_VAR}`. For example, if you’re using Azure Service Fabric, some predefined environment variables exist. You can use `EVENTSTORE_EXT_IP={env:Fabric_NodeIPOrFQDN}` to reference the node's IP address.
@@ -32,7 +32,7 @@ The last way you can set arguments is to put them into one or more configuration
 
 ```yaml
 ---
-Log: "~/logs"
+Log: "/v5/logs"
 IntHttpPort: 2111
 ---
 ```
@@ -57,7 +57,7 @@ Event Store supports the following parameters.
 | --------------------------------------------------------------------- | ------------------------------------------------ | ------------------------ | ----------------------------------------------------------------------------------------------------------------- |
 | -Help<br/>--help=VALUE<br/>                                           | HELP                                             | Help                     | Show help. (Default: False)                                                                                       |
 | -Version<br/>--version=VALUE<br/>                                     | VERSION                                          | Version                  | Show version. (Default: False)                                                                                    |
-| -Log<br/>--log=VALUE<br/>                                             | LOG                                              | Log                      | Path where to keep log files. (Default: [See default directories](~/server/default-directories.md)                |
+| -Log<br/>--log=VALUE<br/>                                             | LOG                                              | Log                      | Path where to keep log files. (Default: [See default directories](/v5/server/default-directories.md)                |
 | -StructuredLog<br/>--structured-log=VALUE<br/>                        | STRUCTURED_LOG                                   | StructuredLog            | Enable Structured (JSON) logging. (Default: True)                                                                 |
 | -Config<br/>--config=VALUE<br/>                                       | CONFIG                                           | Config                   | Configuration files.                                                                                              |
 | -Defines<br/>--defines=VALUE<br/>                                     | DEFINES                                          | Defines                  | Run-time conditionals. (Default: n/a)                                                                             |
@@ -124,7 +124,7 @@ Event Store supports the following parameters.
 | -ChunksCacheSize<br/>--chunks-cache-size=VALUE<br/>                     | CHUNKS_CACHE_SIZE                                | ChunksCacheSize          | The amount of unmanaged memory to use for caching chunks in bytes. (Default: 536871424)                          |
 | -MaxMemTableSize<br/>--max-mem-table-size=VALUE<br/>                    | MAX_MEM_TABLE_SIZE                               | MaxMemTableSize          | Adjusts the maximum size of a mem table. (Default: 1000000)                                                      |
 | -HashCollisionReadLimit<br/>--hash-collision-read-limit=VALUE<br/>      | HASH_COLLISION_READ_LIMIT                        | HashCollisionReadLimit   | The number of events to read per candidate in the case of a hash collision (Default: 100)                        |
-| -Db<br/>--db=VALUE<br/>                                                 | DB                                               | Db                       | The path the db should be loaded/saved to. (Default: [See default directories](~/server/default-directories.md)) |
+| -Db<br/>--db=VALUE<br/>                                                 | DB                                               | Db                       | The path the db should be loaded/saved to. (Default: [See default directories](/v5/server/default-directories.md)) |
 | -Index<br/>--index=VALUE<br/>                                           | INDEX                                            | Index                    | The path the index should be loaded/saved to.                                                                    |
 | -MemDb<br/>--mem-db=VALUE<br/>                                          | MEM_DB                                           | MemDb                    | Keep everything in memory, no directories or files are created. (Default: False)                                 |
 | -SkipDbVerify<br/>--skip-db-verify=VALUE<br/>                           | SKIP_DB_VERIFY                                   | SkipDbVerify             | Bypasses the checking of file hashes of database during startup (allows for faster startup). (Default: False)    |

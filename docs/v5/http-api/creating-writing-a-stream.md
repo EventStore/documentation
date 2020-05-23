@@ -23,21 +23,21 @@ The format represents data with the following jschema (`eventId` must be a UUID)
 
 ## Writing a single event
 
-If you issue a `POST` request with data to a stream and the correct content type set it writes the event to the stream, and generates a `201` response from the server, giving you the location of the event. Using the following event, which [you can also download as a file](/docs/v5/code-examples/http-api/event.json):
+If you issue a `POST` request with data to a stream and the correct content type set it writes the event to the stream, and generates a `201` response from the server, giving you the location of the event. Using the following event, which [you can also download as a file](/v5/code-examples/http-api/event.json):
 
-@[code lang=json](@/docs/v5/code-examples/http-api/event.json)
+@[code lang=json](docs/v5/code-examples/http-api/event.json)
 
 `POST` the following request to create a stream and add an event to it:
 
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/write-event.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/write-event.sh)
 
 ::::
 :::::
@@ -49,12 +49,12 @@ If you leave off the `ES-EventId` header you see different behavior:
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-no-id.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-no-id.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-15}](@/docs/v5/code-examples/http-api/write-event-no-id.sh)
+@[code lang=json transclude={3-15}](docs/v5/code-examples/http-api/write-event-no-id.sh)
 
 ::::
 :::::
@@ -64,12 +64,12 @@ In this case Event Store has responded with a `307 Temporary Redirect`. The loca
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-follow.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-follow.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event-follow.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/write-event-follow.sh)
 
 ::::
 :::::
@@ -81,12 +81,12 @@ When posting to either the stream or to the returned redirect, clients must incl
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-no-type.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-no-type.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12} highlight={1}](@/docs/v5/code-examples/http-api/write-event-no-type.sh)
+@[code lang=json transclude={3-12} highlight={1}](docs/v5/code-examples/http-api/write-event-no-type.sh)
 
 ::::
 :::::
@@ -97,19 +97,19 @@ You can include more than one write in a single post by placing multiple events 
 
 For example, the below has two events:
 
-@[code lang=json](@/docs/v5/code-examples/http-api/multiple-events.json)
+@[code lang=json](docs/v5/code-examples/http-api/multiple-events.json)
 
 When you write multiple events in a single post, Event Store treats them transactionally, it writes all events together or fails.
 
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-multiple-events.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-multiple-events.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/write-multiple-events.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/write-multiple-events.sh)
 
 ::::
 :::::
@@ -118,17 +118,17 @@ When you write multiple events in a single post, Event Store treats them transac
 
 To append events, issue a `POST` request to the same resource with a new `eventId`:
 
-@[code lang=json](@/docs/v5/code-examples/http-api/event-append.json)
+@[code lang=json](docs/v5/code-examples/http-api/event-append.json)
 
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-append.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-append.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-12}](@/docs/v5/code-examples/http-api/write-event-append.sh)
+@[code lang=json transclude={3-12}](docs/v5/code-examples/http-api/write-event-append.sh)
 
 ::::
 :::::
@@ -140,12 +140,12 @@ Version 3.7.0 of Event Store added support for the `application/octet-stream` co
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-data-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-data-event.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-data-event.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/write-data-event.sh)
 
 ::::
 :::::
@@ -164,19 +164,19 @@ See the idempotency section below, if you post the same event twice it is idempo
 
 First write an event to a stream, setting a version:
 
-@[code lang=json](@/docs/v5/code-examples/http-api/event-version.json)
+@[code lang=json](docs/v5/code-examples/http-api/event-version.json)
 
 [Download](/v5/code-examples/http-api/event-version.json)
 
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-version.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-version.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](@/docs/v5/code-examples/http-api/write-event-version.sh)
+@[code lang=json transclude={3-13}](docs/v5/code-examples/http-api/write-event-version.sh)
 
 ::::
 :::::
@@ -186,12 +186,12 @@ If you now write to the stream with the incorrect version, you receive an HTTP s
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/write-event-wrong-version.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/write-event-wrong-version.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13} highlight={1}](@/docs/v5/code-examples/http-api/write-event-wrong-version.sh)
+@[code lang=json transclude={3-13} highlight={1}](docs/v5/code-examples/http-api/write-event-wrong-version.sh)
 
 ::::
 :::::
@@ -209,4 +209,4 @@ Appends to streams are idempotent based upon the `EventId` assigned in your post
 
 This is important behaviour as it's how you implement error handling. If you receive a timeout, broken connection, no answer, etc from your HTTP `POST` then it's your responsibility to retry the post. You must also keep the same UUID that you assigned to the event in the first `POST`.
 
-If you are using the expected version parameter with your post, then Event Store is 100% idempotent. If you use `-2` as your expected version value, Event Store does its best to keep events idempotent but cannot assure that everything is fully idempotent and you end up in 'at-least-once' messaging. [Read this guide](/docs/v5/http-api/optimistic-concurrency-and-idempotence.md) for more details on idempotency.
+If you are using the expected version parameter with your post, then Event Store is 100% idempotent. If you use `-2` as your expected version value, Event Store does its best to keep events idempotent but cannot assure that everything is fully idempotent and you end up in 'at-least-once' messaging. [Read this guide](/v5/http-api/optimistic-concurrency-and-idempotence.md) for more details on idempotency.

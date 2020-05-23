@@ -65,7 +65,7 @@ You can also use the method above for HTTP clients to avoid using a load balance
 
 Create a file _docker-compose.yaml_ with following content:
 
-@[code lang=yaml](@/docs/v5/code-examples/server/docker-compose.yaml)
+@[code lang=yaml](docs/v5/code-examples/server/docker-compose.yaml)
 
 Run containers:
 ```bash
@@ -88,11 +88,11 @@ You can connect to the cluster using the native TCP interface. The client APIs s
 
 To set up a connection as above, provide gossip seeds to the connection. The client then uses the gossip seeds to begin gossiping information about the cluster.
 
-@[code lang=cpp](@/docs/v5/code-examples/DocsExample/Server/ConnectClusterGossipSeeds.cs)
+@[code lang=cpp](docs/v5/code-examples/DocsExample/Server/ConnectClusterGossipSeeds.cs)
 
 As in the example above, you can also use DNS to avoid manually specifying the seeds. You add the nodes to a DNS record and then specify that DNS entry to the connection to locate nodes.
 
-@[code lang=cpp](@/docs/v5/code-examples/DocsExample/Server/ConnectClusterGossipDns.cs)
+@[code lang=cpp](docs/v5/code-examples/DocsExample/Server/ConnectClusterGossipDns.cs)
 
 The connection automatically reconnects during node failures. You can control this behaviour with options on the [`ConnectionSettings`](xref:EventStore.ClientAPI.ConnectionSettings) such as limiting retry attempts or frequency. The connection and durable subscription even manage a subscription during node failures, you will not receive duplicated messages over your durable subscription.
 

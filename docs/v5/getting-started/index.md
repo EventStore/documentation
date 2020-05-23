@@ -26,7 +26,7 @@ This first step covers installation and running Event Store, and writing your fi
 ## Install and run Event Store
 
 ::: tip
-Unless you pass a database option with `--db`, Event Store writes to a new database created in the host system's temporary files path each time it is started. For more information on Command Line Arguments read [this guide](/server/command-line-arguments.md).
+Unless you pass a database option with `--db`, Event Store writes to a new database created in the host system's temporary files path each time it is started. For more information on Command Line Arguments read [this guide](/v5/server/command-line-arguments.md).
 :::
 
 ::::: el-tabs 
@@ -44,7 +44,7 @@ choco install eventstore-oss
 
 You can also [download](https://eventstore.com/downloads/) a binary, unzip the archive and run from the folder location with an administrator console.
 
-The following command starts Event Store with the database stored at the path _./db_ and the logs in _./logs_. You can view further command line arguments in the [server docs](/server/index.md).
+The following command starts Event Store with the database stored at the path _./db_ and the logs in _./logs_. You can view further command line arguments in the [server docs](/v5/server/index.md).
 
 ```powershell
 EventStore.ClusterNode.exe --db ./db --log ./logs
@@ -75,7 +75,7 @@ If you installed from a pre-built package, start Event Store with:
 sudo systemctl start eventstore
 ```
 
-When you install the Event Store package, the service doesn't start by default. This is to allow you to change the configuration, located at _/etc/eventstore/eventstore.conf_ and to prevent creating a default database. To start Event Store on port 80 as a service, refer to [Configuring your installation](/server/configuring.md#start-as-a-service-on-a-custom-port)
+When you install the Event Store package, the service doesn't start by default. This is to allow you to change the configuration, located at _/etc/eventstore/eventstore.conf_ and to prevent creating a default database. To start Event Store on port 80 as a service, refer to [Configuring your installation](/v5/server/configuring.md#start-as-a-service-on-a-custom-port)
 
 ::: warning
 We recommend that when using Linux you set the 'open file limit' to a high number. The precise value depends on your use case, but at least between `30,000` and `60,000`.
@@ -113,7 +113,7 @@ docker pull eventstore/eventstore
 
 Create file `docker-compose.yaml` with following content:
 
-@[code](@/docs/v5/code-examples/getting-started/docker-compose.yaml)
+@[code](/v5/code-examples/getting-started/docker-compose.yaml)
 
 Run the container:
 
@@ -143,9 +143,9 @@ To build Event Store from source, refer to the [Event Store README](https://gith
 
 There are three ways to interact with Event Store:
 
-1.  [With the Admin UI](/server/admin-ui.md).
-2.  [With the HTTP API](/http-api/index.md).
-3.  With a Client API, which you need to install first. Our documentation covers the [.NET Core client API](/dotnet-api/index.md) and the [JVM client](https://github.com/EventStore/EventStore.JVM) but [others](/getting-started/which-api-sdk.md) are available.
+1.  [With the Admin UI](/v5/server/admin-ui.md).
+2.  [With the HTTP API](/v5/http-api/index.md).
+3.  With a Client API, which you need to install first. Our documentation covers the [.NET Core client API](/v5/dotnet-api/index.md) and the [JVM client](https://github.com/EventStore/EventStore.JVM) but [others](/getting-started/which-api-sdk.md) are available.
 
 ## Discover Event Store via Admin UI
 
@@ -165,7 +165,7 @@ Event Store expose HTTP API that allows cross-platform integration. API is expos
 
 ## Connecting to Event Store
 
-Get on the fast-track with [a native SDK for your language of choice](/getting-started/which-api-sdk.md).
+Get on the fast-track with [a native SDK for your language of choice](/v5/getting-started/which-api-sdk.md).
 
 ::::: el-tabs
 :::: el-tab-pane label=".NET Client"
@@ -180,14 +180,14 @@ dotnet add package EventStore.Client
 
 And require it in your code:
 
-@[code lang=csharp transcludeInner=Using](@/docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transcludeInner=Using](docs/v5/code-examples/DocsExample/Program.cs)
 
 ::::
 :::: el-tab-pane label="JVM client"
 
 [Add the JVM client](https://github.com/EventStore/EventStore.JVM#setup) using Maven:
 
-@[code lang=xml transclude={28-32}](@/docs/v5/code-examples/EventStore.Samples.Java/pom.xml)
+@[code lang=xml transclude={28-32}](docs/v5/code-examples/EventStore.Samples.Java/pom.xml)
 
 And import it in your code.
 
@@ -198,10 +198,10 @@ To use a client API, you use port `1113` and create a connection:
 
 :::: el-tabs
 ::: el-tab-pane label=".NET client"
-@[code lang=cpp transcludeInner=Connect](@/docs/v5/code-examples/DocsExample/GettingStarted/Connection.cs)
+@[code lang=cpp transcludeInner=Connect](docs/v5/code-examples/DocsExample/GettingStarted/Connection.cs)
 :::
 ::: el-tab-pane label="JVM client"
-@[code lang=java transclude={16-21}](@/docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteEventExample.java)
+@[code lang=java transclude={16-21}](docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteEventExample.java)
 For our JVM examples we use [akka](https://akka.io), a toolkit for building highly concurrent and distributed JVM applications.
 :::
 ::::
@@ -222,7 +222,7 @@ You can write events using the Admin UI by clicking the _Stream Browser_ tab, th
 
 Open a text editor, copy and paste the following event definition, and save it as _event.json_.
 
-@[code](@/docs/v5/code-examples/getting-started/event.json)
+@[code](docs/v5/code-examples/getting-started/event.json)
 
 ### Writing events programmatically
 
@@ -230,24 +230,24 @@ Open a text editor, copy and paste the following event definition, and save it a
 :::: el-tab-pane label="HTTP API"
 Use the following cURL command, passing the name of the stream and the events to write:
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/getting-started/write-event.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/getting-started/write-event.sh)
 
 ::: tip
 You can also post events to the HTTP API as XML, by changing the `Content-Type` header to `XML`.
 :::
 
 ::: tip Next steps
-Read [this guide](/http-api/creating-writing-a-stream.md) for more information on how to write events with the HTTP API.
+Read [this guide](/v5/http-api/creating-writing-a-stream.md) for more information on how to write events with the HTTP API.
 :::
 
 ::::
 :::: el-tab-pane label=".NET client"
 To use the .NET client, use the following method, passing the name of the stream, the version, and the events to write:
 
-@[code lang=csharp transcludeInner=AppendEvent](@/docs/v5/code-examples/DocsExample/GettingStarted/ConnectEventStore.cs)
+@[code lang=csharp transcludeInner=AppendEvent](docs/v5/code-examples/DocsExample/GettingStarted/ConnectEventStore.cs)
 
 ::: tip Next steps
-Read [this guide](/http-api/creating-writing-a-stream.md) for more information on how to write events with the .NET API. We don't cover version checking in this guide, but you can read more in [the optimistic concurrency guide](/dotnet-api/optimistic-concurrency-and-idempotence.md).
+Read [this guide](/v5/http-api/creating-writing-a-stream.md) for more information on how to write events with the .NET API. We don't cover version checking in this guide, but you can read more in [the optimistic concurrency guide](/v5/dotnet-api/optimistic-concurrency-and-idempotence.md).
 :::
 
 ::::
@@ -255,7 +255,7 @@ Read [this guide](/http-api/creating-writing-a-stream.md) for more information o
 
 To use the JVM Client, use the following method, passing the name of the stream, the version, and the events to write. You also need an Akka `AbstractActor` to return the response from Event Store:
 
-@[code lang=java transclude={23-55}](@/docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteEventExample.java)
+@[code lang=java transclude={23-55}](docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteEventExample.java)
 
 ::::
 :::::

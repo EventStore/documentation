@@ -13,12 +13,12 @@ First go to the head of the stream.
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/read-stream.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/read-stream.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-46,46-46,85-86} highlight={23}](@/docs/v5/code-examples/http-api/read-stream.sh)
+@[code lang=json transclude={3-46,46-46,85-86} highlight={23}](docs/v5/code-examples/http-api/read-stream.sh)
 
 ::::
 :::::
@@ -28,18 +28,18 @@ Then fetch the previous `rel` link `http://127.0.0.1:2113/streams/newstream/2/fo
 ::::: tabs
 :::: tab Request
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/get-forward-link.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/get-forward-link.sh)
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-49}](@/docs/v5/code-examples/http-api/get-forward-link.sh)
+@[code lang=json transclude={3-49}](docs/v5/code-examples/http-api/get-forward-link.sh)
 
 ::::
 :::::
 
 The entries section is empty (there is no further data to provide). Now try the same URI with a long poll header.
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/http-api/longpoll.sh)
+@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/longpoll.sh)
 
 If you do not insert any events into the stream while this is running it takes 10 seconds for the HTTP request to finish. If you append an event to the stream while its running you see the result for that request when you append the event.
