@@ -49,24 +49,24 @@ EventStorePersistentSubscription ConnectToPersistentSubscription(
 
 Both the `Create` and `Update` methods take a `PersistentSubscriptionSettings` object as a parameter. The methods use this object to provide the settings for the persistent subscription. A fluent builder is available for these options that you can locate using the `Create()` method. The following table shows the options you can set on a persistent subscription.
 
-| Member                                   | Description                                                                                                       |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `ResolveLinkTos`                         | Tells the subscription to resolve link events.                                                                    |
-| `DoNotResolveLinkTos`                    | Tells the subscription to not resolve link events.                                                                |
-| `PreferRoundRobin`                       | If possible preference a round robin between the connections with messages (if not possible uses next available). |
-| `PreferDispatchToSingle`                 | If possible preference dispatching to a single connection (if not possible will use next available).              |
-| `StartFromBeginning`                     | Start the subscription from the first event in the stream.                                                        |
-| `StartFrom(int position)`                | Start the subscription from the position-th event in the stream.                                                  |
-| `StartFromCurrent`                       | Start the subscription from the current position.                                                                 |
-| `WithMessageTimeoutOf(TimeSpan timeout)` | Sets the timeout for a client before retrying the message.                                                        |
-| `CheckPointAfter(TimeSpan time)`         | The amount of time the system should try to checkpoint after.                                                     |
-| `MinimumCheckPointCountOf(int count)`    | The minimum number of messages to write a checkpoint for.                                                         |
-| `MaximumCheckPointCountOf(int count)`    | The maximum number of messages not checkpointed before forcing a checkpoint.                                      |
-| `WithMaxRetriesOf(int count)`            | Sets the number of times to retry a message should before considering it a bad message.                           |
-| `WithLiveBufferSizeOf(int count)`        | The size of the live buffer (in memory) before resorting to paging.                                               |
-| `WithReadBatchOf(int count)`             | The size of the read batch when in paging mode.                                                                   |
-| `WithBufferSizeOf(int count)`            | The number of messages to buffer when in paging mode.                                                             |
-| `WithExtraStatistics`                    | Tells the backend to measure timings on the clients so statistics contain histograms of them.                     |
+| Member | Description |
+|:-------|:------------|
+| `ResolveLinkTos` | Tells the subscription to resolve link events. |
+| `DoNotResolveLinkTos` | Tells the subscription to not resolve link events. |
+| `PreferRoundRobin` | If possible preference a round robin between the connections with messages (if not possible uses next available). |
+| `PreferDispatchToSingle` | If possible preference dispatching to a single connection (if not possible will use next available). |
+| `StartFromBeginning` | Start the subscription from the first event in the stream.  |
+| `StartFrom(int position)` | Start the subscription from the position-th event in the stream. |
+| `StartFromCurrent` | Start the subscription from the current position. |
+| `WithMessageTimeoutOf(TimeSpan timeout)` | Sets the timeout for a client before retrying the message. |
+| `CheckPointAfter(TimeSpan time)` | The amount of time the system should try to checkpoint after. |
+| `MinimumCheckPointCountOf(int count)` | The minimum number of messages to write a checkpoint for. |
+| `MaximumCheckPointCountOf(int count)`| The maximum number of messages not checkpointed before forcing a checkpoint. |
+| `WithMaxRetriesOf(int count)` | Sets the number of times to retry a message should before considering it a bad message. |
+| `WithLiveBufferSizeOf(int count)` | The size of the live buffer (in memory) before resorting to paging. |
+| `WithReadBatchOf(int count)` | The size of the read batch when in paging mode. |
+| `WithBufferSizeOf(int count)` | The number of messages to buffer when in paging mode. |
+| `WithExtraStatistics` | Tells the backend to measure timings on the clients so statistics contain histograms of them. |
 
 ## Creating a subscription group
 
@@ -77,61 +77,62 @@ Normally you wouldn't create the subscription group in your general executable c
 :::
 
 ```csharp
-PersistentSubscriptionSettings settings = PersistentSubscriptionSettings.Create()
-                                                                .DoNotResolveLinkTos()
-                                                                .StartFromCurrent();
-_result = _conn.CreatePersistentSubscriptionAsync(_stream,
-                                                  "agroup",
-                                                  settings,
-                                                  MyCredentials).Result;
+var settings = PersistentSubscriptionSettings
+    .Create()
+    .StartFromCurrent();
+
+var result = await connection.CreatePersistentSubscriptionAsync(
+    stream, "agroup", settings, MyCredentials
+);
 ```
 
-| Parameter                                 | Description                                          |
-| ----------------------------------------- | ---------------------------------------------------- |
-| `string stream`                           | The stream to the persistent subscription is on.     |
-| `string groupName`                        | The name of the subscription group to create.        |
+| Parameter | Description |
+|:----------|:------------|
+| `string stream` | The stream to the persistent subscription is on.     |
+| `string groupName` | The name of the subscription group to create.        |
 | `PersistentSubscriptionSettings settings` | The settings to use when creating this subscription. |
-| `UserCredentials credentials`             | The user credentials to use for this operation.      |
+| `UserCredentials credentials` | The user credentials to use for this operation.      |
 
 ## Updating a subscription group
 
 You can edit the settings of an existing subscription group while it is running, you don't need to delete and recreate it to change settings. When you update the subscription group, it resets itself internally dropping the connections and having them reconnect. You must have admin permissions to update a persistent subscription group.
 
 ```csharp
-PersistentSubscriptionSettings settings = PersistentSubscriptionSettings.Create()
-                                                                .DoNotResolveLinkTos()
-                                                                .StartFromCurrent();
-_result = _conn.UpdatePersistentSubscriptionAsync(_stream,
-                                                  "agroup",
-                                                  settings,
-                                                  MyCredentials).Result;
+var settings = PersistentSubscriptionSettings
+    .Create()
+    .DoNotResolveLinkTos()
+    .StartFromCurrent();
+
+var result = await connection.UpdatePersistentSubscriptionAsync(
+    stream, "agroup", settings, MyCredentials
+);
 ```
 
 ::: tip
 If you change settings such as `startFromBeginning`, this doesn't reset the group's checkpoint. If you want to change the current position in an update, you must delete and recreate the subscription group.
 :::
 
-| Parameter                                 | Description                                          |
-| ----------------------------------------- | ---------------------------------------------------- |
-| `string stream`                           | The stream to the persistent subscription is on.     |
-| `string groupName`                        | The name of the subscription group to update.        |
+| Parameter | Description |
+|:----------|:------------|
+| `string stream` | The stream to the persistent subscription is on. |
+| `string groupName` | The name of the subscription group to update. |
 | `PersistentSubscriptionSettings settings` | The settings to use when updating this subscription. |
-| `UserCredentials credentials`             | The user credentials to use for this operation.      |
+| `UserCredentials credentials` | The user credentials to use for this operation. |
 
 ## Deleting a subscription group
 
 Remove a subscription group with the delete operation. Like the creation of groups, you rarely do this in your runtime code and is undertaken by an administrator running a script.
 
 ```csharp
-var result = _conn.DeletePersistentSubscriptionAsync(stream,
-                                                     "groupname",
-                                                     DefaultData.AdminCredentials).Result;
+var result = await connection.DeletePersistentSubscriptionAsync(
+    stream, "groupname", DefaultData.AdminCredentials
+);
 ```
 
-| Parameter                     | Description                                      |
-| ----------------------------- | ------------------------------------------------ |
-| `string stream`               | The stream to the persistent subscription is on. |
-| `string groupName`            | The name of the subscription group to update.    |
+| Parameter | Description |
+| ----------| ------------|
+| `string stream` | The stream to the persistent subscription is on. |
+| `string groupName` | The name of the subscription group to update.    |
 | `UserCredentials credentials` | The user credentials to use for this operation.  |
 
 ## Connecting to a subscription group
@@ -141,10 +142,11 @@ Once you have created a subscription group, clients can connect to that subscrip
 The most important parameter to pass when connecting is the buffer size. This parameter represents how many outstanding messages the server should allow this client. If this number is too small, your subscription will spend much of its time idle as it waits for an acknowledgment to come back from the client. If it's too big, you waste resources and can start causing time out messages depending on the speed of your processing.
 
 ```csharp
-var subscription = _conn.ConnectToPersistentSubscription("foo",
-                                                         "nonexisting2",
-                                                         (sub, e) => Console.Write("appeared"),
-                                                         (sub, reason, ex) =>{});
+var subscription = connection.ConnectToPersistentSubscription(
+    "foo", "nonexisting2", 
+    (sub, e) => Console.Write("appeared"),
+    (sub, reason, ex) =>{}
+);
 ```
 
 | Parameter                     | Description                                                                |

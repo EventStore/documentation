@@ -1,4 +1,4 @@
-# API
+# HTTP API
 
 <table>
     <thead>

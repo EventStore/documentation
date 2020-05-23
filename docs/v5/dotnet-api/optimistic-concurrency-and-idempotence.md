@@ -4,13 +4,13 @@ Writing supports an [optimistic concurrency](https://docs.microsoft.com/en-us/do
 
 The .NET API has constants which you can use to represent certain conditions:
 
-| Parameter                      | Description                                                                                                                                                |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ExpectedVersion.Any`          | Disables the optimistic concurrency check.                                                                                                                 |
-| `ExpectedVersion.NoStream`     | Specifies the expectation that target stream does not yet exist.                                                                                           |
-| `ExpectedVersion.EmptyStream`  | Specifies the expectation that the target stream has been explicitly created, but does not yet have any user events written in it.                         |
+| Parameter  | Description |
+|:-----------|:------------|
+| `ExpectedVersion.Any` | Disables the optimistic concurrency check. |
+| `ExpectedVersion.NoStream` | Specifies the expectation that target stream does not yet exist. |
+| `ExpectedVersion.EmptyStream`  | Specifies the expectation that the target stream has been explicitly created, but does not yet have any user events written in it. |
 | `ExpectedVersion.StreamExists` | Specifies the expectation that the target stream or its metadata stream has been created, but does not expect the stream to be at a specific event number. |
-| `Any other integer value`      | The event number that you expect the stream to currently be at.                                                                                            |
+| `Any other integer value` | The event number that you expect the stream to currently be at. |
 
 If the optimistic concurrency check fails during writing, a `WrongExpectedVersionException` is thrown.
 

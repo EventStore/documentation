@@ -223,7 +223,7 @@ module.exports = {
                     "/v5/projections/": [
                         {
                             title: "Projections",
-                            "collapsable": true,
+                            collapsable: true,
                             children: [
                                 "",
                                 "system-projections.md",
@@ -237,8 +237,8 @@ module.exports = {
                     "/v5/http-api/": [
                         {
                             title: "HTTP API",
-                            "collapsable": true,
-                            "children": [
+                            collapsable: true,
+                            children: [
                                 "",
                                 "creating-writing-a-stream.md",
                                 "reading-streams.md",
@@ -270,8 +270,8 @@ module.exports = {
                     "/v5/dotnet-api/": [
                         {
                             title: ".NET API",
-                            "collapsable": true,
-                            "children": [
+                            collapsable: true,
+                            children: [
                                 "",
                                 "connecting-to-a-server.md",
                                 "streams.md",
@@ -287,6 +287,19 @@ module.exports = {
                                 "security.md"
                             ]
                         },
+                        {
+                            title: "Code documentation",
+                            collapsable: true,
+                            children: [
+                                "reference/EventStore.Client.md",
+                                "reference/EventStore.Client.Operations.md",
+                                "reference/EventStore.Client.PersistentSubscriptions.md",
+                                "reference/EventStore.Client.Projections.md",
+                                "reference/EventStore.Client.Streams.md",
+                                "reference/EventStore.Client.Users.md",
+                                "reference/Microsoft.Extensions.DependencyInjection.md"
+                            ]
+                        }
                     ]
                 }
             },
@@ -297,8 +310,8 @@ module.exports = {
             target: "_self"
         },
         extendMarkdown: md => {
-            md.use(require('markdown-it-vuepress-code-snippet-enhanced'));
-            md.use(require("./theme/markup/code"))//, {root: "./docs"});
+            md.use(require("./theme/markup/include"));
+            md.use(require("./theme/markup/code"));//, {root: "./docs"});
             md.use(require("./theme/markup/elementui"));
         }
     },

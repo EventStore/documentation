@@ -29,8 +29,8 @@ This first step covers installation and running Event Store, and writing your fi
 Unless you pass a database option with `--db`, Event Store writes to a new database created in the host system's temporary files path each time it is started. For more information on Command Line Arguments read [this guide](/v5/server/command-line-arguments.md).
 :::
 
-::::: tabs
-:::: tab Windows
+::::: el-tabs 
+:::: el-tab-pane label=Windows
 
 The prerequisites for installing on Windows are:
 
@@ -61,7 +61,7 @@ For more information, refer to Microsoft's `add urlacl` [documentation](https://
 To build Event Store from source, refer to the [Event Store README](https://github.com/EventStore/EventStore#windows).
 
 ::::
-:::: tab Linux
+:::: el-tab-pane label=Linux
 
 The prerequisites for installing on Linux are:
 
@@ -82,7 +82,7 @@ We recommend that when using Linux you set the 'open file limit' to a high numbe
 :::
 
 ::::
-:::: tab Docker
+:::: el-tab-pane label=Docker
 
 Event Store has a Docker image available for any platform that supports Docker.
 
@@ -101,7 +101,7 @@ docker run --name eventstore-node -it -p 2113:2113 -p 1113:1113 eventstore/event
 Refer to the [image overview](https://hub.docker.com/r/eventstore/eventstore/) for more information.
 
 ::::
-:::: tab Docker Compose
+:::: el-tab-pane label="Docker Compose"
 
 Event Store has a Docker image available for any platform that supports Docker. In order to save keystrokes it is possible to run Event Store via docker-compose.
 
@@ -111,7 +111,7 @@ Pull the Docker image:
 docker pull eventstore/eventstore
 ```
 
-Create file _docker-compose.yaml_ with following content:
+Create file `docker-compose.yaml` with following content:
 
 @[code](/v5/code-examples/getting-started/docker-compose.yaml)
 
@@ -124,7 +124,7 @@ docker-compose -f docker-compose.yaml up
 Refer to the [image overview](https://hub.docker.com/r/eventstore/eventstore/) for more information.
 
 ::::
-:::: tab macOS
+:::: el-tab-pane label=macOS
 
 Event Store has a macOS package [you can download](https://eventstore.com/downloads/) and install, and we maintain a Homebrew Cask formula you can install:
 
@@ -152,10 +152,12 @@ There are three ways to interact with Event Store:
 Event Store ships with GUI called Admin UI, which allows browsing statistics, streams and events manipulation, user management and more. Admin UI is visible under `2113` port, navigate to <http://127.0.0.1:2113/> in your web browser to see it.
 
 ::: tip
-The default username and password is `admin:changeit`
+The default username is `admin` and password is `changeit`.
 :::
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![The Admin UI Dashboard](../images/es-web-admin-dashboard.png)
+:::
 
 ## First call to HTTP API
 
@@ -165,8 +167,8 @@ Event Store expose HTTP API that allows cross-platform integration. API is expos
 
 Get on the fast-track with [a native SDK for your language of choice](/v5/getting-started/which-api-sdk.md).
 
-::::: tabs
-:::: tab .NET client
+::::: el-tabs
+:::: el-tab-pane label=".NET Client"
 
 [Install the .NET client API](https://www.nuget.org/packages/EventStore.Client) using your preferred method.
 
@@ -178,10 +180,10 @@ dotnet add package EventStore.Client
 
 And require it in your code:
 
-@[code lang=cpp transclude={7-10}](docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transcludeInner=Using](docs/v5/code-examples/DocsExample/Program.cs)
 
 ::::
-:::: tab JVM client
+:::: el-tab-pane label="JVM client"
 
 [Add the JVM client](https://github.com/EventStore/EventStore.JVM#setup) using Maven:
 
@@ -194,24 +196,15 @@ And import it in your code.
 
 To use a client API, you use port `1113` and create a connection:
 
-::::: tabs
-:::: tab .NET client
-
-When using the .NET client, you also need to give the connection a name.
-
-@[code lang=cpp transclude={32-34}](docs/v5/code-examples/DocsExample/Program.cs)
-
-In this example we used the [`EventStoreConnection.Create()`](xref:EventStore.ClientAPI.EventStoreConnection.Create(System.String,System.String)) overloaded method but [others are available](xref:EventStore.ClientAPI.EventStoreConnection).
-
-::::
-:::: tab JVM client
-
+:::: el-tabs
+::: el-tab-pane label=".NET client"
+@[code lang=cpp transcludeInner=Connect](docs/v5/code-examples/DocsExample/GettingStarted/Connection.cs)
+:::
+::: el-tab-pane label="JVM client"
 @[code lang=java transclude={16-21}](docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteEventExample.java)
-
 For our JVM examples we use [akka](https://akka.io), a toolkit for building highly concurrent and distributed JVM applications.
-
+:::
 ::::
-:::::
 
 ## Writing events to an Event Stream
 
@@ -223,7 +216,9 @@ If you post to a stream that doesn't exist, Event Store creates it before adding
 
 You can write events using the Admin UI by clicking the _Stream Browser_ tab, the _Add Event_ button, filling in the form with relevant values and clicking the _Add_ button at the bottom of the page.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Creating an event with the Admin UI interface](../images/getting-started-add-event.gif)
+:::
 
 Open a text editor, copy and paste the following event definition, and save it as _event.json_.
 
@@ -231,9 +226,8 @@ Open a text editor, copy and paste the following event definition, and save it a
 
 ### Writing events programmatically
 
-::::: tabs
-:::: tab HTTP API 
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 Use the following cURL command, passing the name of the stream and the events to write:
 
 @[code lang=bash transclude={1-1}](docs/v5/code-examples/getting-started/write-event.sh)
@@ -247,18 +241,17 @@ Read [this guide](/v5/http-api/creating-writing-a-stream.md) for more informatio
 :::
 
 ::::
-:::: tab .NET client
-
+:::: el-tab-pane label=".NET client"
 To use the .NET client, use the following method, passing the name of the stream, the version, and the events to write:
 
-@[code lang=cpp transclude={12-17}](docs/v5/code-examples/DocsExample/GettingStarted/ConnectEventStore.cs)
+@[code lang=csharp transcludeInner=AppendEvent](docs/v5/code-examples/DocsExample/GettingStarted/ConnectEventStore.cs)
 
 ::: tip Next steps
 Read [this guide](/v5/http-api/creating-writing-a-stream.md) for more information on how to write events with the .NET API. We don't cover version checking in this guide, but you can read more in [the optimistic concurrency guide](/v5/dotnet-api/optimistic-concurrency-and-idempotence.md).
 :::
 
 ::::
-:::: tab JVM client
+:::: el-tab-pane label="JVM client"
 
 To use the JVM Client, use the following method, passing the name of the stream, the version, and the events to write. You also need an Akka `AbstractActor` to return the response from Event Store:
 

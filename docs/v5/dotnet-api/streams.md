@@ -30,20 +30,20 @@ Task<WriteResult> AppendToStreamAsync(string stream, long expectedVersion, IEnum
 
 Parameters:
 
-| Parameter                       | Description                                                                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `string stream`                 | The name of the stream to which to append.                                                                                                                                                                                                                                                                                                                                            |
-| `long expectedVersion`          | The version at which you expect the stream to be in order that an optimistic concurrency check can be performed. This should either be a positive integer, or one of the constants `ExpectedVersion.NoStream`, `ExpectedVersion.EmptyStream`, or to disable the check, `ExpectedVersion.Any`. See [here](optimistic-concurrency-and-idempotence.md) for a broader discussion of this. |
-| `IEnumerable<EventData> events` | The events to append. There is also an overload of each method which takes the events as a `params` array. `events`'s length must not be greater than 4095.                                                                                                                                                                                                                                                                           |
-| `userCredentials`               | Specify user on behalf whom write will be executed. |
+| Parameter | Type | Description |
+|:----------|:-----|:------------|
+| `stream` | `string` | The name of the stream to which to append. |
+| `expectedVersion` | `long` | The version at which you expect the stream to be in order that an optimistic concurrency check can be performed. This should either be a positive integer, or one of the constants `ExpectedVersion.NoStream`, `ExpectedVersion.EmptyStream`, or to disable the check, `ExpectedVersion.Any`. See [here](optimistic-concurrency-and-idempotence.md) for a broader discussion of this. |
+| `events` | `IEnumerable<EventData>` | The events to append. There is also an overload of each method which takes the events as a `params` array. `events`'s length must not be greater than 4095. |
+| `userCredentials` | `UserCredentials` | Specify user on behalf whom write will be executed. |
 
 Example single event in single write:
 
-@[code lang=cpp transclude={15-19}](docs/v5/code-examples/DocsExample/DotNetClient/WritingSingleEvent.cs)
+@[code lang=csharp transcludeInner=WriteOneEvent](docs/v5/code-examples/DocsExample/DotNetClient/WriteStreamEvents.cs)
 
 Example list of events in single write:
 
-@[code lang=cpp transclude={11-26}](docs/v5/code-examples/DocsExample/DotNetClient/WritingListEvents.cs)
+@[code lang=csharp transcludeInner=CreateSampleData,WriteMultipleEvents](docs/v5/code-examples/DocsExample/DotNetClient/WriteStreamEvents.cs)
 
 ## Using a transaction to append to a stream across multiple writes
 
@@ -77,7 +77,7 @@ void Rollback()
 
 Example:
 
-@[code lang=cpp transclude={10-33}](docs/v5/code-examples/DocsExample/DotNetClient/WritingTransactions.cs)
+@[code lang=csharp transcludeInner=CreateSampleData,WriteTransaction](docs/v5/code-examples/DocsExample/DotNetClient/WriteStreamEvents.cs)
 
 Events are written in the following order: `3, 1, 2, 4, 5`.
 
@@ -89,13 +89,13 @@ Event Store does not have any built-in serialisation, so the body and metadata f
 
 The members on `EventData` are:
 
-| Member            | Description                                                                                                                                                                                               |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Guid EventId`    | A unique identifier representing this event. Event Store uses this for idempotency if you write the same event twice you should use the same identifier both times.                                       |
-| `string Type`     | The name of the event type. You can use this for pattern matching in projections, so should be a "friendly" name rather than a CLR type name, for example.                                                |
-| `bool IsJson`     | If the data and metadata fields are serialized as JSON, you should set this to `true`. Setting this to `true` will cause the projections framework to attempt to deserialize the data and metadata later. |
-| `byte[] Data`     | The serialized data representing the event to be stored.                                                                                                                                                 |
-| `byte[] Metadata` | The serialized data representing metadata about the event to be stored.                                                                                                                                   |
+| Member | Type | Description |
+|:-------|:-----|:--------|
+| `EventId` | `Guid` | A unique identifier representing this event. Event Store uses this for idempotency if you write the same event twice you should use the same identifier both times. |
+| `Type`  | `string` | The name of the event type. You can use this for pattern matching in projections, so should be a "friendly" name rather than a CLR type name, for example. |
+| `IsJson`  | `bool` | If the data and metadata fields are serialized as JSON, you should set this to `true`. Setting this to `true` will cause the projections framework to attempt to deserialize the data and metadata later. |
+| `Data` | `byte[]` | The serialized data representing the event to be stored. |
+| `Metadata` | `byte[]` | The serialized data representing metadata about the event to be stored. |
 
 ::: tip
 An event size (not only data and metadata) must not exceed 16,777,215 bytes (16MB-1B).

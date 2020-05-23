@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using EventStore.ClientAPI;
 using EventStore.ClientAPI.SystemData;
 
@@ -5,7 +6,7 @@ namespace DocsExample
 {
     public class ConnectClusterGossipDns
     {
-        public static void Method()
+        public static async Task Method()
         {
             var settings = ConnectionSettings.Create().KeepReconnecting();
             settings.SetDefaultUserCredentials(new UserCredentials("admin", "changeit"));
@@ -14,7 +15,7 @@ namespace DocsExample
             cluster.SetClusterDns("eventstore.local").SetClusterGossipPort(2112);
 
             var conn = EventStoreConnection.Create(settings.Build(), cluster.Build());
-            conn.ConnectAsync().Wait();
+            await conn.ConnectAsync();
         }
     }
 }
