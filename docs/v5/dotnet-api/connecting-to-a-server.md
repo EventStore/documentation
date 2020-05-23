@@ -57,28 +57,28 @@ You can set the following values using the connection string:
 
 | Name | Format | Description |
 |:-----|:-------|:------------|
-| VerboseLogging              | True/false                                    | Enables verbose logging                                              |
-| MaxQueueSize                | Integer                                       | Maximum number of outstanding operations                             |
-| MaxConcurrentItems          | Integer                                       | Maximum number of concurrent async operations                        |
-| MaxRetries                  | Integer                                       | Maximum number of retry attempts                                     |
-| MaxReconnections            | Integer                                       | The maximum number of times to try reconnecting                      |
-| RequireMaster               | True/false                                    | If set the server will only process if it is master                  |
-| ReconnectionDelay           | Integer (milliseconds)                        | The delay before attempting to reconnect                             |
-| OperationTimeout            | Integer (milliseconds)                        | The time before considering an operation timed out                   |
-| OperationTimeoutCheckPeriod | Integer (milliseconds)                        | The frequency in which to check timeouts                             |
-| DefaultUserCredentials      | String in format username:password            | The default credentials for the connection                           |
-| UseSslConnection            | True/false                                    | whether to use SSL for this connection                               |
-| TargetHost                  | String                                        | The hostname expected on the certificate                             |
-| ValidateServer              | True/false                                    | Whether to validate the remote server                                |
-| FailOnNoServerResponse      | True/False                                    | Whether to fail on no server response                                |
-| HeartbeatInterval           | Integer (milliseconds)                        | The interval at which to send the server a heartbeat                 |
-| HeartbeatTimeout            | Integer (milliseconds)                        | The amount of time to receive a heartbeat response before timing out |
-| ClusterDns                  | string                                        | The DNS name of the cluster for discovery                            |
-| MaxDiscoverAttempts         | Integer                                       | The maximum number of attempts to try to discover the cluster        |
-| ExternalGossipPort          | Integer                                       | The port to try to gossip on                                         |
-| GossipTimeout               | Integer (milliseconds)                        | The amount of time before timing out a gossip response               |
-| GossipSeeds                 | Comma separated list of ip:port               | A list of seeds to try to discover from                              |
-| ConnectTo                   | A URI in format described above to connect to | The URI to connect to                                                |
+| VerboseLogging | True/false | Enables verbose logging |
+| MaxQueueSize | Integer | Maximum number of outstanding operations |
+| MaxConcurrentItems | Integer | Maximum number of concurrent async operations |
+| MaxRetries | Integer | Maximum number of retry attempts |
+| MaxReconnections | Integer | The maximum number of times to try reconnecting |
+| RequireMaster | True/false | If set the server will only process if it is master |
+| ReconnectionDelay | Integer (milliseconds) | The delay before attempting to reconnect |
+| OperationTimeout | Integer (milliseconds) | The time before considering an operation timed out |
+| OperationTimeoutCheckPeriod | Integer (milliseconds) | The frequency in which to check timeouts |
+| DefaultUserCredentials | String in format username:password | The default credentials for the connection |
+| UseSslConnection | True/false | Whether to use SSL for this connection |
+| TargetHost | String | The hostname expected on the certificate |
+| ValidateServer | True/false | Whether to validate the remote server |
+| FailOnNoServerResponse | True/False | Whether to fail on no server response |
+| HeartbeatInterval | Integer (milliseconds) | The interval at which to send the server a heartbeat |
+| HeartbeatTimeout | Integer (milliseconds) | The amount of time to receive a heartbeat response before timing out |
+| ClusterDns | String | The DNS name of the cluster for discovery |
+| MaxDiscoverAttempts | Integer | The maximum number of attempts to try to discover the cluster |
+| ExternalGossipPort | Integer | The port to try to gossip on |
+| GossipTimeout | Integer (milliseconds) | The amount of time before timing out a gossip response |
+| GossipSeeds | Comma separated list of ip:port | A list of seeds to try to discover from |
+| ConnectTo | A URI in format described above to connect to | The URI to connect to |
 
 ::: tip
 You can also use spacing instead of camel casing in your connection string.

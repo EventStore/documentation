@@ -8,7 +8,7 @@ namespace DocsExample
 {
     public class WritingTransactions
     {
-        private static EventData CreateSample(int i)
+        static EventData CreateSample(int i)
         {
             var sampleObject = new { a = i };
             var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(sampleObject));
@@ -17,7 +17,7 @@ namespace DocsExample
             return eventPayload;
         }
 
-        public static async Task Main()
+        public static async Task WriteTransaction()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
             await conn.ConnectAsync();

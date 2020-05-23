@@ -84,62 +84,62 @@ The following options are available when building an Embedded Node.
 
 ### Application options
 
-| Method                                  | Description                                                                                |
-| --------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `AsSingleNode()`                        | Returns a builder set to construct options for a single node instance                      |
-| `AsClusterMember(int clusterSize)`      | Returns a builder set to construct options for a cluster node instance with a cluster size |
-| `DisableHTTPCaching()`                  | Disable HTTP Caching                                                                       |
-| `WithWorkerThreads(int count)`          | Sets the number of worker threads to use in shared threadpool                              |
-| `WithStatsPeriod(TimeSpan statsPeriod)` | Sets the period between statistics gathers                                                 |
-| `EnableLoggingOfHttpRequests()`         | Enable logging of HTTP requests and responses before they are processed                    |
-| `EnableHistograms()`                    | Enable the tracking of histograms, typically used for debugging                            |
-| `EnableTrustedAuth()`                   | Enable trusted authentication by an intermediary in the HTTP                               |
+| Method | Description |
+|:-------|:------------|
+| `AsSingleNode()` | Returns a builder set to construct options for a single node instance |
+| `AsClusterMember(int clusterSize)` | Returns a builder set to construct options for a cluster node instance with a cluster size |
+| `DisableHTTPCaching()` | Disable HTTP Caching |
+| `WithWorkerThreads(int count)` | Sets the number of worker threads to use in shared threadpool |
+| `WithStatsPeriod(TimeSpan statsPeriod)` | Sets the period between statistics gathers |
+| `EnableLoggingOfHttpRequests()` | Enable logging of HTTP requests and responses before they are processed |
+| `EnableHistograms()` | Enable the tracking of histograms, typically used for debugging |
+| `EnableTrustedAuth()` | Enable trusted authentication by an intermediary in the HTTP |
 
 ### Certificate options
 
-| Method                                                                                                                                          | Description                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| `WithServerCertificateFromFile(string path, string password)`                                                                                   | Sets the Server SSL Certificate loaded from a file              |
-| `WithServerCertificate(X509Certificate2 sslCertificate)`                                                                                        | Sets the Server SSL Certificate                                 |
+| Method | Description |
+|:-------|:------------|
+| `WithServerCertificateFromFile(string path, string password)` | Sets the Server SSL Certificate loaded from a file |
+| `WithServerCertificate(X509Certificate2 sslCertificate)` | Sets the Server SSL Certificate |
 | `WithServerCertificateFromStore(StoreLocation storeLocation, StoreName storeName, string certificateSubjectName, string certificateThumbprint)` | Sets the Server SSL Certificate loaded from a certificate store |
-| `WithServerCertificateFromStore(StoreName storeName, string certificateSubjectName, string certificateThumbprint)`                              | Sets the Server SSL Certificate loaded from a certificate store |
+| `WithServerCertificateFromStore(StoreName storeName, string certificateSubjectName, string certificateThumbprint)` | Sets the Server SSL Certificate loaded from a certificate store |
 
 ### Cluster options
 
-| Method                                                              | Description                                                                                                              |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| `WithClusterGossipPort(int port)`                                   | Sets the internal gossip port (used when using cluster DNS, this should point to a known port gossip will be running on) |
-| `WithGossipSeeds(params IPEndPoint[] endpoints)`                    | Sets the gossip seeds this node should talk to                                                                           |
-| `WithClusterDnsName(string name)`                                   | Sets the DNS name used for the discovery of other cluster nodes                                                          |
-| `DisableDnsDiscovery()`                                             | Disable DNS discovery for the cluster                                                                                    |
-| `WithGossipInterval(TimeSpan gossipInterval)`                       | Sets the gossip interval                                                                                                 |
-| `WithGossipAllowedTimeDifference(TimeSpan gossipAllowedDifference)` | Sets the allowed gossip time difference                                                                                  |
-| `WithGossipTimeout(TimeSpan gossipTimeout)`                         | Sets the gossip timeout                                                                                                  |
-| `WithPrepareTimeout(TimeSpan prepareTimeout)`                       | Sets the prepare timeout                                                                                                 |
-| `WithCommitTimeout(TimeSpan commitTimeout)`                         | Sets the commit timeout                                                                                                  |
-| `WithPrepareCount(int prepareCount)`                                | Sets the number of nodes which must acknowledge prepares.                                                                |
-| `WithCommitCount(int commitCount)`                                  | Sets the number of nodes which must acknowledge commits before acknowledging to a client.                                |
-| `WithNodePriority(int nodePriority)`                                | Sets the node priority used during master election                                                                       |
+| Method | Description |
+|:-------|:------------|
+| `WithClusterGossipPort(int port)` | Sets the internal gossip port (used when using cluster DNS, this should point to a known port gossip will be running on) |
+| `WithGossipSeeds(params IPEndPoint[] endpoints)` | Sets the gossip seeds this node should talk to |
+| `WithClusterDnsName(string name)` | Sets the DNS name used for the discovery of other cluster nodes |
+| `DisableDnsDiscovery()` | Disable DNS discovery for the cluster |
+| `WithGossipInterval(TimeSpan gossipInterval)` | Sets the gossip interval |
+| `WithGossipAllowedTimeDifference(TimeSpan gossipAllowedDifference)` | Sets the allowed gossip time difference |
+| `WithGossipTimeout(TimeSpan gossipTimeout)` | Sets the gossip timeout |
+| `WithPrepareTimeout(TimeSpan prepareTimeout)` | Sets the prepare timeout |
+| `WithCommitTimeout(TimeSpan commitTimeout)` | Sets the commit timeout|
+| `WithPrepareCount(int prepareCount)` | Sets the number of nodes which must acknowledge prepares. |
+| `WithCommitCount(int commitCount)` | Sets the number of nodes which must acknowledge commits before acknowledging to a client. |
+| `WithNodePriority(int nodePriority)` | Sets the node priority used during master election |
 
 ### Database options
 
-| Method                                                 | Description                                                                                    |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| `RunInMemory()`                                        | Sets the builder to run in memory                                                              |
-| `RunOnDisk(string path)`                               | Sets the builder to write database files to the specified path                                 |
-| `MaximumMemoryTableSizeOf(int size)`                   | Sets the maximum size a memtable is allowed to reach (in count) before moved to be a ptable    |
-| `DoNotVerifyDbHashes()`                                | Marks that the existing database files should not be checked for checksums on startup.         |
-| `VerifyDbHashes()`                                     | Marks that the existing database files should be checked for checksums on startup.             |
-| `WithMinFlushDelay(TimeSpan minFlushDelay)`            | Sets the minimum flush delay                                                                   |
-| `DisableScavengeMerging()`                             | Disables the merging of chunks when scavenge is running                                        |
-| `WithScavengeHistoryMaxAge(int scavengeHistoryMaxAge)` | The number of days to keep scavenge history (Default: 30)                                      |
-| `WithIndexPath(string indexPath)`                      | Sets the path the index should be loaded or saved to                                           |
-| `WithIndexCacheDepth(int indexCacheDepth)`             | Sets the depth to cache for the mid point cache in index                                       |
-| `WithUnsafeIgnoreHardDelete()`                         | Disables Hard Deletes (UNSAFE: use to remove hard deletes)                                     |
-| `WithUnsafeDisableFlushToDisk()`                       | Disables Hard Deletes (UNSAFE: use to remove hard deletes)                                     |
-| `WithBetterOrdering()`                                 | Enable queue affinity on reads during write process to try to get better ordering.             |
-| `WithTfChunkSize(int chunkSize)`                       | Sets the transaction file chunk size. Default is `TFConsts.ChunkSize`                          |
-| `WithTfCachedChunks(int cachedChunks)`                 | The number of chunks to cache in unmanaged memory. Default is `TFConsts.ChunksCacheSize`       |
+| Method | Description |
+|:-------|:------------|
+| `RunInMemory()` | Sets the builder to run in memory |
+| `RunOnDisk(string path)` | Sets the builder to write database files to the specified path |
+| `MaximumMemoryTableSizeOf(int size)` | Sets the maximum size a memtable is allowed to reach (in count) before moved to be a ptable    |
+| `DoNotVerifyDbHashes()` | Marks that the existing database files should not be checked for checksums on startup. |
+| `VerifyDbHashes()` | Marks that the existing database files should be checked for checksums on startup. |
+| `WithMinFlushDelay(TimeSpan minFlushDelay)` | Sets the minimum flush delay |
+| `DisableScavengeMerging()` | Disables the merging of chunks when scavenge is running |
+| `WithScavengeHistoryMaxAge(int scavengeHistoryMaxAge)` | The number of days to keep scavenge history (Default: 30) |
+| `WithIndexPath(string indexPath)` | Sets the path the index should be loaded or saved to |
+| `WithIndexCacheDepth(int indexCacheDepth)` | Sets the depth to cache for the mid point cache in index |
+| `WithUnsafeIgnoreHardDelete()` | Disables Hard Deletes (UNSAFE: use to remove hard deletes) |
+| `WithUnsafeDisableFlushToDisk()` | Disables Hard Deletes (UNSAFE: use to remove hard deletes) |
+| `WithBetterOrdering()` | Enable queue affinity on reads during write process to try to get better ordering. |
+| `WithTfChunkSize(int chunkSize)` | Sets the transaction file chunk size. Default is `TFConsts.ChunkSize` |
+| `WithTfCachedChunks(int cachedChunks)` | The number of chunks to cache in unmanaged memory. Default is `TFConsts.ChunksCacheSize`       |
 
 ### Interface options
 

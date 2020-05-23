@@ -25,12 +25,16 @@ This second step covers reading events from a stream and subscribing to changes 
 
 ## Read a stream of events
 
-Event Store exposes all streams as [atom feeds](http://tools.ietf.org/html/rfc4287), and you can read data from the stream by navigating to the _head URI_ of the stream _http://127.0.0.1:2113/streams/{STREAM_ID}_ with cURL, [use an SDK client](/v5/getting-started/which-api-sdk.md), or click the _Stream Browser_ tab in the Admin UI and you see the stream you created in step 1.
+Event Store exposes all streams as [atom feeds](http://tools.ietf.org/html/rfc4287), and you can read data from the stream by navigating to the _head URI_ of the stream `http://127.0.0.1:2113/streams/{STREAM_ID}` with cURL, [use an SDK client](/v5/getting-started/which-api-sdk.md), or click the _Stream Browser_ tab in the Admin UI and you see the stream you created in step 1.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![The Admin UI Dashboard](../images/es-web-admin-stream-browser.png)
+:::
 
-::::: tabs
-:::: tab HTTP API Request
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
+
+Make a request with cURL to read events from the `newStream` stream:
 
 @[code lang=bash transclude={1-1}](@/docs/v5/code-examples/getting-started/read-stream.sh)
 
@@ -38,24 +42,23 @@ Event Store exposes all streams as [atom feeds](http://tools.ietf.org/html/rfc42
 This returns the feed in JSON format, you can also use `Accept:application/atom+xml` if you prefer XML.
 :::
 
-::::
-:::: tab HTTP API Response
+The response contains a page of events from the stream in the `entries` field and also `links` that can be used to go back and forth in the stream:
 
 @[code lang=bash transclude={3-67}](@/docs/v5/code-examples/getting-started/read-stream.sh)
 
 ::::
-:::: tab .NET Client API
+:::: el-tab-pane label=".NET Client"
 
 To use the .NET API, use the following method passing the stream name, the start point in the stream, the number of events to read and whether to follow links to the event data:
 
-@[code lang=cpp transclude={103-105}](@/docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transcludeInner=ReadEvents](@/docs/v5/code-examples/DocsExample/Program.cs)
 
 ::: tip Next steps
 [Read this guide](/docs/v5/dotnet-api/reading-events.md) for more information on how to read events with the .NET API.
 :::
 
 ::::
-:::: tab JVM client
+:::: el-tab-pane label="JVM client"
 
 To use the JVM client, use the following method passing the stream name, the number of the event to read, and whether to follow links to the event data:
 
@@ -68,29 +71,29 @@ To use the JVM client, use the following method passing the stream name, the num
 
 The feed has a single item inside of it, the one you posted in [part 1](/v5/getting-started/index.md). You can see details of the event in the _Stream Browser_ tab in the Admin UI by selecting a stream to see its events, and then selecting an event. Or with cURL, issue a `GET` to the `alternate` URI value from the response above.
 
-::::: tabs
-:::: tab HTTP API Request
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
-@[code lang=bash transclude={1-1}](@/docs/v5/code-examples/getting-started/read-event.sh)
+Make a request with cURL to read the first event from the `newStream` stream:
+
+@[code lang=bash transclude](@/docs/v5/code-examples/getting-started/read-event.sh)
 
 ::: tip
 This returns the feed in JSON format, you can also use `Accept:application/atom+xml` if you prefer XML.
 :::
 
-::::
-:::: tab HTTP API Response
+The response only includes one event:
 
-@[code lang=bash transclude={3-17}](@/docs/v5/code-examples/getting-started/read-event.sh)
-
-::::
-:::: tab .NET Client API
-
-To use the .NET API, use the following method passing the stream name, the event you want to read and wether to return the event data:
-
-@[code lang=cpp transclude={107-108}](@/docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=json transclude}](@/docs/v5/code-examples/getting-started/read-event.json)
 
 ::::
-:::: tab JVM Client
+:::: el-tab-pane label=".NET Client"
+To use the .NET API, use the following method passing the stream name, the event you want to read and whether to return the event data:
+
+@[code lang=csharp transcludeInner=ReadOneEvent](@/docs/v5/code-examples/DocsExample/Program.cs)
+
+::::
+:::: el-tab-pane label="JVM Client"
 
 To use the Java client, use the following method passing the stream name, the event you want to read and if you want to also return the event data:
 
@@ -120,26 +123,28 @@ You can create subscription and watch events as they arrive under the _Persisten
 5. Configure the other options. You can find more information about the options in the [.NET API PersistentSubscriptionSettings object](xref:EventStore.ClientAPI.PersistentSubscriptionSettings).
 6. Click _Create_ button to submit the new persistent subscription.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Subscriptions in the Admin UI](../images/getting-started-subscriptions.png)
+:::
 
 ### Create a persistent subscription programmatically
 
-::::: tabs
-:::: tab HTTP API request
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
 @[code lang=bash transclude={1-2}](@/docs/v5/code-examples/getting-started/creating-subscription.sh)
 
 ::::
-:::: tab .NET API
+:::: el-tab-pane label=".NET Client"
 
-@[code lang=cpp transclude={14-21}](@/docs/v5/code-examples/DocsExample/GettingStarted/CreatePersistentSubscription.cs)
+@[code lang=csharp transcludeInner=CreatePersistentSubscription](@/docs/v5/code-examples/DocsExample/GettingStarted/CreatePersistentSubscription.cs)
 
 ::: tip Next steps
 Find more details on the parameters used in the example above, read the API documentation for [`PersistentSubscriptionSettings`](xref:EventStore.ClientAPI.PersistentSubscriptionSettings), [`CreatePersistentSubscriptionAsync`](xref:EventStore.ClientAPI.IEventStoreConnection.CreatePersistentSubscriptionAsync*) and [`ConnectToPersistentSubscription`](xref:EventStore.ClientAPI.IEventStoreConnection.ConnectToPersistentSubscriptionAsync*)
 :::
 
 ::::
-:::: tab JVM client API
+:::: el-tab-pane label="JVM Client"
 
 @[code lang=java transclude={14-34}](@/docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/SubscriptionExample.java)
 

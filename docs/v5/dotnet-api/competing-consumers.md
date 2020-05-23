@@ -49,24 +49,24 @@ EventStorePersistentSubscription ConnectToPersistentSubscription(
 
 Both the `Create` and `Update` methods take a `PersistentSubscriptionSettings` object as a parameter. The methods use this object to provide the settings for the persistent subscription. A fluent builder is available for these options that you can locate using the `Create()` method. The following table shows the options you can set on a persistent subscription.
 
-| Member                                   | Description                                                                                                       |
-| ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `ResolveLinkTos`                         | Tells the subscription to resolve link events.                                                                    |
-| `DoNotResolveLinkTos`                    | Tells the subscription to not resolve link events.                                                                |
-| `PreferRoundRobin`                       | If possible preference a round robin between the connections with messages (if not possible uses next available). |
-| `PreferDispatchToSingle`                 | If possible preference dispatching to a single connection (if not possible will use next available).              |
-| `StartFromBeginning`                     | Start the subscription from the first event in the stream.                                                        |
-| `StartFrom(int position)`                | Start the subscription from the position-th event in the stream.                                                  |
-| `StartFromCurrent`                       | Start the subscription from the current position.                                                                 |
-| `WithMessageTimeoutOf(TimeSpan timeout)` | Sets the timeout for a client before retrying the message.                                                        |
-| `CheckPointAfter(TimeSpan time)`         | The amount of time the system should try to checkpoint after.                                                     |
-| `MinimumCheckPointCountOf(int count)`    | The minimum number of messages to write a checkpoint for.                                                         |
-| `MaximumCheckPointCountOf(int count)`    | The maximum number of messages not checkpointed before forcing a checkpoint.                                      |
-| `WithMaxRetriesOf(int count)`            | Sets the number of times to retry a message should before considering it a bad message.                           |
-| `WithLiveBufferSizeOf(int count)`        | The size of the live buffer (in memory) before resorting to paging.                                               |
-| `WithReadBatchOf(int count)`             | The size of the read batch when in paging mode.                                                                   |
-| `WithBufferSizeOf(int count)`            | The number of messages to buffer when in paging mode.                                                             |
-| `WithExtraStatistics`                    | Tells the backend to measure timings on the clients so statistics contain histograms of them.                     |
+| Member | Description |
+|:-------|:------------|
+| `ResolveLinkTos` | Tells the subscription to resolve link events. |
+| `DoNotResolveLinkTos` | Tells the subscription to not resolve link events. |
+| `PreferRoundRobin` | If possible preference a round robin between the connections with messages (if not possible uses next available). |
+| `PreferDispatchToSingle` | If possible preference dispatching to a single connection (if not possible will use next available). |
+| `StartFromBeginning` | Start the subscription from the first event in the stream.  |
+| `StartFrom(int position)` | Start the subscription from the position-th event in the stream. |
+| `StartFromCurrent` | Start the subscription from the current position. |
+| `WithMessageTimeoutOf(TimeSpan timeout)` | Sets the timeout for a client before retrying the message. |
+| `CheckPointAfter(TimeSpan time)` | The amount of time the system should try to checkpoint after. |
+| `MinimumCheckPointCountOf(int count)` | The minimum number of messages to write a checkpoint for. |
+| `MaximumCheckPointCountOf(int count)`| The maximum number of messages not checkpointed before forcing a checkpoint. |
+| `WithMaxRetriesOf(int count)` | Sets the number of times to retry a message should before considering it a bad message. |
+| `WithLiveBufferSizeOf(int count)` | The size of the live buffer (in memory) before resorting to paging. |
+| `WithReadBatchOf(int count)` | The size of the read batch when in paging mode. |
+| `WithBufferSizeOf(int count)` | The number of messages to buffer when in paging mode. |
+| `WithExtraStatistics` | Tells the backend to measure timings on the clients so statistics contain histograms of them. |
 
 ## Creating a subscription group
 
@@ -86,12 +86,12 @@ var result = await connection.CreatePersistentSubscriptionAsync(
 );
 ```
 
-| Parameter                                 | Description                                          |
-| ----------------------------------------- | ---------------------------------------------------- |
-| `string stream`                           | The stream to the persistent subscription is on.     |
-| `string groupName`                        | The name of the subscription group to create.        |
+| Parameter | Description |
+|:----------|:------------|
+| `string stream` | The stream to the persistent subscription is on.     |
+| `string groupName` | The name of the subscription group to create.        |
 | `PersistentSubscriptionSettings settings` | The settings to use when creating this subscription. |
-| `UserCredentials credentials`             | The user credentials to use for this operation.      |
+| `UserCredentials credentials` | The user credentials to use for this operation.      |
 
 ## Updating a subscription group
 
@@ -112,12 +112,12 @@ var result = await connection.UpdatePersistentSubscriptionAsync(
 If you change settings such as `startFromBeginning`, this doesn't reset the group's checkpoint. If you want to change the current position in an update, you must delete and recreate the subscription group.
 :::
 
-| Parameter                                 | Description                                          |
-| ----------------------------------------- | ---------------------------------------------------- |
-| `string stream`                           | The stream to the persistent subscription is on.     |
-| `string groupName`                        | The name of the subscription group to update.        |
+| Parameter | Description |
+|:----------|:------------|
+| `string stream` | The stream to the persistent subscription is on. |
+| `string groupName` | The name of the subscription group to update. |
 | `PersistentSubscriptionSettings settings` | The settings to use when updating this subscription. |
-| `UserCredentials credentials`             | The user credentials to use for this operation.      |
+| `UserCredentials credentials` | The user credentials to use for this operation. |
 
 ## Deleting a subscription group
 
@@ -129,10 +129,10 @@ var result = await connection.DeletePersistentSubscriptionAsync(
 );
 ```
 
-| Parameter                     | Description                                      |
-| ----------------------------- | ------------------------------------------------ |
-| `string stream`               | The stream to the persistent subscription is on. |
-| `string groupName`            | The name of the subscription group to update.    |
+| Parameter | Description |
+| ----------| ------------|
+| `string stream` | The stream to the persistent subscription is on. |
+| `string groupName` | The name of the subscription group to update.    |
 | `UserCredentials credentials` | The user credentials to use for this operation.  |
 
 ## Connecting to a subscription group

@@ -39,8 +39,8 @@ You enable projections with the command line argument `--run-projections`. For e
 [Read this guide](/docs/v5/server/command-line-arguments.md#projections-options) for all the possible parameter values.
 :::
 
-::::: tabs
-:::: tab Windows
+::::: el-tabs
+:::: el-tab-pane label="Windows"
 
 ```powershell
 EventStore.ClusterNode.exe --run-projections=all --start-standard-projections=true
@@ -53,7 +53,7 @@ EventStore.ClusterNode.exe --run-projections=none
 ```
 
 ::::
-:::: tab Linux
+:::: el-tab-pane label="Linux"
 
 Add `EVENTSTORE_RUN_PROJECTIONS=All` and `EVENTSTORE_START_STANDARD_PROJECTIONS=true` to your environment variables, or the _/etc/eventstore/eventstore.conf_ configuration file and start Event Store:
 
@@ -64,7 +64,7 @@ sudo systemctl start eventstore
 To disable them again, change the values to `EVENTSTORE_RUN_PROJECTIONS=none`.
 
 ::::
-:::: tab Docker
+:::: el-tab-pane label="Docker"
 
 The Event Store Docker image has projections enabled by default, but you need to enable standard projections:
 
@@ -79,7 +79,7 @@ docker run --name eventstore-node -it -p 2113:2113 -p 1113:1113 -e EVENTSTORE_RU
 ```
 
 ::::
-:::: tab macOS
+:::: el-tab-pane label="macOS"
 
 ```bash
 eventstore --run-projections=all --start-standard-projections=true
@@ -100,26 +100,21 @@ To use the default database location on macOS you need to use `sudo`, or you can
 
 You then see new tabs enabled in the Admin UI with the four system projections in a `Stopped` state:
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Projections tab](../images/projections-menu-item.png)
+:::
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Projections default state](../images/projections-default.png)
+:::
 
 You can also query the state of all projections using the HTTP API.
 
-::::: tabs
-:::: tab HTTP API Request
-
 @[code lang=bash](@/docs/v5/code-examples/getting-started/list-all-projections.sh)
-
-::::
-:::: tab HTTP API Response
 
 The response is a list of all known projections and useful information about them.
 
 @[code lang=json](@/docs/v5/code-examples/getting-started/list-all-projections.json)
-
-::::
-:::::
 
 ## Add sample data
 
@@ -132,18 +127,25 @@ Download the following files that contain sample data used throughout this step 
 
 Add the sample data to four different streams:
 
-::::: tabs
-:::: tab HTTP API Request
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
 @[code lang=bash](@/docs/v5/code-examples/getting-started/add-sample-data.sh)
 
 ::::
-:::: tab HTTP API Response
+:::: el-tab-pane label=".NET Client"
 
-@[code lang=cpp transclude={141-147}](@/docs/v5/code-examples/DocsExample/Program.cs)
+First, we need a function to read JSON files and construct the list of `EventData` instances:
+
+@[code lang=csharp transcludeInner=ReadEventsFunction](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+
+Then, we can use this function and push events to Event Store:
+
+@[code lang=csharp transcludeInner=SeedEvents](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+
 
 ::::
-:::: tab Java Client API
+:::: el-tab-pane label="JVM Client"
 
 @[code lang=java transclude={23-85}](@/docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteMultipleEventsExample.java)
 
@@ -172,12 +174,16 @@ Here is the projection, you can download it as a file [here](~/code-examples/get
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running. You can create a projection using the Admin UI by opening the _Projections_ tab, clicking the _New Projection_ button and filling in the details of your projection.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Creating a projection with the Event Store Admin UI](../images/getting-started-create-projection.png)
+:::
 
-To use the HTTP or .NET API, pass the projection JSON file as a parameter of your request, along with any other settings:
+You can also create projections programmatically by using one of the available APIs.
 
-::::: tabs
-:::: tab HTTP API Request
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
+
+To use the HTTP, pass the projection JSON file as a parameter of your request, along with any other settings:
 
 @[code lang=bash](@/docs/v5/code-examples/getting-started/create-projection.sh)
 
@@ -186,9 +192,11 @@ To use the HTTP or .NET API, pass the projection JSON file as a parameter of you
 :::
 
 ::::
-:::: tab .NET API
+:::: el-tab-pane label=".NET Client"
 
-@[code lang=cpp transclude={26-27,150-164}](@/docs/v5/code-examples/DocsExample/Program.cs)
+You can send the projection code as text along the other parameters, using the `ProjectionsManager` instance:
+
+@[code lang=csharp transcludeInner=ProjectionsManager,CreateUserProjection](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::: tip Next steps
 [Read here](/docs/v5/dotnet-api/projections.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](~/projections/index.md) for details on projection syntax.
@@ -201,23 +209,22 @@ To use the HTTP or .NET API, pass the projection JSON file as a parameter of you
 
 Now the projection is running, you can query the state of the projection. As this projection has a single state, query it with the following request:
 
-::::: tabs
-:::: tab HTTP API
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
 @[code lang=bash](@/docs/v5/code-examples/getting-started/query-state.sh)
 
 ::::
-:::: tab .NET API
+:::: el-tab-pane label=".NET Client"
 
-@[code lang=cpp transclude={166-167}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
-::::
-:::: tab Response
-
-@[code lang=json](@/docs/v5/code-examples/getting-started/query-state.json)
+@[code lang=csharp transcludeInner=GetProjectionState](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::::
 :::::
+
+The server will send a response similar to this:
+
+@[code lang=json](@/docs/v5/code-examples/getting-started/query-state.json)
 
 ## Writing to streams from projections
 
@@ -233,58 +240,53 @@ Below is the updated projection, you can download it as a file [here](/docs/v5/c
 
 To update the projection, edit the projection definition in the Admin UI, or issue the following request:
 
-::::: tabs
-:::: tab HTTP API
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
 @[code lang=bash](@/docs/v5/code-examples/getting-started/xbox-one-s-counter-outputState.sh)
 
 ::::
-:::: tab .NET API
+:::: el-tab-pane label=".NET Client"
 
-@[code lang=cpp transclude={191-191}](@/docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transcludeInner=ProjectionsManager,UpdateUserProjection](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::::
 :::::
 
 Then reset the projection you created above:
 
-::::: tabs
-:::: tab HTTP API
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 @[code lang=bash](@/docs/v5/code-examples/getting-started/reset-projection.sh)
-
 ::::
-:::: tab .NET API
-
-@[code lang=cpp transclude={192-192}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
+:::: el-tab-pane label=".NET Client"
+@[code lang=csharp transcludeInner=ResetUserProjection](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 :::: 
-:::: tab Response
+:::::
+
+You should get a response similar to the one below:
 
 @[code lang=json](@/docs/v5/code-examples/getting-started/reset-projection.json)
 
-::::
-:::::
 
 You can now read the events in the result stream by issuing a read request.
 
-::::: tabs
-:::: tab HTTP API
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 
 @[code lang=bash](@/docs/v5/code-examples/getting-started/read-projection-events.sh)
 
 ::::
-:::: tab .NET API
+:::: el-tab-pane label=".NET Client"
 
-@[code lang=cpp transclude={194-197}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
-::::
-:::: tab Response
-
-@[code lang=json](@/docs/v5/code-examples/getting-started/read-projection-events.json)
+@[code lang=csharp transcludeInner=QueryUpdatedProjection](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::::
 :::::
+
+And you'll get a response like this:
+
+@[code lang=json](@/docs/v5/code-examples/getting-started/read-projection-events.json)
 
 ## Configure projection properties
 
@@ -294,16 +296,12 @@ You can configure properties of the projection by updating values of the `option
 
 Then send the update to the projection:
 
-::::: tabs
-:::: tab HTTP API
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 @[code lang=bash](@/docs/v5/code-examples/getting-started/update-projection-options.sh)
-
 ::::
-:::: tab .NET API
-
-@[code lang=cpp transclude={217-217}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
+:::: el-tab-pane label=".NET Client"
+@[code lang=csharp transcludeInner=ProjectionsManager,UpdateProjectionProperties](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -313,16 +311,12 @@ You can find all the options available in the [user defined projections guide](/
 
 Now you can read the result as above, but use the new stream name:
 
-::::: tabs
-:::: tab HTTP API
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 @[code lang=bash](@/docs/v5/code-examples/getting-started/read-projection-events-renamed.sh)
-
 ::::
-:::: tab .NET API
-
-@[code lang=cpp transclude={219-221}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
+:::: el-tab-pane label=".NET Client"
+@[code lang=csharp transcludeInner=ReadUpdatedProjectionStream](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -332,16 +326,12 @@ The example in this step so far relied on a global state for the projection, but
 
 Event Store has a built-in `$by_category` projection that lets you select events from a particular list of streams. Enable this projection with the following command.
 
-::::: tabs
-:::: tab HTTP API
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 @[code lang=bash](@/docs/v5/code-examples/getting-started/enable-by-category.sh)
-
 ::::
-:::: tab .NET API
-
-@[code lang=cpp transclude={230-230}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
+:::: el-tab-pane label=".NET Client"
+@[code lang=csharp transcludeInner=ProjectionsManager,EnableCategoryProjection](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -363,15 +353,12 @@ Below is the projection, you can download the file [here](/docs/v5/code-examples
 
 Create the projection with the following request:
 
-::::: tabs
-:::: tab HTTP API
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 @[code lang=bash](@/docs/v5/code-examples/getting-started/shopping-cart-counter.sh)
-
-:::: tab .NET API
-
-@[code lang=cpp transclude={247-247}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
+::::
+:::: el-tab-pane label=".NET Client"
+@[code lang=csharp transcludeInner=CreatePartitionedProjection](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -379,23 +366,18 @@ Create the projection with the following request:
 
 Querying for the state of the projection is different due to the partitioning of the projection. You have to specify the partition and the name of the stream.
 
-::::: tabs
-:::: tab HTTP API
-
+::::: el-tabs
+:::: el-tab-pane label="HTTP API"
 @[code lang=bash](@/docs/v5/code-examples/getting-started/read-state-partition.sh)
-
 ::::
-:::: tab .NET API
-
-@[code lang=cpp transclude={249-250}](@/docs/v5/code-examples/DocsExample/Program.cs)
-
-::::
-:::: tab Response
-
-@[code lang=json](@/docs/v5/code-examples/getting-started/read-state-partition.json)
-
+:::: el-tab-pane label=".NET Client"
+@[code lang=csharp transcludeInner=GetPartitionedProjectionState](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
+
+The server then returns the state for the partition:
+
+@[code lang=json](@/docs/v5/code-examples/getting-started/read-state-partition.json)
 
 ## Next step
 

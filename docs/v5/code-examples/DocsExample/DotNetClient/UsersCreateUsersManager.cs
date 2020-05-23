@@ -7,9 +7,15 @@ namespace DocsExample
 {
     public class UsersCreateUsersManager
     {
-        public static void Method(){
+        public static void Method()
+        {
             var hostInfo = Dns.GetHostEntry("localhost");
-            var manager = new UsersManager(new ConsoleLogger(), new IPEndPoint(hostInfo.AddressList[0], 2113), TimeSpan.FromSeconds(10));
+
+            var manager = new UsersManager(
+                new ConsoleLogger(),
+                new IPEndPoint(hostInfo.AddressList[0], 2113),
+                TimeSpan.FromSeconds(10)
+            );
         }
     }
 }

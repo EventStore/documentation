@@ -12,6 +12,7 @@ namespace DocsExample
 
         public async Task Method()
         {
+            // <CreatePersistentSubscription>
             var userCredentials = new UserCredentials("admin", "changeit");
 
             var settings = PersistentSubscriptionSettings
@@ -26,6 +27,7 @@ namespace DocsExample
                 "gr1",
                 (_, evt) => Console.WriteLine($"Received: {Encoding.UTF8.GetString(evt.Event.Data)}")
             );
+            // </CreatePersistentSubscription>
         }
     }
 }

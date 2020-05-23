@@ -17,7 +17,7 @@ namespace DocsExample
             return eventPayload;
         }
 
-        public static async Task Main()
+        public static async Task WriteEvents()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
             await conn.ConnectAsync();

@@ -8,7 +8,7 @@ namespace DocsExample
 {
     public class WritingSingleEvent
     {
-        public static async Task Main()
+        public static async Task WriteOneEvent()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
             await conn.ConnectAsync();

@@ -11,6 +11,7 @@ namespace DocsExample
 
         public async Task Method()
         {
+            // <AppendEvent>
             const string streamName = "newstream";
             const string eventType  = "event-type";
             const string data       = "{ \"a\":\"2\"}";
@@ -24,6 +25,7 @@ namespace DocsExample
                 metadata: Encoding.UTF8.GetBytes(metadata)
             );
             var result = await conn.AppendToStreamAsync(streamName, ExpectedVersion.Any, eventPayload);
+            // </AppendEvent>
         }
     }
 }
