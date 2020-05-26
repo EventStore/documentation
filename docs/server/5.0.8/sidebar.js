@@ -105,37 +105,5 @@ module.exports = [
             },
             "http-api/security.md"
         ]
-    },
-    {
-        title: ".NET API",
-        collapsable: true,
-        children: [
-            "dotnet-api/",
-            "dotnet-api/connecting-to-a-server.md",
-            "dotnet-api/streams.md",
-            "dotnet-api/reading-events.md",
-            "dotnet-api/deleting-a-stream.md",
-            "dotnet-api/persistent-subscriptions.md",
-            "dotnet-api/competing-consumers.md",
-            "dotnet-api/embedded-client.md",
-            "dotnet-api/optimistic-concurrency-and-idempotence.md",
-            "dotnet-api/projections.md",
-            "dotnet-api/stream-metadata.md",
-            "dotnet-api/users.md",
-            "dotnet-api/security.md"
-        ]
-    },
-    {
-        title: "Code documentation",
-        collapsable: true,
-        children: [
-            "dotnet-api/reference/EventStore.Client.md",
-            "dotnet-api/reference/EventStore.Client.Operations.md",
-            "dotnet-api/reference/EventStore.Client.PersistentSubscriptions.md",
-            "dotnet-api/reference/EventStore.Client.Projections.md",
-            "dotnet-api/reference/EventStore.Client.Streams.md",
-            "dotnet-api/reference/EventStore.Client.Users.md",
-            "dotnet-api/reference/Microsoft.Extensions.DependencyInjection.md"
-        ]
     }
 ]

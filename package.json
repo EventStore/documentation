@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@types/fs-extra": "^9.0.1",
     "chalk": "^2.0.0",
     "commander": "^2.0.0",
     "core-js": "2",
@@ -7,11 +8,13 @@
     "fs-extra": "^9.0.0",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
-    "typescript": "^3.8.3",
+    "typescript": "^3.9.3",
     "vuepress": "^1.4.0",
     "vuepress-plugin-check-md": "^0.0.2",
     "vuepress-plugin-element-tabs": "^0.2.8",
     "vuepress-plugin-one-click-copy": "^1.0.2",
+    "vuepress-plugin-typescript": "^0.3.0",
+    "vuepress-types": "^0.9.3",
     "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {

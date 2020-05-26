@@ -155,6 +155,8 @@ module.exports = function (md, options) {
     }
 
     function parser(state, startLine, endLine, silent) {
+        // console.log(JSON.stringify(Object.keys(state)));
+
         const matcher = [64, 91, 99, 111, 100, 101];
         const pos = state.bMarks[startLine] + state.tShift[startLine];
         const max = state.eMarks[startLine];

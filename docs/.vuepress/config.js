@@ -11,7 +11,7 @@ module.exports = {
         "vuepress-plugin-element-tabs",
         'check-md', {
             pattern: '**/*.md'
-          }
+        }
     ],
     themeConfig: {
         logo: "/es-logo.png",
@@ -30,7 +30,15 @@ module.exports = {
         nav: [
             {
                 text: "Server",
-                items: versioning.linksFor("getting-started/") // TODO create custom component
+                items: versioning.linksFor("server", "getting-started/") // TODO create custom component
+            },
+            {
+                text: "Drivers",
+                items: [
+                    {text: "Overview", link: "/clients/"},
+                    {text: ".NET SDK", items: versioning.linksFor("clients/dotnet", "")},
+                    {text: "Java SDK", items: versioning.linksFor("clients/dotnet", "")}
+                ]
             },
             {text: "Event Sourcing", link: "/event-sourcing/"},
             {text: "Get help", link: "/get-help/"},
@@ -45,6 +53,7 @@ module.exports = {
             md.use(require("./theme/markup/include"));
             md.use(require("./theme/markup/code"));//, {root: "./docs"});
             md.use(require("./theme/markup/elementui"));
+            // md.use(require("./theme/markup/test"));
         }
     }
 };

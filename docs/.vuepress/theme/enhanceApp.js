@@ -4,7 +4,7 @@ import CodeToggle from "./components/CodeToggle";
 import store from "./store";
 import {SetSiteLanguages} from "./store/mutations";
 
-export default ({ Vue, options, router, siteData }) => {
+export default ({Vue, options, router, siteData}) => {
     Vue.use(ElementUI);
     Vue.component("code-toggle", CodeToggle);
 
@@ -15,19 +15,12 @@ export default ({ Vue, options, router, siteData }) => {
         },
         store: store
     });
-    // router.addRoutes([{
-    //     path: '/docs/latest.html',
-    //     redirect: `/${siteData.themeConfig.versions.latest}/getting-started/installation.html`
-    // },
-    //     {
-    //         path: '/docs/latest/the-basics/schema.html',
-    //         redirect: `/${siteData.themeConfig.versions.latest}/the-basics/schema.html`
-    //     },
-    //     {
-    //         path: '/docs/latest/eloquent/getting-started.html',
-    //         redirect: `/${siteData.themeConfig.versions.latest}/eloquent/getting-started.html`
-    //     },
-    // ])
+    router.addRoutes([
+        {
+            path: '/docs/latest.html',
+            redirect: `/${siteData.themeConfig.versions.latest}/getting-started/`
+        },
+    ])
 
     // Select docs version based on url path
     // Example: "/2.6/guides/installation.html" will use "2.6"
