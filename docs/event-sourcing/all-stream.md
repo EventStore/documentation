@@ -1,13 +1,13 @@
 # Global event stream
 
-[This guide](./projections.md) describes projection basics. However, subscribing to a single event stream that represents an entity (for example) isn't useful. The projection code can handle any event that comes from the domain model and build sophisticated read models that serve a variety of needs.
+[This guide](projections.md) describes projection basics. However, subscribing to a single event stream that represents an entity (for example) isn't useful. The projection code can handle any event that comes from the domain model and build sophisticated read models that serve a variety of needs.
 
 For example, we might need to show user a page that contains order details, including payment and shipping information. It might be that the domain model splits those concerns to different aggregates with an independent lifecycle, since they address different concerns. One common approach is to compose such a page on the front-end side and call multiple API endpoints to collect the information from different parts of the system. Albeit such an approach can be useful, with Event Sourcing we have an option to build a read model, which would represent all the information for that page. By doing so, the need to call multiple API endpoints and do somewhat complex data composition in the UI disappears.
 
 Conceptually, to achieve the goal like that, a projection needs to receive events from different streams.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![MultiStreamProjection](./images/projection.png)
+![MultiStreamProjection](images/projection.png)
 :::
 
 The projection will then create a read model for each order and project both order information and payment information to it.
@@ -46,7 +46,7 @@ One of the great outcomes of having an event-sourced system is the ability to cr
 Continuing the previous illustrations and snippets, our eCommerce system might one day require a page that shows all the orders for one single customer. It is possible to build an API endpoint that runs a query for that purpose. There are drawbacks for adding queries though since each query potentially introduces side effects on the database, like space used for indexes, degraded performance and so on. Some databases won't even let you query without changing the persistence model significantly. Building a new read model, however, is relatively straightforward.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![ProjectionNewAggregation](./images/projection-aggregation.png)
+![ProjectionNewAggregation](images/projection-aggregation.png)
 :::
 
 One thing to remember is that all the events included in such aggregation need to have a field that conveys the aggregation id (customer id in this case). It might be problematic if the original event schema didn't contain enough data. It's not exactly straightforward, but this problem has several solutions, like stream joins (enrichment), upcasting, migration and so on. Those patterns are out of scope for this article.

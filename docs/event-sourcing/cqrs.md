@@ -50,7 +50,7 @@ The essence of CQRS is to separate command flow from the query flow, based on fu
 The main attribute of a command is that when the command gets successfully executed, the system transitions to a new state.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![CommandFlow](./images/cqrs-command-flow.png)
+![CommandFlow](images/cqrs-command-flow.png)
 :::
 
 Another important attribute of a command is that it conveys the intent of the user. Requests like `UpdateCustomer` are not exactly commands according to CQRS. Within the application boundaries, handling a command should result in one transaction on one Aggregate.
@@ -62,7 +62,7 @@ As a consequence, the command flow in CQRS goes hand in hand with the Task-Based
 Queries, as the name suggest, allow getting data from the persistent store, so it can be shown to the user, sent to another system or used for any other purpose.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![QueryFlow](./images/cqrs-query-flow.png)
+![QueryFlow](images/cqrs-query-flow.png)
 :::
 
 ::: tip
@@ -96,7 +96,7 @@ We need a way to project events to an alternative store, which we can
 easily query. It could be a relational or document database, or cache, or any other type of persistence that is applicable for a specific use case.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Projection](./images/cqrs-projections.png)
+![Projection](images/cqrs-projections.png)
 :::
 
 The idea is that a software component called a _Projection_ subscribes to the live event feed of the events database and when it receives an event, it could _project_ the information in that event to a query model in a dedicated reporting database.
@@ -106,4 +106,4 @@ In the context of CQRS you often hear _write side_, _read side_ and
 _read model_. The _write side_ is the command side, since that's the place where state mutations, also referred as _writes_, take place. By comparison, the query side is often being referred as the _read side_, and the query model gets by name _read model_.
 :::
 
-Because the query side of CQRS in event-sourced systems is more complicated than the command side, [projections page](./projections.md) is dedicated to this topic.
+Because the query side of CQRS in event-sourced systems is more complicated than the command side, [projections page](projections.md) is dedicated to this topic.

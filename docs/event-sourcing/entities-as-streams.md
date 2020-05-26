@@ -1,6 +1,6 @@
 # Entities as event streams
 
-In [the introduction section](./README.md), we got an overview of what is Event Sourcing and what the domain event is. In this guide, we can change the way we persist entities using events.
+In [the introduction section](README.md), we got an overview of what is Event Sourcing and what the domain event is. In this guide, we can change the way we persist entities using events.
 
 ::: tip
 The code in this article is C#-styled pseudo code.
@@ -28,7 +28,7 @@ public class Order {
 
 In this example, we use the Domain Model pattern, so the entity has both state and behaviour. State transitions occur when we call entity methods, so the flow of execution for any operation would look like this:
 
-![State-oriented flow](./images/command-flow-state-based.png)
+![State-oriented flow](images/command-flow-state-based.png)
 
 If our application uses a Ports and Adapters architecture, we would have an application service, which handles the command:
 
@@ -179,7 +179,7 @@ In terms of persisting objects, the main use case for an event database is to be
 
 Therefore, the whole set of events that represents a single entity has one unique identifier. Since we don't have a single record, which is assigned to that identifier, we call that event set a _stream_. The stream is an ordered collection of events for a single object in the system. The object identifier combined with the object type is often used as the stream name.
 
-![Entity event stream](./images/entity-stream.png)
+![Entity event stream](images/entity-stream.png)
 
 When we read all events from a single entity stream, we can reconstruct the current state by calling the `When` method for all the events, in sequence.
  

@@ -42,7 +42,7 @@ When deploying a projection group as an individual service, remember to keep tog
 For example, an e-commerce system could have `Order` and `Payment` aggregates are in two different streams. Then, two projections will update the order status and payment status in different documents. The order status projection would also project the payment status so it marks an order as paid accordingly. Now imagine the payment status projection handles the event and the order status projection fails for some reason. If those documents used to compose a single screen, the user will be very confused.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![ProjectionError](./images/microservices-projections-error.png)
+![ProjectionError](images/microservices-projections-error.png)
 :::
 
 Therefore, these two projections need to use the same subscription. In that case, the subscription won't progress if there's a transient error with, for example, a query database, until the error is resolved. So, the projected read model will be stale (the payment status won't get updated) but it will be consistent.
@@ -58,7 +58,7 @@ The design on the diagram above is not what you would normally do. Preferably, t
 In the imaginary e-commerce Bounded Context, the component landscape could look like something shown in the illustration below.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![OneContextManyServices](./images/microservices-split.png)
+![OneContextManyServices](images/microservices-split.png)
 :::
 
 There are a few individually deployed components and some of them share the same database. But, since they all belong to a single context or "service", such an architecture doesn't violate the fundamental Service-Oriented Architecture (SOA) rule of not sharing databases across services.

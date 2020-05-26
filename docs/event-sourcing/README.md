@@ -32,7 +32,7 @@ Albeit, no matter what database kind the application uses, all that is stored in
 System objects usually are persisted as database records - rows in tables or documents. It means that when the object changes, and the change needs to be persisted, the database record gets replaced by a new record, which contains updated values.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order presumably paid](./images/order-state-change-paid.png) 
+![Order presumably paid](images/order-state-change-paid.png) 
 :::
 
 ## Historical record
@@ -42,7 +42,7 @@ System objects usually are persisted as database records - rows in tables or doc
 Often keeping only the current state of an entity is not enough. For example, for orders, we'd probably want to keep the history of status changes. When such a requirement is present, developers often choose to save a particular update history in a separate table or document collection. Such a history, however, only tackles a specific use case and needs to be built upfront. 
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order history is lost](./images/order-history-lost.png) 
+![Order history is lost](images/order-history-lost.png) 
 :::
 
 Even when such a solution gets implemented and deployed, there is no guarantee that tomorrow or next year, the business won't require keeping the record on other state changes. Again, all the history before the change that would keep such a record will be lost. Another issue with only keeping the current entity state is that all the changes that happen in the database are, by nature, implicit. 
@@ -68,13 +68,13 @@ Any change of a persisted entity is just another update, indistinguishable from 
 When using domain events, which, in turn, use domain terminology (Ubiquitous Language) to describe state changes, we have an explicit description of the change.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](./images/order-status-changed-event.png) 
+![Order paid](images/order-status-changed-event.png) 
 :::
 
 The payment case might be a bit too simple to disclose the difference, so, let's use another example. Imagine that the total order amount changes for a different reason. Here is how the change would be done if we only keep the entity state:
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](./images/order-total-changed.png) 
+![Order paid](images/order-total-changed.png) 
 :::
 
 Here an implicit update has been applied to the entity state, and the only way for us to know what happened is to look at some sort of audit trail or even the application log.
@@ -82,13 +82,13 @@ Here an implicit update has been applied to the entity state, and the only way f
 When we model state changes as domain events, we can make those changes explicit and use the domain language to describe the change. Below you can see that two completely different operations could've happened that lead to exactly the same outcome if we only look at the final state.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](./images/order-total-discount-applied.png) 
+![Order paid](images/order-total-discount-applied.png) 
 :::
 
 When a discount is applied to the order, the total amount changes.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Order paid](./images/order-total-item-removed.png) 
+![Order paid](images/order-total-item-removed.png) 
 :::
 
 Again, the total amount could also change for other reasons, like removing an order item.
@@ -123,6 +123,6 @@ Eric Evans, Domain-Driven Design Reference
 
 So, Event Sourcing is the persistence mechanism where each state transition for a given entity is represented as a domain event that gets persisted to an event database (event store). When the entity state mutates, a new event is produced and saved. When we need to restore the entity state, we read all the events for that entity and apply each event to change the state, reaching the correct final state of the entity when all available events are read and applied.
 
-In the [next section](./entities-as-streams.md), we'll see to implement the entity persistence using events.
+In the [next section](entities-as-streams.md), we'll see to implement the entity persistence using events.
 
 

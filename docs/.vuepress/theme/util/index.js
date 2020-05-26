@@ -119,7 +119,7 @@ function resolvePath (relative, base, append) {
  * @param { string } regularPath
  * @param { SiteData } site
  * @param { string } localePath
- * @returns { SidebarGroup }
+ * @returns {*[]}
  */
 export function resolveSidebarItems (page, regularPath, site, localePath) {
   const { pages, themeConfig } = site
@@ -137,7 +137,7 @@ export function resolveSidebarItems (page, regularPath, site, localePath) {
   if (!sidebarConfig) {
     return []
   } else {
-    const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig)
+    const { base, config } = resolveMatchingConfig(regularPath, sidebarConfig);
     return config
       ? config.map(item => resolveItem(item, pages, base))
       : []
@@ -186,7 +186,7 @@ export function resolveNavLinkItem (linkItem) {
 }
 
 /**
- * @param { Route } route
+ * @param { string } regularPath
  * @param { Array<string|string[]> | Array<SidebarGroup> | [link: string]: SidebarConfig } config
  * @returns { base: string, config: SidebarConfig }
  */

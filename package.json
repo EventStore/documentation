@@ -4,6 +4,7 @@
     "commander": "^2.0.0",
     "core-js": "2",
     "esm": "^3.0.0",
+    "fs-extra": "^9.0.0",
     "markdown-it-mermaid": "^0.2.5",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
     "typescript": "^3.8.3",
@@ -23,6 +24,6 @@
   },
   "scripts": {
     "docs:dev": "vuepress dev docs",
-    "docs:build": "cp -R docs/v6/event-sourcing docs/v5/ && vuepress build docs && rm -rf docs/v5/event-sourcing/"
+    "docs:build": "cp -R docs/event-sourcing docs/v5/ && vuepress build docs && rm -rf docs/v5/event-sourcing/"
   }
 }
