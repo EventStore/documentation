@@ -263,7 +263,8 @@ module.exports = {
                                         "optional-http-headers/trusted-intermediary.md"
                                     ]
                                 },
-                                "security.md"
+                                "security.md",
+                                "api.md"
                             ]
                     }
                     ],
