@@ -1,9 +1,0 @@
-{
-    "LoginName": "adminuser",
-    "FullName": "EventStore Admin",
-    "Groups": [
-        "$admins",
-        "DataScience"
-    ],
-    "Password": "aVerySecurePassword"
-}

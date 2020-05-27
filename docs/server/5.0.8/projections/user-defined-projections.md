@@ -4,7 +4,7 @@
 
 You write user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
 
-```JavaScript
+```javascript
 options({
 	resultStreamName: "my_demo_projection_result",
 	$includeLinks: false,
@@ -245,14 +245,14 @@ fromStream('account-1')
 
 Each handler is provided with the current state of the projection as well as the event that triggered the handler. The event provided through the handler contains the following properties.
 
--   `isJson`: true/false
--   `data`: {}
--   `body`: s{}
--   `bodyRaw`: string
--   `sequenceNumber`: integer
--   `metadataRaw`: {}
--   `linkMetadataRaw`: string
--   `partition`: string
+- `isJson`: true/false
+- `data`: {}
+- `body`: s{}
+- `bodyRaw`: string
+- `sequenceNumber`: integer
+- `metadataRaw`: {}
+- `linkMetadataRaw`: string
+- `partition`: string
 - `eventType`: string
 
 <table>

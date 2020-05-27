@@ -24,7 +24,7 @@ You change the configuration of a projection by setting the relevant key and val
 
 <!-- TODO: Further explanation here -->
 
-@[code lang=csharp transclude={119-123}](docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transclude={119-123}](docs/clients/dotnet/5.0.8/code-examples/DocsExample/Program.cs)
 
 ::::
 :::::

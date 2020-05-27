@@ -11,5 +11,11 @@
     "versions": [
       "5.0.8"
     ]
+  },
+  {
+    "id": "clients/http",
+    "versions": [
+      "5.0.8"
+    ]
   }
 ]

@@ -16,19 +16,16 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 ## Quick start
 
-%%%
-
 The code below shows how to connect to an Event Store server, write to a stream, and read back the events. For more detailed information, read the full pages for [connecting to a server](connecting-to-a-server.md), [reading events](reading-events.md) and [writing to a stream](streams.md#writing-to-a-stream)
 
 ::::: el-tabs
 :::: el-tab-pane label="JSON format event"
 
-<<< @/docs/clients/dotnet/5.0.8/code-examples/DocsExample/DotNetClient/sample.js#snippet
+<<< @/docs/clients/dotnet/sample-code/DotNetClient/QuickStartJsonFormat.cs
 
-@[code lang=csharp](docs/clients/dotnet/5.0.8/code-examples/DocsExample/DotNetClient/QuickStartJsonFormat.cs)
 ::::
 :::: el-tab-pane label="Plain-text format event"
-@[code lang=csharp](docs/v5/code-examples/DocsExample/DotNetClient/QuickStartPlainFormat.cs)
+<<< @/docs/clients/dotnet/sample-code/DotNetClient/QuickStartPlainFormat.cs
 ::::
 :::::
 

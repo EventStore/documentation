@@ -137,11 +137,11 @@ Add the sample data to four different streams:
 
 First, we need a function to read JSON files and construct the list of `EventData` instances:
 
-@[code lang=csharp transcludeInner=ReadEventsFunction](@/docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ReadEventsFunction](@/docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 Then, we can use this function and push events to Event Store:
 
-@[code lang=csharp transcludeInner=SeedEvents](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=SeedEvents](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 
 ::::
@@ -196,7 +196,7 @@ To use the HTTP, pass the projection JSON file as a parameter of your request, a
 
 You can send the projection code as text along the other parameters, using the `ProjectionsManager` instance:
 
-@[code lang=csharp transcludeInner=ProjectionsManager,CreateUserProjection](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ProjectionsManager,CreateUserProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::: tip Next steps
 [Read here](/v5/dotnet-api/projections.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/v5/projections/index.md) for details on projection syntax.
@@ -217,7 +217,7 @@ Now the projection is running, you can query the state of the projection. As thi
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=GetProjectionState](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=GetProjectionState](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::::
 :::::
@@ -248,7 +248,7 @@ To update the projection, edit the projection definition in the Admin UI, or iss
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=ProjectionsManager,UpdateUserProjection](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ProjectionsManager,UpdateUserProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::::
 :::::
@@ -260,7 +260,7 @@ Then reset the projection you created above:
 @[code lang=bash](docs/v5/code-examples/getting-started/reset-projection.sh)
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ResetUserProjection](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ResetUserProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 :::: 
 :::::
 
@@ -279,7 +279,7 @@ You can now read the events in the result stream by issuing a read request.
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=QueryUpdatedProjection](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=QueryUpdatedProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 
 ::::
 :::::
@@ -301,7 +301,7 @@ Then send the update to the projection:
 @[code lang=bash](docs/v5/code-examples/getting-started/update-projection-options.sh)
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ProjectionsManager,UpdateProjectionProperties](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ProjectionsManager,UpdateProjectionProperties](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -316,7 +316,7 @@ Now you can read the result as above, but use the new stream name:
 @[code lang=bash](docs/v5/code-examples/getting-started/read-projection-events-renamed.sh)
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ReadUpdatedProjectionStream](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ReadUpdatedProjectionStream](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -331,7 +331,7 @@ Event Store has a built-in `$by_category` projection that lets you select events
 @[code lang=bash](docs/v5/code-examples/getting-started/enable-by-category.sh)
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ProjectionsManager,EnableCategoryProjection](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=ProjectionsManager,EnableCategoryProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -358,7 +358,7 @@ Create the projection with the following request:
 @[code lang=bash](docs/v5/code-examples/getting-started/shopping-cart-counter.sh)
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=CreatePartitionedProjection](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=CreatePartitionedProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 
@@ -371,7 +371,7 @@ Querying for the state of the projection is different due to the partitioning of
 @[code lang=bash](docs/v5/code-examples/getting-started/read-state-partition.sh)
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=GetPartitionedProjectionState](docs/v5/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+@[code lang=csharp transcludeInner=GetPartitionedProjectionState](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
 ::::
 :::::
 

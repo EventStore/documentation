@@ -2,16 +2,15 @@
 
 Event Store ships with four built in projections.
 
--   By Category (`$by_category`)
--   By Event Type (`$by_event_type`)
+- By Category (`$by_category`)
+- By Event Type (`$by_event_type`)
 - By Correlation ID (`$by_correlation_id`)
--   Stream by Category (`$stream_by_category`)
--   Streams (`$streams`)
+- Stream by Category (`$stream_by_category`)
+- Streams (`$streams`)
 
 ## Enabling system projections
 
 When you start Event Store from a fresh database, these projections are present but disabled and querying their statuses returns `Stopped`. You can enable a projection by issuing a request which switches the status of the projection from `Stopped` to `Running`.
-
 
 ```bash
 curl -i -X POST "http://{event-store-ip}:{ext-http-port}/projection/{projection-name}/command/enable" -H "accept:application/json" -H "Content-Length:0" -u admin:changeit

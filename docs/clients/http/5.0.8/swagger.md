@@ -1,0 +1,1674 @@
+# HTTP API
+The HTTP API for Event Store
+
+## Version: 5.0.4
+
+**Contact information:**  
+chris.ward@eventstore.com  
+
+**License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+### Security
+**basicAuth**  
+
+|basic|*Basic*|
+|---|---|
+
+### /admin/shutdown
+
+#### POST
+##### Summary:
+
+Shutdown a node
+
+##### Description:
+
+Issues a shut down command to a node.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /admin/scavenge
+
+#### POST
+##### Summary:
+
+Scavenge a node
+
+##### Description:
+
+Scavenge reclaims disk space by rewriting database chunks, minus the events to delete, and then deleting the old chunks.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| startFromChunk | query | The chunk ID to start the scavenge operation from. | No | integer |
+| threads | query | The number of threads to run the scavenge operation on (max 4). | No | integer |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 401 | Unauthorized |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /admin/scavenge/{scavengeId}
+
+#### DELETE
+##### Summary:
+
+Stop a scavenge operation
+
+##### Description:
+
+Stop a running scavenge operation.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| scavengeId | path | The scavenge ID | Yes | integer |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 401 | Unauthorized |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /admin/mergeindexes
+
+#### DELETE
+##### Summary:
+
+Merge indexes
+
+##### Description:
+
+Manually merge indexes after a scavenge operation
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 401 | Unauthorized |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /info
+
+#### GET
+##### Summary:
+
+Get info for node
+
+##### Description:
+
+Returns information about node.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 401 | Unauthorized |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /info/options
+
+#### GET
+##### Summary:
+
+Get configuration for node
+
+##### Description:
+
+Returns configuration details about node.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 401 | Unauthorized |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /streams/{stream}
+
+#### GET
+##### Summary:
+
+Reads a stream
+
+##### Description:
+
+Read a stream, receiving a standard AtomFeed document as a response.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID | Yes | string |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### POST
+##### Summary:
+
+Write to a stream
+
+##### Description:
+
+Write to a stream.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The name of the stream | Yes | string |
+| stream data | body | Stream events to create | Yes | [streamData](#streamdata) |
+| ES-ExpectedVersion | header | Expected stream version | No | integer |
+| ES-EventType | header | The event type associated to a posted body | No | string |
+| ES-EventId | header | Event ID associated to a posted body | No | integer |
+| ES-RequiresMaster | header | Wether to run on a master node | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | New stream created |
+| 307 | Temporary Redirect |
+| 400 | Write request body invalid |
+
+#### DELETE
+##### Summary:
+
+Deletes a stream
+
+##### Description:
+
+Delete specified stream
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID to delete | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 204 | Stream deleted |
+
+### /streams/{stream}/incoming/{guid}
+
+#### POST
+##### Summary:
+
+An alternative URL to post events to
+
+##### Description:
+
+A URL generated by Event Store if you don't supply an ID when creating a stream. You then use this URL to post events to.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The name of the stream | Yes | string |
+| guid | path | Autogenerated UUID | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | New event created |
+| 400 | Bad request |
+
+### /streams/{stream}/{event}
+
+#### GET
+##### Summary:
+
+Read a stream event
+
+##### Description:
+
+Reads a single event from a stream.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID | Yes | string |
+| event | path | The event ID | Yes | string |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /streams/{stream}/{event}/{count}
+
+#### GET
+##### Summary:
+
+Paginate backwards through stream events
+
+##### Description:
+
+Paginate backwards though stream events by a specified amount.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID | Yes | string |
+| event | path | The event ID | Yes | string |
+| count | path | How many events to skip backwards from in the request. | Yes | long |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /streams/{stream}/{event}/backward/{count}
+
+#### GET
+##### Summary:
+
+Paginate backwards through stream events
+
+##### Description:
+
+Paginate backwards though stream events by a specified amount.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID | Yes | string |
+| event | path | The event ID | Yes | string |
+| count | path | How many events to skip backwards from in the request. | Yes | long |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /streams/{stream}/{event}/forward/{count}
+
+#### GET
+##### Summary:
+
+Paginate forwards through stream events
+
+##### Description:
+
+Paginate forwards though stream events by a specified amount.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID | Yes | string |
+| event | path | The event ID | Yes | string |
+| count | path | How many events to skip forwards in the request. | Yes | long |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /streams/{stream}/metadata
+
+#### GET
+##### Summary:
+
+Reads the metadata of a stream
+
+##### Description:
+
+Returns metadata of a stream, typically information associated with an event that is not part of the event.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream ID | Yes | string |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+#### POST
+##### Summary:
+
+Update stream metadata
+
+##### Description:
+
+Update the metadata of a stream.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The name of the stream | Yes | string |
+| streamMetadataItem | body | Metadata object | No | [StreamMetadataItem](#streammetadataitem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | New stream created |
+| 400 | Bad request |
+
+### /streams/$all
+
+#### GET
+##### Summary:
+
+Returns all events from all streams
+
+##### Description:
+
+Returns all events from all streams, you must provide user details.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /subscriptions
+
+#### GET
+##### Summary:
+
+Get information for all subscriptions
+
+##### Description:
+
+Returns all subscriptions from all streams.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | New persistant subscription |
+| 400 | bad input parameter |
+
+### /subscriptions/{stream}
+
+#### GET
+##### Summary:
+
+Returns information about the subscriptions for a stream
+
+##### Description:
+
+Needed
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream name | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+### /subscriptions/{stream}/{subscription}/info
+
+#### GET
+##### Summary:
+
+Reads stream information via a persistent subscription
+
+##### Description:
+
+Needed
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+### /subscriptions/{stream}/{subscription}
+
+#### GET
+##### Summary:
+
+Read a stream
+
+##### Description:
+
+Read a specified stream by a persistent subscription.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| embed | query | Needed | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+#### POST
+##### Summary:
+
+Update a persistant subscription
+
+##### Description:
+
+You can edit the settings of an existing subscription while it is running. This will drop the current subscribers and will reset the subscription internally.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| subscriptionItem | body | Subscription to create | No | [SubscriptionItem](#subscriptionitem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | Subscription updated |
+
+#### PUT
+##### Summary:
+
+Create a persistent subscription
+
+##### Description:
+
+Before interacting with a subscription group, you need to create one. You will receive an error if you attempt to create a subscription group more than once. This requires [admin permissions](/v5/server/access-control-lists).
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| subscriptionItem | body | Subscription to create | No | [SubscriptionItem](#subscriptionitem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | Subscription created |
+
+#### DELETE
+##### Summary:
+
+Deletes a subscription
+
+##### Description:
+
+Deletes a subscription
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+### /subscriptions/{stream}/{subscription}/{count}
+
+#### GET
+##### Summary:
+
+Reads a stream via a persistent subscription and return a specific number of events
+
+##### Description:
+
+Reads a stream via a persistent subscription and return a specific number of events
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| count | path | How many events to return for the request. | Yes | long |
+| embed | query |  | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+### /subscriptions/{stream}/{subscription}/ack/{messageid}
+
+#### POST
+##### Summary:
+
+Acknowledge a single message
+
+##### Description:
+
+Clients must acknowledge (or not acknowledge) messages in the competing consumer model. If the client fails to respond in the given timeout period, the message will be retried. You should use the `rel` links in the feed for acknowledgements not bookmark URIs as they are subject to change in future versions.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| messageid | path | The id of the message that needs to be acked | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | New persistant subscription |
+| 400 | bad input parameter |
+
+### /subscriptions/{stream}/{subscription}/ack
+
+#### POST
+##### Summary:
+
+Acknowledge multiple messages
+
+##### Description:
+
+Clients must acknowledge (or not acknowledge) messages in the competing consumer model. If the client fails to respond in the given timeout period, the message will be retried. You should use the `rel` links in the feed for acknowledgements not bookmark URIs as they are subject to change in future versions.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| ids | query | The ids of the messages that need to be acked separated by commas | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | New persistant subscription |
+| 400 | bad input parameter |
+
+### /subscriptions/{stream}/{subscription}/nack/{messageid}
+
+#### POST
+##### Summary:
+
+Negative acknowledge a single message
+
+##### Description:
+
+Clients must acknowledge (or not acknowledge) messages in the competing consumer model. If the client fails to respond in the given timeout period, the message will be retried. You should use the `rel` links in the feed for acknowledgements not bookmark URIs as they are subject to change in future versions.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| messageid | path | The id of the message that needs to be nacked | Yes | string |
+| action | query | <ul><li/>**Park** - Don't retry the message, park it until a request is sent to reply the parked messages<li>**Retry** - Retry the message<li/>**Skip** - Discard the message<li/>**Stop** - Stop the subscription</ul> | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | New persistant subscription |
+| 400 | bad input parameter |
+
+### /subscriptions/{stream}/{subscription}/nack
+
+#### POST
+##### Summary:
+
+Negative acknowledge multiple messages
+
+##### Description:
+
+Clients must acknowledge (or not acknowledge) messages in the competing consumer model. If the client fails to respond in the given timeout period, the message will be retried. You should use the `rel` links in the feed for acknowledgements not bookmark URIs as they are subject to change in future versions.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+| ids | query | The ids of the messages that need to be nacked separated by commas | No | string |
+| action | query | <ul><li/>**Park** - Don't retry the message, park it until a request is sent to reply the parked messages<li/>**Retry** - Retry the message<li/>**Skip** - Discard the message<li/>**Stop** - Stop the subscription</ul> | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | New persistant subscription |
+| 400 | bad input parameter |
+
+### /subscriptions/{stream}/{subscription}/replayParked
+
+#### POST
+##### Summary:
+
+Replay any previously parked messages in a stream
+
+##### Description:
+
+Replay any previously parked messages in a stream that were parked by a negative acknowledgement action.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| stream | path | The stream the persistent subscription is on | Yes | string |
+| subscription | path | The name of the subscription group | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+### /users/
+
+#### GET
+##### Summary:
+
+Get all users
+
+##### Description:
+
+Returns all users defined in Event Store.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### POST
+##### Summary:
+
+Create a User
+
+##### Description:
+
+Create a new user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| userItem | body | User to create | No | [UserItem](#useritem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | New user created |
+| 400 | Bad request |
+| 401 | Unauthorized |
+
+##### Security
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
+
+### /users/{login}
+
+#### GET
+##### Summary:
+
+Get user
+
+##### Description:
+
+Returns the user currently authenticated with the API, or the user specified.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user passed to the API call. | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### PUT
+##### Summary:
+
+Update specified user
+
+##### Description:
+
+Update the FullName of Groups of the specified user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user's name | Yes | string |
+| userUpdateItem | body | User to update | No | [UserUpdateItem](#userupdateitem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### DELETE
+##### Summary:
+
+Deletes a user
+
+##### Description:
+
+Delete specified user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user's name | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 204 | User deleted |
+
+### /users/{login}/command/enable
+
+#### PUT
+##### Summary:
+
+Enable the specified user
+
+##### Description:
+
+Enable the acount of the specified user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user's name | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /users/{login}/command/disable
+
+#### PUT
+##### Summary:
+
+Disable the specified user
+
+##### Description:
+
+Disable the acount of the specified user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user's name | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /users/{login}/command/reset-password
+
+#### POST
+##### Summary:
+
+Reset user password
+
+##### Description:
+
+Reset the password of the specified user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user's name | Yes | string |
+| newPassword | body | The new password for the user | Yes | [PasswordResetItem](#passwordresetitem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad request |
+
+### /users/{login}/command/change-password
+
+#### POST
+##### Summary:
+
+Change user password
+
+##### Description:
+
+Change the password of the specified user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| login | path | The user's name | Yes | string |
+| newPassword | body | The new password for the user | Yes | [PasswordChangeItem](#passwordchangeitem) |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 400 | Bad request |
+
+### /projections/any
+
+#### GET
+##### Summary:
+
+Get all projections
+
+##### Description:
+
+Returns all projections defined in Event Store.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projections/all-non-transient
+
+#### GET
+##### Summary:
+
+Get all non-transient projections
+
+##### Description:
+
+Returns all known projections except ad-hoc projections.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projections/onetime
+
+#### GET
+##### Summary:
+
+Get all queries
+
+##### Description:
+
+Returns all queries defined in Event Store.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### POST
+##### Summary:
+
+Create a onetime projection
+
+##### Description:
+
+Create a new onetime projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | query | Name of the projection | No | string |
+| type | query | The projection type | No | string |
+| enabled | query | Is the projection enabled | No | boolean |
+| checkpoints | query | Are checkpoints enabled | No | boolean |
+| emit | query | Is emit enabled | No | boolean |
+| trackemittedstreams | query | Should your projection create a separate stream and write any streams it emits to that stream. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | New projection created |
+| 400 | Bad request |
+
+### /projections/continuous
+
+#### GET
+##### Summary:
+
+Get all continious projections
+
+##### Description:
+
+Returns all continually running projections defined in Event Store.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### POST
+##### Summary:
+
+Create a continious projection
+
+##### Description:
+
+Create a new continious projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | query | Name of the projection | No | string |
+| enabled | query | Is the projection enabled | No | boolean |
+| checkpoints | query | Are checkpoints enabled | No | boolean |
+| emit | query | Is emit enabled | No | boolean |
+| type | query | The projection type | No | string |
+| trackemittedstreams | query | Should your projection create a separate stream and write any streams it emits to that stream. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | New projection created |
+| 400 | Bad request |
+
+### /projections/read-events
+
+#### POST
+##### Summary:
+
+Read events from projection based on a query definition
+
+##### Description:
+
+Read events from projection based on a query definition, i.e. fromAll, fromStream, fromStreams
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projections/transient
+
+#### GET
+##### Summary:
+
+Get all transient projections
+
+##### Description:
+
+Returns all transient projections defined in Event Store.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### POST
+##### Summary:
+
+Create a transient projection
+
+##### Description:
+
+Create a new transient projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | query | Name of the projection | No | string |
+| type | query | The projection type | No | string |
+| enabled | query | Is the projection enabled | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 201 | New user created |
+| 400 | Bad request |
+
+### /projection/{name}/query
+
+#### GET
+##### Summary:
+
+Get projection definition
+
+##### Description:
+
+Returns definition of the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| config | query | Wether to return the projection definition config. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### PUT
+##### Summary:
+
+Update projection definition
+
+##### Description:
+
+Update the specified projection definition.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| type | query | The projection type | No | string |
+| emit | query | Is emit enabled | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/state
+
+#### GET
+##### Summary:
+
+Get the projection state
+
+##### Description:
+
+Return the current state of the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| partition | query | The partition name in state | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/result
+
+#### GET
+##### Summary:
+
+Get result of projection
+
+##### Description:
+
+Get the final result of a projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| partition | query | The partition name in state | No | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/statistics
+
+#### GET
+##### Summary:
+
+Get projection statistics
+
+##### Description:
+
+Returns the statistics for a projection, such as how many events, the status etc.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/command/disable
+
+#### POST
+##### Summary:
+
+Disable projection
+
+##### Description:
+
+Disable the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| enableRunAs | query | Run as the user issuing the command. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/command/enable
+
+#### POST
+##### Summary:
+
+Enable projection
+
+##### Description:
+
+Enable the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| enableRunAs | query | Run as the user issuing the command. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/command/reset
+
+#### POST
+##### Summary:
+
+Reset projection
+
+##### Description:
+
+Reset the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| enableRunAs | query | Run as the user issuing the command. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/command/abort
+
+#### POST
+##### Summary:
+
+Abort projection
+
+##### Description:
+
+Abort the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+| enableRunAs | query | Run as the user issuing the command. | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}/config
+
+#### GET
+##### Summary:
+
+Get the config of a projection
+
+##### Description:
+
+Returns the performance configuration of the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### PUT
+##### Summary:
+
+Update the config of a projection
+
+##### Description:
+
+Update the performance configuration of the specified projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /projection/{name}
+
+#### GET
+##### Summary:
+
+Get a projection
+
+##### Description:
+
+Returns a specific projection.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The name of the projection | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### DELETE
+##### Summary:
+
+Deletes a projection
+
+##### Description:
+
+Deletes a projection
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| name | path | The projection to delete | Yes | string |
+| deleteStateStream | query | TBD | No | boolean |
+| deleteCheckpointStream | query | TBD | No | boolean |
+| deleteEmittedStreams | query | TBD | No | boolean |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 204 | Projection deleted |
+
+### /stats
+
+#### GET
+##### Summary:
+
+Get all stats
+
+##### Description:
+
+Returns all stats enabled for Event Store.
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | A list of stats | [Stats](#stats) |
+| 404 | Not found |  |
+
+### /stats/{statPath}
+
+#### GET
+##### Summary:
+
+Get stats sub path
+
+##### Description:
+
+Returns the sub path of the Event Store statistics available.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ---- |
+| statPath | path | The stats sub path | Yes | string |
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### /gossip
+
+#### GET
+##### Summary:
+
+Return Gossip details for cluster
+
+##### Description:
+
+Return Gossip details for nodes in cluster.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+#### POST
+##### Summary:
+
+Update Gossip details for cluster
+
+##### Description:
+
+Update Gossip details for nodes in a cluster.
+
+##### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+| 404 | Not found |
+
+### Models
+
+
+#### UserItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| LoginName | string | The new users login name. | No |
+| FullName | string | The full name for the new user. | No |
+| Groups | [ string ] | The groups the new user is a member of. | No |
+| Password | string | The password for the new user. | No |
+
+#### UserUpdateItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| FullName | string | The full name of the new user. | No |
+| Groups | [ string ] | The groups the new user should become a member of. | No |
+
+#### PasswordResetItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| NewPassword | string | The new password for the user | No |
+
+#### PasswordChangeItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| CurrentPassword | string | The current password for the user | No |
+| NewPassword | string | The new password for the user | No |
+
+#### streamData
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| body | object | Event data | Yes |
+
+#### StreamItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| ResolveLinkTos | boolean | Whether to resolve link events | No |
+| startFrom | long | Which event position in the stream the subscription should start from | No |
+| extraStatistics | boolean | Whether to track latency statistics on this subscription | No |
+| checkPointAfterMilliseconds | long | The amount of time to try to checkpoint after | No |
+| liveBufferSize | long | The size of the buffer (in-memory) listening to live messages as they happen before paging occurs | No |
+| readBatchSize | long | The number of events to read per batch when reading the history | No |
+| bufferSize | long | The number of events to cache when paging through history | No |
+| maxCheckPointCount | long | The maximum number of messages not checkpointed before forcing a checkpoint | No |
+| maxRetryCount | long | The maximum number of retries (due to timeout) before a message is considered to be parked | No |
+| maxSubscriberCount | long | The maximum number of TCP subscribers allowed | No |
+| messageTimeoutMilliseconds | long | The amount of time after which to consider a message as timedout and retried | No |
+| minCheckPointCount | long | The minimum number of messages to write to a checkpoint | No |
+| namedConsumerStrategy | string | The strategy to use for distributing events to client consumers | No |
+
+#### StreamMetadataItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| eventId | string | Alphanumeric ID | No |
+| eventType | string | The type of event | No |
+| data | [StreamMetadataItem_data](#streammetadataitem_data) |  | No |
+
+#### SubscriptionItem
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| ResolveLinkTos | boolean | Whether to resolve link events | No |
+| startFrom | long | Which event position in the stream the subscription should start from | No |
+| extraStatistics | boolean | Whether to track latency statistics on this subscription | No |
+| checkPointAfterMilliseconds | long | The amount of time to try to checkpoint after | No |
+| liveBufferSize | long | The size of the buffer (in-memory) listening to live messages as they happen before paging occurs | No |
+| readBatchSize | long | The number of events to read per batch when reading the history | No |
+| bufferSize | long | The number of events to cache when paging through history | No |
+| maxCheckPointCount | long | The maximum number of messages not checkpointed before forcing a checkpoint | No |
+| maxRetryCount | long | The maximum number of retries (due to timeout) before a message is considered to be parked | No |
+| maxSubscriberCount | long | The maximum number of TCP subscribers allowed | No |
+| messageTimeoutMilliseconds | long | The amount of time after which to consider a message as timedout and retried | No |
+| minCheckPointCount | long | The minimum number of messages to write to a checkpoint | No |
+| namedConsumerStrategy | string | The strategy to use for distributing events to client consumers | No |
+
+#### StreamMetadataItem_data
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| maxAge | integer | The maximum age of events in the stream | No |
+| maxCount | integer | The maximum count of events in the stream | No |
+| truncateBefore | integer | Events prior to this event are truncated and removed | No |
+| cacheControl | string | Period of time to make feed head cacheable | No |
+| acl | object | Access control list for this stream | No |
+
+#### Stats
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| proc | object | Stats on the currently active process | No |
+| sys | object | System usage stats | No |
+| es | object |  | No |

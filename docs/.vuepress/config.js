@@ -37,7 +37,7 @@ module.exports = {
                 items: [
                     {text: "Overview", link: "/clients/"},
                     {text: ".NET SDK", items: versioning.linksFor("clients/dotnet", "")},
-                    {text: "Java SDK", items: versioning.linksFor("clients/dotnet", "")}
+                    {text: "HTTP API", items: versioning.linksFor("clients/http", "")}
                 ]
             },
             {text: "Event Sourcing", link: "/event-sourcing/"},

@@ -36,7 +36,7 @@ Event Store exposes all streams as [atom feeds](http://tools.ietf.org/html/rfc42
 
 Make a request with cURL to read events from the `newStream` stream:
 
-@[code lang=bash transclude={1-1}](docs/v5/code-examples/getting-started/read-stream.sh)
+<<< @/docs/server/sample-code/getting-started/read-stream.sh#read
 
 ::: tip
 This returns the feed in JSON format, you can also use `Accept:application/atom+xml` if you prefer XML.
@@ -51,7 +51,7 @@ The response contains a page of events from the stream in the `entries` field an
 
 To use the .NET API, use the following method passing the stream name, the start point in the stream, the number of events to read and whether to follow links to the event data:
 
-@[code lang=csharp transcludeInner=ReadEvents](docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transcludeInner=ReadEvents](docs/clients/dotnet/5.0.8/code-examples/DocsExample/Program.cs)
 
 ::: tip Next steps
 [Read this guide](/v5/dotnet-api/reading-events.md) for more information on how to read events with the .NET API.
@@ -90,7 +90,7 @@ The response only includes one event:
 :::: el-tab-pane label=".NET Client"
 To use the .NET API, use the following method passing the stream name, the event you want to read and whether to return the event data:
 
-@[code lang=csharp transcludeInner=ReadOneEvent](docs/v5/code-examples/DocsExample/Program.cs)
+@[code lang=csharp transcludeInner=ReadOneEvent](docs/clients/dotnet/5.0.8/code-examples/DocsExample/Program.cs)
 
 ::::
 :::: el-tab-pane label="JVM Client"
@@ -137,7 +137,7 @@ You can create subscription and watch events as they arrive under the _Persisten
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=CreatePersistentSubscription](docs/v5/code-examples/DocsExample/GettingStarted/CreatePersistentSubscription.cs)
+@[code lang=csharp transcludeInner=CreatePersistentSubscription](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/CreatePersistentSubscription.cs)
 
 ::: tip Next steps
 Find more details on the parameters used in the example above, read the API documentation for [`PersistentSubscriptionSettings`](xref:EventStore.ClientAPI.PersistentSubscriptionSettings), [`CreatePersistentSubscriptionAsync`](xref:EventStore.ClientAPI.IEventStoreConnection.CreatePersistentSubscriptionAsync*) and [`ConnectToPersistentSubscription`](xref:EventStore.ClientAPI.IEventStoreConnection.ConnectToPersistentSubscriptionAsync*)

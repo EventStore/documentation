@@ -74,36 +74,5 @@ module.exports = [
             "projections/projections-config.md",
             "projections/debugging.md"
         ]
-    },
-    {
-        title: "HTTP API",
-        collapsable: true,
-        children: [
-            "http-api/",
-            "http-api/creating-writing-a-stream.md",
-            "http-api/reading-streams.md",
-            "http-api/deleting-a-stream.md",
-            "http-api/competing-consumers.md",
-            "http-api/description-document.md",
-            "http-api/optimistic-concurrency-and-idempotence.md",
-            "http-api/stream-metadata.md",
-            {
-                title: "Optional HTTP headers",
-                path: "",
-                "collapsable": true,
-                "children": [
-                    "http-api/optional-http-headers/",
-                    "http-api/optional-http-headers/eventid.md",
-                    "http-api/optional-http-headers/eventtype.md",
-                    "http-api/optional-http-headers/expected-version.md",
-                    "http-api/optional-http-headers/harddelete.md",
-                    "http-api/optional-http-headers/longpoll.md",
-                    "http-api/optional-http-headers/requires-master.md",
-                    "http-api/optional-http-headers/resolve-linkto.md",
-                    "http-api/optional-http-headers/trusted-intermediary.md"
-                ]
-            },
-            "http-api/security.md"
-        ]
     }
 ]
