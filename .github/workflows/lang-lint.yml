@@ -14,6 +14,6 @@ jobs:
             https://github.com/errata-ai/write-good/releases/latest/download/write-good.zip
             https://github.com/EventStore/Vale-Styles/archive/0.1.0.zip
             https://github.com/testthedocs/Openly/archive/0.1.0.zip
-          config: https://raw.githubusercontent.com/EventStore/Style-Guide/master/.vale.ini?token=AAAKIYFECFCPHNCQUUP5BK26SVXVO
+          config: https://raw.githubusercontent.com/EventStore/Style-Guide/master/.vale.ini?token=AAAKIYDY3ZWWCZSVNUPWMCC63IO6C
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
