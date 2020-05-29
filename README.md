@@ -1,6 +1,6 @@
 # Event Store documentation
 
-Next Gen docos using VuePress.
+Next Gen doco using VuePress.
 
 ## Local development
 
