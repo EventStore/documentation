@@ -10,21 +10,21 @@ You can only change the configuration of a stopped projection.
 
 You change the configuration of a projection by setting the relevant key and value in a request, or when you create a projection with the web admin interface.
 
-![Web admin interface projections configuration screen](/v5/images/wai-projection-config.jpg)
+![Web admin interface projections configuration screen](../images/wai-projection-config.jpg)
 
 ::::: tabs
 :::: tab HTTP API
 
 <!-- TODO: Further explanation here -->
 
-@[code lang=bash](docs/v5/code-examples/getting-started/create-projection.sh)
+<<< @/docs/server/sample-code/getting-started/create-projection.sh
 
 ::::
 :::: tab .NET Client
 
 <!-- TODO: Further explanation here -->
 
-@[code lang=csharp transclude={119-123}](docs/clients/dotnet/5.0.8/code-examples/DocsExample/Program.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#UpdateProjectionProperties
 
 ::::
 :::::

@@ -22,7 +22,7 @@ This separation allows for more secure setups such as putting internal communica
 
 The external TCP and HTTP ports are similar to the HTTP and TCP ports of a single node deploy. Event Store runs client requests over the HTTP API through the external HTTP port. You can run without the management API on the external interface (internal only). The external and the internal interfaces support the gossip protocol.
 
-You can control whether the admin interface is available on the external HTTP interface using the `admin-on-ext` [option](/v5/server/command-line-arguments.md). You can control whether gossip is enabled on external interfaces with the `gossip-on-ext` [option](/v5/server/command-line-arguments.md) (you normally want it enabled).
+You can control whether the admin interface is available on the external HTTP interface using the `admin-on-ext` [option](command-line-arguments.md). You can control whether gossip is enabled on external interfaces with the `gossip-on-ext` [option](command-line-arguments.md) (you normally want it enabled).
 
 You configure the internal TCP and HTTP ports in the same way as the external. All internal communications for the cluster happen over these interfaces. Elections and internal gossip happen over HTTP. Replication and forwarding of client requests happens over the TCP channel.
 
@@ -49,7 +49,7 @@ If in doubt, choose higher numbers. This adds a small period of time to discover
 
 Due to NAT, or other reasons a node may not be bound to the address it is reachable from other nodes. For example, the machine has an IP address of 192.168.1.13, but the node is visible to other nodes as 10.114.12.112.
 
-The [option](/v5/server/command-line-arguments.md) `advertise-as` allows you to tell the node that even though it is bound to a given address it should not gossip that address. Instead it uses the address that you tell it to use. In the example above you would configure"
+The [option](command-line-arguments.md) `advertise-as` allows you to tell the node that even though it is bound to a given address it should not gossip that address. Instead it uses the address that you tell it to use. In the example above you would configure"
 
 ```bash
 --ext-ip 192.168.1.13 --advertise-as 10.114.12.112

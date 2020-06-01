@@ -9,7 +9,7 @@ title: Cluster with only database nodes
 High availability Event Store allows you to run more than one node as a cluster. There are two modes available for clustering:
 
 -   With database nodes only (open source and commercial)
--   [With manager nodes and database nodes](cluster-with-manager-nodes) (commercial only)
+-   [With manager nodes and database nodes](cluster-with-manager-nodes.md) (commercial only)
 
 This document covers setting up Event Store with only database nodes.
 
@@ -65,11 +65,11 @@ You can also use the method above for HTTP clients to avoid using a load balance
 
 Create a file _docker-compose.yaml_ with following content:
 
-@[code lang=yaml](docs/v5/code-examples/server/docker-compose.yaml)
+<<< @/docs/server/sample-code/server/docker-compose.yaml
 
 Run containers:
 ```bash
-docker-compose -f docker-compose.yaml up
+docker-compose up
 ```
 
 ## Internal vs. external networks
@@ -80,7 +80,7 @@ To setup an internal network, use the command line parameters provided above, bu
 
 ## HTTP clients
 
-If you want to use the HTTP API, [then you should add a load balancer](/v5/server/setting-up-varnish-in-linux.md) in front of the three nodes. It does not matter which node receives a request as the requests the node are forwarded to the request internally. With this setup, you can lose any one machine with no data loss.
+If you want to use the HTTP API, [then you should add a load balancer](setting-up-varnish-in-linux.md) in front of the three nodes. It does not matter which node receives a request as the requests the node are forwarded to the request internally. With this setup, you can lose any one machine with no data loss.
 
 ## Native TCP clients
 
@@ -88,11 +88,11 @@ You can connect to the cluster using the native TCP interface. The client APIs s
 
 To set up a connection as above, provide gossip seeds to the connection. The client then uses the gossip seeds to begin gossiping information about the cluster.
 
-@[code lang=cpp](docs/clients/dotnet/5.0.8/code-examples/DocsExample/Server/ConnectClusterGossipSeeds.cs)
+<<< @/docs/clients/dotnet/sample-code/Server/ConnectClusterGossipSeeds.cs
 
 As in the example above, you can also use DNS to avoid manually specifying the seeds. You add the nodes to a DNS record and then specify that DNS entry to the connection to locate nodes.
 
-@[code lang=cpp](docs/clients/dotnet/5.0.8/code-examples/DocsExample/Server/ConnectClusterGossipDns.cs)
+<<< @/docs/clients/dotnet/sample-code/Server/ConnectClusterGossipDns.cs
 
 The connection automatically reconnects during node failures. You can control this behaviour with options on the [`ConnectionSettings`](xref:EventStore.ClientAPI.ConnectionSettings) such as limiting retry attempts or frequency. The connection and durable subscription even manage a subscription during node failures, you will not receive duplicated messages over your durable subscription.
 

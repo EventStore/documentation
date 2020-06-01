@@ -18,6 +18,8 @@ public class ReadSingleEventExample {
                 .defaultCredentials("admin", "changeit")
                 .build();
         final ActorRef connection = system.actorOf(ConnectionActor.getProps(settings));
+
+        // #region readEvent
         final ActorRef readResult = system.actorOf(Props.create(ReadResult.class));
 
         final ReadEvent readEvent = new ReadEventBuilder("my-stream")
@@ -27,6 +29,7 @@ public class ReadSingleEventExample {
                 .build();
 
         connection.tell(readEvent, readResult);
+        // #endregion readEvent
     }
 
 

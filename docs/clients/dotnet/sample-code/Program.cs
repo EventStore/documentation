@@ -66,19 +66,19 @@ namespace DocsExample
             var conn       = await Connection.CreateConnection();
             var streamName = Globals.StreamName;
 
-            // <ReadEvents>
+            #region ReadEvents
             var readEvents = await conn.ReadStreamEventsForwardAsync(streamName, 0, 10, true);
 
             foreach (var evt in readEvents.Events)
             {
                 Console.WriteLine(Encoding.UTF8.GetString(evt.Event.Data));
             }
-            // </ReadEvents>
+            #endregion ReadEvents
 
-            // <ReadOneEvent>
+            #region ReadOneEvent
             var readResult = await conn.ReadEventAsync(streamName, 0, true);
             Console.WriteLine(Encoding.UTF8.GetString(readResult.Event.Value.Event.Data));
-            // </ReadOneEvent>
+            #endregion ReadOneEvent
         }
 
         static async Task Step2Subs()
@@ -87,7 +87,7 @@ namespace DocsExample
             var streamName       = Globals.StreamName;
             var adminCredentials = Globals.AdminCredentials;
 
-            // <PersistentSubscription>
+            #region PersistentSubscription
             var settings = PersistentSubscriptionSettings
                 .Create()
                 .DoNotResolveLinkTos()
@@ -110,6 +110,7 @@ namespace DocsExample
 
             Console.WriteLine("waiting for events. press enter to exit");
             Console.ReadLine();
+            #endregion PersistentSubscription
         }
 
     }

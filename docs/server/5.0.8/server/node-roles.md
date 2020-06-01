@@ -18,7 +18,7 @@ A cluster asynchronously replicates data one way to a node with the `Clone` role
 
 If a cluster loses nodes to take it below `ClusterSize`, then the cluster can promote a `Clone` to a `Master` or `Slave` role.
 
-You can control which clones the cluster promotes with the `NodePriority` [command line option](/v5/server/command-line-arguments.md). The default value is `0`, and the cluster is more likely to promote clones with higher values.
+You can control which clones the cluster promotes with the `NodePriority` [command line option](command-line-arguments.md). The default value is `0`, and the cluster is more likely to promote clones with higher values.
 
 ::: tip
 Changing `NodePriority` doesn't guarantee that the cluster won't promote the clone. It's only one of the criteria that the Election Service considers.

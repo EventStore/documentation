@@ -1,5 +1,8 @@
+#region curl
 curl -X DELETE "http://127.0.0.1:2113/streams/newstream"
+#endregion curl
 
+#region response
 HTTP/1.1 204 Stream deleted
 Access-Control-Allow-Methods: POST, DELETE, GET, OPTIONS
 Access-Control-Allow-Headers: Content-Type, X-Requested-With, X-Forwarded-Host, X-Forwarded-Prefix, X-PINGOTHER, Authorization, ES-LongPoll, ES-ExpectedVersion, ES-EventId, ES-EventType, ES-RequiresMaster, ES-HardDelete, ES-ResolveLinkTos
@@ -10,3 +13,4 @@ Server: Mono-HTTPAPI/1.0
 Date: Fri, 27 Jul 2018 11:51:02 GMT
 Content-Length: 0
 Connection: close
+#endregion response

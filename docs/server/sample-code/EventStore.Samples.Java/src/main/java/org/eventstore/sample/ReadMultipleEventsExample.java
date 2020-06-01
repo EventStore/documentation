@@ -18,8 +18,10 @@ public class ReadMultipleEventsExample {
                 .defaultCredentials("admin", "changeit")
                 .build();
         final ActorRef connection = system.actorOf(ConnectionActor.getProps(settings));
+
+        // #region readEvents
         final ActorRef readResult = system.actorOf(Props.create(ReadResult.class));
-        
+
         final ReadStreamEvents readEvents = new ReadStreamEventsBuilder("newstream")
                 .maxCount(10)
                 .resolveLinkTos(false)
@@ -27,6 +29,7 @@ public class ReadMultipleEventsExample {
                 .build();
 
         connection.tell(readEvents, readResult);
+        // #endregion readEvents
     }
 
     public static class ReadResult extends AbstractActor {
@@ -37,7 +40,7 @@ public class ReadMultipleEventsExample {
                     .match(ReadStreamEventsCompleted.class, m -> {
                         // List<Event> events = m.events();
                         // for(Event event:m.events()) {
-                            
+
                         // }
                         log.info(m.events().toString());
                         // final Event event = m.event();

@@ -14,7 +14,7 @@ namespace DocsExample.GettingStarted
 {
     public class Step3_UserProjections
     {
-        // <ReadEventsFunction>
+        #region ReadEventsFunction
         public static List<EventData> ReadEvents(string filePath)
         {
             var events    = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(filePath));
@@ -30,18 +30,17 @@ namespace DocsExample.GettingStarted
 
             return eventData;
         }
-        // </ReadEventsFunction>
+        #endregion ReadEventsFunction
 
         static ProjectionsManager GetProjectionsManager()
         {
-            // <ProjectionsManager>
+            #region ProjectionsManager
             var projectionsManager = new ProjectionsManager(
                 log: new ConsoleLogger(),
                 httpEndPoint: new IPEndPoint(IPAddress.Parse("127.0.0.1"), 2113),
                 operationTimeout: TimeSpan.FromMilliseconds(5000)
             );
-
-            // </ProjectionsManager>
+            #endregion ProjectionsManager
             return projectionsManager;
         }
 
@@ -49,7 +48,7 @@ namespace DocsExample.GettingStarted
         {
             var conn = await Connection.CreateConnection();
 
-            // <SeedEvents>
+            #region SeedEvents
             foreach (var f in Directory.GetFiles("../", "shoppingCart-*"))
             {
                 var streamName     = Path.GetFileNameWithoutExtension(f);
@@ -57,12 +56,12 @@ namespace DocsExample.GettingStarted
                 var eventData      = step3EventData.ToArray();
                 await conn.AppendToStreamAsync(streamName, ExpectedVersion.Any, eventData);
             }
-            // </SeedEvents>
+            #endregion SeedEvents
 
             var projectionsManager = GetProjectionsManager();
 
             // TODO: Parse
-            // <CreateUserProjection>
+            #region CreateUserProjection
             const string countItemsProjection = @"
                 fromAll().when({
                     $init: function(){
@@ -77,12 +76,12 @@ namespace DocsExample.GettingStarted
                     }
                 })";
             await projectionsManager.CreateContinuousAsync("xbox-one-s-counter", countItemsProjection, adminCredentials);
-            // </CreateUserProjection>
+            #endregion CreateUserProjection
 
-            // <GetProjectionState>
+            #region GetProjectionState
             var projectionState = await projectionsManager.GetStateAsync("xbox-one-s-counter", adminCredentials);
             Console.WriteLine(projectionState);
-            // </GetProjectionState>
+            #endregion GetProjectionState
         }
 
         public static async Task Step3Update(UserCredentials adminCredentials)
@@ -91,7 +90,7 @@ namespace DocsExample.GettingStarted
 
             var projection = GetProjectionsManager();
 
-            // <UpdateUserProjection>
+            #region UpdateUserProjection
             const string countItemsProjectionUpdate = @"
                 fromAll()
                     .when({
@@ -108,22 +107,22 @@ namespace DocsExample.GettingStarted
                 }).outputState()";
 
             await projection.UpdateQueryAsync("xbox-one-s-counter", countItemsProjectionUpdate, adminCredentials);
-            // </UpdateUserProjection>
+            #endregion UpdateUserProjection
 
-            // <ResetUserProjection>
+            #region ResetUserProjection
             await projection.ResetAsync("xbox-one-s-counter", adminCredentials);
-            // </ResetUserProjection>
+            #endregion ResetUserProjection
 
-            // <QueryUpdatedProjection>
+            #region QueryUpdatedProjection
             var readEvents = await conn.ReadStreamEventsForwardAsync("$projections-xbox-one-s-counter-result", 0, 10, true);
 
             foreach (var evt in readEvents.Events)
             {
                 Console.WriteLine(Encoding.UTF8.GetString(evt.Event.Data));
             }
-            // </QueryUpdatedProjection>
+            #endregion QueryUpdatedProjection
 
-            // <UpdateProjectionProperties>
+            #region UpdateProjectionProperties
             const string optionsProjectionOptionsUpdate = @"
                 options({ resultStreamName: 'xboxes' })
                 fromAll()
@@ -141,28 +140,27 @@ namespace DocsExample.GettingStarted
                 }).outputState()";
 
             await projection.UpdateQueryAsync("xbox-one-s-counter", optionsProjectionOptionsUpdate, adminCredentials);
-            // </UpdateProjectionProperties>
+            #endregion UpdateProjectionProperties
 
-            // <ReadUpdatedProjectionStream>
+            #region ReadUpdatedProjectionStream
             readEvents = await conn.ReadStreamEventsForwardAsync("xboxes", 0, 10, true);
 
             foreach (var evt in readEvents.Events)
             {
                 Console.WriteLine(Encoding.UTF8.GetString(evt.Event.Data));
             }
-
-            // </ReadUpdatedProjectionStream>
+            #endregion ReadUpdatedProjectionStream
         }
 
         public static async Task Step3ProjectionOptions(UserCredentials adminCredentials)
         {
             var projectionsManager = GetProjectionsManager();
 
-            // <EnableCategoryProjection>
+            #region EnableCategoryProjection
             await projectionsManager.EnableAsync("$by_category", adminCredentials);
-            // </EnableCategoryProjection>
+            #endregion EnableCategoryProjection
 
-            // <CreatePartitionedProjection>
+            #region CreatePartitionedProjection
             const string itemCounterProjection = @"
                 fromCategory('shoppingCart')
                     .foreachStream()
@@ -183,16 +181,16 @@ namespace DocsExample.GettingStarted
                 trackEmittedStreams: true,
                 userCredentials: adminCredentials
             );
-            // </CreatePartitionedProjection>
+            #endregion CreatePartitionedProjection
 
-            // <GetPartitionedProjectionState>
+            #region GetPartitionedProjectionState
             var projectionState = await projectionsManager.GetPartitionStateAsync(
                 name: "shopping-cart-item-counter",
                 partitionId: "shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164",
                 userCredentials: adminCredentials
             );
             Console.WriteLine(projectionState);
-            // </GetPartitionedProjectionState>
+            #endregion GetPartitionedProjectionState
         }
     }
 }

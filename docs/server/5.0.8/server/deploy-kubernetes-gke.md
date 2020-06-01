@@ -41,7 +41,7 @@ Create a Kubernetes Cluster in your account, the following command does not spec
 gcloud container clusters create <clustername> --zone <zonename>
 ```
 
-We recommend kubectl for managing resources in the Kubernetes cluster. Set the current context for kubectl and merge it with any existing configuration in your existing config file:
+We recommend `kubectl` for managing resources in the Kubernetes cluster. Set the current context for `kubectl` and merge it with any existing configuration in your existing config file:
 
 ```shell
 gcloud beta container clusters get-credentials <clustername> --zone <zonename> --project <projectid>

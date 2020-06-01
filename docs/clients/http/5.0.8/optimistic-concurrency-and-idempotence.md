@@ -2,7 +2,7 @@
 
 ## Idempotence
 
-All operations on the HTTP interface are idempotent (unless the [expected version](/v5/http-api/creating-writing-a-stream.md#expected-version-header) is ignored). It is the responsibility of the client to retry operations under failure conditions, ensuring that the event IDs of the events posted are the same as the first attempt.
+All operations on the HTTP interface are idempotent (unless the [expected version](creating-writing-a-stream.md#expected-version-header) is ignored). It is the responsibility of the client to retry operations under failure conditions, ensuring that the event IDs of the events posted are the same as the first attempt.
 
 Provided the client maintains this Event Store will treat all operations as idempotent.
 

@@ -20,20 +20,17 @@ Scavenges are not run automatically by Event Store. We recommendation that you s
 
 You start a scavenge by issuing an empty `POST` request to the HTTP API with the credentials of an `admin` or `ops` user:
 
-::::: tabs
-:::: tab Request
-
-@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/scavenge.sh)
+::::: el-tabs type="border-card"
+:::: el-tab label="Request"
+<<< @/docs/server/sample-code/server/scavenge.sh#curl
 
 ::: tip Next steps
 Scavenge operations have other options you can set to improve performance, [read the API docs](xref:eventstore.com%2FHTTP%20API%2F5.0.4%2FScavenge%20a%20node) for more details.
 :::
 
 ::::
-:::: tab Response
-
-@[code lang=bash transclude={3-12}](docs/v5/code-examples/server/scavenge.sh)
-
+:::: el-tab label="Response"
+<<< @/docs/server/sample-code/server/scavenge.sh#response
 ::::
 :::::
 
@@ -43,7 +40,7 @@ For better scavenge performance, you can set the number of threads to use. If yo
 
 You can also start scavenges from the _Admin_ page of the Admin UI.
 
-![Start a scavenge in the Admin UI](/v5/images/admin-scavenge.png)
+![Start a scavenge in the Admin UI](../images/admin-scavenge.png)
 
 ::: tip
 Each node in a cluster has its own independent database. As such, when you run a scavenge, you need to issue a scavenge request to each node.
@@ -78,7 +75,7 @@ This depends on the following:
 -   How you set `$maxAge`, `$maxCount` or `$tb` metadata on your streams.
 
 ::: tip
-Read the [.NET API](/v5/dotnet-api/stream-metadata.md) or [HTTP API](/v5/http-api/stream-metadata.md) docs for more details on setting metadata.
+Read the [.NET API](/docs/clients/dotnet/5.0.8/stream-metadata.md) or [HTTP API](stream-metadata.md) docs for more details on setting metadata.
 :::
 
 ## Scavenging while Event Store is online

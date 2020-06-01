@@ -20,6 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import static org.apache.commons.io.FilenameUtils.removeExtension;
 
+// #region writeEvents
 public class WriteMultipleEventsExample {
     public static void main(String[] args) {
         final ActorSystem system   = ActorSystem.create();
@@ -80,6 +81,6 @@ public class WriteMultipleEventsExample {
                     })
                     .build();
         }
-
     }
 }
+// #endregion writeEvents

@@ -14,9 +14,9 @@ For more information [read this blog post](https://eventstore.com/blog/event-sto
 
 Install the following utilities in your development machine.
 
--   [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
--   [Helm](https://github.com/helm/helm/releases)
--   [The Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+- [Helm](https://github.com/helm/helm/releases)
+- [The Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## Configuration steps
 
@@ -44,13 +44,13 @@ The command (after some delay) returns a JSON object with details of the new Kub
 az aks list -o table
 ```
 
-We recommend kubectl for managing resources in the Kubernetes cluster. Set the current context for kubectl and merge it with any existing configuration in your existing config file:
+We recommend `kubectl` for managing resources in the Kubernetes cluster. Set the current context for `kubectl` and merge it with any existing configuration in your existing config file:
 
 ```shell
 az aks get-credentials -n {clustername} -g {groupname}
 ```
 
-Get the list of nodes using kubectl:
+Get the list of nodes using `kubectl`:
 
 ```shell
 kubectl get nodes

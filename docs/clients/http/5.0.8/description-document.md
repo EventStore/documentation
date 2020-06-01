@@ -19,17 +19,13 @@ There are three ways in which Event Store returns the description document.
 
 The client is able to request the description document by passing `application/vnd.eventstore.streamdesc+json` in the `accept` header, for example:
 
-::::: tabs
-:::: tab Request
-
-@[code lang=bash transclude={1-1}](docs/v5/code-examples/http-api/get-dd.sh)
-
+:::: el-tabs type="border-card"
+::: el-tab label="Request"
+<<< @/docs/server/sample-code/server/get-dd.sh#curl
+:::
+::: el-tab label="Response"
+<<< @/docs/server/sample-code/server/get-ddd.sh#response
+:::
 ::::
-:::: tab Response
-
-@[code lang=json transclude={3-32}](docs/v5/code-examples/http-api/get-dd.sh)
-
-::::
-:::::
 
 In the example above, the client requested the description document for the stream called `newstream` which has a set of links describing the supported methods and content types. The document also includes additional methods available such as the `streamSubscription`. If there are no subscriptions to the `newstream`, the `streamSubscription` key is absent.

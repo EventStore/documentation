@@ -1,5 +1,9 @@
-curl -i http://localhost:2113/streams/newstream -H "accept:application/vnd.eventstore.streamdesc+json"
+#region curl
+curl -i http://localhost:2113/streams/newstream \
+    -H "accept:application/vnd.eventstore.streamdesc+json"
+#endregion curl
 
+#region response
 HTTP/1.1 200 Description Document
 Access-Control-Allow-Methods: POST, DELETE, GET, OPTIONS
 Access-Control-Allow-Headers: Content-Type, X-Requested-With, X-Forwarded-Host, X-Forwarded-Prefix, X-PINGOTHER, Authorization, ES-LongPoll, ES-ExpectedVersion, ES-EventId, ES-EventType, ES-RequiresMaster, ES-HardDelete, ES-ResolveLinkTos
@@ -30,3 +34,4 @@ Keep-Alive: timeout=15,max=100
     }
   }
 }
+#endregion response

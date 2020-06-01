@@ -1,5 +1,9 @@
-curl -i -d "@new-user.json" "http://127.0.0.1:2113/users" -H "Content-Type:application/json"
+#region curl
+curl -i -d "@new-user.json" "http://127.0.0.1:2113/users" \
+    -H "Content-Type:application/json"
+#endregion curl
 
+#region response
 HTTP/1.1 201 Created
 Access-Control-Allow-Methods: GET, POST, OPTIONS
 Access-Control-Allow-Headers: Content-Type, X-Requested-With, X-Forwarded-Host, X-Forwarded-Prefix, X-PINGOTHER, Authorization, ES-LongPoll, ES-ExpectedVersion, ES-EventId, ES-EventType, ES-RequiresMaster, ES-HardDelete, ES-ResolveLinkTos
@@ -17,4 +21,5 @@ Keep-Alive: timeout=15,max=100
   "success": true,
   "error": "Success",
   "msgTypeId": 50
-}%
+}
+#endregion response

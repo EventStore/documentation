@@ -11,6 +11,7 @@ public class SubscriptionExample {
         final ActorSystem system = ActorSystem.create();
         final EsConnection connection = EsConnectionFactory.create(system);
 
+        // #region subscription
         final Closeable closeable = connection.subscribeToStream("newstream", new SubscriptionObserver<IndexedEvent>() {
             @Override
             public void onLiveProcessingStart(Closeable subscription) {
@@ -32,5 +33,6 @@ public class SubscriptionExample {
                 system.log().error("subscription closed");
             }
         }, false, null);
+        // #endregion subscription
     }
 }

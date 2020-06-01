@@ -29,8 +29,8 @@ The buttons on the top right when you are viewing an event stream are:
 - _Pause_: Stop showing events arriving into this stream.
 - _Resume_: Resume showing events arriving into this stream.
 - _Edit ACL_: Edit [the access control lists](users-and-access-control-lists.md) for a stream.
-- _Add Event_: [Add a new event](/v5/http-api/creating-writing-a-stream.md) to the stream.
-- _Delete_: [Delete a stream](/v5/http-api/deleting-a-stream.md) to the stream.
+- _Add Event_: [Add a new event](/docs/clients/http/5.0.8/creating-writing-a-stream.md) to the stream.
+- _Delete_: [Delete a stream](/docs/clients/http/5.0.8/deleting-a-stream.md) to the stream.
 - _Query_:
 
 The buttons on the left above the events when you are viewing an event stream are:
@@ -50,7 +50,7 @@ The _Projections_ tab shows system and user created projections defined in Event
 - _Disable All_: Disable all running projections.
 - _Enable All_: Enable all stopped projections.
 - _Include Queries_: Toggle displaying queries in the Projections table.
-- _New Projection_: [Create a user-defined projection](/v5/projections/user-defined-projections.md) with the Admin UI.
+- _New Projection_: [Create a user-defined projection](../projections/user-defined-projections.md) with the Admin UI.
 
 Clicking an individual projection shows further details.
 
@@ -61,8 +61,8 @@ On the left is the projection definition, and on the right, the stats, results a
 - _Start_: Start a stopped projection.
 - _Stop_: Stop a running projection.
 - _Edit_: Edit the projection definition.
-- _Config_: [Set configuration options](/v5/projections/projections-config.md) for a projection.
-- _Debug_: Opens [the debugging interface](/v5/projections/debugging.md) to debug what effect a projection is having on events.
+- _Config_: [Set configuration options](../projections/projections-config.md) for a projection.
+- _Debug_: Opens [the debugging interface](../projections/debugging.md) to debug what effect a projection is having on events.
 - _Delete_: Delete a projection.
 - _Reset_: Reset a projection.
 - _Back_: Returns you to the parent screen.
@@ -75,7 +75,7 @@ The _Query_ tab a code editor field where you can create transient and short-liv
 
 ## Persistent subscriptions
 
-The _Persistent Subscriptions_ tab shows an overview of [persistent subscriptions](/v5/getting-started/reading-subscribing-events.md#persistent-subscriptions) configured on streams. The button above the list do the following:
+The _Persistent Subscriptions_ tab shows an overview of [persistent subscriptions](../getting-started/reading-subscribing-events.md#persistent-subscriptions) configured on streams. The button above the list do the following:
 
 - _New Subscription_: Create a new [subscriptions](../getting-started/reading-subscribing-events.md)
 
@@ -90,7 +90,7 @@ Clicking the _+_ icon next to a stream name reveals the subscription name and mo
 
 ![Web admin interface projections tab](../images/wai-admin.png)
 
-The _Admin_ tab shows sub systems enabled (currently only [projections](/v5/projections/index.md)) on Event Store and [scavenges](/v5/server/scavenging.md) run. You can start a new scavenge operation by clicking the _Scavenge_ button, and shut Event Store down by clicking the _Shutdown Server_ button.
+The _Admin_ tab shows sub systems enabled (currently only [projections](../projections/index.md)) on Event Store and [scavenges](../server/scavenging.md) run. You can start a new scavenge operation by clicking the _Scavenge_ button, and shut Event Store down by clicking the _Shutdown Server_ button.
 
 ## Users
 

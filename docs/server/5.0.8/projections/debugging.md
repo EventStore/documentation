@@ -42,7 +42,9 @@ fromStream('$stats-127.0.0.1:2113')
 You create the projection by making a call to the API and providing it with the definition of the projection.
 
 ```bash
-curl -i -d@stats-counter.json http://localhost:2113/projections/continuous?name=stats-counter%26type=js%26enabled=true%26emit=true%26trackemittedstreams=true -u admin:changeit
+curl -i -d@stats-counter.json \
+  http://localhost:2113/projections/continuous?name=stats-counter%26type=js%26enabled=true%26emit=true%26trackemittedstreams=true \
+  -u admin:changeit
 ```
 
 ## Debugging your first projection

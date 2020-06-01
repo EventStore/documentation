@@ -36,7 +36,7 @@ When running a projection, you can choose whether the query should run and give 
 You enable projections with the command line argument `--run-projections`. For example, the command below enables all projection modes (system and user-defined):
 
 ::: tip Next steps
-[Read this guide](/v5/server/command-line-arguments.md#projections-options) for all the possible parameter values.
+[Read this guide](../server/command-line-arguments.md#projections-options) for all the possible parameter values.
 :::
 
 ::::: el-tabs
@@ -110,56 +110,55 @@ You then see new tabs enabled in the Admin UI with the four system projections i
 
 You can also query the state of all projections using the HTTP API.
 
-@[code lang=bash](docs/v5/code-examples/getting-started/list-all-projections.sh)
+<<< @/docs/server/sample-code/getting-started/list-all-projections.sh
 
 The response is a list of all known projections and useful information about them.
 
-@[code lang=json](docs/v5/code-examples/getting-started/list-all-projections.json)
+<<< @/docs/server/sample-code/getting-started/list-all-projections.json
 
 ## Add sample data
 
 Download the following files that contain sample data used throughout this step of the getting started guide.
 
--   [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/v5/code-examples/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
--   [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/v5/code-examples/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
--   [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/v5/code-examples/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
--   [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/v5/code-examples/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](docs/server/sample-code/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](docs/server/sample-code/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](docs/server/sample-code/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](docs/server/sample-code/getting-started/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
 
 Add the sample data to four different streams:
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
 
-@[code lang=bash](docs/v5/code-examples/getting-started/add-sample-data.sh)
+<<< @/docs/server/sample-code/getting-started/add-sample-data.sh
 
 ::::
 :::: el-tab-pane label=".NET Client"
 
 First, we need a function to read JSON files and construct the list of `EventData` instances:
 
-@[code lang=csharp transcludeInner=ReadEventsFunction](@/docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ReadEventsFunction
 
 Then, we can use this function and push events to Event Store:
 
-@[code lang=csharp transcludeInner=SeedEvents](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
-
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#SeedEvents
 
 ::::
 :::: el-tab-pane label="JVM Client"
 
-@[code lang=java transclude={23-85}](docs/v5/code-examples/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteMultipleEventsExample.java)
+<<< @/docs/server/sample-code/EventStore.Samples.Java/src/main/java/org/eventstore/sample/WriteMultipleEventsExample.java#writeEvents
 
 ::::
 :::::
 
 ::: tip
-While it's not the fastest method, you can also use the Admin UI for creating the streams, and all the tasks in this step, as we saw in [step 1](/v5/getting-started/index.md).
+While it's not the fastest method, you can also use the Admin UI for creating the streams, and all the tasks in this step, as we saw in [step 1](README.md).
 :::
 
 ## Writing your first projection
 
 ::: tip Next steps
-Read [this guide](/v5/projections/user-defined-projections.md) to find out more about the user defined projection's API.
+Read [this guide](../projections/user-defined-projections.md) to find out more about the user defined projection's API.
 :::
 
 The projection counts the number of 'XBox One S's that customers added to their shopping carts.
@@ -168,9 +167,9 @@ A projection starts with a selector, in this case `fromAll()`. Another possibili
 
 The second part of a projection is a set of filters. There is a special filter called `$init` that sets up an initial state. You want to start a counter from 0 and each time Event Store observes an `ItemAdded` event for an 'Xbox One S,' increment the counter.
 
-Here is the projection, you can download it as a file [here](/v5/code-examples/getting-started/xbox-one-s-counter.json):
+Here is the projection code:
 
-@[code lang=json](docs/v5/code-examples/getting-started/xbox-one-s-counter.json)
+<<< @/docs/server/sample-code/getting-started/xbox-one-s-counter.json
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running. You can create a projection using the Admin UI by opening the _Projections_ tab, clicking the _New Projection_ button and filling in the details of your projection.
 
@@ -185,10 +184,10 @@ You can also create projections programmatically by using one of the available A
 
 To use the HTTP, pass the projection JSON file as a parameter of your request, along with any other settings:
 
-@[code lang=bash](docs/v5/code-examples/getting-started/create-projection.sh)
+<<< @/docs/server/sample-code/getting-started/create-projection.sh
 
 ::: tip Next steps
-[Read here](/v5/projections/api.md) for more information on creating projections with the HTTP API and the parameters available, or [our projections section](~/projections/index.md) for details on projection syntax.
+[Read here](../projections/api.md) for more information on creating projections with the HTTP API and the parameters available, or [our projections section](../projections/README.md) for details on projection syntax.
 :::
 
 ::::
@@ -196,10 +195,12 @@ To use the HTTP, pass the projection JSON file as a parameter of your request, a
 
 You can send the projection code as text along the other parameters, using the `ProjectionsManager` instance:
 
-@[code lang=csharp transcludeInner=ProjectionsManager,CreateUserProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#CreateUserProjection
 
 ::: tip Next steps
-[Read here](/v5/dotnet-api/projections.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/v5/projections/index.md) for details on projection syntax.
+[Read here](/docs/clients/dotnet/5.0.8/projections.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](../projections/README.md) for details on projection syntax.
+
 :::
 
 ::::
@@ -212,19 +213,19 @@ Now the projection is running, you can query the state of the projection. As thi
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
 
-@[code lang=bash](docs/v5/code-examples/getting-started/query-state.sh)
+<<< @/docs/server/sample-code/getting-started/query-state.sh
 
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=GetProjectionState](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#GetProjectionState
 
 ::::
 :::::
 
 The server will send a response similar to this:
 
-@[code lang=json](@/docs/v5/code-examples/getting-started/query-state.json)
+<<< @/docs/server/sample-code/getting-started/query-state.json
 
 ## Writing to streams from projections
 
@@ -234,21 +235,22 @@ The above gives you the correct result but requires you to poll for the state of
 
 Update the projection to output the state to a stream by calling the `outputState()` method on the projection which by default produces a `$projections-{projection-name}-result` stream.
 
-Below is the updated projection, you can download it as a file [here](/v5/code-examples/getting-started/xbox-one-s-counter-outputState.json):
+Below is the updated projection:
 
-@[code lang=json](docs/v5/code-examples/getting-started/xbox-one-s-counter-outputState.json)
+<<< @/docs/server/sample-code/getting-started/xbox-one-s-counter-outputState.json
 
 To update the projection, edit the projection definition in the Admin UI, or issue the following request:
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
 
-@[code lang=bash](docs/v5/code-examples/getting-started/xbox-one-s-counter-outputState.sh)
+<<< @/docs/server/sample-code/getting-started/xbox-one-s-counter-outputState.sh
 
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=ProjectionsManager,UpdateUserProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#UpdateUserProjection
 
 ::::
 :::::
@@ -257,66 +259,66 @@ Then reset the projection you created above:
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
-@[code lang=bash](docs/v5/code-examples/getting-started/reset-projection.sh)
+<<< @/docs/server/sample-code/getting-started/reset-projection.sh
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ResetUserProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ResetUserProjection
 :::: 
 :::::
 
 You should get a response similar to the one below:
 
-@[code lang=json](docs/v5/code-examples/getting-started/reset-projection.json)
-
+<<< @/docs/server/sample-code/getting-started/reset-projection.json
 
 You can now read the events in the result stream by issuing a read request.
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
 
-@[code lang=bash](docs/v5/code-examples/getting-started/read-projection-events.sh)
+<<< @/docs/server/sample-code/getting-started/read-projection-events.sh
 
 ::::
 :::: el-tab-pane label=".NET Client"
 
-@[code lang=csharp transcludeInner=QueryUpdatedProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#QueryUpdatedProjection
 
 ::::
 :::::
 
 And you'll get a response like this:
 
-@[code lang=json](docs/v5/code-examples/getting-started/read-projection-events.json)
+<<< @/docs/server/sample-code/getting-started/reset-projection.json
 
 ## Configure projection properties
 
-You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream, you can download it as a file [here](/v5/code-examples/getting-started/update-projection-options.json):
+You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream:
 
-@[code lang=json highlight={2}](docs/v5/code-examples/getting-started/update-projection-options.json)
+<<< @/docs/server/sample-code/getting-started/update-projection-options.json{2}
 
 Then send the update to the projection:
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
-@[code lang=bash](docs/v5/code-examples/getting-started/update-projection-options.sh)
+<<< @/docs/server/sample-code/getting-started/update-projection-options.sh
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ProjectionsManager,UpdateProjectionProperties](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#UpdateProjectionProperties
 ::::
 :::::
 
 ::: tip
-You can find all the options available in the [user defined projections guide](/v5/projections/user-defined-projections.md).
+You can find all the options available in the [user defined projections guide](../projections/user-defined-projections.md).
 :::
 
 Now you can read the result as above, but use the new stream name:
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
-@[code lang=bash](docs/v5/code-examples/getting-started/read-projection-events-renamed.sh)
+<<< @/docs/server/sample-code/getting-started/read-projection-events-renamed.sh
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ReadUpdatedProjectionStream](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ReadUpdatedProjectionStream
 ::::
 :::::
 
@@ -328,10 +330,11 @@ Event Store has a built-in `$by_category` projection that lets you select events
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
-@[code lang=bash](docs/v5/code-examples/getting-started/enable-by-category.sh)
+<<< @/docs/server/sample-code/getting-started/enable-by-category.sh
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=ProjectionsManager,EnableCategoryProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#EnableCategoryProjection
 ::::
 :::::
 
@@ -347,18 +350,18 @@ By default, the category splits the stream `id` by a dash. The category is the f
 
 You want to define a projection that produces a count per stream for a category, but the state needs to be per stream. To do so, use `$by_category` and its `fromCategory` API method.
 
-Below is the projection, you can download the file [here](/v5/code-examples/getting-started/shopping-cart-counter.json):
+Below is the projection:
 
-@[code lang=json](docs/v5/code-examples/getting-started/shopping-cart-counter.json)
+<<< @/docs/server/sample-code/getting-started/shopping-cart-counter.json
 
 Create the projection with the following request:
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
-@[code lang=bash](docs/v5/code-examples/getting-started/shopping-cart-counter.sh)
+<<< @/docs/server/sample-code/getting-started/shopping-cart-counter.sh
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=CreatePartitionedProjection](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#CreatePartitionedProjection
 ::::
 :::::
 
@@ -368,19 +371,19 @@ Querying for the state of the projection is different due to the partitioning of
 
 ::::: el-tabs
 :::: el-tab-pane label="HTTP API"
-@[code lang=bash](docs/v5/code-examples/getting-started/read-state-partition.sh)
+<<< @/docs/server/sample-code/getting-started/read-state-partition.sh
 ::::
 :::: el-tab-pane label=".NET Client"
-@[code lang=csharp transcludeInner=GetPartitionedProjectionState](docs/clients/dotnet/5.0.8/code-examples/DocsExample/GettingStarted/Step3_UserProjections.cs)
+<<< @/docs/clients/dotnet/sample-code/GettingStarted/Step3_UserProjections.cs#GetPartitionedProjectionState
 ::::
 :::::
 
 The server then returns the state for the partition:
 
-@[code lang=json](docs/v5/code-examples/getting-started/read-state-partition.json)
+<<< @/docs/server/sample-code/getting-started/read-state-partition.json
 
 ## Next step
 
 In this third part of our getting started guide you learned about projections. The next, and final part covers which API or SDK to use, and when.
 
--   [Step 4 - Which API or SDK](/v5/getting-started/which-api-sdk.md)
+-   [Step 4 - Which API or SDK](which-api-sdk.md)
