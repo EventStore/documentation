@@ -1,6 +1,6 @@
 # Uninstalling Event Store
 
-This document describes how to uninstall Event Store. The instructions depend on which installation method you used. For different installation methods, refer to [Getting started - Step 1](/v5/getting-started/index.md). These instructions cover how to uninstall Event Store, but not how to remove dependencies such as the .NET framework or Mono.
+This document describes how to uninstall Event Store. The instructions depend on which installation method you used. For different installation methods, refer to [Getting started - Step 1](getting-started/README.md). These instructions cover how to uninstall Event Store, but not how to remove dependencies such as the .NET framework or Mono.
 
 ::::: tabs
 :::: tab Windows

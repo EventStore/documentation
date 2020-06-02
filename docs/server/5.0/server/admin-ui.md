@@ -4,7 +4,9 @@ The Event Store Admin UI is available at _SERVER_IP:2113_ and helps you interact
 
 ## Dashboard
 
-![Web admin interface dashboard](../images/wai-dashboard.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface dashboard](images/wai-dashboard.png)
+:::
 
 The _Dashboard_ tab shows an overview of active queues with associated statistics in the top half. The _+_ icon indicates a queue group, click it to reveal the queues that are part of the group.
 
@@ -14,13 +16,17 @@ Click the _Snapshot_ button in the top right to output a snapshot of all queue s
 
 ## Stream browser
 
-![Web admin interface stream browser tab](../images/wai-stream-browser.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface stream browser tab](images/wai-stream-browser.png)
+:::
 
 The _Stream Browser_ tab gives an overview of recently created and changed streams, clicking on an individual stream shows details about the individual stream.
 
 ### Event stream 'streamname'
 
-![Web admin interface stream details](../images/wai-stream-details.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface stream details](images/wai-stream-details.png)
+:::
 
 Each individual stream shows pages of the events in a stream with an overview of the event. Click the _Name_ to see the EventId, and _JSON_ to the see the event data. The buttons above change depending on what you are viewing in the interface. The _Back_ button takes you to the parent screen.
 
@@ -29,8 +35,8 @@ The buttons on the top right when you are viewing an event stream are:
 - _Pause_: Stop showing events arriving into this stream.
 - _Resume_: Resume showing events arriving into this stream.
 - _Edit ACL_: Edit [the access control lists](users-and-access-control-lists.md) for a stream.
-- _Add Event_: [Add a new event](/docs/server/5.0/http-api/creating-writing-a-stream.md) to the stream.
-- _Delete_: [Delete a stream](/docs/server/5.0/http-api/deleting-a-stream.md) to the stream.
+- _Add Event_: [Add a new event](../http-api/writing-events.md) to the stream.
+- _Delete_: [Delete a stream](../http-api/deleting-a-stream.md) to the stream.
 - _Query_:
 
 The buttons on the left above the events when you are viewing an event stream are:
@@ -43,26 +49,30 @@ The buttons on the left above the events when you are viewing an event stream ar
 
 ## Projections
 
-![Web admin interface projections tab](../images/wai-projections.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface projections tab](images/wai-projections.png)
+:::
 
 The _Projections_ tab shows system and user created projections defined in Event Store, the buttons above the list do the following:
 
 - _Disable All_: Disable all running projections.
 - _Enable All_: Enable all stopped projections.
 - _Include Queries_: Toggle displaying queries in the Projections table.
-- _New Projection_: [Create a user-defined projection](../projections/user-defined-projections.md) with the Admin UI.
+- _New Projection_: [Create a user-defined projection](projections/user-defined-projections.md) with the Admin UI.
 
 Clicking an individual projection shows further details.
 
-![Web admin interface projection details](../images/wai-projection-details.jpg)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface projection details](images/wai-projection-details.jpg)
+:::
 
 On the left is the projection definition, and on the right, the stats, results and state of the projection. The buttons above the details do the following:
 
 - _Start_: Start a stopped projection.
 - _Stop_: Stop a running projection.
 - _Edit_: Edit the projection definition.
-- _Config_: [Set configuration options](../projections/projections-config.md) for a projection.
-- _Debug_: Opens [the debugging interface](../projections/debugging.md) to debug what effect a projection is having on events.
+- _Config_: [Set configuration options](projections/projections-config.md) for a projection.
+- _Debug_: Opens [the debugging interface](projections/debugging.md) to debug what effect a projection is having on events.
 - _Delete_: Delete a projection.
 - _Reset_: Reset a projection.
 - _Back_: Returns you to the parent screen.
@@ -71,11 +81,13 @@ On the left is the projection definition, and on the right, the stats, results a
 
 The _Query_ tab a code editor field where you can create transient and short-lived projections for quick analysis of your event streams.
 
-![Web admin interface query details](../images/wai-query-details.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface query details](images/wai-query-details.png)
+:::
 
 ## Persistent subscriptions
 
-The _Persistent Subscriptions_ tab shows an overview of [persistent subscriptions](../http-api/reading-subscribing-events.md#persistent-subscriptions) configured on streams. The button above the list do the following:
+The _Persistent Subscriptions_ tab shows an overview of [persistent subscriptions](../http-api/persistent-subscriptions.md) configured on streams. The button above the list do the following:
 
 - _New Subscription_: Create a new [subscriptions](../http-api/reading-subscribing-events.md)
 
@@ -88,13 +100,17 @@ Clicking the _+_ icon next to a stream name reveals the subscription name and mo
 
 ## Admin
 
-![Web admin interface projections tab](../images/wai-admin.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface projections tab](images/wai-admin.png)
+:::
 
-The _Admin_ tab shows sub systems enabled (currently only [projections](../projections/index.md)) on Event Store and [scavenges](../server/scavenging.md) run. You can start a new scavenge operation by clicking the _Scavenge_ button, and shut Event Store down by clicking the _Shutdown Server_ button.
+The _Admin_ tab shows sub systems enabled (currently only [projections](projections/)) on Event Store and [scavenges](operations/scavenging.md) run. You can start a new scavenge operation by clicking the _Scavenge_ button, and shut Event Store down by clicking the _Shutdown Server_ button.
 
 ## Users
 
-![Web admin interface projections tab](../images/wai-users.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Web admin interface projections tab](images/wai-users.png)
+:::
 
 The _Users_ tab shows [the users defined in Event Store](users-and-access-control-lists.md), clicking an individual user shows a JSON representation of that users details.
 

@@ -8,7 +8,7 @@ and I imagine other config questions may come up in future -->
 
 ### Start Event Store as a service on a custom port
 
-Follow the instructions in [Getting started](../getting-started/README.md) to install an Event Store package. Do not start Event Store.
+Follow the instructions in [Getting started](getting-started/README.md) to install an Event Store package. Do not start Event Store.
 
 Find your `inet` address. For example:
 

@@ -9,7 +9,7 @@
   - `updated`: Updated date
   - `updatedBy`: User who updated configuration
   - `maxCount`: The number of configuration events to save
-  - `entries`: Configuration items set by event. Find more details of configuration items for [the .NET API](/v5/dotnet-api/competing-consumers.md) and [the HTTP API](/v5/http-api/competing-consumers.md).
+  - `entries`: Configuration items set by event.
 
 ## `$all`
 
@@ -40,7 +40,7 @@ The `$settings` stream has a special ACL used as the default ACL. This stream co
 
 You can rewrite these to the `$settings` stream with the following cURL command:
 
-@[code lang=bash transclude={1-23}](docs/v5/code-examples/http-api/default-settings.sh)
+<<< @/docs/server/5.0/http-api/sample-code/default-settings.sh#curl
 
 The `$userStreamAcl` controls the default ACL for user streams, while all system streams use the `$systemStreamAcl` as the default.
 
@@ -52,7 +52,7 @@ When you set a permission on a stream, it overrides the default values. However,
 
 ## `$stats`
 
-Event Store has debug and statistics information available about a cluster in the `$stats` stream, find out more in [the stats guide](/v5/server/stats-debug.md).
+Event Store has debug and statistics information available about a cluster in the `$stats` stream, find out more in [the stats guide](operations/stats-debug.md).
 
 ## `$scavenges`
 

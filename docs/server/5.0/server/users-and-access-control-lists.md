@@ -18,7 +18,7 @@ By default, any user can read any non-protected stream unless there is an ACL pr
 
 ## Stream ACLs
 
-Event Store keeps the ACL of a stream in the streams [metadata](/v5/server/metadata-and-reserved-names.md) as JSON with the below definition:
+Event Store keeps the ACL of a stream in the streams [metadata](metadata-and-reserved-names.md) as JSON with the below definition:
 
 ```json
 {
@@ -55,14 +55,14 @@ The ACL below gives `writer` read and write permission on the stream, while `rea
 
 Inside a file named _metadata.json_:
 
-@[code lang=json](docs/v5/code-examples/server/metadata.json)
+<<< @/docs/server/5.0/server/sample-code/metadata.json
 
-@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/update-acl.sh)
+<<< @/docs/server/5.0/server/sample-code/update-acl.sh#curl
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](docs/v5/code-examples/server/update-acl.sh)
+<<< @/docs/server/5.0/server/sample-code/update-acl.sh#response
 
 ::::
 :::: tab .NET API
@@ -112,7 +112,7 @@ The `$settings` stream has a special ACL used as the default ACL. This stream co
 
 You can rewrite these to the `$settings` stream with the following cURL command:
 
-@[code lang=bash transclude={1-23}](docs/v5/code-examples/http-api/default-settings.sh)
+<<< @/docs/server/5.0/http-api/sample-code/default-settings.sh#curl
 
 The `$userStreamAcl` controls the default ACL for user streams, while all system streams use the `$systemStreamAcl` as the default.
 
@@ -152,18 +152,18 @@ This default ACL gives `ouro` and `$admins` create and write permissions on all 
 ::::: tabs
 :::: tab Request
 
-@[code lang=json](docs/v5/code-examples/server/override-default.json)
+<<< @/docs/server/5.0/server/sample-code/override-default.json
 
-@[code lang=bash transclude={1-1}](docs/v5/code-examples/server/update-default-acl.sh)
+<<< @/docs/server/5.0/server/sample-code/update-default-acl.sh#curl
 
 ::: warning
-You should not copy/paste the UUID in the command line above but generate a new one or not provide one (you will be redirected to a URI with one as described in [writing events](/v5/http-api/creating-writing-a-stream.md#writing-a-single-event) in the HTTP API).
+You should not copy/paste the UUID in the command line above but generate a new one or not provide one (you will be redirected to a URI with one as described in [writing events](../http-api/writing-events.md#writing-a-single-event) in the HTTP API).
 :::
 
 ::::
 :::: tab Response
 
-@[code lang=json transclude={3-13}](docs/v5/code-examples/server/update-default-acl.sh)
+<<< @/docs/server/5.0/server/sample-code/update-default-acl.sh#response
 
 ::::
 :::: tab .NET API
@@ -199,7 +199,8 @@ If you try to access the `$settings` stream as an unauthorized user, Event Store
 :::: tab Request
 
 ```bash
-curl -i http://127.0.0.1:2113/streams/%24settings -u ouro:ouroboros
+curl -i http://127.0.0.1:2113/streams/%24settings \
+    -u ouro:ouroboros
 ```
 
 ::::
@@ -249,7 +250,8 @@ At which point ouro can read system streams by default:
 :::: tab Request
 
 ```bash
-curl -i http://127.0.0.1:2113/streams/%24settings -u ouro:ouroboros
+curl -i http://127.0.0.1:2113/streams/%24settings \
+    -u ouro:ouroboros
 ```
 
 ::::

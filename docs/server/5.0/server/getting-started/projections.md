@@ -36,7 +36,7 @@ When running a projection, you can choose whether the query should run and give 
 You enable projections with the command line argument `--run-projections`. For example, the command below enables all projection modes (system and user-defined):
 
 ::: tip Next steps
-[Read this guide](../server/command-line-arguments.md#projections-options) for all the possible parameter values.
+[Read this guide](../command-line-arguments.md#projections-options) for all the possible parameter values.
 :::
 
 ::::: el-tabs
@@ -110,7 +110,7 @@ You then see new tabs enabled in the Admin UI with the four system projections i
 
 ## Using projections
 
-Refer to the [HTTP API](../http-api/projections.md) documentation or the SDK of your choice to learn how to use projections in your applications.
+Refer to the [HTTP API](../../http-api/projections/) documentation or the SDK of your choice to learn how to use projections in your applications.
 
 ## Next step
 

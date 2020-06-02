@@ -12,34 +12,34 @@ module.exports = [
         title: "Deployment",
         collapsable: true,
         children: [
-            "server/",
-            "server/cloud"
+            "",
+            "cloud"
         ]
     },
     {
         title: "Clustering",
         collapsable: true,
         children: [
-            "server/clustering-model",
-            "server/configure-cluster"
+            "clustering-model",
+            "configure-cluster"
         ]
     },
     {
         title: "Administration",
         collapsable: true,
         children: [
-            "server/directories",
-            "server/admin-ui",
-            "server/configuration"
+            "directories",
+            "admin-ui",
+            "configuration"
         ]
     },
     {
         title: "Operations",
         collapsable: true,
         children: [
-            "server/upgrading",
-            "server/backup",
-            "server/metrics"
+            "upgrading",
+            "backup",
+            "metrics"
         ]
     }
 ]

@@ -55,11 +55,11 @@ module.exports = [
         title: "Advanced topics",
         collapsable: true,
         children: [
-            "server/caching.md",
-            "server/indexing.md",
-            "server/system-streams.md",
-            "server/metadata-and-reserved-names.md",
-            "server/64-bit-index.md",
+            "caching.md",
+            "indexing.md",
+            "system-streams.md",
+            "metadata-and-reserved-names.md",
+            "64-bit-index.md",
         ]
     },
     {

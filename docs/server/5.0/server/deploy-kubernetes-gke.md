@@ -14,9 +14,9 @@ For more information [read this blog post](https://eventstore.com/blog/event-sto
 
 Install the following utilities in your development machine.
 
--   [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
--   [Helm](https://github.com/helm/helm/releases)
--   [Google Cloud SDK](https://cloud.google.com/sdk/install)
+- [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+- [Helm](https://github.com/helm/helm/releases)
+- [Google Cloud SDK](https://cloud.google.com/sdk/install)
 
 ## Configuration steps
 

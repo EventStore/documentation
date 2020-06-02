@@ -14,6 +14,6 @@ You can create subscription and watch events as they arrive under the _Persisten
 6. Click _Create_ button to submit the new persistent subscription.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Subscriptions in the Admin UI](../images/getting-started-subscriptions.png)
+![Subscriptions in the Admin UI](images/getting-started-subscriptions.png)
 :::
 

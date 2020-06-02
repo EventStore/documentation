@@ -148,8 +148,8 @@ Event Store is designed to be safe by default, and it is expected that it will b
 
 ## Securing Event Store
 
-To secure Event Store, you can bind the server to the localhost interface and install a reverse proxy such as [nginx](http://nginx.org) or [Varnish](https://www.varnish-cache.org) on the public IP. Read [this guide](/v5/server/setting-up-varnish-in-linux.md) for an example of setting up Event Store with Varnish.
+To secure Event Store, you can bind the server to the localhost interface and install a reverse proxy such as [nginx](http://nginx.org) or [Varnish](https://www.varnish-cache.org) on the public IP. Read [this guide](setting-up-varnish-in-linux.md) for an example of setting up Event Store with Varnish.
 
 The reverse proxy is your public interface. Internally it handles the authentication and route requests to Event Store. Event Store is only accessible through the localhost adapter and is not exposed publicly. The locally running reverse proxy is allowed to cache responses, and because of this, reverse proxies are more performant than calling Event Store directly.
 
-Even if you use a reverse proxy, you can support external authentication from Event Store itself. You do this by enabling the [ES-TrustedAuth](/v5/http-api/optional-http-headers/trusted-intermediary.md) trusted intermediary option in your configuration. This allows the intermediary to write a header with the user information that Event Store uses.
+Even if you use a reverse proxy, you can support external authentication from Event Store itself. You do this by enabling the [ES-TrustedAuth](../http-api/optional-http-headers/trusted-intermediary.md) trusted intermediary option in your configuration. This allows the intermediary to write a header with the user information that Event Store uses.

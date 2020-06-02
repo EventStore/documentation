@@ -6,8 +6,8 @@ If you prefer to use only 64-bit indexes immediately you can force this change. 
 
 If you have a large database, or it's stored in remote storage, and you can't lose downtime, you can run this operation offline on another node with the following steps:
 
-1.  [Take a back up](database-backup.md).
-2.  [Restore the backup](database-backup.md) to fast local disks.
+1.  [Take a back up](operations/database-backup.md).
+2.  [Restore the backup](operations/database-backup.md) to fast local disks.
 3.  Delete the _index_ folder from back up.
 4.  Run Event Store with a cluster size 3 to prevent other writes. It will rebuild the index.
 5.  Restore the index back to a node (_index_ folder).

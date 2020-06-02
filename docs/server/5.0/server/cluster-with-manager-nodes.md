@@ -245,5 +245,5 @@ C:\EventStore-HA-v\> EventStore.WindowsManager.exe uninstall -InstanceName es-cl
 
 #### Manually starting and stopping the service
 
--   To start the manager node use the `net start es-cluster1` command.
--   To stop the manager node use the `net stop es-cluster1` command.
+- To start the manager node use the `net start es-cluster1` command.
+- To stop the manager node use the `net stop es-cluster1` command.

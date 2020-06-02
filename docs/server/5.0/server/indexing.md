@@ -104,7 +104,7 @@ For safety _ptables_ Event Store is currently merging are only deleted after the
 
 ### Manual Merging
 
-If you have set the maximum level (`MaxAutoMergeIndexLevel`) for automatically merging indexes, then you need to trigger merging indexes above this level manually by using the [/admin/mergeindexes](xref:eventstore.com%2FHTTP%20API%2F5.0.4%2FMerge%20Indexes) endpoint, or  the ES-CLI tool that is available with commercial support.
+If you have set the maximum level (`MaxAutoMergeIndexLevel`) for automatically merging indexes, then you need to trigger merging indexes above this level manually by using the `/admin/mergeindexes` endpoint, or the ES-CLI tool that is available with commercial support.
 
 Triggering a manual merge causes Event Store to merge all tables that have a level equal to the maximum merge level or above into a single table.  If there is only 1 table at the maximum level or above, no merge is performed.
 

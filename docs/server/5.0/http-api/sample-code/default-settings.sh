@@ -1,3 +1,4 @@
+#region curl
 curl -i "http://127.0.0.1:2113/streams/%24settings" \
     --user admin:changeit \
     -H "Content-Type: application/vnd.eventstore.events+json" \
@@ -21,6 +22,7 @@ curl -i "http://127.0.0.1:2113/streams/%24settings" \
             }
         }
     }]'
+#endregion curl
 
 HTTP/1.1 201 Created
 Access-Control-Allow-Methods: POST, DELETE, GET, OPTIONS

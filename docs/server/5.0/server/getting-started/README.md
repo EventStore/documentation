@@ -26,7 +26,7 @@ This first step covers installation and running Event Store, and writing your fi
 ## Install and run Event Store
 
 ::: tip
-Unless you pass a database option with `--db`, Event Store writes to a new database created in the host system's temporary files path each time it is started. For more information on Command Line Arguments read [this guide](/v5/server/command-line-arguments.md).
+Unless you pass a database option with `--db`, Event Store writes to a new database created in the host system's temporary files path each time it is started. For more information on Command Line Arguments read [this guide](../command-line-arguments.md).
 :::
 
 ::::: el-tabs 
@@ -44,7 +44,7 @@ choco install eventstore-oss
 
 You can also [download](https://eventstore.com/downloads/) a binary, unzip the archive and run from the folder location with an administrator console.
 
-The following command starts Event Store with the database stored at the path _./db_ and the logs in _./logs_. You can view further command line arguments in the [server docs](/v5/server/index.md).
+The following command starts Event Store with the database stored at the path _./db_ and the logs in _./logs_. You can view further command line arguments in the [server docs](../).
 
 ```powershell
 EventStore.ClusterNode.exe --db ./db --log ./logs
@@ -65,7 +65,7 @@ To build Event Store from source, refer to the [Event Store README](https://gith
 
 The prerequisites for installing on Linux are:
 
--   We recommend [Mono 5.16.0](https://www.mono-project.com/download/stable/), but other versions may also work.
+- We recommend [Mono 5.16.0](https://www.mono-project.com/download/stable/), but other versions may also work.
 
 Event Store has pre-built [packages available for Debian-based distributions](https://packagecloud.io/EventStore/EventStore-OSS), [manual instructions for distributions that use RPM](https://packagecloud.io/EventStore/EventStore-OSS/install#bash-rpm), or you can [build from source](https://github.com/EventStore/EventStore#linux). The final package name to install is `eventstore-oss`.
 
@@ -75,7 +75,7 @@ If you installed from a pre-built package, start Event Store with:
 sudo systemctl start eventstore
 ```
 
-When you install the Event Store package, the service doesn't start by default. This is to allow you to change the configuration, located at _/etc/eventstore/eventstore.conf_ and to prevent creating a default database. To start Event Store on port 80 as a service, refer to [Configuring your installation](/v5/server/configuring.md#start-as-a-service-on-a-custom-port)
+When you install the Event Store package, the service doesn't start by default. This is to allow you to change the configuration, located at _/etc/eventstore/eventstore.conf_ and to prevent creating a default database. To start Event Store on port 80 as a service, refer to [Configuring your installation](../configuring.md#start-as-a-service-on-a-custom-port)
 
 ::: warning
 We recommend that when using Linux you set the 'open file limit' to a high number. The precise value depends on your use case, but at least between `30,000` and `60,000`.
@@ -143,9 +143,9 @@ To build Event Store from source, refer to the [Event Store README](https://gith
 
 There are three ways to interact with Event Store:
 
-1.  [With the Admin UI](../server/admin-ui.md).
-2.  [With the HTTP API](/../http-api/README.md).
-3.  With a Client API, which you need to install first. Our documentation covers the [.NET Core client API](/v5/dotnet-api/index.md) and the [JVM client](https://github.com/EventStore/EventStore.JVM) but [others](/getting-started/which-api-sdk.md) are available.
+1.  [With the Admin UI](../admin-ui.md).
+2.  [With the HTTP API](/../../http-api/).
+3.  With a Client API, which you need to install first.
 
 ## Discover Event Store via Admin UI
 
@@ -174,7 +174,7 @@ If you post to a stream that doesn't exist, Event Store creates it before adding
 You can write events using the Admin UI by clicking the _Stream Browser_ tab, the _Add Event_ button, filling in the form with relevant values and clicking the _Add_ button at the bottom of the page.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Creating an event with the Admin UI interface](../images/getting-started-add-event.gif)
+![Creating an event with the Admin UI interface](images/getting-started-add-event.gif)
 :::
 
 Open a text editor, copy and paste the following event definition, and save it as _event.json_.

@@ -2,7 +2,7 @@
 
 Meta data in Event Store defines whether an event is deleted or not. You can use [stream metadata](metadata-and-reserved-names.md) such as `TruncateBefore`, `MaxAge` and `MaxCount` to filter events considered deleted. When reading a stream, the index checks the stream's metadata to determine whether any of its events have been deleted.
 
-`$all` bypasses the index, meaning that it does not check the metadata to determine whether events exist or not. As such, events that have been deleted are still be readable until a scavenge has removed them. There are requirements for a scavenge to successfully remove events, for more information about this, read the [scavenging guide](scavenging.md).
+`$all` bypasses the index, meaning that it does not check the metadata to determine whether events exist or not. As such, events that have been deleted are still be readable until a scavenge has removed them. There are requirements for a scavenge to successfully remove events, for more information about this, read the [scavenging guide](operations/scavenging.md).
 
 ::: warning
 The last event in a stream is always kept as a record of the last event number in the stream.
