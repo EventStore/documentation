@@ -14,16 +14,22 @@ To trust the new certificate, the certificate you have to import the certificate
 
 1.  Press _WindowsKey + R_, and enter 'certmgr.msc'.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Open certmgr.msc](images/ssl-step1.png)
+:::
 
 2.  Navigate to _Certificates -> Current User -> Personal -> Certificates_.
 3.  Locate the certificate 'eventstore.com'.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Find certificate](images/ssl-step2.png)
+:::
 
 4.  _Right click_ on the certificate and click on _All Tasks -> Export_. Follow the prompts.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Export certificate](images/ssl-step3.png)
+:::
 
 5.  Navigate to _Certificates -> Current User -> Trusted Root Certification Authorities -> Certificates_.
 6.  _Right click_ on the Certificates folder menu item and click _All Tasks -> Import_. Follow the prompts.
@@ -146,7 +152,20 @@ This example shows how to build own docker image that base on original eventstor
 
 Create file `Dockerfile` with following content:
 
-<<< @/docs/server/5.0/server/sample-code/DockerfileSsl
+```
+FROM eventstore/eventstore
+RUN apt-get update -y \
+  && apt-get install -y openssl \
+  && openssl req -x509 -sha256 -nodes -days 3650 -subj "/CN=eventstore.org" -newkey rsa:2048 -keyout eventstore.pem -out eventstore.csr \
+  && openssl pkcs12 -export -inkey eventstore.pem -in eventstore.csr -out eventstore.p12 -passout pass: \
+  && openssl pkcs12 -export -inkey eventstore.pem -in eventstore.csr -out eventstore.pfx -passout pass: \
+  && mkdir -p /usr/local/share/ca-certificates \
+  && cp eventstore.csr /usr/local/share/ca-certificates/eventstore.crt \
+  && update-ca-certificates \
+  && apt-get autoremove \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+```
 
 Build image:
 
