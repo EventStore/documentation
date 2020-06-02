@@ -21,7 +21,7 @@ Scavenges are not run automatically by Event Store. We recommendation that you s
 You start a scavenge by issuing an empty `POST` request to the HTTP API with the credentials of an `admin` or `ops` user:
 
 ::::: el-tabs type="border-card"
-:::: el-tab label="Request"
+:::: el-tab-pane label="Request"
 <<< @/docs/server/5.0/http-api/sample-code/scavenge.sh#curl
 
 ::: tip Next steps
@@ -29,7 +29,7 @@ Scavenge operations have other options you can set to improve performance, [read
 :::
 
 ::::
-:::: el-tab label="Response"
+:::: el-tab-pane label="Response"
 <<< @/docs/server/5.0/http-api/sample-code/scavenge.sh#response
 ::::
 :::::
@@ -40,7 +40,9 @@ For better scavenge performance, you can set the number of threads to use. If yo
 
 You can also start scavenges from the _Admin_ page of the Admin UI.
 
+::: el-card :body-style="{ padding: '0px' }" 
 ![Start a scavenge in the Admin UI](../images/admin-scavenge.png)
+:::
 
 ::: tip
 Each node in a cluster has its own independent database. As such, when you run a scavenge, you need to issue a scavenge request to each node.

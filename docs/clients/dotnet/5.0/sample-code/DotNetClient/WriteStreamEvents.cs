@@ -8,7 +8,7 @@ namespace DocsExample
 {
     public class WriteStreamEvents
     {
-        // <WriteOneEvent>
+        #region WriteOneEvent
         public static async Task WriteOneEvent()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
@@ -18,12 +18,12 @@ namespace DocsExample
             var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(sampleObject));
             var metadata = Encoding.UTF8.GetBytes("{}");
             var evt = new EventData(Guid.NewGuid(), "event-type", true, data, metadata);
-            
+
             await conn.AppendToStreamAsync("newstream", ExpectedVersion.Any, evt);
         }
-        // </WriteOneEvent>
-        
-        // <CreateSampleData>
+        #endregion WriteOneEvent
+
+        #region CreateSampleData
         static EventData CreateSample(int i)
         {
             var sampleObject = new {a = i};
@@ -32,10 +32,9 @@ namespace DocsExample
             var eventPayload = new EventData(Guid.NewGuid(), "event-type", true, data, metadata);
             return eventPayload;
         }
-        
-        // </CreateSampleData>
+        #endregion CreateSampleData
 
-        // <WriteMultipleEvents>
+        #region WriteMultipleEvents
         public static async Task WriteEvents()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
@@ -49,9 +48,9 @@ namespace DocsExample
                 CreateSample(3)
             );
         }
-        // <WriteMultipleEvents>
-        
-        // <WriteTransaction>
+        #endregion WriteMultipleEvents
+
+        #region WriteTransaction
         public static async Task WriteTransaction()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
@@ -66,6 +65,6 @@ namespace DocsExample
             await transaction.WriteAsync(CreateSample(5));
             await transaction.CommitAsync();
         }
-        // </WriteTransaction>
+        #endregion WriteTransaction
     }
 }

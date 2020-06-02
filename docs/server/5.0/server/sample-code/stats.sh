@@ -1,5 +1,8 @@
+#region curl
 curl -i -X GET "http://127.0.0.1:2113/stats" -u "admin:changeit"
+#endregion curl
 
+#region response
 HTTP/1.1 200 OK
 Access-Control-Allow-Methods: GET, OPTIONS
 Access-Control-Allow-Headers: Content-Type, X-Requested-With, X-Forwarded-Host, X-Forwarded-Prefix, X-PINGOTHER, Authorization, ES-LongPoll, ES-ExpectedVersion, ES-EventId, ES-EventType, ES-RequiresMaster, ES-HardDelete, ES-ResolveLinkTos
@@ -390,4 +393,5 @@ Keep-Alive: timeout=15,max=100
       "notCachedTransInfo": 0
     }
   }
-}%
+}
+#endregion response

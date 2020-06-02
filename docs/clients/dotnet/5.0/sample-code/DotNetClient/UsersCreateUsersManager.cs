@@ -9,6 +9,7 @@ namespace DocsExample
     {
         public static void Method()
         {
+            #region UserManager
             var hostInfo = Dns.GetHostEntry("localhost");
 
             var manager = new UsersManager(
@@ -16,6 +17,7 @@ namespace DocsExample
                 new IPEndPoint(hostInfo.AddressList[0], 2113),
                 TimeSpan.FromSeconds(10)
             );
+            #endregion UserManager
         }
     }
 }

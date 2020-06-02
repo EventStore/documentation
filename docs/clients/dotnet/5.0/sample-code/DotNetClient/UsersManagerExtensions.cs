@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace DocsExample
 {
+    #region Extensions
     public static class UsersManagerExtensions
     {
         public static async Task AddUserToGroupAsync(this UsersManager usersManager, string userLogin, string group, UserCredentials credentials)
@@ -27,4 +28,5 @@ namespace DocsExample
             await usersManager.UpdateUserAsync(user.LoginName, user.FullName, groups.ToArray(), credentials);
         }
     }
+    #endregion Extensions
 }
