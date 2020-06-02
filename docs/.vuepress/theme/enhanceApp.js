@@ -17,7 +17,7 @@ export default ({Vue, options, router, siteData}) => {
     });
     router.addRoutes([
         {
-            path: '/docs/latest.html',
+            path: "/latest.html",
             redirect: `/${siteData.themeConfig.versions.latest}/getting-started/`
         },
     ])

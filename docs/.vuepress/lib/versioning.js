@@ -7,7 +7,7 @@ module.exports = {
     versions: {
         // latest stable release
         get latest() {
-            return versions[0]
+            return versions[0].path.replace("{version}", versions[0].versions[0])
         },
         get all() {
             return versions
