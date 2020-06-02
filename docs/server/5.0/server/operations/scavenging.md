@@ -22,7 +22,7 @@ You start a scavenge by issuing an empty `POST` request to the HTTP API with the
 
 ::::: el-tabs type="border-card"
 :::: el-tab-pane label="Request"
-<<< @/docs/server/5.0/http-api/sample-code/scavenge.sh#curl
+<<< @/docs/server/5.0/server/sample-code/scavenge.sh#curl
 
 ::: tip Next steps
 Scavenge operations have other options you can set to improve performance, [read the API docs](xref:eventstore.com%2FHTTP%20API%2F5.0.4%2FScavenge%20a%20node) for more details.
@@ -30,7 +30,7 @@ Scavenge operations have other options you can set to improve performance, [read
 
 ::::
 :::: el-tab-pane label="Response"
-<<< @/docs/server/5.0/http-api/sample-code/scavenge.sh#response
+<<< @/docs/server/5.0/server/sample-code/scavenge.sh#response
 ::::
 :::::
 
