@@ -20,7 +20,8 @@ module.exports = {
 
         versions.forEach(version => {
             version.versions.forEach(v => {
-                sidebars[`/${version.id}/${v}/`] = require(`../../${version.id}/${v}/sidebar.js`);
+                let path = version.path.replace("{version}", v);
+                sidebars[`/${path}/`] = require(`../../${path}/sidebar.js`);
             });
         })
 
@@ -28,7 +29,7 @@ module.exports = {
     },
     version(id) {
         const ret = versions.find(x => x.id === id);
-        return {id: id, versions: ret === undefined ? [] : ret.versions};
+        return {id: id, versions: ret === undefined ? [] : ret.versions, path: ret.path};
     },
     // Build dropdown items for each version
     linksFor(id, url) {
@@ -36,7 +37,8 @@ module.exports = {
         const version = this.version(id);
 
         version.versions.forEach(v => {
-            let item = {text: v, link: `/${id}/${v}/${url}`};
+            let path = version.path.replace("{version}", v);
+            let item = {text: v, link: `/${path}/${url}`};
             links.push(item);
         });
 

@@ -23,6 +23,6 @@
   "scripts": {
     "docs:dev": "vuepress dev docs --no-cache",
     "docs:build": "vuepress build docs",
-    "swagger": "swagger-markdown -i docs/clients/http/5.0.8/swagger.yaml"
+    "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
   }
 }

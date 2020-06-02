@@ -36,8 +36,9 @@ module.exports = {
                 text: "Drivers",
                 items: [
                     {text: "Overview", link: "/clients/"},
-                    {text: ".NET SDK", items: versioning.linksFor("clients/dotnet", "")},
-                    {text: "HTTP API", items: versioning.linksFor("clients/http", "")}
+                    {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "")},
+                    {text: "Java SDK", items: versioning.linksFor("java-client", "")},
+                    {text: "HTTP API", items: versioning.linksFor("http-api", "")},
                 ]
             },
             {text: "Event Sourcing", link: "/event-sourcing/"},

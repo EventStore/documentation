@@ -1,21 +1,31 @@
 [
   {
     "id": "server",
+    "path": "server/{version}/server",
     "versions": [
       "20.6",
-      "5.0.8"
+      "5.0"
     ]
   },
   {
-    "id": "clients/dotnet",
+    "id": "dotnet-client",
+    "path": "clients/dotnet/{version}",
     "versions": [
-      "5.0.8"
+      "5.0"
     ]
   },
   {
-    "id": "clients/http",
+    "id": "java-client",
+    "path": "clients/java/{version}",
     "versions": [
-      "5.0.8"
+      "5.0"
+    ]
+  },
+  {
+    "id": "http-api",
+    "path": "server/{version}/http-api",
+    "versions": [
+      "5.0"
     ]
   }
 ]
