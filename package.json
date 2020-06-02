@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "@types/fs-extra": "^9.0.1",
     "chalk": "^2.0.0",
     "commander": "^2.0.0",
     "core-js": "2",
