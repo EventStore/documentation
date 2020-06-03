@@ -1,6 +1,6 @@
 # Persistent subscriptions management
 
-The Client API includes helper methods that use the HTTP API to allow you to manage persistent subscriptions. This document describes the methods found in the `PersistentSubscriptions` class. All methods in this class are asynchronous.
+The Client API includes helper methods that wrap the HTTP API to allow you to manage persistent subscriptions. This document describes the methods found in the `PersistentSubscriptions` class. All methods in this class are asynchronous.
 
 ## Methods
 

@@ -1,9 +1,9 @@
 # Competing consumers
 
-This document explains how to use .NET API for setting up and consuming competing consumer subscription groups. For an overview of competing consumers and how they relate to other subscription types, please see the [overview document](./reading-subscribing-events.md#volatile-subscriptions).
+This page explains how to use .NET API for setting up and using competing consumer subscription groups. Competing consumers use persistent subscriptions that are maintained by the server. For an overview of persistent subscriptions and how they relate to other subscription types, please see the [overview document](README.md#persistent-subscriptions).
 
 ::: tip
-The Administration UI includes a _Competing Consumers_ section where a user can create, update, delete and view subscriptions and their statuses.
+The Administration UI includes a _Persistent Subscriptions_ section where a user can create, update, delete and view subscriptions and their statuses.
 :::
 
 ## Creating a persistent subscription
@@ -87,11 +87,11 @@ var result = await connection.CreatePersistentSubscriptionAsync(
 ```
 
 | Parameter | Description |
-|:----------|:------------|
-| `string stream` | The stream to the persistent subscription is on.     |
-| `string groupName` | The name of the subscription group to create.        |
+|:--------- |:----------- |
+| `string stream` | The stream to the persistent subscription is on. |
+| `string groupName` | The name of the subscription group to create. |
 | `PersistentSubscriptionSettings settings` | The settings to use when creating this subscription. |
-| `UserCredentials credentials` | The user credentials to use for this operation.      |
+| `UserCredentials credentials` | The user credentials to use for this operation. |
 
 ## Updating a subscription group
 
@@ -113,7 +113,7 @@ If you change settings such as `startFromBeginning`, this doesn't reset the grou
 :::
 
 | Parameter | Description |
-|:----------|:------------|
+|:--------- |:----------- |
 | `string stream` | The stream to the persistent subscription is on. |
 | `string groupName` | The name of the subscription group to update. |
 | `PersistentSubscriptionSettings settings` | The settings to use when updating this subscription. |
@@ -130,7 +130,7 @@ var result = await connection.DeletePersistentSubscriptionAsync(
 ```
 
 | Parameter | Description |
-| ----------| ------------|
+|:--------- |:----------- |
 | `string stream` | The stream to the persistent subscription is on. |
 | `string groupName` | The name of the subscription group to update.    |
 | `UserCredentials credentials` | The user credentials to use for this operation.  |

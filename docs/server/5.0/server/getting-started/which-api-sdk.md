@@ -47,7 +47,7 @@ Event Store also offers an HTTP-based interface, based specifically on the [Atom
 
 ### Event Store supported clients
 
--   [HTTP API](/v5/http-api/index.md)
+-   [HTTP API](../../http-api/README.md)
 
 ### Community developed clients
 
@@ -85,5 +85,5 @@ Our recommendation would be to use AtomPub as your primary protocol unless you h
 
 Congratulations! You've reached the end of our getting started guide, what's next?
 
--   **Want to use the .NET client?** [Find more here](/v5/dotnet-api/index.md).
--   **Want to use the HTTP API?** [Find out more here](/v5/http-api/index.md).
+- **Want to use the .NET client?** [Find more here](/docs/clients/dotnet/5.0/README.md).
+- **Want to use the HTTP API?** [Find out more here](../../http-api/README.md).

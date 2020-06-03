@@ -2,6 +2,8 @@
 
 <!-- TODO: Again refactor to shopping cart? -->
 
+## Overview
+
 You write user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
 
 ```javascript
@@ -39,35 +41,31 @@ fromStream('account-1')
 |:---- |:----------- |:-----
 `resultStreamName` | Overrides the default resulting stream name for the `outputState()` transformation, which is `$projections-{projection-name}-result`. | |
 | `$includeLinks` |Configures the projection to include/exclude link to events. | Default: `false` |
-| `processingLag` | When `reorderEvents` is enabled, this value is used to compare the total milliseconds between the first and last events in the buffer and if the value is equal or greater, the events in the buffer are processed. The buffer is an ordered list of events. |Default: `500ms`.
-Only valid for `fromStreams()` selector |
+| `processingLag` | When `reorderEvents` is enabled, this value is used to compare the total milliseconds between the first and last events in the buffer and if the value is equal or greater, the events in the buffer are processed. The buffer is an ordered list of events. | Default: `500ms`. Only valid for `fromStreams()` selector |
 | `reorderEvents` | Process events by storing a buffer of events ordered by their prepare position | Default: `false`. Only valid for `fromStreams()` selector |
 
 ### Selectors
 
 | Selector | Description | Notes
 |:-------- |:----------- |:----- 
-| `fromAll()` | Selects events from the `$all` stream. | **Provides** <ul><li />`partitionBy`<li/>`when`<li/>`foreachStream`<li/>`outputState`</ul> |
-| `fromCategory({category})` | Selects events from the `$ce-{category}` stream. | **Provides** <ul><li/>`partitionBy`<li/>`when`<li/>`foreachStream`<li/>`outputState`</ul> |
-| `fromStream({streamId})` | Selects events from the `streamId` stream. | **Provides** <ul><li/>`partitionBy`<li/>`when`<li/>`outputState`</ul> |
-| `fromStreams(streams[])` | Selects events from the streams supplied. | **Provides**<ul><li/>`partitionBy`<li/>`when`<li/>`outputState`</ul> |
-| `fromStreamsMatching(function filter)` | Selects events from the `$all` stream that returns true for the given filter. | **Provides** <ul><li/>`when`</ul> |
+| `fromAll()` | Selects events from the `$all` stream. | **Provides** <ul><li>`partitionBy`</li><li>`when`</li><li>`foreachStream`</li><li>`outputState`</li></ul> |
+| `fromCategory({category})` | Selects events from the `$ce-{category}` stream. | **Provides** <ul><li>`partitionBy`</li><li>`when`</li><li>`foreachStream`</li><li>`outputState`</li></ul> |
+| `fromStream({streamId})` | Selects events from the `streamId` stream. | **Provides** <ul><li>`partitionBy`</li/><li>`when`</li><li>`outputState`</li></ul> |
+| `fromStreams(streams[])` | Selects events from the streams supplied. | **Provides**<ul><li>`partitionBy`</li><li>`when`</li><li>`outputState`</li></ul> |
+| `fromStreamsMatching(function filter)` | Selects events from the `$all` stream that returns true for the given filter. | **Provides** <ul><li>`when`</li></ul> |
 
 ### Filters/Transformations
 
-## Filters/Transformations
-
 | Filter/Partition | Description | Notes |
 |:---------------- |:----------- |:----- |
-|`when(handlers)` | Allows only the given events of a particular to pass through the projection. | **Provides** <ul><li/>`$defines_state_transform` <li/>`transformBy` <li/>`filterBy` <li/>`outputTo` <li/>`outputState`</ul> |
-| `foreachStream()` | Partitions the state for each of the streams provided. | **Provides** <ul><li/>`when` <li/></ul> |
-| `outputState()` | If the projection maintains state, setting this option produces a stream called `$projections-{projection-name}-result` with the state as the event body. | **Provides** <ul><li/>`transformBy` <li/>`filterBy` <li/>`outputTo`</ul></ul> |
-| `partitionBy(function(event))` | Partitions a projection by the partition returned from the handler. | **Provides** <ul><li/>`when`</ul> |
-| `transformBy(function(state))` | Provides the ability to transform the state of a projection by the provided handler. | **Provides** <ul><li/>`transformBy` <li/>`filterBy` <li/>`outputState` <li/>`outputTo`</ul> |
-| `filterBy(function(state))` | Causes projection results to be `null` for any `state` that returns a `false` value from the given predicate. | **Provides** <ul><li/>`transformBy` <li/>`filterBy` <li/>`outputState` <li/>`outputTo` </ul> |                             
+|`when(handlers)` | Allows only the given events of a particular to pass through the projection. | **Provides** <ul><li>`$defines_state_transform` </li><li>`transformBy`</li><li>`filterBy`</li><li>`outputTo`</li><li>`outputState`</li></ul> |
+| `foreachStream()` | Partitions the state for each of the streams provided. | **Provides** <ul><li>`when`</li></ul> |
+| `outputState()` | If the projection maintains state, setting this option produces a stream called `$projections-{projection-name}-result` with the state as the event body. | **Provides** <ul><li>`transformBy`</li><li>`filterBy`</li><li>`outputTo`</li></ul> |
+| `partitionBy(function(event))` | Partitions a projection by the partition returned from the handler. | **Provides** <ul><li>`when`</li></ul> |
+| `transformBy(function(state))` | Provides the ability to transform the state of a projection by the provided handler. | **Provides** <ul><li>`transformBy`</li><li>`filterBy`</li><li>`outputState`</li><li>`outputTo`</li></ul> |
+| `filterBy(function(state))` | Causes projection results to be `null` for any `state` that returns a `false` value from the given predicate. | **Provides** <ul><li>`transformBy`</li><li>`filterBy`</li><li>`outputState`</li><li>`outputTo`</li></ul> |                             
 
-
-## Handlers
+### Handlers
 
 Each handler is provided with the current state of the projection as well as the event that triggered the handler. The event provided through the handler contains the following properties.
 
@@ -89,7 +87,7 @@ Each handler is provided with the current state of the projection as well as the
 | `$any` | Event type pattern match that match any event type. | Commonly used when the user is interested in any event type from the selector. |
 | `$deleted` | Called upon the deletion of a stream. | Can only be used with `foreachStream` |
 
-## Functions
+### Functions
 
 | Handler | Description |
 |:------- |:----------- |

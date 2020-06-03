@@ -116,11 +116,11 @@ All links except the head link are fully cacheable as you can see in the HTTP he
 To access the `$all` stream, you must use admin details. Find more information on the [security](security.md) page.
 :::
 
-:::: tabs
-::: tab Request
+:::: el-tabs type="border-card"
+::: el-tab label="Request"
 <<< @/docs/server/5.0/http-api/sample-code/read-all-events.sh#curl
 :::
-::: tab Response
+::: el-tab label="Response"
 <<< @/docs/server/5.0/http-api/sample-code/read-all-events.sh#response
 :::
 ::::
@@ -133,11 +133,11 @@ The head link supports conditional `GET`s with the use of [ETAGS](http://en.wiki
 
 You can use this in your next request when polling the stream for changes by putting it in the `If-None-Match` header. This tells the server to check if the response is the one you already know and returning a '304 not modified' response. If the tags have changed, the server returns a '200 OK' response. You can use this method to optimise your application by not sending large streams if there are no changes.
 
-:::: tabs
-::: tab Request
+:::: el-tabs type="border-card"
+::: el-tab label="Request"
 <<< @/docs/server/5.0/http-api/sample-code/request-etag.sh#curl
 :::
-::: tab Response
+::: el-tab label="Response"
 <<< @/docs/server/5.0/http-api/sample-code/request-etag.sh#response
 :::
 ::::
@@ -150,7 +150,7 @@ You create Etags using the version of the stream and the media type of the strea
 
 So far in this guide, the feeds returned have contained links that refer to the actual event data. This is normally a preferable mechanism for several reasons:
 
-- They can be in a different media type than the feed, and you can negotiate them separately from the feed itself (for example, the feed in JSON, the event in XML). You can cache the event data separately from the feed, and you can point it to different feeds. If you use a `linkTo()` in your [projection](/v5/projections/index.md) this is what happens in your atom feeds.
+- They can be in a different media type than the feed, and you can negotiate them separately from the feed itself (for example, the feed in JSON, the event in XML). You can cache the event data separately from the feed, and you can point it to different feeds. If you use a `linkTo()` in your [projection](projections/README.md) this is what happens in your atom feeds.
 - If you are using JSON, you can embed the events into the atom feed events. This can help cut down on the number of requests in some situations, but the messages are larger.
 
 There are ways of embedding events and further metadata into your stream by using the `embed` parameter.
@@ -159,11 +159,11 @@ There are ways of embedding events and further metadata into your stream by usin
 
 The `rich` embed mode returns more properties about the event (`eventtype`, `streamid`, `position`, and so on) as you can see in the following request.
 
-:::: tabs
-::: tab Request
+:::: el-tabs type="border-card"
+::: el-tab label="Request"
 <<< @/docs/server/5.0/http-api/sample-code/read-stream-rich.sh#curl
 :::
-::: tab Response
+::: el-tab label="Response"
 <<< @/docs/server/5.0/http-api/sample-code/read-stream-rich.sh#response
 :::
 ::::
@@ -172,11 +172,11 @@ The `rich` embed mode returns more properties about the event (`eventtype`, `str
 
 The `body` embed mode returns the JSON/XML body of the events into the feed as well, depending on the type of the feed. You can see this in the request below:
 
-:::: tabs
-::: tab Request
+:::: el-tabs type="border-card"
+::: el-tab label="Request"
 <<< @/docs/server/5.0/http-api/sample-code/read-stream-body.sh#curl
 :::
-::: tab Response
+::: el-tab label="Response"
 <<< @/docs/server/5.0/http-api/sample-code/read-stream-body.sh#response
 :::
 ::::
@@ -192,11 +192,11 @@ Two other modes are variants of `body`:
 
 The XML format embeds no additional data, as only JSON supports embedding.
 
-:::: tabs
-::: tab Request
+:::: el-tabs type="border-card"
+::: el-tab label="Request"
 <<< @/docs/server/5.0/http-api/sample-code/read-stream-xml.sh#curl
 :::
-::: tab Response
+::: el-tab label="Response"
 <<< @/docs/server/5.0/http-api/sample-code/read-stream-xml.sh#response
 :::
 ::::

@@ -4,7 +4,6 @@ module.exports = [
         collapsable: true,
         children: [
             "getting-started/",
-            "getting-started/subscriptions"
         ]
     },
     {
@@ -17,13 +16,28 @@ module.exports = [
             "reading-events.md",
             "deleting-a-stream.md",
             "projections.md",
-            "persistent-subscriptions.md",
-            "competing-consumers.md",
             "embedded-client.md",
             "optimistic-concurrency-and-idempotence.md",
             "stream-metadata.md",
             "users.md",
             "security.md"
+        ]
+    },
+    {
+        title: "Projections",
+        collapsable: true,
+        children: [
+            "projections/",
+            "projections/projections-management.md"
+        ]
+    },
+    {
+        title: "Subscriptions",
+        collapsable: true,
+        children: [
+            "subscriptions/",
+            "subscriptions/persistent-subscriptions.md",
+            "subscriptions/competing-consumers.md",
         ]
     },
     {

@@ -1,6 +1,6 @@
 # Persistent Subscriptions
 
-This document explains how to use HTTP API for setting up and consuming competing consumer subscription groups. For an overview on competing consumers and how they relate to other subscription types please see our [getting started guide](/docs/server/5.0/http-api/reading-subscribing-events.md).
+This document explains how to use HTTP API for setting up and consuming persistent subscriptions and competing consumer subscription groups. For an overview on competing consumers and how they relate to other subscription types please see our [getting started guide](/docs/server/5.0/http-api/reading-subscribing-events.md).
 
 ::: tip
 The Administration UI includes a _Competing Consumers_ section where you are able to create, update, delete and view subscriptions and their statuses.

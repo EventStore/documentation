@@ -15,15 +15,9 @@ title: Projections
 
 # Projections
 
-This getting started guide shows you how to get started with Event Store using the Atom publishing protocol as the primary interface. 
-
-::: warning
-The described is for development and evaluation of Event Store. It does not describe a production setup. The HTTP examples use cURL, but you can read Atom feeds with a wide variety of applications and languages.
-:::
-
 Projections is an Event Store subsystem that lets you write new events or link existing events to streams in a reactive manner.
 
-Projections are good at solving one specific query type, a category known as 'temporal correlation queries'. This query type is common in business systems and few can execute these queries well.
+Projections are good at solving one specific query type, a category known as _temporal correlation queries_. This query type is common in business systems and few can execute these queries well.
 
 ::: tip
 Projections require the event body to be in JSON.
@@ -41,28 +35,20 @@ You enable projections with the command line argument `--run-projections`. For e
 
 ::::: el-tabs
 :::: el-tab-pane label="Windows"
-
 ```powershell
 EventStore.ClusterNode.exe --run-projections=all --start-standard-projections=true
 ```
-
 To disable them again, run:
-
 ```powershell
 EventStore.ClusterNode.exe --run-projections=none
 ```
-
 ::::
 :::: el-tab-pane label="Linux"
-
 Add `EVENTSTORE_RUN_PROJECTIONS=All` and `EVENTSTORE_START_STANDARD_PROJECTIONS=true` to your environment variables, or the _/etc/eventstore/eventstore.conf_ configuration file and start Event Store:
-
 ```bash
 sudo systemctl start eventstore
 ```
-
 To disable them again, change the values to `EVENTSTORE_RUN_PROJECTIONS=none`.
-
 ::::
 :::: el-tab-pane label="Docker"
 
@@ -110,7 +96,7 @@ You then see new tabs enabled in the Admin UI with the four system projections i
 
 ## Using projections
 
-Refer to the [HTTP API](../../http-api/projections/) documentation or the SDK of your choice to learn how to use projections in your applications.
+Refer to the [HTTP API](../../http-api/projections/README.md) documentation or the SDK of your choice to learn how to use projections in your applications.
 
 ## Next step
 
