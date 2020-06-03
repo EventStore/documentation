@@ -20,7 +20,7 @@ curl -i -X POST "http://{event-store-ip}:{ext-http-port}/projection/{projection-
 
 The `$by_category` (_http://127.0.0.1:2113/projection/$by_category_) projection links existing events from streams to a new stream with a `$ce-` prefix (a category) by splitting a stream `id` by a configurable separator.
 
-```text
+```
 first
 -
 ```
@@ -55,7 +55,7 @@ The projection takes one parameter, a JSON string as a projection source:
 
 The `$stream_by_category` (_http://127.0.0.1:2113/projection/$by_category_) projection links existing events from streams to a new stream with a `$category` prefix by splitting a stream `id` by a configurable separator.
 
-```text
+```
 first
 -
 ```

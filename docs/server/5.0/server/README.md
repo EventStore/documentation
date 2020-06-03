@@ -124,19 +124,19 @@ To build Event Store from source, refer to the [Event Store README](https://gith
 
 There is a [known issue](http://stackoverflow.com/questions/8142396/what-causes-a-httplistener-http-503-error) with the .NET `HTTPListener` class (which Event Store uses) and bad URL ACL registrations, which can cause servers to return 503 errors for every request. If you see this, you can issue the following commands:
 
-```posh
+```powershell
 netsh http show urlacl
 ```
 
 Look for an entry on the port you're trying to use (`2113` unless you've specified a custom port), then issue:
 
-```posh
+```powershell
 netsh http delete urlacl <the entry you just found>
 ```
 
 For example:
 
-```posh
+```powershell
 netsh http delete urlacl http://+:2113/
 ```
 

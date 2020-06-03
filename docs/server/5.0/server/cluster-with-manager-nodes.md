@@ -189,7 +189,7 @@ The watchdog configuration file details which database nodes the manager is resp
 
 For the first node in the example cluster, the watchdog configuration file reads as follows:
 
-```text
+```
 # --config c:\EventStore-Config\database.yaml
 ```
 

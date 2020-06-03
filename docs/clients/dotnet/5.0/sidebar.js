@@ -15,7 +15,6 @@ module.exports = [
             "streams.md",
             "reading-events.md",
             "deleting-a-stream.md",
-            "projections.md",
             "embedded-client.md",
             "optimistic-concurrency-and-idempotence.md",
             "stream-metadata.md",

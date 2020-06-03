@@ -13,7 +13,7 @@ The last event in a stream is always kept as a record of the last event number i
 `TruncateBefore` and `$tb` considers any event with an event number lower than its value as deleted.
 For example, if you had the following events in a stream :
 
-```text
+```
 0@test-stream
 1@test-stream
 2@test-stream
@@ -22,7 +22,7 @@ For example, if you had the following events in a stream :
 
 If you set the `TruncateBefore` or `$tb` value to 3, a read of the stream would result in only reading the last event:
 
-```text
+```
 3@test-stream
 ```
 
