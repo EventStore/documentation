@@ -1,31 +1,4 @@
----
-title: Projections
----
-
-:::: el-steps :active="3" align-center
-::: el-step title="Install" description="Install, run, and write your first event"
-:::
-::: el-step title="Read" description="Read events and subscribe to changes"
-:::
-::: el-step title="Project" description="Use default and custom projections"
-:::
-::: el-step title="Choose SDK" description="Which SDK to use?"
-:::
-::::
-
-# Projections
-
-Projections is an Event Store subsystem that lets you write new events or link existing events to streams in a reactive manner.
-
-Projections are good at solving one specific query type, a category known as _temporal correlation queries_. This query type is common in business systems and few can execute these queries well.
-
-::: tip
-Projections require the event body to be in JSON.
-:::
-
-When running a projection, you can choose whether the query should run and give you all results present or whether the query should continue running into the future finding new results as they happen and updating its result set.
-
-## Setting up projections
+# Setting up projections
 
 You enable projections with the command line argument `--run-projections`. For example, the command below enables all projection modes (system and user-defined):
 
@@ -87,19 +60,14 @@ To use the default database location on macOS you need to use `sudo`, or you can
 You then see new tabs enabled in the Admin UI with the four system projections in a `Stopped` state:
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Projections tab](../images/projections-menu-item.png)
+![Projections tab](./images/projections-menu-item.png)
 :::
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Projections default state](../images/projections-default.png)
+![Projections default state](./images/projections-default.png)
 :::
 
 ## Using projections
 
 Refer to the [HTTP API](../../http-api/projections/README.md) documentation or the SDK of your choice to learn how to use projections in your applications.
 
-## Next step
-
-In this third part of our getting started guide you learned about projections. The next, and final part covers which API or SDK to use, and when.
-
--   [Step 4 - Which API or SDK](which-api-sdk.md)

@@ -35,6 +35,7 @@ module.exports = [
         collapsable: true,
         children: [
             "subscriptions/",
+            "subscriptions/catchup-subscriptions.md",
             "subscriptions/persistent-subscriptions.md",
             "subscriptions/competing-consumers.md",
         ]

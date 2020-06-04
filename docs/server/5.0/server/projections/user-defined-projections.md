@@ -50,7 +50,7 @@ fromStream('account-1')
 |:-------- |:----------- |:----- 
 | `fromAll()` | Selects events from the `$all` stream. | **Provides** <ul><li>`partitionBy`</li><li>`when`</li><li>`foreachStream`</li><li>`outputState`</li></ul> |
 | `fromCategory({category})` | Selects events from the `$ce-{category}` stream. | **Provides** <ul><li>`partitionBy`</li><li>`when`</li><li>`foreachStream`</li><li>`outputState`</li></ul> |
-| `fromStream({streamId})` | Selects events from the `streamId` stream. | **Provides** <ul><li>`partitionBy`</li/><li>`when`</li><li>`outputState`</li></ul> |
+| `fromStream({streamId})` | Selects events from the `streamId` stream. | **Provides** <ul><li>`partitionBy`</li><li>`when`</li><li>`outputState`</li></ul> |
 | `fromStreams(streams[])` | Selects events from the streams supplied. | **Provides**<ul><li>`partitionBy`</li><li>`when`</li><li>`outputState`</li></ul> |
 | `fromStreamsMatching(function filter)` | Selects events from the `$all` stream that returns true for the given filter. | **Provides** <ul><li>`when`</li></ul> |
 

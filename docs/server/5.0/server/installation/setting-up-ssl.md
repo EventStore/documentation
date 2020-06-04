@@ -1,5 +1,7 @@
 # Setting up SSL
 
+**Connection code needs to move to the client docs**
+
 ## Setting up SSL on Windows
 
 The steps to set up SSL on Windows are as follows.
@@ -34,9 +36,11 @@ To trust the new certificate, the certificate you have to import the certificate
 5.  Navigate to _Certificates -> Current User -> Trusted Root Certification Authorities -> Certificates_.
 6.  _Right click_ on the Certificates folder menu item and click _All Tasks -> Import_. Follow the prompts.
 
-![Find certificate](images/ssl-step4.png)
+::: el-card :body-style="{ padding: '0px' }" 
+![Find certificate](./images/ssl-step4.png)
+:::
 
-Start Event Store with the following configuration in [a configuration file](command-line-arguments.md#yaml-files):
+Start Event Store with the following configuration in [a configuration file](../command-line-arguments.md#yaml-files):
 
 ```yaml
 CertificateStoreLocation: CurrentUser
@@ -116,7 +120,7 @@ This process installs `cert-sync`, which you use to update mono's certificate st
 sudo cert-sync eventstore.csr
 ```
 
-Start Event Store with the following configuration in [a configuration file](command-line-arguments.md#yaml-files):
+Start Event Store with the following configuration in [a configuration file](../command-line-arguments.md#yaml-files):
 
 ```yaml
 CertificateFile: eventstore.p12

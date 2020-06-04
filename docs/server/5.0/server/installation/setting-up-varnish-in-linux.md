@@ -6,7 +6,7 @@ This guide uses the Ubuntu 18.04 LTS
 
 You use a reverse proxy to limit access to Event Store without breaking HTTP caching (authenticate to the proxy not to Event Store itself). Since Event Store runs HTTP only on the loopback adapter, users must enter through the reverse proxy to reach Event Store. This document provides a brief guide on how to install Event Store with the varnish reverse proxy in a Linux environment. For more information on how to properly configure varnish for your requirements, read the [Varnish documentation](https://www.varnish-cache.org/trac/wiki/Introduction).
 
-[Ben Clark's Gist](https://gist.github.com/benclark/2695148) contains a varnish configuration that includes basic authentication as well as some other niceties such as adding headers for hits/misses.
+[Ben Clark's Gist](https://gist.github.com/benclark/2695148) contains a Varnish configuration that includes basic authentication as well as some other niceties such as adding headers for hits/misses.
 
 ## Install Varnish
 
@@ -29,7 +29,7 @@ DAEMON_OPTS="-a :80 \
 
 Open _/etc/varnish/default.vcl_ and edit the `backend` section to match Event Store:
 
-```bash
+```
 backend default {
     .host = "127.0.0.1";
     .port = "2114";

@@ -1,10 +1,8 @@
-# Persistent subscriptions management
+# Persistent subscriptions monitoring
 
-The Client API includes helper methods that wrap the HTTP API to allow you to manage persistent subscriptions. This document describes the methods found in the `PersistentSubscriptions` class. All methods in this class are asynchronous.
+The Client API includes helper methods that wrap the HTTP API to allow you to monitor persistent subscriptions. This page describes the methods found in the `PersistentSubscriptions` class. All methods in this class are asynchronous.
 
-## Methods
-
-### Get information for all persistent subscriptions from all streams
+## Get all persistent subscriptions from all streams
 
 Returns information about all persistent subscriptions from all streams.
 
@@ -12,7 +10,7 @@ Returns information about all persistent subscriptions from all streams.
 public Task List(UserCredentials userCredentials = null)
 ```
 
-### Get information about the persistent subscriptions for a stream
+## Get persistent subscriptions for a stream
 
 Returns information about the persistent subscription for a stream you specify with `stream`. You must have access to the stream.
 
@@ -20,7 +18,7 @@ Returns information about the persistent subscription for a stream you specify w
 public Task List(string stream, UserCredentials userCredentials = null)
 ```
 
-### Get information for a persistent subscription for a stream
+## Get persistent subscription for a stream
 
 Gets the details of the persistent subscription `subscriptionName` on `stream`. You must have access to the persistent subscription and the stream.
 
@@ -28,10 +26,3 @@ Gets the details of the persistent subscription `subscriptionName` on `stream`. 
 public Task Describe(string stream, string subscriptionName, UserCredentials userCredentials = null)
 ```
 
-### Replay parked messages
-
-Replays all parked messages for a particular persistent subscription `subscriptionName` on a `stream` that were parked by a negative acknowledgement action.
-
-```csharp
-public Task ReplayParkedMessages(string stream, string subscriptionName, UserCredentials userCredentials = null)
-```

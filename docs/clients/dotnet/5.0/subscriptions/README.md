@@ -1,6 +1,8 @@
 # Subscribe to changes
 
-A common operation is to subscribe to a stream and receive notifications for changes. As new events arrive, you continue following them.
+A common operation is to subscribe to a stream and receive notifications for changes. As new events arrive, you continue following them. 
+
+You can only subscribe to one stream. You can use server-side projections for linking events to new aggregated streams. System projections create pre-defined streams that aggregate events by type or by category and are available out-of-the box. Check the server documentation to learn more about system and user-defined projections.
 
 There are three types of subscription patterns, useful in different situations.
 

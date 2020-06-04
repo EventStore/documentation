@@ -4,8 +4,19 @@ module.exports = [
         collapsable: true,
         children: [
             "getting-started/",
-            "getting-started/projections.md",
             "getting-started/which-api-sdk.md"
+        ]
+    },
+    {
+        title: "Installation",
+        collapsable: true,
+        children: [
+            "installation/",
+            "installation/setting-up-ssl.md",
+            "installation/setting-up-varnish-in-linux.md",
+            "installation/deploy-kubernetes-aks.md",
+            "installation/deploy-kubernetes-gke.md",
+            "installation/uninstalling.md"
         ]
     },
     {
@@ -17,9 +28,6 @@ module.exports = [
             "configuring.md",
             "users-and-access-control-lists.md",
             "admin-ui.md",
-            "setting-up-ssl.md",
-            "setting-up-varnish-in-linux.md",
-            "uninstalling.md"
         ]
     },
     {
@@ -29,14 +37,6 @@ module.exports = [
             "cluster-without-manager-nodes.md",
             "cluster-with-manager-nodes.md",
             "node-roles.md",
-        ]
-    },
-    {
-        title: "Kubernetes",
-        collapsable: true,
-        children: [
-            "deploy-kubernetes-aks.md",
-            "deploy-kubernetes-gke.md",
         ]
     },
     {
@@ -67,6 +67,7 @@ module.exports = [
         collapsable: true,
         children: [
             "projections/",
+            "projections/enable.md",
             "projections/system-projections.md",
             "projections/user-defined-projections.md",
             "projections/projections-config.md",
