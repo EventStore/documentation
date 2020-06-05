@@ -17,20 +17,20 @@ To trust the new certificate, the certificate you have to import the certificate
 1.  Press _WindowsKey + R_, and enter 'certmgr.msc'.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Open certmgr.msc](images/ssl-step1.png)
+![Open certmgr.msc](./images/ssl-step1.png)
 :::
 
 2.  Navigate to _Certificates -> Current User -> Personal -> Certificates_.
 3.  Locate the certificate 'eventstore.com'.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Find certificate](images/ssl-step2.png)
+![Find certificate](./images/ssl-step2.png)
 :::
 
 4.  _Right click_ on the certificate and click on _All Tasks -> Export_. Follow the prompts.
 
 ::: el-card :body-style="{ padding: '0px' }" 
-![Export certificate](images/ssl-step3.png)
+![Export certificate](./images/ssl-step3.png)
 :::
 
 5.  Navigate to _Certificates -> Current User -> Trusted Root Certification Authorities -> Certificates_.
