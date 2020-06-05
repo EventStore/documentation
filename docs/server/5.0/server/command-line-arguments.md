@@ -175,7 +175,7 @@ Event Store supports the following parameters.
 | -SslTargetHost<br/>--ssl-target-host=VALUE<br/> | SSL_TARGET_HOST | SslTargetHost | Target host of server's SSL certificate. (Default: n/a) |
 | -SslValidateServer<br/>--ssl-validate-server=VALUE<br/> | SSL_VALIDATE_SERVER | SslValidateServer | Whether to validate that server's certificate is trusted. (Default: True) |
 | -ConnectionPendingSendBytesThreshold<br/>--connection-pending-send-bytes-threshold=VALUE<br/> | CONNECTION_PENDING_SEND_BYTES_THRESHOLD | ConnectionPendingSendBytesThreshold | The maximum number of pending send bytes allowed before a connection is closed. (Default: 10485760) |
-| -FaultOutOfOrderProjections<br/>--fault-out-of-order-projections=VALUE<br/> | FAULT_OUT_OF_ORDER_PROJECTIONS | FaultOutOfOrderProjections | Specify if a projection should be faulted when there is a discontinuity in event ordering (Default: True) |
+| -FaultOutOfOrderProjections<br/>--fault-out-of-order-projections=VALUE<br/> | FAULT_OUT_OF_ORDER_PROJECTIONS | FaultOutOfOrderProjections | Specify if a projection should be faulted when there is a discontinuity in event ordering (Default: False) |
 
 ### Projections options
 
