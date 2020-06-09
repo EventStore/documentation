@@ -4,22 +4,30 @@ module.exports = [
         collapsable: true,
         children: [
             "getting-started/",
+            "getting-started/quick-tour.md"
         ]
     },
     {
-        title: ".NET API",
+        title: "Connecting to server",
         collapsable: true,
         children: [
-            "",
-            "connecting-to-a-server.md",
-            "streams.md",
-            "reading-events.md",
-            "deleting-a-stream.md",
-            "embedded-client.md",
-            "optimistic-concurrency-and-idempotence.md",
-            "stream-metadata.md",
-            "users.md",
-            "security.md"
+            "connecting/",
+            "connecting/connecting-to-a-server.md",
+        ]
+    },
+    {
+        title: "Writing events",
+        collapsable: true,
+        children: [
+            "writing/",
+            "writing/optimistic-concurrency-and-idempotence.md",
+        ]
+    },
+    {
+        title: "Reading events",
+        collapsable: true,
+        children: [
+            "reading/"
         ]
     },
     {
@@ -38,6 +46,41 @@ module.exports = [
             "subscriptions/catchup-subscriptions.md",
             "subscriptions/persistent-subscriptions.md",
             "subscriptions/competing-consumers.md",
+        ]
+    },
+    {
+        title: "Event streams",
+        collapsable: true,
+        children: [
+            "streams/",
+            "streams/deleting-a-stream.md",
+            "embedded-client.md",
+            "streams/stream-metadata.md",
+        ]
+    },
+    {
+        title: "Security",
+        collapsable: true,
+        children: [
+            "security/",
+            "security/users.md"
+        ]
+    },
+    {
+        title: "Embedded",
+        collapsable: true,
+        children: [
+            "embedded/"
+        ]
+    },
+    {
+        title: "Examples",
+        collapsable: true,
+        children: [
+            "examples/",
+            "examples/aggregate.md",
+            "examples/aggregate-store.md",
+            "examples/read-models.md"
         ]
     },
     {

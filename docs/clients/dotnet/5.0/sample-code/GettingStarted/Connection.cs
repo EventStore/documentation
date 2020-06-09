@@ -9,8 +9,8 @@ namespace DocsExample.GettingStarted
         public static async Task<IEventStoreConnection> CreateConnection()
         {
             #region connect
-            var conn = EventStoreConnection .Create(new Uri("tcp://admin:changeit@localhost:1113"));
-            await conn.ConnectAsync();
+            var connection = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
+            await connection.ConnectAsync();
             #endregion connect
             return conn;
         }
