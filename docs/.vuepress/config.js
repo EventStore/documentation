@@ -1,4 +1,5 @@
 const versioning = require('./lib/versioning.js');
+versioning.load();
 
 module.exports = {
     base: "/",
@@ -37,7 +38,6 @@ module.exports = {
                 items: [
                     {text: "Overview", link: "/clients/"},
                     {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "")},
-                    {text: "Java SDK", items: versioning.linksFor("java-client", "")},
                     {text: "HTTP API", items: versioning.linksFor("http-api", "")},
                 ]
             },

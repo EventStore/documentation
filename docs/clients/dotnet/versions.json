@@ -1,0 +1,9 @@
+[
+  {
+    "id": "dotnet-client",
+    "path": "clients/dotnet/{version}",
+    "versions": [
+      "5.0"
+    ]
+  }
+]

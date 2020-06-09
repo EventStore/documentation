@@ -1,9 +1,22 @@
-const versions = require("../versions.json");
+const references = require("../versions.json");
 const fse = require("fs-extra");
+const fs = require("fs");
 
 const path = process.cwd();
+let versions = [];
 
 module.exports = {
+    load() {
+        references.forEach(p => {
+            const fileName = `${path}${p}`;
+            if (fs.existsSync(fileName)){
+                this.info(`Importing versions from ${fileName}`);
+                versions.push(...require(fileName));
+            } else {
+                this.info(`File ${fileName} doesn't exist, ignoring`);
+            }
+        });
+    },
     versions: {
         // latest stable release
         get latest() {
@@ -29,7 +42,8 @@ module.exports = {
     },
     version(id) {
         const ret = versions.find(x => x.id === id);
-        return {id: id, versions: ret === undefined ? [] : ret.versions, path: ret.path};
+        if (ret === undefined) this.error(`Version ${id} not defined`);
+        return {id: id, versions: ret.versions, path: ret.path};
     },
     // Build dropdown items for each version
     linksFor(id, url) {

@@ -1,0 +1,17 @@
+[
+  {
+    "id": "server",
+    "path": "server/{version}/server",
+    "versions": [
+      "20.6",
+      "5.0"
+    ]
+  },
+  {
+    "id": "http-api",
+    "path": "server/{version}/http-api",
+    "versions": [
+      "5.0"
+    ]
+  }
+]
