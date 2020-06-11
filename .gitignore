@@ -332,3 +332,6 @@ exclusive.lck
 version.txt
 /public/
 /docs/v5/event-sourcing/
+generated
+generated-versions.json
+/temp/
