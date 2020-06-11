@@ -1,17 +1,26 @@
 [
   {
     "id": "server",
-    "path": "server/{version}/server",
+    "basePath": "server",
     "versions": [
-      "20.6",
-      "5.0"
+      {
+        "version": "20.6",
+        "path": "20.6/server"
+      },
+      {
+        "version": "5.0",
+        "path": "5.0/server"
+      }
     ]
   },
   {
     "id": "http-api",
-    "path": "server/{version}/http-api",
+    "basePath": "server",
     "versions": [
-      "5.0"
+      {
+        "version": "5.0",
+        "path": "5.0/http-api"
+      }
     ]
   }
 ]

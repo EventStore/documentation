@@ -11,16 +11,25 @@ module.exports = {
             const fileName = `${path}${p}`;
             if (fs.existsSync(fileName)){
                 this.info(`Importing versions from ${fileName}`);
-                versions.push(...require(fileName));
+                const list = require(fileName);
+                list.forEach(v => {
+                    const existing = versions.find(x => x.id === v.id);
+                    if (existing === undefined) {
+                        versions.push(v);
+                    } else {
+                        existing.versions.push(...v.versions);
+                    }
+                });
             } else {
                 this.info(`File ${fileName} doesn't exist, ignoring`);
             }
         });
+        console.log(JSON.stringify(versions));
     },
     versions: {
         // latest stable release
         get latest() {
-            return versions[0].path.replace("{version}", versions[0].versions[0])
+            return `${versions[0].basePath}/${versions[0].versions[0].path}`;
         },
         get all() {
             return versions
@@ -33,7 +42,7 @@ module.exports = {
 
         versions.forEach(version => {
             version.versions.forEach(v => {
-                let path = version.path.replace("{version}", v);
+                let path = `${version.basePath}/${v.path}`;
                 sidebars[`/${path}/`] = require(`../../${path}/sidebar.js`);
             });
         })
@@ -43,7 +52,7 @@ module.exports = {
     version(id) {
         const ret = versions.find(x => x.id === id);
         if (ret === undefined) this.error(`Version ${id} not defined`);
-        return {id: id, versions: ret.versions, path: ret.path};
+        return ret;
     },
     // Build dropdown items for each version
     linksFor(id, url) {
@@ -51,8 +60,8 @@ module.exports = {
         const version = this.version(id);
 
         version.versions.forEach(v => {
-            let path = version.path.replace("{version}", v);
-            let item = {text: v, link: `/${path}/${url}`};
+            let path = `${version.basePath}/${v.path}`;
+            let item = {text: v.version, link: `/${path}/${url}`};
             links.push(item);
         });
 

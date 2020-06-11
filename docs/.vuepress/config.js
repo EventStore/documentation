@@ -34,7 +34,7 @@ module.exports = {
                 items: versioning.linksFor("server", "getting-started/") // TODO create custom component
             },
             {
-                text: "Drivers",
+                text: "Clients and APIs",
                 items: [
                     {text: "Overview", link: "/clients/"},
                     {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "")},
