@@ -34,6 +34,20 @@ function safeRmdir(path) {
     }
 }
 
+async function replaceCodePath(mdPath, samplesPath) {
+    const originalSamplesPath = '<<<\\ @\\/samples';
+    const newSamplesPath = '<<<\\ @\\/' + samplesPath.replace(/\//g, '\\/');
+
+    console.log(`replacing ${originalSamplesPath} to ${newSamplesPath} in Markdown at ${source}`);
+
+    const replaceCommand = process.platform === 'darwin'
+        ? `find ./${mdPath} -name '*.md' -print0 | xargs -0 sed -i '' \'s/${originalSamplesPath}/${newSamplesPath}/g\'`
+        : `find ./${mdPath} -name '*.md' -exec sed -i \'s/${originalSamplesPath}/${newSamplesPath}/g\' {} \\;`;
+    console.log(replaceCommand);
+
+    await sh(replaceCommand);
+}
+
 async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
     console.log(`checking out ${tag}`);
     await clientRepo.checkout(tag)
@@ -47,16 +61,7 @@ async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
         await fsExtra.copy(path.join(repoLocation, 'docs', 'docs'), destinationPath);
         await fsExtra.copy(path.join(repoLocation, 'docs', 'samples'), samplesPath);
 
-        const originalSamplesPath = '<<<\\ @\\/samples';
-        const newSamplesPath = '<<<\\ @\\/' + samplesPath.replace(/\//g, '\\/');
-
-        console.log(`replacing ${originalSamplesPath} to ${newSamplesPath} in Markdown at ${destinationPath}`);
-
-        const replaceCommand = process.platform === 'darwin'
-            ? `find ./${destinationPath} -name '*.md' -print0 | xargs -0 sed -i '' \'s/${originalSamplesPath}/${newSamplesPath}/g\'`
-            : `find ./${destinationPath} -name '*.md' -print0 | xargs -i@ sed -i \'s/${originalSamplesPath}/${newSamplesPath}/g\' @`;
-        console.log(replaceCommand);
-        await sh(replaceCommand);
+        await replaceCodePath(destinationPath, samplesPath);
 
         return {path: path.join('generated', id), version: id};
     }
