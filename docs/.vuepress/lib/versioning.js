@@ -1,7 +1,7 @@
 const references = require("../versions.json");
 const fse = require("fs-extra");
 const fs = require("fs");
-const log = require("log");
+const log = require("./log");
 
 const path = process.cwd();
 let versions = [];
@@ -57,7 +57,7 @@ module.exports = {
     // Build dropdown items for each version
     linksFor(id, url) {
         const links = [];
-        const version = log.version(id);
+        const version = this.version(id);
 
         version.versions.forEach(v => {
             let path = `${version.basePath}/${v.path}`;
