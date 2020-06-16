@@ -37,20 +37,20 @@ Environment variables override all the options specified in configuration files.
 
 You can also override options from both configuration files and environment variables using the command line.
 
-::: el-tabs
-:::: el-tab-pane label="macOS"
+:::: el-tabs
+::: el-tab-pane label="macOS"
 For example, starting EventStoreDB with the `--log` option will override the default log files location:
 
 ```
 eventstore --log /tmp/eventstore/logs
 ```
-::::
-:::: el-tab-pane label="Windows"
+:::
+::: el-tab-pane label="Windows"
 For example, starting EventStoreDB with the `--log` option will override the default log files location:
 
 ```
 EventStore.ClusterNode.exe --log C:\Temp\EventStore\Logs
 ```
-::::
 :::
+::::
 
