@@ -1,0 +1,8 @@
+[
+  {
+    "id": "dotnet-client",
+    "basePath": "clients/dotnet",
+    "currentBranch": "mat-mcloughlin/doc-init",
+    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git"
+  }
+]

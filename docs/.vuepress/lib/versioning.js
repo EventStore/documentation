@@ -1,6 +1,7 @@
 const references = require("../versions.json");
 const fse = require("fs-extra");
 const fs = require("fs");
+const log = require("log");
 
 const path = process.cwd();
 let versions = [];
@@ -10,7 +11,7 @@ module.exports = {
         references.forEach(p => {
             const fileName = `${path}${p}`;
             if (fs.existsSync(fileName)){
-                this.info(`Importing versions from ${fileName}`);
+                log.info(`Importing versions from ${fileName}`);
                 const list = require(fileName);
                 list.forEach(v => {
                     const existing = versions.find(x => x.id === v.id);
@@ -21,10 +22,9 @@ module.exports = {
                     }
                 });
             } else {
-                this.info(`File ${fileName} doesn't exist, ignoring`);
+                log.info(`File ${fileName} doesn't exist, ignoring`);
             }
         });
-        console.log(JSON.stringify(versions));
     },
     versions: {
         // latest stable release
@@ -51,13 +51,13 @@ module.exports = {
     },
     version(id) {
         const ret = versions.find(x => x.id === id);
-        if (ret === undefined) this.error(`Version ${id} not defined`);
+        if (ret === undefined) log.error(`Version ${id} not defined`);
         return ret;
     },
     // Build dropdown items for each version
     linksFor(id, url) {
         const links = [];
-        const version = this.version(id);
+        const version = log.version(id);
 
         version.versions.forEach(v => {
             let path = `${version.basePath}/${v.path}`;
@@ -73,18 +73,18 @@ module.exports = {
         console.log('\n')
 
         if (!fs.existsSync(`${path}/.vuepress/versions.json`)) {
-            this.error('File .vuepress/versions.json not found')
+            log.error('File .vuepress/versions.json not found')
         }
 
         if (typeof ver === 'undefined') {
-            this.error('No version number specified! \nPass the version you wish to create as an argument.\nEx: 4.4')
+            log.error('No version number specified! \nPass the version you wish to create as an argument.\nEx: 4.4')
         }
 
         // if (versions.find(x => x.id === ver !== undefined) {
         //     this.error(`This version '${ver} already exists! Specify a new version to create that does not already exist.`)
         // }
 
-        this.info(`Generating new version into 'docs/${ver}' ...`)
+        log.info(`Generating new version into 'docs/${ver}' ...`)
 
         try {
             fse.copySync(`${path}/master`, `${path}/${ver}`)
@@ -105,17 +105,7 @@ module.exports = {
 
             // this.success(`Version '${version}' created!`)
         } catch (e) {
-            this.error(e)
+            log.error(e)
         }
     },
-    error(message) {
-        console.log("\x1b[41m%s\x1b[0m", ' ERROR ', `${message}\n`)
-        process.exit(0)
-    },
-    info(message) {
-        console.log("\x1b[44m%s\x1b[0m", ' INFO ', `${message}\n`)
-    },
-    success(message) {
-        console.log("\x1b[42m\x1b[30m%s\x1b[0m", ' DONE ', `${message}\n`)
-    }
 }
