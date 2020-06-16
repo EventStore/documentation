@@ -38,7 +38,7 @@ async function replaceCodePath(mdPath, samplesPath) {
     const originalSamplesPath = '<<<\\ @\\/samples';
     const newSamplesPath = '<<<\\ @\\/' + samplesPath.replace(/\//g, '\\/');
 
-    console.log(`replacing ${originalSamplesPath} to ${newSamplesPath} in Markdown at ${source}`);
+    console.log(`replacing ${originalSamplesPath} to ${newSamplesPath} in Markdown at ${mdPath}`);
 
     const replaceCommand = process.platform === 'darwin'
         ? `find ./${mdPath} -name '*.md' -print0 | xargs -0 sed -i '' \'s/${originalSamplesPath}/${newSamplesPath}/g\'`
