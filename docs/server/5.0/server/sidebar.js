@@ -19,12 +19,12 @@ module.exports = [
         ]
     },
     {
-        title: "Server",
+        title: "Configuration",
         collapsable: true,
         children: [
-            "",
-            "command-line-arguments.md",
-            "configuring.md",
+            "configuration/",
+            "configuration/logging.md",
+            "configuration/application.md",
             "admin-ui.md",
         ]
     },
