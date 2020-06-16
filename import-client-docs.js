@@ -4,6 +4,7 @@ const path = require('path');
 const simpleGit = require('simple-git');
 const git = simpleGit();
 const exec = require('child_process').exec;
+const del = require('del');
 
 async function sh(cmd) {
     return new Promise(function (resolve, reject) {
@@ -28,9 +29,9 @@ let repos = [
     }
 ]
 
-function safeRmdir(path) {
+async function safeRmdir(path) {
     if (fs.existsSync(path)) {
-        fs.rmdirSync(path, {recursive: true});
+        await del(path);
     }
 }
 
@@ -68,7 +69,7 @@ async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
 }
 
 async function main() {
-    safeRmdir('temp');
+    await safeRmdir('temp');
     fs.mkdirSync('temp');
 
     for (const repo of repos) {
@@ -76,7 +77,7 @@ async function main() {
         const docsLocation = path.join(repoPath, 'generated');
         const repoLocation = path.join('temp', repo.id);
 
-        safeRmdir(docsLocation, {recursive: true});
+        await safeRmdir(docsLocation);
         await git.clone(repo.repo, repoLocation);
 
         let clientRepo = simpleGit(repoLocation);
@@ -111,7 +112,7 @@ async function main() {
         fs.writeFileSync(path.join(repoPath, 'generated-versions.json'), def);
     }
 
-    fs.rmdirSync('temp', {recursive: true});
+    await safeRmdir('temp');
 }
 
 main().then();
