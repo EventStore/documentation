@@ -1,6 +1,6 @@
 [build]
     publish = "public/"
-    command = "yarn docs:build"
+    command = "yarn predocs:dev && yarn docs:build"
 [[redirects]]
   from = "/sdk/dotnet/*"
   to = "https://silly-aryabhata-ec1db8.netlify.com/:splat"
