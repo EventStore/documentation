@@ -55,7 +55,9 @@ async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
 }
 
 async function main() {
-    fs.rmdirSync('temp', {recursive: true});
+    if (fs.existsSync('temp')){
+        fs.rmdirSync('temp', {recursive: true});
+    }
     fs.mkdirSync('temp');
 
     for (const repo of repos) {
