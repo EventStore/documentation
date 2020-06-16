@@ -28,6 +28,12 @@ let repos = [
     }
 ]
 
+function safeRmdir(path) {
+    if (fs.existsSync(path)){
+        fs.rmdirSync(path, {recursive: true});
+    }
+}
+
 async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
     console.log(`checking out ${tag}`);
     await clientRepo.checkout(tag)
@@ -55,9 +61,7 @@ async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
 }
 
 async function main() {
-    if (fs.existsSync('temp')){
-        fs.rmdirSync('temp', {recursive: true});
-    }
+    safeRmdir('temp');
     fs.mkdirSync('temp');
 
     for (const repo of repos) {
@@ -65,7 +69,7 @@ async function main() {
         const docsLocation = path.join(repoPath, 'generated');
         const repoLocation = path.join('temp', repo.id);
 
-        fs.rmdirSync(docsLocation, {recursive: true});
+        safeRmdir(docsLocation, {recursive: true});
         await git.clone(repo.repo, repoLocation);
 
         let clientRepo = simpleGit(repoLocation);
