@@ -3,6 +3,7 @@
     "chalk": "^2.0.0",
     "commander": "^2.0.0",
     "core-js": "2",
+    "del": "^5.1.0",
     "esm": "^3.0.0",
     "fs-extra": "^9.0.1",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
