@@ -73,9 +73,9 @@ module.exports = [
         title: "Event streams",
         collapsable: false,
         children: [
-            "/streams/metadata-and-reserved-names.md",
-            "/streams/deleting-streams-and-events.md",
-            "/streams/system-streams.md"
+            "streams/metadata-and-reserved-names.md",
+            "streams/deleting-streams-and-events.md",
+            "streams/system-streams.md"
         ]
     },
     {

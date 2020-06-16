@@ -54,7 +54,6 @@ module.exports = [
         children: [
             "streams/",
             "streams/deleting-a-stream.md",
-            "embedded-client.md",
             "streams/stream-metadata.md",
         ]
     },

@@ -3,6 +3,19 @@ const fsExtra = require('fs-extra')
 const path = require('path');
 const simpleGit = require('simple-git');
 const git = simpleGit();
+const exec = require('child_process').exec;
+
+async function sh(cmd) {
+    return new Promise(function (resolve, reject) {
+        exec(cmd, (err, stdout, stderr) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve({ stdout, stderr });
+            }
+        });
+    });
+}
 
 let deployCurrent = true;
 
@@ -22,8 +35,21 @@ async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
     if (fs.existsSync(path.join(repoLocation, 'docs', 'docs'))) {
         console.log('docs exist, copying');
 
-        await fsExtra.copy(path.join(repoLocation, 'docs', 'docs'), path.join(docsLocation, id));
-        await fsExtra.copy(path.join(repoLocation, 'docs', 'samples'), path.join(docsLocation, id, 'samples'));
+        const samplesPath = path.join(docsLocation, id, 'samples');
+        const destinationPath = path.join(docsLocation, id);
+
+        await fsExtra.copy(path.join(repoLocation, 'docs', 'docs'), destinationPath);
+        await fsExtra.copy(path.join(repoLocation, 'docs', 'samples'), samplesPath);
+
+        const originalSamplesPath = '<<<\\ @\\/samples';
+        const newSamplesPath = '<<<\\ @\\/' + samplesPath.replace(/\//g, '\\/');
+
+        console.log(`replacing ${originalSamplesPath} to ${newSamplesPath} in Markdown at ${destinationPath}`);
+
+        const replaceCommand = `find ./${destinationPath} -name '*.md' -print0 | xargs -0 sed -i '' \'s/${originalSamplesPath}/${newSamplesPath}/g\'`;
+        console.log(replaceCommand);
+        await sh(replaceCommand);
+
         return {path: path.join('generated', id), version: id};
     }
 }
@@ -33,8 +59,9 @@ async function main() {
     fs.mkdirSync('temp');
 
     for (const repo of repos) {
-        let docsLocation = path.join('docs', repo.basePath, 'generated');
-        let repoLocation = path.join('temp', repo.id);
+        const repoPath = path.join('docs', repo.basePath);
+        const docsLocation = path.join(repoPath, 'generated');
+        const repoLocation = path.join('temp', repo.id);
 
         fs.rmdirSync(docsLocation, {recursive: true});
         await git.clone(repo.repo, repoLocation);
@@ -61,13 +88,14 @@ async function main() {
         for (const tag of tags) {
             let version = await copy(clientRepo, repoLocation, docsLocation, tag, tag);
 
-            if (version != null) {
+            if (version !== undefined) {
                 definition[0].versions.push(version);
             }
         }
 
-        console.log(definition);
-        fs.writeFileSync(path.join('docs', repo.basePath) + '/generated-versions.json', JSON.stringify(definition))
+        const def = JSON.stringify(definition, null, 1);
+        console.log(def);
+        fs.writeFileSync(path.join(repoPath, 'generated-versions.json'), def);
     }
 
     fs.rmdirSync('temp', {recursive: true});
