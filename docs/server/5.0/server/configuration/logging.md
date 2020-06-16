@@ -50,4 +50,18 @@ By default, EventStoreDB uses the `Debug` log level and it's quite verbose. You 
 
 <!TODO>
 
+## HTTP requests logging
+
+EventStoreDB cal also log all the incoming HTTP requests, like many HTTP servers do. Requests are logged before being processed, so unsuccessful requests are logged too.
+
+Use one of the following ways to enable the HTTP requests logging:
+
+ 
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--log-http-requests=true` |
+| YAML                 | `LogHttpRequests: True` |
+| Environment variable | `EVENTSTORE_LOG_HTTP_REQUESTS=true` |
+
+Logging HTTP requests is disabled by default.
 
