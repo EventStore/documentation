@@ -1,10 +1,12 @@
-# Logging
+# Diagnostic settings
+
+## Logging
 
 EventStoreDB logs its internal operations to the console (stdout) and to log files. The default location of the log files and the way to change it is described [below](#logs-location).
 
 There are a few options to change the way how EventStoreDB produces logs and how detailed the logs should be.
 
-## Log format
+### Log format
 
 The `--structured-log` enables the structured logging in JSON format that is more machine-friendly and can be ingested by vendor-specific tools like Logstash or Datadog agent. The default value for this option is `true` and you only need to change it if you want plain-next logs.
 
@@ -28,7 +30,7 @@ Here is the example of the plain-text log:
 
 Keep in mind that the console output will not use structured logging, the option only affects the log files.
 
-## Logs location
+### Logs location
 
 Log files are located in `/var/lib/eventstore` for Linux and macOS, and in the `logs` subdirectory of the EventStoreDB installation directory on Windows. You can change the log files location using the `Log` configuration option.
 
@@ -44,18 +46,17 @@ For example, adding this line to the `eventstore.conf` file will force writing l
 Log: /tmp/eventstore/logs
 ```
 
-## Log level
+### Log level
 
 By default, EventStoreDB uses the `Debug` log level and it's quite verbose. You can change the level to reduce the amount of space used by the logs, using the logging configuration.
 
 <!TODO>
 
-## HTTP requests logging
+### HTTP requests logging
 
 EventStoreDB cal also log all the incoming HTTP requests, like many HTTP servers do. Requests are logged before being processed, so unsuccessful requests are logged too.
 
 Use one of the following ways to enable the HTTP requests logging:
-
  
 | Format               | Syntax |
 | :------------------- | :----- |
@@ -65,3 +66,8 @@ Use one of the following ways to enable the HTTP requests logging:
 
 Logging HTTP requests is disabled by default.
 
+## Stats and metrics
+
+| -StatsPeriodSec<br/>--stats-period-sec=VALUE<br/> | STATS_PERIOD_SEC | StatsPeriodSec | The number of seconds between statistics gathers. (Default: 30) |
+
+| -EnableHistograms<br/>--enable-histograms=VALUE<br/> | ENABLE_HISTOGRAMS | EnableHistograms | Enables the tracking of various histograms in the backend, typically only used for debugging etc (Default: False) |

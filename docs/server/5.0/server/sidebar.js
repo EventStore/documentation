@@ -19,16 +19,6 @@ module.exports = [
         ]
     },
     {
-        title: "Configuration",
-        collapsable: true,
-        children: [
-            "configuration/",
-            "configuration/logging.md",
-            "configuration/application.md",
-            "admin-ui.md",
-        ]
-    },
-    {
         title: "Clustering",
         collapsable: true,
         children: [
@@ -46,9 +36,24 @@ module.exports = [
         ]
     },
     {
+        title: "Configuration",
+        collapsable: true,
+        children: [
+            "configuration/",
+            "configuration/diagnostics.md",
+            "configuration/application.md",
+            "configuration/network.md",
+            "configuration/cluster.md",
+            "configuration/database.md",
+            "configuration/security.md",
+            "configuration/projections.md",
+        ]
+    },
+    {
         title: "Operations",
         collapsable: true,
         children: [
+            "admin-ui.md",
             "operations/database-backup.md",
             "operations/stats-debug.md",
             "operations/ports-and-networking.md",
