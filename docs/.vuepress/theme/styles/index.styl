@@ -16,9 +16,63 @@
   font-weight: 300;
 }
 
+@font-face {
+  font-family: "museosans";
+  src: url("/fonts/MuseoSans_100-webfont.woff") format('woff');
+  font-weight: 100;
+}
+
+h1
+  color: #1976D2
+  font-weight: 100
+  font-size: 2.25rem
+  padding-bottom: 1.375rem
+  border-bottom: #F6F6F6 4px solid
+  margin-bottom: 1.5rem !important
+
+h2
+  color: #09264a
+  font-weight: 500
+  font-size: 1.375rem
+  padding-bottom: 1.375rem
+  border-bottom: #F6F6F6 4px solid
+
+.el-card
+  margin-top: 1.9rem
+  margin-bottom: 1.9rem
+
+.custom-block-title
+  font-size: 1.125rem
+  background-repeat: no-repeat
+  text-indent: 3.5rem
+  margin-left: -2.95rem
+  line-height: 2.5rem
+
+.custom-block
+  margin-top: 1.5rem !important
+  margin-bottom: 1.5rem !important
+
+.custom-block.warning
+  background-color: #FEF1D1
+  border-color: #F8B81B
+
+  .custom-block-title
+    color: #F8B81B
+    background-image: url('/warning.svg')
+
+
+.custom-block.tip
+  background-color: #DEF0DC
+  border-color: #5AB552
+
+  .custom-block-title
+    color: #5AB552
+    background-image: url('/tip.svg')
+
 body
   font-family: museosans
   font-weight: 500
+  color: #757575
 
 .navbar
   background-color: #09264A
@@ -42,20 +96,15 @@ body
 
 .sidebar
   padding-top: 2.8rem
+  border-right: #F6F6F6 4px solid
 
   .sidebar-heading
     border-left: none
     padding-bottom: 0.65rem
+    color: #757575
 
-  //.arrow
-  //  display: block
-  //  border-left: none
-  //  border-right: none
-  //  border-top: #F6F6F6 4px solid
-  //  width: 100%
-  //  left: 0 !important
-  //  top: 0.7rem !important
-  //  margin-bottom: 0.7rem
+    &.open
+      color: #09264a !important
 
   .sidebar-group-items
     margin-left: 1.25rem !important
@@ -71,8 +120,11 @@ body
     border-bottom: #F6F6F6 4px solid
     padding-left: 0 !important
 
+    a.sidebar-link.active
+      background-image: none
+
   .sidebar-link
-    border-left: none  !important
+    border-left: none !important
     padding-left: 1.25rem !important
     margin-top: 0.65rem
     margin-bottom: 0.65rem
@@ -91,109 +143,10 @@ a.sidebar-link.active
   background-image: url('/side-nav-marker.svg')
   background-repeat: no-repeat
   color: #5AB552 !important
-//.search-box
-//  order: 1
-//  margin-right: 0
-//  margin-left: 6.6rem
-//  line-height: 3rem
-//  background: transparent
-//
-//  input
-//    background: transparent !important
-//    color: #FFF !important
-//    border-color: #FFF !important
-//
-//  .suggestions
-//    left: auto !important
-//    right: 0 !important
 
-//  height: 4.4rem
-//  padding: 1rem 1.5rem !important
-//  background-image: url('/circle-grn-1680.png')
-//  background-repeat: no-repeat
-//  background-position: top right
-//  line-height: 2.5rem !important
+.page
+  padding-top: 2.8rem !important
 
+  p
+    margin-top: 0.9rem !important
 
-//img.logo
-//  margin-right: 0.1rem !important
-//
-//a.home-link
-//  color: #5AB552
-//  font-size: 1.2rem
-//  font-weight: 300
-//
-//a.home-link::after
-//  content: 'Developer'
-//
-
-//
-//
-//.links, .dropdown-wrapper .dropdown-title
-//  background-color: transparent !important
-//  color: #CCC !important
-//
-//.dropdown-wrapper .dropdown-title .arrow
-//  border-top: 6px solid #CCC !important
-//
-//.nav-links .nav-item
-//  margin-left: 3rem !important
-//  line-height: 3rem !important
-//
-//.search-box
-//  order: 1
-//  margin-right: 0
-//  margin-left: 6.6rem
-//  line-height: 3rem
-//  background: transparent
-//
-//  input
-//    background: transparent !important
-//    color: #FFF !important
-//    border-color: #FFF !important
-//
-//  .suggestions
-//    left: auto !important
-//    right: 0 !important
-//
-//.sidebar
-//  top: 7.2rem !important
-//  font-weight: 700
-//
-//  .sidebar-heading
-//    font-size: 1rem
-//    color: #09264A !important
-//
-//  .arrow
-//    display: block
-//    border-left: none
-//    border-right: none
-//    border-top: #F6F6F6 4px solid
-//    width: 100%
-//    left: 0 !important
-//    top: 0.7rem !important
-//    margin-bottom: 0.7rem
-//
-//.sidebar-links
-//  margin-left: 1.5rem !important
-//  box-sizing: border-box
-//
-//a.sidebar-link
-//  font-size: 0.88rem !important
-//  margin-bottom: 0.7rem
-//  padding: 0.35rem 1rem 0.35rem 0.5rem !important
-//
-//.sidebar-sub-headers
-//  border-bottom: #F6F6F6 4px solid
-//  border-top: #F6F6F6 4px solid
-//  margin-left: 2.25rem !important
-//  padding-left: 0 !important
-//  padding-top: 0.7rem !important
-//
-//  a.sidebar-link
-//    margin-bottom: 0 !important
-//
-//
-//a.sidebar-link.active
-//  color: #5AB552 !important
-//
