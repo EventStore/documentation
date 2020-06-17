@@ -16,7 +16,3 @@
 | -InitializationThreads<br/>--initialization-threads=VALUE | INITIALIZATION_THREADS | InitializationThreads | Number of threads used to load chunk and index files. (Default: 1) |
 | -reduceFileCachePressure<br/>--reduce-file-cache-pressure=VALUE| REDUCE_FILE_CACHE_PRESSURE | reduceFileCachePressure   | Disables `FileOptions.RandomAccess` cache flag when opening chunk files. Useful if the Windows File Cache is consuming memory. (Default: False) |
 | -DisableFirstLevelHttpAuthorization<br/>--disable-first-level-http-authorization=VALUE | DISABLE_FIRST_LEVEL_HTTP_AUTHORIZATION | DisableFirstLevelHttpAuthorization | Disables authorization layer on endpoints. (Default: True) |
-| -SkipIndexVerify<br/>--skip-index-verify=VALUE | SKIP_INDEX_VERIFY | SkipIndexVerify | Skips reading and verification of PTables during start-up. (Default: False) |
-| -MaxAutoMergeIndexLevel<br/>--max-auto-merge-index-level=VALUE  | MAX_AUTO_MERGE_INDEX_LEVEL | MaxAutoMergeIndexLevel | Maximum level of index file to merge automatically before manual merge. (Default: 1000) |
-| -OptimizeIndexMerge<br/>--optimize-index-merge=VALUE | OPTIMIZE_INDEX_MERGE | OptimizeIndexMerge | Bypasses the checking of file hashes of indexes during startup and after index merges. (Default: False) |
-| -WriteStatsToDb<br/>--write-stats-to-db=VALUE | WRITE_STATS_TO_DB | WriteStatsToDb | Write stats data to the Event Store database. (Default: False) |

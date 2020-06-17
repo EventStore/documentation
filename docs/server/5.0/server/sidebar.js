@@ -45,8 +45,10 @@ module.exports = [
             "configuration/network.md",
             "configuration/cluster.md",
             "configuration/database.md",
+            "configuration/indexing.md",
             "configuration/security.md",
             "configuration/projections.md",
+            "configuration/caching.md",
         ]
     },
     {

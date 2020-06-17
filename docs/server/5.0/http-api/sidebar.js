@@ -10,7 +10,7 @@ module.exports = [
             "description-document.md",
             "optimistic-concurrency-and-idempotence.md",
             "stream-metadata.md",
-            "security.md"
+            "security.md",
         ]
     },
     {

@@ -6,7 +6,7 @@
 - Manage users (remove unused users & create separate functional application user) [more](../users-and-access-control-lists.md)
 - Ensure that `EVENTSTORE_DISABLE_HTTP_CACHING` is set to `false` [more](../caching.md)
 - Ensure that EventStoreDB writes data, indexes and logs on a separate drive to avoid competition for IO between the data, index and log files. [more](../indexing.md)
-- Due to the replication process, all nodes tend to merge index files at about the same time. Ensure `MaxAutoMergeIndexLevel` is set (read docs for more info) and each node has timely scheduled manual merging with an offset between the nodes, in order to avoid all nodes to rebuild large indexes at the same time [more](../indexing.md)
+- Due to the replication process, all nodes tend to merge index files at about the same time. Ensure `MaxAutoMergeIndexLevel` is set (read docs for more info) and each node has timely scheduled manual merging with an offset between the nodes, in order to avoid all nodes to rebuild large indexes at the same time [more](../configuration/indexing.md)
 - Ensure code has licence file for EventStoreDB in order to satisfy 3-clause BSD license **WTF**
 - Ensure there is scheduled timely triggered scavenging process. [more](scavenging.md)
   - Scavenging increases the number of reads/writes made to disk, and it is not recommended when your system is under heavy load.
