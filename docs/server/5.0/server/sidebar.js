@@ -29,7 +29,7 @@ module.exports = [
     },
     {
         title: "Security",
-        collapsable: false,
+        collapsable: true,
         children: [
             "security/setting-up-ssl.md",
             "security/users-and-access-control-lists.md",
@@ -78,7 +78,7 @@ module.exports = [
     },
     {
         title: "Event streams",
-        collapsable: false,
+        collapsable: true,
         children: [
             "streams/metadata-and-reserved-names.md",
             "streams/deleting-streams-and-events.md",
