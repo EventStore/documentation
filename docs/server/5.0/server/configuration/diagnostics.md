@@ -68,8 +68,23 @@ Logging HTTP requests is disabled by default.
 
 ## Stats and metrics
 
-| -StatsPeriodSec<br/>--stats-period-sec=VALUE<br/> | STATS_PERIOD_SEC | StatsPeriodSec | The number of seconds between statistics gathers. (Default: 30) |
+-StatsPeriodSec
+--stats-period-sec=VALUE
+STATS_PERIOD_SEC
+StatsPeriodSec 
 
-| -WriteStatsToDb<br/>--write-stats-to-db=VALUE | WRITE_STATS_TO_DB | WriteStatsToDb | Write stats data to the Event Store database. (Default: False) |
+The number of seconds between statistics gathers. (Default: 30)
 
-| -EnableHistograms<br/>--enable-histograms=VALUE<br/> | ENABLE_HISTOGRAMS | EnableHistograms | Enables the tracking of various histograms in the backend, typically only used for debugging etc (Default: False) |
+-WriteStatsToDb
+--write-stats-to-db=VALUE
+WRITE_STATS_TO_DB
+WriteStatsToDb
+
+Write stats data to the Event Store database. (Default: False) |
+
+-EnableHistograms
+--enable-histograms=VALUE
+ENABLE_HISTOGRAMS
+EnableHistograms
+
+Enables the tracking of various histograms in the backend, typically only used for debugging etc (Default: False) |

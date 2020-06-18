@@ -84,13 +84,5 @@ module.exports = [
             "streams/deleting-streams-and-events.md",
             "streams/system-streams.md"
         ]
-    },
-    {
-        title: "Advanced topics",
-        collapsable: true,
-        children: [
-            "advanced/caching.md",
-            "advanced/indexing.md",
-        ]
-    },
+    }
 ]

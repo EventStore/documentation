@@ -1,8 +1,5 @@
 # Application options
 
-| Command line parameter | Environment variable prefixed with `EVENTSTORE_` | Config file YAML | Description |
-|:------------|:---------------|:----------|:-------|
-
 ## Help
 
 Use `-Help` or `--help` in the command line to get the full list of options.
