@@ -1,4 +1,4 @@
-# Configuration
+# Configuring EventStoreDB
 
 EventStoreDB has a number of configuration options that can be changed. You can find all the options described in details in this section.
 
