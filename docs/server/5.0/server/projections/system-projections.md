@@ -33,11 +33,17 @@ For example, if the body of the projection is `first` and `-`, for a stream id o
 
 If the body of the projection is `last` and `-`, for a stream id of `shopping-cart-1`, the stream name the projection creates is `$ce-shopping-cart`.
 
+::: warning
+You can change the projection setting at any time, so it can be quite dangerous. Consider all possible event consumers of the category stream that expect it to be in the format that is already there. Changing the setting might break all of them.
+:::
+
 The use case of this project is subscribing to all events within a category.
 
 ## By event type
 
 The `$by_event_type` (_http://127.0.0.1:2113/projection/$by_event_type_) projection links existing events from streams to a new stream with a stream id in the format `$et-{event-type}`.
+
+For example, if you append an event with the `EventType` field set to `PaymentProcessed`, no matter in what stream you appended this event, you get a link event in the `$et-PaymentProcessed` stream.
 
 You cannot configure this projection.
 

@@ -2,7 +2,7 @@
 
 <!-- TODO: And how do you change them? UI, .NET, HTTP etc -->
 
-By changing these settings, you can lessen the amount of pressure projections put on an Event Store node or improve projection performance. You can change these settings on a case-by-case basis, and monitor potential improvements.
+By changing these settings, you can lessen the amount of pressure projections put on an EventStoreDB node or improve projection performance. You can change these settings on a case-by-case basis, and monitor potential improvements.
 
 ::: warning
 You can only change the configuration of a stopped projection.
@@ -54,11 +54,11 @@ The `trackemittedstreams` boolean setting enables tracking of a projection's emi
 Tracking emitted streams enables you to delete a projection and all the streams that it has created. You should only the setting if you intend to delete a projection and create new ones that project to the same stream.
 
 ::: warning
-By default Event Store disables the `trackemittedstreams` setting for projections. When enabled, an event written records the stream name (in `$projections-{projection_name}-emittedstreams`) of each event emitted by the projection. This means that write amplification is a possibility, as each event that the projection emits writes a separate event. As such, this option is not recommended for projections that emit a lot of events, and you should enable only where necessary.
+By default, EventStoreDB disables the `trackemittedstreams` setting for projections. When enabled, an event written records the stream name (in `$projections-{projection_name}-emittedstreams`) of each event emitted by the projection. This means that write amplification is a possibility, as each event that the projection emits writes a separate event. As such, this option is not recommended for projections that emit a lot of events, and you should enable only where necessary.
 :::
 
 ::: tip
-Between Event Store versions 3.8.0 and 4.0.2, this option was enabled by default when a projection was created through the UI. If you have any projections created during this time frame, it's worth checking whether this option is enabled.
+Between EventStoreDB versions 3.8.0 and 4.0.2, this option was enabled by default when a projection was created through the UI. If you have any projections created during this time frame, it's worth checking whether this option is enabled.
 :::
 
 ### Max allowed writes in flight

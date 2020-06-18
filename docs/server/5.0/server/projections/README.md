@@ -28,7 +28,13 @@ In the medical example above the doctor could leave the query running to be noti
 
 ## Types of projections
 
-There are two types of projections in Event Store:
+There are two types of projections in EventStoreDB:
 
-- [Built in (system) projections](../projections/system-projections.md) written in C#.
-- [User-defined JavaScript projections](../projections/user-defined-projections.md) which you create via the API or the admin UI.
+- [Built in (system) projections](system-projections.md)
+- [User-defined JavaScript projections](user-defined-projections.md) which you create via the API or the admin UI
+
+## Performance impact
+
+Keep in mind that some projections emit events as a reaction to events that they process. We call this effect _write amplification_ because emitting new events or link events creates additional load on the server IO. For example, some system projections emit link events to their streams for each event appended to the database. These projections are By Category, By Event Type and By Correlation Id. If all those three projections are enabled and started, adding one event to the database will, in fact, produce three additional events and, therefore, quadruples the number of write operations.
+
+Projections only run on a leader node of the cluster due to consistency concerns. It creates more CPU and IO load on the leader node compared to follower nodes.
