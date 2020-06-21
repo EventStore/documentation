@@ -1,11 +1,9 @@
 # Deploy to Azure Cloud AKS
 
-This guide is to show how to use [the official Event Store Helm Chart](https://github.com/EventStore/EventStore.Charts) to
-interactively deploy an Event Store Cluster in Kubernetes Azure Cloud
-AKS service.
+This guide is to show how to use [the official Event Store Helm Chart](https://github.com/EventStore/EventStore.Charts) to interactively deploy an Event Store Cluster in Kubernetes Azure Cloud AKS service.
 
-::: danger
-After reviewing our strategy in regards to deployment of Event Store on Kubernetes, we have decided to deprecate the Helm chart. While we believe that Helm charts are a great solution for deploying simple applications, we do not believe that they provide the comprehensive life-cycle management features that a distributed database like Event Store requires for real world operational use. As such we are devoting resources to develop a Kubernetes operator that satisfies these requirements, for release at a future date.
+::: warning
+After reviewing our strategy in regards to deployment of EventStoreDB on Kubernetes, we have decided to deprecate the Helm chart. While we believe that Helm charts are a great solution for deploying simple applications, we do not believe that they provide the comprehensive life-cycle management features that a distributed database like EventStoreDB requires for real world operational use. As such we are devoting resources to develop a Kubernetes operator that satisfies these requirements, for release at a future date.
 
 For more information [read this blog post](https://eventstore.com/blog/event-store-on-kubernetes/).
 :::
@@ -89,15 +87,9 @@ To access the dashboard you can now use the `browse` command. This command is a 
 az aks browse -n {clustername} -g {groupname}
 ```
 
-### Deploy Event Store cluster with Helm
+### Deploy EventStoreDB cluster with Helm
 
-::: danger
-After reviewing our strategy in regards to deployment of Event Store on Kubernetes, we have decided to deprecate the Helm chart. While we believe that Helm charts are a great solution for deploying simple applications, we do not believe that they provide the comprehensive life-cycle management features that a distributed database like Event Store requires for real world operational use. As such we are devoting resources to develop a Kubernetes operator that satisfies these requirements, for release at a future date.
-
-For more information [read this blog post](https://eventstore.com/blog/event-store-on-kubernetes/).
-:::
-
-Helm is the package manager for Kubernetes. After you've created a new Kubernetes cluster you need to configure Helm for your local helm CLI to connect to a configured service account on the server side. The service account used by Helm is called Tiller. Give Tiller access to the cluster and initialise it with the following commands:
+Helm is the package manager for Kubernetes. After you've created a new Kubernetes cluster you need to configure Helm for your local Helm CLI to connect to a configured service account on the server side. The service account used by Helm is called Tiller. Give Tiller access to the cluster and initialise it with the following commands:
 
 ```shell
 kubectl -n kube-system create serviceaccount tiller
@@ -119,23 +111,17 @@ helm repo update
 helm install -n eventstore eventstore/eventstore --set persistence.enabled=true
 ```
 
-The Event Store cluster is now deployed and available in a couple of
-minutes. The default cluster size in the Helm Chart is set to 3 so this results in a 3 node Event Store cluster over the 3 nodes Kubernetes
-cluster. The setting `persistence.enable=true` uses a
-`PersistentVolumeClaim` on your Kubernetes cluster to claim dynamically
-persistent storage volumes. You can configure this to use
-statically defined volumes if required.
+The EventStoreDB cluster is now deployed and available in a couple of minutes. The default cluster size in the Helm Chart is set to 3 so this results in a 3 node Event Store cluster over the 3 nodes Kubernetes cluster. The `persistence.enable=true` setting uses the `PersistentVolumeClaim` on your Kubernetes cluster to dynamically claim persistent storage volumes. You can configure this to use statically defined volumes if required.
 
-#### Upgrade the Event Store cluster with a newer version
+### Upgrade the EventStoreDB cluster
 
-Verify your current Event Store cluster
+Verify your current EventStoreDB cluster:
 
 ```shell
 helm status eventstore
 ```
 
-Fork the official Helm Chart Event Store repository and change the
-version of the image in the chart _values.yaml_.
+Fork the official EventStoreDB Helm Chart repository and change the version of the image in the chart _values.yaml_.
 
 Then run the command in the same directory as the chart:
 
@@ -144,27 +130,25 @@ helm upgrade eventstore . --set persistence.enabled=true
 ```
 
 The upgrade command silently upgrades all the pods one by one
-without downtime. Helm takes care of attaching the existing volumes
-to the new pods during the upgrade.
+without downtime. Helm takes care of attaching the existing volumes to the new pods during the upgrade.
 
-#### Rollback to a previous version
+### Rollback to a previous version
 
-To rollback to a previous version, first use the following command to
-display the history
+To rollback to a previous version, first use the following command to display the history:
 
 ```shell
 helm history eventstore
 ```
 
-And the following command to rollback to a specific revision
+And the following command to rollback to a specific revision:
 
 ```shell
 helm rollback eventstore 1
 ```
 
-#### Delete resources
+### Delete resources
 
-To delete all resources associated with the EventStore installation use the following command:
+To delete all resources associated with the EventStoreDB installation use the following command:
 
 ```shell
 az aks delete -n {clustername} -g {groupname}
