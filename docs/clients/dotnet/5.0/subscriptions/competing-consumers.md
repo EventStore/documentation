@@ -18,74 +18,12 @@ In order for the server to load-balance subscribers, it uses the concept of cons
 
 ![Consumer groups](https://i.stack.imgur.com/jhUNt.png)
 
-## Creating a persistent subscription
-
-Before interacting with a persistent subscription, you need to create one. Essentially, you create a consumer group by giving it a unique name. You will receive an error if you attempt to create a subscription with the group name that already exists. This requires [admin permissions](/docs/server/5.0/server/users-and-access-control-lists.md).
-
-```csharp
-Task<PersistentSubscriptionCreateResult> CreatePersistentSubscriptionAsync(string stream, string groupName, PersistentSubscriptionSettings settings, UserCredentials credentials);
-```
-
-## Updating a persistent subscription
-
-You can edit the settings of an existing subscription while it is running. This action drops the current subscribers and resets the subscription internally. This requires [admin permissions](/docs/server/5.0/server/users-and-access-control-lists.md).
-
-```csharp
-Task<PersistentSubscriptionUpdateResult> UpdatePersistentSubscriptionAsync(string stream, string groupName, PersistentSubscriptionSettings settings, UserCredentials credentials);
-```
-
-## Deleting a persistent subscription
-
-<!-- TODO: Explanation? -->
-
-```csharp
-Task<PersistentSubscriptionDeleteResult> DeletePersistentSubscriptionAsync(string stream, string groupName, UserCredentials userCredentials = null);
-```
-
-## Connecting to a persistent subscription
-
-<!-- TODO: Explanation? -->
-
-```csharp
-EventStorePersistentSubscription ConnectToPersistentSubscription(
-   string groupName,
-   string stream,
-   Func<EventStorePersistentSubscription, ResolvedEvent, Task> eventAppeared,
-   Action<EventStorePersistentSubscription, SubscriptionDropReason, Exception> subscriptionDropped = null,
-   UserCredentials userCredentials = null,
-   int bufferSize = 10,
-   bool autoAck = true);
-```
-
-## Persistent subscription settings
-
-Both the `Create` and `Update` methods take a `PersistentSubscriptionSettings` object as a parameter. The methods use this object to provide the settings for the persistent subscription. A fluent builder is available for these options that you can locate using the `Create()` method. The following table shows the options you can set on a persistent subscription.
-
-| Member | Description |
-|:-------|:------------|
-| `ResolveLinkTos` | Tells the subscription to resolve link events. |
-| `DoNotResolveLinkTos` | Tells the subscription to not resolve link events. |
-| `PreferRoundRobin` | If possible preference a round robin between the connections with messages (if not possible uses next available). |
-| `PreferDispatchToSingle` | If possible preference dispatching to a single connection (if not possible will use next available). |
-| `StartFromBeginning` | Start the subscription from the first event in the stream.  |
-| `StartFrom(int position)` | Start the subscription from the position-th event in the stream. |
-| `StartFromCurrent` | Start the subscription from the current position. |
-| `WithMessageTimeoutOf(TimeSpan timeout)` | Sets the timeout for a client before retrying the message. |
-| `CheckPointAfter(TimeSpan time)` | The amount of time the system should try to checkpoint after. |
-| `MinimumCheckPointCountOf(int count)` | The minimum number of messages to write a checkpoint for. |
-| `MaximumCheckPointCountOf(int count)`| The maximum number of messages not checkpointed before forcing a checkpoint. |
-| `WithMaxRetriesOf(int count)` | Sets the number of times to retry a message should before considering it a bad message. |
-| `WithLiveBufferSizeOf(int count)` | The size of the live buffer (in memory) before resorting to paging. |
-| `WithReadBatchOf(int count)` | The size of the read batch when in paging mode. |
-| `WithBufferSizeOf(int count)` | The number of messages to buffer when in paging mode. |
-| `WithExtraStatistics` | Tells the backend to measure timings on the clients so statistics contain histograms of them. |
-
 ## Creating a subscription group
 
 The first step of dealing with a subscription group is to create one. You will receive an error if you attempt to create a subscription group multiple times. You must have admin permissions to create a persistent subscription group.
 
 ::: tip
-Normally you wouldn't create the subscription group in your general executable code. Instead, you create it as a step during an install or as an admin task when setting up Event Store. You should assume the subscription exists in your code.
+Normally you wouldn't create the subscription group in your general executable code. Maintaining subscription groups can be seen as a _migration_ task, similar to RDBMS schema migrations and therefore needs to run only after it gets changed for some reason.
 :::
 
 ```csharp
@@ -131,6 +69,38 @@ If you change settings such as `startFromBeginning`, this doesn't reset the grou
 | `PersistentSubscriptionSettings settings` | The settings to use when updating this subscription. |
 | `UserCredentials credentials` | The user credentials to use for this operation. |
 
+## Persistent subscription settings
+
+Both the `Create` and `Update` methods take a `PersistentSubscriptionSettings` object as a parameter. The methods use this object to provide the settings for the persistent subscription. A fluent builder is available for these options that you can locate using the `Create()` method. For example:
+
+```csharp
+var settings = PersistentSubscriptionSettings
+    .Create()
+    .ResolveLinkTos()
+    .StartFromCurrent();
+```
+
+The following table shows the options you can set on a persistent subscription.
+
+| Member | Description |
+|:-------|:------------|
+| `ResolveLinkTos` | Tells the subscription to resolve link events. |
+| `DoNotResolveLinkTos` | Tells the subscription to not resolve link events. |
+| `PreferRoundRobin` | If possible preference a round robin between the connections with messages (if not possible uses next available). |
+| `PreferDispatchToSingle` | If possible preference dispatching to a single connection (if not possible will use next available). |
+| `StartFromBeginning` | Start the subscription from the first event in the stream.  |
+| `StartFrom(int position)` | Start the subscription from the position-th event in the stream. |
+| `StartFromCurrent` | Start the subscription from the current position. |
+| `WithMessageTimeoutOf(TimeSpan timeout)` | Sets the timeout for a client before retrying the message. |
+| `CheckPointAfter(TimeSpan time)` | The amount of time the system should try to checkpoint after. |
+| `MinimumCheckPointCountOf(int count)` | The minimum number of messages to write a checkpoint for. |
+| `MaximumCheckPointCountOf(int count)`| The maximum number of messages not checkpointed before forcing a checkpoint. |
+| `WithMaxRetriesOf(int count)` | Sets the number of times to retry a message should before considering it a bad message. |
+| `WithLiveBufferSizeOf(int count)` | The size of the live buffer (in memory) before resorting to paging. |
+| `WithReadBatchOf(int count)` | The size of the read batch when in paging mode. |
+| `WithBufferSizeOf(int count)` | The number of messages to buffer when in paging mode. |
+| `WithExtraStatistics` | Tells the backend to measure timings on the clients so statistics contain histograms of them. |
+
 ## Deleting a subscription group
 
 Remove a subscription group with the delete operation. Like the creation of groups, you rarely do this in your runtime code and is undertaken by an administrator running a script.
@@ -157,7 +127,7 @@ The most important parameter to pass when connecting is the buffer size. This pa
 var subscription = connection.ConnectToPersistentSubscription(
     "foo", "nonexisting2", 
     (sub, e) => Console.Write("appeared"),
-    (sub, reason, ex) =>{}
+    (sub, reason, ex) => {}
 );
 ```
 
@@ -187,17 +157,21 @@ HTTP clients bypass the consumer strategy which means it ignores any ordering or
 
 ### RoundRobin (default)
 
-Distributes events to all clients evenly. If the client bufferSize is reached the client is ignored until events are acknowledged/not acknowledged.                 |
+Distributes events to all clients evenly. If the client `bufferSize` is reached, the client is ignored until events are acknowledged/not acknowledged.
+
+This strategy provides equal load balancing between all consumers in the group.
 
 ### DispatchToSingle
 
-Distributes events to a single client until the bufferSize is reached. After which the next client is selected in a round robin style, and the process is repeated.
+Distributes events to a single client until the `bufferSize` is reached. After that, the next client is selected in a round robin style, and the process is repeated.
+
+This option can be seen as a fall-back scenario for high availability, when a single consumer processes all the events until it reaches its maximum capacity. When that happens, another consumer takes the load to free up the main consumer resources.
 
 ### Pinned
 
 For use with an indexing projection such as the system `$by_category` projection.
 
-Event Store inspects event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects it's buckets are assigned to other clients. When a client connects, it is assigned some of the existing buckets. This naively attempts to maintain a balanced workload.
+EventStoreDB inspects event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects it's buckets are assigned to other clients. When a client connects, it is assigned some of the existing buckets. This naively attempts to maintain a balanced workload.
 
 The main aim of this strategy is to decrease the likelihood of concurrency and ordering issues while maintaining load balancing. _This is not a guarantee_, and you should handle the usual ordering and concurrency issues.
 

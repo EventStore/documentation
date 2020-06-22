@@ -34,9 +34,9 @@ namespace DocsExample
                     "step1"        => Step1(),
                     "step2"        => Step2(),
                     "step2subs"    => Step2Subs(),
-                    "step3"        => Step3_UserProjections.Step3(Globals.AdminCredentials),
-                    "step3update"  => Step3_UserProjections.Step3Update(Globals.AdminCredentials),
-                    "step3options" => Step3_UserProjections.Step3ProjectionOptions(Globals.AdminCredentials),
+                    "step3"        => UserProjections.Step3(Globals.AdminCredentials),
+                    "step3update"  => UserProjections.Step3Update(Globals.AdminCredentials),
+                    "step3options" => UserProjections.Step3ProjectionOptions(Globals.AdminCredentials),
                     _              => Console.Out.WriteLineAsync("Unknown option")
                 };
                 await task;
@@ -52,8 +52,9 @@ namespace DocsExample
 
         static async Task Step1()
         {
-            var conn           = await Connection.CreateConnection();
             const string streamName = Globals.StreamName;
+
+            var conn           = await Connection.CreateConnection();
             var step1EventData = Step3_UserProjections.ReadEvents(Globals.FilePath);
             var eventData      = step1EventData.ToArray();
 

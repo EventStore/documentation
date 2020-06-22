@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 
 namespace DocsExample.GettingStarted
 {
-    public class Step3_UserProjections
+    public class UserProjections
     {
         #region ReadEventsFunction
         public static List<EventData> ReadEvents(string filePath)
