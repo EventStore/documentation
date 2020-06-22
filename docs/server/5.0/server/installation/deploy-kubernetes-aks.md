@@ -14,7 +14,7 @@ Install the following utilities in your development machine.
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 - [Helm](https://github.com/helm/helm/releases)
-- [The Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 
 ## Configuration steps
 

@@ -19,7 +19,7 @@ Install the following utilities in your development machine.
 
 ## Configuration steps
 
-Login in your Google Cloud account using the gcloud cli, this prompts you to login using any browser and copy/paste a key back in to the cli:
+Login in your Google Cloud account using the gcloud CLI:
 
 ```shell
 gcloud auth login --no-launch-browser
@@ -34,7 +34,7 @@ gcloud config set project <projectid>
 
 Enable the Kubernetes Engine API for your project, by visiting the _<https://console.cloud.google.com/apis/library/container.googleapis.com?project={project-id}>_ page.
 
-Create a Kubernetes cluster in your account, the following command does not specify the number of nodes and uses the default of 3:.
+Create a Kubernetes cluster in your account, the following command does not specify the number of nodes and uses the default of 3:
 
 ```shell
 gcloud container clusters create <clustername> --zone <zonename>

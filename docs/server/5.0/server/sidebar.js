@@ -12,7 +12,6 @@ module.exports = [
         collapsable: true,
         children: [
             "installation/",
-            "installation/setting-up-varnish-in-linux.md",
             "installation/deploy-kubernetes-aks.md",
             "installation/deploy-kubernetes-gke.md",
             "installation/uninstalling.md"
@@ -49,6 +48,7 @@ module.exports = [
             "configuration/security.md",
             "configuration/projections.md",
             "configuration/caching.md",
+            "configuration/scavenging.md",
         ]
     },
     {

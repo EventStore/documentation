@@ -2,7 +2,7 @@
 
 Settings in this section concern projections that are running on the server. Read more about projections [here](../projections/README.md).
 
-:::warning
+::: warning
 Server-side projections impact the performance of the EventStoreDB server. For example, some standard [system projections](../projections/system-projections.md) like Category or Event Type projections produce new (link) events that are stored in the database in addition to the original event. This effectively doubles or triples the number of events written and therefore creates pressure on the IO of the server node. We often call this effect "write amplification".
 :::
 
@@ -12,7 +12,7 @@ This option instructs the server to start standard system projections when the s
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-StartStandardProjections` or `--start-standard-projections` |
+| Command line         | `--start-standard-projections` |
 | YAML                 | `StartStandardProjections` |
 | Environment variable | `EVENTSTORE_START_STANDARD_PROJECTIONS` |
 
@@ -32,7 +32,7 @@ Finally, you can set `RunProjections` to `All` and it will enable both system an
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-RunProjections` or `--run-projections` |
+| Command line         | `--run-projections` |
 | YAML                 | `RunProjections` |
 | Environment variable | `EVENTSTORE_RUN_PROJECTIONS` |
 
@@ -48,7 +48,7 @@ Use the `ProjectionThreads` option to do so. Adjusting the number of threads for
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-ProjectionThreads` or `--projection-threads` |
+| Command line         | `--projection-threads` |
 | YAML                 | `ProjectionThreads` |
 | Environment variable | `EVENTSTORE_PROJECTION_THREADS` |
 

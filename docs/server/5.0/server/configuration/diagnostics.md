@@ -68,21 +68,21 @@ Logging HTTP requests is disabled by default.
 
 ## Stats and metrics
 
--StatsPeriodSec
+### StatsPeriodSec
 --stats-period-sec=VALUE
 STATS_PERIOD_SEC
 StatsPeriodSec 
 
 The number of seconds between statistics gathers. (Default: 30)
 
--WriteStatsToDb
+### WriteStatsToDb
 --write-stats-to-db=VALUE
 WRITE_STATS_TO_DB
 WriteStatsToDb
 
 Write stats data to the Event Store database. (Default: False) |
 
--EnableHistograms
+### EnableHistograms
 --enable-histograms=VALUE
 ENABLE_HISTOGRAMS
 EnableHistograms

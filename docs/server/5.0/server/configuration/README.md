@@ -183,3 +183,14 @@ Exit reason: WhatIf option specified
 [38558,01,17:05:37.130] Exiting with exit code: 0.
 Exit reason: "WhatIf option specified"
 ```
+
+## Help and version
+
+You can check what version of EventStoreDB you have installed by using the `--version` parameter in the command line. For example:
+
+```
+$ eventstore --version
+EventStore version 5.0.8.0 (HEAD/6b871e5659ed38775372456fb21be6a99392fddb, Thu, 26 Mar 2020 11:42:43 +0100)
+```
+
+The full list of available options is available from the currently installed server by using the `--help` option in the command line.

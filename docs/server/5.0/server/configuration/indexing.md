@@ -47,7 +47,7 @@ Read more below to understand these options better.
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-Index` or `--index` |
+| Command line         | `--index` |
 | YAML                 | `Index` |
 | Environment variable | `EVENTSTORE_INDEX` | 
 
@@ -59,7 +59,7 @@ Read more below to understand these options better.
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-MaxMemTableSize` or `--max-mem-table-size` |
+| Command line         | `--max-mem-table-size` |
 | YAML                 | `MaxMemTableSize` |
 | Environment variable | `EVENTSTORE_MAX_MEM_TABLE_SIZE` | 
 
@@ -75,7 +75,7 @@ Increasing `MaxMemTableSize` also decreases the number of times Event Store writ
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-IndexCacheDepth` or `--index-cache-depth` |
+| Command line         | `--index-cache-depth` |
 | YAML                 | `IndexCacheDepth` |
 | Environment variable | `EVENTSTORE_INDEX_CACHE_DEPTH` | 
 
@@ -89,7 +89,7 @@ Increasing `MaxMemTableSize` also decreases the number of times Event Store writ
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-SkipIndexVerify` or `--skip-index-verify` |
+| Command line         | `--skip-index-verify` |
 | YAML                 | `SkipIndexVerify` |
 | Environment variable | `EVENTSTORE_SKIP_INDEX_VERIFY` | 
 
@@ -103,13 +103,13 @@ In the event of corruption indexes will be rebuilt by reading through all the ch
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-MaxAutoMergeIndexLevel` or `--max-auto-merge-index-level` |
+| Command line         | `--max-auto-merge-index-level` |
 | YAML                 | `MaxAutoMergeIndexLevel` |
 | Environment variable | `EVENTSTORE_MAX_AUTO_MERGE_INDEX_LEVEL` | 
 
 **Default**: `2147483647`
 
-`MaxAutoMergeIndexLevel` allows you to specify the maximum index file level to automatically merge. By default Event Store merges all levels. Depending on the specification of the host running Event Store, at some point index merges will use a large amount of disk IO.
+`MaxAutoMergeIndexLevel` allows you to specify the maximum index file level to automatically merge. By default EventStoreDB merges all levels. Depending on the specification of the host running Event Store, at some point index merges will use a large amount of disk IO.
 
 For example:
 
@@ -119,7 +119,7 @@ For example:
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-OptimizeIndexMerge` or `--optimize-index-merge` |
+| Command line         | `--optimize-index-merge` |
 | YAML                 | `OptimizeIndexMerge` |
 | Environment variable | `EVENTSTORE_OPTIMIZE_INDEX_MERGE` | 
 
@@ -153,15 +153,15 @@ For safety _ptables_ Event Store is currently merging are only deleted after the
 
 ### Manual Merging
 
-If you have set the maximum level (`MaxAutoMergeIndexLevel`) for automatically merging indexes, then you need to trigger merging indexes above this level manually by using the `/admin/mergeindexes` endpoint, or the ES-CLI tool that is available with commercial support.
+If you have set the maximum level (`MaxAutoMergeIndexLevel`) for automatically merging indexes, then you need to trigger merging indexes above this level manually by using the `/admin/mergeindexes` endpoint, or the es-cli tool that is available with commercial support.
 
-Triggering a manual merge causes Event Store to merge all tables that have a level equal to the maximum merge level or above into a single table.  If there is only 1 table at the maximum level or above, no merge is performed.
+Triggering a manual merge causes EventStoreDB to merge all tables that have a level equal to the maximum merge level or above into a single table. If there is only 1 table at the maximum level or above, no merge is performed.
 
 ## Tuning
 
-For most Event Store clusters, the default settings are enough to give consistent and good performance. For clusters with larger numbers of events, or those that run in constrained environments the configuration options allow for some tuning to meet operational constraints.
+For most EventStoreDB clusters, the default settings are enough to give consistent and good performance. For clusters with larger numbers of events, or those that run in constrained environments the configuration options allow for some tuning to meet operational constraints.
 
-The most common optimization needed is to set a `MaxAutoMergeLevel` to avoid large merges occurring across all nodes at approximately the same time.  Large index merges use a lot of IOPS and in IOPS constrained environments it is often desirable to have better control over when these happen. Because increasing this value requires an index rebuild you should start with a higher value and decrease until the desired balance between triggering manual merges (operational cost) and automatic merges (IOPS) cost.  The exact value to set this varies between environments due to IOPS generated by other operations such as read and write load on the cluster.
+The most common optimization needed is to set a `MaxAutoMergeLevel` to avoid large merges occurring across all nodes at approximately the same time. Large index merges use a lot of IOPS and in IOPS constrained environments it is often desirable to have better control over when these happen. Because increasing this value requires an index rebuild you should start with a higher value and decrease until the desired balance between triggering manual merges (operational cost) and automatic merges (IOPS) cost. The exact value to set this varies between environments due to IOPS generated by other operations such as read and write load on the cluster.
 
 For example:
 

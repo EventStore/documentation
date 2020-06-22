@@ -1,23 +1,20 @@
 # Database settings
 
-| -Db<br/>--db=VALUE<br/> | DB | Db | The path the db should be loaded/saved to. (Default: [See default directories](operations/default-directories.md)) |
+## Db
 
-| -MemDb<br/>--mem-db=VALUE<br/> | MEM_DB | MemDb | Keep everything in memory, no directories or files are created. (Default: False) |
+--db=VALUE<br/> | DB | Db | The path the db should be loaded/saved to. (Default: [See default directories](operations/default-directories.md)) |
 
-## Some options
+## MemDb
 
+--mem-db=VALUE<br/> | MEM_DB | MemDb | Keep everything in memory, no directories or files are created. (Default: False) |
 
-| -MinFlushDelayMs<br/>--min-flush-delay-ms=VALUE<br/> | MIN_FLUSH_DELAY_MS | MinFlushDelayMs | The minimum flush delay in milliseconds. (Default: 2) |
+## SkipDbVerify
 
-## Scavenging
+--skip-db-verify=VALUE<br/> | SKIP_DB_VERIFY | SkipDbVerify | Bypasses the checking of file hashes of database during startup (allows for faster startup). (Default: False) |
 
-| -DisableScavengeMerging<br/>--disable-scavenge-merging=VALUE<br/> | DISABLE_SCAVENGE_MERGING | DisableScavengeMerging | Disables the merging of chunks when scavenge is running (Default: False) |
+## MinFlushDelayMs
 
-| -ScavengeHistoryMaxAge<br/>--scavenge-history-max-age=VALUE<br/> | SCAVENGE_HISTORY_MAX_AGE | ScavengeHistoryMaxAge | The number of days to keep scavenge history (Default: 30) |
-
-| -AlwaysKeepScavenged<br/>--always-keep-scavenged=VALUE<br/> | ALWAYS_KEEP_SCAVENGED | AlwaysKeepScavenged | Always keeps the newer chunks from a scavenge operation. (Default: False) |
-
-| -UnsafeIgnoreHardDelete<br/>--unsafe-ignore-hard-delete=VALUE<br/> | UNSAFE_IGNORE_HARD_DELETE | UnsafeIgnoreHardDelete | Disables Hard Deletes (UNSAFE: use to remove hard deletes) (Default: False) |
+--min-flush-delay-ms=VALUE<br/> | MIN_FLUSH_DELAY_MS | MinFlushDelayMs | The minimum flush delay in milliseconds. (Default: 2) |
 
 ## ???
 
@@ -29,7 +26,6 @@
 
 ## ???
 
-| -SkipDbVerify<br/>--skip-db-verify=VALUE<br/> | SKIP_DB_VERIFY | SkipDbVerify | Bypasses the checking of file hashes of database during startup (allows for faster startup). (Default: False) |
 | -WriteThrough<br/>--write-through=VALUE<br/> | WRITE_THROUGH | WriteThrough | Enables Write Through when writing to the file system, this bypasses filesystem caches. (Default: False) |
 | -Unbuffered<br/>--unbuffered=VALUE<br/> | UNBUFFERED | Unbuffered | Enables Unbuffered/DirectIO when writing to the file system, this bypasses filesystem caches. (Default: False)   |
 | -PrepareTimeoutMs<br/>--prepare-timeout-ms=VALUE<br/> | PREPARE_TIMEOUT_MS | PrepareTimeoutMs | Prepare timeout (in milliseconds). (Default: 2000) |
