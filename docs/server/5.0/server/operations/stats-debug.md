@@ -4,10 +4,12 @@ Event Store has a lot of debug and statistics information available about a clus
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0/server/sample-code/stats.sh#curl
+```bash
+curl -i -X GET "http://127.0.0.1:2113/stats" -u "admin:changeit"
+```
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0/server/sample-code/stats.sh#response
+<<< @/docs/server/5.0/server/sample-code/stats.json
 :::
 ::::
 

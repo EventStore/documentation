@@ -1,14 +1,16 @@
 module.exports = [
     {
-        title: "Getting Started",
+        title: "Introduction",
         collapsable: true,
         children: [
-            "getting-started/",
-            "getting-started/which-api-sdk.md"
+            "introduction/",
+            "introduction/introduction.md",
+            "introduction/clients.md"
         ]
     },
     {
         title: "Installation",
+        path: "installation/",
         collapsable: true,
         children: [
             "installation/",
@@ -37,6 +39,7 @@ module.exports = [
     {
         title: "Configuration",
         collapsable: true,
+        path: "configuration/",
         children: [
             "configuration/",
             "configuration/diagnostics.md",
@@ -67,6 +70,7 @@ module.exports = [
     {
         title: "Projections",
         collapsable: true,
+        path: "projections/",
         children: [
             "projections/",
             "projections/enable.md",

@@ -42,9 +42,17 @@ Accepted values are `None`, `System` and `All`.
 
 ## Projection threads
 
-Projections always run on a single node of the cluster, which is the leader node. That;s the same node that is used to accept all the write operations and the default node for read operations. Since projections might intensively use the node CPU, it might be beneficial to adjust the number of threads used by the projections subsystem. 
+Projection threads are used to make calls in to the V8 JavaScript engine, and coordinate dispatching operations back into the main worker threads of the database. While they carry out none of the operations listed directly, they are indirectly involved in all of them.
 
-Use the `ProjectionThreads` option to do so. Adjusting the number of threads for projections only makes sense if the server node runs on a machine with multiple CPU cores.
+The primary reason for increasing the number of projection threads is projections which perform a large amount of CPU-bound processing. Projections are always eventually consistent - if there is a mismatch between egress from the database log and processing speed of projections, the window across which the latest events have not been processed promptly may increase. Too many projection threads can end up with increased context switching and memory use, since a V8 engine is created per thread.
+
+There are three primary influences over projections lagging:
+
+- Large number of writes, outpacing the ability of the engine to process them in a timely fashion.
+- Projections which perform a lot of CPU-bound work (heavy calculations).
+- Projections which result in a high system write amplification factor, especially with latent disks.
+
+Use the `ProjectionThreads` option to adjust the number of threads dedicated to projections.
 
 | Format               | Syntax |
 | :------------------- | :----- |
@@ -56,6 +64,16 @@ Use the `ProjectionThreads` option to do so. Adjusting the number of threads for
 
 ## Fault out of order projections
 
-Not sure how it could happen.
+The projections engine keeps track of the latest processed event for each projection. It allows projections to guarantee ordered handling of events.
 
-| -FaultOutOfOrderProjections<br/>--fault-out-of-order-projections=VALUE<br/> | FAULT_OUT_OF_ORDER_PROJECTIONS | FaultOutOfOrderProjections | Specify if a projection should be faulted when there is a discontinuity in event ordering (Default: False) |
+However, it is possible that in some cases a projection would get an unexpected event version. It won't get an event that precedes the last processed event, such a situation is very unlikely. But, it might get the next event that doesn't satisfy the `N+1` condition for the event number. The projection expects to get an event number `5` after processing the event number `4`, but eventually it might get an event number `7` because events `5` and `6` got deleted and scavenged.
+
+Under those circumstances, the projection would normally fail and get stuck. You can override this behaviour by setting the `FailOutOfOrderProjections` to `false`.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--fault-out-of-order-projections` |
+| YAML                 | `FaultOutOfOrderProjections` |
+| Environment variable | `EVENTSTORE_FAULT_OUT_OF_ORDER_PROJECTIONS` |
+
+**Default**: `false`

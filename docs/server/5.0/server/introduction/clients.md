@@ -28,7 +28,7 @@ Event Store offers a low-level protocol in the form of an asynchronous TCP proto
 
 ## HTTP
 
-Event Store also offers an HTTP-based interface, based specifically on the [AtomPub protocol](http://tools.ietf.org/html/rfc5023). As it operates over HTTP, this is less efficient, but nearly every environment supports it.
+EventStoreDB also offers an HTTP-based interface, based specifically on the [AtomPub protocol](http://tools.ietf.org/html/rfc5023). As it operates over HTTP, this is less efficient, but nearly every environment supports it.
 
 ### Event Store supported clients
 
@@ -56,13 +56,13 @@ Also, the number of writes per second supported is often dramatically higher whe
 
 ### AtomPub is more scalable for large numbers of subscribers
 
-This scalability is due to the ability to use intermediary caching with Atom feeds. Most URIs returned by Event Store point to immutable data and are infinitely cachable. Therefore on a replay of a projection, much of the data required is likely available on a local or intermediary cache. This can also lead to lower network traffic.
+::: warning
+We do not recommend developing new applications and systems that use the AtomPub feature of EventStoreDB as it is being deprecated in the core product. Take a look at the gRPC streaming in EventStoreDB 20.6+ instead.
+:::
+
+This scalability is due to the ability to use intermediary caching with Atom feeds. Most URIs returned by EventStoreDB point to immutable data and are infinitely cachable. Therefore on a replay of a projection, much of the data required is likely available on a local or intermediary cache. This can also lead to lower network traffic.
 
 Atom tends to operate better in a large heterogeneous environment where you have callers from different platforms. This is especially true if you have to integrate with different teams or external vendors. Atom is an industry standard and well-documented protocol whereas the TCP protocol is a custom protocol they would need to understand.
 
 Most platforms have good existing tooling for Atom including feed readers. None of this tooling exists for analyzing traffic with the TCP protocol.
-
-::: tip
-Our recommendation would be to use AtomPub as your primary protocol unless you have low subscriber SLAs or need higher throughput on reads and writes than Atom can offer. This is due to the open nature and ease of use of the Atom protocol. Often in integration scenarios, these are more important than raw performance.
-:::
 

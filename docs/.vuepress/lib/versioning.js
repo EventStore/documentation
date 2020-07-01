@@ -43,7 +43,13 @@ module.exports = {
         versions.forEach(version => {
             version.versions.forEach(v => {
                 let path = `${version.basePath}/${v.path}`;
-                sidebars[`/${path}/`] = require(`../../${path}/sidebar.js`);
+                const sidebar = require(`../../${path}/sidebar.js`);
+                sidebar.forEach(item => {
+                    if (item.path !== undefined) {
+                        item.path = `/${path}/${item.path}`;
+                    }
+                });
+                sidebars[`/${path}/`] = sidebar;
             });
         })
 

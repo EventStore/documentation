@@ -13,8 +13,8 @@ This first step covers installation and running Event Store, and writing your fi
 There are three ways to interact with Event Store:
 
 1.  [With the Admin UI](../admin-ui.md)
-2.  [With the HTTP API](/../../http-api/README.md)
-3.  With a [Client API](which-api-sdk.md).
+2.  [With the HTTP API](../../http-api/README.md)
+3.  With a [Client API](../which-api-sdk.md).
 
 ## Discover Event Store via Admin UI
 
