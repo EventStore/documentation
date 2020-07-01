@@ -15,7 +15,7 @@ module.exports = {
         }
     ],
     themeConfig: {
-        logo: "/es-logo.png",
+        logo: "/eventstore-logo-alt.svg",
         codeLanguages: {
             csharp: "C#",
             go: "Go",
@@ -29,6 +29,10 @@ module.exports = {
         searchPlaceholder: "Search...",
         lastUpdated: "Last Updated",
         nav: [
+            { 
+                text: "Getting started",
+                link: "/server/5.0/server/getting-started"
+            },
             {
                 text: "Server",
                 items: versioning.linksFor("server", "getting-started/") // TODO create custom component
@@ -41,8 +45,8 @@ module.exports = {
                     {text: "HTTP API", items: versioning.linksFor("http-api", "")},
                 ]
             },
-            {text: "Event Sourcing", link: "/event-sourcing/"},
-            {text: "Get help", link: "/get-help/"},
+            {text: "Resources", link: "/event-sourcing/"},
+            {text: "Discuss", link: "https://discuss.eventstore.com"},
         ],
         sidebar: versioning.sidebars
     },
