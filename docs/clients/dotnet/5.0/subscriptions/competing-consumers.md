@@ -18,6 +18,10 @@ In order for the server to load-balance subscribers, it uses the concept of cons
 
 ![Consumer groups](https://i.stack.imgur.com/jhUNt.png)
 
+::: warning
+Just as in the world of message brokers, processing events in a group of consumers running in parallel processes will most likely get evens out of order within a certain window. For example, if a consumer group has ten consumers, ten messages will be distributed among the available consumers, based on the [strategy](#consumer-strategies) of the group. Even though some strategies make an attempt to consistently deliver ordered events to a single consumer, it's done on the best effort basis and there is no guarantee of events coming in order with any strategy.
+:::
+
 ## Creating a subscription group
 
 The first step of dealing with a subscription group is to create one. You will receive an error if you attempt to create a subscription group multiple times. You must have admin permissions to create a persistent subscription group.

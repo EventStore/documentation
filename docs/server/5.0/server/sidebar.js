@@ -42,16 +42,15 @@ module.exports = [
         path: "configuration/",
         children: [
             "configuration/",
-            "configuration/diagnostics.md",
-            "configuration/application.md",
             "configuration/network.md",
             "configuration/cluster.md",
             "configuration/database.md",
             "configuration/indexing.md",
             "configuration/security.md",
-            "configuration/projections.md",
             "configuration/caching.md",
             "configuration/scavenging.md",
+            "configuration/advanced.md",
+            "configuration/remove.md",
         ]
     },
     {
@@ -60,7 +59,7 @@ module.exports = [
         children: [
             "admin-ui.md",
             "operations/database-backup.md",
-            "operations/stats-debug.md",
+            "operations/diagnostics.md",
             "operations/ports-and-networking.md",
             "operations/default-directories.md",
             "operations/scavenging.md",
@@ -77,7 +76,8 @@ module.exports = [
             "projections/system-projections.md",
             "projections/user-defined-projections.md",
             "projections/projections-config.md",
-            "projections/debugging.md"
+            "projections/debugging.md",
+            "projections/configuration.md",
         ]
     },
     {

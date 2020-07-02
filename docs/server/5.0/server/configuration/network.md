@@ -77,9 +77,12 @@ What is this???
 | -DisableInsecureTCP<br/>--disable-insecure-tcp=VALUE<br/> | DISABLE_INSECURE_TCP | DisableInsecureTCP | Whether to disable insecure TCP communication (Default: False) |
 How can it be false by default if 5.0 has insecure by default?
 
+
 ## Exposing endpoints
 
-| -GossipOnSingleNode<br/>--gossip-on-single-node=VALUE<br/> | GOSSIP_ON_SINGLE_NODE | GossipOnSingleNode | When enabled tells a single node to run gossip as if it is a cluster (Default: False) |
+If you need to disable some of the HTTP endpoints on the external HTTP interface, you can change some of the settings below. It is possible to disable the Admin UI, stats and gossip port to be exposed externally.
+
+Whilst the Admin UI and stats endpoints don't influence the cluster functionality, disabling the gossip protocol on the external HTTP interface might result in cluster nodes not being able to discover each other. If you disable the gossip port on the external HTTP interface, make sure that either the gossip DNS or gossip seed setting contains the correct IP addresses or wildcard DNS name tha point to IP addresses of the internal interfaces of your cluster nodes.
 
 | -AdminOnExt<br/>--admin-on-ext=VALUE<br/> | ADMIN_ON_EXT | AdminOnExt | Whether or not to run the admin ui on the external HTTP endpoint (Default: True) |
 

@@ -16,3 +16,7 @@
 
 | -CertificatePassword<br/>--certificate-password=VALUE<br/> | CERTIFICATE_PASSWORD | CertificatePassword | The password to certificate in file. |
 
+
+## DisableFirstLevelHttpAuthorization
+
+--disable-first-level-http-authorization=VALUE | DISABLE_FIRST_LEVEL_HTTP_AUTHORIZATION | DisableFirstLevelHttpAuthorization | Disables authorization layer on endpoints. (Default: True) |

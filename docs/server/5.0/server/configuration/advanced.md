@@ -1,27 +1,5 @@
 # Advanced options
 
-## MonoMinThreadpoolSize
-
---mono-min-threadpool-size=VALUE
-
-MONO_MIN_THREADPOOL_SIZE
-
-MonoMinThreadpoolSize
-
-Minimum number of worker threads when running under mono. Set to 0 to leave machine defaults. (Default: 10)
-
-## Force
-
---force=true
-
-FORCE
-
-Force
-
-Force the Event Store to run in possibly harmful environments such as with Boehm GC. (Default: False)
-
-_This option is rarely used and you shouldn't be using it unless it's advised by Event Store support._
-
 ## WorkerThreads
 
 A variety of undifferentiated work is carried out on general purpose worker threads, including sending over a network, authentication, and completion of HTTP requests.
@@ -36,7 +14,7 @@ Increasing the number of threads beyond that necessary to satisfy the workload g
 
 **Default**: `5`
 
-## ReaderThreadsCount
+## Reader threads count
 
 Reader threads are used for all read operations on data files - whether the requests originate from the client or from internally to the database. There are a number of things that cause operations to be dispatched to reader threads, including:
 
@@ -68,3 +46,17 @@ A higher reader count can be useful, if disks are able to support more concurren
 ### Performance implications
 
 Increasing the count of reader threads can improve performance up to a point, but it is likely to rapidly tail off once that limit is reached.
+
+### Disable flush to disk
+
+::: warning
+Using this option might cause data loss.
+:::
+
+This will prevent EventStoreDB from forcing the flush to disk after writes. Please note that this is unsafe in case of a power outage.
+
+With this option enabled, EventStoreDB will still write data to the disk at the application level but not necessarily at the OS level. Usually, the OS should flush its buffers at regular intervals or when a process exits but it is something that's opaque to EventStoreDB.
+
+| -UnsafeDisableFlushToDisk<br/>--unsafe-disable-flush-to-disk=VALUE<br/> | UNSAFE_DISABLE_FLUSH_TO_DISK | UnsafeDisableFlushToDisk | Disable flushing to disk. (UNSAFE: on power off) (Default: False) |
+
+**Default**: `false`

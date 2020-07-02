@@ -1,14 +1,20 @@
 # Database settings
 
-## Db
+## Database location
+
+EventStoreDB has a single database, which is spread across ever-growing number of physical files on the file system. Those files are called chunks and new data is always adds new data to the end of the latest chunk. When the chunk grows over 256 MiB, the server closes the chunk and opens a new one.
+
+Normally, you'd want to keep the database files separated from the OS and other application files. The `Db` setting tells EventStoreDB where to put those chunk files. If the database server won't find anything at the specified location, it will create a new database.
 
 --db=VALUE<br/> | DB | Db | The path the db should be loaded/saved to. (Default: [See default directories](operations/default-directories.md)) |
 
-## MemDb
+## In-memory database
+
+When running EventStoreDB for educational purposes or in some automated test environment, you might want to prevent it from saving any data to the disk. EventStoreDB can keep the data in memory as soon as it has enough available RAM. When you shut down the instance that uses in-memory database, all the data will be lost.
 
 --mem-db=VALUE<br/> | MEM_DB | MemDb | Keep everything in memory, no directories or files are created. (Default: False) |
 
-## SkipDbVerify
+## Skip database verification
 
 --skip-db-verify=VALUE<br/> | SKIP_DB_VERIFY | SkipDbVerify | Bypasses the checking of file hashes of database during startup (allows for faster startup). (Default: False) |
 
@@ -16,12 +22,23 @@
 
 --min-flush-delay-ms=VALUE<br/> | MIN_FLUSH_DELAY_MS | MinFlushDelayMs | The minimum flush delay in milliseconds. (Default: 2) |
 
-## ???
+## Chunk cache
+
+You can increase the number of chunk files that are cached if you have free memory on the nodes. 
+
+The [stats response](./diagnostics.md#stats-and-metrics) contains two fields: `es-readIndex-cachedRecord` and `es-readIndex-notCachedRecord`. Statistic values for those fields tell you how many times a chunk file was retrieved from the cache and from the disk. We expect the two most recent chunks (the current chunk and the previous one) to be most frequently accessed and therefore cached.
+
+If you observe that the `es-readIndex-notCachedRecord` stats value gets significantly higher than the `es-readIndex-cachedRecord`, you can try adjusting the chunk cache.
+
+One setting is `ChunkCacheSize` and it tells the server how much memory it can use to cache chunks (in bytes). The chunk size is 256 MiB max, so the default cache size (two chunks) is 0.5 GiB. To increase the cache size to four chunks, you can set the value to 1 GiB (`1073742848` bytes). You'd also need to tell the server how many chunk files you want to keep in cache. For example, to double the number of cached chunks, set the `CachedChunks` setting to `4`.
+
+Remember that only the latest chunks get cached. Also consider that the OS has its own file cache and increasing the chunk cache might not bring the desired performance benefit.
 
 | -CachedChunks<br/>--cached-chunks=VALUE<br/> | CACHED_CHUNKS | CachedChunks | The number of chunks to cache in unmanaged memory. (Default: -1, or all) |
-| -ReaderThreadsCount<br/>--reader-threads-count=VALUE<br/> | READER_THREADS_COUNT | ReaderThreadsCount | The number of reader threads to use for processing reads. (Default: 4) |
+
+
 | -ChunksCacheSize<br/>--chunks-cache-size=VALUE<br/> | CHUNKS_CACHE_SIZE | ChunksCacheSize | The amount of unmanaged memory to use for caching chunks in bytes. (Default: 536871424) |
-| -HashCollisionReadLimit<br/>--hash-collision-read-limit=VALUE<br/> | HASH_COLLISION_READ_LIMIT | HashCollisionReadLimit | The number of events to read per candidate in the case of a hash collision (Default: 100) |
+
 
 ## Prepare and Commit timeout
 
@@ -45,27 +62,6 @@ Depending on your client operation timeout settings (default is 7 seconds), incr
 
 **Default**: `2000` (in milliseconds)
 
-## ???
 
-| -WriteThrough<br/>--write-through=VALUE<br/> | WRITE_THROUGH | WriteThrough | Enables Write Through when writing to the file system, this bypasses filesystem caches. (Default: False) |
-| -Unbuffered<br/>--unbuffered=VALUE<br/> | UNBUFFERED | Unbuffered | Enables Unbuffered/DirectIO when writing to the file system, this bypasses filesystem caches. (Default: False)   |
 
-## Unsafe??
 
-### Disable flush to disk
-
-::: warning
-Using this option might cause data loss.
-:::
-
-This will prevent EventStoreDB from forcing the flush to disk after writes. Please note that this is unsafe in case of a power outage.
-
-With this option enabled, EventStoreDB will still write data to the disk at the application level but not necessarily at the OS level. Usually, the OS should flush its buffers at regular intervals or when a process exits but it is something that's opaque to EventStoreDB.
-
-| -UnsafeDisableFlushToDisk<br/>--unsafe-disable-flush-to-disk=VALUE<br/> | UNSAFE_DISABLE_FLUSH_TO_DISK | UnsafeDisableFlushToDisk | Disable flushing to disk. (UNSAFE: on power off) (Default: False) |
-
-**Default**: `false`
-
-## Candidates for removal
-
-| -BetterOrdering<br/>--better-ordering=VALUE<br/> | BETTER_ORDERING | BetterOrdering | Enable Queue affinity on reads during write process to try to get better ordering. (Default: False) |
