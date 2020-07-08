@@ -29,9 +29,9 @@ module.exports = {
         searchPlaceholder: "Search...",
         lastUpdated: "Last Updated",
         nav: [
-            { 
+            {
                 text: "Getting started",
-                link: "/server/5.0/server/getting-started"
+                link: "/server/5.0.9/server/getting-started"
             },
             {
                 text: "Server",

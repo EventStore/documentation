@@ -62,7 +62,8 @@ module.exports = [
         collapsable: true,
         children: [
             "security/",
-            "security/users.md"
+            "security/users.md",
+            "security/acl.md"
         ]
     },
     {

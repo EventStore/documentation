@@ -8,8 +8,8 @@
         "path": "20.6/server"
       },
       {
-        "version": "5.0",
-        "path": "5.0/server"
+        "version": "5.0.9",
+        "path": "5.0.9/server"
       }
     ]
   },
@@ -18,8 +18,8 @@
     "basePath": "server",
     "versions": [
       {
-        "version": "5.0",
-        "path": "5.0/http-api"
+        "version": "5.0.9",
+        "path": "5.0.9/http-api"
       }
     ]
   }
