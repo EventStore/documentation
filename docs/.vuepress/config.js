@@ -31,7 +31,7 @@ module.exports = {
         nav: [
             {
                 text: "Getting started",
-                link: "/server/5.0.9/server/getting-started"
+                link: "/server/5.0.9/server/introduction/"
             },
             {
                 text: "Server",
@@ -47,6 +47,7 @@ module.exports = {
             },
             {text: "Resources", link: "/event-sourcing/"},
             {text: "Discuss", link: "https://discuss.eventstore.com"},
+            {text: "Old Docs", link: "https://eventstore.com/docs/"}
         ],
         sidebar: versioning.sidebars
     },

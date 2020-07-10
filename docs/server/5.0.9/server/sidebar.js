@@ -14,14 +14,19 @@ module.exports = [
         collapsable: true,
         children: [
             "installation/",
-            "installation/deploy-kubernetes-aks.md",
-            "installation/deploy-kubernetes-gke.md",
-            "installation/uninstalling.md"
+            "installation/linux.md",
+            "installation/docker.md",
+            "installation/windows.md",
+            "installation/macos.md",
+            "installation/kubernetes.md",
+            "installation/kubernetes-aks.md",
+            "installation/kubernetes-gke.md",
         ]
     },
     {
         title: "Clustering",
         collapsable: true,
+        path: "clustering/",
         children: [
             "clustering/cluster-without-manager-nodes.md",
             "clustering/cluster-with-manager-nodes.md",
@@ -32,6 +37,7 @@ module.exports = [
     {
         title: "Security",
         collapsable: true,
+        path: "security/",
         children: [
             "security/",
             "security/authentication.md",
