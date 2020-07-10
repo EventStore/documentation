@@ -4,11 +4,15 @@ The prerequisites for installing on Windows are:
 
 - NET Framework 4.0+
 
+## Install from Chocolatey
+
 EventStoreDB has [Chocolatey packages](https://chocolatey.org/packages/eventstore-oss) available that you can install with the following command in an elevated terminal:
 
 ```powershell
 choco install eventstore-oss
 ```
+
+## Download the binaries
 
 You can also [download](https://eventstore.com/downloads/) a binary, unzip the archive and run from the folder location with an administrator console.
 

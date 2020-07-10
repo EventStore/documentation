@@ -1,5 +1,7 @@
 # macOS
 
+## Install with Homebrew
+
 EventStoreDB has a macOS package [you can download](https://eventstore.com/downloads/) and install. We also maintain a Homebrew Cask formula you can install:
 
 ```bash

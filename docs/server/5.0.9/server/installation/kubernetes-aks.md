@@ -1,4 +1,4 @@
-# Deploy to Azure Cloud AKS
+# Deploy to AKS
 
 This guide is to show how to use [the official Event Store Helm Chart](https://github.com/EventStore/EventStore.Charts) to interactively deploy an Event Store Cluster in Kubernetes Azure Cloud AKS service.
 
@@ -87,7 +87,7 @@ To access the dashboard you can now use the `browse` command. This command is a 
 az aks browse -n {clustername} -g {groupname}
 ```
 
-### Deploy EventStoreDB cluster with Helm
+## Deploy cluster with Helm
 
 Helm is the package manager for Kubernetes. After you've created a new Kubernetes cluster you need to configure Helm for your local Helm CLI to connect to a configured service account on the server side. The service account used by Helm is called Tiller. Give Tiller access to the cluster and initialise it with the following commands:
 
@@ -113,7 +113,7 @@ helm install -n eventstore eventstore/eventstore --set persistence.enabled=true
 
 The EventStoreDB cluster is now deployed and available in a couple of minutes. The default cluster size in the Helm Chart is set to 3 so this results in a 3 node Event Store cluster over the 3 nodes Kubernetes cluster. The `persistence.enable=true` setting uses the `PersistentVolumeClaim` on your Kubernetes cluster to dynamically claim persistent storage volumes. You can configure this to use statically defined volumes if required.
 
-### Upgrade the EventStoreDB cluster
+## Upgrade the cluster
 
 Verify your current EventStoreDB cluster:
 
@@ -132,7 +132,7 @@ helm upgrade eventstore . --set persistence.enabled=true
 The upgrade command silently upgrades all the pods one by one
 without downtime. Helm takes care of attaching the existing volumes to the new pods during the upgrade.
 
-### Rollback to a previous version
+## Rollback to a previous version
 
 To rollback to a previous version, first use the following command to display the history:
 
@@ -146,7 +146,7 @@ And the following command to rollback to a specific revision:
 helm rollback eventstore 1
 ```
 
-### Delete resources
+## Delete resources
 
 To delete all resources associated with the EventStoreDB installation use the following command:
 

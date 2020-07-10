@@ -2,6 +2,8 @@
 
 **TODO: explain more about using Docker and Compose. Volume mappings and other relevant configuration**
 
+## Run with Docker
+
 EventStoreDB has a Docker image available for any platform that supports Docker.
 
 Pull the Docker image:
@@ -22,7 +24,7 @@ The container won't accept command line parameters to the server executable. We 
 
 In order to sustainably keep the data, we also recommend mapping the database and index volumes.
 
-## Docker Compose
+## Use Docker Compose
 
 EventStoreDB has a Docker image available for any platform that supports Docker. In order to save keystrokes it is possible to run EventStoreDB via Docker Compose.
 
