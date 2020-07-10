@@ -52,11 +52,21 @@ module.exports = [
             "configuration/",
             "configuration/network.md",
             "configuration/database.md",
-            "configuration/indexing.md",
             "configuration/caching.md",
             "configuration/scavenging.md",
             "configuration/advanced.md",
             "configuration/remove.md",
+        ]
+    },
+    {
+        title: "Indexes",
+        collapsable: true,
+        path: "indexes/",
+        children: [
+            "indexes/",
+            "indexes/configuration.md",
+            "indexes/tuning.md",
+            "indexes/advanced.md",
         ]
     },
     {
