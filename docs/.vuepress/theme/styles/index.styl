@@ -86,14 +86,28 @@ body
   .navbar
     background: url("/circle-grn-2520.png") top center no-repeat, url("/circle-blu-top-3840.png") top center no-repeat #09264A !important
 
+  .home-link
+    padding-left:0rem
+
+  .search-box
+    margin-right: 0rem !important
+
 .navbar
   background: url("/circle-grn-1680.png") top right no-repeat, url("/circle-blu-top-1310.png") top left no-repeat #09264A
   background-size: 100%, 100%
+  padding-left: 0 !important
+  padding-right: 0 !important
+
+  .navbar-inner
+    max-width: 105rem
+    margin-left: auto
+    margin-right: auto
 
   .home-link
     color: #5AB552
     font-size: 1.25rem
     font-weight: 300
+    padding-left: 1.75rem
 
     &::after
       content: 'Developer'
@@ -102,6 +116,18 @@ body
       height: 2.5rem !important
       margin-top: 0.1875rem
       margin-right: 0.3rem
+
+  .links
+    padding-right: 0 !important
+    right: unset !important
+    top: unset !important
+    float: right
+    position: relative !important
+
+    .search-box
+      padding-left: 115px
+      padding-right: 0 !important
+      margin-right: 1.75rem !important
 
   .links, .title
     background-color: transparent !important
