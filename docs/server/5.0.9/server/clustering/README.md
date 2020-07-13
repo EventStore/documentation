@@ -21,8 +21,8 @@ Manager and database nodes need to know about one another to gossip. To start th
 -   On each physical machine, configure the database node(s) with a gossip seed of the internal HTTP interface of the manager running on the same physical machine.
 
 -   Configure the managers to discover other managers in one of two ways:
-    -   via a DNS entry and a well-known gossip port.
-    -   via a list of other managers' addresses.
+    -   [via a DNS entry](./gossip.md#using-dns) and a well-known [gossip port](./gossip.md#gossip-port)
+    -   [via a list of addresses](./gossip.md#using-ip-addresses) of other cluster nodes
 
 The preferred method is via a DNS entry. To set this up, create a DNS entry for the cluster with an A record pointing to each member of the cluster. Each manager looks up other nodes in the cluster during the startup process based on the DNS name. Since DNS only provides information about addresses, you need to use a consistent TCP port across the cluster for gossip.
 
