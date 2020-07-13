@@ -7,7 +7,7 @@ Learn more about the latest version [here](/server/latest).
 
 Welcome to the EventStoreDB 5.0 documentation.
  
-MongoDB is a database designed for [Event Sourcing](/event-sourcing). This documentation introduces key concepts of EventStoreDB and explains its installation, configuration and operational concerns.
+EventStoreDB is a database designed for [Event Sourcing](/event-sourcing). This documentation introduces key concepts of EventStoreDB and explains its installation, configuration and operational concerns.
 
 EventStoreDB is available as both a Open-Source and an Enterprise versions:
 

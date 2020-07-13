@@ -28,10 +28,12 @@ module.exports = [
         collapsable: true,
         path: "clustering/",
         children: [
+            "clustering/",
+            "clustering/gossip.md",
             "clustering/cluster-without-manager-nodes.md",
             "clustering/cluster-with-manager-nodes.md",
             "clustering/node-roles.md",
-            "clustering/cluster.md",
+            "clustering/acknowledgements.md",
         ]
     },
     {
