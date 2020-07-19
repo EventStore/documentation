@@ -1,6 +1,8 @@
 # Cluster node roles
 
-Every node in an EventStoreDB cluster can have one of three roles.
+Every node in an EventStoreDB cluster can have one of three roles: Leader, Follower and Clone. 
+
+All writes are executed by the Leader node unconditionally, confirmed by a number of other nodes, described on the [acknowledgement](./acknowledgements.md) page. Subscription clients can connect to Follower or Clone nodes to offload reads from the Leader node.
 
 ## Leader
 
@@ -30,7 +32,17 @@ A cluster asynchronously replicates data one way to a node with the clone role. 
 
 If a cluster loses nodes to take it below `ClusterSize`, then the cluster can promote a clone to a leader or follower role.
 
+## Node priority
+
 You can control which clones the cluster promotes with the `NodePriority` setting. The default value is `0`, and the cluster is more likely to promote clones with higher values.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--node-priority` |
+| YAML                 | `NodePriority` |
+| Environment variable | `EVENTSTORE_NODE_PRORITY` |
+
+**Default**: `0`.
 
 ::: tip
 Changing `NodePriority` doesn't guarantee that the cluster won't promote the clone. It's only one of the criteria that the Election Service considers.

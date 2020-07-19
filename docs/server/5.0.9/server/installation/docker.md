@@ -32,12 +32,10 @@ Create file `docker-compose.yaml` with following content:
 
 <<< @/docs/server/5.0.9/server/sample-code/docker-compose.yaml
 
-Run the container:
+Run the instance:
 
 ```bash
-docker-compose -f docker-compose.yaml up
+docker-compose up
 ```
 
-Refer to the [image overview](https://hub.docker.com/r/eventstore/eventstore/) for more information.
-
-
+The Compose file above runs EventStoreDB as a single instance.

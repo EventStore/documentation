@@ -2,25 +2,14 @@
 title: Cluster with only database nodes
 ---
 
-# Setting up a cluster using only database nodes (OSS)
+# Clustering example
 
 <!-- TODO: Needs Linux instructions -->
 
-High availability Event Store allows you to run more than one node as a cluster. There are two modes available for clustering:
-
--   With database nodes only (open source and commercial)
--   [With manager nodes and database nodes](cluster-with-manager-nodes.md) (commercial only)
-
-This document covers setting up Event Store with only database nodes.
-
-::: tip
-When setting up a cluster, you generally want an odd number of nodes as Event Store uses a quorum based algorithm to handle high availability. We recommended you define an odd number of nodes to avoid split brain problems.
-
-Common values for the ‘ClusterSize’ setting are three or five (to have a majority of two nodes and a majority of three nodes).
-:::
+This document covers setting up EventStoreDB with only database nodes.
 
 ::: tip Next steps
-[Read here](node-roles.md) for more information on the roles available for nodes in an Event Store cluster.
+[Read here](node-roles.md) for more information on the roles available for nodes in an EventStoreDB cluster.
 :::
 
 ## Running on the same machine
@@ -33,7 +22,7 @@ EventStore.ClusterNode.exe --mem-db --log .\logs\log2 --int-ip 127.0.0.1 --ext-i
 EventStore.ClusterNode.exe --mem-db --log .\logs\log3 --int-ip 127.0.0.1 --ext-ip 127.0.0.1 --int-tcp-port=3111 --ext-tcp-port=3112 --int-http-port=3113 --ext-http-port=3114 --cluster-size=3 --discover-via-dns=false --gossip-seed=127.0.0.1:1113,127.0.0.1:2113
 ```
 
-You should now have three nodes running together in a cluster. If you kill one of the nodes, it continues running. This binds to the loopback interface. To access Event Store from outside your machine, specify a different IP address for the `--ext-ip` parameter.
+You should now have three nodes running together in a cluster. If you kill one of the nodes, it continues running. This binds to the loopback interface. To access EventStoreDB from outside your machine, specify a different IP address for the `--ext-ip` parameter.
 
 ## Running on separate machines
 
@@ -74,15 +63,16 @@ docker-compose up
 
 ## Internal vs. external networks
 
-You can optionally segregate all Event Store communications to different networks. For example, internal networks for tasks like replication, and external networks for communication between clients. You can place these communications on segregated networks which is often a good idea for both performance and security purposes.
+You can optionally segregate all EventStoreDB communications to different networks. For example, internal networks for tasks like replication, and external networks for communication between clients. You can place these communications on segregated networks which is often a good idea for both performance and security purposes.
 
 To setup an internal network, use the command line parameters provided above, but prefixed with `int-`. All communications channels also support enabling SSL for the connections.
 
 ## HTTP clients
 
-If you want to use the HTTP API, [then you should add a load balancer](setting-up-varnish-in-linux.md) in front of the three nodes. It does not matter which node receives a request as the requests the node are forwarded to the request internally. With this setup, you can lose any one machine with no data loss.
+If you want to use the HTTP API, you can send requests to any cluster node as the node will forward the request to the cluster leader. So, you can use the DNS entry for the cluster gossip when connecting to the cluster. However, you need to remember that forwarding requests introduce an additional network call, so there is a chance that a request gets transferred over the network twice: from your client to the follower node and then from the follower node to the leader node.
+
+EventStoreDB exposes an HTTP endpoint that can tell you what node is the leader now, so you might want to make your client smarter and check who is the leader from time to time. Sending requests directly to the leader node will make the communication faster and more reliable.
 
 ## Native TCP clients
 
 You can connect to the cluster using the native TCP interface. The client APIs support switching between nodes internally. As such if you have a master failover the connection automatically handle retries on another node.
-

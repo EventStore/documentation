@@ -12,11 +12,9 @@ High availability EventStoreDB allows you to run more than one node as a cluster
 
 This document covers setting up EventStoreDB with manager nodes and database nodes.
 
-::: tip
 When setting up a cluster, you generally want an odd number of nodes as EventStoreDB uses a quorum based algorithm to handle high availability. We recommended you define an odd number of nodes to avoid split brain problems.
 
 Common values for the ‘ClusterSize’ setting are three or five (to have a majority of two nodes and a majority of three nodes).
-:::
 
 ::: tip Next steps
 [Read here](node-roles.md) for more information on the roles available for nodes in an EventStoreDB cluster.
@@ -28,10 +26,10 @@ Each physical (or virtual) machine in an EventStoreDB cluster typically runs one
 
 Manager nodes have a number of responsibilities:
 
--   They are responsible for starting the database nodes and supervising them to ensure they rest in case of a crash or termination owing to abnormal circumstances. EventStoreDB calls this the _watchdog_ service.
--   They communicate with other manager nodes to find cluster state, and relay that information to the database nodes under management.
--   They provide a known endpoint for clients to connect to and discover cluster information.
--   When running on Windows, manager nodes run as Windows services.
+- Starting the database nodes and supervising them to ensure they rest in case of a crash or termination owing to abnormal circumstances. EventStoreDB calls this the _watchdog_ service.
+- Communicate with other manager nodes to find cluster state, and relay that information to the database nodes under management.
+- Provide a known endpoint for clients to connect to and discover cluster information.
+- On Windows, run as a service.
 
 
 ## Example 1 - a three-machine cluster

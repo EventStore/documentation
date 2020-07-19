@@ -16,7 +16,7 @@ Before version 4.0.2, a scavenge operation only worked with database chunk files
 
 ## Starting a scavenge
 
-Scavenges are not run automatically by Event Store. We recommendation that you set up a scheduled task, for example using cron or Windows Scheduler, to trigger a scavenge as often as you need.
+Scavenges are not run automatically by EventStoreDB. We recommendation that you set up a scheduled task, for example using cron or Windows Scheduler, to trigger a scavenge as often as you need.
 
 You start a scavenge by issuing an empty `POST` request to the HTTP API with the credentials of an `admin` or `ops` user:
 
@@ -25,7 +25,7 @@ You start a scavenge by issuing an empty `POST` request to the HTTP API with the
 <<< @/docs/server/5.0.9/server/sample-code/scavenge.sh#curl
 
 ::: tip Next steps
-Scavenge operations have other options you can set to improve performance, [read the API docs](xref:eventstore.com%2FHTTP%20API%2F5.0.4%2FScavenge%20a%20node) for more details.
+Scavenge operations have other options you can set to improve performance, [read the API docs](http://none) for more details.
 :::
 
 ::::
@@ -35,7 +35,7 @@ Scavenge operations have other options you can set to improve performance, [read
 :::::
 
 ::: tip Next steps
-For better scavenge performance, you can set the number of threads to use. If you need to restart a stopped scavenge, you can specify the starting chunk ID. [Find out more in the API reference](xref:eventstore.com%2FHTTP%20API%2F5.0.4%2FScavenge%20a%20node).
+For better scavenge performance, you can set the number of threads to use. If you need to restart a stopped scavenge, you can specify the starting chunk ID.
 :::
 
 You can also start scavenges from the _Admin_ page of the Admin UI.
@@ -76,14 +76,34 @@ This depends on the following:
 -   How often you delete streams.
 -   How you set `$maxAge`, `$maxCount` or `$tb` metadata on your streams.
 
-::: tip
-Read the [.NET API](/docs/clients/dotnet/5.0/stream-metadata.md) or [HTTP API](stream-metadata.md) docs for more details on setting metadata.
-:::
+## Scavenging online
 
-## Scavenging while Event Store is online
-
-It's safe to run a scavenge while Event Store is running and processing events, as it's designed to be an online operation.
+It's safe to run a scavenge while EventStoreDB is running and processing events, as it's designed to be an online operation.
 
 ::: warning
 Scavenging increases the number of reads/writes made to disk, and it is not recommended when your system is under heavy load.
 :::
+
+## Scavenging options
+
+Scavenging is a necessary regular operation to free up disk space by cleaning up deleted events. Read more about it on the [scavenging page](../operations/scavenging.md). Below you can find some options that change the way how scavenging works on the server node.
+
+### Disable scavenge merging
+
+--disable-scavenge-merging=VALUE<br/> | DISABLE_SCAVENGE_MERGING | DisableScavengeMerging | Disables the merging of chunks when scavenge is running (Default: False) |
+
+### Scavenge history
+
+--scavenge-history-max-age=VALUE<br/> | SCAVENGE_HISTORY_MAX_AGE | ScavengeHistoryMaxAge | The number of days to keep scavenge history (Default: 30) |
+
+### Always keep scavenged
+
+--always-keep-scavenged=VALUE<br/> | ALWAYS_KEEP_SCAVENGED | AlwaysKeepScavenged | Always keeps the newer chunks from a scavenge operation. (Default: False) |
+
+### Ignore hard delete
+
+::: warning
+Setting this option to `true` effectively disables hard deletes and allows clients to write to deleted streams.
+:::
+
+--unsafe-ignore-hard-delete=VALUE<br/> | UNSAFE_IGNORE_HARD_DELETE | UnsafeIgnoreHardDelete | Disables Hard Deletes (UNSAFE: use to remove hard deletes) (Default: False) |

@@ -1,12 +1,12 @@
 # Security
 
-Event Store supports basic authentication for HTTP API calls, and access control lists (ACL).
+EventStoreDB supports basic authentication for HTTP API calls, and access control lists (ACL).
 
 ## Authentication
 
 ### Creating users
 
-Event Store supports basic HTTP authentication to internal users. You create these users with the HTTP API or the admin console. You need to use the credentials of the default user in the request, which has the user name of `admin`, and the password of `changeit`.
+EventStoreDB supports basic HTTP authentication to internal users. You create these users with the HTTP API or the admin console. You need to use the credentials of the default user in the request, which has the user name of `admin`, and the password of `changeit`.
 
 When using the HTTP API, you can send the following JSON payload to the server:
 
@@ -38,7 +38,7 @@ As you pass the username and password in the request we recommend you to enable 
 
 ## Access control lists
 
-Alongside authentication, Event Store supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
+Alongside authentication, EventStoreDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
 
 To set access control lists over HTTP you can post to the metadata stream as [with setting any other metadata](stream-metadata.md). You can also set Access Control Lists for a stream in the admin UI.
 

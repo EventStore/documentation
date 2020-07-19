@@ -29,11 +29,27 @@ module.exports = [
         path: "clustering/",
         children: [
             "clustering/",
+            "clustering/using-dns.md",
+            "clustering/using-ip-addresses.md",
             "clustering/gossip.md",
-            "clustering/cluster-without-manager-nodes.md",
-            "clustering/cluster-with-manager-nodes.md",
+            // "clustering/cluster-without-manager-nodes.md",
+            // "clustering/cluster-with-manager-nodes.md",
             "clustering/node-roles.md",
             "clustering/acknowledgements.md",
+        ]
+    },
+    {
+        title: "Networking",
+        collapsable: true,
+        path: "networking/",
+        children: [
+            "networking/",
+            "networking/external.md",
+            "networking/internal.md",
+            "networking/nat.md",
+            "networking/heartbeat.md",
+            "networking/endpoints.md",
+            "networking/mystery.md",
         ]
     },
     {
@@ -53,15 +69,21 @@ module.exports = [
         ]
     },
     {
+        title: "Admin UI",
+        collapsable: true,
+        path: "admin-ui/",
+        children: [
+            "admin-ui/"
+        ]
+    },
+    {
         title: "Configuration",
         collapsable: true,
         path: "configuration/",
         children: [
             "configuration/",
-            "configuration/network.md",
             "configuration/database.md",
             "configuration/caching.md",
-            "configuration/scavenging.md",
             "configuration/advanced.md",
             "configuration/remove.md",
         ]
@@ -81,10 +103,8 @@ module.exports = [
         title: "Operations",
         collapsable: true,
         children: [
-            "admin-ui.md",
             "operations/database-backup.md",
             "operations/diagnostics.md",
-            "operations/ports-and-networking.md",
             "operations/default-directories.md",
             "operations/scavenging.md",
         ]

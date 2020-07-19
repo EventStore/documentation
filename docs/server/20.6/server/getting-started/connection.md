@@ -1,4 +1,4 @@
-# Event Store Connection
+# Connection string URI format
 
 Singleton or not singleton?
 
