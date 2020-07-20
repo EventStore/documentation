@@ -45,7 +45,14 @@ module.exports = {
                     {text: "HTTP API", items: versioning.linksFor("http-api", "")},
                 ]
             },
-            {text: "Resources", link: "/event-sourcing/"},
+            {
+                text: "Resources",
+                items: [
+                    {text: "Articles", link: "https://eventstore.com/blog/articles/"},
+                    {text: "Webinars", link: "https://eventstore.com/webinars/"},
+                    {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"}
+                ]
+            },
             {text: "Discuss", link: "https://discuss.eventstore.com"},
             {text: "Old Docs", link: "https://eventstore.com/docs/"}
         ],

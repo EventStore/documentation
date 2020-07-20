@@ -49,7 +49,7 @@ module.exports = [
             "networking/nat.md",
             "networking/heartbeat.md",
             "networking/endpoints.md",
-            "networking/mystery.md",
+            // "networking/mystery.md",
         ]
     },
     {
@@ -85,7 +85,7 @@ module.exports = [
             "configuration/database.md",
             "configuration/caching.md",
             "configuration/advanced.md",
-            "configuration/remove.md",
+            // "configuration/remove.md",
         ]
     },
     {
