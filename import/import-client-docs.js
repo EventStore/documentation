@@ -86,16 +86,17 @@ async function main() {
         ];
 
         log.info(`processing repo ${repo.repo}...`);
-        if (deployCurrent) {
-            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, 'current', repo.currentBranch));
-        }
 
         const tags = (await clientRepo.tag())
             .split('\n')
             .filter(i => i)
 
-        for (const tag of tags) {
-            const version = await copy(clientRepo, repoLocation, docsLocation, tag, tag);
+        if (deployCurrent) {
+            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch));
+        }
+
+        for (let i = 0; i < tags.length - 1; i++) {
+            const version = await copy(clientRepo, repoLocation, docsLocation, tags[i], tags[i + 1]);
 
             if (version !== undefined) {
                 definition[0].versions.push(version);
