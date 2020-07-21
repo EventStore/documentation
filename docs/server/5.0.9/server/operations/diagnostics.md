@@ -36,7 +36,7 @@ Log files are located in `/var/lib/eventstore` for Linux and macOS, and in the `
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-Log` or `--log` |
+| Command line         | `--log` |
 | YAML                 | `Log` |
 | Environment variable | `EVENTSTORE_LOG` |
 

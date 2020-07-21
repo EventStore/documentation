@@ -102,8 +102,17 @@ Scavenging is a necessary regular operation to free up disk space by cleaning up
 
 ### Ignore hard delete
 
+When you delete a stream, you can use either a soft delete or hard delete. When a stream is soft-deleted, all events from the stream get scavenged during the next scavenging run. It means that you can reopen the stream by writing to it again. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to write to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
+
+You can override this behaviour and tell EventStoreDB that you want to delete all the traces of hard-deleted streams too, using the option specified below. After a scavenge operation runs, all hard-deleted streams will be open for writing new events again.
+
 ::: warning
-Setting this option to `true` effectively disables hard deletes and allows clients to write to deleted streams.
+Setting this option to `true` effectively disables hard deletes and allows clients to write to deleted streams. For that reason, the option is considered unsafe and should be used with caution.
 :::
 
---unsafe-ignore-hard-delete=VALUE<br/> | UNSAFE_IGNORE_HARD_DELETE | UnsafeIgnoreHardDelete | Disables Hard Deletes (UNSAFE: use to remove hard deletes) (Default: False) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--unsafe-ignore-hard-delete` |
+| YAML                 | `UnsafeIgnoreHardDelete` |
+| Environment variable | `EVENTSTORE_UNSAFE_IGNORE_HARD_DELETE` | 
+

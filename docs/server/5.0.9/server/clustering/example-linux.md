@@ -1,7 +1,3 @@
----
-title: Cluster with only database nodes
----
-
 # Clustering example
 
 <!-- TODO: Needs Linux instructions -->

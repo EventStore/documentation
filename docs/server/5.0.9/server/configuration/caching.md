@@ -22,7 +22,7 @@ The option can be set as follows:
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `-DisableHttpCaching` or `--disable-http-caching` |
+| Command line         | `--disable-http-caching` |
 | YAML                 | `DisableHttpCaching` |
 | Environment variable | `EVENTSTORE_DISABLE_HTTP_CACHING` | 
 

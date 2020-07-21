@@ -52,7 +52,7 @@ module.exports = [
         title: "API reference",
         collapsable: true,
         children: [
-            "swagger.md"
+            "api.md"
         ]
     }
 ]
