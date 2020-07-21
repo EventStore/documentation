@@ -1,10 +1,19 @@
-# Configuring EventStoreDB
+# Options and configuration
 
 EventStoreDB has a number of configuration options that can be changed. You can find all the options described in details in this section.
 
-When you don't change the configuration, EventStoreDB will use sensible defaults, but they might not suit your needs. You can always instruct EventStoreDB to use a different set of options.
+When you don't change the configuration, EventStoreDB will use sensible defaults, but they might not suit your needs. You can always instruct EventStoreDB to use a different set of options. There are multiple ways to configure EventStoreDB server, described below.
 
-There are multiple ways to configure EventStoreDB server, described below.
+## Version and help
+
+You can check what version of EventStoreDB you have installed by using the `--version` parameter in the command line. For example:
+
+```
+$ eventstore --version
+EventStore version 5.0.8.0 (HEAD/6b871e5659ed38775372456fb21be6a99392fddb, Thu, 26 Mar 2020 11:42:43 +0100)
+```
+
+The full list of available options is available from the currently installed server by using the `--help` option in the command line.
 
 ## Configuration file
 
@@ -58,8 +67,7 @@ If more than one method is used to configure the server, it might be hard to fin
 
 When you run EventStoreDB with this option, it will print out the effective configuration applied from all available sources (default and custom configuration file, environment variables and command line parameters) and print it out to the console.
 
-Example:
-
+::: detail Click here to see a WhatIf example
 ```
 $ eventstore --what-if
 [38558,01,17:05:37.079]
@@ -183,14 +191,5 @@ Exit reason: WhatIf option specified
 [38558,01,17:05:37.130] Exiting with exit code: 0.
 Exit reason: "WhatIf option specified"
 ```
+:::
 
-## Help and version
-
-You can check what version of EventStoreDB you have installed by using the `--version` parameter in the command line. For example:
-
-```
-$ eventstore --version
-EventStore version 5.0.8.0 (HEAD/6b871e5659ed38775372456fb21be6a99392fddb, Thu, 26 Mar 2020 11:42:43 +0100)
-```
-
-The full list of available options is available from the currently installed server by using the `--help` option in the command line.
