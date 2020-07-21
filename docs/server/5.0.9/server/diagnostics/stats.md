@@ -1,72 +1,4 @@
-# Diagnostic settings
-
-## Logging
-
-EventStoreDB logs its internal operations to the console (stdout) and to log files. The default location of the log files and the way to change it is described [below](#logs-location).
-
-There are a few options to change the way how EventStoreDB produces logs and how detailed the logs should be.
-
-### Log format
-
-The `--structured-log` enables the structured logging in JSON format that is more machine-friendly and can be ingested by vendor-specific tools like Logstash or Datadog agent. The default value for this option is `true` and you only need to change it if you want plain-next logs.
-
-Here is how the structured log looks like:
-
-```json
-{ "PID": "6940", "ThreadID": "23", "Date": "2020-06-16T16:14:02.052976Z", "Level": "Debug", "Logger": "ProjectionManager", "Message": "PROJECTIONS: Starting Projections Manager. (Node State : {state})", "EventProperties": { "state": "Master" } }
-{ "PID": "6940", "ThreadID": "15", "Date": "2020-06-16T16:14:02.052976Z", "Level": "Info", "Logger": "ClusterVNodeController", "Message": "========== [{internalHttp}] Sub System '{subSystemName}' initialized.", "EventProperties": { "internalHttp": "127.0.0.1:2112", "subSystemName": "Projections" } }
-{ "PID": "6940", "ThreadID": "23", "Date": "2020-06-16T16:14:02.052976Z", "Level": "Debug", "Logger": "MultiStreamMessageWriter", "Message": "PROJECTIONS: Resetting Worker Writer", "EventProperties": {  } }
-{ "PID": "6940", "ThreadID": "23", "Date": "2020-06-16T16:14:02.055000Z", "Level": "Debug", "Logger": "ProjectionCoreCoordinator", "Message": "PROJECTIONS: SubComponent Started: {subComponent}", "EventProperties": { "subComponent": "EventReaderCoreService" } }
-```
-
-Here is the example of the plain-text log:
-
-```
-[PID:12989:023 2020.06.16 16:16:22.054 DEBUG PersistentSubscripti] Persistent subscriptions Became Master so now handling subscriptions
-[PID:12989:015 2020.06.16 16:16:22.054 DEBUG StorageScavenger    ] Searching for incomplete scavenges on node 127.0.0.1:2113.
-[PID:12989:015 2020.06.16 16:16:22.071 DEBUG StorageScavenger    ] Max age and $ops read permission already set for the $scavenges stream.
-[PID:12989:015 2020.06.16 16:16:22.073 DEBUG StorageScavenger    ] No incomplete scavenges found on node 127.0.0.1:2113.
-```
-
-Keep in mind that the console output will not use structured logging, the option only affects the log files.
-
-### Logs location
-
-Log files are located in `/var/lib/eventstore` for Linux and macOS, and in the `logs` subdirectory of the EventStoreDB installation directory on Windows. You can change the log files location using the `Log` configuration option.
-
-| Format               | Syntax |
-| :------------------- | :----- |
-| Command line         | `--log` |
-| YAML                 | `Log` |
-| Environment variable | `EVENTSTORE_LOG` |
-
-For example, adding this line to the `eventstore.conf` file will force writing logs to the `/tmp/eventstore/logs` directory:
-
-```
-Log: /tmp/eventstore/logs
-```
-
-### Log level
-
-By default, EventStoreDB uses the `Debug` log level and it's quite verbose. You can change the level to reduce the amount of space used by the logs, using the logging configuration.
-
-<!TODO>
-
-### HTTP requests logging
-
-EventStoreDB cal also log all the incoming HTTP requests, like many HTTP servers do. Requests are logged before being processed, so unsuccessful requests are logged too.
-
-Use one of the following ways to enable the HTTP requests logging:
- 
-| Format               | Syntax |
-| :------------------- | :----- |
-| Command line         | `--log-http-requests=true` |
-| YAML                 | `LogHttpRequests: True` |
-| Environment variable | `EVENTSTORE_LOG_HTTP_REQUESTS=true` |
-
-Logging HTTP requests is disabled by default.
-
-## Stats and metrics
+# Statistics
 
 EventStoreDB servers collect internal statistics and make it available via HTTP over the `http://<host>:2113/stats` in JSON format. Here, `2113` is the default external HTTP port. Monitoring applications and metric collectors can use this endpoint to gather the information about the cluster node. The `stats` endpoint only exposes information about the node where you fetch it from and doesn't contain any cluster information.
 
@@ -382,7 +314,7 @@ You can find an example of a stats event below:
 
 Stats stream has the max time-to-live set to 24 hours, so all the events that are older than 24 hours will be deleted.
 
-### StatsPeriodSec
+### Stats period
 
 Using this setting you can control how often stats events are generated. By default, the node will produce one event in 30 seconds. If you want to decrease network pressure on subscribers to the `$all` stream, you can tell EventStoreDB to produce stats less often.
 
@@ -394,7 +326,7 @@ Using this setting you can control how often stats events are generated. By defa
 
 **Default**: `30`
 
-### WriteStatsToDb
+## Write stats to database
 
 As mentioned before, stats events are quite large and whilst it is sometimes beneficial to keep the stats history, it is most of the time not necessary. Therefore, we do not write stats events to the database by default. When this option is set to `true`, all the stats events will be persisted.
 
@@ -406,106 +338,6 @@ As mentioned before, stats events have a TTL of 24 hours and when writing stats 
 | YAML                 | `WriteStatsToDb: False` |
 | Environment variable | `EVENTSTORE_WRITE_STATS_TO_DB=False` |
 --
-
-**Default**: `false`
-
-### Histograms
-
-Histograms give a distribution in percentiles of the time spent on several metrics. This can be used to diagnose issues in the system. It is not recommended to enable this in production environment. When enabled, histogram stats are available at their corresponding http endpoints.
-
-For example, you could ask for a stream reader histograms like this:
-
-```bash
-curl http://localhost:2113/histogram/reader-streamrange -u admin:changeit
-```
-
-That would give a response with the stats distributed across histogram buckets:
-
-```
-   Value     Percentile TotalCount 1/(1-Percentile)
-
-   0.022 0.000000000000          1           1.00
-   0.044 0.100000000000         30           1.11
-   0.054 0.200000000000         59           1.25
-   0.074 0.300000000000         88           1.43
-   0.092 0.400000000000        118           1.67
-   0.108 0.500000000000        147           2.00
-   0.113 0.550000000000        162           2.22
-   0.127 0.600000000000        176           2.50
-   0.140 0.650000000000        191           2.86
-   0.155 0.700000000000        206           3.33
-   0.168 0.750000000000        220           4.00
-   0.179 0.775000000000        228           4.44
-   0.197 0.800000000000        235           5.00
-   0.219 0.825000000000        242           5.71
-   0.232 0.850000000000        250           6.67
-   0.277 0.875000000000        257           8.00
-   0.327 0.887500000000        261           8.89
-   0.346 0.900000000000        264          10.00
-   0.522 0.912500000000        268          11.43
-   0.836 0.925000000000        272          13.33
-   0.971 0.937500000000        275          16.00
-   1.122 0.943750000000        277          17.78
-   1.153 0.950000000000        279          20.00
-   1.217 0.956250000000        281          22.86
-   2.836 0.962500000000        283          26.67
-   2.972 0.968750000000        284          32.00
-   3.607 0.971875000000        285          35.56
-   4.964 0.975000000000        286          40.00
-   8.536 0.978125000000        287          45.71
-  11.035 0.981250000000        288          53.33
-  11.043 0.984375000000        289          64.00
-  11.043 0.985937500000        289          71.11
-  34.013 0.987500000000        290          80.00
-  34.013 0.989062500000        290          91.43
-  41.812 0.990625000000        292         106.67
-  41.812 0.992187500000        292         128.00
-  41.812 0.992968750000        292         142.22
-  41.812 0.993750000000        292         160.00
-  41.812 0.994531250000        292         182.86
-  41.812 0.995312500000        292         213.33
-  41.812 0.996093750000        292         256.00
-  41.812 0.996484375000        292         284.44
-  41.878 0.996875000000        293         320.00
-  41.878 1.000000000000        293
-
-#[Mean = 0.854, StdDeviation = 4.739]
-#[Max = 41.878, Total count = 293]
-#[Buckets = 20, SubBuckets = 2048]
-```
-
-### Reading histograms
-
-The histogram response tells you some useful metrics like mean, max, standard deviation and also that in 99% of cases reads take about 41.8ms, as in the example above.
-
-### Using histograms
-
-You can enable histograms in a development environment and run a specific task to see how it affects the database, telling you where and how the time is spent.
-
-Execute a `GET` HTTP call to a cluster node using the `http://<node>:2113/histogram/<metric>` path to get a response. Here `2113` is the default external HTTP port.
-
-### Available metrics
-
-| Endpoint | Measures time spent |
-| :------- | :---------- |
-| `reader-streamrange` | `ReadStreamEventsForward` and `ReadStreamEventsBackwards` |
-| `writer-flush` | Flushing to disk in the storage writer service |
-| `chaser-wait` and `chaser-flush` | Storage chaser |
-| `reader-readevent` | Checking the stream access and reading an event |
- | `reader-allrange` | `ReadAllEventsForward` and `ReadAllEventsBackward` |
-| `request-manager` | --- |
-| `tcp-send` | Sending messages over TCP |
-| `http-send` | Sending messages over HTTP |
-
-### Enabling histograms
-
-Use the option described below to enable histograms. Because collecting histograms uses CPU resources, they are disabled by default. 
-
-| Format               | Syntax |
-| :------------------- | :----- |
-| Command line         | `--enable-histograms=false` |
-| YAML                 | `EnableHistograms: False` |
-| Environment variable | `EVENTSTORE_ENABLE_HISTOGRAMS=False` |
 
 **Default**: `false`
 

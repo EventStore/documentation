@@ -100,13 +100,33 @@ module.exports = [
         ]
     },
     {
+        title: "Scavenge",
+        collapsable: true,
+        path: "scavenge/",
+        children: [
+            "scavenge/",
+            "scavenge/options.md",
+        ]
+    },
+    {
+        title: "Diagnostics",
+        collapsable: true,
+        path: "diagnostics/",
+        children: [
+            "diagnostics/",
+            "diagnostics/logging.md",
+            "diagnostics/stats.md",
+            "diagnostics/histograms.md",
+            "diagnostics/prometheus.md",
+            "diagnostics/datadog.md",
+        ]
+    },
+    {
         title: "Operations",
         collapsable: true,
         children: [
             "operations/database-backup.md",
-            "operations/diagnostics.md",
             "operations/default-directories.md",
-            "operations/scavenging.md",
         ]
     },
     {
