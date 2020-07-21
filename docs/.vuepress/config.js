@@ -5,7 +5,7 @@ module.exports = {
     base: "/",
     dest: "public",
     title: "",
-    description: "The stream database built for event sourcing",
+    description: "The stream database built for Event Sourcing",
     plugins: [
         "@vuepress/active-header-links",
         "one-click-copy",
@@ -38,7 +38,7 @@ module.exports = {
             },
             {
                 text: "Server",
-                items: versioning.linksFor("server", "getting-started/") // TODO create custom component
+                items: versioning.linksFor("server", "introduction/") // TODO create custom component
             },
             {
                 text: "Clients and APIs",

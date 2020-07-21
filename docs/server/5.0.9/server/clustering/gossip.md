@@ -4,8 +4,6 @@ EventStoreDB uses a quorum-based replication model. When working normally, a clu
 
 For a cluster node to have this information available to them, the nodes gossip with other nodes in the cluster. Gossip runs over the internal (and optionally the external) HTTP interfaces of cluster nodes.
 
-# Gossip protocol settings
-
 The gossip protocol configuration can be changed using settings listed below. Pay attention to the settings related to time, like intervals and timeouts, when running in a cloud environment.
 
 ## Gossip port
