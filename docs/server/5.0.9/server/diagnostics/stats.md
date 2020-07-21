@@ -318,9 +318,9 @@ Using this setting you can control how often stats events are generated. By defa
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `--stats-period-sec=60` |
-| YAML                 | `StatsPeriodSec: 60` |
-| Environment variable | `EVENTSTORE_STATS_PERIOD_SEC=60` |
+| Command line         | `--stats-period-sec` |
+| YAML                 | `StatsPeriodSec` |
+| Environment variable | `EVENTSTORE_STATS_PERIOD_SEC` |
 
 **Default**: `30`
 
@@ -332,10 +332,9 @@ As mentioned before, stats events have a TTL of 24 hours and when writing stats 
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `--write-stats-to-db=false` |
-| YAML                 | `WriteStatsToDb: False` |
-| Environment variable | `EVENTSTORE_WRITE_STATS_TO_DB=False` |
---
+| Command line         | `--write-stats-to-db` |
+| YAML                 | `WriteStatsToDb` |
+| Environment variable | `EVENTSTORE_WRITE_STATS_TO_DB` |
 
 **Default**: `false`
 
