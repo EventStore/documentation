@@ -16,6 +16,9 @@ module.exports = {
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
+        repo: "EventStore/documentation-next",
+        editLinks: true,
+        editLinkText: "Help us improve this page!",
         codeLanguages: {
             csharp: "C#",
             go: "Go",
