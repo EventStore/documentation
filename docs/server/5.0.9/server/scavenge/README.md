@@ -24,8 +24,8 @@ You start a scavenge by issuing an empty `POST` request to the HTTP API with the
 :::: el-tab-pane label="Request"
 <<< @/docs/server/5.0.9/server/sample-code/scavenge.sh#curl
 
-::: tip Next steps
-Scavenge operations have other options you can set to improve performance, [read the API docs](../../http-api/api.md#scavenge-a-node) for more details.
+::: tip 
+Scavenge operations have other options you can set to improve performance. For example, you can set the number of threads to use. Check [the API docs](../../http-api/api.md#scavenge-a-node) for more details.
 :::
 
 ::::
@@ -34,8 +34,8 @@ Scavenge operations have other options you can set to improve performance, [read
 ::::
 :::::
 
-::: tip Next steps
-For better scavenge performance, you can set the number of threads to use. If you need to restart a stopped scavenge, you can specify the starting chunk ID.
+::: tip 
+If you need to restart a stopped scavenge, you can specify the starting chunk ID.
 :::
 
 You can also start scavenges from the _Admin_ page of the Admin UI.
@@ -44,9 +44,7 @@ You can also start scavenges from the _Admin_ page of the Admin UI.
 ![Start a scavenge in the Admin UI](../images/admin-scavenge.png)
 :::
 
-::: tip
 Each node in a cluster has its own independent database. As such, when you run a scavenge, you need to issue a scavenge request to each node.
-:::
 
 ## Stopping a scavenge
 
