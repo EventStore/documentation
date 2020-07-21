@@ -6,9 +6,7 @@ What you see in the `stats` endpoint response is the last collected state of the
 
 As all other events, stats events are also linked in the `$all` stream. These events have a reserved event type `$statsCollected`.
 
-You can find an example of a stats event below:
-
-::: details
+::: details Click here to see an example of a stats event
 ```json
 {
   "proc-startTime": "2020-06-25T10:13:26.8281750Z",
