@@ -32,6 +32,10 @@ Keep in mind that the console output will not use structured logging, the option
 
 Log files are located in `/var/lib/eventstore` for Linux and macOS, and in the `logs` subdirectory of the EventStoreDB installation directory on Windows. You can change the log files location using the `Log` configuration option.
 
+::: tip
+Moving logs to a separate storage might improve the database performance if you keep the default verbose log level.
+:::
+
 | Format               | Syntax |
 | :------------------- | :----- |
 | Command line         | `--log` |
@@ -58,8 +62,8 @@ Use one of the following ways to enable the HTTP requests logging:
  
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `--log-http-requests=true` |
-| YAML                 | `LogHttpRequests: True` |
-| Environment variable | `EVENTSTORE_LOG_HTTP_REQUESTS=true` |
+| Command line         | `--log-http-requests` |
+| YAML                 | `LogHttpRequests` |
+| Environment variable | `EVENTSTORE_LOG_HTTP_REQUESTS` |
 
-Logging HTTP requests is disabled by default.
+**Default**: `false`, logging HTTP requests is disabled by default.
