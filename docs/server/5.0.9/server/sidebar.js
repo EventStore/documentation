@@ -2,6 +2,7 @@ module.exports = [
     {
         title: "Introduction",
         collapsable: true,
+        path: "introduction/",
         children: [
             "introduction/",
             "introduction/introduction.md",
