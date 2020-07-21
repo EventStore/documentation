@@ -8,6 +8,8 @@ After installing an EventStoreDB instance you'd need to set up its [networking](
 
 Follow the [security guidelines](../security/) to prepare your instance of cluster for production use.
 
+Check the [configuration](configuration.md) page to find out how to configure your deployment.
+
 ## Bare metal and VMs
 
 - [Linux](./linux.md)
