@@ -314,7 +314,7 @@ You can find an example of a stats event below:
 
 Stats stream has the max time-to-live set to 24 hours, so all the events that are older than 24 hours will be deleted.
 
-### Stats period
+## Stats period
 
 Using this setting you can control how often stats events are generated. By default, the node will produce one event in 30 seconds. If you want to decrease network pressure on subscribers to the `$all` stream, you can tell EventStoreDB to produce stats less often.
 
