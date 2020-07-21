@@ -54,7 +54,7 @@ By default, EventStoreDB uses the `Debug` log level and it's quite verbose. You 
 
 <!TODO>
 
-# HTTP requests logging
+## HTTP requests logging
 
 EventStoreDB cal also log all the incoming HTTP requests, like many HTTP servers do. Requests are logged before being processed, so unsuccessful requests are logged too.
 
