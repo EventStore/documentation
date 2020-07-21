@@ -1,7 +1,7 @@
 # EventStoreDB 5.0 Documentation
 
 ::: tip
-The new generation of EventStoreDB starts fro version 20.6.
+The new generation of EventStoreDB starts from version 20.6.
 Learn more about the latest version [here](/server/latest).
 :::
 
