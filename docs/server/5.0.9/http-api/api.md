@@ -1,9 +1,9 @@
 ---
 title: HTTP API v5.0.4
 language_tabs:
-  - curl: curl
+  - shell: shell
 language_clients:
-  - curl: ""
+  - shell: ""
 toc_footers: []
 includes: []
 search: true
@@ -40,6 +40,12 @@ Endpoints for Stream operations
 <a id="opIdRead a stream"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/{stream}
+
+```
 
 `GET /streams/{stream}`
 
@@ -81,6 +87,17 @@ This operation does not require authentication
 <a id="opIdWrite to a stream"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/streams/{stream} \
+  -H 'Content-Type: application/json' \
+  -H 'ES-ExpectedVersion: 0' \
+  -H 'ES-EventType: string' \
+  -H 'ES-EventId: 0' \
+  -H 'ES-RequiresMaster: true'
+
+```
 
 `POST /streams/{stream}`
 
@@ -125,6 +142,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X DELETE https://eventstore.com/streams/{stream}
+
+```
+
 `DELETE /streams/{stream}`
 
 *Deletes a stream*
@@ -152,6 +175,12 @@ This operation does not require authentication
 <a id="opIdAlternative stream URL"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/streams/{stream}/incoming/{guid}
+
+```
 
 `POST /streams/{stream}/incoming/{guid}`
 
@@ -182,6 +211,12 @@ This operation does not require authentication
 <a id="opIdRead stream event"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/{stream}/{event}
+
+```
 
 `GET /streams/{stream}/{event}`
 
@@ -224,6 +259,12 @@ This operation does not require authentication
 <a id="opIdGet {n} events"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/{stream}/{event}/{count}
+
+```
 
 `GET /streams/{stream}/{event}/{count}`
 
@@ -268,6 +309,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/{stream}/{event}/backward/{count}
+
+```
+
 `GET /streams/{stream}/{event}/backward/{count}`
 
 *Paginate backwards through stream events*
@@ -310,6 +357,12 @@ This operation does not require authentication
 <a id="opIdPage forward through events"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/{stream}/{event}/forward/{count}
+
+```
 
 `GET /streams/{stream}/{event}/forward/{count}`
 
@@ -354,6 +407,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/{stream}/metadata
+
+```
+
 `GET /streams/{stream}/metadata`
 
 *Reads the metadata of a stream*
@@ -393,6 +452,13 @@ This operation does not require authentication
 <a id="opIdUpdate stream metadata"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/streams/{stream}/metadata \
+  -H 'Content-Type: application/json'
+
+```
 
 `POST /streams/{stream}/metadata`
 
@@ -446,6 +512,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/streams/$all
+
+```
+
 `GET /streams/$all`
 
 *Returns all events from all streams*
@@ -490,6 +562,12 @@ Endpoints for Subscription operations
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/subscriptions
+
+```
+
 `GET /subscriptions`
 
 *Get information for all subscriptions*
@@ -512,6 +590,12 @@ This operation does not require authentication
 <a id="opIdGet subscription stream information"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/subscriptions/{stream}
+
+```
 
 `GET /subscriptions/{stream}`
 
@@ -541,6 +625,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/subscriptions/{stream}/{subscription}/info
+
+```
+
 `GET /subscriptions/{stream}/{subscription}/info`
 
 *Reads stream information via a persistent subscription*
@@ -569,6 +659,12 @@ This operation does not require authentication
 <a id="opIdGet a stream"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/subscriptions/{stream}/{subscription}
+
+```
 
 `GET /subscriptions/{stream}/{subscription}`
 
@@ -610,6 +706,13 @@ This operation does not require authentication
 <a id="opIdUpdate subscription"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/subscriptions/{stream}/{subscription} \
+  -H 'Content-Type: application/json'
+
+```
 
 `POST /subscriptions/{stream}/{subscription}`
 
@@ -661,6 +764,13 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X PUT https://eventstore.com/subscriptions/{stream}/{subscription} \
+  -H 'Content-Type: application/json'
+
+```
+
 `PUT /subscriptions/{stream}/{subscription}`
 
 *Create a persistent subscription*
@@ -711,6 +821,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X DELETE https://eventstore.com/subscriptions/{stream}/{subscription}
+
+```
+
 `DELETE /subscriptions/{stream}/{subscription}`
 
 *Deletes a subscription*
@@ -739,6 +855,12 @@ This operation does not require authentication
 <a id="opIdGet {n} subscription events"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/subscriptions/{stream}/{subscription}/{count}
+
+```
 
 `GET /subscriptions/{stream}/{subscription}/{count}`
 
@@ -782,6 +904,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/subscriptions/{stream}/{subscription}/ack/{messageid}
+
+```
+
 `POST /subscriptions/{stream}/{subscription}/ack/{messageid}`
 
 *Acknowledge a single message*
@@ -813,6 +941,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/subscriptions/{stream}/{subscription}/ack
+
+```
+
 `POST /subscriptions/{stream}/{subscription}/ack`
 
 *Acknowledge multiple messages*
@@ -843,6 +977,12 @@ This operation does not require authentication
 <a id="opIdDon't acknowledge a single message"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/subscriptions/{stream}/{subscription}/nack/{messageid}
+
+```
 
 `POST /subscriptions/{stream}/{subscription}/nack/{messageid}`
 
@@ -885,6 +1025,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/subscriptions/{stream}/{subscription}/nack
+
+```
+
 `POST /subscriptions/{stream}/{subscription}/nack`
 
 *Negative acknowledge multiple messages*
@@ -926,6 +1072,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/subscriptions/{stream}/{subscription}/replayParked
+
+```
+
 `POST /subscriptions/{stream}/{subscription}/replayParked`
 
 *Replay any previously parked messages in a stream*
@@ -959,6 +1111,12 @@ Endpoints for Projection operations
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projections/any
+
+```
+
 `GET /projections/any`
 
 *Get all projections*
@@ -981,6 +1139,12 @@ This operation does not require authentication
 <a id="opIdGet all non-transient projections"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projections/all-non-transient
+
+```
 
 `GET /projections/all-non-transient`
 
@@ -1005,6 +1169,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projections/onetime
+
+```
+
 `GET /projections/onetime`
 
 *Get all queries*
@@ -1027,6 +1197,12 @@ This operation does not require authentication
 <a id="opIdCreate a onetime projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projections/onetime
+
+```
 
 `POST /projections/onetime`
 
@@ -1068,6 +1244,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projections/continuous
+
+```
+
 `GET /projections/continuous`
 
 *Get all continious projections*
@@ -1090,6 +1272,12 @@ This operation does not require authentication
 <a id="opIdCreate a continious projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projections/continuous
+
+```
 
 `POST /projections/continuous`
 
@@ -1131,6 +1319,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projections/read-events
+
+```
+
 `POST /projections/read-events`
 
 *Read events from projection based on a query definition*
@@ -1154,6 +1348,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projections/transient
+
+```
+
 `GET /projections/transient`
 
 *Get all transient projections*
@@ -1176,6 +1376,12 @@ This operation does not require authentication
 <a id="opIdCreate a transient projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projections/transient
+
+```
 
 `POST /projections/transient`
 
@@ -1214,6 +1420,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projection/{name}/query
+
+```
+
 `GET /projection/{name}/query`
 
 *Get projection definition*
@@ -1243,6 +1455,12 @@ This operation does not require authentication
 <a id="opIdUpdate projection definition"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT https://eventstore.com/projection/{name}/query
+
+```
 
 `PUT /projection/{name}/query`
 
@@ -1281,6 +1499,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projection/{name}/state
+
+```
+
 `GET /projection/{name}/state`
 
 *Get the projection state*
@@ -1310,6 +1534,12 @@ This operation does not require authentication
 <a id="opIdGet result of projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projection/{name}/result
+
+```
 
 `GET /projection/{name}/result`
 
@@ -1341,6 +1571,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projection/{name}/statistics
+
+```
+
 `GET /projection/{name}/statistics`
 
 *Get projection statistics*
@@ -1369,6 +1605,12 @@ This operation does not require authentication
 <a id="opIdDisable projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projection/{name}/command/disable
+
+```
 
 `POST /projection/{name}/command/disable`
 
@@ -1400,6 +1642,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projection/{name}/command/enable
+
+```
+
 `POST /projection/{name}/command/enable`
 
 *Enable projection*
@@ -1429,6 +1677,12 @@ This operation does not require authentication
 <a id="opIdReset projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projection/{name}/command/reset
+
+```
 
 `POST /projection/{name}/command/reset`
 
@@ -1460,6 +1714,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/projection/{name}/command/abort
+
+```
+
 `POST /projection/{name}/command/abort`
 
 *Abort projection*
@@ -1490,6 +1750,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projection/{name}/config
+
+```
+
 `GET /projection/{name}/config`
 
 *Get the config of a projection*
@@ -1518,6 +1784,12 @@ This operation does not require authentication
 <a id="opIdUpdate projection config"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT https://eventstore.com/projection/{name}/config
+
+```
 
 `PUT /projection/{name}/config`
 
@@ -1548,6 +1820,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/projection/{name}
+
+```
+
 `GET /projection/{name}`
 
 *Get a projection*
@@ -1576,6 +1854,12 @@ This operation does not require authentication
 <a id="opIdDelete a projection"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X DELETE https://eventstore.com/projection/{name}
+
+```
 
 `DELETE /projection/{name}`
 
@@ -1612,6 +1896,12 @@ Endpoints for Admin operations
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/admin/shutdown
+
+```
+
 `POST /admin/shutdown`
 
 *Shutdown a node*
@@ -1634,6 +1924,12 @@ basicAuth
 <a id="opIdScavenge a node"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/admin/scavenge
+
+```
 
 `POST /admin/scavenge`
 
@@ -1666,6 +1962,12 @@ basicAuth
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X DELETE https://eventstore.com/admin/scavenge/{scavengeId}
+
+```
+
 `DELETE /admin/scavenge/{scavengeId}`
 
 *Stop a scavenge operation*
@@ -1696,6 +1998,12 @@ basicAuth
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X DELETE https://eventstore.com/admin/mergeindexes
+
+```
+
 `DELETE /admin/mergeindexes`
 
 *Merge indexes*
@@ -1724,6 +2032,12 @@ Endpoints for Info operations
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/info
+
+```
+
 `GET /info`
 
 *Get info for node*
@@ -1747,6 +2061,12 @@ basicAuth
 <a id="opIdGet configuration for node"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/info/options
+
+```
 
 `GET /info/options`
 
@@ -1776,6 +2096,12 @@ Endpoints for User operations
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/users/
+
+```
+
 `GET /users/`
 
 *Get all users*
@@ -1798,6 +2124,13 @@ This operation does not require authentication
 <a id="opIdCreate a user"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/users/ \
+  -H 'Content-Type: application/json'
+
+```
 
 `POST /users/`
 
@@ -1844,6 +2177,12 @@ basicAuth
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/users/{login}
+
+```
+
 `GET /users/{login}`
 
 *Get user*
@@ -1872,6 +2211,13 @@ This operation does not require authentication
 <a id="opIdUpdate a user"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT https://eventstore.com/users/{login} \
+  -H 'Content-Type: application/json'
+
+```
 
 `PUT /users/{login}`
 
@@ -1915,6 +2261,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X DELETE https://eventstore.com/users/{login}
+
+```
+
 `DELETE /users/{login}`
 
 *Deletes a user*
@@ -1942,6 +2294,12 @@ This operation does not require authentication
 <a id="opIdEnable a user"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X PUT https://eventstore.com/users/{login}/command/enable
+
+```
 
 `PUT /users/{login}/command/enable`
 
@@ -1972,6 +2330,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X PUT https://eventstore.com/users/{login}/command/disable
+
+```
+
 `PUT /users/{login}/command/disable`
 
 *Disable the specified user*
@@ -2000,6 +2364,13 @@ This operation does not require authentication
 <a id="opIdReset password"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/users/{login}/command/reset-password \
+  -H 'Content-Type: application/json'
+
+```
 
 `POST /users/{login}/command/reset-password`
 
@@ -2038,6 +2409,13 @@ This operation does not require authentication
 <a id="opIdChange password"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/users/{login}/command/change-password \
+  -H 'Content-Type: application/json'
+
+```
 
 `POST /users/{login}/command/change-password`
 
@@ -2083,6 +2461,13 @@ Endpoints for Statistics operations
 <a id="opIdGet all stats"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/stats \
+  -H 'Accept: application/json'
+
+```
 
 `GET /stats`
 
@@ -2302,6 +2687,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/stats/{statPath}
+
+```
+
 `GET /stats/{statPath}`
 
 *Get stats sub path*
@@ -2333,6 +2724,12 @@ This operation does not require authentication
 
 > Code samples
 
+```shell
+# You can also use wget
+curl -X GET https://eventstore.com/gossip
+
+```
+
 `GET /gossip`
 
 *Return Gossip details for cluster*
@@ -2355,6 +2752,12 @@ This operation does not require authentication
 <a id="opIdUpdate Gossip details"></a>
 
 > Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://eventstore.com/gossip
+
+```
 
 `POST /gossip`
 
