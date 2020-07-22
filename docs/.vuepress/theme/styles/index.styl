@@ -103,14 +103,7 @@ body
     margin-left: auto
     margin-right: auto
 
-  .home-link
-    color: #5AB552
-    font-size: 1.25rem
-    font-weight: 300
-    padding-left: 1.75rem
 
-    &::after
-      content: 'Developer'
 
     .logo
       height: 2.5rem !important
@@ -132,6 +125,25 @@ body
   .links, .title
     background-color: transparent !important
     color: #CCC
+
+  .nav-links a:hover
+    border-bottom: none
+    color: #FFF
+
+  a.router-link-active
+    color: #FFF !important
+
+  .dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
+    color: #757575 !important
+
+  .home-link.router-link-active
+    color: #5AB552 !important
+    font-size: 1.25rem !important
+    font-weight: 300
+    padding-left: 1.75rem
+
+    &::after
+      content: 'Developer'
 
 .sidebar
   padding-top: 2.8rem
