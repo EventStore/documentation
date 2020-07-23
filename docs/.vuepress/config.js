@@ -4,7 +4,7 @@ versioning.load();
 module.exports = {
     base: "/",
     dest: "public",
-    title: "",
+    title: "Developer",
     description: "The stream database built for Event Sourcing",
     plugins: [
         "@vuepress/active-header-links",

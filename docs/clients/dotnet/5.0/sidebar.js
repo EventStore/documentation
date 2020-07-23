@@ -45,7 +45,7 @@ module.exports = [
             "subscriptions/",
             "subscriptions/catchup-subscriptions.md",
             "subscriptions/persistent-subscriptions.md",
-            "subscriptions/competing-consumers.md",
+            "subscriptions/persistent-subscription-manager.md",
         ]
     },
     {
