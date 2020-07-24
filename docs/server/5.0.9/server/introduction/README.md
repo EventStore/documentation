@@ -26,7 +26,7 @@ Users of the OSS version of EventStoreDB can use the [community forum](https://d
 
 ### Enterprise customers
 
-Customers with the paid [support plan](https://eventstore.com/support/) can open tickers using the [support portal](https://eventstore.freshdesk.com).
+Customers with the paid [support plan](https://eventstore.com/support/) can open tickets using the [support portal](https://eventstore.freshdesk.com).
 
 ### Issues
 
