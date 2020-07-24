@@ -79,13 +79,15 @@ module.exports = [
         ]
     },
     {
-        title: "Configuration",
+        title: "Server",
         collapsable: true,
+        path: "server/",
         children: [
-            "configuration/database.md",
-            "configuration/caching.md",
-            "configuration/advanced.md",
-            "configuration/remove.md",
+            "server/",
+            "server/database.md",
+            "server/threading.md",
+            "server/caching.md",
+            "server/remove.md",
         ]
     },
     {
@@ -135,12 +137,11 @@ module.exports = [
         path: "projections/",
         children: [
             "projections/",
-            "projections/enable.md",
+            "projections/configuration.md",
             "projections/system-projections.md",
             "projections/user-defined-projections.md",
             "projections/projections-config.md",
             "projections/debugging.md",
-            "projections/configuration.md",
         ]
     },
     {

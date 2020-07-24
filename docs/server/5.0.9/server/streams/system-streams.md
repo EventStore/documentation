@@ -1,15 +1,14 @@
-# System stream and event types
+# System events and streams
 
 ## `$persistentSubscriptionConfig`
 
-`$persistentSubscriptionConfig` is a special paged stream that contains all configuration events, for all persistent subscriptions. It uses the following system event types:
+`$persistentSubscriptionConfig` is a special paged stream that contains all configuration events, for all persistent subscriptions. It uses the `PersistentConfig` system event type, which records a configuration event. The event data contains:
 
-- `PersistentConfig`: An event that records a configuration event, the event data contains:
-  - `version`: Version of event data
-  - `updated`: Updated date
-  - `updatedBy`: User who updated configuration
-  - `maxCount`: The number of configuration events to save
-  - `entries`: Configuration items set by event.
+- `version`: Version of event data
+- `updated`: Updated date
+- `updatedBy`: User who updated configuration
+- `maxCount`: The number of configuration events to save
+- `entries`: Configuration items set by event.
 
 ## `$all`
 
@@ -17,42 +16,13 @@
 
 ## `$settings`
 
-The `$settings` stream has a special ACL used as the default ACL. This stream controls the default ACL for streams without an ACL and also controls who can create streams in the system, the default state of these is shown below:
+The `$settings` stream has a special ACL used as the default ACL. This stream controls the default ACL for streams without an ACL and also controls who can create streams in the system.
 
-```json
-{
-  "$userStreamAcl": {
-    "$r": "$all",
-    "$w": "$all",
-    "$d": "$all",
-    "$mr": "$all",
-    "$mw": "$all"
-  },
-  "$systemStreamAcl": {
-    "$r": "$admins",
-    "$w": "$admins",
-    "$d": "$admins",
-    "$mr": "$admins",
-    "$mw": "$admins"
-  }
-}
-```
-
-You can rewrite these to the `$settings` stream with the following cURL command:
-
-<<< @/docs/server/5.0.9/http-api/sample-code/default-settings.sh#curl
-
-The `$userStreamAcl` controls the default ACL for user streams, while all system streams use the `$systemStreamAcl` as the default.
-
-::: tip
-The `$w` in `$userStreamAcl` also applies to the ability to create a stream. Members of `$admins` always have access to everything, you cannot remove this permission.
-:::
-
-When you set a permission on a stream, it overrides the default values. However, it's not necessary to specify all permissions on a stream. It's only necessary to specify those which differ from the default.
+Learn more about the default ACL in the [access control lists](../security/acl.md#default-acl) documentation.
 
 ## `$stats`
 
-Event Store has debug and statistics information available about a cluster in the `$stats` stream, find out more in [the stats guide](operations/stats-debug.md).
+EventStoreDB has debug and statistics information available about a cluster in the `$stats` stream, find out more in [the stats guide](../diagnostics/stats.md).
 
 ## `$scavenges`
 

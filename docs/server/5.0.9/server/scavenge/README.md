@@ -60,6 +60,12 @@ You can also stop scavenges from the _Admin_ page of the Admin UI.
 Each node in a cluster has its own independent database. As such, when you run a scavenge, you need to issue a scavenge request to each node.
 :::
 
+## Scavenge progress
+
+As all other things in EventStoreDB, the scavenge process emit events that contain the history of scavenging. Each scavenge operation will generate a new stream and the stream will contain events related to that operation.
+
+Refer to the `$scavenges` [stream documentation](../streams/system-streams.md#scavenges) to learn how you can use it to observe the scavenging operation progress and status.
+
 ## How often to scavenge
 
 This depends on the following:

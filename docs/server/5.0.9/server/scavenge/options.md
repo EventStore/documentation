@@ -42,19 +42,13 @@ When the `AlwaysKeepScavenged` option is set to `true`, EventStoreDB would repla
 
 **Default**: `false`
 
-::: tip Note about deleted streams
-EventStoreDB will always keep one event in the stream even if the stream was deleted, to indicate the stream existence and the last event version. Therefore, we advise you to write a specific event like `StreamDeleted` and then set the max count to one to keep the stream or delete the stream. Otherwise, the last event in the deleted stream will still be there even with `AlwaysKeepScavenged` option enabled and that last event might contain sensitive data that you otherwise want to delete.
-:::
+EventStoreDB will always keep one event in the stream even if the stream was deleted, to indicate the stream existence and the last event version. That last event in the deleted stream will still be there even with `AlwaysKeepScavenged` option enabled. Read more about [deleting streams](../streams/deleting-streams-and-events.md) to avoid keeping sensitive information in the database, which you otherwise would consider as deleted.
 
 ## Ignore hard delete
 
-When you delete a stream, you can use either a soft delete or hard delete. When a stream is soft-deleted, all events from the stream get scavenged during the next scavenging run. It means that you can reopen the stream by writing to it again. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to write to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
+When you [delete a stream](../streams/deleting-streams-and-events.md), you can use either a soft delete or hard delete. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to write to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
 
 You can override this behaviour and tell EventStoreDB that you want to delete all the traces of hard-deleted streams too, using the option specified below. After a scavenge operation runs, all hard-deleted streams will be open for writing new events again.
-
-::: warning
-Setting this option to `true` disables hard deletes and allows clients to write to deleted streams. For that reason, the option is considered unsafe and should be used with caution.
-:::
 
 | Format               | Syntax |
 | :------------------- | :----- |
@@ -62,3 +56,8 @@ Setting this option to `true` disables hard deletes and allows clients to write 
 | YAML                 | `UnsafeIgnoreHardDelete` |
 | Environment variable | `EVENTSTORE_UNSAFE_IGNORE_HARD_DELETE` | 
 
+**Default**: `false`
+
+::: warning
+Setting this option to `true` disables hard deletes and allows clients to write to deleted streams. For that reason, the option is considered unsafe and should be used with caution.
+:::

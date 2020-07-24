@@ -35,6 +35,12 @@ There are two types of projections in EventStoreDB:
 
 ## Performance impact
 
-Keep in mind that some projections emit events as a reaction to events that they process. We call this effect _write amplification_ because emitting new events or link events creates additional load on the server IO. For example, some system projections emit link events to their streams for each event appended to the database. These projections are By Category, By Event Type and By Correlation Id. If all those three projections are enabled and started, adding one event to the database will, in fact, produce three additional events and, therefore, quadruples the number of write operations.
+Keep in mind that all projections emit events as a reaction to events that they process. We call this effect _write amplification_ because emitting new events or link events creates additional load on the server IO. 
+
+Some system projections emit link events to their streams for each event appended to the database. These projections are By Category, By Event Type and By Correlation Id. If all those three projections are enabled and started, adding one event to the database will, in fact, produce three additional events and, therefore, quadruples the number of write operations.
+
+System projections `$streams` and `$stream-by-category` produce new events too, either per each new stream or per new stream category. If your system has a lot of small streams, the `$streams` system projection would also amplify writes significantly.
+
+Custom projections create the most significant write amplification since they produce new events or link events, which in turn get processed by system projections.
 
 Projections only run on a leader node of the cluster due to consistency concerns. It creates more CPU and IO load on the leader node compared to follower nodes.

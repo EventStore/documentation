@@ -6,17 +6,37 @@ EventStoreDB has a single database, which is spread across ever-growing number o
 
 Normally, you'd want to keep the database files separated from the OS and other application files. The `Db` setting tells EventStoreDB where to put those chunk files. If the database server won't find anything at the specified location, it will create a new database.
 
---db=VALUE<br/> | DB | Db | The path the db should be loaded/saved to. (Default: [See default directories](operations/default-directories.md)) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--db` |
+| YAML                 | `Db` |
+| Environment variable | `EVENTSTORE_DB` | 
+
+**Default**: the default database location is platform specific. On Windows and macOS (when not running as `root`), the database will be stored in the `data` directory inside the EventStoreDB installation location. On Linux and on macOS (when running as `root`), it will be `/var/lib/eventstore`. 
 
 ## In-memory database
 
 When running EventStoreDB for educational purposes or in some automated test environment, you might want to prevent it from saving any data to the disk. EventStoreDB can keep the data in memory as soon as it has enough available RAM. When you shut down the instance that uses in-memory database, all the data will be lost.
 
---mem-db=VALUE<br/> | MEM_DB | MemDb | Keep everything in memory, no directories or files are created. (Default: False) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--mem-db` |
+| YAML                 | `MemDb` |
+| Environment variable | `EVENTSTORE_MEM_DB` | 
+
+**Default**: `false`
 
 ## Skip database verification
 
---skip-db-verify=VALUE<br/> | SKIP_DB_VERIFY | SkipDbVerify | Bypasses the checking of file hashes of database during startup (allows for faster startup). (Default: False) |
+When the database node restarts, it checks the database files to ensure they aren't corrupted. It is a lengthy process and can take hours on a large database. EventStoreDB normally flushes every write to disk, so database files unlikely get corrupted. In an environment where nodes restart often for some reason, you might want to disable the database verification to allow faster startup of the node.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--skip-db-verify` |
+| YAML                 | `SkipDbVerify` |
+| Environment variable | `EVENTSTORE_SKIP_DB_VERIFY` | 
+
+**Default**: `false`
 
 ## Chunk cache
 
@@ -28,13 +48,23 @@ If you observe that the `es-readIndex-notCachedRecord` stats value gets signific
 
 One setting is `ChunkCacheSize` and it tells the server how much memory it can use to cache chunks (in bytes). The chunk size is 256 MiB max, so the default cache size (two chunks) is 0.5 GiB. To increase the cache size to four chunks, you can set the value to 1 GiB (`1073741824` bytes). You'd also need to tell the server how many chunk files you want to keep in cache. For example, to double the number of cached chunks, set the `CachedChunks` setting to `4`.
 
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--cached-chunks` |
+| YAML                 | `CachedChunks ` |
+| Environment variable | `EVENTSTORE_CACHED_CHUNKS` | 
+
+**Default**: `-1` (all)
+
 Remember that only the latest chunks get cached. Also consider that the OS has its own file cache and increasing the chunk cache might not bring the desired performance benefit.
 
-| -CachedChunks<br/>--cached-chunks=VALUE<br/> | CACHED_CHUNKS | CachedChunks | The number of chunks to cache in unmanaged memory. (Default: -1, or all) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--chunks-cache-size` |
+| YAML                 | `ChunksCacheSize ` |
+| Environment variable | `EVENTSTORE_CHUNKS_CACHE_SIZE` | 
 
-
-| -ChunksCacheSize<br/>--chunks-cache-size=VALUE<br/> | CHUNKS_CACHE_SIZE | ChunksCacheSize | The amount of unmanaged memory to use for caching chunks in bytes. (Default: 536871424) |
-
+*Default*: `536871424`
 
 ## Prepare and Commit timeout
 
@@ -52,11 +82,42 @@ Depending on your client operation timeout settings (default is 7 seconds), incr
 
 | Format               | Syntax |
 | :------------------- | :----- |
-| Command line         | `--commit-out-of-order-projections` |
+| Command line         | `--commit-timeout-ms` |
 | YAML                 | `CommitTimeoutMs` |
 | Environment variable | `EVENTSTORE_COMMIT_TIMEOUT_MS` |
 
 **Default**: `2000` (in milliseconds)
+
+## Disable flush to disk
+
+::: warning
+Using this option might cause data loss.
+:::
+
+This will prevent EventStoreDB from forcing the flush to disk after writes. Please note that this is unsafe in case of a power outage.
+
+With this option enabled, EventStoreDB will still write data to the disk at the application level but not necessarily at the OS level. Usually, the OS should flush its buffers at regular intervals or when a process exits but it is something that's opaque to EventStoreDB.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--unsafe-disable-flush-to-disk` |
+| YAML                 | `UnsafeDisableFlushToDisk` |
+| Environment variable | `EVENTSTORE_UNSAFE_DISABLE_FLUSH_TO_DISK` | 
+
+**Default**: `false`
+
+## Minimum flush delay
+
+The minimum flush delay in milliseconds.
+TODO
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--min-flush-delay-ms` |
+| YAML                 | `MinFlushDelayMs` |
+| Environment variable | `EVENTSTORE_MIN_FLUSH_DELAY_MS ` | 
+
+**Default**: `2` (ms)
 
 
 

@@ -1,7 +1,5 @@
 # Configuring projections
 
-<!-- TODO: And how do you change them? UI, .NET, HTTP etc -->
-
 By changing these settings, you can lessen the amount of pressure projections put on an EventStoreDB node or improve projection performance. You can change these settings on a case-by-case basis, and monitor potential improvements.
 
 ::: warning

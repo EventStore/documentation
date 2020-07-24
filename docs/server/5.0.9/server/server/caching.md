@@ -1,8 +1,6 @@
-# Caching
+# HTTP caching
 
-As there are large differences between running EventStoreDB in development and production, it's important to understand how caching works.
-
-::: warning
+::: tip
 This article is about caching static resources for HTTP API. It does not affect the server performance directly and cannot be used with TCP clients.
 :::
 

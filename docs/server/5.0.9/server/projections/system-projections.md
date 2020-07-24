@@ -1,16 +1,16 @@
 # System projections
 
-Event Store ships with four built in projections.
+EventStoreDB ships with four built in projections.
 
-- By Category (`$by_category`)
-- By Event Type (`$by_event_type`)
-- By Correlation ID (`$by_correlation_id`)
-- Stream by Category (`$stream_by_category`)
-- Streams (`$streams`)
+- [By Category](#by-category) (`$by_category`)
+- [By Event Type](#by-event-type) (`$by_event_type`)
+- [By Correlation ID](#by-correlation-id) (`$by_correlation_id`)
+- [Stream by Category](#stream-by-category) (`$stream_by_category`)
+- [Streams](#streams) (`$streams`)
 
 ## Enabling system projections
 
-When you start Event Store from a fresh database, these projections are present but disabled and querying their statuses returns `Stopped`. You can enable a projection by issuing a request which switches the status of the projection from `Stopped` to `Running`.
+When you start EventStoreDB from a fresh database, these projections are present but disabled and querying their statuses returns `Stopped`. You can enable a projection by issuing a request which switches the status of the projection from `Stopped` to `Running`.
 
 ```bash
 curl -i -X POST "http://{event-store-ip}:{ext-http-port}/projection/{projection-name}/command/enable" -H "accept:application/json" -H "Content-Length:0" -u admin:changeit
@@ -72,7 +72,7 @@ The first parameter specifies how the separator is used, and the possible values
 
 For example, if the body of the projection is `first` and `-`, for a stream id of `account-1`, the stream name the projection creates is `$category-account`, and the `account-1` stream is linked to it. Future streams prefixed with `account-` are likewise linked to the newly created `$category-account` stream.
 
-If the body of the projection is last and `-`, for a stream id of `shopping-cart-1`, the stream name the projection creates is `$category-shopping-cart`, and the `shopping-cart-1` stream is linked to it.  Future streams whose left-side split by the __last__ '-' is `shopping-cart`, are likewise linked to the newly created `$category-shopping-cart` stream.
+If the body of the projection is last and `-`, for a stream id of `shopping-cart-1`, the stream name the projection creates is `$category-shopping-cart`, and the `shopping-cart-1` stream is linked to it.  Future streams whose left-side split by the _last_ `-` is `shopping-cart`, are likewise linked to the newly created `$category-shopping-cart` stream.
 
 The use case of this projection is subscribing to all stream instances of a category.
 

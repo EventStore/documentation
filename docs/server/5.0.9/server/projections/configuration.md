@@ -1,4 +1,4 @@
-# Projections
+# Projections settings
 
 Settings in this section concern projections that are running on the server. Read more about projections [here](../projections/README.md).
 
@@ -28,7 +28,9 @@ When the option value is set to `None`, the projections subsystem of EventStoreD
 
 By using the `System` value for this option, you can instruct the server to enable system projections when the server starts. However, system projections will only start if the `StartStandardProjections` option is set to `true`. When the `RunProjections` option value is `System` (or `All`) but the `StartSystemProjections` option value is `false`, system projections will be enabled but not start. You can start them later manually via the Admin UI or via an API call.
 
-Finally, you can set `RunProjections` to `All` and it will enable both system and custom projections. The `StartSystemProjections` will still control if system projections will be started or not. As for custom projections, only those that were started before the server node shutdown, will start again. Stopped projections will remain stopped even after the server restart.
+Finally, you can set `RunProjections` to `All` and it will enable both system and custom projections. The `StartSystemProjections` will still control if system projections will be started or not. As for custom projections, only those that were started before the server node shutdown, will start again. Stopped projections will remain stopped even after the server restart. 
+
+If you omit the `StartSystemProjections` option and set `RunProjections` to `All`, EventStoreDB will also enable and start system projections.
 
 | Format               | Syntax |
 | :------------------- | :----- |
