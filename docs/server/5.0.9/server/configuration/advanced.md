@@ -57,15 +57,30 @@ This will prevent EventStoreDB from forcing the flush to disk after writes. Plea
 
 With this option enabled, EventStoreDB will still write data to the disk at the application level but not necessarily at the OS level. Usually, the OS should flush its buffers at regular intervals or when a process exits but it is something that's opaque to EventStoreDB.
 
-| -UnsafeDisableFlushToDisk<br/>--unsafe-disable-flush-to-disk=VALUE<br/> | UNSAFE_DISABLE_FLUSH_TO_DISK | UnsafeDisableFlushToDisk | Disable flushing to disk. (UNSAFE: on power off) (Default: False) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--unsafe-disable-flush-to-disk` |
+| YAML                 | `UnsafeDisableFlushToDisk` |
+| Environment variable | `EVENTSTORE_UNSAFE_DISABLE_FLUSH_TO_DISK` |
 
 **Default**: `false`
 
 ### Minimum flush delay
 
---min-flush-delay-ms=VALUE<br/> | MIN_FLUSH_DELAY_MS | MinFlushDelayMs | The minimum flush delay in milliseconds. (Default: 2) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--min-flush-delay-ms` |
+| YAML                 | `MinFlushDelayMs` |
+| Environment variable | `EVENTSTORE_MIN_FLUSH_DELAY_MS` |
+
+**Default**: `2`
 
 ### Something else?
 
-| -ConnectionPendingSendBytesThreshold<br/>--connection-pending-send-bytes-threshold=VALUE<br/> | CONNECTION_PENDING_SEND_BYTES_THRESHOLD | ConnectionPendingSendBytesThreshold | The maximum number of pending send bytes allowed before a connection is closed. (Default: 10485760) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--connection-pending-send-bytes-threshold` |
+| YAML                 | `ConnectionPendingSendBytesThreshold` |
+| Environment variable | `EVENTSTORE_CONNECTION_PENDING_SEND_BYTES_THRESHOLD` |
 
+**Default**: `10485760`
