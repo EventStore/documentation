@@ -84,6 +84,7 @@ module.exports = [
         path: "server/",
         children: [
             "server/",
+            "server/default-directories.md",
             "server/database.md",
             "server/threading.md",
             "server/caching.md",
@@ -128,7 +129,6 @@ module.exports = [
         collapsable: true,
         children: [
             "operations/database-backup.md",
-            "operations/default-directories.md",
         ]
     },
     {
