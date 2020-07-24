@@ -6,17 +6,35 @@ EventStoreDB has a single database, which is spread across ever-growing number o
 
 Normally, you'd want to keep the database files separated from the OS and other application files. The `Db` setting tells EventStoreDB where to put those chunk files. If the database server won't find anything at the specified location, it will create a new database.
 
---db=VALUE<br/> | DB | Db | The path the db should be loaded/saved to. (Default: [See default directories](operations/default-directories.md)) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--db` |
+| YAML                 | `Db` |
+| Environment variable | `EVENTSTORE_DB` |
+
+**Default**: [See default directories](operations/default-directories.md)
 
 ## In-memory database
 
 When running EventStoreDB for educational purposes or in some automated test environment, you might want to prevent it from saving any data to the disk. EventStoreDB can keep the data in memory as soon as it has enough available RAM. When you shut down the instance that uses in-memory database, all the data will be lost.
 
---mem-db=VALUE<br/> | MEM_DB | MemDb | Keep everything in memory, no directories or files are created. (Default: False) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--mem-db` |
+| YAML                 | `MemDb` |
+| Environment variable | `EVENTSTORE_MEM_DB` |
+
+**Default**: `false`
 
 ## Skip database verification
 
---skip-db-verify=VALUE<br/> | SKIP_DB_VERIFY | SkipDbVerify | Bypasses the checking of file hashes of database during startup (allows for faster startup). (Default: False) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--skip-db-verify` |
+| YAML                 | `SkipDbVerify` |
+| Environment variable | `EVENTSTORE_SKIP_DB_VERIFY` |
+
+**Default**: `false`
 
 ## Chunk cache
 
@@ -30,11 +48,21 @@ One setting is `ChunkCacheSize` and it tells the server how much memory it can u
 
 Remember that only the latest chunks get cached. Also consider that the OS has its own file cache and increasing the chunk cache might not bring the desired performance benefit.
 
-| -CachedChunks<br/>--cached-chunks=VALUE<br/> | CACHED_CHUNKS | CachedChunks | The number of chunks to cache in unmanaged memory. (Default: -1, or all) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--cached-chunks` |
+| YAML                 | `CachedChunks` |
+| Environment variable | `EVENTSTORE_CACHED_CHUNKS` |
 
+**Default**: `-1` (or all)
 
-| -ChunksCacheSize<br/>--chunks-cache-size=VALUE<br/> | CHUNKS_CACHE_SIZE | ChunksCacheSize | The amount of unmanaged memory to use for caching chunks in bytes. (Default: 536871424) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--chunks-cache-size` |
+| YAML                 | `ChunksCacheSize` |
+| Environment variable | `EVENTSTORE_CHUNKS_CACHE_SIZE` |
 
+**Default**: `536871424` (in bytes)
 
 ## Prepare and Commit timeout
 
