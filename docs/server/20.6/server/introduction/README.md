@@ -1,19 +1,31 @@
-# Welcome to Event Store
+# EventStoreDB 20.6 Documentation
 
-The team and community behind Event Store welcomes you and hopes we can help you 
-find what you're looking for.
+Welcome to the EventStoreDB 20.6 documentation.
+ 
+EventStoreDB is a database designed for Event Sourcing. This documentation introduces key concepts of EventStoreDB and explains its installation, configuration and operational concerns.
 
-## New to Event Sourcing?
+EventStoreDB is available as both a Open-Source and an Enterprise versions:
 
-If the concept of event sourcing, and why it's useful, is new to you, we 
-recommend you read [our guide to event sourcing](https://eventstore.com/docs/event-sourcing-basics/index.html) first.
+- EventStoreDB OSS is the [open-source](https://github.com/EventStore/EventStore) and free to use edition of EventStoreDB.
+- EventStoreDB Enterprise is available for customers with Event Store [paid support subscription](https://eventstore.com/support/). EventStoreDB Enterprise adds enterprise-focused features such as (TODO).
 
-## New to Event Store?
+## Getting started
 
-If you're familiar with event sourcing and want to know how to test Event Store, 
-read the [Introduction](https://eventstore.com/docs/getting-started/index.html) section.
+Get started by learning more about principles of EventStoreDB, Event Sourcing, database installation guidelines and choosing the [client SDK](clients.md).
 
-## Already using Event Store?
+## Support
 
-If you're already using Event Store, then welcome back and hopefully you can 
-find what you need under the other sub-sections you can see in the left hand navigation menu, you can also try using the search box in the top navigation bar. If there's still something missing, then [create an issue on GitHub](https://github.com/EventStore/documentation/issues/new), use the 'Improve this Doc' link on the top right on any documentation page to make a pull request, or contact [docs@eventstore.com](email:docs@eventstore.com).
+### EventStoreDB community
+
+Users of the OSS version of EventStoreDB can use the [community forum](https://discuss.eventstore.com) for questions, discussions and getting help from community members.
+
+### Enterprise customers
+
+Customers with the paid [support plan](https://eventstore.com/support/) can open tickets using the [support portal](https://eventstore.freshdesk.com).
+
+### Issues
+
+Since EventStoreDB is the open-source product, we track most of the issues openly in the EventStoreDB [repository on GitHub](https://github.com/EventStore/EventStore). Before opening an issue, please ensure that a similar issue hasn't been opened already. Also, try searching closed issues that might contain a solution or workaround for your problem.
+
+When opening an issue, follow our guidelines for bug reports and feature requests. By doing so, you would greatly help us to solve your concerns in the most efficient way.
+

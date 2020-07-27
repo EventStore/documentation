@@ -2,44 +2,55 @@ module.exports = [
     {
         title: "Introduction",
         collapsable: true,
+        path: "introduction/",
         children: [
-            "getting-started/",
-            "getting-started/getting-started",
-            "getting-started/installation"
+            "introduction/",
+            "introduction/clients.md",
         ]
     },
     {
-        title: "Deployment",
+        title: "Installation",
         collapsable: true,
+        path: "installation/",
         children: [
-            "",
-            "cloud"
+            "installation/",
+            "installation/linux.md",
+            "installation/windows.md",
+            "installation/docker.md",
+            "installation/configuration.md",
         ]
     },
     {
-        title: "Clustering",
+        title: "Indexes",
         collapsable: true,
+        path: "indexes/",
         children: [
-            "clustering-model",
-            "configure-cluster"
+            "indexes/",
+            "indexes/configuration.md",
+            "indexes/tuning.md",
+            "indexes/advanced.md",
         ]
     },
     {
-        title: "Administration",
+        title: "Scavenge",
         collapsable: true,
+        path: "scavenge/",
         children: [
-            "directories",
-            "admin-ui",
-            "configuration"
+            "scavenge/",
+            "scavenge/options.md",
         ]
     },
     {
-        title: "Operations",
+        title: "Diagnostics",
         collapsable: true,
+        path: "diagnostics/",
         children: [
-            "upgrading",
-            "backup",
-            "metrics"
+            "diagnostics/",
+            "diagnostics/logging.md",
+            "diagnostics/stats.md",
+            "diagnostics/histograms.md",
+            "diagnostics/prometheus.md",
+            "diagnostics/datadog.md",
         ]
-    }
+    },
 ]

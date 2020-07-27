@@ -1,3 +1,0 @@
-# Metrics
-
-Prometheus and stuff.

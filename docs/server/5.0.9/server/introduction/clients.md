@@ -1,6 +1,8 @@
 # Protocols, clients and SDKs
 
-This getting started guide shows you how to get started with EventStoreDB using the Atom publishing protocol as the primary interface. This final step covers the different APIs, and client SDKs EventStoreDB has available with the aim of helping you choose which one suits your use case.
+This getting started guide shows you how to get started with EventStoreDB by setting up an instance or cluster and configuring it.
+
+EventStoreDB supports two protocols: TCP and HTTP (Atom). When developing software that uses EventStoreDB, we recommend using one of the official SDKs.
 
 ## TCP protocol
 
