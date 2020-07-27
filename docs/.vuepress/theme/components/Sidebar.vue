@@ -3,7 +3,7 @@
     <NavLinks />
 
     <slot name="top" />
-    <h3 class="version">{{ firstItem.group + " v" + firstItem.version }}</h3>
+    <Version :sidebar-item="firstItem" />
 
     <SidebarLinks
       :depth="0"
@@ -14,13 +14,14 @@
 </template>
 
 <script>
-import SidebarLinks from '@theme/components/SidebarLinks.vue'
-import NavLinks from '@theme/components/NavLinks.vue'
+import SidebarLinks from '@theme/components/SidebarLinks.vue';
+import NavLinks from '@theme/components/NavLinks.vue';
+import Version from "./Version";
 
 export default {
   name: 'Sidebar',
 
-  components: { SidebarLinks, NavLinks },
+  components: { SidebarLinks, NavLinks, Version },
 
   props: ['items'],
 

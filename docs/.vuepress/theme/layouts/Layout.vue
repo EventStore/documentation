@@ -45,7 +45,7 @@
       />
     </Page>
 
-    <div class="footer">Page bottom</div>
+<!--    <div class="footer">Page bottom</div>-->
   </div>
 </template>
 
