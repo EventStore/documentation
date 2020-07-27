@@ -81,6 +81,7 @@ async function main() {
             {
                 id: repo.id,
                 basePath: repo.basePath,
+                group: repo.group,
                 versions: []
             }
         ];
