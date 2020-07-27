@@ -17,9 +17,9 @@ module.exports = {
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
-        repo: "EventStore/documentation-next",
-        editLinks: true,
-        editLinkText: "Help us improve this page!",
+        // repo: "EventStore/documentation-next",
+        // editLinks: true,
+        // editLinkText: "Help us improve this page!",
         codeLanguages: {
             csharp: "C#",
             go: "Go",
@@ -52,12 +52,12 @@ module.exports = {
             {
                 text: "Resources",
                 items: [
+                    {text: "Discuss", link: "https://discuss.eventstore.com"},
                     {text: "Articles", link: "https://eventstore.com/blog/articles/"},
                     {text: "Webinars", link: "https://eventstore.com/webinars/"},
-                    {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"}
+                    {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
                 ]
             },
-            {text: "Discuss", link: "https://discuss.eventstore.com"},
             {text: "Old Docs", link: "https://eventstore.com/docs/"}
         ],
         sidebar: versioning.sidebars
