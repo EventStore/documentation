@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.5.2",
     "chalk": "^2.0.0",
     "commander": "^2.0.0",
     "core-js": "2",
