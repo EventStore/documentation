@@ -48,6 +48,8 @@ module.exports = {
                     if (item.path !== undefined) {
                         item.path = `/${path}/${item.path}`;
                     }
+                    item.version = v.version;
+                    item.group = version.group;
                 });
                 sidebars[`/${path}/`] = sidebar;
             });
