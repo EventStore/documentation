@@ -13,12 +13,12 @@
                         :src="$withBase($site.themeConfig.logo)"
                         :alt="$siteTitle"
                 >
-<!--                <span-->
-<!--                        v-if="$siteTitle"-->
-<!--                        ref="siteName"-->
-<!--                        class="site-name"-->
-<!--                        :class="{ 'can-hide': $site.themeConfig.logo }"-->
-<!--                >{{ $siteTitle }}</span>-->
+                <!--<span
+                        v-if="$siteTitle"
+                        ref="siteName"
+                        class="site-name"
+                        :class="{ 'can-hide': $site.themeConfig.logo }"
+                >{{ $siteTitle }}</span>-->
             </RouterLink>
 
             <div
@@ -142,10 +142,10 @@
                 white-space nowrap
                 text-overflow ellipsis
 
-    @media print, screen and (min-width: 1795px)
+    /*@media print, screen and (min-width: 1795px)
         .navbar
             padding-left: calc(50% - 800px)
 
             .links
-                padding-right: calc(50% - 800px)
+                padding-right: calc(50% - 800px)*/
 </style>

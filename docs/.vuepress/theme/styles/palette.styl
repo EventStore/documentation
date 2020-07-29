@@ -1,6 +1,298 @@
 $navbarHeight = 4.375rem
 $MQNarrow = 1200px
+$MQMobile = 1023px
 $sidebarWidth = 22.5rem
 $contentWidth = 500px
-$MQMobile ?= 960px
-$MQMobileNarrow ?= 419px
+
+
+////////// TYPE //////////
+
+
+@font-face {
+  font-family: "museosans";
+  src: url("/fonts/MuseoSans_700-webfont.woff") format('woff');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "museosans";
+  src: url("/fonts/MuseoSans_500-webfont.woff") format('woff');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "museosans";
+  src: url("/fonts/MuseoSans_300-webfont.woff") format('woff');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "museosans";
+  src: url("/fonts/MuseoSans_100-webfont.woff") format('woff');
+  font-weight: 100;
+}
+
+body
+  font-family: museosans
+  font-weight: 500
+  color: #757575
+
+h1
+  color: #1976D2
+  font-weight: 100
+  font-size: 2.25rem
+  padding-bottom: 1.375rem
+  border-bottom: #F6F6F6 4px solid
+  margin-bottom: 1.5rem !important
+
+h2
+  color: #09264a
+  font-weight: 500
+  font-size: 1.375rem
+  padding-bottom: 1.375rem
+  border-bottom: #F6F6F6 4px solid
+
+  
+////////// MAIN NAV //////////  
+
+
+.navbar
+  background: url("/header-bg-grn-mb.png") top right no-repeat #09264A
+  background-size: 599px  
+  padding-left: 0 !important
+  padding-right: 0 !important
+  
+  .logo
+    margin-right:0
+
+  .navbar-inner
+    .logo
+      height: 2.5rem !important
+      margin-top: 0.1875rem	  
+	  
+	.sidebar-button
+	  width:20px
+	  height:20px
+	  padding:20px
+	  top: 5px
+	  left:0
+	  
+	  .icon
+	    color:#fff
+	    width:20px
+	    height:20px
+
+  .links
+    top: 0
+	right:0
+    float: right
+    position: relative !important
+
+    .search-box
+      padding-left: 0
+      padding-right: 0 
+	  color:#09264a
+	  
+	.search-box input
+	    left:0 !important
+
+.links, .title
+    background-color: transparent !important
+
+  .nav-links a:hover
+    border-bottom: none
+    color: #FFF
+
+  a.router-link-active
+    color: #FFF !important
+
+  .dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
+    color: #757575 !important
+
+  .home-link.router-link-active
+    /*color: #5AB552 !important
+    font-size: 1.25rem !important
+    font-weight: 300*/
+    padding-left: 60px
+  
+  .dropdown-wrapper .dropdown-title .arrow
+    margin-top:8px !important
+	  
+.icon.outbound
+  display:none !important
+	
+button.dropdown-title
+  width:100%
+  text-align:left
+	
+button.dropdown-title .title
+  text-align:left
+
+button.dropdown-title .title
+  text-align:left
+  
+.dropdown-wrapper button.dropdown-title .arrow
+  float:right
+  
+.sidebar .nav-links .nav-item, .sidebar .nav-links a.nav-item
+  font-size:1em !important
+
+	
+////////// SIDEBAR //////////
+
+
+.sidebar
+  border-right: #F6F6F6 4px solid
+
+  .nav-links .nav-item a.nav-link
+    color:#2c3e50
+  
+  .nav-links .nav-item a.nav-link:hover
+    color:#5ab552
+	
+  a.repo-link
+    display:none !important
+	
+  .title
+    color:#2c3e50
+	
+  .title:hover
+    color:#5ab552
+	
+  .nav-links
+    padding-right:30px !important
+
+  
+////////// BODY CONTENT //////////
+
+
+.custom-block-title
+  font-size: 1.125rem
+  background-repeat: no-repeat
+  text-indent: 3.5rem
+  margin-left: -2.95rem
+  line-height: 2.5rem
+
+.custom-block
+  margin-top: 1.5rem !important
+  margin-bottom: 1.5rem !important
+
+.custom-block.warning
+  background-color: #FEF1D1
+  border-color: #F8B81B
+
+  .custom-block-title
+    color: #F8B81B
+    background-image: url('/warning.svg')
+
+.custom-block.tip
+  background-color: #DEF0DC
+  border-color: #5AB552
+
+  .custom-block-title
+    color: #5AB552
+    background-image: url('/tip.svg')
+	
+  
+////////// TABLET //////////
+
+
+@media (min-width: 1024px)
+  .navbar
+    background: url("/header-bg-grn-mb.png") top right no-repeat, url("/header-bg-blu-tb.png") top right no-repeat #09264A
+    background-size: 599px, 1200px  
+	
+  .home-link.router-link-active
+    padding-left: 1.5rem
+	
+  .search-box
+    margin-left:4.5rem
+	
+  .search-box .focused
+    margin-left:-3rem
+	
+  a.nav-link
+    color:#ccc
+	
+  a.nav-link:hover, a.nav-link:hover
+	  color:#fff
+	  
+  .dropdown-wrapper .dropdown-title
+    color:#ccc
+
+  .dropdown-wrapper .dropdown-title:hover
+    color:#fff
+	
+  .links, .title
+  
+    .dropdown-wrapper .dropdown-title .arrow
+      margin-top:8px !important
+	
+  .sidebar a.repo-link
+    display:none !important
+		
+		
+////////// DESKTOP //////////
+
+
+@media (min-width: 1200px)
+  .nav-links .nav-item
+    margin-left:2rem
+	
+  .search-box
+    margin-left:4.5rem	
+	
+  .navbar
+    background: url("/header-bg-grn-tb.png") top right no-repeat, url("/header-bg-blu-dt.png") top right no-repeat #09264A
+    background-size: 599px, 1200px 
+
+	
+////////// LARGE DESKTOP //////////
+	
+	
+@media (min-width: 1795px)
+  .navbar .links 
+    right:5%
+	
+  .home-link.router-link-active
+    margin-left: 4%
+
+  .navbar
+    background: url("/header-bg-grn-dt.png") top right no-repeat, url("/header-bg-blu-lg.png") top right no-repeat #09264A
+    background-size: 1795px, 1795px 	
+
+	
+////////// FULL DESKTOP //////////
+	
+	
+@media (min-width: 2095px)
+  .navbar .links 
+    right:8%
+	
+  .home-link.router-link-active
+    margin-left: 6%
+
+  .navbar
+    background: url("/header-bg-grn-full.png") top right no-repeat, url("/header-bg-blu-full.png") top right no-repeat #09264A
+    background-size: 1795px, 1795px 
+
+	
+////////// MAX DESKTOP //////////
+	
+	
+@media (min-width: 2395px)
+  .navbar .links 
+    right:10%
+	
+  .home-link.router-link-active
+    margin-left: 8%
+
+  .navbar
+    background: url("/header-bg-grn-max-2.png") top right no-repeat, url("/header-bg-blu-max.png") top right no-repeat #09264A
+    background-size: 1795px, 1795px 
+
+
+	
+	
+	
+	
