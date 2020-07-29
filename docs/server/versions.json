@@ -1,6 +1,7 @@
 [
   {
     "id": "server",
+    "group": "Server",
     "basePath": "server",
     "versions": [
       {
@@ -15,6 +16,7 @@
   },
   {
     "id": "http-api",
+    "group": "HTTP API",
     "basePath": "server",
     "versions": [
       {

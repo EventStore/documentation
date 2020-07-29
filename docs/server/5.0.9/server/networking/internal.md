@@ -50,12 +50,3 @@ Use the settings described below to change default internal ports.
 
 **Default**: `2112`
 
-You can control whether the admin interface is available on the external HTTP interface using the `admin-on-ext` [option](command-line-arguments.md). You can control whether gossip is enabled on external interfaces with the `gossip-on-ext` [option](command-line-arguments.md) (you normally want it enabled).
-
-
-
-| -IntIp<br/>--int-ip=VALUE<br/> | INT_IP | IntIp | Internal IP Address. (Default: 127.0.0.1) |
-
-| -IntTcpPort<br/>--int-tcp-port=VALUE<br/> | INT_TCP_PORT | IntTcpPort | Internal TCP Port. (Default: 1112) |
-
-| -IntHttpPort<br/>--int-http-port=VALUE<br/> | INT_HTTP_PORT | IntHttpPort | Internal HTTP Port. (Default: 2112) |
