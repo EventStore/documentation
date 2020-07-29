@@ -41,7 +41,7 @@ module.exports = {
                 items: versioning.linksFor("server", "introduction/") // TODO create custom component
             },
             {
-                text: "Clients and APIs",
+                text: "Clients & APIs",
                 items: [
                     {text: "Overview", link: "/clients/"},
                     {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "")},
@@ -53,11 +53,11 @@ module.exports = {
                 items: [
                     {text: "Articles", link: "https://eventstore.com/blog/articles/"},
                     {text: "Webinars", link: "https://eventstore.com/webinars/"},
-                    {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"}
+                    {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
+					{text: "Old Docs", link: "https://eventstore.com/docs/"}
                 ]
             },
-            {text: "Discuss", link: "https://discuss.eventstore.com"},
-            {text: "Old Docs", link: "https://eventstore.com/docs/"}
+            {text: "Discuss", link: "https://discuss.eventstore.com"},         
         ],
         sidebar: versioning.sidebars
     },
