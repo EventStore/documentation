@@ -30,7 +30,7 @@ module.exports = {
             all: versioning.versions.all
         },
         sidebarDepth: 1,
-        searchPlaceholder: "Search...",
+        searchPlaceholder: "Search",
         lastUpdated: "Last Updated",
         nav: [
             {

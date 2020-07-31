@@ -51,16 +51,29 @@ h2
   font-size: 1.375rem
   padding-bottom: 1.375rem
   border-bottom: #F6F6F6 4px solid
+  
+h3
+  color: #09264a
+  font-weight: 500
+  font-size: 1.25rem
+  padding-bottom: 1.375rem
+  
+h4
+  color: #09264a
+  font-weight: 500
+  font-size: 1.25rem
+  padding-bottom: 1.375rem
 
   
 ////////// MAIN NAV //////////  
 
-
 .navbar
-  background: url("/header-bg-grn-mb.png") top right no-repeat #09264A
+  background: url("/header-bg-grn-mb.svg") top right no-repeat #09264A
   background-size: 599px  
   padding-left: 0 !important
   padding-right: 0 !important
+  border-bottom:0 !important
+  height: 69px
   
   .logo
     margin-right:0
@@ -96,60 +109,199 @@ h2
 	.search-box input
 	    left:0 !important
 
+.dropdown-wrapper .nav-dropdown .dropdown-item h4
+	font-size:1em !important
+	font-weight:700 !important
+			
 .links, .title
     background-color: transparent !important
 
   .nav-links a:hover
-    border-bottom: none
-    color: #FFF
+    border-bottom: 0 !important
+    color: #5ab552
+
+  .nav-links a:active
+	font-size:500 !important
 
   a.router-link-active
-    color: #FFF !important
+    color: #5ab552 
 
-  .dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
-    color: #757575 !important
+  /*.dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
+    color: #757575 !important*/
 
   .home-link.router-link-active
     /*color: #5AB552 !important
     font-size: 1.25rem !important
     font-weight: 300*/
+	font-weight:500
     padding-left: 60px
   
   .dropdown-wrapper .dropdown-title .arrow
     margin-top:8px !important
-	  
+	
+.home-link
+  padding-left: 60px
+	
 .icon.outbound
   display:none !important
 	
 button.dropdown-title
-  width:100%
+  /*width:100%*/
   text-align:left
 	
 button.dropdown-title .title
   text-align:left
 
-button.dropdown-title .title
-  text-align:left
+button.dropdown-title .title:hover
+  color:#5ab552
   
 .dropdown-wrapper button.dropdown-title .arrow
+  margin-top:8px !important
   float:right
   
 .sidebar .nav-links .nav-item, .sidebar .nav-links a.nav-item
   font-size:1em !important
 
-	
+.dropdown-wrapper .nav-dropdown .dropdown-item a.nav-link:hover
+  color:#5ab552
+  
 ////////// SIDEBAR //////////
 
+:focus
+  outline:0 !important
 
 .sidebar
   border-right: #F6F6F6 4px solid
+  font-size:1em
+  
+  a.nav-link
+    color:#2c3e50
+	
+  a.nav-link:hover
+    color:#5ab552
+ 
+  a.sidebar-heading.clickable:hover
+    color:#5ab552
+  
+.sidebar-heading.clickable.active
+  font-weight:700
+  
+.sidebar-heading.clickable.router-link-active.open, .sidebar-heading.open
+  font-weight:700
+  color:#0d47a1
+  /*border-left:4px solid #fff*/
+  border-left:0
+
+p.sidebar-heading
+  font-size:1em
+  
+a.sidebar-link:hover
+  color:#5ab552
+  
+a.sidebar-link:active
+  font-weight:700
+
+.sidebar-heading:hover
+  color:#5ab552
+
+.sidebar-sub-headers a.sidebar-link
+  padding-top:0.35rem !important
+  padding-bottom:0.35rem !important
+  
+.sidebar .sidebar-links li
+  margin-top:0!important
+  
+.sidebar-sub-headers a.active.sidebar-link
+    font-weight:700!important
+ 
+.sidebar .nav-links
+	border-bottom:4px solid #f6f6f6 !important
+	
+//
+
+@media (max-width: 1794px)
+	.sidebar .sidebar-links
+	  margin-left:1.5rem
+	  
+	/*.sidebar .nav-links a 
+	  font-weight:500!important*/
+
+.sidebar .sidebar-links
+	/*margin-left:1.5rem*/
+	
+	.sidebar-group-items
+		margin-left:0
+	
+.sidebar-heading
+	padding-left:0
+	padding-right:1.35rem
+	border-left:0
+	
+.sidebar-heading.clickable.active
+	padding-left:0
+	border-left:0
+	
+.sidebar-group a.sidebar-link
+	padding-left:20px
+	margin-left:0
+	border-left:0
+
+.sidebar-sub-headers a.sidebar-link
+	padding-left:18px
+	padding-top:2px
+	padding-bottom:2px
+	margin-left:0
+	border-left:#eee 2px solid
+	
+a.sidebar-link.active 
+	background: url('/side-nav-marker.svg') left center no-repeat
+	background-size: 10px
+	border-left:0
+
+.sidebar .sidebar-sub-headers
+	padding-left:20px
+	margin-left:0
+	
+	a.sidebar-link.active 
+	  background: none
+	  border-left:2px solid #5ab552
+	  
+.sidebar ul.sidebar-sub-headers
+	margin-top:0.35rem
+	margin-bottom:0.35rem
+
+.sidebar-group-items
+    border-top: #F6F6F6 4px solid
+    border-bottom: #F6F6F6 4px solid
+    margin-right: 1.5rem !important
+	margin-left:20px !important
+  
+.sidebar-group-items li
+	padding-top:0.35rem
+	
+ul .sidebar-group-items
+	padding-bottom:0.35rem !important
+	padding-top:0.35rem !important
+	margin-bottom:0.35rem !important
+  
+/*
+  .sidebar-heading
+	font-weight:500 !important
+
+    &.open
+      color: #09264a !important
+	  
+	.clickable.active
+	  font-weight:500 !important
+  
+
 
   .nav-links .nav-item a.nav-link
     color:#2c3e50
   
   .nav-links .nav-item a.nav-link:hover
     color:#5ab552
-	
+
   a.repo-link
     display:none !important
 	
@@ -162,9 +314,80 @@ button.dropdown-title .title
   .nav-links
     padding-right:30px !important
 
+  .sidebar-heading
+    border-left: none
+
+    &.open
+      color: #2c3e50 !important
+
+  .sidebar-link
+    font-size:1em
+  
+  .sidebar-heading
+    border-left: none
+    padding-bottom: 0.65rem
+    padding-left:1.5rem !important
+    color: #757575
+	font-weight:500 !important
+
+    &.open
+      color: #09264a !important
+	  
+	.clickable.active
+	  font-weight:500 !important
+
+  .sidebar-group-items
+    box-sizing: border-box
+    border-top: #F6F6F6 4px solid
+    border-bottom: #F6F6F6 4px solid
+    margin-right: 2.25rem !important
+
+  .sidebar-sub-headers
+    margin-left: 1.5rem !important
+    box-sizing: border-box
+    border-top: #F6F6F6 4px solid
+    border-bottom: #F6F6F6 4px solid
+
+    a.sidebar-link.active
+      background-image: none
+
+  .sidebar-link
+    border-left: none !important
+    padding-left: 1.5rem !important
+    margin-top: 0.65rem
+    margin-bottom: 0.65rem
+    padding-top: 0 !important
+    padding-bottom: 0 !important
+    font-size: 0.875rem
+    font-weight: 500 !important
+
+  .arrow
+    display: none
+
+  a
+    color: #757575 
+
+a.sidebar-link.active
+  background-image: url('/side-nav-marker.svg')
+  background-repeat: no-repeat
+  color: #5AB552 !important
+  font-weight:500 !important
+*/
+/*.page
+  padding-top: 2.8rem !important
+
+  p
+    margin-top: 0.9rem !important*/
+
+a.sidebar-heading 
+  font-size:1em
+  
   
 ////////// BODY CONTENT //////////
 
+.el-card
+  margin-top: 1.9rem
+  margin-bottom: 1.9rem
 
 .custom-block-title
   font-size: 1.125rem
@@ -193,17 +416,23 @@ button.dropdown-title .title
     color: #5AB552
     background-image: url('/tip.svg')
 	
+.custom-block.danger .custom-block-title
+    background-image: url('/danger.svg')
+	
   
 ////////// TABLET //////////
 
 
 @media (min-width: 1024px)
   .navbar
-    background: url("/header-bg-grn-mb.png") top right no-repeat, url("/header-bg-blu-tb.png") top right no-repeat #09264A
+    background: url("/header-bg-grn-mb.svg") top right no-repeat, url("/header-bg-blu-tb.svg") top right no-repeat #09264A
     background-size: 599px, 1200px  
 	
   .home-link.router-link-active
-    padding-left: 1.5rem
+    padding-left: 0
+	
+  .home-link
+    margin-left:1.5rem
 	
   .search-box
     margin-left:4.5rem
@@ -214,8 +443,8 @@ button.dropdown-title .title
   a.nav-link
     color:#ccc
 	
-  a.nav-link:hover, a.nav-link:hover
-	  color:#fff
+  a.nav-link:hover
+	  color:#5ab552 !important
 	  
   .dropdown-wrapper .dropdown-title
     color:#ccc
@@ -230,8 +459,21 @@ button.dropdown-title .title
 	
   .sidebar a.repo-link
     display:none !important
-		
-		
+
+  a.nav-link.router-link-active
+    color:#fff
+	
+  .nav-item > a:not(.external).router-link-active
+    border: none
+	
+  .links, .title
+
+    .nav-links a:hover
+      color: #fff
+	  
+  .dropdown-wrapper .nav-dropdown .dropdown-item a
+    color:#2c3e50
+	
 ////////// DESKTOP //////////
 
 
@@ -241,55 +483,53 @@ button.dropdown-title .title
 	
   .search-box
     margin-left:4.5rem	
+
+  .search-box .focused
+    margin-left:0
 	
   .navbar
-    background: url("/header-bg-grn-tb.png") top right no-repeat, url("/header-bg-blu-dt.png") top right no-repeat #09264A
+    background: url("/header-bg-grn-tb.svg") top right no-repeat, url("/header-bg-blu-dt.svg") top right no-repeat #09264A
     background-size: 599px, 1200px 
-
 	
-////////// LARGE DESKTOP //////////
-	
-	
-@media (min-width: 1795px)
-  .navbar .links 
-    right:5%
-	
-  .home-link.router-link-active
-    margin-left: 4%
-
-  .navbar
-    background: url("/header-bg-grn-dt.png") top right no-repeat, url("/header-bg-blu-lg.png") top right no-repeat #09264A
-    background-size: 1795px, 1795px 	
+  .theme-default-content:not(.custom)
+    padding-top:4rem
 
 	
 ////////// FULL DESKTOP //////////
 	
 	
-@media (min-width: 2095px)
+@media (min-width: 1795px)
   .navbar .links 
-    right:8%
+    right:calc(50% - 800px)
 	
-  .home-link.router-link-active
-    margin-left: 6%
+  .home-link
+    margin-left: calc(50% - 800px)
+	
 
   .navbar
-    background: url("/header-bg-grn-full.png") top right no-repeat, url("/header-bg-blu-full.png") top right no-repeat #09264A
-    background-size: 1795px, 1795px 
+    background: url("/header-bg-grn-full.svg") top center no-repeat, url("/header-bg-blu-full.svg") top center no-repeat #09264A
+    background-size: 3000px, 3000px
+	
+  .theme-default-content:not(.custom)
+    margin:0 0 0 calc(calc(50% - 960px) + 20rem)
+	
+  .dropdown-wrapper .nav-dropdown .dropdown-item a
+    color:#2c3e50
 
 	
 ////////// MAX DESKTOP //////////
 	
 	
 @media (min-width: 2395px)
-  .navbar .links 
-    right:10%
+  /*.navbar .links 
+    right:10%*/
 	
-  .home-link.router-link-active
-    margin-left: 8%
-
+  /*.home-link.router-link-active
+    margin-left: 8%*/
+/*
   .navbar
     background: url("/header-bg-grn-max-2.png") top right no-repeat, url("/header-bg-blu-max.png") top right no-repeat #09264A
-    background-size: 1795px, 1795px 
+    background-size: 1795px, 1795px */
 
 
 	
