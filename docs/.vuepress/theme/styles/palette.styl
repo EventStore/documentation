@@ -126,9 +126,6 @@ h4
   a.router-link-active
     color: #5ab552 
 
-  /*.dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
-    color: #757575 !important*/
-
   .home-link.router-link-active
     /*color: #5AB552 !important
     font-size: 1.25rem !important
@@ -146,7 +143,6 @@ h4
   display:none !important
 	
 button.dropdown-title
-  /*width:100%*/
   text-align:left
 	
 button.dropdown-title .title
@@ -189,7 +185,6 @@ button.dropdown-title .title:hover
 .sidebar-heading.clickable.router-link-active.open, .sidebar-heading.open
   font-weight:700
   color:#0d47a1
-  /*border-left:4px solid #fff*/
   border-left:0
 
 p.sidebar-heading
@@ -219,15 +214,45 @@ a.sidebar-link:active
 	
 //
 
+.dropdown-item .nav-link.router-link-exact-active.router-link-active
+	  font-weight:700 !important
+	  color:#0d47a1 !important
+	  background: url('/side-nav-marker.svg') left center no-repeat
+	  background-size: 10px
+
+.dropdown-item a.nav-link.router-link-active
+  font-weight:700 !important
+  color:#0d47a1 !important
+  background: url('/side-nav-marker.svg') left center no-repeat
+  background-size: 10px
+  
+.dropdown-wrapper .nav-dropdown .dropdown-item a.router-link-active::after
+  content:none
+	  
+@media (max-width: 1023px)  
+  .nav-link.router-link-exact-active.router-link-active
+    font-weight:700 !important
+    color:#0d47a1 
+	
+  .dropdown-wrapper .nav-dropdown .dropdown-item .dropdown-subitem
+    padding-left:1.35rem
+	
 @media (max-width: 1794px)
 	.sidebar .sidebar-links
 	  margin-left:1.5rem
 	  
-	/*.sidebar .nav-links a 
-	  font-weight:500!important*/
+	.sidebar .nav-links a 
+	  font-weight:500!important
+	  
+	button.dropdown-title .title
+		font-weight:500
+		
+	.dropdown-wrapper .nav-dropdown .dropdown-item h4
+	  font-size:1em !important
+	  font-weight:500 !important
+	  cursor:default
 
 .sidebar .sidebar-links
-	/*margin-left:1.5rem*/
 	
 	.sidebar-group-items
 		margin-left:0
@@ -283,101 +308,6 @@ ul .sidebar-group-items
 	padding-bottom:0.35rem !important
 	padding-top:0.35rem !important
 	margin-bottom:0.35rem !important
-  
-/*
-  .sidebar-heading
-	font-weight:500 !important
-
-    &.open
-      color: #09264a !important
-	  
-	.clickable.active
-	  font-weight:500 !important
-  
-
-
-  .nav-links .nav-item a.nav-link
-    color:#2c3e50
-  
-  .nav-links .nav-item a.nav-link:hover
-    color:#5ab552
-
-  a.repo-link
-    display:none !important
-	
-  .title
-    color:#2c3e50
-	
-  .title:hover
-    color:#5ab552
-	
-  .nav-links
-    padding-right:30px !important
-
-  .sidebar-heading
-    border-left: none
-
-    &.open
-      color: #2c3e50 !important
-
-  .sidebar-link
-    font-size:1em
-  
-  .sidebar-heading
-    border-left: none
-    padding-bottom: 0.65rem
-    padding-left:1.5rem !important
-    color: #757575
-	font-weight:500 !important
-
-    &.open
-      color: #09264a !important
-	  
-	.clickable.active
-	  font-weight:500 !important
-
-  .sidebar-group-items
-    box-sizing: border-box
-    border-top: #F6F6F6 4px solid
-    border-bottom: #F6F6F6 4px solid
-    margin-right: 2.25rem !important
-
-  .sidebar-sub-headers
-    margin-left: 1.5rem !important
-    box-sizing: border-box
-    border-top: #F6F6F6 4px solid
-    border-bottom: #F6F6F6 4px solid
-
-    a.sidebar-link.active
-      background-image: none
-
-  .sidebar-link
-    border-left: none !important
-    padding-left: 1.5rem !important
-    margin-top: 0.65rem
-    margin-bottom: 0.65rem
-    padding-top: 0 !important
-    padding-bottom: 0 !important
-    font-size: 0.875rem
-    font-weight: 500 !important
-
-  .arrow
-    display: none
-
-  a
-    color: #757575 
-
-a.sidebar-link.active
-  background-image: url('/side-nav-marker.svg')
-  background-repeat: no-repeat
-  color: #5AB552 !important
-  font-weight:500 !important
-*/
-/*.page
-  padding-top: 2.8rem !important
-
-  p
-    margin-top: 0.9rem !important*/
 
 a.sidebar-heading 
   font-size:1em
@@ -461,7 +391,7 @@ a.sidebar-heading
     display:none !important
 
   a.nav-link.router-link-active
-    color:#fff
+    color:#fff !important
 	
   .nav-item > a:not(.external).router-link-active
     border: none
@@ -473,6 +403,10 @@ a.sidebar-heading
 	  
   .dropdown-wrapper .nav-dropdown .dropdown-item a
     color:#2c3e50
+
+  .dropdown-item a.nav-link.router-link-active
+    color:#0d47a1 !important
+
 	
 ////////// DESKTOP //////////
 
@@ -515,24 +449,5 @@ a.sidebar-heading
 	
   .dropdown-wrapper .nav-dropdown .dropdown-item a
     color:#2c3e50
+	
 
-	
-////////// MAX DESKTOP //////////
-	
-	
-@media (min-width: 2395px)
-  /*.navbar .links 
-    right:10%*/
-	
-  /*.home-link.router-link-active
-    margin-left: 8%*/
-/*
-  .navbar
-    background: url("/header-bg-grn-max-2.png") top right no-repeat, url("/header-bg-blu-max.png") top right no-repeat #09264A
-    background-size: 1795px, 1795px */
-
-
-	
-	
-	
-	
