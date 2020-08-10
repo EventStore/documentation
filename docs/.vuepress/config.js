@@ -12,8 +12,7 @@ module.exports = {
         "vuepress-plugin-element-tabs",
         'check-md', {
             pattern: '**/*.md'
-        },
-        "@vuepress/back-to-top"
+        }
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
