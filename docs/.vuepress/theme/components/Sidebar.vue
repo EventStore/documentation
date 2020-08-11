@@ -3,7 +3,7 @@
     <NavLinks />
 
     <slot name="top" />
-    <Version :sidebar-item="firstItem" />
+
 
     <SidebarLinks
       :depth="0"
