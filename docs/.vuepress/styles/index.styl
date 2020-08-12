@@ -12,8 +12,8 @@
   .features
     padding: 0.5rem 1rem
 
-@media print, screen and (min-width: 1640px)
-  $left = max(calc(50% - 800px), 1rem)
+@media print, screen and (min-width: 1795px)
+  $left = calc(50% - 800px)
   .sidebar
     padding-left: $left
     width: "calc(%s + %s)" % ($left $sidebarWidth)
@@ -77,4 +77,3 @@ ul.code-language-switcher
       position: fixed
       top: $navbarHeight
       padding: 0.7rem 2.5rem
-

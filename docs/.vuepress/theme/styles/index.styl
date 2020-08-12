@@ -1,201 +1,221 @@
-@font-face {
-  font-family: "museosans";
-  src: url("/fonts/MuseoSans_700-webfont.woff") format('woff');
-  font-weight: 700;
-}
+@media print, screen and (min-width: 1795px)
+  .page
+    padding-left: calc(calc(50% - 700px) + 20rem) !important
 
-@font-face {
-  font-family: "museosans";
-  src: url("/fonts/MuseoSans_500-webfont.woff") format('woff');
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "museosans";
-  src: url("/fonts/MuseoSans_300-webfont.woff") format('woff');
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: "museosans";
-  src: url("/fonts/MuseoSans_100-webfont.woff") format('woff');
-  font-weight: 100;
-}
-
-.search-box
-  margin-left: 1rem
-  margin-right: 1rem
-
-h1
-  color: #1976D2
-  font-weight: 100
-  font-size: 2.25rem
-  padding-bottom: 1.375rem
-  border-bottom: #F6F6F6 4px solid
-  margin-bottom: 1.5rem !important
-
-h2
-  color: #09264a
-  font-weight: 500
-  font-size: 1.375rem
-  padding-bottom: 1.375rem
-  border-bottom: #F6F6F6 4px solid
-
-.el-card
-  margin-top: 1.9rem
-  margin-bottom: 1.9rem
-
-.custom-block-title
-  font-size: 1.125rem
-  background-repeat: no-repeat
-  text-indent: 3.5rem
-  margin-left: -2.95rem
-  line-height: 2.5rem
-
-.custom-block
-  margin-top: 1.5rem !important
-  margin-bottom: 1.5rem !important
-
-.custom-block.warning
-  background-color: #FEF1D1
-  border-color: #F8B81B
-
-  .custom-block-title
-    color: #F8B81B
-    background-image: url('/warning.svg')
-
-.custom-block.tip
-  background-color: #DEF0DC
-  border-color: #5AB552
-
-  .custom-block-title
-    color: #5AB552
-    background-image: url('/tip.svg')
-
-body
-  font-family: museosans
-  font-weight: 500
-  color: #757575
-
-@media (min-width: 1310px)
-  .navbar
-    background: url("/circle-grn-1680.png") top right no-repeat, url("/circle-blu-top-1680.png") top right no-repeat #09264A
-
-@media (min-width: 1681px)
-  .navbar
-    background: url("/circle-grn-2520.png") top center no-repeat, url("/circle-blu-top-3840.png") top center no-repeat #09264A !important
-
-  .home-link
-    padding-left:0rem
-
-  .search-box
-    margin-right: 0rem !important
-
-.navbar
-  background: url("/circle-grn-1680.png") top right no-repeat, url("/circle-blu-top-1310.png") top left no-repeat #09264A
-  background-size: 100%, 100%
-  padding-left: 0 !important
-  padding-right: 0 !important
-
-  .navbar-inner
-    max-width: 105rem
-    margin-left: auto
-    margin-right: auto
-
-    .logo
-      height: 2.5rem !important
-      margin-top: 0.1875rem
-      margin-right: 0.3rem
-
-  .links
-    padding-right: 0 !important
-    right: unset !important
-    top: unset !important
-    float: right
-    position: relative !important
-
-    .search-box
-      padding-left: 15px
-      padding-right: 0 !important
-      margin-right: 1.75rem !important
-
-  .links, .title
-    background-color: transparent !important
-    color: #CCC
-
-  .nav-links a:hover
-    border-bottom: none
-    color: #FFF
-
-  a.router-link-active
-    color: #FFF !important
-
-  .dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
-    color: #757575 !important
-
-  .home-link.router-link-active
-    color: #5AB552 !important
-    font-size: 1.25rem !important
-    font-weight: 300
-    padding-left: 1.75rem
-
-    &::after
-      content: 'Developer'
-
-.sidebar
-  padding-top: 2.8rem
-  padding-left: 1rem
-  border-right: #F6F6F6 4px solid
-
-  .sidebar-heading
-    border-left: none
-    //padding-bottom: 1rem
-    padding-left: 0
-    color: #757575
-
-    &.open
-      color: #09264a !important
-
-  .sidebar-group-items
-    box-sizing: border-box
-    border-top: #F6F6F6 4px solid
-    border-bottom: #F6F6F6 4px solid
-    margin-right: 2.25rem !important
-
-  .sidebar-sub-headers
-    margin-left: 1.25rem !important
-    box-sizing: border-box
-    border-top: #F6F6F6 4px solid
-    border-bottom: #F6F6F6 4px solid
-    padding-left: 0 !important
-
-    a.sidebar-link.active
-      background-image: none
-
-  .sidebar-link
-    border-left: none !important
-    padding-left: 1.25rem !important
-    //margin-top: 0.65rem
-    margin-bottom: 0.65rem
-    padding-top: 0 !important
-    padding-bottom: 0 !important
-    font-size: 0.875rem
-    font-weight: 700 !important
-
-  .arrow
-    display: none
-
-  a
-    color: #757575 !important
-
-a.sidebar-link.active
-  background-image: url('/side-nav-marker.svg')
-  background-repeat: no-repeat
-  color: #5AB552 !important
-
-.page
-  padding-top: 2.8rem !important
-
-  p
-    margin-top: 0.9rem !important
-
+//@font-face {
+//  font-family: "museosans";
+//  src: url("/fonts/MuseoSans_700-webfont.woff") format('woff');
+//  font-weight: 700;
+//}
+//
+//@font-face {
+//  font-family: "museosans";
+//  src: url("/fonts/MuseoSans_500-webfont.woff") format('woff');
+//  font-weight: 500;
+//}
+//
+//@font-face {
+//  font-family: "museosans";
+//  src: url("/fonts/MuseoSans_300-webfont.woff") format('woff');
+//  font-weight: 300;
+//}
+//
+//@font-face {
+//  font-family: "museosans";
+//  src: url("/fonts/MuseoSans_100-webfont.woff") format('woff');
+//  font-weight: 100;
+//}
+//
+//
+//.search-box
+//  margin-left: 1rem
+//  margin-right: 1rem
+//
+//
+//h1
+//  color: #1976D2
+//  font-weight: 100
+//  font-size: 2.25rem
+//  padding-bottom: 1.375rem
+//  border-bottom: #F6F6F6 4px solid
+//  margin-bottom: 1.5rem !important
+//
+//h2
+//  color: #09264a
+//  font-weight: 500
+//  font-size: 1.375rem
+//  padding-bottom: 1.375rem
+//  border-bottom: #F6F6F6 4px solid
+//
+//.el-card
+//  margin-top: 1.9rem
+//  margin-bottom: 1.9rem
+//
+//.custom-block-title
+//  font-size: 1.125rem
+//  background-repeat: no-repeat
+//  text-indent: 3.5rem
+//  margin-left: -2.95rem
+//  line-height: 2.5rem
+//
+//.custom-block
+//  margin-top: 1.5rem !important
+//  margin-bottom: 1.5rem !important
+//
+//.custom-block.warning
+//  background-color: #FEF1D1
+//  border-color: #F8B81B
+//
+//  .custom-block-title
+//    color: #F8B81B
+//    background-image: url('/warning.svg')
+//
+//
+//.custom-block.tip
+//  background-color: #DEF0DC
+//  border-color: #5AB552
+//
+//  .custom-block-title
+//    color: #5AB552
+//    background-image: url('/tip.svg')
+//
+//body
+//  font-family: museosans
+//  font-weight: 500
+//  color: #757575
+//
+//@media (min-width: 1310px)
+//  .navbar
+//    background: url("/circle-grn-1680.png") top right no-repeat, url("/circle-blu-top-1680.png") top right no-repeat #09264A
+//
+//@media (min-width: 1681px)
+//  .navbar
+//    background: url("/circle-grn-2520.png") top center no-repeat, url("/circle-blu-top-3840.png") top center no-repeat #09264A !important
+//
+//  .home-link
+//    padding-left: 0rem
+//
+//  .search-box
+//    margin-right: 0rem !important
+//
+//.navbar
+//  background: url("/circle-grn-1680.png") top right no-repeat, url("/circle-blu-top-1310.png") top left no-repeat #09264A
+//  background-size: 100%, 100%
+//  padding-left: 0 !important
+//  padding-right: 0 !important
+//
+//  .navbar-inner
+//    max-width: 105rem
+//    margin-left: auto
+//    margin-right: auto
+//
+//
+//    .logo
+//      height: 2.5rem !important
+//      margin-top: 0.1875rem
+//      margin-right: 0.3rem
+//
+//  .links
+//    padding-right: 0 !important
+//    right: unset !important
+//    top: unset !important
+//    float: right
+//    position: relative !important
+//
+//    .search-box
+//      padding-left: 115px
+//      padding-right: 0 !important
+//      margin-right: 1.75rem !important
+//
+//  .links, .title
+//    background-color: transparent !important
+//    color: #CCC
+//
+//  .nav-links a:hover
+//    border-bottom: none
+//    color: #FFF
+//
+//  a.router-link-active
+//    color: #FFF !important
+//
+//  .dropdown-item a, .dropdown-item h4, .dropdown-item a.router-link-active
+//    color: #757575 !important
+//
+//  .home-link.router-link-active
+//    color: #5AB552 !important
+//    font-size: 1.25rem !important
+//    font-weight: 300
+//    padding-left: 1.75rem
+//
+//  .dropdown-wrapper .dropdown-title .arrow
+//    margin-top: -5px !important
+//
+//.icon.outbound
+//  display: none !important
+//
+//.sidebar
+//  padding-top: 2.8rem
+//  border-right: #F6F6F6 4px solid
+//
+//  .sidebar-heading
+//    border-left: none
+//    padding-bottom: 0.65rem
+//    padding-left: 0
+//    color: #757575
+//
+//    &.open
+//      color: #09264a !important
+//
+//  .sidebar-group-items
+//    box-sizing: border-box
+//    border-top: #F6F6F6 4px solid
+//    border-bottom: #F6F6F6 4px solid
+//    margin-right: 2.25rem !important
+//
+//  .sidebar-sub-headers
+//    margin-left: 1.25rem !important
+//    box-sizing: border-box
+//    border-top: #F6F6F6 4px solid
+//    border-bottom: #F6F6F6 4px solid
+//    padding-left: 0 !important
+//
+//    a.sidebar-link.active
+//      background-image: none
+//
+//  .sidebar-link
+//    border-left: none !important
+//    padding-left: 1.25rem !important
+//    margin-top: 0.65rem
+//    margin-bottom: 0.65rem
+//    padding-top: 0 !important
+//    padding-bottom: 0 !important
+//    font-size: 0.875rem
+//    font-weight: 700 !important
+//
+//  .arrow
+//    display: none
+//
+//  a
+//    color: #757575 !important
+//
+//a.sidebar-link.active
+//  background-image: url('/side-nav-marker.svg')
+//  background-repeat: no-repeat
+//  color: #5AB552 !important
+//
+//.page
+//  padding-top: 2.8rem !important
+//
+//  p
+//    margin-top: 0.9rem !important * /
+//
+//.icon.outbound
+//  display: none !important
+//
+//.navbar
+//  background: url("/circle-grn-1680.png") top right no-repeat, url("/circle-blu-top-1680.png") top right no-repeat #09264A
+//
+//
+//@media (max-width: 719px)
+//  .navbar
+//    margin: auto
