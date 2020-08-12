@@ -134,7 +134,7 @@
                 display none
 
             .links
-                padding-left 1.5rem
+                padding-left 0
 
             .site-name
                 width calc(100vw - 9.4rem)

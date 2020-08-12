@@ -1,5 +1,5 @@
 $navbarHeight = 4.375rem
-$MQNarrow = 1200px
+$MQNarrow = 1199px
 $MQMobile = 1023px
 $sidebarWidth = 22.5rem
 $contentWidth = 500px
@@ -97,7 +97,7 @@ h4
 
   .links
     top: 0
-    right: 0
+    right: 1.5rem
     float: right
     position: relative !important
 
@@ -135,6 +135,12 @@ a.router-link-active
 
 .dropdown-wrapper .dropdown-title .arrow
   margin-top: 8px !important
+  
+.dropdown-wrapper .dropdown-title
+  color: #ccc
+  
+.dropdown-wrapper .dropdown-title:hover
+  color: #5ab552
 
 .home-link
   padding-left: 60px
@@ -169,15 +175,26 @@ button.dropdown-title .title:hover
 .sidebar
   border-right: #F6F6F6 4px solid
   font-size: 1em
+  top:69px
+  padding-top:0
+	
+  .nav-item a.nav-link
+    color: #ccc
 
   a.nav-link
-    color: #2c3e50
+    color: #ccc
 
   a.nav-link:hover
     color: #5ab552
 
   a.sidebar-heading.clickable:hover
     color: #5ab552
+	
+  h3.version
+    padding:1rem 0 1rem 1.5rem
+	
+  h4
+    color:#ccc
 
 .sidebar-heading.clickable.active
   font-weight: 700
@@ -210,19 +227,20 @@ a.sidebar-link:active
   font-weight: 700 !important
 
 .sidebar .nav-links
-  border-bottom: 4px solid #f6f6f6 !important
+  /*border-bottom: 4px solid #f6f6f6 !important*/
+  background:#274060
 
 //
 
 .dropdown-item .nav-link.router-link-exact-active.router-link-active
   font-weight: 700 !important
-  color: #0d47a1 !important
+  color: #fff !important
   background: url('/side-nav-marker.svg') left center no-repeat
   background-size: 10px
 
 .dropdown-item a.nav-link.router-link-active
   font-weight: 700 !important
-  color: #0d47a1 !important
+  color: #fff !important
   background: url('/side-nav-marker.svg') left center no-repeat
   background-size: 10px
 
@@ -252,9 +270,7 @@ a.sidebar-link:active
     font-weight: 500 !important
     cursor: default
 
-.sidebar .sidebar-links
-
-  .sidebar-group-items
+.sidebar .sidebar-links .sidebar-group-items
     margin-left: 0
 
 .sidebar-heading
@@ -299,10 +315,10 @@ a.sidebar-link.active
   border-top: #F6F6F6 4px solid
   border-bottom: #F6F6F6 4px solid
   margin-right: 1.5rem !important
-  margin-left: 20px !important
+  margin-left: 20px 
 
-.sidebar-group-items li
-  padding-top: 0.35rem
+/*.sidebar-group-items li
+  padding-top: 0.35rem*/
 
 ul .sidebar-group-items
   padding-bottom: 0.35rem !important
@@ -406,6 +422,15 @@ a.sidebar-heading
 
   .dropdown-item a.nav-link.router-link-active
     color: #0d47a1 !important
+	
+  .sidebar h3.version
+    padding:1rem 1.35rem
+	
+  .dropdown-item .nav-link.router-link-exact-active.router-link-active
+    color: #0d47a1 !important
+
+  .dropdown-item a.nav-link.router-link-active
+    color: #0d47a1 !important
 
 
 ////////// DESKTOP //////////
@@ -449,4 +474,7 @@ a.sidebar-heading
 
   .dropdown-wrapper .nav-dropdown .dropdown-item a
     color: #2c3e50
+	
+  .sidebar h3.version
+    padding:1rem 1.35rem
 
