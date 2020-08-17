@@ -8219,6 +8219,11 @@ vuepress-plugin-element-tabs@^0.2.8:
     resize-observer-polyfill "^1.5.1"
     sass-loader "^7.1.0"
 
+vuepress-plugin-google-tag-manager@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-google-tag-manager/-/vuepress-plugin-google-tag-manager-0.0.4.tgz#e7f9947f5eba15e96ebea92f251dbc71318d1aef"
+  integrity sha512-mADSK1hn1UF2OHi6xjTAkcPiunT+iMbbkGM3/BpErHQTx9wpVEh2xDxBiqa2Sy0jvjQUn5vXg/nIjm1VRv4FPA==
+
 vuepress-plugin-one-click-copy@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vuepress-plugin-one-click-copy/-/vuepress-plugin-one-click-copy-1.0.2.tgz#9731f9d2e7b6d5160e84942b0f1b8c7500589487"

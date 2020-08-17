@@ -12,7 +12,8 @@ module.exports = {
         "vuepress-plugin-element-tabs",
         'check-md', {
             pattern: '**/*.md'
-        }
+        },
+        'vuepress-plugin-google-tag-manager', { 'gtm': 'GTM-NQ6B32R' }
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",

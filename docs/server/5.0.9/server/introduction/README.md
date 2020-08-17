@@ -2,12 +2,12 @@
 
 ::: tip
 The new generation of EventStoreDB starts from version 20.6.
-Learn more about the latest version [here](/server/latest).
+Learn more about the latest version [here](/server/20.6/server/introduction/).
 :::
 
 Welcome to the EventStoreDB 5.0 documentation.
  
-EventStoreDB is a database designed for [Event Sourcing](/event-sourcing). This documentation introduces key concepts of EventStoreDB and explains its installation, configuration and operational concerns.
+EventStoreDB is a database designed for Event Sourcing. This documentation introduces key concepts of EventStoreDB and explains its installation, configuration and operational concerns.
 
 EventStoreDB is available as both a Open-Source and an Enterprise versions:
 
