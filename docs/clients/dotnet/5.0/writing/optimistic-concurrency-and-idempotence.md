@@ -1,6 +1,6 @@
 # Optimistic concurrency and idempotence
 
-Writing supports an [optimistic concurrency](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/optimistic-concurrency) check on the version of the stream to which events are written. The method of specifying what the expected version is depends whether you are making writes using the HTTP or .NET API.
+Writing supports an [optimistic concurrency](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/optimistic-concurrency) check on the version of the stream to which events are written.
 
 The .NET API has constants which you can use to represent certain conditions:
 
@@ -16,7 +16,7 @@ If the optimistic concurrency check fails during writing, a `WrongExpectedVersio
 
 ## Idempotence
 
-If identical write operations occur, Event Store treats them in a way which makes it idempotent. If a write is treated in this manner, Event Store acknowledges it as successful, but duplicate events are not written. The idempotence check is based on the `EventId` and `stream`. It is possible to reuse an `EventId` across streams whilst maintaining idempotence.
+If identical write operations occur, EventStoreDB treats them in a way which makes it idempotent. If a write is treated in this manner, EventStoreDB acknowledges it as successful, but duplicate events are not written. The idempotence check is based on the `EventId` and `stream`. It is possible to reuse an `EventId` across streams whilst maintaining idempotence.
 
 The level of idempotence guarantee depends on whether the optimistic concurrency check is not disabled during writing (by passing `ExpectedVersion.Any` as the `expectedVersion` for the write).
 

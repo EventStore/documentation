@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   eventstore.db:
-    image: docker.pkg.github.com/eventstore/eventstore/eventstore:20.6.1-alpha.0.40-buster-slim
+    image: docker.pkg.github.com/eventstore/eventstore/eventstore:20.6.1-alpha.0.48-buster-slim
     environment:
       - EVENTSTORE_CLUSTER_SIZE=1
       - EVENTSTORE_RUN_PROJECTIONS=All

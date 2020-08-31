@@ -8,6 +8,7 @@ let versions = [];
 
 module.exports = {
     load() {
+        versions = [];
         references.forEach(p => {
             const fileName = `${path}${p}`;
             if (fs.existsSync(fileName)){

@@ -14,6 +14,9 @@ module.exports = {
             pattern: '**/*.md'
         }
     ],
+    extraWatchFiles: [
+        "**/sidebar.js"
+    ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
         // repo: "EventStore/documentation-next",

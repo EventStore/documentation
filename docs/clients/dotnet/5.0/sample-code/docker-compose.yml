@@ -3,8 +3,8 @@ version: '3.7'
 services:
 
   eventstore:
-    container_name: eventstore-docs
-    image: eventstore/eventstore
+    container_name: esdb-docs-v5
+    image: eventstore/eventstore:release-5.0.8
     ports:
       - '2113:2113'
       - '1113:1113'

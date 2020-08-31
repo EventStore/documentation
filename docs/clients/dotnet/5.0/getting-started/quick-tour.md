@@ -43,9 +43,13 @@ The most basic operation is to write a single event to the database:
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/ConnectEventStore.cs#appendEvent
 
+Learn more about writing data to EventStoreDB on the [Writing events](../writing) page.
+
 ## Read events
 
 After you wrote an event to the database, you can then read it back. Use the following method passing the stream name, the start point in the stream, the number of events to read and whether to follow links to the event data:
 
 <<< @/docs/clients/dotnet/5.0/sample-code/Program.cs#ReadEvents
+
+Learn more about reading data from EventStoreDB on the [Reading events](../reading) page.
 

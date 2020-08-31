@@ -9,10 +9,12 @@ module.exports = [
     },
     {
         title: "Connecting to server",
+        path: "connecting/",
         collapsable: true,
         children: [
             "connecting/",
-            "connecting/connecting-to-a-server.md",
+            "connecting/options.md",
+            "connecting/connection-string.md",
         ]
     },
     {
