@@ -1,1 +1,0 @@
-# Cloud EventStoreDB in GCP

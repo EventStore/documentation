@@ -79,7 +79,7 @@ module.exports = {
                     children: [
                         "provision/",
                         "provision/aws/",
-                        "provision/gcp.md",
+                        "provision/gcp/",
                     ]
                 }
             ]

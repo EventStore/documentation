@@ -83,7 +83,7 @@ Within the project context you can manage project clusters, backups, networks, e
 By reaching this point, you are now ready to start provisioning cloud resources with Event Store Cloud. Follow one of the available guidelines for your cloud provider:
 
 - [Amazon Web Services (AWS)](./provision/aws)
-- [Google Cloud Platform (GCP)](./provision/gcp.md)
+- [Google Cloud Platform (GCP)](./provision/gcp)
 - Microsoft Azure (coming soon)
 
 

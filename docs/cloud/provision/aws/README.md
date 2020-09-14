@@ -17,7 +17,7 @@ The provisioning process consists of three steps:
 
 ## Create a network
 
-In the Event Store Cloud console, go to the [project context](../quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the Event Store Cloud console, go to the [project context](../../quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
  
  Make sure to fill out the required information:
  - Network name
@@ -56,7 +56,7 @@ On the first part of the form you need to specify the new cluster name, the clou
 :::
 
 ::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../server/5.0.9/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/5.0.9/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two other sizes - `C4` and `M4` are production-grade.
