@@ -66,7 +66,11 @@ module.exports = {
                 {
                     title: "Introduction",
                     path: "/cloud/",
-                    children: [""]
+                    children: [
+                        "",
+                        "quick-start.md",
+                        "preview.md",
+                    ]
                 },
                 {
                     title: "Provisioning",
