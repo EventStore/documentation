@@ -9,6 +9,6 @@ The provisioning process consists of the following steps:
 3. Deploy the EventStoreDB cluster.
 
 Find the detailed guideline for your cloud provider:
-- [Amazon Web Services (AWS)](aws.md)
+- [Amazon Web Services (AWS)](aws)
 - [Google Cloud Platform (GCP)](gcp.md)
 - Microsoft Azure (coming soon)

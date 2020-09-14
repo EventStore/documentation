@@ -78,7 +78,7 @@ module.exports = {
                     path: "provision/",
                     children: [
                         "provision/",
-                        "provision/aws.md",
+                        "provision/aws/",
                         "provision/gcp.md",
                     ]
                 }
