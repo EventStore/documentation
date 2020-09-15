@@ -43,24 +43,55 @@ module.exports = {
             {
                 text: "Clients & APIs",
                 items: [
-                    { text: "Overview", link: "/clients/" },
-                    { text: ".NET SDK", items: versioning.linksFor("dotnet-client", "") },
-                    { text: "HTTP API", items: versioning.linksFor("http-api", "") },
+                    {text: "Overview", link: "/clients/"},
+                    {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "")},
+                    {text: "HTTP API", items: versioning.linksFor("http-api", "")},
                 ]
             },
+            {text: "Cloud", link: "/cloud/"},
             {
                 text: "Resources",
                 items: [
-                    { text: "Discuss", link: "https://discuss.eventstore.com" },
-                    { text: "Articles", link: "https://eventstore.com/blog/articles/" },
-                    { text: "Webinars", link: "https://eventstore.com/webinars/" },
-                    { text: "Release notes", link: "https://eventstore.com/blog/release-notes/" },
-                    { text: "Old Docs", link: "https://eventstore.com/docs/" }
+                    {text: "Discuss", link: "https://discuss.eventstore.com"},
+                    {text: "Articles", link: "https://eventstore.com/blog/articles/"},
+                    {text: "Webinars", link: "https://eventstore.com/webinars/"},
+                    {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
+                    {text: "Old Docs", link: "https://eventstore.com/docs/"}
                 ]
             },
-            { text: "Discuss", link: "https://discuss.eventstore.com" },
         ],
-        sidebar: versioning.sidebars
+        sidebar: {
+            ...versioning.sidebars,
+            "/cloud/": [
+                {
+                    title: "Introduction",
+                    path: "/cloud/",
+                    children: [
+                        "",
+                        "quick-start.md",
+                        "preview.md",
+                    ]
+                },
+                {
+                    title: "Provisioning",
+                    collapsable: true,
+                    path: "provision/",
+                    children: [
+                        "provision/",
+                        "provision/aws/",
+                        "provision/gcp/",
+                    ]
+                },
+                {
+                    title: "Using cloud clusters",
+                    collapsable: true,
+                    path: "use/",
+                    children: [
+                        "use/"
+                    ]
+                }
+            ]
+        }
     },
     markdown: {
         externalLinks: {
