@@ -133,7 +133,9 @@ At this moment, you should be able to connect to the EventStoreDB cluster in the
 
 Depending on your set up, you might already have a connection available from your local machine to the GCP VPC using a site-to-site VPN. If not, ask your operations about the connection details.
 
-You can also use a Compute Engine VM attached to the GCP VPC network with a publicly exposed RDP connection, or with some easy-to-use virtual VPN connectivity, like [TailScale](../../tailscale.md).
+## Next step
+
+You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../../use) section to learn more.
 
 
  

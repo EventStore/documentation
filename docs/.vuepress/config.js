@@ -81,6 +81,14 @@ module.exports = {
                         "provision/aws/",
                         "provision/gcp/",
                     ]
+                },
+                {
+                    title: "Using cloud clusters",
+                    collapsable: true,
+                    path: "use/",
+                    children: [
+                        "use/"
+                    ]
                 }
             ]
         }
