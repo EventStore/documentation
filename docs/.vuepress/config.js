@@ -48,7 +48,7 @@ module.exports = {
                     {text: "HTTP API", items: versioning.linksFor("http-api", "")},
                 ]
             },
-            {text: "Cloud", link: "/cloud/"},
+            {text: "Cloud", link: "/cloud/intro/"},
             {
                 text: "Resources",
                 items: [
@@ -65,29 +65,29 @@ module.exports = {
             "/cloud/": [
                 {
                     title: "Introduction",
-                    path: "/cloud/",
+                    path: "/cloud/intro/",
                     children: [
-                        "",
-                        "quick-start.md",
-                        "preview.md",
+                        "/cloud/intro/",
+                        "/cloud/intro/quick-start.md",
+                        "/cloud/intro/preview.md",
                     ]
                 },
                 {
                     title: "Provisioning",
                     collapsable: true,
-                    path: "provision/",
+                    path: "/cloud/provision/",
                     children: [
-                        "provision/",
-                        "provision/aws/",
-                        "provision/gcp/",
+                        "/cloud/provision/",
+                        "/cloud/provision/aws/",
+                        "/cloud/provision/gcp/",
                     ]
                 },
                 {
                     title: "Using cloud clusters",
                     collapsable: true,
-                    path: "use/",
+                    path: "/cloud/use/",
                     children: [
-                        "use/"
+                        "/cloud/use/"
                     ]
                 }
             ]
