@@ -136,7 +136,7 @@ At this moment, you should be able to connect to the EventStoreDB cluster in the
 
 Depending on your set up, you might already have a connection available from your local machine to the AWS VPC using a site-to-site VPN. If not, ask your AWS administrator about the connection details, which could be a Virtual Private Gateway or Client VPN Endpoint.
 
-You can also use a EC2 VM attached to the AWS network with a publicly exposed RDP connection, or with some easy-to-use virtual VPN connectivity, like [TailScale](tailscale.md).
+You can also use a EC2 VM attached to the AWS network with a publicly exposed RDP connection, or with some easy-to-use virtual VPN connectivity, like [TailScale](../../tailscale.md).
 
 
  
