@@ -87,7 +87,8 @@ module.exports = {
                     collapsable: true,
                     path: "/cloud/use/",
                     children: [
-                        "/cloud/use/"
+                        "/cloud/use/",
+                        "/cloud/use/tailscale.md"
                     ]
                 }
             ]
