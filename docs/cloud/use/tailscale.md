@@ -80,3 +80,7 @@ In the example above we used both address spaces of both sides of the peering as
 Next, visit your Tailscale Admin Console, find the cloud VM in the list and use the three dots popup menu to enable subnet routing and disable key expiry.
 
 Now, visit the Event Store Cloud console, switch to the Clusters page and choose the EventStoreDB cluster. In the cluster details select the `Addresses` tab and click on the UI link. You should then get the EventStoreDB Admin UI opened in your local machine browser.
+
+## Future plans
+
+In the nearest future we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside Event Store Cloud and set up routing to your Tailscale account automatically.
