@@ -19,10 +19,8 @@ module.exports = [
             "installation/docker.md",
             "installation/windows.md",
             "installation/macos.md",
-            "installation/kubernetes.md",
-            "installation/kubernetes-aks.md",
-            "installation/kubernetes-gke.md",
-            "installation/configuration.md"
+            // "installation/kubernetes.md",
+            "installation/single-node.md"
         ]
     },
     {
@@ -65,7 +63,7 @@ module.exports = [
             "security/acl.md",
             "security/ssl-linux.md",
             "security/ssl-windows.md",
-            "security/configuration.md",
+            "security/options.md",
             "security/security.md"
         ]
     },
@@ -96,7 +94,7 @@ module.exports = [
         path: "indexes/",
         children: [
             "indexes/",
-            "indexes/configuration.md",
+            "indexes/options.md",
             "indexes/tuning.md",
             "indexes/advanced.md",
         ]
@@ -136,7 +134,7 @@ module.exports = [
         path: "projections/",
         children: [
             "projections/",
-            "projections/configuration.md",
+            "projections/options.md",
             "projections/system-projections.md",
             "projections/user-defined-projections.md",
             "projections/projections-config.md",

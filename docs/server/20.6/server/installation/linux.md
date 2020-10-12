@@ -18,7 +18,7 @@ We recommend that when using Linux you set the 'open file limit' to a high numbe
 
 ## Building from source
 
-You can also build EventStoreDB on Linux from source. Before doing that, you need to install Mono. We recommend [Mono 5.16.0](https://www.mono-project.com/download/stable/), but other versions may also work. EventStoreDB packages have Mono embedded, so you don't need to install anything except the EventStoreDB package.
+You can also build EventStoreDB on Linux from source. Before doing that, you need to install .NET Core 3.1 SDK. EventStoreDB packages have the .NET Core Runtime embedded, so you don't need to install anything except the EventStoreDB package.
 
 ## Uninstall
 

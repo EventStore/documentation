@@ -17,7 +17,20 @@ module.exports = [
             "installation/linux.md",
             "installation/windows.md",
             "installation/docker.md",
-            "installation/configuration.md",
+            "installation/single-node.md",
+            "installation/cluster.md",
+            "installation/options.md",
+        ]
+    },
+    {
+        title: "Configuration",
+        collapsable: true,
+        path: "configuration/",
+        children: [
+            "configuration/",
+            "configuration/single-node.md",
+            "configuration/cluster.md",
+            "configuration/options.md",
         ]
     },
     {
@@ -26,7 +39,7 @@ module.exports = [
         path: "indexes/",
         children: [
             "indexes/",
-            "indexes/configuration.md",
+            "indexes/options.md",
             "indexes/tuning.md",
             "indexes/advanced.md",
         ]
