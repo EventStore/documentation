@@ -6,10 +6,10 @@ You use the `ES-EventType` header as follows.
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
 
@@ -19,9 +19,9 @@ If you view the event in the UI or with cURL it has the `EventType` of `SomeEven
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/read-event.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/read-event.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/read-event.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/read-event.sh#response
 :::
 ::::

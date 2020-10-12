@@ -25,16 +25,16 @@ The format represents data with the following jschema (`eventId` must be a UUID)
 
 If you issue a `POST` request with data to a stream and the correct content type set it writes the event to the stream, and generates a `201` response from the server, giving you the location of the event. Using the following event, which [you can also download as a file](sample-code/event.json):
 
-<<< @/docs/server/5.0.9/http-api/sample-code/event.json
+<<< @/docs/server/5.0.8/http-api/sample-code/event.json
 
 `POST` the following request to create a stream and add an event to it:
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
 
@@ -44,10 +44,10 @@ If you leave off the `ES-EventId` header you see different behavior:
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-no-id.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-id.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-no-id.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-id.sh#response
 :::
 ::::
 
@@ -55,10 +55,10 @@ In this case EventStoreDB has responded with a `307 Temporary Redirect`. The loc
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-follow.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-follow.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-follow.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-follow.sh#response
 :::
 ::::
 
@@ -68,10 +68,10 @@ When posting to either the stream or to the returned redirect, clients must incl
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-no-type.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-type.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-no-type.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-type.sh#response
 :::
 ::::
 
@@ -81,16 +81,16 @@ You can include more than one write in a single post by placing multiple events 
 
 For example, the below has two events:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/multiple-events.json
+<<< @/docs/server/5.0.8/http-api/sample-code/multiple-events.json
 
 When you write multiple events in a single post, EventStoreDB treats them as one transaction, it writes all events together or fails.
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-multiple-events.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-multiple-events.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-multiple-events.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-multiple-events.sh#response
 :::
 ::::
 
@@ -98,14 +98,14 @@ When you write multiple events in a single post, EventStoreDB treats them as one
 
 To append events, issue a `POST` request to the same resource with a new `eventId`:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/event-append.json
+<<< @/docs/server/5.0.8/http-api/sample-code/event-append.json
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-append.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-append.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#response
 :::
 ::::
 
@@ -115,10 +115,10 @@ Version 3.7.0 of EventStoreDB added support for the `application/octet-stream` c
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-data-event.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-data-event.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-data-event.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-data-event.sh#response
 :::
 ::::
 
@@ -136,14 +136,14 @@ See the idempotence section below, if you post the same event twice it is idempo
 
 First write an event to a stream, setting a version:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/event-version.json
+<<< @/docs/server/5.0.8/http-api/sample-code/event-version.json
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-version.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-version.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#response
 :::
 ::::
 
@@ -151,10 +151,10 @@ If you now write to the stream with the incorrect version, you receive an HTTP s
 
 :::: el-tabs type="border-card"
 ::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-wrong-version.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#curl
 :::
 ::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-wrong-version.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#response
 :::
 ::::
 

@@ -21,10 +21,10 @@ The client is able to request the description document by passing `application/v
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/get-dd.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/get-dd.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/get-ddd.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/get-ddd.sh#response
 :::
 ::::
 

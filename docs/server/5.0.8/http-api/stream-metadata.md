@@ -16,10 +16,10 @@ You should not access metadata by constructing this URL yourself, as the right t
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/read-metadata.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/read-metadata.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/read-metadata.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/read-metadata.sh#response
 :::
 ::::
 
@@ -39,10 +39,10 @@ If you have security enabled, reading metadata may require that you pass credent
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/missing-credentials.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/missing-credentials.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/missing-credentials.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/missing-credentials.sh#response
 :::
 ::::
 
@@ -52,7 +52,7 @@ To update the metadata for a stream, issue a `POST` request to the metadata reso
 
 Inside a file named _metadata.json_:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/metadata.json
+<<< @/docs/server/5.0.8/http-api/sample-code/metadata.json
 
 You can also add user-specified metadata here. Some examples user-specified metadata are:
 
@@ -64,10 +64,10 @@ You then post this information is then posted to the stream:
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/update-metadata.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/update-metadata.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/update-metadata.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/update-metadata.sh#response
 :::
 ::::
 

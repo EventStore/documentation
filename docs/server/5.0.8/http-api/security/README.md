@@ -10,14 +10,14 @@ EventStoreDB supports basic HTTP authentication to internal users. You create th
 
 When using the HTTP API, you can send the following JSON payload to the server:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/new-user.json
+<<< @/docs/server/5.0.8/http-api/sample-code/new-user.json
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/new-user.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/new-user.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/new-user.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/new-user.sh#response
 :::
 ::::
 
@@ -27,10 +27,10 @@ If you were to use the wrong user or no user when a request requires one, you re
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/incorrect-user.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/incorrect-user.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/incorrect-user.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/incorrect-user.sh#response
 :::
 ::::
 
@@ -49,15 +49,15 @@ The ACL below gives `writer` read and write permission on the stream, while `rea
 
 The request body placed in the file named _metadata.json_:
 
-<<< @/docs/server/5.0.9/server/sample-code/metadata.json
+<<< @/docs/server/5.0.8/server/sample-code/metadata.json
 
 Then, when you execute HTTP request as follows:
 
-<<< @/docs/server/5.0.9/server/sample-code/update-acl.sh#curl
+<<< @/docs/server/5.0.8/server/sample-code/update-acl.sh#curl
 
 You get a confirmation from the server:
 
-<<< @/docs/server/5.0.9/server/sample-code/update-acl.sh#response
+<<< @/docs/server/5.0.8/server/sample-code/update-acl.sh#response
 
 ## Default ACL
 
@@ -67,16 +67,16 @@ All these examples assume you have created a user named `ouro` with password `ou
 
 ::::: tabs
 :::: tab Request
-<<< @/docs/server/5.0.9/server/sample-code/override-default.json
+<<< @/docs/server/5.0.8/server/sample-code/override-default.json
 
-<<< @/docs/server/5.0.9/server/sample-code/update-default-acl.sh#curl
+<<< @/docs/server/5.0.8/server/sample-code/update-default-acl.sh#curl
 
 ::: warning
 You should not copy/paste the UUID in the command line above but generate a new one or not provide one (you will be redirected to a URI with one as described in [writing events](../http-api/writing-events.md#writing-a-single-event) in the HTTP API).
 :::
 ::::
 :::: tab Response
-<<< @/docs/server/5.0.9/server/sample-code/update-default-acl.sh#response
+<<< @/docs/server/5.0.8/server/sample-code/update-default-acl.sh#response
 ::::
 :::
 

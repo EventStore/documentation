@@ -6,10 +6,10 @@ You can include an event ID on an event by specifying this header.
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
 
@@ -17,10 +17,10 @@ If you don't add an `ES-EventId` header on an append where the body is considere
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-no-id.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-id.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-no-id.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-id.sh#response
 :::
 ::::
 

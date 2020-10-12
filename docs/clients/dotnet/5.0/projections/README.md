@@ -34,7 +34,7 @@ The second part of a projection is a set of filters. There is a special filter c
 
 Here is the projection code:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/xbox-one-s-counter.json
+<<< @/docs/server/5.0.8/http-api/sample-code/xbox-one-s-counter.json
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running. 
 
@@ -63,7 +63,7 @@ Update the projection to output the state to a stream by calling the `outputStat
 
 Below is the updated projection:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/xbox-one-s-counter-outputState.json
+<<< @/docs/server/5.0.8/http-api/sample-code/xbox-one-s-counter-outputState.json
 
 To update the projection, edit the projection definition with the following request:
 
@@ -84,7 +84,7 @@ You can now read the events in the result stream by issuing a read request.
 
 You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/projections/update-projection-options.json{2}
+<<< @/docs/server/5.0.8/http-api/sample-code/projections/update-projection-options.json{2}
 
 Then send the update to the projection:
 
@@ -122,7 +122,7 @@ You want to define a projection that produces a count per stream for a category,
 
 Below is the projection:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/projections/shopping-cart-counter.json
+<<< @/docs/server/5.0.8/http-api/sample-code/projections/shopping-cart-counter.json
 
 Create the projection with the following request:
 
@@ -136,4 +136,4 @@ Querying for the state of the projection is different due to the partitioning of
 
 The server then returns the state for the partition:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/projections/read-state-partition.json
+<<< @/docs/server/5.0.8/http-api/sample-code/projections/read-state-partition.json

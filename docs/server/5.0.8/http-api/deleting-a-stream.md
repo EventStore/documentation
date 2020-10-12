@@ -10,10 +10,10 @@ To delete a stream over the Atom interface, issue a `DELETE` request to the reso
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/delete-stream/deleted-stream.sh
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/deleted-stream.sh
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/delete-stream/deleted-stream-response.txt
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/deleted-stream-response.txt
 :::
 ::::
 
@@ -21,10 +21,10 @@ By default when you delete a stream, EventStoreDB soft deletes it. This means yo
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/delete-stream/get-deleted-stream.sh
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream.sh
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/delete-stream/get-deleted-stream-response.txt
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream-response.txt
 :::
 ::::
 
@@ -32,10 +32,10 @@ You can recreate the stream by appending new events to it (like creating a new s
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-append.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-append.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#response
 :::
 ::::
 
@@ -53,10 +53,10 @@ Issue the `DELETE` as before but with the permanent delete header:
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/delete-stream/hard-delete-stream.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/hard-delete-stream.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/delete-stream/hard-delete-stream.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/hard-delete-stream.sh#response
 :::
 ::::
 
@@ -64,10 +64,10 @@ The stream is now permanently deleted, and now the response is a `410`.
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/get-deleted-stream.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/get-deleted-stream.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/get-deleted-stream.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/get-deleted-stream.sh#response
 :::
 ::::
 
@@ -75,9 +75,9 @@ If you try to recreate the stream as in the above example you also receive a `41
 
 :::: el-tabs type="border-card"
 ::: el-tab label="Request"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-append-deleted.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append-deleted.sh#curl
 :::
 ::: el-tab label="Response"
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-append-deleted.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append-deleted.sh#response
 :::
 ::::

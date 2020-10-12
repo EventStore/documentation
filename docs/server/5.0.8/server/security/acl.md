@@ -57,7 +57,7 @@ The `$settings` stream has a special ACL used as the default ACL. This stream co
 
 You can rewrite these to the `$settings` stream with the following request:
 
-<<< @/docs/server/5.0.9/http-api/sample-code/default-settings.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/default-settings.sh#curl
 
 The `$userStreamAcl` controls the default ACL for user streams, while all system streams use the `$systemStreamAcl` as the default.
 

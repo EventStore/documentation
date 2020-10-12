@@ -22,7 +22,7 @@ You start a scavenge by issuing an empty `POST` request to the HTTP API with the
 
 ::::: el-tabs type="border-card"
 :::: el-tab-pane label="Request"
-<<< @/docs/server/5.0.9/server/sample-code/scavenge.sh#curl
+<<< @/docs/server/5.0.8/server/sample-code/scavenge.sh#curl
 
 ::: tip 
 Scavenge operations have other options you can set to improve performance. For example, you can set the number of threads to use. Check [the API docs](../../http-api/api.md#scavenge-a-node) for more details.
@@ -30,7 +30,7 @@ Scavenge operations have other options you can set to improve performance. For e
 
 ::::
 :::: el-tab-pane label="Response"
-<<< @/docs/server/5.0.9/server/sample-code/scavenge.sh#response
+<<< @/docs/server/5.0.8/server/sample-code/scavenge.sh#response
 ::::
 :::::
 

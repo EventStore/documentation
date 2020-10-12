@@ -17,10 +17,10 @@ In the following cURL command `ExpectedVersion` is not set, and it appends or cr
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
 
@@ -28,10 +28,10 @@ The stream `newstream` has one event. If you append with an expected version of 
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-wrong-version.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-wrong-version.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#response
 :::
 ::::
 
@@ -39,9 +39,9 @@ You can see from the `ES-CurrentVersion` header above that the stream is at vers
 
 :::: tabs
 ::: tab Request
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-version.sh#curl
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#curl
 :::
 ::: tab Response
-<<< @/docs/server/5.0.9/http-api/sample-code/write-event-version.sh#response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#response
 :::
 ::::
