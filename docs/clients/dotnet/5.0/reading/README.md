@@ -91,7 +91,7 @@ The reading methods for individual streams each return a `StreamEventsSlice`, wh
 
 When you read events from a stream (or received over a subscription) you receive an instance of the `RecordedEvent` class packaged inside a `ResolvedEvent`.
 
-Event Store supports a special event type called 'Link Events'. Think of these events as pointers to an event in another stream.
+EventStoreDB supports a special event type called 'Link Events'. Think of these events as pointers to an event in another stream.
 
 In situations where the event you read is a link event, `ResolvedEvent` allows you to access both the link event itself, as well as the event it points to.
 
@@ -108,7 +108,7 @@ The members of this class are as follows:
 | `long OriginalEventNumber`    | The event number in the stream of the `OriginalEvent` |
 
 ::: tip
-To ensure that the Event Store server follows link events when reading, ensure you set the `ResolveLinkTos` parameter to `true` when calling read methods.
+To ensure that the EventStoreDB server follows link events when reading, ensure you set the `ResolveLinkTos` parameter to `true` when calling read methods.
 :::
 
 ## RecordedEvent
@@ -168,7 +168,7 @@ The parameters are:
 
 ## Read all events
 
-Event Store allows you to read events across all streams using the `ReadAllEventsForwardAsync` and `ReadAllEventsBackwardsAsync` methods. These work in the same way as the regular read methods, but use an instance of the global log file `Position` to reference events rather than the simple integer stream position described previously.
+EventStoreDB allows you to read events across all streams using the `ReadAllEventsForwardAsync` and `ReadAllEventsBackwardsAsync` methods. These work in the same way as the regular read methods, but use an instance of the global log file `Position` to reference events rather than the simple integer stream position described previously.
 
 They also return an `AllEventsSlice` rather than a `StreamEventsSlice` which is the same except it uses global `Position`s rather than stream positions.
 

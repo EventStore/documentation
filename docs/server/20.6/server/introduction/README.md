@@ -7,7 +7,7 @@ EventStoreDB is a database designed for Event Sourcing. This documentation intro
 EventStoreDB is available as both a Open-Source and an Enterprise versions:
 
 - EventStoreDB OSS is the [open-source](https://github.com/EventStore/EventStore) and free to use edition of EventStoreDB.
-- EventStoreDB Enterprise is available for customers with Event Store [paid support subscription](https://eventstore.com/support/). EventStoreDB Enterprise adds enterprise-focused features such as (TODO).
+- EventStoreDB Enterprise is available for customers with EventStoreDB [paid support subscription](https://eventstore.com/support/). EventStoreDB Enterprise adds enterprise-focused features such as (TODO).
 
 ## Getting started
 

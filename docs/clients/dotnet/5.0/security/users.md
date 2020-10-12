@@ -1,10 +1,10 @@
 # User management
 
-Event Store allows managing users programmatically using the .NET client. This guide covers details about default users, groups and managing users.
+EventStoreDB allows managing users programmatically using the .NET client. This guide covers details about default users, groups and managing users.
 
 ## Default users
 
-By default Event Store has two users `admin` and `ops` with the password `changeit`.
+By default EventStoreDB has two users `admin` and `ops` with the password `changeit`.
 
 ::: tip
 We recommend you create separate functional account with minimal access rights for any connected application or service.
@@ -12,17 +12,17 @@ We recommend you create separate functional account with minimal access rights f
 
 ## Default groups
 
-By default Event Store has two user groups `$admins` `$ops`. However it is possible to create custom groups with the .NET client.  
+By default EventStoreDB has two user groups `$admins` `$ops`. However it is possible to create custom groups with the .NET client.  
 
 ## User management
 
-The Event Store .NET client includes helper methods that use the HTTP API to allow for the management of users. This section describes the methods found in the `UsersManager` class. All methods in this class are asynchronous.
+The EventStoreDB .NET client includes helper methods that use the HTTP API to allow for the management of users. This section describes the methods found in the `UsersManager` class. All methods in this class are asynchronous.
 
 ### Create UsersManager instance
 
 <<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/UsersCreateUsersManager.cs#UserManager
 
-Resolving the host name may be especially useful if the Event Store Admin UI is not available under loopback address e.g., when container orchestrator assign dynamic DNS based on service name.
+Resolving the host name may be especially useful if the EventStoreDB Admin UI is not available under loopback address e.g., when container orchestrator assign dynamic DNS based on service name.
 
 ### Create a user
 

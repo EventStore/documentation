@@ -1,36 +1,36 @@
 # Projections
 
-This page provides an example of using [user-defined projections](/docs/server/5.0.9/server/projections/README.md#types-of-projections) in your application.
+This page provides an example of using [user-defined projections](/docs/server/5.0.8/server/projections/README.md#types-of-projections) in your application.
 
 ## Adding sample data
 
 Download the following files that contain sample data used throughout this step of the getting started guide.
 
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/docs/server/5.0.9/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/docs/server/5.0.9/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/docs/server/5.0.9/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/docs/server/5.0.9/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/docs/server/5.0.8/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/docs/server/5.0.8/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/docs/server/5.0.8/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/docs/server/5.0.8/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
 
 Add the sample data to four different streams:
 First, we need a function to read JSON files and construct the list of `EventData` instances:
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ReadEventsFunction
 
-Then, we can use this function and push events to Event Store:
+Then, we can use this function and push events to EventStoreDB:
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#SeedEvents
 
 ## Writing your first projection
 
 ::: tip Next steps
-Read [this guide](/docs/server/5.0.9/server/projections/user-defined-projections.md) to find out more about the user defined projection's API.
+Read [this guide](/docs/server/5.0.8/server/projections/user-defined-projections.md) to find out more about the user defined projection's API.
 :::
 
 The projection counts the number of 'XBox One S's that customers added to their shopping carts.
 
 A projection starts with a selector, in this case `fromAll()`. Another possibility is `fromCategory({category})` which this step discusses later, but for now, `fromAll` should do.
 
-The second part of a projection is a set of filters. There is a special filter called `$init` that sets up an initial state. You want to start a counter from 0 and each time Event Store observes an `ItemAdded` event for an 'Xbox One S,' increment the counter.
+The second part of a projection is a set of filters. There is a special filter called `$init` that sets up an initial state. You want to start a counter from 0 and each time EventStoreDB observes an `ItemAdded` event for an 'Xbox One S,' increment the counter.
 
 Here is the projection code:
 
@@ -44,7 +44,7 @@ You can send the projection code as text along the other parameters, using the `
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#CreateUserProjection
 
 ::: tip Next steps
-[Read here](projections-management.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/docs/server/5.0.9/server/projections/README.md) for details on projection syntax.
+[Read here](projections-management.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/docs/server/5.0.8/server/projections/README.md) for details on projection syntax.
 :::
 
 ## Querying for the state of the projection
@@ -55,7 +55,7 @@ Now the projection is running, you can query the state of the projection. As thi
 
 ## Writing to streams from projections
 
-The above gives you the correct result but requires you to poll for the state of a projection. What if you wanted Event Store to notify you about state updates via subscriptions?
+The above gives you the correct result but requires you to poll for the state of a projection. What if you wanted EventStoreDB to notify you about state updates via subscriptions?
 
 ### Output state
 
@@ -92,7 +92,7 @@ Then send the update to the projection:
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#UpdateProjectionProperties
 
 ::: tip
-You can find all the options available in the [user defined projections guide](/docs/server/5.0.9/server/projections/user-defined-projections.md).
+You can find all the options available in the [user defined projections guide](/docs/server/5.0.8/server/projections/user-defined-projections.md).
 :::
 
 Now you can read the result as above, but use the new stream name:
@@ -103,7 +103,7 @@ Now you can read the result as above, but use the new stream name:
 
 The example in this step so far relied on a global state for the projection, but what if you wanted a count of the number of items in the shopping cart per shopping cart.
 
-Event Store has a built-in `$by_category` projection that lets you select events from a particular list of streams. Enable this projection with the following command.
+EventStoreDB has a built-in `$by_category` projection that lets you select events from a particular list of streams. Enable this projection with the following command.
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#EnableCategoryProjection

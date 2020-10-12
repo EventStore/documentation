@@ -2,10 +2,10 @@
 
 ## EmbeddedVNodeBuilder
 
-The `EmbeddedVNodeBuilder` class sets up and builds an Event Store node. You can configure your node through methods provided by the `EmbeddedVNodeBuilder` class.
+The `EmbeddedVNodeBuilder` class sets up and builds an EventStoreDB node. You can configure your node through methods provided by the `EmbeddedVNodeBuilder` class.
 
 ::: tip
-The builder used for the `EmbeddedVNodeBuilder` is the same Event Store uses internally to create the `ClusterNode`, see _EventStore.ClusterNode.Program.cs_ for more examples on how to use it.
+The builder used for the `EmbeddedVNodeBuilder` is the same EventStoreDB uses internally to create the `ClusterNode`, see _EventStore.ClusterNode.Program.cs_ for more examples on how to use it.
 :::
 
 ## Building a node
@@ -54,7 +54,7 @@ When running an embedded cluster, the task returned by `StartAndWaitUntilReady()
 
 ## Connecting to an embedded node
 
-You can connect to an embedded Event Store node with the `EmbeddedEventStoreConnection` class. Calling `EmbeddedEventStoreConnection.Create(ClusterVNode)` returns an `IEventStoreConnection` configured to connect to your embedded node. From there you can use the connection as normal in the .NET Client.
+You can connect to an embedded EventStoreDB node with the `EmbeddedEventStoreConnection` class. Calling `EmbeddedEventStoreConnection.Create(ClusterVNode)` returns an `IEventStoreConnection` configured to connect to your embedded node. From there you can use the connection as normal in the .NET Client.
 
 ```csharp
 using var embeddedConn = EmbeddedEventStoreConnection.Create(node);

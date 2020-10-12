@@ -1,6 +1,6 @@
 # Projections management
 
-The Event Store Client API includes helper methods that use the HTTP API to allow you to manage projections. This document describes the methods found in the `ProjectionsManager` class. All methods in this class are asynchronous.
+The EventStoreDB Client API includes helper methods that use the HTTP API to allow you to manage projections. This document describes the methods found in the `ProjectionsManager` class. All methods in this class are asynchronous.
 
 ## Enable a projection
 

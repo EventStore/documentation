@@ -935,7 +935,7 @@ Name | Type | Description
 ## Struct `Position`
 
 A structure referring to a potential logical record position
-in the Event Store transaction file.
+in the EventStoreDB transaction file.
 
 ### Syntax
 ```csharp

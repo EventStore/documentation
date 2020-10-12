@@ -13,14 +13,14 @@ As in the example above, you can also use DNS to avoid manually specifying the s
 The connection automatically reconnects during node failures. You can control this behaviour with options on the [`ConnectionSettings`](xref:EventStore.ClientAPI.ConnectionSettings) such as limiting retry attempts or frequency. The connection and durable subscription even manage a subscription during node failures, you will not receive duplicated messages over your durable subscription.
 
 ::: tip
-For those using the closed source version of Event Store `GossipPort` is an alias for `ManagerPort` as the closed source version includes a node manager on each physical node. This allows for controlling many virtual nodes on a machine with easy configuration. The manager also acts as a supervisor for the nodes.
+For those using the closed source version of EventStoreDB `GossipPort` is an alias for `ManagerPort` as the closed source version includes a node manager on each physical node. This allows for controlling many virtual nodes on a machine with easy configuration. The manager also acts as a supervisor for the nodes.
 :::
 
 
 
 ## EventStoreConnection
 
-The `EventStoreConnection` class maintains a full-duplex connection between the client and the Event Store server. `EventStoreConnection` is thread-safe and we recommend that you create one instance per application.
+The `EventStoreConnection` class maintains a full-duplex connection between the client and the EventStoreDB server. `EventStoreConnection` is thread-safe and we recommend that you create one instance per application.
 
 All operations are fully asynchronous and return either a `Task` or a `Task<T>`. If you need to execute synchronously, call `.Wait()`, or `Result` on the asynchronous version.
 
@@ -32,15 +32,15 @@ The `EventStoreConnection` classes uses the static `Create` methods to create a 
 
 | Method | Description |
 |:-------|:------------|
-| `Create(ConnectionSettings connectionSettings)` | Connects to Event Store using specified settings  |
-| `Create(Uri uri)` | Connects to Event Store (see URIs below) with default settings |
-| `Create(ConnectionSettings connectionSettings, Uri uri)` | Connects to Event Store (see URIs below) with specified settings |
-| `Create(string connectionString)` | Connects to Event Store with settings from connection string |
-| `Create(string connectionString, ConnectionSettingsBuilder builder)` | Connects to Event Store by merging connection string settings with pre-populated builder |
+| `Create(ConnectionSettings connectionSettings)` | Connects to EventStoreDB using specified settings  |
+| `Create(Uri uri)` | Connects to EventStoreDB (see URIs below) with default settings |
+| `Create(ConnectionSettings connectionSettings, Uri uri)` | Connects to EventStoreDB (see URIs below) with specified settings |
+| `Create(string connectionString)` | Connects to EventStoreDB with settings from connection string |
+| `Create(string connectionString, ConnectionSettingsBuilder builder)` | Connects to EventStoreDB by merging connection string settings with pre-populated builder |
 | `Create(IPEndPoint tcpEndPoint)` | **Obsolete** Connects to a single node with default settings |
 | `Create(ConnectionSettings settings, IPEndPoint tcpEndPoint)`        | **Obsolete** Connects to a single node with custom settings (see [Customising Connection Settings](#customising-connection-settings)) |
-| `Create(ConnectionSettings connectionSettings, ClusterSettings clusterSettings)` | **Obsolete** Connects to an Event Store HA cluster with custom settings (see [Cluster Settings](#cluster-settings)) |
-| `Create(ConnectionSettings connectionSettings, IEndPointDiscover endPointDiscover)` | Connects to an Event Store HA cluster with custom settings (see [Cluster Settings](#cluster-settings)) |
+| `Create(ConnectionSettings connectionSettings, ClusterSettings clusterSettings)` | **Obsolete** Connects to an EventStoreDB HA cluster with custom settings (see [Cluster Settings](#cluster-settings)) |
+| `Create(ConnectionSettings connectionSettings, IEndPointDiscover endPointDiscover)` | Connects to an EventStoreDB HA cluster with custom settings (see [Cluster Settings](#cluster-settings)) |
 
 ::: tip
 The connection returned by these methods is inactive. Use the `ConnectAsync()` method to establish a connection with the server.
@@ -53,7 +53,7 @@ The create methods support passing of a URI to the connection as opposed to pass
 - **Single Node**: `tcp://user:password@myserver:11234`
 - **Cluster**: `discover://user:password@myserver:1234`
 
-Where the port number points to the TCP port of the Event Store instance (1113 by default) or points to the manager gossip port for discovery purposes.
+Where the port number points to the TCP port of the EventStoreDB instance (1113 by default) or points to the manager gossip port for discovery purposes.
 
 With the URI based mechanism you can pass a domain name and the client will resolve it.
 
@@ -159,7 +159,7 @@ By default information about connection, disconnection and errors are logged, ho
 
 ### User credentials
 
-Event Store supports [Access Control Lists](/docs/server/5.0.9/server/users-and-access-control-lists.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+EventStoreDB supports [Access Control Lists](/docs/server/5.0.8/server/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -173,9 +173,9 @@ UserCredentials credentials = new UserCredentials("username","password");
 
 ### Security
 
-The .NET API and Event Store can communicate either over SSL or an unencrypted channel (by default).
+The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the Event Store for SSL, see [SSL Setup](/docs/server/5.0.9/server/setting-up-ssl.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](/docs/server/5.0.8/server/security/).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)
@@ -184,12 +184,12 @@ UseSslConnection(string targetHost, bool validateServer)
 Uses an SSL-encrypted connection where `targetHost` is the name specified on the SSL certificate installed on the server, and `validateServer` controls whether the connection validates the server certificate.
 
 ::: warning
-In production systems where credentials are sent from the client to Event Store, you should always use SSL encryption and you should set `validateServer` to `true`.
+In production systems where credentials are sent from the client to EventStoreDB, you should always use SSL encryption and you should set `validateServer` to `true`.
 :::
 
 ### Node preference
 
-When connecting to an Event Store HA cluster you can specify that operations are performed on any node, or only on the node that is the master.
+When connecting to an EventStoreDB HA cluster you can specify that operations are performed on any node, or only on the node that is the master.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -225,7 +225,7 @@ The following methods on the `ConnectionSettingsBuilder` allow you to change the
 
 ## Cluster settings
 
-When connecting to an Event Store HA cluster you must pass an instance of `ClusterSettings` as well as the usual `ConnectionSettings`. Primarily yu use this to tell the `EventStoreConnection` how to discover all the nodes in the cluster. A connection to a cluster will automatically handle reconnecting to a new node if the current connection fails.
+When connecting to an EventStoreDB HA cluster you must pass an instance of `ClusterSettings` as well as the usual `ConnectionSettings`. Primarily yu use this to tell the `EventStoreConnection` how to discover all the nodes in the cluster. A connection to a cluster will automatically handle reconnecting to a new node if the current connection fails.
 
 ### Using DNS discovery
 
@@ -243,7 +243,7 @@ Use `ClusterSettings.Create().DiscoverClusterViaDns()` followed by:
 | `SetGossipTimeout(TimeSpan timeout)` | Sets the period after which gossip times out if none is received (Default: 1 second). |
 
 ::: tip
- If you are using the commercial edition of Event Store HA with Manager nodes in place, the gossip port should be the port number of the external HTTP port on which the managers are running. If you are using the open source edition of Event Store HA the gossip port should be the External HTTP port that the nodes are running on. If you cannot use a well-known port for this across all nodes you can instead use gossip seed discovery and set the `IPEndPoint` of some seed nodes instead.
+ If you are using the commercial edition of EventStoreDB HA with Manager nodes in place, the gossip port should be the port number of the external HTTP port on which the managers are running. If you are using the open source edition of EventStoreDB HA the gossip port should be the External HTTP port that the nodes are running on. If you cannot use a well-known port for this across all nodes you can instead use gossip seed discovery and set the `IPEndPoint` of some seed nodes instead.
  :::
 
 ### Connecting using gossip seeds
@@ -269,9 +269,9 @@ Use `ClusterSettings.Create().DiscoverClusterViaGossipSeeds()` followed by:
 
 | Event | Description |
 |:------|:-------------|
-| `EventHandler<ClientConnectionEventArgs> Connected` | Fired when an `IEventStoreConnection` connects to an Event Store server. |
-| `EventHandler<ClientConnectionEventArgs> Disconnected` | Fired when an `IEventStoreConnection` disconnects from an Event Store server by some means other than by calling the `Close` method. |
-| `EventHandler<ClientReconnectingEventArgs> Reconnecting` | Fired when an `IEventStoreConnection` is attempting to reconnect to an Event Store server following a disconnection. |
+| `EventHandler<ClientConnectionEventArgs> Connected` | Fired when an `IEventStoreConnection` connects to an EventStoreDB server. |
+| `EventHandler<ClientConnectionEventArgs> Disconnected` | Fired when an `IEventStoreConnection` disconnects from an EventStoreDB server by some means other than by calling the `Close` method. |
+| `EventHandler<ClientReconnectingEventArgs> Reconnecting` | Fired when an `IEventStoreConnection` is attempting to reconnect to an EventStoreDB server following a disconnection. |
 | `EventHandler<ClientClosedEventArgs> Closed` | Fired when an `IEventStoreConnection` is closed either using the `Close` method or when reconnection limits are reached without a successful connection being established. |
 | `EventHandler<ClientErrorEventArgs> ErrorOccurred` | Fired when an error is thrown on an `IEventStoreConnection`.|
-| `EventHandler<ClientAuthenticationFailedEventArgs> AuthenticationFailed` | Fired when a client fails to authenticate to an Event Store server. |
+| `EventHandler<ClientAuthenticationFailedEventArgs> AuthenticationFailed` | Fired when a client fails to authenticate to an EventStoreDB server. |

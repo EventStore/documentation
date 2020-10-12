@@ -1,12 +1,12 @@
 # Cloud quick start
 
-Follow the steps in this guide to get access to the Event Store Cloud console, provision your first cluster and connect it to your cloud infrastructure.
+Follow the steps in this guide to get access to the EventStoreDB Cloud console, provision your first cluster and connect it to your cloud infrastructure.
 
 ## Get an account
 
-Event Store offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
+EventStoreDB offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
 
-At the moment, you need to visit out community forum ([Discuss](https://discuss.eventstore.com)) to create an account. If you already have an account at Event Store Discuss, you can use it for the Cloud console.
+At the moment, you need to visit out community forum ([Discuss](https://discuss.eventstore.com)) to create an account. If you already have an account at EventStoreDB Discuss, you can use it for the Cloud console.
 
 To get an account, open the [Discuss](https://discuss.eventstore.com) front page and click on `Log in`. There you get an option to sign up:
 
@@ -21,7 +21,7 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 With the new account you can login to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
 
 ::: warning Preview customers only
-Since Event Store Cloud is currently in preview, only a selected group of customers get the full set of features. You can only provision new clusters if you got onboarded as a Preview customer.
+Since EventStoreDB Cloud is currently in preview, only a selected group of customers get the full set of features. You can only provision new clusters if you got onboarded as a Preview customer.
 :::
 
 In the console, you first get to the list of organisations, which you have access to.
@@ -31,7 +31,7 @@ In the console, you first get to the list of organisations, which you have acces
 :::
 
 ::: tip Your first organisation
-During the Preview phase, each customer gets an organisation created upfront by Event Store staff. That organisation is enabled for provisioning cloud resources.
+During the Preview phase, each customer gets an organisation created upfront by EventStoreDB staff. That organisation is enabled for provisioning cloud resources.
 :::
 
 The Cloud console has the concept of Context. You'd normally be in the organisation context, or in the project context.
@@ -55,7 +55,7 @@ You can always switch to another organisation by clicking on the selected organi
 Each organisation has its own access control. It includes the list of users, which have access to the organisation, groups, roles, policies and identity providers.
 
 ::: tip Preview functionality is limited
-Some features like roles, policies and identity providers are currently not available in Preview. We will roll out all the access control features during the Preview phase, before Event Store Cloud reaches the GA status.
+Some features like roles, policies and identity providers are currently not available in Preview. We will roll out all the access control features during the Preview phase, before EventStoreDB Cloud reaches the GA status.
 :::
 
 When you create an organisation, you will be the organisation admin by default. To invite more people, click on the `Access control` menu and then switch to `Invitations`. There, you will see the `Invite member` button, which brings the invite screen. You'd need to enter the email address for the new member and also the group, which the invited member gets added to when they accept the invite.
@@ -80,7 +80,7 @@ When you click on a project in the projects list, you get to the project context
 
 Within the project context you can manage project clusters, backups, networks, etc.
 
-By reaching this point, you are now ready to start provisioning cloud resources with Event Store Cloud. Follow one of the available guidelines for your cloud provider:
+By reaching this point, you are now ready to start provisioning cloud resources with EventStoreDB Cloud. Follow one of the available guidelines for your cloud provider:
 
 - [Amazon Web Services (AWS)](../provision/aws)
 - [Google Cloud Platform (GCP)](../provision/gcp)

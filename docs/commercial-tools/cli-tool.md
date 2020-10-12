@@ -1,15 +1,15 @@
 # Node administration CLI
 
-This CLI tool is a command line interface for administering Event Store nodes. It allows you to run tasks similar to those available in the web admin interface and SDKs, including administrating users, projections and configuration.
+This CLI tool is a command line interface for administering EventStoreDB nodes. It allows you to run tasks similar to those available in the web admin interface and SDKs, including administrating users, projections and configuration.
 
 ## Download
 
 <!-- TODO: Refactor to VuePress -->
 
 <p class="call-to-action">
-<a href="/downloads/es_cli.windows.1.7.0.zip" class="btn btn--primary">Event Store CLI 1.7.0 for Windows</a>
-<a href="/downloads/es_cli.osx.1.7.0.tar.gz" class="btn btn--primary">Event Store CLI 1.7.0 for macOS</a>
-<a href="/downloads/es_cli.linux.1.7.0.tar.gz" class="btn btn--primary">Event Store CLI 1.7.0 for Linux</a>
+<a href="/downloads/es_cli.windows.1.7.0.zip" class="btn btn--primary">EventStoreDB CLI 1.7.0 for Windows</a>
+<a href="/downloads/es_cli.osx.1.7.0.tar.gz" class="btn btn--primary">EventStoreDB CLI 1.7.0 for macOS</a>
+<a href="/downloads/es_cli.linux.1.7.0.tar.gz" class="btn btn--primary">EventStoreDB CLI 1.7.0 for Linux</a>
 </p>
 
 <!-- TODO: packages? -->
@@ -28,7 +28,7 @@ es-cli admin shutdown
 
 ### Connecting and authentication
 
-Using the CLI tool requires specifying an Event Store node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
+Using the CLI tool requires specifying an EventStoreDB node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
 
 ```bash
 es-cli --serverurl="http://localhost:2113" --username=admin --password=changeit
@@ -77,13 +77,13 @@ es-cli [<options>] <command> [<args>]
 
 | Option        | Description                                             |
 | ------------- | ------------------------------------------------------- |
-| `--version`   | Get the version of Event Store CLI                      |
+| `--version`   | Get the version of EventStoreDB CLI                      |
 | `--help`      | Display help                                            |
 | `--output`    | How output should be formatted (`text` or `json`)       |
 | `--password`  | The admin password                                      |
-| `--serverurl` | The url of the Event Store server                       |
+| `--serverurl` | The url of the EventStoreDB server                       |
 | `--username`  | The admin username                                      |
-| `--verbose`   | Verbose output of requests sent to the Event Store node |
+| `--verbose`   | Verbose output of requests sent to the EventStoreDB node |
 
 ### Commands summary
 
@@ -105,18 +105,18 @@ es-cli admin [--version] [--help] <command> [<args>]
 
 | Command                                                 | Description                                                                               |
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [azure_backup](#admin-azure_backup)                     | Backs up the Event Store database to the specified container in Azure Blob Storage        |
-| [azure_restore](#admin-azure_restore)                   | Restores an Event Store database from a specified container in Azure Blob Storage         |
-| [backup](#admin-backup)                                 | Backs up the Event Store database to the destination directory                            |
+| [azure_backup](#admin-azure_backup)                     | Backs up the EventStoreDB database to the specified container in Azure Blob Storage        |
+| [azure_restore](#admin-azure_restore)                   | Restores an EventStoreDB database from a specified container in Azure Blob Storage         |
+| [backup](#admin-backup)                                 | Backs up the EventStoreDB database to the destination directory                            |
 | [calculate_stream_size](#admin-calculate_stream_size)   | Calculates the size on disk of the give stream                                            |
 | [clear_scavenge_streams](#admin-clear_scavenge_streams) | Deletes all the scavenge history streams                                                  |
 | [delete_streams](#admin-delete_streams)                 | Deletes streams matching the specified regular expression                                 |
-| [merge_indexes](#admin-merge_indexes)                   | Manually merge indexes of Event Store                                                     |
-| [restore](#admin-restore)                               | Restores the Event Store database from the provided location to the destination directory |
-| [s3_backup](#admin-s3_backup)                           | Backs up the Event Store to an S3 bucket                                                  |
-| [s3_restore](#admin-s3_restore)                         | Restores Event Store from an S3 bucket                                                    |
-| [scavenge](#admin-scavenge)                             | Schedule a scavenge on Event Store                                                        |
-| [shutdown](#admin-shutdown)                             | Shutdown the Event Store instance                                                         |
+| [merge_indexes](#admin-merge_indexes)                   | Manually merge indexes of EventStoreDB                                                     |
+| [restore](#admin-restore)                               | Restores the EventStoreDB database from the provided location to the destination directory |
+| [s3_backup](#admin-s3_backup)                           | Backs up the EventStoreDB to an S3 bucket                                                  |
+| [s3_restore](#admin-s3_restore)                         | Restores EventStoreDB from an S3 bucket                                                    |
+| [scavenge](#admin-scavenge)                             | Schedule a scavenge on EventStoreDB                                                        |
+| [shutdown](#admin-shutdown)                             | Shutdown the EventStoreDB instance                                                         |
 | [verify_db](#admin-verify_db)                           | Verify the integrity of an EventStore database                                            |
 
 #### admin azure_backup
@@ -125,12 +125,12 @@ es-cli admin [--version] [--help] <command> [<args>]
 es-cli admin azure_backup [options]
 ```
 
-Backs up the Event Store database to the specified container in Azure Blob Storage.
+Backs up the EventStoreDB database to the specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------- |
-| `-databasesource`     | The location of the Event Store database                                                  |
-| `-indexsource`        | The location of the Event Store index (default: databasesource/index)                     |
+| `-databasesource`     | The location of the EventStoreDB database                                                  |
+| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                     |
 | `-differential`       | Backup only new or changed files                                                          |
 | `-deleteextra`        | Delete extraneous files from the destination (with -differential only)                    |
 | `-storageaccountname` | The name of the storage account                                                           |
@@ -146,12 +146,12 @@ Backs up the Event Store database to the specified container in Azure Blob Stora
 es-cli admin azure_restore [options]
 ```
 
-Restores an Event Store database from a specified container in Azure Blob Storage.
+Restores an EventStoreDB database from a specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------- |
-| `-databasesource`     | The location of the Event Store database                                                  |
-| `-indexsource`        | The location of the Event Store index (default: databasesource/index)                     |
+| `-databasesource`     | The location of the EventStoreDB database                                                  |
+| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                     |
 | `-storageaccountname` | The name of the storage account                                                           |
 | `-storageaccountkey`  | The account key of the storage account (found in **security** > **access keys** on azure) |
 | `-databasecontainer`  | The container of the database backup                                                      |
@@ -165,11 +165,11 @@ Restores an Event Store database from a specified container in Azure Blob Storag
 es-cli admin backup [options]
 ```
 
-Backs up the Event Store database to the destination directory.
+Backs up the EventStoreDB database to the destination directory.
 
 | Option                 | Description                                                                 |
 | ---------------------- | --------------------------------------------------------------------------- |
-| `-databasesource`      | The location of the Event Store database                                    |
+| `-databasesource`      | The location of the EventStoreDB database                                    |
 | `-databasedestination` | The backup destination                                                      |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
 | `-indexdestination`    | The index backup destination (default: databasedestination/index)           |
@@ -223,7 +223,7 @@ No options.
 es-cli admin restore [options]
 ```
 
-Restores the Event Store database from the provided location to the destination directory.
+Restores the EventStoreDB database from the provided location to the destination directory.
 
 | Option                 | Description                                                               |
 | ---------------------- | ------------------------------------------------------------------------- |
@@ -239,11 +239,11 @@ Restores the Event Store database from the provided location to the destination 
 es-cli admin s3_backup [options]
 ```
 
-Backs up an Event Store database to the destination S3 bucket.
+Backs up an EventStoreDB database to the destination S3 bucket.
 
 | Option                 | Description                                                                 |
 | ---------------------- | --------------------------------------------------------------------------- |
-| `-databasesource`      | The location of the Event Store database                                    |
+| `-databasesource`      | The location of the EventStoreDB database                                    |
 | `-databasedestination` | The backup destination in the s3 bucket                                     |
 | `-s3bucket`            | The name of the S3 bucket                                                   |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
@@ -262,7 +262,7 @@ Backs up an Event Store database to the destination S3 bucket.
 es-cli admin s3_restore [options]
 ```
 
-Restores an Event Store database from an S3 bucket.
+Restores an EventStoreDB database from an S3 bucket.
 
 | Option                 | Description                                                                       |
 | ---------------------- | --------------------------------------------------------------------------------- |
@@ -291,12 +291,12 @@ No options.
 es-cli admin verify_db [options]
 ```
 
-Verify the integrity of an Event Store database.
+Verify the integrity of an EventStoreDB database.
 
 | Option             | Description                                                                        |
 | ------------------ | ---------------------------------------------------------------------------------- |
-| `-databasepath`    | The path to the Event Store database directory on disk                             |
-| `-indexpath`       | The path to the Event Store index directory on disk  (default: databasepath/index) |
+| `-databasepath`    | The path to the EventStoreDB database directory on disk                             |
+| `-indexpath`       | The path to the EventStoreDB index directory on disk  (default: databasepath/index) |
 | `-skipdbverify`    | Skip database verification (default: false)                                        |
 | `-skipindexverify` | Skip index verification (default: false)                                           |
 
@@ -644,9 +644,9 @@ General options:
 
 | Option             | Description                                         |
 | ------------------ | --------------------------------------------------- |
-| `-db`              | The location of the Event Store database            |
-| `-index`           | The location of the Event Store index               |
-| `-log`             | The location of the Event Store logs                |
+| `-db`              | The location of the EventStoreDB database            |
+| `-index`           | The location of the EventStoreDB index               |
+| `-log`             | The location of the EventStoreDB logs                |
 | `-run_projections` | The level of projections to run (none, system, all) |
 
 Cluster options:
@@ -713,5 +713,5 @@ If you encounter any issues, please open a ticket on freshdesk.
 
 ### 1.1.0
 
--   There was an issue with versions prior to 3.7.0 of Event Store where bad events could be written to $scavenge-{id} and the $scavenges streams.
+-   There was an issue with versions prior to 3.7.0 of EventStoreDB where bad events could be written to $scavenge-{id} and the $scavenges streams.
 -   With the release of version 1.1.0 of the CLI we have included a clear_scavenge_streams command under the admin section which will read through the $all stream and delete the $scavenges-{id} and $scavenges streams.

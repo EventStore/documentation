@@ -1,10 +1,10 @@
-# Event Store Cloud provisioning
+# EventStoreDB Cloud provisioning
 
-Event Store Cloud allows you to provision EventStoreDB clusters in AWS and GCP. We plan to support Azure by the end of 2020.
+EventStoreDB Cloud allows you to provision EventStoreDB clusters in AWS and GCP. We plan to support Azure by the end of 2020.
 
 The provisioning process consists of the following steps:
 
-1. Create a network in Event Store Cloud.
+1. Create a network in EventStoreDB Cloud.
 2. Peer the new network with your own network at the same cloud.
 3. Deploy the EventStoreDB cluster.
 

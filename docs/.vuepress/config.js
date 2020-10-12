@@ -34,7 +34,7 @@ module.exports = {
         nav: [
             {
                 text: "Getting started",
-                link: "/server/5.0.9/server/introduction/"
+                link: "/server/5.0.8/server/introduction/"
             },
             {
                 text: "Server",

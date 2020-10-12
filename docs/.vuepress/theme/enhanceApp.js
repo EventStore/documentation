@@ -18,7 +18,7 @@ export default ({Vue, options, router, siteData}) => {
     router.addRoutes([
         {
             path: "/latest.html",
-            redirect: "/server/5.0.9/server/introduction/"
+            redirect: "/server/5.0.8/server/introduction/"
             //`/${siteData.themeConfig.versions.latest}/introduction/`
         },
     ])

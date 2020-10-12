@@ -1,4 +1,4 @@
-# Event Store documentation
+# EventStoreDB documentation
 
 Next Gen docos using VuePress.
 

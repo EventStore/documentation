@@ -1,12 +1,12 @@
-# LDAP Authentication Plugin for Event Store
+# LDAP Authentication Plugin for EventStoreDB
 
-This plugin allows any LDAP protocol based directory services the ability to act as the authentication authority for Event Store.
+This plugin allows any LDAP protocol based directory services the ability to act as the authentication authority for EventStoreDB.
 
 ::: tip
 The LDAP plugin is included as part of the commercial builds.
 :::
 
-To configure Event Store to use the LDAP authentication plugin, make the following changes to [the configuration file of a database node](/v5/server/cluster-with-manager-nodes.md#configuring-nodes). You can make these changes after installation, but you need to stop the service, change the configuration and restart the service.
+To configure EventStoreDB to use the LDAP authentication plugin, make the following changes to [the configuration file of a database node](/v5/server/cluster-with-manager-nodes.md#configuring-nodes). You can make these changes after installation, but you need to stop the service, change the configuration and restart the service.
 
 Set the authentication type to `ldaps`, and configure the plugin with an `LdapsAuth` section..
 
@@ -37,7 +37,7 @@ LdapsAuth:
 
 When a user authenticates against the LDAP server by attempting a bind using the provided username/password the user is assigned roles by using the active domain groups the user is part of. You can see this in the `LdapGroupRoles` section.
 
-Event Store has 2 built-in roles (`$admins` and `$ops`) which you can assign users. Users who belong to the `$admins` group can perform any operation in a non-restrictive manner.
+EventStoreDB has 2 built-in roles (`$admins` and `$ops`) which you can assign users. Users who belong to the `$admins` group can perform any operation in a non-restrictive manner.
 
 ## Troubleshooting common problems
 
@@ -57,7 +57,7 @@ If there is a misconfiguration an error is logged to the server's log file in mo
 
 ### The LDAP server is unavailable.
 
--   Verify connectivity to the LDAP server from an Event Store node (e.g. using `netcat` or `telnet`)
+-   Verify connectivity to the LDAP server from an EventStoreDB node (e.g. using `netcat` or `telnet`)
 -   Verify the `Host` and `Port` parameters
 -   Verify that the server certificate is valid. If it is a self-signed certificate, set `ValidateServerCertificate` to `false`.
 

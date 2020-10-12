@@ -1,9 +1,9 @@
 # Cloud EventStoreDB in GCP
 
-For Google Cloud customers, Event Store Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure lowest latency.
+For Google Cloud customers, EventStoreDB Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure lowest latency.
 
 Pre-requisites:
-- You are a Preview customer of Event Store Cloud
+- You are a Preview customer of EventStoreDB Cloud
 - You have an organisation registered in Cloud console
 - You can login to the Cloud console as admin
 - Your organisation has at least one project
@@ -11,13 +11,13 @@ Pre-requisites:
 - You have access to create Google Cloud resources in the GCP project of your organisation
 
 The provisioning process consists of three steps:
-1. Create a network in Event Store Cloud
+1. Create a network in EventStoreDB Cloud
 2. Provision the EventStoreDB instance or cluster
 3. Peer the new network with your own network in GCP
 
 ## Create a network
 
-In the Event Store Cloud console, go to the [project context](../../quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the EventStoreDB Cloud console, go to the [project context](../../quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
  
  Make sure to fill out the required information:
  - Network name
@@ -29,7 +29,7 @@ In the Event Store Cloud console, go to the [project context](../../quick-start.
 ![Create GCP network](./images/gcp-create-network.png)
 :::
  
- In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Event Store Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
+ In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, EventStoreDB Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
  
  The network address range should not overlap with the address range of other networks in the same region and with your own GCP network, which you will be peering with. As any other cloud network, the CIDR block needs to be within the range specified by RFC1918.
  
@@ -56,12 +56,12 @@ On the first part of the form you need to specify the new cluster name, the clou
 :::
 
 ::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/5.0.9/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/5.0.8/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two other sizes - `C4` and `M4` are production-grade.
 
-Moving forward, Event Store Cloud would have more instance sizes available.
+Moving forward, EventStoreDB Cloud would have more instance sizes available.
 
 ::: el-card :body-style="{ padding: '0px' }" 
 ![GCP cluster second part](./images/gcp-new-cluster-2.png)
@@ -77,7 +77,7 @@ Finally, when you click on `Create cluster`, the provisioning process starts and
 
 ## Network peering
 
-When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the network and consequently to all the clusters in that network, you'd need to peer the Event Store Cloud network to your own GCP VPC network. Normally, your GCP VPC network would be also accessible by applications, which you want to connect to the new cloud EventStoreDB cluster.
+When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the network and consequently to all the clusters in that network, you'd need to peer the EventStoreDB Cloud network to your own GCP VPC network. Normally, your GCP VPC network would be also accessible by applications, which you want to connect to the new cloud EventStoreDB cluster.
 
 For this example, we'll use a VPC network in GCP in the same region (`europe-west-4`).
 
@@ -85,9 +85,9 @@ For this example, we'll use a VPC network in GCP in the same region (`europe-wes
 ![GCP VPC details](./images/gpc-vpc-details.png)
 :::
 
-Notice that the VPC has one subnet in the same region as the Event Store Cloud network provisioned earlier.
+Notice that the VPC has one subnet in the same region as the EventStoreDB Cloud network provisioned earlier.
 
-The network page provide us enough details to start the peering process. In Event Store Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
+The network page provide us enough details to start the peering process. In EventStoreDB Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
 
 Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC.
 
@@ -114,7 +114,7 @@ The information on the peering details screen provides some essential informatio
 
 When the peering is initiated, get back to Google Cloud console and navigate to `VPC network peering`. There, click `Create connection` and then `Continue`. Give new peering a name and choose the network on GCP side. Next, fill out the remaining values using the initiated peering details:
 
-| Event Store Cloud | GCP connection peering |
+| EventStoreDB Cloud | GCP connection peering |
 | :---------------- | :--------------------- |
 | Peer Project ID | Project ID |
 | Peer Network ID | VPC network name |
@@ -127,7 +127,7 @@ Here is how our example GCP peering form would look like:
 ![Incoming peering request](./images/gcp-peering-3.png)
 :::
 
-Click the `Create` button and when in the `VPC network peering` list, click `Refresh` until the peering status changes to `Active`. The peering status in Event Store Cloud console should also change to `Active`.
+Click the `Create` button and when in the `VPC network peering` list, click `Refresh` until the peering status changes to `Active`. The peering status in EventStoreDB Cloud console should also change to `Active`.
 
 At this moment, you should be able to connect to the EventStoreDB cluster in the cloud from any VM, which is connected to your GCP VPC network.
 
