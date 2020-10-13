@@ -42,6 +42,19 @@ module.exports = [
         ]
     },
     {
+        title: "Projections",
+        collapsable: true,
+        path: "projections/",
+        children: [
+            "projections/",
+            "projections/configuration.md",
+            "projections/system-projections.md",
+            "projections/user-defined-projections.md",
+            "projections/projections-config.md",
+            "projections/debugging.md",
+        ]
+    },
+    {
         title: "Scavenge",
         collapsable: true,
         path: "scavenge/",

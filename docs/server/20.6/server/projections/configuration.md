@@ -16,6 +16,8 @@ When the option value is set to `None`, the projections subsystem of EventStoreD
 
 By using the `System` value for this option, you can instruct the server to enable system projections when the server starts. However, system projections will only start if the `StartStandardProjections` option is set to `true`. When the `RunProjections` option value is `System` (or `All`) but the `StartSystemProjections` option value is `false`, system projections will be enabled but not start. You can start them later manually via the Admin UI or via an API call.
 
+Finally, you can set `RunProjections` to `All` and it will enable both system and custom projections.
+
 | Format               | Syntax |
 | :------------------- | :----- |
 | Command line         | `--run-projections` |
