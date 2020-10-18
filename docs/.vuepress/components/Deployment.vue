@@ -290,13 +290,16 @@
         </el-col>
       </el-form-item>
 
-      <el-divider content-position="right">Summary</el-divider>
     </el-form>
+    <Certificates v-if="topology.secure" :topology="topology" :client="net"/>
+    <Configuration :topology="topology" :client="net"/>
   </div>
 </template>
 
 <script>
 import * as networks from "../lib/networks";
+import Certificates from "./Certificates";
+import Configuration from "./Configuration";
 
 const SelfSignedCommonName = "eventstoredb-node";
 const SelfSigned = "self-signed";
@@ -314,7 +317,7 @@ function error(callback, message) {
 
 export default {
   name: "Deployment",
-  components: {},
+  components: {Certificates, Configuration},
   data() {
     return {
       topology: {
@@ -428,7 +431,7 @@ export default {
   methods: {
     copyClusterGossipToClient(validate) {
       if (validate) {
-        this.$refs.topologyForm.validateField("gossip");
+        setTimeout(() => this.$refs.topologyForm.validateField("gossip"), 1000);
       }
       if (this.isDnsClusterGossip && this.isDnsClientGossip) {
         this.net.gossip = this.topology.gossip;
@@ -522,19 +525,14 @@ export default {
           : await this.validateGossip(value, callback);
     },
     async validateGossip(value, callback) {
-
       const ips = await networks.resolveDns(value);
       if (ips === undefined) {
         return error(callback, "Unable to resolve DNS name");
       }
-
       const notFound = this.topology.nodes.filter(x => x.extIp !== "" && !ips.find(y => y === x.extIp));
-      if (notFound.length > 0) {
-        return error(callback, `${value} does not resolve to ${notFound[0].extIp}`);
-      }
-      // for ()
-      // value.endsWith()
-      return ok(callback);
+      return notFound.length === 0
+          ? ok(callback)
+          : error(callback, `${value} does not resolve to ${notFound[0].extIp}`);
     }
   },
 }
@@ -548,10 +546,6 @@ export default {
   &:last-child {
     margin-bottom: 0;
   }
-}
-
-.el-col {
-  border-radius: 4px;
 }
 
 .form-text {

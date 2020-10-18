@@ -17,6 +17,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "element-ui": "^2.13.1",
+    "markdown-it": "^12.0.0",
     "markdown-it-include": "^1.1.0",
     "remove-markdown": "^0.3.0",
     "simple-git": "^2.6.0",
