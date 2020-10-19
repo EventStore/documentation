@@ -2,12 +2,12 @@ import * as axios from "axios";
 
 export function isValidDns(domain) {
     const re = /^((?:(?:(?:\w[.\-+]?)*)\w)+)((?:(?:(?:\w[.\-+]?){0,62})\w)+)\.(\w{2,6})$/;
-    return domain.match(re);
+    return !domain || domain.match(re);
 }
 
 export function isValidIpAddress(ipAddress) {
     const ipFormat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
-    return ipAddress.match(ipFormat);
+    return !ipAddress || ipAddress.match(ipFormat);
 }
 
 export async function resolveDns(dnsName) {

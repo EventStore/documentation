@@ -40,7 +40,8 @@
           label="Certificate common name:"
           prop="certCommonName"
           :rules="[
-            { validator: validateCertCn, required: topology.secure, trigger: 'blur'},
+            {required: topology.secure, message: 'Certificate CN is required'},
+            {validator: validateCertCn, trigger: 'blur'},
           ]"
       >
         <el-col :span="10">
@@ -78,157 +79,106 @@
         </el-col>
       </el-form-item>
 
-      <el-form
-          label-width="240px"
-          v-for="item in topology.nodes"
-          :key="`node-${item.index}`"
-          :ref="`node-${item.index}`"
-          :model="item"
-          :inline="true"
-      >
-        <el-form-item
-            prop="dnsName"
-            :label="`Node ${item.index} address:`"
-            :rules="[ { validator: validateNodeDns, trigger: 'blur'} ]"
+      <transition-group name="slide" mode="in-out">
+        <el-form
+            label-width="240px"
+            v-for="item in topology.nodes"
+            :key="`node-${item.index}`"
+            :ref="`node-${item.index}`"
+            :model="item"
+            :inline="true"
         >
-          <el-input
-              placeholder="DNS name (optional)"
-              v-model="item.dnsName"
-              @change="resolveNodeDns(item)"
-              autocomplete="false"
-              clearable>
-          </el-input>
-        </el-form-item>
-        <el-form-item
-            prop="intIp"
-            :rules="[ { validator: validateNodeIp, trigger: 'blur'} ]"
-        >
-          <el-input
-              v-if="topology.separateNetworks"
-              placeholder="Internal IP"
-              v-model="item.intIp"
-              autocomplete="false"
-              clearable>
-          </el-input>
-        </el-form-item>
-        <el-form-item
-            prop="extIp"
-            :rules="[ { validator: validateNodeIp, trigger: 'blur'} ]"
-        >
-          <el-input
-              placeholder="External IP"
-              v-model="item.extIp"
-              autocomplete="false"
-              clearable>
-          </el-input>
-        </el-form-item>
-      </el-form>
-
-      <el-form-item label="Gossip for cluster nodes:" prop="gossipMethod">
-        <el-col :span="10">
-          <el-radio-group
-              v-model="topology.gossipMethod"
-              v-if="topology.cluster"
-              :disabled="topology.secure && !isSelfSigned"
+          <el-form-item
+              prop="dnsName"
+              :label="`Node ${item.index} address:`"
+              :rules="[ { validator: validateClusterNodeDns, trigger: 'blur'} ]"
           >
-            <el-radio-button label="dns">Cluster DNS</el-radio-button>
-            <el-radio-button label="seed">Nodes seed</el-radio-button>
-          </el-radio-group>
-          <span v-else class="form-text">Not applicable</span>
-        </el-col>
-        <el-col :span="12" v-if="topology.cluster && topology.secure && !isSelfSigned" class="form-help">
-          When nodes use wildcard certificate, cluster gossip can only use the nodes seed.
-        </el-col>
-      </el-form-item>
+            <el-input
+                placeholder="DNS name (optional)"
+                v-model="item.dnsName"
+                @change="resolveNodeDns(item, 'dnsName', 'extIp')"
+                autocomplete="false"
+                clearable>
+            </el-input>
+          </el-form-item>
 
-      <el-form-item
-          label="Cluster gossip DNS:"
-          prop="gossip"
-          :rules="[
+          <el-form-item
+              prop="extIp"
+              :rules="[
+                  {required: true, message: 'Node IP address is required'},
+                  { validator: validateNodeIp, trigger: 'blur'}
+                ]"
+          >
+            <el-input
+                placeholder="External IP"
+                v-model="item.extIp"
+                autocomplete="false"
+                clearable>
+            </el-input>
+          </el-form-item>
+
+          <transition name="el-zoom-in-center">
+            <el-form-item
+                prop="intIp"
+                v-show="topology.separateNetworks"
+                :rules="[ { validator: validateNodeIp, required: topology.separateNetworks, trigger: 'blur'} ]"
+            >
+              <el-input
+                  placeholder="Internal IP"
+                  v-model="item.intIp"
+                  autocomplete="false"
+                  clearable>
+              </el-input>
+            </el-form-item>
+          </transition>
+        </el-form>
+      </transition-group>
+
+      <transition name="slide" mode="out-in">
+        <div v-show="topology.cluster">
+          <el-form-item label="Gossip for cluster nodes:" prop="gossipMethod">
+            <el-col :span="10">
+              <el-radio-group
+                  v-model="topology.gossipMethod"
+                  :disabled="topology.secure && !isSelfSigned"
+              >
+                <el-radio-button label="dns">Cluster DNS</el-radio-button>
+                <el-radio-button label="seed">Nodes seed</el-radio-button>
+              </el-radio-group>
+            </el-col>
+            <el-col :span="12" v-if="topology.cluster && topology.secure && !isSelfSigned" class="form-help">
+              When nodes use wildcard certificate, cluster gossip can only use the nodes seed.
+            </el-col>
+          </el-form-item>
+
+          <transition name="slide" mode="out-in">
+            <el-form-item
+                label="Cluster gossip DNS:"
+                prop="gossip"
+                v-show="isDnsClusterGossip"
+                :rules="[
               {required: isDnsClusterGossip, message: 'Cluster DNS name required', trigger: 'blur'},
               {validator: validateClusterGossip, trigger: 'blur'}
             ]"
-      >
-        <el-col :span="10">
-          <el-input
-              placeholder="Cluster DNS name"
-              v-model="topology.gossip"
-              v-if="isDnsClusterGossip"
-              clearable>
-          </el-input>
-          <span v-else class="form-text">Not applicable</span>
-        </el-col>
-      </el-form-item>
-
-    </el-form>
-
-    <!-- Protocols-->
-
-    <el-form :model="net" :rules="net.rules" ref="netForm" label-width="240px">
-      <el-divider content-position="right">Protocols and client connection</el-divider>
-
-      <el-form-item label="Address translation:" prop="advertiseToClient">
-        <el-col :span="10">
-          <el-switch v-model="net.advertiseToClient"/>
-        </el-col>
-        <el-col :span="12" class="form-help">
-          There is some address and port translation between EventStoreDB and connecting clients.
-        </el-col>
-      </el-form-item>
-
-      <el-form-item label="Gossip method for clients:" prop="gossipMethod">
-        <el-radio-group v-model="net.gossipMethod" v-if="topology.cluster && net.advertiseToClient">
-          <el-radio-button label="dns">Cluster DNS</el-radio-button>
-          <el-radio-button label="seed">Nodes seed</el-radio-button>
-        </el-radio-group>
-        <span v-else class="form-text">Not applicable</span>
-      </el-form-item>
-
-      <el-form-item
-          label="Clients gossip DNS:"
-          prop="gossip"
-          :rules="[
-              {required: isDnsClientGossip, message: 'Client gossip DNS name required', trigger: 'blur'},
-              {validator: validateClientGossip, trigger: 'blur'},
-          ]"
-      >
-        <el-col :span="10">
-          <el-input
-              placeholder="Client gossip DNS name"
-              v-model="net.gossip"
-              v-if="isDnsClientGossip"
-              :disabled="isDnsClusterGossip"
-              autocomplete="false"
-              clearable>
-          </el-input>
-          <span v-else class="form-text">Not applicable</span>
-        </el-col>
-      </el-form-item>
-
-      <el-form-item label="Enable TCP for client apps:" prop="enableTcp">
-        <el-col :span="10">
-          <el-switch v-model="net.enableTcp"/>
-        </el-col>
-        <el-col :span="12" class="form-help">
-          TCP protocol is disabled by default. If you plan to use the legacy TCP client, you need to enable this option.
-        </el-col>
-      </el-form-item>
-
-      <el-form-item label="Enable AtomPub:" prop="enableAtomPub">
-        <el-col :span="10">
-          <el-switch v-model="net.enableAtomPub"/>
-        </el-col>
-        <el-col :span="12" class="form-help">
-          AtomPub should be enabled for the stream browser to work in the Admin UI.
-        </el-col>
-      </el-form-item>
-
+            >
+              <el-col :span="10">
+                <el-input
+                    placeholder="Cluster DNS name"
+                    v-model="topology.gossip"
+                    clearable>
+                </el-input>
+              </el-col>
+            </el-form-item>
+          </transition>
+        </div>
+      </transition>
       <el-form-item
           label="HTTP port:"
           prop="httpPort"
+          :rules="[{ required: true, message: 'HTTP port is required' }]"
       >
         <el-col :span="4">
-          <el-input v-model.number="net.httpPort"/>
+          <el-input v-model.number="topology.httpPort"/>
         </el-col>
         <el-col :span="6">&nbsp;</el-col>
         <el-col :span="12" class="form-help">
@@ -240,9 +190,10 @@
       <el-form-item
           label="Internal TCP port:"
           prop="internalTcpPort"
+          :rules="[{ required: topology.cluster, message: 'HTTP port is required' }]"
       >
         <el-col :span="4">
-          <el-input v-model.number="net.internalTcpPort"/>
+          <el-input v-model.number="topology.internalTcpPort"/>
         </el-col>
         <el-col :span="6">&nbsp;</el-col>
         <el-col :span="12" class="form-help">
@@ -253,20 +204,165 @@
       <el-form-item
           label="External TCP port:"
           prop="externalTcpPort"
-          :rules="portRules(net.enableTcp, 'External TCO')"
+          :rules="portRules(client.enableTcp, 'External TCP')"
       >
         <el-col :span="4">
           <el-input
-              v-model.number="net.externalTcpPort"
-              v-if="net.enableTcp"
+              v-model.number="topology.externalTcpPort"
+              v-if="client.enableTcp"
           />
           <span v-else class="form-text">Not applicable</span>
         </el-col>
         <el-col :span="6">&nbsp;</el-col>
         <el-col :span="12" class="form-help">
-          This port is used for TCP clients.
+          This port is used for TCP clients. You only need it if you have application using legacy TCP clients.
         </el-col>
       </el-form-item>
+
+    </el-form>
+
+    <!-- Protocols-->
+
+    <el-form :model="client" :rules="client.rules" ref="clientForm" label-width="240px">
+      <el-divider content-position="right">Protocols and client connection</el-divider>
+
+      <el-form-item label="Enable TCP for client apps:" prop="enableTcp">
+        <el-col :span="10">
+          <el-switch v-model="client.enableTcp"/>
+        </el-col>
+        <el-col :span="12" class="form-help">
+          TCP protocol is disabled by default. If you plan to use the legacy TCP client, you need to enable this option.
+        </el-col>
+      </el-form-item>
+
+      <el-form-item label="Enable AtomPub:" prop="enableAtomPub">
+        <el-col :span="10">
+          <el-switch v-model="client.enableAtomPub"/>
+        </el-col>
+        <el-col :span="12" class="form-help">
+          AtomPub should be enabled for the stream browser to work in the Admin UI.
+        </el-col>
+      </el-form-item>
+
+      <el-form-item label="Address translation:" prop="advertiseToClient">
+        <el-col :span="10">
+          <el-switch v-model="client.advertiseToClient"/>
+        </el-col>
+        <el-col :span="12" class="form-help">
+          There is some address and port translation between EventStoreDB and connecting clients.
+        </el-col>
+      </el-form-item>
+
+      <transition name="slide">
+        <el-form-item
+            label="Gossip for clients:"
+            v-show="topology.cluster"
+            prop="gossipMethod">
+          <el-radio-group
+              v-model="client.gossipMethod"
+              :disabled="topology.secure && !isSelfSigned"
+          >
+            <el-radio-button label="dns">Cluster DNS</el-radio-button>
+            <el-radio-button label="seed">Nodes seed</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+      </transition>
+
+      <transition name="slide">
+        <el-form-item
+            label="Clients gossip DNS:"
+            v-show="isDnsClientGossip"
+            prop="gossip"
+            :rules="[
+              {required: isDnsClientGossip, message: 'Client gossip DNS name required', trigger: 'blur'},
+              {validator: validateClientGossip, trigger: 'blur'},
+          ]"
+        >
+          <el-col :span="10">
+            <el-input
+                placeholder="Client gossip DNS name"
+                v-model="client.gossip"
+                :disabled="!isDnsClientGossip"
+                autocomplete="false"
+                clearable>
+            </el-input>
+          </el-col>
+        </el-form-item>
+      </transition>
+
+      <transition-group name="slide" mode="in-out">
+        <el-form
+            label-width="240px"
+            v-show="client.advertiseToClient"
+            v-for="item in topology.nodes"
+            :key="`clientNode-${item.index}`"
+            :ref="`clientNode-${item.index}`"
+            :model="item"
+            :inline="true"
+        >
+          <el-form-item
+              prop="clientDnsName"
+              :label="`Node ${item.index} translated address:`"
+              :rules="[ { validator: validateClientNodeDns, trigger: 'blur'} ]"
+          >
+            <el-input
+                placeholder="DNS name (optional)"
+                v-model="item.clientDnsName"
+                @change="resolveNodeDns(item, 'clientDnsName', 'clientIp')"
+                autocomplete="false"
+                clearable>
+            </el-input>
+          </el-form-item>
+
+          <el-form-item
+              prop="clientIp"
+              :rules="[ { validator: validateNodeIp, required: client.advertiseToClient, trigger: 'blur'} ]"
+          >
+            <el-input
+                placeholder="Node IP"
+                v-model="item.clientIp"
+                autocomplete="false"
+                clearable>
+            </el-input>
+          </el-form-item>
+        </el-form>
+      </transition-group>
+
+      <transition name="slide">
+        <div v-show="client.advertiseToClient">
+          <el-form-item
+              label="Translated HTTP port:"
+              prop="httpPort"
+              :rules="portRules(client.enableTcp && client.advertiseToClient, 'HTTP')"
+          >
+            <el-col :span="4">
+              <el-input v-model.number="client.httpPort"/>
+            </el-col>
+            <el-col :span="6">&nbsp;</el-col>
+            <el-col :span="12" class="form-help">
+              Translated HTTP port for external communication, if it doesn't match the HTTP port used by the node.
+            </el-col>
+          </el-form-item>
+
+          <el-form-item
+              label="Translated TCP port:"
+              prop="externalTcpPort"
+              :rules="portRules(client.enableTcp && client.advertiseToClient, 'External TCP')"
+          >
+            <el-col :span="4">
+              <el-input
+                  v-model.number="client.externalTcpPort"
+                  v-if="client.enableTcp"
+              />
+              <span v-else class="form-text">Not applicable</span>
+            </el-col>
+            <el-col :span="6">&nbsp;</el-col>
+            <el-col :span="12" class="form-help">
+              This port is used for TCP clients if the translated port doesn't match the port used by the node.
+            </el-col>
+          </el-form-item>
+        </div>
+      </transition>
 
     </el-form>
 
@@ -291,8 +387,28 @@
       </el-form-item>
 
     </el-form>
-    <Certificates v-if="topology.secure" :topology="topology" :client="net"/>
-    <Configuration :topology="topology" :client="net"/>
+
+    <transition-group name="slide" tag="ul">
+      <li v-for="(e, index) in errors" :key="`error-${index}`" style="color: red">
+        {{ e }}
+      </li>
+    </transition-group>
+
+    <el-form>
+      <el-form-item>
+        <el-button type="default" @click="validateConfiguration">Validate</el-button>
+        <el-button
+            :type="errors.length === 0 ? 'primary' : 'danger'"
+            @click="validateConfiguration"
+            :disabled="!validated"
+        >
+          Proceed
+        </el-button>
+      </el-form-item>
+    </el-form>
+
+    <Certificates v-if="topology.secure" :topology="topology" :client="client"/>
+    <Configuration :topology="topology" :client="client"/>
   </div>
 </template>
 
@@ -332,9 +448,20 @@ export default {
         certCommonName: SelfSignedCommonName,
         gossipMethod: DnsGossip,
         gossip: "",
-        nodes: [{index: 1, intIp: "", extIp: "", dnsName: ""}]
+        nodes: [
+          {
+            index: 1,
+            intIp: "",
+            extIp: "",
+            dnsName: "",
+            clientDnsName: "",
+            clientIp: ""
+          }],
+        httpPort: 2113,
+        internalTcpPort: 1112,
+        externalTcpPort: 1113,
       },
-      net: {
+      client: {
         gossip: "",
         gossipMethod: DnsGossip,
         enableTcp: true,
@@ -342,15 +469,13 @@ export default {
         advertiseToClient: false,
         httpPort: 2113,
         internalTcpPort: 1112,
-        externalTcpPort: 1113,
-        rules: {
-          httpPort: this.portRules(true, "HTTP"),
-          internalTcpPort: this.portRules(true, "Internal TCP"),
-        }
+        externalTcpPort: 1113
       },
       projections: {
         enable: "All",
-      }
+      },
+      errors: [],
+      validated: false
     }
   },
   computed: {
@@ -361,7 +486,7 @@ export default {
       return this.topology.cluster && this.topology.gossipMethod === DnsGossip;
     },
     isDnsClientGossip() {
-      return this.topology.cluster && this.net.advertiseToClient && this.net.gossipMethod === DnsGossip;
+      return this.topology.cluster && this.client.gossipMethod === DnsGossip;
     },
     isSelfSigned() {
       return this.topology.cert === SelfSigned;
@@ -385,7 +510,7 @@ export default {
       if (val) {
         if (this.topology.nodesCount < 3) this.topology.nodesCount = 3;
         this.topology.gossipMethod = DnsGossip;
-        this.net.gossipMethod = DnsGossip;
+        this.client.gossipMethod = DnsGossip;
         this.topology.minNodes = 3;
         this.topology.maxNodes = 999;
       } else {
@@ -393,7 +518,7 @@ export default {
         this.topology.minNodes = 1;
         this.topology.maxNodes = 1;
         this.topology.gossipMethod = "";
-        this.net.gossipMethod = "";
+        this.client.gossipMethod = "";
       }
     },
     "topology.secure": function (val) {
@@ -411,10 +536,10 @@ export default {
     "topology.gossipMethod": function () {
       this.copyClusterGossipToClient(true);
     },
-    "net.gossipMethod": function () {
+    "client.gossipMethod": function () {
       this.copyClusterGossipToClient(true);
     },
-    "net.advertiseToClient": function () {
+    "client.advertiseToClient": function () {
       this.copyClusterGossipToClient(true);
     },
     "topology.cert": function (val) {
@@ -425,6 +550,7 @@ export default {
       } else {
         this.topology.certCommonName = "";
         this.topology.gossipMethod = "seed"
+        this.client.gossipMethod = "seed"
       }
     }
   },
@@ -434,7 +560,7 @@ export default {
         setTimeout(() => this.$refs.topologyForm.validateField("gossip"), 1000);
       }
       if (this.isDnsClusterGossip && this.isDnsClientGossip) {
-        this.net.gossip = this.topology.gossip;
+        this.client.gossip = this.topology.gossip;
       }
     },
     populateNodes() {
@@ -445,7 +571,7 @@ export default {
       }
 
       for (let i = this.topology.nodes.length; i < this.topology.nodesCount; i++) {
-        const node = {index: i + 1, dnsName: "", intIp: "", extIp: ""};
+        const node = {index: i + 1, dnsName: "", intIp: "", extIp: "", clientIp: "", clientDnsName: ""};
         this.topology.nodes.push(node);
       }
     },
@@ -459,9 +585,8 @@ export default {
       ]
     },
     validateCertCn(rule, value, callback) {
-      if (!this.topology.secure || this.isSelfSigned) {
-        return ok(callback);
-      }
+      if (!this.topology.secure || this.isSelfSigned) return;
+
       const preValid = !this.topology.cluster || value.startsWith("*.");
       if (!preValid || !networks.isValidDns(value.substring(2))) {
         return error(callback, "Please enter a valid wildcard certificate CN");
@@ -471,9 +596,9 @@ export default {
     uniqueNode(prop, value) {
       return this.topology.nodes.filter(x => x[prop] === value).length === 1;
     },
-    validateNodeDns(rule, value, callback) {
+    validateNodeDns(rule, value, property, callback) {
       const unique = () => {
-        const u = this.uniqueNode("dnsName", value);
+        const u = this.uniqueNode(property, value);
         return u ? true : error(callback, `${value} already used`);
       }
 
@@ -483,15 +608,23 @@ export default {
           && unique()
           && this.ensureCaDomainMatch(value, callback);
       if (result) {
-        if (this.topology.gossip !== "" && this.isDnsClusterGossip) {
+        if (this.client.gossip !== "" && this.isDnsClientGossip) {
           this.$refs.topologyForm.validateField("gossip");
         }
-        if (this.net.advertiseToClient && this.isDnsClientGossip && this.net.gossip !== "") {
-          this.$refs.netForm.validateField("gossip");
+        if (this.client.advertiseToClient && this.isDnsClientGossip && this.client.gossip !== "") {
+          this.$refs.clientForm.validateField("gossip");
         }
       }
     },
+    validateClusterNodeDns(rule, value, callback) {
+      return this.validateNodeDns(rule, value, "dnsName", callback);
+    },
+    validateClientNodeDns(rule, value, callback) {
+      return this.validateNodeDns(rule, value, "clientDnsName", callback);
+    },
     validateNodeIp(rule, value, callback, source) {
+      if (!rule.required && value === "") return ok(callback);
+
       const prop = Object.keys(source)[0];
 
       if (!this.validateIpAddress(rule, value, callback)) return;
@@ -512,17 +645,17 @@ export default {
       const caDomain = this.topology.certCommonName.substring(2);
       return dnsName.endsWith(caDomain) ? true : error(callback, "Certificate CN mismatch");
     },
-    async resolveNodeDns(item) {
-      const ips = await networks.resolveDns(item.dnsName);
-      item.extIp = ips === undefined ? "" : ips[0];
+    async resolveNodeDns(item, propFrom, propTo) {
+      const ips = await networks.resolveDns(item[propFrom]);
+      item[propTo] = ips === undefined ? "" : ips[0];
     },
     async validateClusterGossip(rule, value, callback) {
       return !this.isDnsClusterGossip ? ok(callback) : await this.validateGossip(value, callback);
     },
     async validateClientGossip(rule, value, callback) {
-      return !this.isDnsClientGossip || !this.net.advertiseToClient
+      return !this.isDnsClientGossip
           ? ok(callback)
-          : await this.validateGossip(value, callback);
+          : this.ensureCaDomainMatch(value, callback) && await this.validateGossip(value, callback);
     },
     async validateGossip(value, callback) {
       const ips = await networks.resolveDns(value);
@@ -533,8 +666,24 @@ export default {
       return notFound.length === 0
           ? ok(callback)
           : error(callback, `${value} does not resolve to ${notFound[0].extIp}`);
+    },
+    validateConfiguration() {
+      const callback = (result, errors) => {
+        if (result) return;
+
+        console.log(errors);
+        const keys = Object.keys(errors);
+        keys.forEach(x => this.errors.push(errors[x][0].message));
+      }
+
+      this.errors = [];
+      this.$refs.topologyForm.validate(callback);
+      this.topology.nodes.forEach(node => this.$refs[`node-${node.index}`][0].validate(callback));
+      this.$refs.clientForm.validate(callback);
+      this.topology.nodes.forEach(node => this.$refs[`clientNode-${node.index}`][0].validate(callback));
+      this.validated = true;
     }
-  },
+  }
 }
 </script>
 
@@ -556,5 +705,37 @@ export default {
   font-size: 14px;
   line-height: 18px;
   margin-left: 10px;
+}
+
+.slide-enter-active {
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-timing-function: ease-in;
+  -webkit-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+}
+
+.slide-leave-active {
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.slide-enter-to, .slide-leave {
+  max-height: 100px;
+  overflow: hidden;
+}
+
+.slide-enter, .slide-leave-to {
+  overflow: hidden;
+  max-height: 0;
 }
 </style>
