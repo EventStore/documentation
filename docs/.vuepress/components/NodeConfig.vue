@@ -40,7 +40,7 @@ export default {
       config.add("IntIp", this.node.network.intIp);
       config.add("ExtIp", this.node.network.extIp);
       config.addIf("IntHostAdvertiseAs", this.node.network.intHost, this.node.network.intHost);
-      config.add("ExtHostAdvertiseAs", this.node.network.extHost, this.node.network.extHost);
+      config.addIf("ExtHostAdvertiseAs", this.node.network.extHost, this.node.network.extHost);
       config.add("HttpPort", this.node.network.httpPort);
       config.add("IntTcpPort", this.node.network.intTcpPort);
       config.addIf("ExtTcpPort", this.node.network.extTcpPort, this.node.network.enableTcp);
@@ -52,6 +52,14 @@ export default {
         config.add("AdvertiseHostToClientAs", this.node.network.advNodeDns);
         config.add("AdvertiseHttpPortToClientAs", this.node.network.advHttpPort)
         config.add("AdvertiseTcpPortToClientAs", this.node.network.advTcpPort)
+      }
+
+      if (this.node.gossip) {
+        config.push("\n# Cluster gossip");
+        config.add("ClusterSize", this.node.gossip.clusterSize);
+        config.add("DiscoverViaDns", this.node.gossip.discoverViaDns);
+        config.addIf("ClusterDns", this.node.gossip.clusterDns, this.node.gossip.clusterDns);
+        config.addIf("GossipSeed", this.node.gossip.gossipSeeds, this.node.gossip.gossipSeeds);
       }
 
       config.push("\n# Projections configuration");

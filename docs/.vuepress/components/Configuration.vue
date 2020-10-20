@@ -11,6 +11,7 @@
 
 <script>
 import NodeConfig from "./NodeConfig";
+import {safeJoin} from "../lib/strings";
 
 export default {
   name: "Configuration",
@@ -31,9 +32,31 @@ export default {
         }
       };
 
+      const intIp = x => this.topology.separateNetworks ? x.intIp : x.extIp;
+
+      const gossip = () => {
+        if (!this.topology.cluster) return undefined;
+        if (this.topology.gossipMethod === "dns") {
+          return {
+            discoverViaDns: true,
+            clusterSize: this.topology.nodesCount,
+            clusterDns: this.topology.gossip
+          }
+        } else {
+          const otherNodes = this.topology.nodes.filter(x => x.index !== node.index);
+          console.log(otherNodes);
+
+          return {
+            discoverViaDns: false,
+            clusterSize: this.topology.nodesCount,
+            gossipSeeds: safeJoin(otherNodes.map(x => x.dnsName === "" ? intIp(x) : x.dnsName))
+          }
+        }
+      };
+
       const network = () => {
         return {
-          intIp: this.topology.separateNetworks ? node.intIp : node.extIp,
+          intIp: intIp(node),
           extIp: node.extIp,
           extHost: node.dnsName === "" ? undefined : node.dnsName,
           httpPort: this.topology.httpPort,
@@ -57,6 +80,7 @@ export default {
         },
         certificate: this.topology.secure ? cert() : undefined,
         network: network(),
+        gossip: gossip(),
         projections: this.projections.enable
       }
     }
