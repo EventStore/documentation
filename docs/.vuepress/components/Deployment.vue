@@ -15,7 +15,7 @@
         <el-divider content-position="right">Deployment topology</el-divider>
 
         <el-form-item label="Platform:" prop="platform">
-          <el-radio-group v-model="topology.platform">
+          <el-radio-group v-model="topology.platform" :disabled="true">
             <el-radio-button label="linux">Linux</el-radio-button>
             <el-radio-button label="windows">Windows</el-radio-button>
           </el-radio-group>
