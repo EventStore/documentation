@@ -17,7 +17,8 @@ export default {
   components: {NodeConfig},
   props: {
     topology: Object,
-    client: Object
+    client: Object,
+    projections: Object
   },
   methods: {
     getNodeConfig(node) {
@@ -35,11 +36,15 @@ export default {
           intIp: this.topology.separateNetworks ? node.intIp : node.extIp,
           extIp: node.extIp,
           extHost: node.dnsName === "" ? undefined : node.dnsName,
-          httpPort: this.client.httpPort,
-          intTcpPort: this.client.internalTcpPort,
-          extTcpPort: this.client.externalTcpPort,
+          httpPort: this.topology.httpPort,
+          intTcpPort: this.topology.internalTcpPort,
+          extTcpPort: this.topology.externalTcpPort,
           enableTcp: this.client.enableTcp,
-          enableAtom: this.client.enableAtomPub
+          enableAtom: this.client.enableAtomPub,
+          advertiseToClient: this.client.advertiseToClient,
+          advNodeDns: node.clientDnsName,
+          advTcpPort: this.client.externalTcpPort,
+          advHttpPort: this.client.httpPort
         }
       };
 
@@ -51,18 +56,16 @@ export default {
           index: "/volume/esdb/index",
         },
         certificate: this.topology.secure ? cert() : undefined,
-        network: network()
-
+        network: network(),
+        projections: this.projections.enable
       }
     }
   }
 }
 </script>
 
-<style scoped lang="scss">
-.el-row {
-  margin-bottom: 20px;
-  height: 3.5rem;
+<style lang="scss">
+.el-tabs__item {
+  font-size: 16px;
 }
-
 </style>

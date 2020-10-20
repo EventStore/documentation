@@ -15,6 +15,6 @@ export default {
 
 <style scoped lang="scss">
 .el-row {
-  margin-bottom: 20px;
+  margin-bottom: -20px;
 }
 </style>
