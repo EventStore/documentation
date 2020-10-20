@@ -25,9 +25,6 @@ module.exports = [
         path: "configuration/",
         children: [
             "configuration/",
-            "configuration/single-node.md",
-            "configuration/cluster.md",
-            "configuration/options.md",
         ]
     },
     {
