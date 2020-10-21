@@ -297,7 +297,7 @@
                 :rules="[ { validator: validateClientNodeDns, trigger: 'blur'} ]"
             >
               <el-input
-                  placeholder="DNS name (optional)"
+                  placeholder="DNS name"
                   v-model="item.clientDnsName"
                   autocomplete="false"
                   clearable>
