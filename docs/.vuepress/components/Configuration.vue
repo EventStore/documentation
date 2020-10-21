@@ -42,7 +42,7 @@ export default {
           return {
             discoverViaDns: true,
             clusterSize: this.topology.nodesCount,
-            clusterDns: this.topology.gossip
+            clusterDns: safe(this.topology.gossip)
           }
         } else {
           const otherNodes = this.topology.nodes.filter(x => x.index !== node.index);

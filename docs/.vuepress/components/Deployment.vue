@@ -357,8 +357,12 @@
         <Errors :form-errors="formErrors" @validate="validateConfiguration" @proceed="gotoConfig"/>
       </el-tab-pane>
 
-      <el-tab-pane label="Certificates" name="certs" :disabled="!proceed">
+      <el-tab-pane label="Certificates" name="certs" :disabled="!proceed || !topology.secure">
         <Certificates v-if="topology.secure" :topology="topology" :client="client"/>
+
+        <br><br>
+        <el-button @click="gotoTab('spec')">Back to specification</el-button>
+        <el-button type="primary" @click="gotoTab('config')">Proceed to configuration</el-button>
       </el-tab-pane>
 
       <el-tab-pane label="Configuration" name="config" :disabled="!proceed">
@@ -669,7 +673,10 @@ export default {
     },
     gotoConfig() {
       this.proceed = true;
-      this.activeTab = "certs";
+      this.gotoTab(this.topology.secure ? "certs" : "config");
+    },
+    gotoTab(tab) {
+      this.activeTab = tab;
     }
   },
 }
