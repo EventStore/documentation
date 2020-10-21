@@ -58,7 +58,19 @@
           <pre><code>{{ tool }} create-ca -out .{{sep}}certs{{sep}}ca</code></pre>
           By default, the tool will create the <code>ca</code> directory in the <code>certs</code> directory you created earlier
           and add two files there:
-          <br><code>ca.crt</code> and <code>ca.key</code>. You will need to copy these files to the server node.
+          <br><code>ca.crt</code> and <code>ca.key</code>. You will need to copy the <code>ca.crt</code> files to each node.
+
+          <div v-show="topology.platform === 'linux'">
+            <p>On Linux server nodes, you have to add the CA certificate to the trusted certificate store.</p>
+            <p>
+              First, copy the <code>ca.crt</code> file to <code>/usr/share/ca-certificates</code> directory on the server.
+              You need to use <code>sudo</code> for the copy command.
+            </p>
+            <p>
+              Then, update the certificate store:
+            </p>
+            <pre><code>sudo update-ca-certificates</code></pre>
+          </div>
 
           <el-divider content-position="right">Generate certificates for nodes</el-divider>
 
@@ -171,7 +183,12 @@ export default {
       if (this.topology.separateNetworks) ips.push(node.intIp);
       const ipsOption = ips.length === 0 ? "" : ` -ip-addresses ${safeJoin(ips)} `;
 
-      return `<pre><code class="language-bash">${this.prefix}es-gencert-cli create-node -out .${this.sep}certs${this.sep}node${node.index} ${ipsOption}${dnsOption}</code></pre>`;
+      const sep = this.sep;
+      const caPath = `.${sep}certs${sep}ca${sep}ca`;
+
+      return `<pre><code class="language-bash">${this.prefix}es-gencert-cli create-node `+
+          `-ca-certificate ${caPath}.crt -ca-key ${caPath}.key ` +
+          `-out .${sep}certs${sep}node${node.index} ${ipsOption}${dnsOption}</code></pre>`;
     },
     v(val) {
       return val !== undefined && val !== "" ? val : "<not provided>";

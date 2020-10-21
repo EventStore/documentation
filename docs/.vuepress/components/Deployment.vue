@@ -550,6 +550,7 @@ export default {
       if (this.topology.nodes.length === newCount) return;
 
       while (this.topology.nodes.length > newCount) {
+        delete this.formErrors[`Node ${this.topology.nodes[this.topology.nodes.length-1].index}`]
         this.topology.nodes.pop();
       }
 
