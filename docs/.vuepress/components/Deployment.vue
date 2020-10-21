@@ -84,13 +84,16 @@
               </el-input-number>
             </el-col>
             <el-col :span="12" v-if="topology.cluster" class="form-help">
-              We recommend three nodes for the HA cluster. The number of nodes should be odd.
+              We recommend <b>three nodes</b> for the HA cluster. The number of nodes should be odd.
             </el-col>
           </el-form-item>
 
           <el-form-item label="Separate interfaces:" prop="separateNetworks">
             <el-col :span="10">
               <el-switch v-model="topology.separateNetworks"/>
+            </el-col>
+            <el-col :span="12" class="form-help">
+              Enable this option if internal and external communication should use different network interfaces.
             </el-col>
           </el-form-item>
 
