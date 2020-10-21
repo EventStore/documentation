@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <el-row :gutter="20">
     <el-col :span="8">
       <b>Ext: Subject Alternative Name (SAN)</b>
@@ -10,6 +11,7 @@
       <code>{{ value }} </code>
     </el-col>
   </el-row>
+  </ClientOnly>
 </template>
 
 <script>

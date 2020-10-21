@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <el-form-item
       :label="label + ' port:'"
       :prop="prop"
@@ -12,7 +13,7 @@
       <slot></slot>
     </el-col>
   </el-form-item>
-
+  </ClientOnly>
 </template>
 
 <script>

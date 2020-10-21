@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <div :style="{color: sectionColour}">
     <i :class="icon"></i>  {{ index }}
     <ul>
@@ -7,6 +8,7 @@
       </li>
     </ul>
   </div>
+  </ClientOnly>
 </template>
 
 <script>

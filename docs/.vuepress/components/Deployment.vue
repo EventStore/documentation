@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <el-tabs v-model="activeTab">
     <el-tab-pane label="Specification" name="spec">
       <br>
@@ -369,6 +370,7 @@
     </el-tab-pane>
 
   </el-tabs>
+  </ClientOnly>
 </template>
 
 <script>

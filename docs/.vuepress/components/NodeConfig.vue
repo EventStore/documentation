@@ -1,8 +1,10 @@
 <template>
+  <ClientOnly>
   <div>
     <h3>Node {{ node.index }}</h3>
     <pre><code>{{ configFile }}</code></pre>
   </div>
+  </ClientOnly>
 </template>
 
 <script>

@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <el-row :gutter="20">
     <el-col :span="8" class="title">
       Subject Name - Common Name (CN):
@@ -7,6 +8,7 @@
       <code>{{ commonName }}</code>
     </el-col>
   </el-row>
+  </ClientOnly>
 </template>
 
 <script>

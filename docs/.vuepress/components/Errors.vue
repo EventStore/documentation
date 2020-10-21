@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <div>
     <ErrorSection v-for="(e, index) in check" :key="`error-${index}`" :index="index" :section="e"></ErrorSection>
 
@@ -17,6 +18,7 @@
       </el-form-item>
     </el-form>
   </div>
+  </ClientOnly>
 </template>
 
 <script>
