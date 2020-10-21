@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <h2>Configuration</h2>
-    <NodeConfig
-      v-for="node in topology.nodes"
-      :key="`node-${node.index}`"
-      :node="getNodeConfig(node)">
-    </NodeConfig>
-  </div>
+  <ClientOnly>
+    <div>
+      <h2>Configuration</h2>
+      <NodeConfig
+          v-for="node in topology.nodes"
+          :key="`node-${node.index}`"
+          :node="getNodeConfig(node)">
+      </NodeConfig>
+    </div>
+  </ClientOnly>
 </template>
 
 <script>

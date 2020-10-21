@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <div>
     <h2>Certificates</h2>
     <div>
@@ -68,6 +69,7 @@
 
     </div>
   </div>
+  </ClientOnly>
 </template>
 
 <script>
