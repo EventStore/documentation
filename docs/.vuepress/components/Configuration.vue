@@ -13,7 +13,7 @@
 
 <script>
 import NodeConfig from "./NodeConfig";
-import {safeJoin} from "../lib/strings";
+import {safe} from "../lib/strings";
 
 export default {
   name: "Configuration",
@@ -51,7 +51,7 @@ export default {
           return {
             discoverViaDns: false,
             clusterSize: this.topology.nodesCount,
-            gossipSeeds: safeJoin(otherNodes.map(x => x.dnsName === "" ? intIp(x) : x.dnsName))
+            gossipSeeds: otherNodes.map(x => `${safe(x.dnsName === "" ? intIp(x) : x.dnsName)}:${this.topology.httpPort}`)
           }
         }
       };
