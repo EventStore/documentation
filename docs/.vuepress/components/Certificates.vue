@@ -53,24 +53,12 @@
           <pre><code>mkdir certs</code></pre>
 
           <el-divider content-position="right">Generate the CA certificate</el-divider>
-
+          <p></p>
           Then, generate the CA certificate, which you'd need to trust for each of the nodes:<br><br>
-          <pre><code>{{ tool }} create-ca -out .{{sep}}certs{{sep}}ca</code></pre>
-          By default, the tool will create the <code>ca</code> directory in the <code>certs</code> directory you created earlier
-          and add two files there:
-          <br><code>ca.crt</code> and <code>ca.key</code>. You will need to copy the <code>ca.crt</code> files to each node.
-
-          <div v-show="topology.platform === 'linux'">
-            <p>On Linux server nodes, you have to add the CA certificate to the trusted certificate store.</p>
-            <p>
-              First, copy the <code>ca.crt</code> file to <code>/usr/share/ca-certificates</code> directory on the server.
-              You need to use <code>sudo</code> for the copy command.
-            </p>
-            <p>
-              Then, update the certificate store:
-            </p>
-            <pre><code>sudo update-ca-certificates</code></pre>
-          </div>
+          <pre><code>{{ tool }} create-ca -out .{{ sep }}certs{{ sep }}ca</code></pre>
+          By default, the tool will create the <code>ca</code> directory in the <code>certs</code> directory you created
+          earlier and add two files there:
+          <p></p><code>ca.crt</code> and <code>ca.key</code>.
 
           <el-divider content-position="right">Generate certificates for nodes</el-divider>
 
@@ -99,16 +87,27 @@
                 :ext-value="item.clientDnsName"
             />
 
-              Command for the node certificate generation:<br><br>
-              <span v-html="nodeCertGen(item)"/>
+            Command for the node certificate generation:
+            <p></p>
+            <span v-html="nodeCertGen(item)"/>
           </div>
 
-          <el-divider content-position="right">Permissions</el-divider>
+          <el-divider content-position="right">Copy files to servers</el-divider>
+          You will need to copy the <code>ca.crt</code> file to each node to <code>{{ caDir }}</code>.
+
+          <p></p>
+            In addition, you need to copy the certificate and the key for each node to the
+            machine of the node. Both files (<code>node.crt</code> and <code>node.key</code>)
+            need to be placed in the <code>{{certDir}}</code> directory of the server.
+
+          <div v-show="topology.platform === 'linux'">
+            <el-divider content-position="right">Permissions</el-divider>
             Remember that all certificate files should have restrictive rights, otherwise the OS won't allow using them.
             Usually, you'd need to change rights for each certificate file to prevent the "permissions are too open"
             error.
             You can do it by running the following command:
             <pre><code>chmod 600 [file]</code></pre>
+          </div>
         </div>
       </div>
     </div>
@@ -119,12 +118,13 @@
 import SingleColumnRow from "./SingleColumnRow";
 import CertCn from "./CertCn";
 import CertSan from "./CertSan";
-import {safeJoin} from "../lib/strings";
+import {safeJoin, sep} from "../lib/strings";
 
 export default {
   name: "Certificates",
   components: {CertCn, CertSan, SingleColumnRow},
   props: {
+    directories: Object,
     topology: Object,
     client: Object
   },
@@ -143,7 +143,7 @@ export default {
       return this.topology.gossipMethod === "dns";
     },
     sep() {
-      return this.form.os === "windows" ? "\\" : "/";
+      return sep(this.form.os);
     },
     prefix() {
       switch (this.form.os) {
@@ -158,6 +158,12 @@ export default {
     },
     tool() {
       return this.prefix + "es-gencert-cli";
+    },
+    certDir() {
+      return `${this.directories.config}${sep(this.topology.platform)}certs`;
+    },
+    caDir() {
+      return `${this.certDir}${sep(this.topology.platform)}ca`
     }
   },
   methods: {
@@ -186,7 +192,7 @@ export default {
       const sep = this.sep;
       const caPath = `.${sep}certs${sep}ca${sep}ca`;
 
-      return `<pre><code class="language-bash">${this.prefix}es-gencert-cli create-node `+
+      return `<pre><code class="language-bash">${this.prefix}es-gencert-cli create-node ` +
           `-ca-certificate ${caPath}.crt -ca-key ${caPath}.key ` +
           `-out .${sep}certs${sep}node${node.index} ${ipsOption}${dnsOption}</code></pre>`;
     },

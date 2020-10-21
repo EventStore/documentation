@@ -13,12 +13,13 @@
 
 <script>
 import NodeConfig from "./NodeConfig";
-import {safe} from "../lib/strings";
+import {safe, sep} from "../lib/strings";
 
 export default {
   name: "Configuration",
   components: {NodeConfig},
   props: {
+    directories: Object,
     topology: Object,
     client: Object,
     projections: Object
@@ -26,10 +27,14 @@ export default {
   methods: {
     getNodeConfig(node) {
       const cert = () => {
+        const s = sep(this.topology.platform);
+        const certsDir = `${this.directories.config}${s}certs`;
         return {
-          file: "/certs/node.crt",
-          key: "/certs/node.key",
-          trusted: "/etc/ssl/certs",
+          file: `${certsDir}${s}node.crt`,
+          key: `${certsDir}${s}node.key`,
+          trusted: this.topology.cert === "trusted"
+              ? this.topology.platform === "linux" ? "/etc/ssl/certs" : undefined
+              : `${certsDir}${s}ca`,
           cn: this.topology.cert === "trusted" ? this.topology.certCommonName : undefined
         }
       };
@@ -74,16 +79,18 @@ export default {
           advertiseToClient: this.client.advertiseToClient,
           advNodeDns: node.clientDnsName,
           advTcpPort: this.client.externalTcpPort,
-          advHttpPort: this.client.httpPort
+          advHttpPort: this.client.httpPort,
         }
       };
 
       return {
         index: node.index,
+        platform: this.topology.platform,
         path: {
-          db: "/volume/esdb/data",
-          log: "/some/logs",
-          index: "/volume/esdb/index",
+          db: this.directories.data,
+          log: this.directories.logs,
+          index: this.directories.index,
+          config: this.directories.config
         },
         certificate: this.topology.secure ? cert() : undefined,
         network: network(),

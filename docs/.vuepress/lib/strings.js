@@ -5,3 +5,7 @@ export function safe(v){
 export function safeJoin(list) {
     return [...new Set(list)].map(x => safe(x)).join(",");
 }
+
+export function sep(platform) {
+    return platform === "windows" ? "\\" : "/";
+}

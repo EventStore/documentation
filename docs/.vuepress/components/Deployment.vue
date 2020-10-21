@@ -5,22 +5,34 @@
         <br>
         <span>Specify the configuration details in the form below, then click Validate and Proceed at the bottom.</span>
 
+        <el-divider content-position="right">Platform</el-divider>
+
+        <el-form
+            :model="topology"
+            ref="platformForm"
+            label-width="240px"
+            @validate="(field, result, error) => checkField('Directories', field, result, error)"
+        >
+          <el-form-item label="Platform:" prop="platform">
+            <el-radio-group v-model="topology.platform">
+              <el-radio-button label="linux">Linux</el-radio-button>
+              <el-radio-button label="windows">Windows</el-radio-button>
+            </el-radio-group>
+          </el-form-item>
+        </el-form>
+
+        <Directories :directories="directories" prop="directories" @update="sync"/>
+
         <!-- Deployment -->
 
         <el-form
             :model="topology"
             ref="topologyForm"
             label-width="240px"
-            @validate="(field, result, error) => checkField('Cluster topology', field, result, error)">
+            @validate="(field, result, error) => checkField('Cluster topology', field, result, error)"
+        >
 
           <el-divider content-position="right">Deployment topology</el-divider>
-
-          <el-form-item label="Platform:" prop="platform">
-            <el-radio-group v-model="topology.platform" :disabled="true">
-              <el-radio-button label="linux">Linux</el-radio-button>
-              <el-radio-button label="windows">Windows</el-radio-button>
-            </el-radio-group>
-          </el-form-item>
 
           <el-form-item label="Deployment topology:" prop="cluster">
             <el-switch
@@ -361,7 +373,7 @@
       </el-tab-pane>
 
       <el-tab-pane label="Certificates" name="certs" :disabled="!proceed || !topology.secure">
-        <Certificates v-if="topology.secure" :topology="topology" :client="client"/>
+        <Certificates :directories="directories" :topology="topology" :client="client"/>
 
         <br><br>
         <el-button @click="gotoTab('spec')">Back to specification</el-button>
@@ -369,7 +381,7 @@
       </el-tab-pane>
 
       <el-tab-pane label="Configuration" name="config" :disabled="!proceed">
-        <Configuration :topology="topology" :client="client" :projections="projections"/>
+        <Configuration :directories="directories" :topology="topology" :client="client" :projections="projections"/>
       </el-tab-pane>
 
       <el-tab-pane label="Client connection" name="client" :disabled="true">
@@ -382,6 +394,7 @@
 
 <script>
 import * as networks from "../lib/networks";
+import Directories from "./Directories";
 import Certificates from "./Certificates";
 import Configuration from "./Configuration";
 import Port from "./Port";
@@ -404,9 +417,10 @@ function error(callback, message) {
 
 export default {
   name: "Deployment",
-  components: {Certificates, Configuration, Port, Errors},
+  components: {Directories, Certificates, Configuration, Port, Errors},
   data() {
     return {
+      directories: {},
       topology: {
         secure: true,
         cluster: true,
@@ -524,8 +538,29 @@ export default {
         this.client.gossipMethod = SeedGossip
       }
     },
+    "topology.platform": {
+      immediate: true,
+      handler: function (val, oldVal) {
+        this.directories = val === "linux" ?
+            {
+              data: "/var/lib/eventstore",
+              index: "/var/lib/eventstore/index",
+              logs: "/var/log/eventstore",
+              config: "/etc/eventstore"
+            } :
+            {
+              data: "C:\\ESDB\\Data",
+              index: "C:\\ESDB\\Index",
+              logs: "C:\\ESDB\\Logs",
+              config: "C:\\ESDB"
+            };
+      }
+    }
   },
   methods: {
+    sync(args) {
+      this[args.prop][args.field] = args.value;
+    },
     copyClusterGossipToClient(validate) {
       if (validate) {
         setTimeout(() => this.$refs.topologyForm.validateField("gossip"), 1000);
@@ -550,7 +585,7 @@ export default {
       if (this.topology.nodes.length === newCount) return;
 
       while (this.topology.nodes.length > newCount) {
-        delete this.formErrors[`Node ${this.topology.nodes[this.topology.nodes.length-1].index}`]
+        delete this.formErrors[`Node ${this.topology.nodes[this.topology.nodes.length - 1].index}`]
         this.topology.nodes.pop();
       }
 
