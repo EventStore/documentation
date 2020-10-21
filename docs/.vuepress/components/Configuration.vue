@@ -36,6 +36,10 @@ export default {
 
       const intIp = x => this.topology.separateNetworks ? x.intIp : x.extIp;
 
+      const extAdvertiseAs = x => x.dnsName === "" ? undefined : x.dnsName;
+
+      const intAdvertiseAs = x => this.topology.separateNetworks ? undefined : extAdvertiseAs(x);
+
       const gossip = () => {
         if (!this.topology.cluster) return undefined;
         if (this.topology.gossipMethod === "dns") {
@@ -60,7 +64,8 @@ export default {
         return {
           intIp: intIp(node),
           extIp: node.extIp,
-          extHost: node.dnsName === "" ? undefined : node.dnsName,
+          extHost: extAdvertiseAs(node),
+          intHost: intAdvertiseAs(node),
           httpPort: this.topology.httpPort,
           intTcpPort: this.topology.internalTcpPort,
           extTcpPort: this.topology.externalTcpPort,
