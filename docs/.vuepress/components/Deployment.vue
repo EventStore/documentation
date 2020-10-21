@@ -84,7 +84,7 @@
               </el-input-number>
             </el-col>
             <el-col :span="12" v-if="topology.cluster" class="form-help">
-              We recommend <b>three nodes</b> for the HA cluster. The number of nodes should be odd.
+              We recommend <b>three nodes</b> for an HA cluster. The number of nodes should be odd.
             </el-col>
           </el-form-item>
 
