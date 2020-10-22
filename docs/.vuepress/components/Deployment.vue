@@ -21,7 +21,8 @@
           </el-form-item>
         </el-form>
 
-        <Directories :directories="directories" prop="directories" @update="sync"/>
+        <Directories :directories="directories" prop="directories" :disable-config="topology.platform==='linux'"
+                     @update="sync"/>
 
         <!-- Deployment -->
 
@@ -51,39 +52,38 @@
           </el-form-item>
 
           <transition name="slide">
-            <el-form-item
-                v-show="topology.secure"
-                label="Certificate:"
-                prop="cert">
-              <el-radio-group v-model="topology.cert">
-                <el-radio-button label="self-signed">Self-signed</el-radio-button>
-                <el-radio-button label="trusted">Public CA</el-radio-button>
-              </el-radio-group>
-            </el-form-item>
-          </transition>
+            <div v-show="topology.secure">
+              <el-form-item
+                  label="Certificate:"
+                  prop="cert">
+                <el-radio-group v-model="topology.cert">
+                  <el-radio-button label="self-signed">Self-signed</el-radio-button>
+                  <el-radio-button label="trusted">Public CA</el-radio-button>
+                </el-radio-group>
+              </el-form-item>
 
-          <transition name="slide">
-            <el-form-item
-                v-show="topology.secure"
-                label="Certificate common name:"
-                prop="certCommonName"
-                :rules="[
-            {required: topology.secure, message: 'Certificate CN is required'},
-            {validator: validateCertCn, trigger: 'blur'},
-          ]"
-            >
-              <el-col :span="10">
-                <el-input
-                    v-model="topology.certCommonName"
-                    :disabled="isSelfSigned"
-                    :placeholder="publicCaPrompt"
-                >
-                </el-input>
-              </el-col>
-              <el-col :span="10" v-if="topology.secure" class="form-help">
-                <span v-html="certCnHelp"></span>
-              </el-col>
-            </el-form-item>
+              <el-form-item
+                  v-show="topology.secure"
+                  label="Certificate common name:"
+                  prop="certCommonName"
+                  :rules="[
+                      {required: topology.secure, message: 'Certificate CN is required'},
+                      {validator: validateCertCn, trigger: 'blur'},
+                    ]"
+              >
+                <el-col :span="10">
+                  <el-input
+                      v-model="topology.certCommonName"
+                      :disabled="isSelfSigned"
+                      :placeholder="publicCaPrompt"
+                  >
+                  </el-input>
+                </el-col>
+                <el-col :span="10" class="form-help">
+                  <span v-html="certCnHelp"></span>
+                </el-col>
+              </el-form-item>
+            </div>
           </transition>
 
           <el-form-item label="Number of nodes:" prop="nodesCount">
@@ -384,8 +384,8 @@
         <Configuration :directories="directories" :topology="topology" :client="client" :projections="projections"/>
       </el-tab-pane>
 
-      <el-tab-pane label="Client connection" name="client" :disabled="true">
-
+      <el-tab-pane label="Client connection" name="client" :disabled="!proceed">
+        <Connection :topology="topology" :conn="client"/>
       </el-tab-pane>
 
     </el-tabs>
@@ -397,27 +397,19 @@ import * as networks from "../lib/networks";
 import Directories from "./Directories";
 import Certificates from "./Certificates";
 import Configuration from "./Configuration";
+import Connection from "./Connection";
 import Port from "./Port";
 import Errors from "./Errors";
+import {ok, error, validateGossip, validateIpAddress, validateDnsName} from "../lib/validate";
 
 const SelfSignedCommonName = "eventstoredb-node";
 const SelfSigned = "self-signed";
 const DnsGossip = "dns";
 const SeedGossip = "seed";
 
-function ok(callback) {
-  callback();
-  return true;
-}
-
-function error(callback, message) {
-  callback(new Error(message));
-  return false;
-}
-
 export default {
   name: "Deployment",
-  components: {Directories, Certificates, Configuration, Port, Errors},
+  components: {Directories, Certificates, Configuration, Connection, Port, Errors},
   data() {
     return {
       directories: {},
@@ -623,7 +615,7 @@ export default {
 
       const result = value === ""
           ? ok(callback)
-          : this.validateDnsName(rule, value, callback)
+          : validateDnsName(rule, value, callback)
           && unique()
           && this.ensureCaDomainMatch(value, callback);
       if (result) {
@@ -646,17 +638,9 @@ export default {
 
       const prop = Object.keys(source)[0];
 
-      if (!this.validateIpAddress(rule, value, callback)) return;
+      if (!validateIpAddress(rule, value, callback)) return;
 
       return !this.uniqueNode(prop, value) ? error(callback, `${value} already used`) : ok(callback);
-    },
-    validateDnsName(rule, value, callback) {
-      return networks.isValidDns(value) ? true : error(callback, "Invalid DNS name");
-    },
-    validateIpAddress(rule, value, callback) {
-      return value !== "" && networks.isValidIpAddress(value)
-          ? true
-          : error(callback, "Invalid IP address");
     },
     ensureCaDomainMatch(dnsName, callback) {
       if (!this.topology.secure || this.isSelfSigned) return true;
@@ -669,22 +653,12 @@ export default {
       item[propTo] = ips === undefined ? "" : ips[0];
     },
     async validateClusterGossip(rule, value, callback) {
-      return !this.isDnsClusterGossip ? ok(callback) : await this.validateGossip(value, callback);
+      return !this.isDnsClusterGossip ? ok(callback) : await validateGossip(this.topology.nodes, value, callback);
     },
     async validateClientGossip(rule, value, callback) {
       return !this.isDnsClientGossip
           ? ok(callback)
-          : this.ensureCaDomainMatch(value, callback) && await this.validateGossip(value, callback);
-    },
-    async validateGossip(value, callback) {
-      const ips = await networks.resolveDns(value);
-      if (ips === undefined) {
-        return error(callback, "Unable to resolve DNS name");
-      }
-      const notFound = this.topology.nodes.filter(x => x.extIp !== "" && !ips.find(y => y === x.extIp));
-      return notFound.length === 0
-          ? ok(callback)
-          : error(callback, `${value} does not resolve to ${notFound[0].extIp}`);
+          : this.ensureCaDomainMatch(value, callback) && await validateGossip(this.topology.nodes, value, callback);
     },
     async validateConfiguration() {
       const cb = () => {

@@ -203,7 +203,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 h3 {
   padding-bottom: 0;
   padding-top: 1rem;

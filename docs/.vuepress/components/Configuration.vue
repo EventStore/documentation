@@ -1,23 +1,30 @@
 <template>
   <ClientOnly>
     <div>
-      <h2>Configuration</h2>
+      <h2>EventStoreDB installation and configuration</h2>
+
+      <el-divider content-position="right">Installation</el-divider>
+
+      <Installation :directories="directories" :topology="topology"/>
+
+      <el-divider content-position="right">Configuration</el-divider>
+
       <NodeConfig
           v-for="node in topology.nodes"
           :key="`node-${node.index}`"
-          :node="getNodeConfig(node)">
-      </NodeConfig>
+          :node="getNodeConfig(node)"/>
     </div>
   </ClientOnly>
 </template>
 
 <script>
 import NodeConfig from "./NodeConfig";
+import Installation from "./Installation";
 import {safe, sep} from "../lib/strings";
 
 export default {
   name: "Configuration",
-  components: {NodeConfig},
+  components: {NodeConfig, Installation},
   props: {
     directories: Object,
     topology: Object,
@@ -55,8 +62,6 @@ export default {
           }
         } else {
           const otherNodes = this.topology.nodes.filter(x => x.index !== node.index);
-          console.log(otherNodes);
-
           return {
             discoverViaDns: false,
             clusterSize: this.topology.nodesCount,

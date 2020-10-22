@@ -17,3 +17,4 @@ export async function resolveDns(dnsName) {
     const response = await axios.default.get(url);
     return response.data.Status === 0 ? response.data.Answer.map(x => x.data) : undefined;
 }
+
