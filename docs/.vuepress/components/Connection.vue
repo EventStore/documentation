@@ -15,7 +15,7 @@
       <pre><code>{{ connectionString }}</code></pre>
 
       <p>Example:</p>
-      <pre><code>{{ example }}</code></pre>
+      <prism language="csharp">{{ example }}</prism>
 
       <div v-show="this.topology.cert === 'self-signed'">
         <p>Note:</p>

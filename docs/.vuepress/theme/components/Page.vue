@@ -3,7 +3,6 @@
     <CodeLanguageSwitcher v-if="usePageToggle"/>
 
     <slot name="top"/>
-
     <Content class="theme-default-content"/>
     <PageEdit/>
 

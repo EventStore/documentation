@@ -8,7 +8,7 @@
     "fs-extra": "^9.0.1",
     "markdown-it-vuepress-code-snippet-enhanced": "^1.0.1",
     "swagger-markdown": "^1.2.0",
-    "vuepress": "^1.5.0",
+    "vuepress": "^1.6.0",
     "vuepress-plugin-check-md": "^0.0.2",
     "vuepress-plugin-element-tabs": "^0.2.8",
     "vuepress-plugin-one-click-copy": "^1.0.2",
@@ -19,8 +19,10 @@
     "element-ui": "^2.13.1",
     "markdown-it": "^12.0.0",
     "markdown-it-include": "^1.1.0",
+    "prismjs": "^1.22.0",
     "remove-markdown": "^0.3.0",
     "simple-git": "^2.6.0",
+    "vue-prism-component": "^1.2.0",
     "vuex": "^3.1.3"
   },
   "resolutions": {

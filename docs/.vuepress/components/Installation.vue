@@ -26,11 +26,8 @@
           <p></p>
         </div>
       </transition>
-      <pre>
-<code>curl -s https://{{
-    safeKey
-  }}packagecloud.io/install/repositories/EventStore/EventStore-{{ ent ? "Commercial" : "OSS" }}/script.deb.sh | sudo bash
-sudo {{ pkgmgr }} install eventstore-{{ ent ? "commercial" : "oss" }}{{ version }}</code> </pre>
+      <prism language="bash">curl -s https://{{ safeKey }}packagecloud.io/install/repositories/EventStore/EventStore-{{ ent ? "Commercial" : "OSS" }}/script.deb.sh | sudo bash
+sudo {{ pkgmgr }} install eventstore-{{ ent ? "commercial" : "oss" }}{{ version }}</prism>
       <Download :alternate="true" :ent="ent"/>
       <p></p>
       After installing the package, the <code>eventstore</code> service doesn't start automatically. That's because

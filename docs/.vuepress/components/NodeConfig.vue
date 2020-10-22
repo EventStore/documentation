@@ -2,7 +2,7 @@
   <ClientOnly>
   <div>
     <h3>Node {{ node.index }}</h3>
-    <pre><code>{{ configFile }}</code></pre>
+    <prism language="yaml">{{ configFile }}</prism>
   </div>
   </ClientOnly>
 </template>

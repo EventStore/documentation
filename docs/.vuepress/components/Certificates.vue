@@ -34,7 +34,7 @@
 
           <div v-if="form.os === 'docker'">
             Pull the latest tool image from Docker Hub.
-            <pre><code>docker pull eventstore/es-gencert-cli</code></pre>
+            <prism language="bash">docker pull eventstore/es-gencert-cli</prism>
           </div>
           <div v-else>
             Download and extract the binary from the tool repository
@@ -50,12 +50,12 @@
 
           <br>
           In the directory where you'll be running the tool, create a <code>certs</code> subdirectory.
-          <pre><code>mkdir certs</code></pre>
+          <prism language="bash">mkdir certs</prism>
 
           <el-divider content-position="right">Generate the CA certificate</el-divider>
           <p></p>
           Then, generate the CA certificate, which you'd need to trust for each of the nodes:<br><br>
-          <pre><code>{{ tool }} create-ca -out .{{ sep }}certs{{ sep }}ca</code></pre>
+          <prism language="bash">{{ tool }} create-ca -out .{{ sep }}certs{{ sep }}ca</prism>
           By default, the tool will create the <code>ca</code> directory in the <code>certs</code> directory you created
           earlier and add two files there:
           <p></p><code>ca.crt</code> and <code>ca.key</code>.
@@ -89,7 +89,7 @@
 
             Command for the node certificate generation:
             <p></p>
-            <span v-html="nodeCertGen(item)"/>
+            <prism language="bash">{{nodeCertGen(item)}}</prism>
           </div>
 
           <el-divider content-position="right">Copy files to servers</el-divider>
@@ -106,7 +106,7 @@
             Usually, you'd need to change rights for each certificate file to prevent the "permissions are too open"
             error.
             You can do it by running the following command:
-            <pre><code>chmod 600 [file]</code></pre>
+            <prism language="bash">chmod 600 [file]</prism>
           </div>
         </div>
       </div>
@@ -192,9 +192,9 @@ export default {
       const sep = this.sep;
       const caPath = `.${sep}certs${sep}ca${sep}ca`;
 
-      return `<pre><code class="language-bash">${this.prefix}es-gencert-cli create-node ` +
+      return `${this.prefix}es-gencert-cli create-node ` +
           `-ca-certificate ${caPath}.crt -ca-key ${caPath}.key ` +
-          `-out .${sep}certs${sep}node${node.index} ${ipsOption}${dnsOption}</code></pre>`;
+          `-out .${sep}certs${sep}node${node.index} ${ipsOption}${dnsOption}`;
     },
     v(val) {
       return val !== undefined && val !== "" ? val : "<not provided>";
