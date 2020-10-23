@@ -18,12 +18,12 @@ export default ({Vue, options, router, siteData}) => {
     Vue.component("prism", Prism);
 
     // store.commit(SetSiteLanguages, siteData.themeConfig.codeLanguages);
-    Object.assign(options, {
-        data: {
-            codeLanguage: null,
-        },
-        store: store
-    });
+    // Object.assign(options, {
+    //     data: {
+    //         codeLanguage: null,
+    //     },
+    //     store: store
+    // });
     router.addRoutes([
         {
             path: "/latest.html",
