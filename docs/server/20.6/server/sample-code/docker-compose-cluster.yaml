@@ -1,102 +1,96 @@
-version: '3.4'
+version: '3.5'
 
 services:
-  eventstore.db1:
-    image: docker.pkg.github.com/eventstore/eventstore/eventstore:20.6.1-alpha.0.40-buster-slim
+  setup:
+    image: eventstore/es-gencert-cli:1.0.2
+    entrypoint: bash
+    user: "1000:1000"
+    command: >
+      -c "mkdir -p ./certs && cd /certs
+      && es-gencert-cli create-ca
+      && es-gencert-cli create-node -out ./node1 --dns-names node1.eventstore
+      && es-gencert-cli create-node -out ./node2 --dns-names node2.eventstore
+      && es-gencert-cli create-node -out ./node3 --dns-names node3.eventstore
+      && find . -type f -print0 | xargs -0 chmod 666"
+    container_name: setup
+    volumes:
+      - ./certs:/certs
+
+  node1.eventstore: &template
+    image: eventstore/eventstore:20.6.1-buster-slim
+    container_name: node1.eventstore
+    env_file:
+      - vars.env
     environment:
-      - EVENTSTORE_WORKER_THREADS=5
-      - EVENTSTORE_CLUSTER_SIZE=3
-      - EVENTSTORE_CLUSTER_GOSSIP_PORT=2113
-      - EVENTSTORE_RUN_PROJECTIONS=All
-      - EVENTSTORE_DISCOVER_VIA_DNS=true
-      - EVENTSTORE_CLUSTER_DNS=eventstore.local
-      - EVENTSTORE_INT_IP=172.42.238.3
-      - EVENTSTORE_EXT_IP=172.42.238.3
-      - EVENTSTORE_INSECURE=true
-      - EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP=true
+      - EVENTSTORE_EXT_HOST_ADVERTISE_AS=node1.eventstore
+      - EVENTSTORE_INT_HOST_ADVERTISE_AS=node1.eventstore
+      - EVENTSTORE_GOSSIP_SEED=node2.eventstore:2113,node3.eventstore:2113
+      - EVENTSTORE_CERTIFICATE_FILE=/certs/node1/node.crt
+      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node1/node.key
+      - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2111
+      - EVENTSTORE_ADVERTISE_TCP_PORT_TO_CLIENT_AS=1111
+    healthcheck:
+      test:
+        [
+            'CMD-SHELL',
+            'curl --fail --insecure https://node1.eventstore:2113/health/live || exit 1',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 24
     ports:
-      - "1113:1113"
-      - "2113:2113"
-    networks:
-      app_net:
-        aliases:
-          - eventstore.local
-        ipv4_address: 172.42.238.3
+      - 1111:1113
+      - 2111:2113
     volumes:
-      - type: volume
-        source: eventstore-volume-data1
-        target: /var/lib/eventstore
-      - type: volume
-        source: eventstore-volume-logs1
-        target: /var/log/eventstore
+      - ./certs:/certs
+    depends_on:
+      - setup
+    restart: always
 
-  eventstore.db2:
-    image: docker.pkg.github.com/eventstore/eventstore/eventstore:20.6.1-alpha.0.40-buster-slim
+  node2.eventstore:
+    <<: *template
+    container_name: node2.eventstore
     environment:
-      - EVENTSTORE_WORKER_THREADS=5
-      - EVENTSTORE_CLUSTER_SIZE=3
-      - EVENTSTORE_CLUSTER_GOSSIP_PORT=2113
-      - EVENTSTORE_RUN_PROJECTIONS=All
-      - EVENTSTORE_DISCOVER_VIA_DNS=true
-      - EVENTSTORE_CLUSTER_DNS=eventstore.local
-      - EVENTSTORE_INT_IP=172.42.238.4
-      - EVENTSTORE_EXT_IP=172.42.238.4
-      - EVENTSTORE_INSECURE=true
-    expose:
-      - "1113"
-      - "2113"
-    networks:
-      app_net:
-        aliases:
-          - eventstore.local
-        ipv4_address: 172.42.238.4
-    volumes:
-      - type: volume
-        source: eventstore-volume-data2
-        target: /var/lib/eventstore
-      - type: volume
-        source: eventstore-volume-logs2
-        target: /var/log/eventstore
+      - EVENTSTORE_EXT_HOST_ADVERTISE_AS=node2.eventstore
+      - EVENTSTORE_INT_HOST_ADVERTISE_AS=node2.eventstore
+      - EVENTSTORE_GOSSIP_SEED=node1.eventstore:2113,node3.eventstore:2113
+      - EVENTSTORE_CERTIFICATE_FILE=/certs/node2/node.crt
+      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node2/node.key
+      - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2112
+      - EVENTSTORE_ADVERTISE_TCP_PORT_TO_CLIENT_AS=1112
+    healthcheck:
+      test:
+        [
+            'CMD-SHELL',
+            'curl --fail --insecure https://node2.eventstore:2113/health/live || exit 1',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+    ports:
+      - 1112:1113
+      - 2112:2113
 
-  eventstore.db3:
-    image: docker.pkg.github.com/eventstore/eventstore/eventstore:20.6.1-alpha.0.40-buster-slim
+  node3.eventstore:
+    <<: *template
+    container_name: node3.eventstore
     environment:
-      - EVENTSTORE_WORKER_THREADS=5
-      - EVENTSTORE_CLUSTER_SIZE=3
-      - EVENTSTORE_RUN_PROJECTIONS=All
-      - EVENTSTORE_CLUSTER_GOSSIP_PORT=2113
-      - EVENTSTORE_DISCOVER_VIA_DNS=true
-      - EVENTSTORE_CLUSTER_DNS=eventstore.local
-      - EVENTSTORE_INT_IP=172.42.238.5
-      - EVENTSTORE_EXT_IP=172.42.238.5
-      - EVENTSTORE_INSECURE=true
-    expose:
-      - "1113"
-      - "2113"
-    networks:
-      app_net:
-        aliases:
-          - eventstore.local
-        ipv4_address: 172.42.238.5
-    volumes:
-      - type: volume
-        source: eventstore-volume-data3
-        target: /var/lib/eventstore
-      - type: volume
-        source: eventstore-volume-logs3
-        target: /var/log/eventstore
-
-volumes:
-  eventstore-volume-data1:
-  eventstore-volume-logs1:
-  eventstore-volume-data2:
-  eventstore-volume-logs2:
-  eventstore-volume-data3:
-  eventstore-volume-logs3:
-
-networks:
-  app_net:
-    ipam:
-      driver: default
-      config:
-        - subnet: "172.42.238.0/24"
+      - EVENTSTORE_EXT_HOST_ADVERTISE_AS=node3.eventstore
+      - EVENTSTORE_INT_HOST_ADVERTISE_AS=node3.eventstore
+      - EVENTSTORE_GOSSIP_SEED=node1.eventstore:2113,node2.eventstore:2113
+      - EVENTSTORE_CERTIFICATE_FILE=/certs/node3/node.crt
+      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node3/node.key
+      - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2113
+      - EVENTSTORE_ADVERTISE_TCP_PORT_TO_CLIENT_AS=1113
+    healthcheck:
+      test:
+        [
+            'CMD-SHELL',
+            'curl --fail --insecure https://node3.eventstore:2113/health/live || exit 1',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+    ports:
+      - 1113:1113
+      - 2113:2113
