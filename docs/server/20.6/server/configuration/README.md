@@ -8,7 +8,7 @@ When you don't change the configuration, EventStoreDB will use sensible defaults
 
 You can check what version of EventStoreDB you have installed by using the `--version` parameter in the command line. For example:
 
-```
+```bash
 $ eventstore --version
 EventStoreDB version 20.6.1.0 (tags/oss-v20.6.1/9ea108855, Unknown)
 ```
@@ -22,10 +22,9 @@ You would use the configuration file when you want the server to run with the sa
 The configuration file has YAML-compatible format. The basic format of the YAML configuration file is as follows:
 
 ```yaml
- ---
- Db: "/volumes/data"
- Log: "/esdb/logs"
- --- 
+---
+Db: "/volumes/data"
+Log: "/esdb/logs"
 ```
 
 :::tip
@@ -48,18 +47,19 @@ You can also override options from both configuration files and environment vari
 
 For example, starting EventStoreDB with the `--log` option will override the default log files location:
 
-:::: el-tabs
-::: el-tab-pane label="Linux"
-```
+<code-group>
+<code-block title="Linux">
+```bash
 eventstore --log /tmp/eventstore/logs
 ```
-:::
-::: el-tab-pane label="Windows"
+</code-block>
+<code-block title="Windows">
+
 ```
 EventStore.ClusterNode.exe --log C:\Temp\EventStore\Logs
 ```
-:::
-::::
+</code-block>
+</code-group>
 
 ## Testing the configuration
 
