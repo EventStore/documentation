@@ -41,11 +41,12 @@ module.exports = {
         },
         sidebarDepth: 1,
         searchPlaceholder: "Search",
+        searchMaxSuggestions: 20,
         lastUpdated: "Last Updated",
         nav: [
             {
                 text: "Getting started",
-                link: "/server/5.0.8/server/introduction/"
+                link: "/latest.html"
             },
             {
                 text: "Server",
