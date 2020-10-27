@@ -92,8 +92,7 @@ We recommend you try other methods of improving projections before changing thes
 
 ### Checkpoint after Ms
 
-The `CheckpointAfterMs` setting prevents a new checkpoint from being written within a certain time frame from the previous one.
-The setting is to keep a projection from writing too many checkpoints too quickly, something that can happen in a busy system.
+The `CheckpointAfterMs` setting prevents a new checkpoint from being written within a certain time frame from the previous one. The setting is to keep a projection from writing too many checkpoints too quickly, something that can happen in a busy system.
 
 The default setting is 0 seconds, which means there is no limit to how quickly checkpoints can be written.
 

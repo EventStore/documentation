@@ -40,6 +40,32 @@ module.exports = [
         ]
     },
     {
+        title: "Networking",
+        collapsable: true,
+        path: "networking/",
+        children: [
+            "networking/",
+            "networking/http.md",
+            "networking/tcp.md",
+            "networking/nat.md",
+            "networking/heartbeat.md",
+            "networking/endpoints.md",
+        ]
+    },
+    {
+        title: "Clustering",
+        collapsable: true,
+        path: "clustering/",
+        children: [
+            "clustering/",
+            "clustering/using-dns.md",
+            "clustering/using-ip-addresses.md",
+            "clustering/gossip.md",
+            "clustering/node-roles.md",
+            "clustering/acknowledgements.md",
+        ]
+    },
+    {
         title: "Indexes",
         collapsable: true,
         path: "indexes/",
@@ -64,12 +90,14 @@ module.exports = [
         ]
     },
     {
-        title: "Scavenge",
+        title: "Operations",
         collapsable: true,
-        path: "scavenge/",
+        path: "operations/",
         children: [
-            "scavenge/",
-            "scavenge/options.md",
+            "operations/",
+            "operations/scavenge.md",
+            "operations/scavenge-options.md",
+            "operations/database-backup.md",
         ]
     },
     {
@@ -85,4 +113,13 @@ module.exports = [
             "diagnostics/datadog.md",
         ]
     },
+    {
+        title: "Event streams",
+        collapsable: true,
+        children: [
+            "streams/metadata-and-reserved-names.md",
+            "streams/deleting-streams-and-events.md",
+            "streams/system-streams.md"
+        ]
+    }
 ]

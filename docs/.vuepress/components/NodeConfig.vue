@@ -36,6 +36,9 @@ export default {
         config.add("CertificatePrivateKeyFile", this.node.certificate.key);
         config.add("TrustedRootCertificatesPath", this.node.certificate.trusted);
         config.addIf("CertificateReservedNodeCommonName", this.node.certificate.cn, this.node.certificate.cn);
+      } else {
+        config.push("\n# Run in insecure mode");
+        config.add("Insecure", "true");
       }
 
       config.push("\n# Network configuration");

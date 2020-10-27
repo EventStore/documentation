@@ -49,7 +49,6 @@ module.exports = [
             "networking/nat.md",
             "networking/heartbeat.md",
             "networking/endpoints.md",
-            "networking/mystery.md",
         ]
     },
     {
@@ -85,7 +84,6 @@ module.exports = [
             "server/database.md",
             "server/threading.md",
             "server/caching.md",
-            "server/remove.md",
         ]
     },
     {
@@ -100,12 +98,14 @@ module.exports = [
         ]
     },
     {
-        title: "Scavenge",
+        title: "Operations",
         collapsable: true,
-        path: "scavenge/",
+        path: "operations/",
         children: [
-            "scavenge/",
-            "scavenge/options.md",
+            "operations/",
+            "operations/scavenge.md",
+            "operations/scavenge-options.md",
+            "operations/database-backup.md",
         ]
     },
     {
@@ -119,13 +119,6 @@ module.exports = [
             "diagnostics/histograms.md",
             "diagnostics/prometheus.md",
             "diagnostics/datadog.md",
-        ]
-    },
-    {
-        title: "Operations",
-        collapsable: true,
-        children: [
-            "operations/database-backup.md",
         ]
     },
     {
