@@ -86,7 +86,7 @@ You have tell your client to use secure connection for both TCP and gRPC.
 | Protocol | Connection string |
 | :------- | :---------------- |
 | TCP | `GossipSeeds=localhost:1111,localhost:1112,localhost:1113;ValidateServer=False;UseSslConnection=True` |
-| gRPC | `esbb://localhost:2111,localhost:2112,localhost:2113?tls=true&tlsVerifyCert=false` |
+| gRPC | `esdb://localhost:2111,localhost:2112,localhost:2113?tls=true&tlsVerifyCert=false` |
 
 As you might've noticed, both connection strings have a setting to disable the certificate validation. It would prevent the invalid certificate error since the cluster uses self-signed certificates. However, we do not recommend using this setting in production. Instead, you can either add the CA certificated to the trusted root CA store or instruct your application to use such a certificate.
 
