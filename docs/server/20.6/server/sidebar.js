@@ -28,6 +28,18 @@ module.exports = [
         ]
     },
     {
+        title: "Security",
+        collapsable: true,
+        path: "security/",
+        children: [
+            "security/",
+            "security/configuration.md",
+            "security/authentication.md",
+            "security/acl.md",
+            "security/trusted-intermediary.md",
+        ]
+    },
+    {
         title: "Indexes",
         collapsable: true,
         path: "indexes/",

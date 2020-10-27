@@ -6,7 +6,7 @@ Each heartbeat has two points of configuration. The first is the 'interval', thi
 
 The second point of configuration is the _timeout_. This determines how long EventStoreDB server waits for a client or node to respond to a heartbeat request.
 
-Different environments need different values for these settings. While low numbers work well on a LAN they tend to not work well in the cloud. The defaults are likely fine on a LAN, for the cloud, consider setting:
+Different environments need different values for these settings. While low numbers work well on a LAN they tend to not work well in the cloud. The defaults are likely fine on a LAN. If you experience frequent elections in your environment, you can try to increase both interval and timeout, for example:
 
 - An interval of 5000ms.
 - A timeout of 1000ms.
@@ -15,10 +15,38 @@ Different environments need different values for these settings. While low numbe
 If in doubt, choose higher numbers. This adds a small period of time to discover a dead client or node and is better than the alternative, which is false positives.
 :::
 
-| -IntTcpHeartbeatTimeout<br/>--int-tcp-heartbeat-timeout=VALUE<br/> | INT_TCP_HEARTBEAT_TIMEOUT | IntTcpHeartbeatTimeout | Heartbeat timeout for internal TCP sockets (Default: 700) |
+Internal TCP heartbeat (between cluster nodes): 
 
-| -ExtTcpHeartbeatTimeout<br/>--ext-tcp-heartbeat-timeout=VALUE<br/> | EXT_TCP_HEARTBEAT_TIMEOUT | ExtTcpHeartbeatTimeout | Heartbeat timeout for external TCP sockets (Default: 1000) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--int-tcp-heartbeat-interval` |
+| YAML                 | `IntTcpHeartbeatInterval` |
+| Environment variable | `EVENTSTORE_INT_TCP_HEARTBEAT_INTERVAL` | 
 
-| -IntTcpHeartbeatInterval<br/>--int-tcp-heartbeat-interval=VALUE<br/> | INT_TCP_HEARTBEAT_INTERVAL | IntTcpHeartbeatInterval     | Heartbeat interval for internal TCP sockets (Default: 700) |
+**Default**: `700` (ms)
 
-| -ExtTcpHeartbeatInterval<br/>--ext-tcp-heartbeat-interval=VALUE<br/> | EXT_TCP_HEARTBEAT_INTERVAL | ExtTcpHeartbeatInterval | Heartbeat interval for external TCP sockets (Default: 2000) |
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--int-tcp-heartbeat-timeout` |
+| YAML                 | `IntTcpHeartbeatTimeout` |
+| Environment variable | `EVENTSTORE_INT_TCP_HEARTBEAT_TIMEOUT` | 
+
+**Default**: `700` (ms)
+
+External TCP heartbeat (between client and server): 
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--ext-tcp-heartbeat-interval` |
+| YAML                 | `ExtTcpHeartbeatInterval` |
+| Environment variable | `EVENTSTORE_EXT_TCP_HEARTBEAT_INTERVAL` | 
+
+**Default**: `2000` (ms)
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--ext-tcp-heartbeat-timeout` |
+| YAML                 | `ExtTcpHeartbeatTimeout` |
+| Environment variable | `EVENTSTORE_EXT_TCP_HEARTBEAT_TIMEOUT` | 
+
+**Default**: `1000` (ms)
