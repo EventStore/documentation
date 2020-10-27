@@ -10,10 +10,6 @@ After processing the chunks, the operation updates the chunk indexes using a mer
 Once a scavenge has run, you cannot recover any deleted events.
 :::
 
-::: tip
-Before version 4.0.2, a scavenge operation only worked with database chunk files. Since version 4.0.2 that reordering also happens inside the index files.
-:::
-
 ## Starting a scavenge
 
 Scavenges are not run automatically by EventStoreDB. We recommendation that you set up a scheduled task, for example using cron or Windows Scheduler, to trigger a scavenge as often as you need.
