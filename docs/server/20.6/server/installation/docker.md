@@ -65,6 +65,6 @@ You have tell your client to use secure connection for both TCP and gRPC.
 | Protocol | Connection string |
 | :------- | :---------------- |
 | TCP | `GossipSeeds=localhost:1111,localhost:1112,localhost:1113;ValidateServer=False;UseSslConnection=True` |
-| gRPC | `esbb://localhost:2111,localhost:2112,localhost:2113?tls=true&tlsVerifyCert=false` |
+| gRPC | `esdb://localhost:2111,localhost:2112,localhost:2113?tls=true&tlsVerifyCert=false` |
 
 
