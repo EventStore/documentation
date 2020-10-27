@@ -361,10 +361,17 @@
 
       <el-tab-pane label="Configuration" name="config" :disabled="!proceed">
         <Configuration :directories="directories" :topology="topology" :client="client" :projections="projections"/>
+
+        <br><br>
+        <el-button @click="gotoTab('certs')">Back to certificates</el-button>
+        <el-button type="primary" @click="gotoTab('client')">Proceed to client connection</el-button>
       </el-tab-pane>
 
       <el-tab-pane label="Client connection" name="client" :disabled="!proceed">
         <Connection :topology="topology" :conn="client"/>
+
+        <br><br>
+        <el-button @click="gotoTab('config')">Back to configuration</el-button>
       </el-tab-pane>
 
     </el-tabs>
@@ -651,8 +658,6 @@ export default {
       this.validated = true;
     },
     checkField(form, field, result, error) {
-      console.log(form, field, result, error);
-
       const errors = {...this.formErrors};
       if (!this.formErrors[form]) {
         errors[form] = [];
@@ -666,13 +671,24 @@ export default {
         existing.error = error;
       }
       this.formErrors = errors;
+      this.track("validate", this.formErrors.length);
     },
     gotoConfig() {
       this.proceed = true;
       this.gotoTab(this.topology.secure ? "certs" : "config");
     },
     gotoTab(tab) {
+      this.track(tab);
       this.activeTab = tab;
+    },
+    track(action, value) {
+      this.$gtm.trackEvent({
+        event: null, // Event type [default = 'interaction'] (Optional)
+        category: "Documentation",
+        action: action,
+        label: "Configurator",
+        value: value,
+      });
     }
   },
 }
