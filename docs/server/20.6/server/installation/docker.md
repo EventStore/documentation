@@ -23,15 +23,35 @@ docker run --name esdb-node -it -p 2113:2113 -p 1113:1113 \
     --enable-external-tcp --enable-atom-pub-over-http
 ```
 
+The command above would run EventStoreDB as a single node without SSL and with the legacy TCP protocol enabled, so you can try out your existing apps with the latest database version.
+
 Then, you'd be able to connect to EventStoreDB with gRPC and TCP clients. Also, the Stream Browser will work in the Admin UI.
 
 In order to sustainably keep the data, we also recommend mapping the database and index volumes.
 
 ## Use Docker Compose
 
-You can also run a three-node secure cluster locally using Docker Compose.
+You can also run a single-node instance or a three-node secure cluster locally using Docker Compose.
 
-The Compose file we prepared has one service, which generates the necessary certificates when it starts for the first time. On consecutive runs it will keep the existing certificates.
+### Insecure single node
+
+You can use Docker Compose to run EventStoreDB in the same setup as the `docker run` command mentioned before.
+
+Create file `docker-compose.yaml` with following content:
+
+<<< @/docs/server/20.6/server/sample-code/docker-compose.yaml
+
+Run the instance:
+
+```bash
+docker-compose up
+```
+
+The command above would run EventStoreDB as a single node without SSL and with the legacy TCP protocol enabled. You also get AtomPub protocol enabled, so you can get the stream browser to work in the Admin UI.
+
+### Secure cluster
+
+With Docker Compose, you can also run a three-node cluster with security enabled. That kind of setup is something you'd expect to use in production.
 
 Create file `docker-compose.yaml` with following content:
 
@@ -52,6 +72,7 @@ Now you are ready to start the cluster.
 ```bash
 docker-compose up
 ```
+
 Check the log messages, after some time the elections process completes and you'd be able to connect to each node using the Admin UI. Nodes should be accessible on the loopback address (`127.0.0.1`) over HTTP and TCP, using ports specified below:
 
 | Node | TCP port | HTTP port |
@@ -66,5 +87,7 @@ You have tell your client to use secure connection for both TCP and gRPC.
 | :------- | :---------------- |
 | TCP | `GossipSeeds=localhost:1111,localhost:1112,localhost:1113;ValidateServer=False;UseSslConnection=True` |
 | gRPC | `esbb://localhost:2111,localhost:2112,localhost:2113?tls=true&tlsVerifyCert=false` |
+
+As you might've noticed, both connection strings have a setting to disable the certificate validation. It would prevent the invalid certificate error since the cluster uses self-signed certificates. However, we do not recommend using this setting in production. Instead, you can either add the CA certificated to the trusted root CA store or instruct your application to use such a certificate.
 
 

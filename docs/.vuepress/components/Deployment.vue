@@ -63,7 +63,6 @@
               </el-form-item>
 
               <el-form-item
-                  v-show="topology.secure"
                   label="Certificate common name:"
                   prop="certCommonName"
                   :rules="[
@@ -100,16 +99,11 @@
             </el-col>
           </el-form-item>
 
-          <el-form-item label="Separate interfaces:" prop="separateNetworks">
-            <el-col :span="10">
-              <el-switch v-model="topology.separateNetworks"/>
-            </el-col>
-            <el-col :span="12" class="form-help">
-              Enable this option if internal and external communication should use different network interfaces.
-            </el-col>
-          </el-form-item>
+          <FormSwitch label="Separate interfaces:" prop="separateNetworks" v-model="topology.separateNetworks">
+            Enable this option if internal and external communication should use different network interfaces.
+          </FormSwitch>
 
-          <transition-group name="slide" mode="in-out">
+          <transition-group name="slide">
             <el-form
                 label-width="240px"
                 v-for="item in topology.nodes"
@@ -230,33 +224,18 @@
         >
           <el-divider content-position="right">Protocols and client connection</el-divider>
 
-          <el-form-item label="Enable TCP for client apps:" prop="enableTcp">
-            <el-col :span="10">
-              <el-switch v-model="client.enableTcp"/>
-            </el-col>
-            <el-col :span="12" class="form-help">
-              TCP protocol is disabled by default. If you plan to use the legacy TCP client, you need to enable this
-              option.
-            </el-col>
-          </el-form-item>
+          <FormSwitch label="Enable TCP for client apps:" prop="enableTcp" v-model="client.enableTcp">
+            TCP protocol is disabled by default. If you plan to use the legacy TCP client, you need to enable this
+            option.
+          </FormSwitch>
 
-          <el-form-item label="Enable AtomPub:" prop="enableAtomPub">
-            <el-col :span="10">
-              <el-switch v-model="client.enableAtomPub"/>
-            </el-col>
-            <el-col :span="12" class="form-help">
-              AtomPub should be enabled for the stream browser to work in the Admin UI.
-            </el-col>
-          </el-form-item>
+          <FormSwitch label="Enable AtomPub:" prop="enableAtomPub" v-model="client.enableAtomPub">
+            AtomPub should be enabled for the stream browser to work in the Admin UI.
+          </FormSwitch>
 
-          <el-form-item label="Address translation:" prop="advertiseToClient">
-            <el-col :span="10">
-              <el-switch v-model="client.advertiseToClient"/>
-            </el-col>
-            <el-col :span="12" class="form-help">
-              There is some address and port translation between EventStoreDB and connecting clients.
-            </el-col>
-          </el-form-item>
+          <FormSwitch label="Address translation:" prop="advertiseToClient" v-model="client.advertiseToClient">
+            There is some address and port translation between EventStoreDB and connecting clients.
+          </FormSwitch>
 
           <transition name="slide">
             <el-form-item
@@ -398,6 +377,7 @@ import Directories from "./Directories";
 import Certificates from "./Certificates";
 import Configuration from "./Configuration";
 import Connection from "./Connection";
+import FormSwitch from "./FormSwitch";
 import Port from "./Port";
 import Errors from "./Errors";
 import {ok, error, validateGossip, validateIpAddress, validateDnsName} from "../lib/validate";
@@ -409,7 +389,7 @@ const SeedGossip = "seed";
 
 export default {
   name: "Deployment",
-  components: {Directories, Certificates, Configuration, Connection, Port, Errors},
+  components: {Directories, Certificates, Configuration, Connection, FormSwitch, Port, Errors},
   data() {
     return {
       directories: {},
@@ -619,19 +599,20 @@ export default {
           && unique()
           && this.ensureCaDomainMatch(value, callback);
       if (result) {
-        if (this.client.gossip !== "" && this.isDnsClientGossip) {
+        if (this.topology.gossip !== "" && this.isDnsClusterGossip) {
           this.$refs.topologyForm.validateField("gossip");
         }
-        if (this.client.advertiseToClient && this.isDnsClientGossip && this.client.gossip !== "") {
+        if (this.client.gossip !== "" && this.isDnsClientGossip) {
           this.$refs.clientForm.validateField("gossip");
         }
+        ok(callback);
       }
     },
     validateClusterNodeDns(rule, value, callback) {
-      return this.validateNodeDns(rule, value, "dnsName", callback);
+      this.validateNodeDns(rule, value, "dnsName", callback);
     },
     validateClientNodeDns(rule, value, callback) {
-      return this.validateNodeDns(rule, value, "clientDnsName", callback);
+      this.validateNodeDns(rule, value, "clientDnsName", callback);
     },
     validateNodeIp(rule, value, callback, source) {
       if (!rule.required && value === "") return ok(callback);
@@ -670,6 +651,8 @@ export default {
       this.validated = true;
     },
     checkField(form, field, result, error) {
+      console.log(form, field, result, error);
+
       const errors = {...this.formErrors};
       if (!this.formErrors[form]) {
         errors[form] = [];

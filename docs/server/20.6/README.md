@@ -2,7 +2,7 @@
 home: true
 heroImage: /eventstore-waves.svg
 heroText: EventStoreDB
-tagline: The stream database built for event sourcing
+tagline: The stream database built for Event Sourcing
 actionText: Get Started →
 actionLink: /v6/introduction/
 features:

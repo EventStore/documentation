@@ -69,7 +69,8 @@ By default, this is unbounded, allowing a projection to write as fast as it can.
 <!-- TODO: Is the setting name correct? Especially in HTTP -->
 
 The `MaxWriteBatchLength` setting sets the maximum number of events the projection can write in a batch at a time.
-The default for this option is 500.
+
+**Default:** `500` (events).
 
 ## Checkpoint options
 
@@ -88,7 +89,7 @@ The default setting is 0 seconds, which means there is no limit to how quickly c
 
 The `CheckpointHandledThreshold` setting controls the number of events that a projection can handle before attempting to write a checkpoint. An event is considered handled if it actually passed through the projection's filter. If the projection is set to checkpoint every 4,000 events, but it only reads from the `foo` stream, the projection only checkpoints every 4,000 `foo` events.
 
-The default setting is 4,000 events.
+**Default:** `4000` (events).
 
 ### Checkpoint unhandled bytes threshold
 
@@ -96,7 +97,7 @@ The `CheckpointUnhandledBytesThreshold` setting specifies the number of bytes a 
 
 For example, if the projection reads from the `foo` stream, but writes from the `bar` stream comes through, a checkpoint is written after this number of bytes have been processed. This prevents the projection from having to read through a potentially large number of unrelated events again because none of them passed its filter.
 
-The default setting is 10mb.
+**Default:** `10` (MiB).
 
 ## Processing options
 
@@ -105,4 +106,4 @@ The default setting is 10mb.
 The `PendingEventsThreshold` setting determines the number of events that can be pending before the projection is paused.
 Pausing the projection stops the projection from reading, allowing it to finish with the current events that are waiting to be processed. Once the pending queue has drained to half the threshold, the projection starts reading again.
 
-The default setting is 5000.
+**Default:** `5000` (events).

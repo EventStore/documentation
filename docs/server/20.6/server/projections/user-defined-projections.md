@@ -8,7 +8,7 @@ This page is work in progress.
 
 TODO: Use cases and performance implications.
 
-## Overview
+<!-- ## Overview -->
 
 You write user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
 
