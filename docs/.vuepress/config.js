@@ -15,11 +15,10 @@ module.exports = {
         "one-click-copy",
         "vuepress-plugin-element-tabs",
         "check-md", { pattern: "**/*.md" },
-        // '@vuepress/google-analytics', { 'ga': 'UA-00000000-0' },
-        "vuepress-plugin-google-tag-manager", { "gt": "GTM-WLD9W3L" }
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
+        gtm: "GTM-WLD9W3L",
         // repo: "EventStore/documentation-next",
         // editLinks: true,
         // editLinkText: "Help us improve this page!",

@@ -656,6 +656,7 @@ export default {
       this.$refs.clientForm.validate(cb);
       this.topology.nodes.forEach(node => this.$refs[`clientNode-${node.index}`][0].validate(cb));
       this.validated = true;
+      this.track("validate", this.formErrors.length);
     },
     checkField(form, field, result, error) {
       const errors = {...this.formErrors};
@@ -671,7 +672,6 @@ export default {
         existing.error = error;
       }
       this.formErrors = errors;
-      this.track("validate", this.formErrors.length);
     },
     gotoConfig() {
       this.proceed = true;
