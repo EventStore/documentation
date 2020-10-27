@@ -1,4 +1,4 @@
-const versioning = require('./lib/versioning.js');
+const versioning = require("./lib/versioning.js");
 versioning.load();
 
 module.exports = {
@@ -9,21 +9,14 @@ module.exports = {
     head: [
       ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.png"}],
       ['link', { rel: "shortcut icon", href: "/favicon.ico"}],
-      ['script', {}, `
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-WLD9W3L');
-      `]
     ],
     plugins: [
         "@vuepress/active-header-links",
         "one-click-copy",
         "vuepress-plugin-element-tabs",
-        'check-md', {
-            pattern: '**/*.md'
-        }
+        "check-md", { pattern: "**/*.md" },
+        // '@vuepress/google-analytics', { 'ga': 'UA-00000000-0' },
+        "vuepress-plugin-google-tag-manager", { "gt": "GTM-WLD9W3L" }
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
@@ -107,9 +100,6 @@ module.exports = {
         }
     },
     markdown: {
-        externalLinks: {
-            target: "_self"
-        },
         extendMarkdown: md => {
             md.use(require("./theme/markup/include"));
             md.use(require("./theme/markup/code"));//, {root: "./docs"});
