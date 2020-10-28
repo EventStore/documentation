@@ -20,8 +20,8 @@ Scavenges are not run automatically by EventStoreDB. We recommendation that you 
 
 You start a scavenge by issuing an empty `POST` request to the HTTP API with the credentials of an `admin` or `ops` user:
 
-::::: el-tabs type="border-card"
-:::: el-tab-pane label="Request"
+::::: code-group
+:::: code Request
 <<< @/docs/server/5.0.8/server/sample-code/scavenge.sh#curl
 
 ::: tip 
@@ -29,7 +29,7 @@ Scavenge operations have other options you can set to improve performance. For e
 :::
 
 ::::
-:::: el-tab-pane label="Response"
+:::: code Response
 <<< @/docs/server/5.0.8/server/sample-code/scavenge.sh#response
 ::::
 :::::
@@ -40,7 +40,7 @@ If you need to restart a stopped scavenge, you can specify the starting chunk ID
 
 You can also start scavenges from the _Admin_ page of the Admin UI.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Start a scavenge in the Admin UI](../images/admin-scavenge.png)
 :::
 

@@ -1,19 +1,5 @@
 ---
-title: HTTP API v5.0.4
-language_tabs:
-
-  + shell: shell
-
-language_clients:
-
-  + shell: ""
-
-toc_footers: []
-includes: []
-search: true
-highlight_theme: darkula
 headingLevel: 2
-
 ---
 
 <!-- Generator: Widdershins v4.0.1 -->

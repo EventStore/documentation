@@ -12,12 +12,12 @@ When using the HTTP API, you can send the following JSON payload to the server:
 
 <<< @/docs/server/5.0.8/http-api/sample-code/new-user.json
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
-<<< @/docs/server/5.0.8/http-api/sample-code/new-user.sh#curl
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/http-api/sample-code/new-user.sh
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/new-user.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/new-user.http
 :::
 ::::
 
@@ -25,25 +25,24 @@ Once you have added users, you can use their details with requests.
 
 If you were to use the wrong user or no user when a request requires one, you receive a `401 Unauthorized` response.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
-<<< @/docs/server/5.0.8/http-api/sample-code/incorrect-user.sh#curl
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/http-api/sample-code/incorrect-user.sh
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/incorrect-user.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/incorrect-user.http
 :::
 ::::
 
-As you pass the username and password in the request we recommend you to enable SSL to encrypt the user information. [Read this guide for instructions](/docs/server/5.0.8/server/setting-up-ssl.md).
+As you pass the username and password in the request we recommend you to enable SSL to encrypt the user information. [Read this guide for instructions](/docs/server/5.0.8/server/security/).
 
 ## Access control lists
 
 Alongside authentication, EventStoreDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
 
-To set access control lists over HTTP you can post to the metadata stream as [with setting any other metadata](stream-metadata.md). You can also set Access Control Lists for a stream in the admin UI.
+To set access control lists over HTTP you can post to the metadata stream as [with setting any other metadata](../stream-metadata.md). You can also set Access Control Lists for a stream in the admin UI.
 
 ### ACL example
-
 
 The ACL below gives `writer` read and write permission on the stream, while `reader` has read permission on the stream. Only users in the `$admins` group can delete the stream or read and write the metadata.
 
@@ -65,34 +64,27 @@ You get a confirmation from the server:
 All these examples assume you have created a user named `ouro` with password `ouroboros`.
 :::
 
-::::: tabs
-:::: tab Request
 <<< @/docs/server/5.0.8/server/sample-code/override-default.json
 
-<<< @/docs/server/5.0.8/server/sample-code/update-default-acl.sh#curl
-
-::: warning
-You should not copy/paste the UUID in the command line above but generate a new one or not provide one (you will be redirected to a URI with one as described in [writing events](../http-api/writing-events.md#writing-a-single-event) in the HTTP API).
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/server/sample-code/update-default-acl.sh
+:::
+::: code Response
+<<< @/docs/server/5.0.8/server/sample-code/update-default-acl.http
 :::
 ::::
-:::: tab Response
-<<< @/docs/server/5.0.8/server/sample-code/update-default-acl.sh#response
-::::
-:::
 
 If you try to access the `$settings` stream as an unauthorized user, the server returns a 401 response.
 
-:::: tabs
-::: tab Request
-
+:::: code-group
+::: code Request
 ```bash
 curl -i http://127.0.0.1:2113/streams/%24settings \
     -u ouro:ouroboros
 ```
-
 :::
-::: tab Response
-
+::: code Response
 ```http
 HTTP/1.1 401 Unauthorized
 Access-Control-Allow-Methods: POST, DELETE, GET, OPTIONS
@@ -106,7 +98,6 @@ Date: Mon, 02 Mar 2015 15:21:27 GMT
 Content-Length: 0
 Keep-Alive: timeout=15,max=100
 ```
-
 :::
 ::::
 
@@ -133,17 +124,14 @@ If you wanted to give `ouro` access by default to system streams, POST the follo
 
 At which point `ouro` can read system streams by default:
 
-:::: tabs
-::: tab Request
-
+:::: code-group
+::: code Request
 ```bash
 curl -i http://127.0.0.1:2113/streams/%24settings \
     -u ouro:ouroboros
 ```
-
 :::
-::: tab Response
-
+::: code Response
 ```http
 HTTP/1.1 200 OK
 Access-Control-Allow-Methods: POST, DELETE, GET, OPTIONS
@@ -159,7 +147,6 @@ Date: Mon, 02 Mar 2015 15:25:17 GMT
 Content-Length: 1286
 Keep-Alive: timeout=15,max=100
 ```
-
 :::
 ::::
 

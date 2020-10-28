@@ -29,7 +29,7 @@ If you need to restart a stopped scavenge, you can specify the starting chunk ID
 
 You can also start scavenges from the _Admin_ page of the Admin UI.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Start a scavenge in the Admin UI](../images/admin-scavenge.png)
 :::
 

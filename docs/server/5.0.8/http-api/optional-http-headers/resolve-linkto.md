@@ -4,11 +4,11 @@ When using projections you can have links placed into another stream. By default
 
 You can see the differences in behaviour in the following cURL commands.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/resolve-links.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/resolve-links.sh#response
 :::
 ::::
@@ -17,11 +17,11 @@ You can see the differences in behaviour in the following cURL commands.
 The content links are pointing to the original projection stream. The linked events are resolved back to where they point. With the header set the links (or embedded content) instead point back to the actual `linkTo` events.
 :::
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/resolve-links-false.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/resolve-links-false.sh#response
 :::
 ::::

@@ -63,8 +63,8 @@ Read more about server security settings on [this page](configuration.md).
 
 ## Connect to secure node
 
-::::: el-tabs
-:::: el-tab-pane label=".NET API"
+::::: tabs
+:::: tab .NET API
 When connecting to the secure node, you need to tell the client to use the secure connection.
 
 ```csharp
@@ -78,7 +78,7 @@ using var conn = EventStoreConnection
 await conn.ConnectAsync();
 ```
 ::::
-:::: el-tab-pane label="HTTP API"
+:::: tab HTTP API
 When calling an HTTP endpoint, which uses a self-signed certificate, you'd need to tell the HTTP client to use the certificate, so it can ensure the SSL connection is legit. It is not required, if the certificate CA is trusted on the client machine.
 
 ```bash

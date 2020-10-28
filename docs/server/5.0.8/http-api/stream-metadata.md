@@ -14,11 +14,11 @@ http://{eventstore-ip-address}/streams/{stream-name}/metadata
 
 You should not access metadata by constructing this URL yourself, as the right to change the resource address is reserved. Instead, you should follow the link from the stream itself, which enables your client to tolerate future changes to the addressing structure.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-metadata.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-metadata.sh#response
 :::
 ::::
@@ -37,11 +37,11 @@ curl -i -H "Accept:application/vnd.eventstore.atom+json" http://127.0.0.1:2113/s
 
 If you have security enabled, reading metadata may require that you pass credentials, as in the examples above. If credentials are required and you do not pass them, then you receive a `401 Unauthorized` response.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/missing-credentials.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/missing-credentials.sh#response
 :::
 ::::
@@ -62,11 +62,11 @@ You can also add user-specified metadata here. Some examples user-specified meta
 
 You then post this information is then posted to the stream:
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/update-metadata.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/update-metadata.sh#response
 :::
 ::::

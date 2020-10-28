@@ -1,41 +1,37 @@
----
-sinceVersion: 2.0.1
----
-
 # Deleting a stream
 
 ## Soft deleting
 
 To delete a stream over the Atom interface, issue a `DELETE` request to the resource.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
-<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/deleted-stream.sh
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/delete-stream.sh
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/deleted-stream-response.txt
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/delete-stream-response.http
 :::
 ::::
 
 By default when you delete a stream, EventStoreDB soft deletes it. This means you can recreate it later by setting the `$tb` metadata section in the stream. If you try to `GET` a soft deleted stream you receive a 404 response:
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream.sh
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream-response.txt
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream-response.http
 :::
 ::::
 
 You can recreate the stream by appending new events to it (like creating a new stream):
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#curl
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.http
 :::
 ::::
 
@@ -51,33 +47,33 @@ A hard delete is permanent and the stream is not removed during a scavenge. If y
 
 Issue the `DELETE` as before but with the permanent delete header:
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
-<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/hard-delete-stream.sh#curl
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/hard-delete-stream.sh
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/hard-delete-stream.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/hard-delete-stream.http
 :::
 ::::
 
 The stream is now permanently deleted, and now the response is a `410`.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
-<<< @/docs/server/5.0.8/http-api/sample-code/get-deleted-stream.sh#curl
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream.sh#curl
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/get-deleted-stream.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/get-deleted-stream-response.http
 :::
 ::::
 
 If you try to recreate the stream as in the above example you also receive a `410` response.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
-<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append-deleted.sh#curl
+:::: code-group
+::: code Request
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/write-event-append-deleted.sh#curl
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/write-event-append-deleted.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/delete-stream/write-event-append-deleted.sh#response
 :::
 ::::

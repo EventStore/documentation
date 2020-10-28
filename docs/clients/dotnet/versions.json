@@ -6,7 +6,8 @@
     "versions": [
       {
         "version": "5.0.9",
-        "path": "5.0"
+        "path": "5.0",
+        "startPage": "getting-started/"
       }
     ]
   }

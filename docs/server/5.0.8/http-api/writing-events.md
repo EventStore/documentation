@@ -29,11 +29,11 @@ If you issue a `POST` request with data to a stream and the correct content type
 
 `POST` the following request to create a stream and add an event to it:
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
@@ -42,22 +42,22 @@ Some clients may not be able to generate a unique identifier (or may not want to
 
 If you leave off the `ES-EventId` header you see different behavior:
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-id.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-id.sh#response
 :::
 ::::
 
 In this case EventStoreDB has responded with a `307 Temporary Redirect`. The location points to another URI that you can post the event to. This new URI is idempotent for posting, even without an event ID.
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-follow.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-follow.sh#response
 :::
 ::::
@@ -66,11 +66,11 @@ It's generally recommended to include an event ID if possible as it results in f
 
 When posting to either the stream or to the returned redirect, clients must include the `EventType` header. If you forget to include the header you receive an error.
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-type.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-no-type.sh#response
 :::
 ::::
@@ -85,11 +85,11 @@ For example, the below has two events:
 
 When you write multiple events in a single post, EventStoreDB treats them as one transaction, it writes all events together or fails.
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-multiple-events.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-multiple-events.sh#response
 :::
 ::::
@@ -100,11 +100,11 @@ To append events, issue a `POST` request to the same resource with a new `eventI
 
 <<< @/docs/server/5.0.8/http-api/sample-code/event-append.json
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-append.sh#response
 :::
 ::::
@@ -113,11 +113,11 @@ To append events, issue a `POST` request to the same resource with a new `eventI
 
 Version 3.7.0 of EventStoreDB added support for the `application/octet-stream` content type to support data-only binary events. When creating these events, you need to provide the `ES-EventType` and `ES-EventId` headers and cannot have metadata associated with the event. In the example below `SGVsbG8gV29ybGQ=` is the data you `POST` to the stream:
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-data-event.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-data-event.sh#response
 :::
 ::::
@@ -138,22 +138,22 @@ First write an event to a stream, setting a version:
 
 <<< @/docs/server/5.0.8/http-api/sample-code/event-version.json
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#response
 :::
 ::::
 
 If you now write to the stream with the incorrect version, you receive an HTTP status code 400 error.
 
-:::: el-tabs type="border-card"
-::: el-tab-pane label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#curl
 :::
-::: el-tab-pane label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#response
 :::
 ::::

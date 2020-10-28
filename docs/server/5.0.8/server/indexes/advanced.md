@@ -12,7 +12,7 @@ The _indexmap_ structure is as follows:
 - `version` - the version of the _indexmap_ file
 - `checkpoint` - the maximum prepare/commit position of the persisted _ptables_
 - `maxAutoMergeLevel` - either the value of `MaxAutoMergeLevel` or `int32.MaxValue` if it was not set. This is primarily used to detect increases in `MaxAutoMergeLevel`, which is not supported.
-- `ptable`,`level`,`index`- List of all the _ptables_ used by this index map with the level of the _ptable_ and it's order.
+- `ptable`,`level`,`index` - list of all the _ptables_ used by this index map with the level of the _ptable_ and it's order.
 
 EventStoreDB writes _indexmap_ files to a temporary file and then deletes the original and renames the temporary file. EventStoreDB attempts this 5 times before failing. Because of the order, this operation can only fail if there is an issue with the underlying file system or the disk is full. This is a 2 phase process, and in the unlikely event of a crash during this process, EventStoreDB recovers by rebuilding the indexes using the same process used if it detects corrupted files during startup.
 

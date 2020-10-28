@@ -48,12 +48,6 @@ For example, adding this line to the `eventstore.conf` file will force writing l
 Log: /tmp/eventstore/logs
 ```
 
-## Log level
-
-By default, EventStoreDB uses the `Debug` log level and it's quite verbose. You can change the level to reduce the amount of space used by the logs, using the logging configuration.
-
-<!TODO>
-
 ## HTTP requests logging
 
 EventStoreDB cal also log all the incoming HTTP requests, like many HTTP servers do. Requests are logged before being processed, so unsuccessful requests are logged too.

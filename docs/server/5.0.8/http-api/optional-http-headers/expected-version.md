@@ -15,33 +15,33 @@ If the `ExpectedVersion` does not match the version of the stream, EventStoreDB 
 
 In the following cURL command `ExpectedVersion` is not set, and it appends or create/append to the stream.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
 
 The stream `newstream` has one event. If you append with an expected version of `3`, you receive an error.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-wrong-version.sh#response
 :::
 ::::
 
 You can see from the `ES-CurrentVersion` header above that the stream is at version 0. Appending with an expected version of 0 works. The expected version is always the version of the last event known in the stream.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event-version.sh#response
 :::
 ::::

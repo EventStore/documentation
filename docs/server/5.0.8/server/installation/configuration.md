@@ -48,13 +48,13 @@ You can also override options from both configuration files and environment vari
 
 For example, starting EventStoreDB with the `--log` option will override the default log files location:
 
-:::: el-tabs
-::: el-tab-pane label="macOS"
+:::: tabs
+::: tab macOS
 ```
 eventstore --log /tmp/eventstore/logs
 ```
 :::
-::: el-tab-pane label="Windows"
+::: tab Windows
 ```
 EventStore.ClusterNode.exe --log C:\Temp\EventStore\Logs
 ```

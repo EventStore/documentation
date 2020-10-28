@@ -176,7 +176,7 @@ For example:
 
 <<< @/docs/server/5.0.8/http-api/sample-code/persistent-subscriptions/get-all-subscriptions-response.json
 
-## Getting information about the subscriptions for a stream
+## Get subscriptions for a stream
 
 | URI                       | Supported Content Types | Method |
 | ------------------------- | ----------------------- | ------ |
@@ -186,7 +186,7 @@ For example:
 
 <<< @/docs/server/5.0.8/http-api/sample-code/persistent-subscriptions/get-subscriptions-for-stream-response.json
 
-## Getting information about a specific subscription
+## Getting a specific subscription
 
 | URI  | Supported Content Types | Method |
 | -----| ----------------------- | ------ |

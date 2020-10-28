@@ -1,12 +1,12 @@
 # User defined projections
 
-::: warning
+::: warning WIP
 This page is work in progress.
 :::
 
 <!-- TODO: Again refactor to shopping cart? -->
 
-TODO: Use cases and performance implications.
+<!-- TODO: Use cases and performance implications. -->
 
 <!-- ## Overview -->
 

@@ -25,7 +25,7 @@ In the EventStoreDB Cloud console, go to the [project context](../../quick-start
  - Region - choose the GCP region
  - CIDR block - the new network address range
  
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Create GCP network](./images/gcp-create-network.png)
 :::
  
@@ -35,7 +35,7 @@ In the EventStoreDB Cloud console, go to the [project context](../../quick-start
  
 After specifying all the details, click on the `Create network` button. You will be brought back to the networks list where the new network will appear as being provisioned. The provisioning process in GCP might take a little while. You'd need to click on the refresh button from time to time as the view won't update automatically.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP active network](./images/gcp-network-active.png)
 :::
 
@@ -51,7 +51,7 @@ When you click on the button, you get to the cluster creation form.
 
 On the first part of the form you need to specify the new cluster name, the cloud provider (GCP) and the EventStoreDB version (currently it's only 20.6). Further, you need to choose the deployment size (single instance or three-node cluster) and whether to start server-side projections by default.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP cluster first part](./images/gcp-new-cluster-1.png)
 :::
 
@@ -63,7 +63,7 @@ The lower section of the form allows choosing the instance size for cluster node
 
 Moving forward, EventStoreDB Cloud would have more instance sizes available.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP cluster second part](./images/gcp-new-cluster-2.png)
 :::
 
@@ -81,7 +81,7 @@ When the cluster provisioning process finishes, you get a new cluster (or single
 
 For this example, we'll use a VPC network in GCP in the same region (`europe-west-4`).
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP VPC details](./images/gpc-vpc-details.png)
 :::
 
@@ -100,13 +100,13 @@ Then, give the new peering a name and select the network created earlier. You'd 
 
 For our example, here is the complete form:
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP peering - complete form](./images/gcp-peering-1.png)
 :::
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP peering - pending](./images/gcp-peering-2.png)
 :::
 
@@ -123,7 +123,7 @@ When the peering is initiated, get back to Google Cloud console and navigate to 
 
 Here is how our example GCP peering form would look like:
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Incoming peering request](./images/gcp-peering-3.png)
 :::
 

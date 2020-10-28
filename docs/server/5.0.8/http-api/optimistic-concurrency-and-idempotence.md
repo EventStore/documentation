@@ -8,16 +8,13 @@ Provided the client maintains this EventStoreDB will treat all operations as ide
 
 For example:
 
-::::: tabs
-:::: tab Request
-
+:::: code-group
+::: code Request
 ```bash
 curl -i -d @event.txt "http://127.0.0.1:2113/streams/newstream"
 ```
-
-::::
-:::: tab Response
-
+:::
+::: code Response
 ```http
 HTTP/1.1 201 Created
 Access-Control-Allow-Origin: *
@@ -29,7 +26,6 @@ Date: Thu, 06 Sep 2012 19:49:37 GMT
 Content-Length: 107
 Keep-Alive: timeout=15,max=100
 ```
-
 ::::
 :::::
 
@@ -41,16 +37,13 @@ This allows the client rule of “if you get an unknown condition, retry” to w
 
 For example:
 
-::::: tabs
-:::: tab Request
-
+:::: code-group
+::: code Request
 ```bash
 curl -i "http://127.0.0.1:2113/streams/newstream444"
 ```
-
-::::
-:::: tab Response
-
+:::
+::: code Response
 ```http
 HTTP/1.1 200 OK
 Access-Control-Allow-Origin: *
@@ -140,5 +133,5 @@ Keep-Alive: timeout=15,max=100
 	]
 }
 ```
+:::
 ::::
-:::::

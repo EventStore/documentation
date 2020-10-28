@@ -17,7 +17,7 @@ The provisioning process consists of three steps:
 
 ## Create a network
 
-In the EventStoreDB Cloud console, go to the [project context](../../quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the EventStoreDB Cloud console, go to the [project context](../../intro/quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
  
  Make sure to fill out the required information:
  - Network name
@@ -25,7 +25,7 @@ In the EventStoreDB Cloud console, go to the [project context](../../quick-start
  - Region - choose the AWS region
  - CIDR block - the new network address range
  
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
 ![Create AWS network](./images/aws-create-network.png)
 :::
  
@@ -35,7 +35,7 @@ In the EventStoreDB Cloud console, go to the [project context](../../quick-start
  
 After specifying all the details, click on the `Create network` button. You will be brought back to the networks list where the new network will appear as being provisioned. The provisioning process in AWS might take up to five minutes. You'd need to click on the refresh button from time to time as the view won't update automatically.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
 ![AWS active network](./images/aws-network-active.png)
 :::
 
@@ -51,8 +51,10 @@ When you click on the button, you get to the cluster creation form.
 
 On the first part of the form you need to specify the new cluster name, the cloud provider (AWS) and the EventStoreDB version (currently it's only 20.6). Further, you need to choose the deployment size (single instance or three-node cluster) and whether to start server-side projections by default.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS cluster first part](./images/aws-new-cluster-1.png)
+
 :::
 
 ::: warning Projections impact performance
@@ -63,8 +65,10 @@ The lower section of the form allows choosing the instance size for cluster node
 
 Moving forward, EventStoreDB Cloud would have more instance sizes available.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS cluster second part](./images/aws-new-cluster-2.png)
+
 :::
 
 Further, you need to specify the storage capacity. One one disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
@@ -81,16 +85,20 @@ When the cluster provisioning process finishes, you get a new cluster (or single
 
 For this example, we'll use a VPC in AWS in the same region (`eu-central-1`).
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS VPC details](./images/aws-vpc.png)
+
 :::
 
 The network page provide us enough details to start the peering process. In EventStoreDB Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
 
 Then, give the new peering a name and select the network created earlier.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS peering - first](./images/aws-peering-1.png) 
+
 :::
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
@@ -104,16 +112,20 @@ Then, you'd need to fill out the remaining fields, using the information from AW
 
 For our example, here is the complete form:
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS peering - complete form](./images/aws-peering-2.png)
+
 :::
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`. If the status doesn't change after 10 minutes, delete the peering and try again, ensuring the details were entered correctly. Mismatching network region and address range are most common reasons for the peering to not being provisioned properly.
 
 When the peering is initiated, get back to AWS console and navigate to `Virtual Private Cloud` - `Peering Connections list`. There, you will see the incoming peering request.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![Incoming peering request](./images/aws-peering-3.png)
+
 :::
 
 Select the pending peering and click on `Actions` - `Accept request`. Validate the request details and ensure that all the details match the peering, which you can see in EventStoreDB Cloud console. If everything is correct, click on the `Yes, Accept` button. After you get a confirmation, you will see the peering in AWS console to become `Active`. Now, you can get back to EventStoreDB Cloud console, refresh the peering list to ensure that the pending record also changed its status to `Active`.
@@ -122,14 +134,18 @@ Now, although both networks are now connected, AWS doesn't create proper routes 
 
 Click on `Edit routes` and then `Add route`. In the `Destination`, enter the CIDR of the EventStoreDB Cloud network. For the `Target`, choose the `Peering Connection` option.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS route](./images/aws-network-route.png)
+
 :::
 
 The list of available peering connections will pop up. Select the recently created peering from the list and click on `Save routes`. The route table would then look like shown on the screenshot below.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card
+
 ![AWS route complete](./images/aws-network-route-done.png)
+
 :::
 
 At this moment, you should be able to connect to the EventStoreDB cluster in the cloud from any VM, which is connected to your AWS VPC network.

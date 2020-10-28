@@ -10,22 +10,22 @@ You can see the use of the `ES-LongPoll` header in the following cURL command.
 
 First go to the head of the stream.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream.sh#response
 :::
 ::::
 
 Then fetch the previous `rel` link `http://127.0.0.1:2113/streams/newstream/2/forward/20` and try it. It returns an empty feed.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/get-forward-link.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/get-forward-link.sh#response
 :::
 ::::
