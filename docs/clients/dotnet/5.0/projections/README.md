@@ -63,7 +63,7 @@ Update the projection to output the state to a stream by calling the `outputStat
 
 Below is the updated projection:
 
-<<< @/docs/server/5.0.8/http-api/sample-code/xbox-one-s-counter-outputState.json
+<<< @/docs/server/5.0.8/http-api/sample-code/xbox-one-s-counter-outputState.js
 
 To update the projection, edit the projection definition with the following request:
 
@@ -84,7 +84,7 @@ You can now read the events in the result stream by issuing a read request.
 
 You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream:
 
-<<< @/docs/server/5.0.8/http-api/sample-code/projections/update-projection-options.json{2}
+<<< @/docs/server/5.0.8/http-api/sample-code/projections/update-projection-options.js{2}
 
 Then send the update to the projection:
 
@@ -122,7 +122,7 @@ You want to define a projection that produces a count per stream for a category,
 
 Below is the projection:
 
-<<< @/docs/server/5.0.8/http-api/sample-code/projections/shopping-cart-counter.json
+<<< @/docs/server/5.0.8/http-api/sample-code/projections/shopping-cart-counter.js
 
 Create the projection with the following request:
 
