@@ -6,18 +6,6 @@ Settings in this section concern projections that are running on the server. Rea
 Server-side projections impact the performance of the EventStoreDB server. For example, some standard [system projections](../projections/system-projections.md) like Category or Event Type projections produce new (link) events that are stored in the database in addition to the original event. This effectively doubles or triples the number of events written and therefore creates pressure on the IO of the server node. We often call this effect "write amplification".
 :::
 
-## Start standard projections
-
-This option instructs the server to start standard system projections when the server starts. However, the `RunProjections` parameter affects if those projections will be enabled or not, read more about this below. Standard projections are not started by default.
-
-| Format               | Syntax |
-| :------------------- | :----- |
-| Command line         | `--start-standard-projections` |
-| YAML                 | `StartStandardProjections` |
-| Environment variable | `EVENTSTORE_START_STANDARD_PROJECTIONS` |
-
-**Default**: `false`, system projections won't start by default.
-
 ## Run projections
 
 The `RunProjections` option tells the server if you want to run all projections, only system projections or no projections at all. Hence that the `StartSystemProjections` setting has no effect on custom projections.
@@ -27,10 +15,6 @@ The option accepts three values: `None`, `System` and `All`.
 When the option value is set to `None`, the projections subsystem of EventStoreDB will be completely disabled and the Projections menu in the Admin UI will be disabled.
 
 By using the `System` value for this option, you can instruct the server to enable system projections when the server starts. However, system projections will only start if the `StartStandardProjections` option is set to `true`. When the `RunProjections` option value is `System` (or `All`) but the `StartSystemProjections` option value is `false`, system projections will be enabled but not start. You can start them later manually via the Admin UI or via an API call.
-
-Finally, you can set `RunProjections` to `All` and it will enable both system and custom projections. The `StartSystemProjections` will still control if system projections will be started or not. As for custom projections, only those that were started before the server node shutdown, will start again. Stopped projections will remain stopped even after the server restart. 
-
-If you omit the `StartSystemProjections` option and set `RunProjections` to `All`, EventStoreDB will also enable and start system projections.
 
 | Format               | Syntax |
 | :------------------- | :----- |

@@ -7,8 +7,8 @@ title: Cluster with manager nodes
 
 High availability EventStoreDB allows you to run more than one node as a cluster. There are two modes available for clustering:
 
--   [With database nodes only](cluster-without-manager-nodes.md) (open source and commercial)
--   With manager nodes and database nodes (commercial only)
+- With database nodes only (open source and commercial)
+- With manager nodes and database nodes (commercial only)
 
 This document covers setting up EventStoreDB with manager nodes and database nodes.
 

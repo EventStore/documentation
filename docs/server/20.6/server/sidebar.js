@@ -25,9 +25,44 @@ module.exports = [
         path: "configuration/",
         children: [
             "configuration/",
-            "configuration/single-node.md",
-            "configuration/cluster.md",
-            "configuration/options.md",
+        ]
+    },
+    {
+        title: "Security",
+        collapsable: true,
+        path: "security/",
+        children: [
+            "security/",
+            "security/configuration.md",
+            "security/authentication.md",
+            "security/acl.md",
+            "security/trusted-intermediary.md",
+        ]
+    },
+    {
+        title: "Networking",
+        collapsable: true,
+        path: "networking/",
+        children: [
+            "networking/",
+            "networking/http.md",
+            "networking/tcp.md",
+            "networking/nat.md",
+            "networking/heartbeat.md",
+            "networking/endpoints.md",
+        ]
+    },
+    {
+        title: "Clustering",
+        collapsable: true,
+        path: "clustering/",
+        children: [
+            "clustering/",
+            "clustering/using-dns.md",
+            "clustering/using-ip-addresses.md",
+            "clustering/gossip.md",
+            "clustering/node-roles.md",
+            "clustering/acknowledgements.md",
         ]
     },
     {
@@ -42,12 +77,27 @@ module.exports = [
         ]
     },
     {
-        title: "Scavenge",
+        title: "Projections",
         collapsable: true,
-        path: "scavenge/",
+        path: "projections/",
         children: [
-            "scavenge/",
-            "scavenge/options.md",
+            "projections/",
+            "projections/configuration.md",
+            "projections/system-projections.md",
+            "projections/user-defined-projections.md",
+            "projections/projections-config.md",
+            "projections/debugging.md",
+        ]
+    },
+    {
+        title: "Operations",
+        collapsable: true,
+        path: "operations/",
+        children: [
+            "operations/",
+            "operations/scavenge.md",
+            "operations/scavenge-options.md",
+            "operations/database-backup.md",
         ]
     },
     {
@@ -63,4 +113,13 @@ module.exports = [
             "diagnostics/datadog.md",
         ]
     },
+    {
+        title: "Event streams",
+        collapsable: true,
+        children: [
+            "streams/metadata-and-reserved-names.md",
+            "streams/deleting-streams-and-events.md",
+            "streams/system-streams.md"
+        ]
+    }
 ]

@@ -36,6 +36,8 @@ You should ensure that these ports are open and allowed via your firewall.
 
 Use the settings described below to change default external ports.
 
+External TCP port is used by TCP clients, like your applications.
+
 | Format               | Syntax |
 | :------------------- | :----- |
 | Command line         | `--ext-tcp-port` |
@@ -43,6 +45,8 @@ Use the settings described below to change default external ports.
 | Environment variable | `EVENTSTORE_EXT_TCP_PORT` |
 
 **Default**: `1113`
+
+External HTTP port is used by HTTP API clients, Admin UI (if exposed externally) and client gossip.
 
 | Format               | Syntax |
 | :------------------- | :----- |

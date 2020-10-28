@@ -1,10 +1,8 @@
 ---
 home: true
-title: EventStoreDB - The stream database built for Event Sourcing
-description: EventStoreDB - The stream database built for Event Sourcing
-heroText: EventStoreDB
-tagline: Early preview of the next-gen documentation. It is not entirely complete and you can expect inconsistencies, broken links and missing examples. Please be tolerant to those issues as we are working hard to polish it!
-actionText: I understand and won't complain much →
+heroText: EventStoreDB Documentation
+tagline: The stream database built for Event Sourcing
+actionText: Get started →
 actionLink: /latest.html
 features:
 - title: High availability

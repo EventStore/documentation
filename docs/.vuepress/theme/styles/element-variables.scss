@@ -1,0 +1,14 @@
+/* theme color */
+$--color-primary: #3EAF7C;
+$--font-size-extra-large: 22px !default;
+$--font-size-large: 20px !default;
+$--font-size-medium: 18px !default;
+$--font-size-base: 16px !default;
+$--font-size-small: 14px !default;
+$--font-size-extra-small: 13px !default;
+$--tab-font-size: $--font-size-base !default;
+
+/* icon font path, required */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

@@ -1,25 +1,11 @@
-# Installation
+---
+title: "Quick start"
+---
 
-EventStoreDB is available on multiple platforms. Below you can find instructions for installing an EventStoreDB instance. 
+## Quick start <badge>Preview</badge>
 
-## Installation guides
+EventStoreDB can run as a single node or as a highly-available cluster. For the cluster deployment, you'd need three or more instances. The typical cluster deployment includes three nodes.
 
-Follow one of the platform-specific instructions to install EventStoreDB.
+Fill out the form below to generate the necessary configuration for your deployment.
 
-Remember that if you are setting up a cluster, you need to install the server software on each cluster node.
-
-### Bare metal and VMs
-
-- [Linux](./linux.md)
-- [Windows](./windows.md)
-
-### Docker
-
-- [Docker and Docker Compose](./docker.md)
-
-## Next step
-
-Follow the [configuration guidelines](../configuration/) to finish setting up a single-node or cluster deployment.
-
-
-
+<Deployment></Deployment>
