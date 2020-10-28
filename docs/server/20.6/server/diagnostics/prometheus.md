@@ -2,7 +2,7 @@
 
 You can export EventStoreDB metrics to Prometheus and configure Grafana dashboards to monitor your deployment.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Grafana dashboard](./images/grafana.png)
 :::
 

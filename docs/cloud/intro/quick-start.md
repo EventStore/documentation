@@ -10,7 +10,7 @@ At the moment, you need to visit out community forum ([Discuss](https://discuss.
 
 To get an account, open the [Discuss](https://discuss.eventstore.com) front page and click on `Log in`. There you get an option to sign up:
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Sign up screen](./images/discuss-signup.png)
 :::
 
@@ -26,7 +26,7 @@ Since EventStoreDB Cloud is currently in preview, only a selected group of custo
 
 In the console, you first get to the list of organisations, which you have access to.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Cloud organisations](./images/cloud-console-orgs.png)
 :::
 
@@ -42,7 +42,7 @@ With your account, you might have more than one organisation. Each organisation 
 
 When you click on an organisation in the list, you get to the projects screen, where you can see all the projects for the selected organisation.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Projects within the organisation](./images/cloud-org-projects.png)
 :::
 
@@ -74,7 +74,7 @@ To create a new project, click on the `New project` button. Then, enter the proj
 
 When you click on a project in the projects list, you get to the project context screen.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Project context](./images/cloud-project-screen.png)
 :::
 

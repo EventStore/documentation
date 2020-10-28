@@ -28,18 +28,18 @@ When creating the VM, ensure to:
 
 For existing VMs, you can enable IP forwarding too.
 
-::::: el-tabs
-:::: el-tab-pane label="AWS"
+::::: tabs
+:::: tab AWS
 Select the EC2 instance in the list of instances and in the `Actions` menu choose `Networking` and then `Change source/destination check`. Ensure that the `Stop` checkbox is _enabled_:
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![AWS enable ip forward](./images/aws-ip-forward.png)
 :::
 ::::
-:::: el-tab-pane label="GCP"
+:::: tab GCP
 On GCP you can enable IP Forward only when creating the VM instance.
 
 On the new VM instance page and scroll down to the `Management, security, disks, networking, sole tenancy` section, expand it, find the `Network interfaces` section and click on the pen icon. There, set the `IP forwarding` to `On`:
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![GCP enable ip forward](./images/gcp-ip-forward.png)
 :::
 ::::
@@ -58,7 +58,7 @@ When the initial steps are completed, you should be able to ping the cloud VM us
 Next, visit the EventStoreDB Cloud console and open the peering page. There you will find the peering you created when following the provisioning guidelines. Write down the details from the `Local Address` and `Remote Address` fields.
 
 For this example we will use the following peering details:
-::: el-card :body-style="{ padding: '0px' }"
+::: card
 ![Peering page example](./images/peering-example.png)
 :::
 

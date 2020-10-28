@@ -1,7 +1,7 @@
 import GtmPlugin from "./index";
 
 export function addGtm(router, Vue, gtmId) {
-    if (!(gtmId && typeof window !== undefined)) {
+    if (!gtmId || typeof window === "undefined") {
         return;
     }
 

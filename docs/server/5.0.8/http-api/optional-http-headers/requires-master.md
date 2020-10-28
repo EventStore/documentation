@@ -6,14 +6,14 @@ Over HTTP the `RequiresMaster` header tells the node that it is not allowed to s
 
 Run the below on the master:
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 ```bash
 curl -i "http://127.0.0.1:32004/streams/newstream" \
     -H "ES-RequireMaster: True"
 ```
 :::
-::: tab Response
+::: code Response
 ```json
 HTTP/1.1 200 OK
 Cache-Control: max-age=0, no-cache, must-revalidate
@@ -85,14 +85,14 @@ Date: Thu, 27 Jun 2013 14:48:37 GMT
 
 Run the following on any other node:
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 ```bash
 curl -i "http://127.0.0.1:31004/streams/newstream" \
     -H "ES-RequireMaster: True"
 ```
 :::
-::: tab Response
+::: code Response
 ```http
 HTTP/1.1 307 Temporary Redirect
 Content-Length: 0

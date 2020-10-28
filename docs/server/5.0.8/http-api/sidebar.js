@@ -2,6 +2,7 @@ module.exports = [
     {
         title: "HTTP API",
         collapsable: true,
+        path: "",
         children: [
             "",
             "writing-events.md",
@@ -15,6 +16,7 @@ module.exports = [
     {
         title: "Security",
         collapsable: true,
+        path: "security/",
         children: [
             "security/"
         ]
@@ -22,13 +24,15 @@ module.exports = [
     {
         title: "Persistent subscriptions",
         collapsable: true,
+        path: "persistent/",
         children: [
-            "persistent-subscriptions.md"
+            "persistent/"
         ]
     },
     {
         title: "Projections",
         collapsable: true,
+        path: "projections/",
         children: [
             "projections/",
             "projections/api.md"
@@ -37,6 +41,7 @@ module.exports = [
     {
         title: "Optional headers",
         collapsable: true,
+        path: "optional-http-headers/",
         children: [
             "optional-http-headers/",
             "optional-http-headers/eventid.md",
@@ -51,8 +56,9 @@ module.exports = [
     {
         title: "API reference",
         collapsable: true,
+        path: "api/",
         children: [
-            "api.md"
+            "api/"
         ]
     }
 ]

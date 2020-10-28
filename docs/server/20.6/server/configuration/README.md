@@ -47,19 +47,18 @@ You can also override options from both configuration files and environment vari
 
 For example, starting EventStoreDB with the `--log` option will override the default log files location:
 
-<code-group>
-<code-block title="Linux">
+:::: code-group
+::: code Linux
 ```bash
 eventstore --log /tmp/eventstore/logs
 ```
-</code-block>
-<code-block title="Windows">
-
+:::
+::: code Windows
 ```
 EventStore.ClusterNode.exe --log C:\Temp\EventStore\Logs
 ```
-</code-block>
-</code-group>
+:::
+::::
 
 ## Testing the configuration
 

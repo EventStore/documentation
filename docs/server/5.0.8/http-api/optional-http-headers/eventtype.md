@@ -4,11 +4,11 @@ When you write to a stream and don't the `application/vnd.eventstore.events+json
 
 You use the `ES-EventType` header as follows.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-event.sh#response
 :::
 ::::
@@ -17,11 +17,11 @@ If you view the event in the UI or with cURL it has the `EventType` of `SomeEven
 
 <!-- TODO: Does this make sense? If I can't use the custom media type -->
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-event.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-event.sh#response
 :::
 ::::

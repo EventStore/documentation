@@ -4,11 +4,11 @@
 
 EventStoreDB exposes streams as a resource located at `http(s)://{yourdomain.com}:{port}/streams/{stream}`. If you issue a simple `GET` request to this resource, you receive a standard AtomFeed document as a response.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream.sh#response
 :::
 ::::
@@ -30,11 +30,11 @@ The accepted content types for `GET` requests are:
 
 The non-atom version of the event has fewer details about the event.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-event.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-event.sh#response
 :::
 ::::
@@ -54,11 +54,11 @@ This shows that there is not a `next` URL as all the information is in this requ
 
 If you want to follow a live stream, then you keep following the `previous` links. When you reach the end of a stream, you receive an empty document with no entries or `previous` link. You then continue polling this URI (in the future a document will appear). You can see this by trying the `previous` link from the above feed.
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-forwards.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-forwards.sh#response
 :::
 ::::
@@ -69,22 +69,22 @@ When parsing an atom subscription, the IDs of events always stay the same. This 
 
 Let's now try an example with more than a single page. First create the multiple events:
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/write-paging-events.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/write-paging-events.sh#response
 :::
 ::::
 
 If you request the stream of events, you see a series of links above the events:
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/request-paging-events.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/request-paging-events.sh#response
 :::
 ::::
@@ -93,11 +93,11 @@ Using the links in the stream of events, you can traverse through all the events
 
 For example, if you request the `last` link from above:
 
-:::: tabs
-::: tab Request
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/request-last-link.sh#curl
 :::
-::: tab Response
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/request-last-link.sh#response
 :::
 ::::
@@ -116,11 +116,11 @@ All links except the head link are fully cacheable as you can see in the HTTP he
 To access the `$all` stream, you must use admin details. Find more information on the [security](security.md) page.
 :::
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-all-events.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-all-events.sh#response
 :::
 ::::
@@ -133,11 +133,11 @@ The head link supports conditional `GET`s with the use of [ETAGS](http://en.wiki
 
 You can use this in your next request when polling the stream for changes by putting it in the `If-None-Match` header. This tells the server to check if the response is the one you already know and returning a '304 not modified' response. If the tags have changed, the server returns a '200 OK' response. You can use this method to optimise your application by not sending large streams if there are no changes.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/request-etag.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/request-etag.sh#response
 :::
 ::::
@@ -159,11 +159,11 @@ There are ways of embedding events and further metadata into your stream by usin
 
 The `rich` embed mode returns more properties about the event (`eventtype`, `streamid`, `position`, and so on) as you can see in the following request.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-rich.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-rich.sh#response
 :::
 ::::
@@ -172,11 +172,11 @@ The `rich` embed mode returns more properties about the event (`eventtype`, `str
 
 The `body` embed mode returns the JSON/XML body of the events into the feed as well, depending on the type of the feed. You can see this in the request below:
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-body.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-body.sh#response
 :::
 ::::
@@ -192,11 +192,11 @@ Two other modes are variants of `body`:
 
 The XML format embeds no additional data, as only JSON supports embedding.
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-xml.sh#curl
 :::
-::: el-tab label="Response"
+::: code Response
 <<< @/docs/server/5.0.8/http-api/sample-code/read-stream-xml.sh#response
 :::
 ::::

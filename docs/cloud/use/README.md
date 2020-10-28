@@ -22,7 +22,7 @@ Cloud clusters use SSL certificates signed by the trusted public certificate aut
 
 After you provision the cloud cluster, you can find connection details for the cluster in the Cloud console.
 
-::: el-card :body-style="{ padding: '0px' }" 
+::: card 
 ![Cluster details](./images/cloud-cluster-details.png)
 :::
 

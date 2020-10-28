@@ -17,6 +17,7 @@ module.exports = [
             "installation/linux.md",
             "installation/windows.md",
             "installation/docker.md",
+            "installation/compatibility.md",
         ]
     },
     {

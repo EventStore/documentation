@@ -1,4 +1,6 @@
+const containers = require("./lib/containers.js");
 const versioning = require("./lib/versioning.js");
+
 versioning.load();
 
 module.exports = {
@@ -13,8 +15,20 @@ module.exports = {
     plugins: [
         "@vuepress/active-header-links",
         "one-click-copy",
-        "vuepress-plugin-element-tabs",
-        "check-md", { pattern: "**/*.md" },
+        ["check-md", { pattern: "**/*.md" }],
+        containers("code-group", "code-group"),
+        containers("code", "code-block", title => `title="${title}"`),
+        containers("tabs", "el-tabs", type => `${type ? ` type='${type}'` : ""}`),
+        containers("tab", "el-tab-pane", label => `label="${label}"`),
+        [
+            "vuepress-plugin-container",
+            {
+                type: "detail",
+                before: title => `<details class="custom-block details"><summary>${title}</summary>`,
+                after: '</details>',
+            },
+        ],
+        containers("card", "el-card", _ => `body-style="padding: 0px"`),
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",
@@ -48,8 +62,8 @@ module.exports = {
                 text: "Clients & APIs",
                 items: [
                     {text: "Overview", link: "/clients/"},
-                    {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "")},
-                    {text: "HTTP API", items: versioning.linksFor("http-api", "")},
+                    {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "getting-started/")},
+                    {text: "HTTP API", items: versioning.linksFor("http-api")},
                 ]
             },
             {text: "Cloud", link: "/cloud/intro/"},
@@ -100,10 +114,7 @@ module.exports = {
     },
     markdown: {
         extendMarkdown: md => {
-            md.use(require("./theme/markup/include"));
-            md.use(require("./theme/markup/code"));//, {root: "./docs"});
-            md.use(require("./theme/markup/elementui"));
-            // md.use(require("./theme/markup/test"));
+            // md.use(require("./theme/markup/elementui"));
         }
     }
 };

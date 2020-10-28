@@ -70,7 +70,7 @@ module.exports = {
 
         version.versions.forEach(v => {
             let path = `${version.basePath}/${v.path}`;
-            let item = {text: v.version, link: `/${path}/${url}`};
+            let item = {text: v.version, link: `/${path}/${url ? url : v.startPage ? v.startPage : ""}`};
             links.push(item);
         });
 

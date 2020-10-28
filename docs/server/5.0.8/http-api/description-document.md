@@ -13,18 +13,18 @@ The introduction of the description document has some benefits:
 
 There are three ways in which EventStoreDB returns the description document.
 
--   Attempting to read a stream with an unsupported media type.
--   Attempting to read a stream with no accept header.
--   Requesting the description document explicitly.
+- Attempting to read a stream with an unsupported media type.
+- Attempting to read a stream with no accept header.
+- Requesting the description document explicitly.
 
 The client is able to request the description document by passing `application/vnd.eventstore.streamdesc+json` in the `accept` header, for example:
 
-:::: el-tabs type="border-card"
-::: el-tab label="Request"
+:::: code-group
+::: code Request
 <<< @/docs/server/5.0.8/http-api/sample-code/get-dd.sh#curl
 :::
-::: el-tab label="Response"
-<<< @/docs/server/5.0.8/http-api/sample-code/get-ddd.sh#response
+::: code Response
+<<< @/docs/server/5.0.8/http-api/sample-code/get-dd.sh#response
 :::
 ::::
 
