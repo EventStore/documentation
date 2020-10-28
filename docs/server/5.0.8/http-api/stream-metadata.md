@@ -25,15 +25,9 @@ You should not access metadata by constructing this URL yourself, as the right t
 
 Once you have the URI of the metadata stream, issue a `GET` request to retrieve the metadata:
 
-::::: tabs
-:::: tab Request
-
 ```bash
 curl -i -H "Accept:application/vnd.eventstore.atom+json" http://127.0.0.1:2113/streams/%24users/metadata --user admin:changeit
 ```
-
-::::
-:::::
 
 If you have security enabled, reading metadata may require that you pass credentials, as in the examples above. If credentials are required and you do not pass them, then you receive a `401 Unauthorized` response.
 
