@@ -1,4 +1,4 @@
-# HTTP API
+# Projections API
 
 URI | Description | HTTP Verb
 |:-------|:------------|:----

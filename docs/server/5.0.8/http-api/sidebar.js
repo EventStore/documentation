@@ -32,7 +32,7 @@ module.exports = [
     {
         title: "Projections",
         collapsable: true,
-        projections: "projections/",
+        path: "projections/",
         children: [
             "projections/",
             "projections/api.md"
