@@ -114,7 +114,7 @@ module.exports = {
     },
     markdown: {
         extendMarkdown: md => {
-            md.use(require("./theme/markup/elementui"));
+            // md.use(require("./theme/markup/elementui"));
         }
     }
 };
