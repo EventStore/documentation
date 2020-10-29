@@ -1,3 +1,0 @@
-# Datadog
-
-Describe the integration

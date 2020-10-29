@@ -1,6 +1,6 @@
 # Statistics
 
-EventStoreDB servers collect internal statistics and make it available via HTTP over the `http://<host>:2113/stats` in JSON format. Here, `2113` is the default external HTTP port. Monitoring applications and metric collectors can use this endpoint to gather the information about the cluster node. The `stats` endpoint only exposes information about the node where you fetch it from and doesn't contain any cluster information.
+EventStoreDB servers collect internal statistics and make it available via HTTP over the `https://<host>:2113/stats` in JSON format. Here, `2113` is the default external HTTP port. Monitoring applications and metric collectors can use this endpoint to gather the information about the cluster node. The `stats` endpoint only exposes information about the node where you fetch it from and doesn't contain any cluster information.
 
 What you see in the `stats` endpoint response is the last collected state of the server. The server collects this information using events that are appended to the statistics stream. Each node has one. We use a reserved name for the stats stream, `$stats-<host:port>`. For example, for a single node running locally the stream name would be `$stats-127.0.0.1:2113`.
 

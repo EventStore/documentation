@@ -6,7 +6,7 @@ There are a few options to change the way how EventStoreDB produces logs and how
 
 ## Log format
 
-The `--structured-log` enables the structured logging in JSON format that is more machine-friendly and can be ingested by vendor-specific tools like Logstash or Datadog agent. The default value for this option is `true` and you only need to change it if you want plain-next logs.
+EventStoreDB uses the structured logging in JSON format that is more machine-friendly and can be ingested by vendor-specific tools like Logstash or Datadog agent. 
 
 Here is how the structured log looks like:
 
@@ -16,17 +16,6 @@ Here is how the structured log looks like:
 { "PID": "6940", "ThreadID": "23", "Date": "2020-06-16T16:14:02.052976Z", "Level": "Debug", "Logger": "MultiStreamMessageWriter", "Message": "PROJECTIONS: Resetting Worker Writer", "EventProperties": {  } }
 { "PID": "6940", "ThreadID": "23", "Date": "2020-06-16T16:14:02.055000Z", "Level": "Debug", "Logger": "ProjectionCoreCoordinator", "Message": "PROJECTIONS: SubComponent Started: {subComponent}", "EventProperties": { "subComponent": "EventReaderCoreService" } }
 ```
-
-Here is the example of the plain-text log:
-
-```
-[PID:12989:023 2020.06.16 16:16:22.054 DEBUG PersistentSubscripti] Persistent subscriptions Became Master so now handling subscriptions
-[PID:12989:015 2020.06.16 16:16:22.054 DEBUG StorageScavenger    ] Searching for incomplete scavenges on node 127.0.0.1:2113.
-[PID:12989:015 2020.06.16 16:16:22.071 DEBUG StorageScavenger    ] Max age and $ops read permission already set for the $scavenges stream.
-[PID:12989:015 2020.06.16 16:16:22.073 DEBUG StorageScavenger    ] No incomplete scavenges found on node 127.0.0.1:2113.
-```
-
-Keep in mind that the console output will not use structured logging, the option only affects the log files.
 
 ## Logs location
 
@@ -50,9 +39,15 @@ Log: /tmp/eventstore/logs
 
 ## Log level
 
-By default, EventStoreDB uses the `Debug` log level and it's quite verbose. You can change the level to reduce the amount of space used by the logs, using the logging configuration.
+You can change the level using the `LogLevel` setting:
 
-<!TODO>
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--log-level` |
+| YAML                 | `LogLevel` |
+| Environment variable | `EVENTSTORE_LOG_LEVEL` |
+
+Acceptable values are: `Default`, `Verbose`, `Debug`, `Information`, `Warning`, `Error`, and `Fatal`.
 
 ## HTTP requests logging
 
@@ -67,3 +62,15 @@ Use one of the following ways to enable the HTTP requests logging:
 | Environment variable | `EVENTSTORE_LOG_HTTP_REQUESTS` |
 
 **Default**: `false`, logging HTTP requests is disabled by default.
+
+## Log failed authentication
+
+For security monitoring, you can enable logging failed authentication attempts by setting `LogFailedAuthenticationAttempts` setting to true.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--log-failed-authentication-attempts` |
+| YAML                 | `LogFailedAuthenticationAttempts` |
+| Environment variable | `EVENTSTORE_LOG_FAILED_AUTHENTICATION_ATTEMPTS` |
+
+**Default**: `false`

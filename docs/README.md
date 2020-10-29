@@ -1,17 +1,25 @@
 ---
 home: true
-title: EventStoreDB - The stream database built for Event Sourcing
-description: EventStoreDB - The stream database built for Event Sourcing
-heroText: EventStoreDB
-tagline: Early preview of the next-gen documentation. It is not entirely complete and you can expect inconsistencies, broken links and missing examples. Please be tolerant to those issues as we are working hard to polish it!
-actionText: I understand and won't complain much →
+heroText: EventStoreDB Documentation
+tagline: The stream database built for Event Sourcing
+actionText: Get started →
 actionLink: /latest.html
 features:
-- title: High availability
-  details: EventStoreDB can run as a cluster of nodes containing the same data which remains available for writes provided at least half the nodes are alive and connected.
-- title: Optimistic concurrency checks
-  details: Writes supports an optimistic concurrency check on the version of the stream to which events are written. If the check fails during writing, EventStoreDB returns an exception to let you know.
-- title: Immutable data store
+- title: "Event Sourcing"
+  details: EventStoreDB is built to support Event Sourcing. We support idempotent writes and reading events from individual streams.
+- title: gRPC for clients
+  details: Using gRPC protocol for client-server communication allows us to provide SDKs for a wide range of languages and platforms.
+- title: Immutable data
   details: EventStoreDB stores your data as a series of immutable events over time, providing one of the strongest audit log options available (characteristics similar to a blockchain).
-footer: Copyright © 2020 Event Store Limited
+footer: Copyright © 2020 EventStoreDB Limited
 ---
+
+## Latest updates
+
+### 28 October 2020
+- Many fixes in v5 server documentation.
+- Documentation for v20 server essentially covers everything.
+- <badge>preview</badge> Server configurator for v20 is [available](/server/20.6/server/installation/)!
+
+### 12 October 2020
+- We have added the initial version of the [Cloud](/cloud/intro/) docs, including detailed instructions for provisioning resources in AWS and GCP.

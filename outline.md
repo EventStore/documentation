@@ -1,14 +1,14 @@
 # WIP Outline
 
 - Introduction (landing page)
-  - 10,000 foot view of why an event store / event sourcing could be useful
+  - 10,000 foot view of why an EventStoreDB / event sourcing could be useful
   - Event database (event sourcing database?)
   - What is an event (data, event type, metadata, etc)
   - What is an event stream
-  - Event Store key features
-  - Event Store vs other tools [#54](https://github.com/EventStore/documentation-next/issues/54)
+  - EventStoreDB key features
+  - EventStoreDB vs other tools [#54](https://github.com/EventStore/documentation-next/issues/54)
 - Getting started
-  - Run Event Store in Docker
+  - Run EventStoreDB in Docker
   - Overview of the web UI
   - Write an event using curl?
   - View the stream in the web UI
@@ -43,7 +43,7 @@
   - ...
 - Development best practices
   - Dealing with eventual consistency
-  - Working with Event Store connection [#51](https://github.com/EventStore/documentation-next/issues/51)
+  - Working with EventStoreDB connection [#51](https://github.com/EventStore/documentation-next/issues/51)
   - Optimising reads (read last, snapshots)
   - GDPR and privacy
   - Event versioning [#54](https://github.com/EventStore/documentation-next/issues/54)
@@ -55,7 +55,7 @@
   - Connection options  
   - Clustering model and PAXOS
   - Node types
-  - Configure Event Store cluster
+  - Configure EventStoreDB cluster
   - ???
 - Deployment [#47](https://github.com/EventStore/documentation-next/issues/47)
 ) (AZ: I thought it's Installation)
@@ -67,7 +67,7 @@
   - Scavenging
   - Other ACL?
 - Operations [#48](https://github.com/EventStore/documentation-next/issues/48)
-  - Upgrading Event Store [#54](https://github.com/EventStore/documentation-next/issues/54)
+  - Upgrading EventStoreDB [#54](https://github.com/EventStore/documentation-next/issues/54)
   - Backup and restore
   - Metrics
   - Traces

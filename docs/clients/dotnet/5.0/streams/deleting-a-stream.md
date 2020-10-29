@@ -8,7 +8,7 @@ Task<DeleteResult> DeleteStreamAsync(string stream, long expectedVersion, UserCr
 
 <!-- TODO: Need a better explanation -->
 
-By default when you delete a stream, Event Store soft deletes it. You can recreate the stream by appending new events to it. If you try to read a soft deleted stream you receive an error response.
+By default when you delete a stream, EventStoreDB soft deletes it. You can recreate the stream by appending new events to it. If you try to read a soft deleted stream you receive an error response.
 
 ## Hard Delete
 

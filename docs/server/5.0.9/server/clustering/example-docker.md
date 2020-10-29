@@ -1,2 +1,0 @@
-# Cluster with Docker Compose
-

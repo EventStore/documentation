@@ -85,13 +85,13 @@ Events are written in the following order: `3, 1, 2, 4, 5`.
 
 The writing methods all use a type named `EventData` to represent an event to be stored. Instances of `EventData` are immutable.
 
-Event Store does not have any built-in serialisation, so the body and metadata for each event are represented in `EventData` as a `byte[]`.
+EventStoreDB does not have any built-in serialisation, so the body and metadata for each event are represented in `EventData` as a `byte[]`.
 
 The members on `EventData` are:
 
 | Member | Type | Description |
 |:-------|:-----|:--------|
-| `EventId` | `Guid` | A unique identifier representing this event. Event Store uses this for idempotency if you write the same event twice you should use the same identifier both times. |
+| `EventId` | `Guid` | A unique identifier representing this event. EventStoreDB uses this for idempotency if you write the same event twice you should use the same identifier both times. |
 | `Type`  | `string` | The name of the event type. You can use this for pattern matching in projections, so should be a "friendly" name rather than a CLR type name, for example. |
 | `IsJson`  | `bool` | If the data and metadata fields are serialized as JSON, you should set this to `true`. Setting this to `true` will cause the projections framework to attempt to deserialize the data and metadata later. |
 | `Data` | `byte[]` | The serialized data representing the event to be stored. |

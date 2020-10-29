@@ -14,7 +14,8 @@ EventStoreDB supports two protocols: gRPC and TCP, described below.
 
 - [.NET](https://github.com/EventStore/EventStore-Client-Dotnet)
 - [Java](https://github.com/EventStore/EventStoreDB-Client-Java)
-- Node
+- [Node.js](https://github.com/EventStore/EventStore-Client-NodeJS)
+- [Go](https://github.com/EventStore/EventStore-Client-Go)
 
 ## TCP protocol
 

@@ -4,7 +4,6 @@ module.exports = [
         collapsable: true,
         children: [
             "getting-started/",
-            "getting-started/quick-tour.md"
         ]
     },
     {

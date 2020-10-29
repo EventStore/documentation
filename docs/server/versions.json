@@ -5,12 +5,12 @@
     "basePath": "server",
     "versions": [
       {
-        "version": "20.6",
+        "version": "20.6.1",
         "path": "20.6/server"
       },
       {
         "version": "5.0.9",
-        "path": "5.0.9/server"
+        "path": "5.0.8/server"
       }
     ]
   },
@@ -21,7 +21,7 @@
     "versions": [
       {
         "version": "5.0.9",
-        "path": "5.0.9/http-api"
+        "path": "5.0.8/http-api"
       }
     ]
   }
