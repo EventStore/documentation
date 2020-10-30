@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import {safe, safeJoin} from "../lib/strings";
+import {safe, safeJoin} from "../theme/util/strings";
 
 export default {
   name: "Connection",
@@ -40,6 +40,11 @@ export default {
   data() {
     return {
       client: "dotnet-grpc"
+    }
+  },
+  watch: {
+    connectionString(val) {
+
     }
   },
   computed: {

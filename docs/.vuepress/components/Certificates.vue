@@ -118,7 +118,7 @@
 import SingleColumnRow from "./SingleColumnRow";
 import CertCn from "./CertCn";
 import CertSan from "./CertSan";
-import {safeJoin, sep} from "../lib/strings";
+import {safeJoin, sep} from "../theme/util/strings";
 
 export default {
   name: "Certificates",

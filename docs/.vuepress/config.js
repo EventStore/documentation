@@ -31,7 +31,8 @@ module.exports = {
         containers("card", "el-card", _ => `body-style="padding: 0px"`),
     ],
     extraWatchFiles: [
-        "**/sidebar.js"
+        "**/sidebar.js",
+        "store/**/*.js"
     ],
     themeConfig: {
         logo: "/eventstore-logo-alt.svg",

@@ -1,6 +1,6 @@
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import "./styles/element-variables.scss"
+import "./theme/styles/element-variables.scss"
 import "prismjs";
 import "prismjs/plugins/autolinker/prism-autolinker.min";
 import "prismjs/plugins/autolinker/prism-autolinker.css";
@@ -9,22 +9,23 @@ import "prismjs/components/prism-csharp";
 import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
 import * as gtm from "./gtm/inject";
+import Vuex from "vuex";
 
 // import CodeToggle from "./components/CodeToggle";
-// import store from "./store";
 // import {SetSiteLanguages} from "./store/mutations";
 
 export default ({Vue, options, router, siteData}) => {
+    Vue.use(Vuex);
     Vue.use(ElementUI);
     // Vue.component("code-toggle", CodeToggle);
     Vue.component("prism", Prism);
 
     // store.commit(SetSiteLanguages, siteData.themeConfig.codeLanguages);
     // Object.assign(options, {
-    //     data: {
-    //         codeLanguage: null,
-    //     },
-    //     store: store
+        //data: {
+        //    codeLanguage: null,
+        //},
+        // store: new Vuex.Store(store)
     // });
     router.addRoutes([
         {

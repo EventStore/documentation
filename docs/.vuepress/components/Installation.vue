@@ -78,7 +78,7 @@ sudo {{ pkgmgr }} install eventstore-{{ ent ? "commercial" : "oss" }}{{ version 
 
 <script>
 import Download from "./Download";
-import {sep} from "../lib/strings";
+import {sep} from "../theme/util/strings";
 
 export default {
   name: "Installation",

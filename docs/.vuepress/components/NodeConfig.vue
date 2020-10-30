@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {safe} from "../lib/strings";
+import {safe} from "../theme/util/strings";
 
 export default {
   name: "NodeConfig",

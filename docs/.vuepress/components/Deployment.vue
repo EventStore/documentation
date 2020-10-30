@@ -5,213 +5,12 @@
         <br>
         <span>Specify the configuration details in the form below, then click Validate and Proceed at the bottom.</span>
 
-        <el-divider content-position="right">Platform</el-divider>
+        <Platform/>
 
-        <el-form
-            :model="topology"
-            ref="platformForm"
-            label-width="240px"
-            @validate="(field, result, error) => checkField('Directories', field, result, error)"
-        >
-          <el-form-item label="Platform:" prop="platform">
-            <el-radio-group v-model="topology.platform">
-              <el-radio-button label="linux">Linux</el-radio-button>
-              <el-radio-button label="windows">Windows</el-radio-button>
-            </el-radio-group>
-          </el-form-item>
-        </el-form>
-
-        <Directories :directories="directories" prop="directories" :disable-config="topology.platform==='linux'"
-                     @update="sync"/>
+        <Directories/>
 
         <!-- Deployment -->
 
-        <el-form
-            :model="topology"
-            ref="topologyForm"
-            label-width="240px"
-            @validate="(field, result, error) => checkField('Cluster topology', field, result, error)"
-        >
-
-          <el-divider content-position="right">Deployment topology</el-divider>
-
-          <el-form-item label="Deployment topology:" prop="cluster">
-            <el-switch
-                v-model="topology.cluster"
-                active-text="Cluster"
-                inactive-text="Single node">
-            </el-switch>
-          </el-form-item>
-
-          <el-form-item label="Protocol security:" prop="secure">
-            <el-switch
-                v-model="topology.secure"
-                active-text="Secure"
-                inactive-text="Insecure">
-            </el-switch>
-          </el-form-item>
-
-          <transition name="slide">
-            <div v-show="topology.secure">
-              <el-form-item
-                  label="Certificate:"
-                  prop="cert">
-                <el-radio-group v-model="topology.cert">
-                  <el-radio-button label="self-signed">Self-signed</el-radio-button>
-                  <el-radio-button label="trusted">Public CA</el-radio-button>
-                </el-radio-group>
-              </el-form-item>
-
-              <el-form-item
-                  label="Certificate common name:"
-                  prop="certCommonName"
-                  :rules="[
-                      {required: topology.secure, message: 'Certificate CN is required'},
-                      {validator: validateCertCn, trigger: 'blur'},
-                    ]"
-              >
-                <el-col :span="10">
-                  <el-input
-                      v-model="topology.certCommonName"
-                      :disabled="isSelfSigned"
-                      :placeholder="publicCaPrompt"
-                  >
-                  </el-input>
-                </el-col>
-                <el-col :span="10" class="form-help">
-                  <span v-html="certCnHelp"></span>
-                </el-col>
-              </el-form-item>
-            </div>
-          </transition>
-
-          <el-form-item label="Number of nodes:" prop="nodesCount">
-            <el-col :span="10">
-              <el-input-number
-                  v-model="topology.nodesCount"
-                  :min="topology.minNodes"
-                  :max="topology.maxNodes"
-              >
-              </el-input-number>
-            </el-col>
-            <el-col :span="12" v-if="topology.cluster" class="form-help">
-              We recommend <b>three nodes</b> for an HA cluster. The number of nodes should be odd.
-            </el-col>
-          </el-form-item>
-
-          <FormSwitch label="Separate interfaces:" prop="separateNetworks" v-model="topology.separateNetworks">
-            Enable this option if internal and external communication should use different network interfaces.
-          </FormSwitch>
-
-          <transition-group name="slide">
-            <el-form
-                label-width="240px"
-                v-for="item in topology.nodes"
-                :key="`node-${item.index}`"
-                :ref="`node-${item.index}`"
-                :model="item"
-                :inline="true"
-                @validate="(field, result, error) => checkField('Node ' + item.index, field, result, error)"
-            >
-              <el-form-item
-                  prop="dnsName"
-                  :label="`Node ${item.index} address:`"
-                  :rules="[ { validator: validateClusterNodeDns, trigger: 'blur'} ]"
-              >
-                <el-input
-                    placeholder="DNS name (optional)"
-                    v-model="item.dnsName"
-                    @change="resolveNodeDns(item, 'dnsName', 'extIp')"
-                    autocomplete="false"
-                    clearable>
-                </el-input>
-              </el-form-item>
-
-              <el-form-item
-                  prop="extIp"
-                  :rules="[
-                  {required: true, message: 'Node IP address is required'},
-                  { validator: validateNodeIp, trigger: 'blur'}
-                ]"
-              >
-                <el-input
-                    placeholder="External IP"
-                    v-model="item.extIp"
-                    autocomplete="false"
-                    clearable>
-                </el-input>
-              </el-form-item>
-
-              <transition name="el-zoom-in-center">
-                <el-form-item
-                    prop="intIp"
-                    v-show="topology.separateNetworks"
-                    :rules="[ { validator: validateNodeIp, required: topology.separateNetworks, trigger: 'blur'} ]"
-                >
-                  <el-input
-                      placeholder="Internal IP"
-                      v-model="item.intIp"
-                      autocomplete="false"
-                      clearable>
-                  </el-input>
-                </el-form-item>
-              </transition>
-            </el-form>
-          </transition-group>
-
-          <transition name="slide" mode="out-in">
-            <div v-show="topology.cluster">
-              <el-form-item label="Gossip for cluster nodes:" prop="gossipMethod">
-                <el-col :span="10">
-                  <el-radio-group
-                      v-model="topology.gossipMethod"
-                      :disabled="topology.secure && !isSelfSigned"
-                  >
-                    <el-radio-button label="dns">Cluster DNS</el-radio-button>
-                    <el-radio-button label="seed">Nodes seed</el-radio-button>
-                  </el-radio-group>
-                </el-col>
-                <el-col :span="12" v-if="topology.cluster && topology.secure && !isSelfSigned" class="form-help">
-                  When nodes use wildcard certificate, cluster gossip can only use the nodes seed.
-                </el-col>
-              </el-form-item>
-
-              <transition name="slide" mode="out-in">
-                <el-form-item
-                    label="Cluster gossip DNS:"
-                    prop="gossip"
-                    v-show="isDnsClusterGossip"
-                    :rules="[
-              {required: isDnsClusterGossip, message: 'Cluster DNS name required', trigger: 'blur'},
-              {validator: validateClusterGossip, trigger: 'blur'}
-            ]"
-                >
-                  <el-col :span="10">
-                    <el-input
-                        placeholder="Cluster DNS name"
-                        v-model="topology.gossip"
-                        clearable>
-                    </el-input>
-                  </el-col>
-                </el-form-item>
-              </transition>
-            </div>
-          </transition>
-
-          <Port label="HTTP" prop="httpPort" :enabled="true" v-model="topology.httpPort">
-            HTTP port for internal and external communication over gRPC and
-            endpoints like stats and gossip.
-          </Port>
-          <Port label="Internal TCP" prop="internalTcpPort" :enabled="topology.cluster"
-                v-model="topology.internalTcpPort">
-            Even when TCP is disabled, cluster nodes still perform replication over TCP internally.
-          </Port>
-          <Port label="External TCP" prop="externalTcpPort" :enabled="client.enableTcp"
-                v-model="topology.externalTcpPort">
-            This port is used for TCP clients. You only need it if you have application using legacy TCP clients.
-          </Port>
-
-        </el-form>
 
         <!-- Protocols-->
 
@@ -388,6 +187,7 @@ import FormSwitch from "./FormSwitch";
 import Port from "./Port";
 import Errors from "./Errors";
 import {ok, error, validateGossip, validateIpAddress, validateDnsName} from "../lib/validate";
+import Platform from "./Platform";
 
 const SelfSignedCommonName = "eventstoredb-node";
 const SelfSigned = "self-signed";
@@ -396,7 +196,7 @@ const SeedGossip = "seed";
 
 export default {
   name: "Deployment",
-  components: {Directories, Certificates, Configuration, Connection, FormSwitch, Port, Errors},
+  components: {Platform, Directories, Certificates, Configuration, Connection, FormSwitch, Port, Errors},
   data() {
     return {
       directories: {},

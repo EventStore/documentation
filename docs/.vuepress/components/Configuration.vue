@@ -20,7 +20,7 @@
 <script>
 import NodeConfig from "./NodeConfig";
 import Installation from "./Installation";
-import {safe, sep} from "../lib/strings";
+import {safe, sep} from "../theme/util/strings";
 
 export default {
   name: "Configuration",

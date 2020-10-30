@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     updateValue(val) {
-      this.$emit("input", {value: val, prop: this.prop});
+      this.$emit("input", val);
     }
   }
 }
