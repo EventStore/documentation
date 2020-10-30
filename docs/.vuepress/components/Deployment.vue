@@ -9,8 +9,9 @@
 
         <Directories/>
 
-        <!-- Deployment -->
+        <Topology/>
 
+        <Security/>
 
         <!-- Protocols-->
 
@@ -188,6 +189,8 @@ import Port from "./Port";
 import Errors from "./Errors";
 import {ok, error, validateGossip, validateIpAddress, validateDnsName} from "../lib/validate";
 import Platform from "./Platform";
+import Topology from "./Topology";
+import Security from "./Security";
 
 const SelfSignedCommonName = "eventstoredb-node";
 const SelfSigned = "self-signed";
@@ -196,7 +199,7 @@ const SeedGossip = "seed";
 
 export default {
   name: "Deployment",
-  components: {Platform, Directories, Certificates, Configuration, Connection, FormSwitch, Port, Errors},
+  components: {Topology, Platform, Directories, Security, Certificates, Configuration, Connection, FormSwitch, Port, Errors},
   data() {
     return {
       directories: {},
@@ -243,9 +246,6 @@ export default {
     }
   },
   computed: {
-    publicCaPrompt() {
-      return this.isSelfSigned ? "" : this.topology.cluster ? "*.example.com" : "esdb.example.com";
-    },
     isDnsClusterGossip() {
       return this.topology.cluster && this.topology.gossipMethod === DnsGossip;
     },
@@ -254,11 +254,6 @@ export default {
     },
     isSelfSigned() {
       return this.topology.cert === SelfSigned;
-    },
-    certCnHelp() {
-      return this.isSelfSigned
-          ? "Must be <code>eventstoredb-node</code> for self-signed certificate."
-          : `You need a ${this.topology.cluster ? "wildcard " : ""}certificate signed by a public trusted CA.`;
     },
   },
   watch: {
@@ -383,13 +378,6 @@ export default {
       ]
     },
     validateCertCn(rule, value, callback) {
-      if (!this.topology.secure || this.isSelfSigned) return;
-
-      const preValid = !this.topology.cluster || value.startsWith("*.");
-      if (!preValid || !networks.isValidDns(value.substring(2))) {
-        return error(callback, "Please enter a valid wildcard certificate CN");
-      }
-      callback();
     },
     uniqueNode(prop, value) {
       return this.topology.nodes.filter(x => x[prop] === value).length === 1;
@@ -439,9 +427,6 @@ export default {
     async resolveNodeDns(item, propFrom, propTo) {
       const ips = await networks.resolveDns(item[propFrom]);
       item[propTo] = ips === undefined ? "" : ips[0];
-    },
-    async validateClusterGossip(rule, value, callback) {
-      return !this.isDnsClusterGossip ? ok(callback) : await validateGossip(this.topology.nodes, value, callback);
     },
     async validateClientGossip(rule, value, callback) {
       return !this.isDnsClientGossip

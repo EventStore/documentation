@@ -15,7 +15,7 @@
 import store from "../store/platform";
 
 export default {
-    name:     "Topology",
+    name:     "Platform",
     computed: {
         platform: {
             get: () => store.state.platform,

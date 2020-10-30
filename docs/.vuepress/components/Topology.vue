@@ -10,18 +10,16 @@
 
     <el-form-item label="Deployment topology:" prop="cluster">
       <el-switch
-              v-model="topology.cluster"
+              v-model="cluster"
               active-text="Cluster"
               inactive-text="Single node">
       </el-switch>
     </el-form-item>
 
-    <Security/>
-
     <el-form-item label="Number of nodes:" prop="nodesCount">
       <el-col :span="10">
         <el-input-number
-                v-model="topology.nodesCount"
+                v-model="nodesCount"
                 :min="topology.minNodes"
                 :max="topology.maxNodes"
         >
@@ -45,7 +43,7 @@
               :model="item"
               :inline="true"
       >
-<!--        @validate="(field, result, error) => checkField('Node ' + item.index, field, result, error)"-->
+        <!--        @validate="(field, result, error) => checkField('Node ' + item.index, field, result, error)"-->
         <el-form-item
                 prop="dnsName"
                 :label="`Node ${item.index} address:`"
@@ -131,16 +129,29 @@
       </div>
     </transition>
 
-    <Port label="HTTP" prop="httpPort" :enabled="true" v-model="topology.httpPort">
+    <Port
+            label="HTTP"
+            prop="httpPort"
+            :enabled="true"
+            v-model="topology.httpPort"
+    >
       HTTP port for internal and external communication over gRPC and
       endpoints like stats and gossip.
     </Port>
-    <Port label="Internal TCP" prop="internalTcpPort" :enabled="topology.cluster"
-          v-model="topology.internalTcpPort">
+    <Port
+            label="Internal TCP"
+            prop="internalTcpPort"
+            :enabled="topology.cluster"
+            v-model="topology.internalTcpPort"
+    >
       Even when TCP is disabled, cluster nodes still perform replication over TCP internally.
     </Port>
-    <Port label="External TCP" prop="externalTcpPort" :enabled="isTcpEnabled"
-          v-model="topology.externalTcpPort">
+    <Port
+            label="External TCP"
+            prop="externalTcpPort"
+            :enabled="isTcpEnabled"
+            v-model="topology.externalTcpPort"
+    >
       This port is used for TCP clients. You only need it if you have application using legacy TCP clients.
     </Port>
 
@@ -154,21 +165,33 @@ import FormSwitch from "./FormSwitch";
 import Port from "./Port";
 import store from "../store/topology";
 import * as networks from "../lib/networks";
+import {ok, validateGossip} from "../lib/validate";
 
 export default {
     name:       "Topology",
     components: {Security, FormSwitch, Port},
-    computed: {
+    computed:   {
         topology: () => store.state,
-        isTcpEnabled: () => true,
+
+        cluster: {
+            get: () => store.state.cluster,
+            set: v => store.updateClustering(v)
+        },
+        nodesCount: {
+            get: () => store.state.nodesCount,
+            set: v => store.updateNodes(v)
+        },
+
+        isTcpEnabled:       () => true,
         isDnsClusterGossip: () => store.isDnsGossip(),
-        isSelfSigned: () => true,
+        isSelfSigned:       () => true,
     },
-    methods: {
+    methods:    {
         validateClusterNodeDns(rule, value, callback) {
             // this.validateNodeDns(rule, value, "dnsName", callback);
         },
-        validateClusterGossip(rule, value, callback) {
+        async validateClusterGossip(rule, value, callback) {
+            return !this.isDnsClusterGossip ? ok(callback) : await validateGossip(this.topology.nodes, value, callback);
         },
         validateNodeIp(rule, value, callback) {
         },
