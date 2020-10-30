@@ -48,10 +48,11 @@ module.exports = {
         sidebarDepth: 1,
         searchPlaceholder: "Search",
         searchMaxSuggestions: 20,
-        algolia: {
-            apiKey: "eed65d5bafcba4865b82a5a52b031b57",
-            indexName: "Documentation"
-        },
+        // algolia: {
+        //     appId: "WKVK6K0NXK",
+        //     apiKey: "eed65d5bafcba4865b82a5a52b031b57",
+        //     indexName: "Documentation"
+        // },
         lastUpdated: "Last Updated",
         nav: [
             {
