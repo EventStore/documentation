@@ -49,7 +49,6 @@ module.exports = {
         searchPlaceholder: "Search",
         searchMaxSuggestions: 20,
         algolia: {
-            appId: "WKVK6K0NXK",
             apiKey: "eed65d5bafcba4865b82a5a52b031b57",
             indexName: "Documentation"
         },
