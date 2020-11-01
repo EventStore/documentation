@@ -12,7 +12,7 @@ export function error(callback, message) {
 }
 
 export function validateDnsName(rule, value, callback) {
-    return networks.isValidDns(value) ? true : error(callback, "Invalid DNS name");
+    return networks.isValidDns(value) ? null : error(callback, "Invalid DNS name");
 }
 
 export function validateIpAddress(rule, value, callback) {

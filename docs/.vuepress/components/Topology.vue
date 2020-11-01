@@ -3,8 +3,8 @@
           :model="topology"
           ref="topologyForm"
           label-width="240px"
+          @validate="checkField"
   >
-    <!--    @validate="(field, result, error) => checkField('Cluster topology', field, result, error)"-->
 
     <el-divider content-position="right">Deployment topology</el-divider>
 
@@ -16,79 +16,11 @@
       </el-switch>
     </el-form-item>
 
-    <el-form-item label="Number of nodes:" prop="nodesCount">
-      <el-col :span="10">
-        <el-input-number
-                v-model="nodesCount"
-                :min="topology.minNodes"
-                :max="topology.maxNodes"
-        >
-        </el-input-number>
-      </el-col>
-      <el-col :span="12" v-if="topology.cluster" class="form-help">
-        We recommend <b>three nodes</b> for an HA cluster. The number of nodes should be odd.
-      </el-col>
-    </el-form-item>
-
     <FormSwitch label="Separate interfaces:" prop="separateNetworks" v-model="topology.separateNetworks">
       Enable this option if internal and external communication should use different network interfaces.
     </FormSwitch>
 
-    <transition-group name="slide">
-      <el-form
-              label-width="240px"
-              v-for="item in topology.nodes"
-              :key="`node-${item.index}`"
-              :ref="`node-${item.index}`"
-              :model="item"
-              :inline="true"
-      >
-        <!--        @validate="(field, result, error) => checkField('Node ' + item.index, field, result, error)"-->
-        <el-form-item
-                prop="dnsName"
-                :label="`Node ${item.index} address:`"
-                :rules="[ { validator: validateClusterNodeDns, trigger: 'blur'} ]"
-        >
-          <el-input
-                  placeholder="DNS name (optional)"
-                  v-model="item.dnsName"
-                  @change="resolveNodeDns(item, 'dnsName', 'extIp')"
-                  autocomplete="false"
-                  clearable>
-          </el-input>
-        </el-form-item>
-
-        <el-form-item
-                prop="extIp"
-                :rules="[
-                  {required: true, message: 'Node IP address is required'},
-                  { validator: validateNodeIp, trigger: 'blur'}
-                ]"
-        >
-          <el-input
-                  placeholder="External IP"
-                  v-model="item.extIp"
-                  autocomplete="false"
-                  clearable>
-          </el-input>
-        </el-form-item>
-
-        <transition name="el-zoom-in-center">
-          <el-form-item
-                  prop="intIp"
-                  v-show="topology.separateNetworks"
-                  :rules="[ { validator: validateNodeIp, required: topology.separateNetworks, trigger: 'blur'} ]"
-          >
-            <el-input
-                    placeholder="Internal IP"
-                    v-model="item.intIp"
-                    autocomplete="false"
-                    clearable>
-            </el-input>
-          </el-form-item>
-        </transition>
-      </el-form>
-    </transition-group>
+    <ClusterNodes :is-cluster="topology.cluster" :show-int-ip="topology.separateNetworks" />
 
     <transition name="slide" mode="out-in">
       <div v-show="topology.cluster">
@@ -163,41 +95,33 @@
 import Security from "./Security";
 import FormSwitch from "./FormSwitch";
 import Port from "./Port";
-import store from "../store/topology";
-import * as networks from "../lib/networks";
-import {ok, validateGossip} from "../lib/validate";
+import topologyStore from "../store/topology";
+import {error, ok, validateGossip} from "../lib/validate";
+import validation from "../store/validation";
+import ClusterNode from "./ClusterNode";
+import ClusterNodes from "./ClusterNodes";
 
 export default {
     name:       "Topology",
-    components: {Security, FormSwitch, Port},
+    components: {ClusterNodes, ClusterNode, Security, FormSwitch, Port},
     computed:   {
-        topology: () => store.state,
+        topology: () => topologyStore.state,
 
-        cluster: {
-            get: () => store.state.cluster,
-            set: v => store.updateClustering(v)
-        },
-        nodesCount: {
-            get: () => store.state.nodesCount,
-            set: v => store.updateNodes(v)
-        },
+        cluster:    topologyStore.extendedProperty("cluster", "updateClustering"),
 
         isTcpEnabled:       () => true,
-        isDnsClusterGossip: () => store.isDnsGossip(),
+        isDnsClusterGossip: () => topologyStore.isDnsGossip(),
         isSelfSigned:       () => true,
     },
     methods:    {
-        validateClusterNodeDns(rule, value, callback) {
-            // this.validateNodeDns(rule, value, "dnsName", callback);
-        },
         async validateClusterGossip(rule, value, callback) {
             return !this.isDnsClusterGossip ? ok(callback) : await validateGossip(this.topology.nodes, value, callback);
         },
-        validateNodeIp(rule, value, callback) {
+        checkField(field, result, error) {
+            validation.record("Deployment topology", field, result, error);
         },
-        async resolveNodeDns(item, propFrom, propTo) {
-            const ips = await networks.resolveDns(item[propFrom]);
-            // item[propTo] = ips === undefined ? "" : ips[0];
+        validate() {
+            console.log("validating!")
         },
     }
 }

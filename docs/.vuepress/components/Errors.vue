@@ -23,22 +23,19 @@
 
 <script>
 import ErrorSection from "./ErrorSection";
+import validation from "../store/validation";
 
 export default {
   name: "Errors",
   components: {ErrorSection},
-  props: {
-    formErrors: Object
-  },
   data() {
     return {
       validated: false,
-      errors: {}
     }
   },
   computed: {
     check() {
-      return this.formErrors;
+      return validation.state.errors;
     },
     validateButtonLabel() {
       return `Validate${this.validated ? " again" : ""}`;
@@ -49,13 +46,10 @@ export default {
   },
   methods: {
     hasErrors() {
-      for (let x in this.formErrors) {
-        if (this.hasSectionErrors(x)) return true;
-      }
-      return false;
+        return validation.hasErrors();
     },
     hasSectionErrors(section) {
-      return this.formErrors[section].find(y => y.error);
+      return validation.hasSectionErrors(section);
     },
     validateConfiguration() {
       this.$emit("validate");

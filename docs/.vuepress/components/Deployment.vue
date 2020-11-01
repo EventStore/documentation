@@ -9,7 +9,7 @@
 
         <Directories/>
 
-        <Topology/>
+        <Topology ref="topologyForm"/>
 
         <Security/>
 
@@ -434,12 +434,10 @@ export default {
           : this.ensureCaDomainMatch(value, callback) && await validateGossip(this.topology.nodes, value, callback);
     },
     async validateConfiguration() {
-      const cb = () => {
-      };
-      this.$refs.topologyForm.validate(cb);
-      this.topology.nodes.forEach(node => this.$refs[`node-${node.index}`][0].validate(cb));
-      this.$refs.clientForm.validate(cb);
-      this.topology.nodes.forEach(node => this.$refs[`clientNode-${node.index}`][0].validate(cb));
+      this.$refs.topologyForm.validate();
+      // this.topology.nodes.forEach(node => this.$refs[`node-${node.index}`][0].validate(cb));
+      this.$refs.clientForm.validate();
+      this.topology.nodes.forEach(node => this.$refs[`clientNode-${node.index}`][0].validate());
       this.validated = true;
       this.track("validate", this.formErrors.length);
     },
