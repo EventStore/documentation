@@ -42,7 +42,7 @@
 <script>
 import FormInput from "../form/FormInput";
 import store from "../../../store/configurator/directories";
-import validationMixin from "../shared/validationMixin";
+import validationMixin from "../../shared/validationMixin";
 
 export default {
     name:       "Directories",

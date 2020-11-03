@@ -60,10 +60,10 @@ import FormSwitch from "../form/FormSwitch";
 import Port from "../shared/Port";
 import ClusterNode from "./ClusterNode";
 import ClusterNodes from "./ClusterNodes";
-import Gossip from "../shared/Gossip";
+import Gossip from "../../shared/Gossip";
 import topologyStore from "../../../store/configurator/topology";
 import nodes from "../../../store/configurator/nodes";
-import validationMixin from "../shared/validationMixin";
+import validationMixin from "../../shared/validationMixin";
 
 export default {
     name:       "Topology",

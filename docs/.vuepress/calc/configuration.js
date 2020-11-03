@@ -46,19 +46,19 @@ export default function(node, projections) {
 
     const network = () => {
         return {
-            intIp: intIp(node),
-            extIp: node.extIp,
-            extHost: extAdvertiseAs(node),
-            intHost: intAdvertiseAs(node),
-            httpPort: topology.state.httpPort,
-            intTcpPort: topology.state.internalTcpPort,
-            extTcpPort: topology.state.externalTcpPort,
-            enableTcp: client.state.enableTcp,
-            enableAtom: client.state.enableAtomPub,
+            intIp:             intIp(node),
+            extIp:             node.extIp,
+            extHost:           extAdvertiseAs(node),
+            intHost:           intAdvertiseAs(node),
+            httpPort:          topology.state.httpPort,
+            intTcpPort:        topology.state.internalTcpPort,
+            extTcpPort:        topology.state.externalTcpPort,
+            enableTcp:         client.state.enableTcp,
+            enableAtom:        client.state.enableAtomPub,
             advertiseToClient: client.state.advertiseToClient,
-            advNodeDns: node.clientDnsName,
-            advTcpPort: client.state.externalTcpPort,
-            advHttpPort: client.state.httpPort,
+            advNodeAddress:    node.clientAddress,
+            advTcpPort:        client.state.externalTcpPort,
+            advHttpPort:       client.state.httpPort,
         }
     };
 

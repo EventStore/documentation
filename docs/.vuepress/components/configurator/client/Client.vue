@@ -59,9 +59,9 @@ import ClientNodes from "./ClientNodes";
 import FormSwitch from "../form/FormSwitch";
 import Port from "../shared/Port";
 import store from "../../../store/configurator/client";
-import Gossip from "../shared/Gossip";
+import Gossip from "../../shared/Gossip";
 import nodes from "../../../store/configurator/nodes";
-import validationMixin from "../shared/validationMixin";
+import validationMixin from "../../shared/validationMixin";
 
 export default {
     name:       "Client",

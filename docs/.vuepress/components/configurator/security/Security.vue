@@ -55,7 +55,7 @@
 <script>
 import store from "../../../store/configurator/security";
 import {error, ok} from "../../../lib/validate";
-import validationMixin from "../shared/validationMixin";
+import validationMixin from "../../shared/validationMixin";
 
 export default {
     name:     "Security",

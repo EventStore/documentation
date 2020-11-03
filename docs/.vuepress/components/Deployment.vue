@@ -69,19 +69,19 @@
 </template>
 
 <script>
-import Directories from "./deployment/Directories";
-import Certificates from "./result/Certificates";
-import Configuration from "./result/Configuration";
-import Connection from "./result/Connection";
-import FormSwitch from "./form/FormSwitch";
-import Port from "./shared/Port";
-import Errors from "./Errors";
-import Platform from "./deployment/Platform";
-import Topology from "./deployment/Topology";
-import Security from "./security/Security";
-import security from "../../store/configurator/security";
-import Client from "./client/Client";
-import validation from "../../store/configurator/validation";
+import Directories from "./configurator/deployment/Directories";
+import Certificates from "./configurator/result/Certificates";
+import Configuration from "./configurator/result/Configuration";
+import Connection from "./configurator/result/Connection";
+import FormSwitch from "./configurator/form/FormSwitch";
+import Port from "./configurator/shared/Port";
+import Errors from "./configurator/Errors";
+import Platform from "./configurator/deployment/Platform";
+import Topology from "./configurator/deployment/Topology";
+import Security from "./configurator/security/Security";
+import security from "../store/configurator/security";
+import Client from "./configurator/client/Client";
+import validation from "../store/configurator/validation";
 
 export default {
     name:       "Deployment",
@@ -143,6 +143,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./styles/slide";
+
 .el-row {
   margin-bottom: 20px;
   height: 3.5rem;
@@ -158,35 +160,4 @@ export default {
   margin-left: 10px;
 }
 
-.slide-enter-active {
-  -moz-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -moz-transition-timing-function: ease-in;
-  -webkit-transition-timing-function: ease-in;
-  -o-transition-timing-function: ease-in;
-  transition-timing-function: ease-in;
-}
-
-.slide-leave-active {
-  -moz-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  -moz-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -webkit-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  -o-transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-  transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-}
-
-.slide-enter-to, .slide-leave {
-  max-height: 100px;
-  overflow: hidden;
-}
-
-.slide-enter, .slide-leave-to {
-  overflow: hidden;
-  max-height: 0;
-}
 </style>

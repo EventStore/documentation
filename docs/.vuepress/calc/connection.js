@@ -6,7 +6,7 @@ import security from "../store/configurator/security";
 
 export default function (sdk) {
     const nodeAddress = node => client.state.advertiseToClient
-        ? `${safe(node.clientDnsName)}:${client.state.httpPort}`
+        ? `${safe(node.clientAddress)}:${client.state.httpPort}`
         : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${topology.state.httpPort}`;
 
     const httpPort        = client.state.advertiseToClient ? client.state.httpPort : topology.state.httpPort;

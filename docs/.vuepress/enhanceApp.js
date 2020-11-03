@@ -10,6 +10,7 @@ import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
 import * as gtm from "./gtm/inject";
 import Vuex from "vuex";
+import connection from "./store/client/connection";
 
 // import CodeToggle from "./components/CodeToggle";
 // import {SetSiteLanguages} from "./store/mutations";
@@ -21,12 +22,12 @@ export default ({Vue, options, router, siteData}) => {
     Vue.component("prism", Prism);
 
     // store.commit(SetSiteLanguages, siteData.themeConfig.codeLanguages);
-    // Object.assign(options, {
+    Object.assign(options, {
         //data: {
         //    codeLanguage: null,
         //},
-        // store: new Vuex.Store(store)
-    // });
+        connection: connection
+    });
     router.addRoutes([
         {
             path: "/latest.html",

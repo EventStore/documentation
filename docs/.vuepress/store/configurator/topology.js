@@ -1,6 +1,6 @@
 import {createStore} from "../baseStore";
 import {ClusteringChanged, TcpChanged} from "./events";
-import Gossip from "./gossip";
+import Gossip from "../shared/gossip";
 
 export default createStore(
     {
@@ -11,7 +11,7 @@ export default createStore(
             internalTcpPort:  1112,
             externalTcpPort:  1113,
             tcpEnabled:       true,
-            gossip:           new Gossip("Cluster", "cluster nodes")
+            gossip:           new Gossip("Cluster", "cluster nodes", true)
         },
         methods:       {
             updateClustering(value) {

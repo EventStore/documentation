@@ -58,7 +58,7 @@
 
 <script>
 import nodesStore from "../../../store/configurator/nodes";
-import nodeMixin from "../shared/nodeMixin";
+import nodeMixin from "../../shared/nodeMixin";
 
 export default {
     name:     "ClusterNode",

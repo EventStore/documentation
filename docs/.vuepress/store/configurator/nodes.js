@@ -76,6 +76,11 @@ export default createStore(
                 if (!networks.isValidIpAddress(value)) return `${value} is not a valid IP address`;
                 return null;
             },
+            validateNodeAddress(prop, value) {
+                if (!this.uniqueNode(prop, value)) return `${value} already used`;
+                if (!networks.isValidIpAddress(value) && !networks.isValidDns(value)) return `${value} is not a valid address`;
+                return null;
+            },
             isSingleNode() {
                 return this.nodesCount === 1;
             }

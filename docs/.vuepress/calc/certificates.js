@@ -14,6 +14,7 @@ function ipCerts(node) {
     let ips = [];
     if (isExtIp(node)) ips.push(node.extIp);
     if (topology.state.separateNetworks) ips.push(node.intIp);
+    if (client.state.advertiseToClient && node.isClientIp()) ips.push(node.clientAddress);
     return ips;
 }
 
@@ -22,7 +23,7 @@ function dnsCerts(node) {
     if (!isExtIp(node)) dns.push(node.dnsName);
     if (topology.state.gossip.isDnsGossip()) dns.push(topology.state.gossip.dnsName);
     if (client.state.gossip.isDnsGossip()) dns.push(client.state.gossip.dnsName);
-    if (client.state.advertiseToClient) dns.push(node.clientDnsName);
+    if (client.state.advertiseToClient && !node.isClientIp()) dns.push(node.clientAddress);
     return dns;
 }
 

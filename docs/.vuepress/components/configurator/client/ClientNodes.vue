@@ -11,16 +11,16 @@
               @validate="(field, result, error) => checkNodeField(item.index, field, result, error)"
       >
         <el-form-item
-                prop="clientDnsName"
+                prop="clientAddress"
                 :label="`Node ${item.index} translated address:`"
                 :rules="[
                     { required: advertiseToClient, trigger: 'blur', message: 'Translated address is required'},
-                    { validator: validateNodeDns, required: advertiseToClient, trigger: 'blur'}
+                    { validator: validateNodeAddress, required: advertiseToClient, trigger: 'blur'}
                     ]"
         >
           <el-input
                   placeholder="DNS name"
-                  v-model="item.clientDnsName"
+                  v-model="item.clientAddress"
                   autocomplete="false"
           >
           </el-input>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import nodeMixin from "../shared/nodeMixin";
+import nodeMixin from "../../shared/nodeMixin";
 
 export default {
     name:    "ClientNodes",
@@ -44,12 +44,12 @@ export default {
     watch:   {
         advertiseToClient(v) {
             if (v) return;
-            setTimeout(_ => this.revalidate("clientNode", "clientDnsName"), 100);
+            setTimeout(_ => this.revalidate("clientNode", "clientAddress"), 100);
         }
     },
     methods: {
         ignore(field) {
-            return !this.advertiseToClient || field !== "clientDnsName";
+            return !this.advertiseToClient || field !== "clientAddress";
         },
         validate() {
             this.nodes.forEach(async node => {

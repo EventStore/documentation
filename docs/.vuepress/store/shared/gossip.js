@@ -1,10 +1,10 @@
 import {DnsGossip} from "./gossipTypes";
 import {EventBus} from "../eventBus";
-import {CertCnChanged, CertificateTypeChanged, ClusteringChanged} from "./events";
+import {CertCnChanged, CertificateTypeChanged, ClusteringChanged} from "../configurator/events";
 import {ensureCaDomainMatch, ok, error, validateGossip} from "../../lib/validate";
 
 export default class Gossip {
-    constructor(type, message) {
+    constructor(type, message, subscribe) {
         this.type                = type;
         this.message             = message;
         this.method              = DnsGossip;
@@ -12,9 +12,11 @@ export default class Gossip {
         this.showGossip          = true;
         this.dnsName             = "";
 
-        EventBus.$on(ClusteringChanged, x => this.changeClustering(x));
-        EventBus.$on(CertificateTypeChanged, x => this.handleSelfSigned(x));
-        EventBus.$on(CertCnChanged, x => this.certCn = x);
+        if (subscribe) {
+            EventBus.$on(ClusteringChanged, x => this.changeClustering(x));
+            EventBus.$on(CertificateTypeChanged, x => this.handleSelfSigned(x));
+            EventBus.$on(CertCnChanged, x => this.certCn = x);
+        }
     }
 
     changeClustering(cluster) {
@@ -26,10 +28,18 @@ export default class Gossip {
     }
 
     handleSelfSigned(selfSigned) {
-        this.disableGossipMethod = !selfSigned;
+        this.disableGossip(!selfSigned);
         if (!selfSigned) {
             this.method = DnsGossip;
         }
+    }
+
+    setMethod(method) {
+        this.method = method;
+    }
+
+    disableGossip(disable) {
+        this.disableGossipMethod = disable;
     }
 
     async validateGossip(nodes, value, callback) {

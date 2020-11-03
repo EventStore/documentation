@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide" mode="out-in">
+  <transition name="slide">
     <el-form
             :model="gossip"
             ref="gossipForm"
@@ -23,7 +23,7 @@
         </el-col>
       </el-form-item>
 
-      <transition name="slide" mode="out-in">
+      <transition name="slide">
         <el-form-item
                 :label="label"
                 prop="dnsName"
@@ -49,7 +49,6 @@
 
 <script>
 import validationMixin from "./validationMixin";
-import {ok} from "../../../lib/validate";
 
 export default {
     name:     "Gossip",
@@ -86,10 +85,8 @@ export default {
     },
     methods:  {
         async validateGossip(rule, value, callback) {
-            if (!this.isDnsGossip) {
-                ok(callback);
-                return;
-            }
+            if (!this.nodes) return;
+
             await this.gossip.validateGossip(this.nodes, value, callback);
         },
         async validate() {

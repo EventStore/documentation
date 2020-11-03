@@ -57,7 +57,7 @@ export default {
 
             if (nodeConfig.network.advertiseToClient) {
                 config.push("\n# Advertise to client");
-                config.add("AdvertiseHostToClientAs", nodeConfig.network.advNodeDns);
+                config.add("AdvertiseHostToClientAs", nodeConfig.network.advNodeAddress);
                 config.add("AdvertiseHttpPortToClientAs", nodeConfig.network.advHttpPort)
                 config.add("AdvertiseTcpPortToClientAs", nodeConfig.network.advTcpPort)
             }

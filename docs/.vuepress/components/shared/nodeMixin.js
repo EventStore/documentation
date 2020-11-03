@@ -1,5 +1,5 @@
-import nodesStore from "../../../store/configurator/nodes";
-import {error, ok} from "../../../lib/validate";
+import nodesStore from "../../store/configurator/nodes";
+import {error, ok, validateItem} from "../../lib/validate";
 import validationMixin from "./validationMixin";
 
 export default {
@@ -9,18 +9,19 @@ export default {
             return false;
         },
         validateNodeDns(rule, value, callback) {
-            const checkDns = () => {
-                const err = nodesStore.validateNodeDns(rule.field, value);
-                return err == null ? ok(callback) : error(callback, err);
-            }
-
-            return value === "" || this.ignore(rule.field) ? ok(callback) : checkDns();
+            return value === "" || this.ignore(rule.field)
+                ? ok(callback)
+                : validateItem(nodesStore.validateNodeDns(rule.field, value), callback);
         },
         validateNodeIp(rule, value, callback) {
-            if (this.ignore(rule.field)) return ok(callback);
-
-            const result = nodesStore.validateNodeIp(rule.field, value);
-            return result == null ? ok(callback) : error(callback, result);
+            return this.ignore(rule.field)
+                ? ok(callback)
+                : validateItem(nodesStore.validateNodeIp(rule.field, value), callback);
+        },
+        validateNodeAddress(rule, value, callback) {
+            return this.ignore(rule.field)
+                ? ok(callback)
+                : validateItem(nodesStore.validateNodeAddress(rule.field, value), callback);
         },
         async resolveNodeDns() {
             await this.node.resolveDnsName();

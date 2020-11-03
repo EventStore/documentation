@@ -1,4 +1,4 @@
-import validation from "../../../store/configurator/validation";
+import validation from "../../store/configurator/validation";
 
 export default {
     methods: {

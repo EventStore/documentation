@@ -1,7 +1,7 @@
 import Vue from "vue";
 import {createStore} from "../baseStore";
 import {SecurityChanged, TcpChanged} from "./events";
-import Gossip from "./gossip";
+import Gossip from "../shared/gossip";
 
 const privateState = Vue.observable({
     secure:     true,
@@ -16,7 +16,7 @@ export default createStore(
             advertiseToClient: false,
             httpPort:          2113,
             externalTcpPort:   1113,
-            gossip:            new Gossip("Client", "clients")
+            gossip:            new Gossip("Client", "clients", true)
         },
         methods:       {
             isSecure:     () => privateState.secure,

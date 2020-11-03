@@ -6,7 +6,7 @@ export default class Node {
         this.intIp         = "";
         this.extIp         = "";
         this.dnsName       = "";
-        this.clientDnsName = "";
+        this.clientAddress = "";
     }
 
     async resolveDnsName() {
@@ -14,5 +14,9 @@ export default class Node {
 
         const ips  = await networks.resolveDns(this.dnsName);
         this.extIp = ips === undefined ? "" : ips[0];
+    }
+
+    isClientIp() {
+        return networks.isValidIpAddress(this.clientAddress);
     }
 }

@@ -37,3 +37,7 @@ export function ensureCaDomainMatch(dnsName, cert) {
     const caDomain = cert.cn.substring(2);
     return dnsName.endsWith(caDomain);
 }
+
+export function validateItem(result, callback) {
+    return !result || result === "" ? ok(callback) : error(callback, result);
+}
