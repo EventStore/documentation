@@ -46,8 +46,8 @@ export default {
         connString: () => connection.connectionString()
     },
     mounted() {
-        connection.changeHosting(isTrue(this.$route.query.cloud));
         connection.changeTopology(isTrue(this.$route.query.cluster));
+        connection.changeHosting(isTrue(this.$route.query.cloud));
         if (this.$route.query.clusterId) {
             connection.setClusterId(this.$route.query.clusterId);
         }
