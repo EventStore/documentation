@@ -12,9 +12,9 @@ Each SDK has its own way to configure the client, but it's always possible to us
 
 <ConnectionString></ConnectionString>
 
-```
+::: prism text
 {{ $page.connectionString }}
-```
+:::
 
 ## Connecting to EventStoreDB
 
