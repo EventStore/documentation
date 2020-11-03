@@ -1,7 +1,9 @@
 <template>
+  <ClientOnly>
   <div>
     <pre><code>{{ connectionString }}</code></pre>
   </div>
+  </ClientOnly>
 </template>
 
 <script>

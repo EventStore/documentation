@@ -1,47 +1,49 @@
 <template>
-  <div>
-    <transition name="slide">
-      <div v-show="showGossip">
-        <GossipConfig ref="clientGossip" :gossip="gossip"/>
+  <ClientOnly>
+    <div>
+      <transition name="slide">
+        <div v-show="showGossip">
+          <GossipConfig ref="clientGossip" :gossip="gossip"/>
 
-        <Port
-                label="HTTP"
-                prop="gossipPort"
-                :enabled="true"
-                v-model="gossipPort"
-        >
-        </Port>
-
-      </div>
-    </transition>
-
-    <transition name="slide">
-      <el-form-item
-              v-show="showNodesCount"
-              label="Number of nodes:"
-              prop="nodesCount"
-      >
-        <el-col :span="10">
-          <el-input-number
-                  v-model="nodesCount"
-                  :min="minNodes"
-                  :max="maxNodes"
-                  :disabled="disableNodesCount"
+          <Port
+                  label="HTTP"
+                  prop="gossipPort"
+                  :enabled="true"
+                  v-model="gossipPort"
           >
-          </el-input-number>
-        </el-col>
-      </el-form-item>
-    </transition>
+          </Port>
 
-    <transition-group name="slide">
-      <NodeDetails
-              v-show="showNodes"
-              v-for="node in nodes"
-              :key="`clientNode-${node.index}`"
-              :node="node"
-      />
-    </transition-group>
-  </div>
+        </div>
+      </transition>
+
+      <transition name="slide">
+        <el-form-item
+                v-show="showNodesCount"
+                label="Number of nodes:"
+                prop="nodesCount"
+        >
+          <el-col :span="10">
+            <el-input-number
+                    v-model="nodesCount"
+                    :min="minNodes"
+                    :max="maxNodes"
+                    :disabled="disableNodesCount"
+            >
+            </el-input-number>
+          </el-col>
+        </el-form-item>
+      </transition>
+
+      <transition-group name="slide">
+        <NodeDetails
+                v-show="showNodes"
+                v-for="node in nodes"
+                :key="`clientNode-${node.index}`"
+                :node="node"
+        />
+      </transition-group>
+    </div>
+  </ClientOnly>
 </template>
 
 <script>
