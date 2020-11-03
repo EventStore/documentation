@@ -1,6 +1,6 @@
 import * as strings from "../theme/util/strings";
-import platform from "../store/platform";
-import directories from "../store/directories";
+import platform from "../store/configurator/platform";
+import directories from "../store/configurator/directories";
 
 export default function () {
     const serverSep = strings.sep(platform.state.platform);

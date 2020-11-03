@@ -1,7 +1,7 @@
-import directories from "../store/directories";
+import directories from "../store/configurator/directories";
 import caDirs from "./dirs";
-import platform from "../store/platform";
-import security from "../store/security";
+import platform from "../store/configurator/platform";
+import security from "../store/configurator/security";
 
 export default function (os, ent, key) {
 

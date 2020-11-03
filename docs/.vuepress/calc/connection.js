@@ -1,8 +1,8 @@
-import client from "../store/client";
-import topology from "../store/topology";
+import client from "../store/configurator/client";
+import topology from "../store/configurator/topology";
 import {safe, safeJoin} from "../theme/util/strings";
-import nodes from "../store/nodes";
-import security from "../store/security";
+import nodes from "../store/configurator/nodes";
+import security from "../store/configurator/security";
 
 export default function (sdk) {
     const nodeAddress = node => client.state.advertiseToClient

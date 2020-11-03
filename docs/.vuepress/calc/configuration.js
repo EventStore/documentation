@@ -1,10 +1,10 @@
-import topology from "../store/topology";
+import topology from "../store/configurator/topology";
 import {safe, sep} from "../theme/util/strings";
-import platform from "../store/platform";
-import directories from "../store/directories";
-import security from "../store/security";
-import nodes from "../store/nodes";
-import client from "../store/client";
+import platform from "../store/configurator/platform";
+import directories from "../store/configurator/directories";
+import security from "../store/configurator/security";
+import nodes from "../store/configurator/nodes";
+import client from "../store/configurator/client";
 
 export default function(node, projections) {
     const cert = () => {

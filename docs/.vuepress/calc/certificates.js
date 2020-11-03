@@ -1,10 +1,10 @@
-import security from "../store/security";
-import client from "../store/client";
-import topology from "../store/topology";
+import security from "../store/configurator/security";
+import client from "../store/configurator/client";
+import topology from "../store/configurator/topology";
 import * as strings from "../theme/util/strings";
-import nodes from "../store/nodes";
+import nodes from "../store/configurator/nodes";
 import caDirs from "./dirs";
-import platform from "../store/platform";
+import platform from "../store/configurator/platform";
 
 function isExtIp(node) {
     return node.dnsName === "" || topology.state.gossip.isDnsGossip();
