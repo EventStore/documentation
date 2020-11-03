@@ -17,6 +17,7 @@
     <transition-group name="slide">
       <ClusterNode
               v-for="item in nodes"
+              :ref="`node-${item.index}`"
               :key="`node-${item.index}`"
               :node-index="item.index"
               :show-int-ip="showIntIp"
@@ -28,7 +29,7 @@
 
 <script>
 import ClusterNode from "./ClusterNode";
-import nodesStore from "../store/nodes";
+import nodesStore from "../../store/nodes";
 
 export default {
     name: "ClusterNodes",
@@ -42,6 +43,11 @@ export default {
         minNodes: () => nodesStore.state.minNodes,
         maxNodes: () => nodesStore.state.maxNodes,
         nodesCount: nodesStore.property("nodesCount")
+    },
+    methods: {
+        validate() {
+            this.nodes.forEach(node => this.$refs[`node-${node.index}`][0].validate());
+        }
     }
 }
 </script>

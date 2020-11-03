@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {safe} from "../theme/util/strings";
+import {safe} from "../../theme/util/strings";
 
 export default {
   name: "CertSan",

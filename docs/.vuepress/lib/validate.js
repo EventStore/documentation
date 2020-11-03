@@ -31,3 +31,9 @@ export async function validateGossip(nodes, value, callback) {
         ? ok(callback)
         : error(callback, `${value} does not resolve to ${notFound[0].extIp}`);
 }
+
+export function ensureCaDomainMatch(dnsName, cert) {
+    if (!cert || cert.selfSigned || dnsName === "" || cert.cn === "") return true;
+    const caDomain = cert.cn.substring(2);
+    return dnsName.endsWith(caDomain);
+}

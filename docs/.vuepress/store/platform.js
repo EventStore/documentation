@@ -3,7 +3,7 @@ import {createStore} from "./baseStore";
 
 const defaultPlatform = "linux";
 
-const store = createStore(
+export default createStore(
     {
         state: {
             platform: ""
@@ -13,6 +13,9 @@ const store = createStore(
             changePlatform(platform) {
                 this.state.platform = platform;
                 this.emit(PlatformChanged, platform);
+            },
+            isLinux() {
+                return this.state.platform === "linux";
             }
         },
 
@@ -21,5 +24,3 @@ const store = createStore(
         }
     }
 );
-
-export default store;

@@ -3,6 +3,7 @@
           :model="model"
           ref="securityForm"
           label-width="240px"
+          @validate="checkField"
   >
     <el-divider content-position="right">Security</el-divider>
 
@@ -52,46 +53,31 @@
 </template>
 
 <script>
-import store from "../store/security";
-import * as networks from "../lib/networks";
-import {error} from "../lib/validate";
+import store from "../../store/security";
+import {error, ok} from "../../lib/validate";
+import validationMixin from "../shared/validationMixin";
 
 export default {
     name:     "Security",
+    mixins:   [validationMixin],
     computed: {
-        model: () => store.state,
-        secure:         {
-            get: () => store.state.secure,
-            set: v => store.update("secure", v)
-        },
-        cert:           {
-            get: () => store.state.cert,
-            set: v => store.updateCertType(v)
-        },
-        certCommonName: {
-            get: () => store.state.certCommonName,
-            set: v => store.update("certCommonName", v)
-        },
+        secure:         store.extendedProperty("secure", "updateSecurity"),
+        cert:           store.extendedProperty("cert", "updateCertType"),
+        certCommonName: store.extendedProperty("certCommonName", "updateCn"),
+
+        model:          () => store.state,
+        publicCaPrompt: () => store.cnPrompt(),
+        certCnHelp:     () => store.certCnHelp(),
         isSelfSigned:   () => store.isSelfSigned(),
-        isCluster:      () => store.isCluster(),
-        publicCaPrompt() {
-            return this.isSelfSigned ? "" : this.isCluster ? "*.example.com" : "esdb.example.com";
-        },
-        certCnHelp() {
-            return this.isSelfSigned
-                ? "Must be <code>eventstoredb-node</code> for self-signed certificate."
-                : `You need a ${this.isCluster ? "wildcard " : ""}certificate signed by a public trusted CA.`;
-        }
+        section:        () => "Security"
     },
     methods:  {
         validateCertCn(rule, value, callback) {
-            if (!this.secure || this.isSelfSigned) return;
-
-            const preValid = !this.isCluster || value.startsWith("*.");
-            if (!preValid || !networks.isValidDns(value.substring(2))) {
-                return error(callback, "Please enter a valid wildcard certificate CN");
-            }
-            callback();
+            const result = store.validateCertCn(value);
+            return result == null ? ok(callback) : error(callback, result);
+        },
+        validate() {
+            this.$refs.securityForm.validate();
         }
     }
 }

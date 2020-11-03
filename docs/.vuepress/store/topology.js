@@ -1,34 +1,33 @@
 import {createStore} from "./baseStore";
-import {ClusteringChanged} from "./events";
-
-const DnsGossip  = "dns";
-const SeedGossip = "seed";
-
-const state = {
-    cluster:          true,
-    separateNetworks: false,
-    gossipMethod:     DnsGossip,
-    gossip:           "",
-    httpPort:         2113,
-    internalTcpPort:  1112,
-    externalTcpPort:  1113,
-};
+import {ClusteringChanged, TcpChanged} from "./events";
+import Gossip from "./gossip";
 
 export default createStore(
     {
-        state:   state,
-        methods: {
+        state:         {
+            cluster:          true,
+            separateNetworks: false,
+            httpPort:         2113,
+            internalTcpPort:  1112,
+            externalTcpPort:  1113,
+            tcpEnabled:       true,
+            gossip:           new Gossip("Cluster", "cluster nodes")
+        },
+        methods:       {
             updateClustering(value) {
                 this.state.cluster = value;
                 this.emit(ClusteringChanged, value);
             },
-            isDnsGossip() {
-                return this.state.gossipMethod === DnsGossip;
+            isCluster() {
+                return this.state.cluster;
             },
         },
+        eventHandlers: {
+            [TcpChanged]: (s, x) => s.tcpEnabled = x
+        },
         init(s) {
-            console.log("Update clustering");
             s.updateClustering(true);
         }
-    }
+    },
+    "topology"
 );

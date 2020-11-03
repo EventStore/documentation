@@ -40,12 +40,14 @@
 </template>
 
 <script>
-import FormInput from "./FormInput";
-import store from "../store/directories";
-import validation from "../store/validation";
+import FormInput from "../form/FormInput";
+import store from "../../store/directories";
+import validation from "../../store/validation";
+import validationMixin from "../shared/validationMixin";
 
 export default {
     name:       "Directories",
+    mixins:     [validationMixin],
     components: {FormInput},
     computed:   {
         state:         () => store.state,
@@ -53,11 +55,12 @@ export default {
         index:         store.property("index"),
         logs:          store.property("logs"),
         config:        store.property("config"),
-        disableConfig: () => store.disableConfig()
+        disableConfig: () => store.disableConfig(),
+        section:       () => "Directories"
     },
-    methods: {
-        checkField(field, result, error) {
-            validation.record("Directories", field, result, error);
+    methods:    {
+        validate() {
+            this.$refs.directoriesForm.validate();
         }
     }
 }

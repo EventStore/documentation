@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="platformForm" label-width="240px">
+  <el-form label-width="240px">
     <el-divider content-position="right">Platform</el-divider>
 
     <el-form-item label="Platform:">
@@ -12,15 +12,12 @@
 </template>
 
 <script>
-import store from "../store/platform";
+import store from "../../store/platform";
 
 export default {
     name:     "Platform",
     computed: {
-        platform: {
-            get: () => store.state.platform,
-            set: (v) => store.changePlatform(v)
-        }
+        platform: store.extendedProperty("platform", "changePlatform")
     }
 }
 </script>

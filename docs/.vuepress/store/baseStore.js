@@ -1,8 +1,7 @@
 import Vue from "vue";
+import {EventBus} from "./eventBus";
 
-const EventBus = new Vue();
-
-export function createStore(base) {
+export function createStore(base, name) {
     const store = {
         state: Vue.observable(base.state),
 

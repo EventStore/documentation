@@ -1,4 +1,5 @@
 import {createStore} from "./baseStore";
+import {ValidationSectionRemoved} from "./events";
 
 export default createStore(
     {
@@ -29,7 +30,17 @@ export default createStore(
                     if (this.hasSectionErrors(x)) return true;
                 }
                 return false;
+            },
+            removeSection(section) {
+                delete this.state.errors[section];
+            },
+            clear() {
+                this.state.errors = {};
             }
+        },
+        eventHandlers: {
+            [ValidationSectionRemoved]: (s, x) => s.removeSection(x)
         }
-    }
+    },
+    "validation"
 );

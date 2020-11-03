@@ -1,9 +1,9 @@
-import Vue from "vue";
 import {createStore} from "./baseStore";
-import {ClusteringChanged} from "./events";
+import {CertCnChanged, ClusteringChanged, ValidationSectionRemoved} from "./events";
 import {isValidDns} from "../lib/networks";
 import Node from "./node";
 import * as networks from "../lib/networks";
+import {ensureCaDomainMatch, error} from "../lib/validate";
 
 function calculateNodeCount(newCount, oldCount) {
     if (newCount === oldCount) return newCount;
@@ -16,16 +16,14 @@ function calculateNodeCount(newCount, oldCount) {
     return count;
 }
 
-const state = {
-    nodesCount: 0,
-    minNodes:   0,
-    maxNodes:   0,
-    nodes:      []
-};
-
 export default createStore(
     {
-        state:         state,
+        state:         {
+            nodesCount: 0,
+            minNodes:   0,
+            maxNodes:   0,
+            nodes:      []
+        },
         methods:       {
             getNode(index) {
                 return this.state.nodes.find(x => x.index === index);
@@ -54,12 +52,12 @@ export default createStore(
                 if (this.state.nodes.length === count) return;
 
                 while (this.state.nodes.length > count) {
-                    // delete this.formErrors[`Node ${this.topology.nodes[this.topology.nodes.length - 1].index}`]
+                    this.emit(ValidationSectionRemoved, `Node ${this.state.nodes[this.state.nodes.length - 1].index}`);
                     this.state.nodes.pop();
                 }
 
                 for (let i = this.state.nodes.length; i < count; i++) {
-                    const node = Vue.observable(new Node(i + 1));
+                    const node = new Node(i + 1);
                     this.state.nodes.push(node);
                 }
             },
@@ -69,14 +67,23 @@ export default createStore(
             validateNodeDns(prop, value) {
                 if (!this.uniqueNode(prop, value)) return `${value} already used`;
                 if (!isValidDns(value)) return "Invalid DNS name";
-                // add CA domain name check
-                // && this.ensureCaDomainMatch(value, callback);
+                if (!ensureCaDomainMatch(value, this.certCn)) return "Certificate CN mismatch";
 
                 return null;
             },
+            validateNodeIp(prop, value) {
+                if (!this.uniqueNode(prop, value)) return `${value} already used`;
+                if (!networks.isValidIpAddress(value)) return `${value} is not a valid IP address`;
+                return null;
+            },
+            isSingleNode() {
+                return this.nodesCount === 1;
+            }
         },
         eventHandlers: {
-            [ClusteringChanged]: (s, x) => s.setDefaultNodeCount(x)
+            [ClusteringChanged]: (s, x) => s.setDefaultNodeCount(x),
+            [CertCnChanged]: (s, x) => s.certCn = x
         }
-    }
+    },
+    "nodes"
 );

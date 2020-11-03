@@ -21,7 +21,7 @@ const privateState = Vue.observable({
     configDisabled: true
 });
 
-const store = createStore(
+export default createStore(
     {
         state:   {
             data:   "",
@@ -53,13 +53,12 @@ const store = createStore(
                         privateState.configDisabled = false;
                         break;
                 }
-            }
+            },
         },
         eventHandlers: {
             [PlatformChanged]: (s, x) => s.changePlatform(x)
         }
-    }
+    },
+    "directories"
 );
-
-export default store;
 
