@@ -20,7 +20,6 @@ module.exports = {
         containers("code", "code-block", title => `title="${title}"`),
         containers("tabs", "el-tabs", type => `${type ? ` type='${type}'` : ""}`),
         containers("tab", "el-tab-pane", label => `label="${label}"`),
-        containers("prism", "prism", title => `language="${title}"`),
         [
             "vuepress-plugin-container",
             {
