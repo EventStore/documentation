@@ -10,6 +10,8 @@ Get started by connecting your application to EventStoreDB. Complete the form be
 
 Each SDK has its own way to configure the client, but it's always possible to use the connection string. The connection string below is generated according to the configuration you specified above, and it should work with each official SDK of EventStoreDB.
 
+<ConnectionString></ConnectionString>
+
 <pre><code>{{ $page.connectionString }}</code></pre>
 
 ## Connecting to EventStoreDB

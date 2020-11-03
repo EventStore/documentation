@@ -14,7 +14,7 @@ export default createStore(
             gossip:     new Gossip("Client", "clients", false),
             gossipPort: 2113,
             nodes:      [],
-            nodesCount: 3,
+            nodesCount: 0,
             minNodes:   1,
             maxNodes:   3
         },

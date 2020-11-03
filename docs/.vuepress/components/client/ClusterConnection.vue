@@ -8,7 +8,7 @@
           <Port
                   label="HTTP"
                   prop="gossipPort"
-                  :enabled="true"
+                  :enabled="enableHttpPort"
                   v-model="gossipPort"
           >
           </Port>
@@ -62,6 +62,7 @@ export default {
         showNodes:         () => !connection.state.cluster || !connection.state.gossip.isDnsGossip(),
         showNodesCount:    () => connection.state.cluster && !connection.state.gossip.isDnsGossip(),
         disableNodesCount: () => connection.state.cloud,
+        enableHttpPort:    () => !connection.state.cloud,
         minNodes:          () => connection.state.minNodes,
         maxNodes:          () => connection.state.maxNodes,
 
