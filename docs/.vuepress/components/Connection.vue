@@ -1,4 +1,5 @@
 <template>
+  <ClientOnly>
   <el-form
           label-width="240px"
           :model="state"
@@ -25,6 +26,7 @@
     <ClusterConnection/>
 
   </el-form>
+  </ClientOnly>
 </template>
 
 <script>
