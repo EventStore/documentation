@@ -29,7 +29,7 @@ You can configure the separator, as well as where to split the stream `id`. You 
 
 The first parameter specifies how the separator is used, and the possible values for that parameter is `first` or `last`. The second parameter is the separator, and can be any character.
 
-For example, if the body of the projection is `first` and `-`, for a stream id of `account-1`, the stream name the projection creates is `$ce-account`.
+For example, if the body of the projection is `first` and `-`, for a stream id of `account-9E763770-0A8D-456D-AF23-410ADBC88249`, the stream name the projection creates is `$ce-account`.
 
 If the body of the projection is `last` and `-`, for a stream id of `shopping-cart-1`, the stream name the projection creates is `$ce-shopping-cart`.
 
