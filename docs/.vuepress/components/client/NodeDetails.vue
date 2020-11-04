@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly>
+<!--  <ClientOnly>-->
     <el-form
             label-width="240px"
             :model="node"
@@ -32,7 +32,7 @@
         </el-col>
       </el-form-item>
     </el-form>
-  </ClientOnly>
+<!--  </ClientOnly>-->
 </template>
 
 <script>

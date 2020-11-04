@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly>
+<!--  <ClientOnly>-->
     <div>
       <transition name="slide">
         <div v-show="showGossip">
@@ -43,7 +43,7 @@
         />
       </transition-group>
     </div>
-  </ClientOnly>
+<!--  </ClientOnly>-->
 </template>
 
 <script>

@@ -1,32 +1,32 @@
 <template>
-  <ClientOnly>
-  <el-form
-          label-width="240px"
-          :model="state"
-  >
-    <el-form-item label="Connect to:" prop="cluster">
-      <el-switch
-              v-model="cluster"
-              active-text="Cluster"
-              inactive-text="Single node">
-      </el-switch>
-    </el-form-item>
+<!--  <ClientOnly>-->
+    <el-form
+            label-width="240px"
+            :model="state"
+    >
+      <el-form-item label="Connect to:" prop="cluster">
+        <el-switch
+                v-model="cluster"
+                active-text="Cluster"
+                inactive-text="Single node">
+        </el-switch>
+      </el-form-item>
 
-    <el-form-item label="Protocol security:" prop="secure">
-      <el-switch
-              v-model="secure"
-              :disabled="cloud"
-              active-text="Secure"
-              inactive-text="Insecure">
-      </el-switch>
-    </el-form-item>
+      <el-form-item label="Protocol security:" prop="secure">
+        <el-switch
+                v-model="secure"
+                :disabled="cloud"
+                active-text="Secure"
+                inactive-text="Insecure">
+        </el-switch>
+      </el-form-item>
 
-    <Cloud/>
+      <Cloud/>
 
-    <ClusterConnection/>
+      <ClusterConnection/>
 
-  </el-form>
-  </ClientOnly>
+    </el-form>
+<!--  </ClientOnly>-->
 </template>
 
 <script>

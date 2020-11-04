@@ -1,5 +1,5 @@
 <template>
-  <ClientOnly>
+<!--  <ClientOnly>-->
     <div>
       <el-form-item label="Hosting model:" prop="cloud">
         <el-col :span="10">
@@ -35,7 +35,7 @@
         </el-form-item>
       </transition>
     </div>
-  </ClientOnly>
+<!--  </ClientOnly>-->
 </template>
 
 <script>
