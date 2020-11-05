@@ -18,22 +18,35 @@ export default {
         }
     },
     render:   function (h) {
-        const find = `{{${this.code}}}`;
-        const replace  = (vNodes) => {
-            return vNodes.map(x => {
-                const newNode = {...x};
-                if (typeof x.text == "string" && x.text.includes(find)) {
-                    newNode.text = x.text.replaceAll(find, this.content);
-                }
-                if (x.children) {
-                    newNode.children = replace(x.children);
-                }
-                return newNode;
-            });
-        }
+        const r = () => {
+            const find = `{{${this.code}}}`;
+            const replace  = (vNodes) => {
+                return vNodes.map(x => {
+                    const newNode = {...x};
+                    if (typeof x.text == "string" && x.text.includes(find)) {
+                        newNode.text = x.text.replaceAll(find, this.content);
+                    }
+                    if (x.children) {
+                        newNode.children = replace(x.children);
+                    }
+                    return newNode;
+                });
+            }
 
-        const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
-        return h('div', nodes);
+            const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
+            return h('div', nodes);
+        };
+
+        if (this.$parent._isMounted) {
+            return r();
+        } else {
+            this.$parent.$once('hook:mounted', () => {
+                this.$parent.$forceUpdate()
+            })
+        }
+        //
+        // console.log(this);
+        // return r();
     }
 }
 </script>

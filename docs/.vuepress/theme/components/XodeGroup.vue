@@ -19,6 +19,10 @@
         </ul>
       </div>
       <slot/>
+      <pre
+              v-if="codeTabs.length < 1"
+              class="pre-blank"
+      >// Make sure to add code blocks to your code group</pre>
     </div>
   </ClientOnly>
 </template>
@@ -35,9 +39,11 @@ export default {
     watch:   {
         activeCodeTabIndex(index) {
             this.codeTabs.forEach(tab => {
-                tab.elm.classList.remove('theme-code-block__active')
+                if (tab.elm !== undefined)
+                    tab.elm.classList.remove('theme-code-block__active')
             })
-            this.codeTabs[index].elm.classList.add('theme-code-block__active')
+            if (this.codeTabs[index].elm !== undefined)
+                this.codeTabs[index].elm.classList.add('theme-code-block__active')
         }
     },
     mounted() {
