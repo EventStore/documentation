@@ -10,7 +10,6 @@ import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
 import * as gtm from "./gtm/inject";
 import Vuex from "vuex";
-import connection from "./store/client/connection";
 import XodeBlock from "./theme/components/XodeBlock";
 import XodeGroup from "./theme/components/XodeGroup";
 // import CodeToggle from "./components/CodeToggle";

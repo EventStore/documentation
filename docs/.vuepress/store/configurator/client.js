@@ -1,63 +1,41 @@
 import Vue from "vue";
-import {BaseStore, createStore} from "../baseStore";
 import {SecurityChanged, TcpChanged} from "./events";
 import Gossip from "../shared/gossip";
 import {EventBus} from "../eventBus";
+import properties from "../properties";
 
 const privateState = Vue.observable({
     secure: true,
     selfSigned: true
 });
 
-export default createStore(
-    {
-        state: {
-            enableTcp: true,
-            enableAtomPub: true,
-            advertiseToClient: false,
-            httpPort: 2113,
-            externalTcpPort: 1113,
-            gossip: new Gossip("Client", "clients", true)
-        },
-        methods: {
-            isSecure: () => privateState.secure,
-            isSelfSigned: () => privateState.selfSigned,
-            isTcpEnabled() {
-                return this.state.enableTcp;
-            },
-            enableTcp(enable) {
-                this.state.enableTcp = enable;
-                this.emit(TcpChanged, enable);
-            },
-        },
-        eventHandlers: {
-            [SecurityChanged]: (s, x) => privateState.secure = x
-        }
-    }
-);
-
-const ClientTest = new Vue({
+export default new Vue({
     data() {
         return {
-            enableTcp: true,
-            enableAtomPub: true,
+            tcpEnabled:        true,
+            enableAtomPub:     true,
             advertiseToClient: false,
-            httpPort: 2113,
-            externalTcpPort: 1113,
-            gossip: new Gossip("Client", "clients", true)
+            httpPort:          2113,
+            externalTcpPort:   1113,
+            gossip:            new Gossip("Client", "clients", true)
         }
     },
     methods: {
+        enableTcp(enable) {
+            this.tcpEnabled = enable;
+            EventBus.$emit(TcpChanged, enable);
+        },
+        ...properties
+    },
+    computed: {
         isSecure: () => privateState.secure,
         isSelfSigned: () => privateState.selfSigned,
         isTcpEnabled() {
-            return this.state.enableTcp;
-        },
-        enableTcp(enable) {
-            this.state.enableTcp = enable;
-            this.emit(TcpChanged, enable);
+            return this.tcpEnabled;
         },
     },
+    created() {
+        EventBus.$on(SecurityChanged, x => privateState.secure = x);
+    }
 });
 
-EventBus.$on(SecurityChanged, x => privateState.secure = x);

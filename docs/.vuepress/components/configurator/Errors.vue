@@ -24,6 +24,7 @@
 <script>
 import ErrorSection from "./ErrorSection";
 import validation from "../../store/configurator/validation";
+import {EventBus} from "../../store/eventBus";
 
 export default {
     name:       "Errors",
@@ -35,7 +36,7 @@ export default {
     },
     computed:   {
         check() {
-            return validation.state.errors;
+            return validation.errors;
         },
         validateButtonLabel() {
             return `Validate${this.validated ? " again" : ""}`;
@@ -46,17 +47,17 @@ export default {
     },
     methods:    {
         hasErrors() {
-            return validation.hasErrors();
+            return validation.hasErrors;
         },
         hasSectionErrors(section) {
             return validation.hasSectionErrors(section);
         },
         validateConfiguration() {
-            this.$emit("validate");
+            EventBus.$emit("validate");
             this.validated = true;
         },
         proceed() {
-            this.$emit("proceed");
+            EventBus.$emit("proceed");
         }
     }
 }

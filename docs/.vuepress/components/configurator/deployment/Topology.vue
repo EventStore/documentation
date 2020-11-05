@@ -70,9 +70,9 @@ export default {
     mixins:     [validationMixin],
     components: {ClusterNodes, ClusterNode, Security, FormSwitch, Port, Gossip},
     computed:   {
-        topology:     () => topologyStore.state,
-        nodes:        () => nodes.state.nodes,
-        isTcpEnabled: () => topologyStore.state.tcpEnabled,
+        topology:     () => topologyStore,
+        nodes:        () => nodes.nodes,
+        isTcpEnabled: () => topologyStore.tcpEnabled,
 
         cluster: topologyStore.extendedProperty("cluster", "updateClustering"),
 

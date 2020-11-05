@@ -1,30 +1,28 @@
 <template>
-  <ClientOnly>
-    <div class="theme-code-group">
-      <div class="theme-code-group__nav">
-        <ul class="theme-code-group__ul">
-          <li
-                  v-for="(tab, i) in codeTabs"
-                  :key="tab.title"
-                  class="theme-code-group__li"
+  <div class="theme-code-group">
+    <div class="theme-code-group__nav">
+      <ul class="theme-code-group__ul">
+        <li
+                v-for="(tab, i) in codeTabs"
+                :key="tab.title"
+                class="theme-code-group__li"
+        >
+          <button
+                  class="theme-code-group__nav-tab"
+                  :class="{ 'theme-code-group__nav-tab-active': i === activeCodeTabIndex, }"
+                  @click="changeCodeTab(i)"
           >
-            <button
-                    class="theme-code-group__nav-tab"
-                    :class="{ 'theme-code-group__nav-tab-active': i === activeCodeTabIndex, }"
-                    @click="changeCodeTab(i)"
-            >
-              {{ tab.title }}
-            </button>
-          </li>
-        </ul>
-      </div>
-      <slot/>
-      <pre
-              v-if="codeTabs.length < 1"
-              class="pre-blank"
-      >// Make sure to add code blocks to your code group</pre>
+            {{ tab.title }}
+          </button>
+        </li>
+      </ul>
     </div>
-  </ClientOnly>
+    <slot/>
+    <pre
+            v-if="codeTabs.length < 1"
+            class="pre-blank"
+    >// Make sure to add code blocks to your code group</pre>
+  </div>
 </template>
 
 <script>

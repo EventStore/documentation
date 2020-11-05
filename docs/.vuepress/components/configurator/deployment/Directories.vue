@@ -49,7 +49,7 @@ export default {
     mixins:     [validationMixin],
     components: {FormInput},
     computed:   {
-        state:         () => store.state,
+        state:         () => store,
         data:          store.property("data"),
         index:         store.property("index"),
         logs:          store.property("logs"),

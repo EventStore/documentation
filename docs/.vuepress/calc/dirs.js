@@ -3,7 +3,7 @@ import platform from "../store/configurator/platform";
 import directories from "../store/configurator/directories";
 
 export default function () {
-    const serverSep = strings.sep(platform.state.platform);
+    const serverSep = strings.sep(platform.platform);
     const certDir   = `${directories.config}${serverSep}certs`;
     return {
         certDir: certDir,

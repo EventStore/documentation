@@ -39,9 +39,9 @@ export default {
         isCluster: Boolean
     },
     computed: {
-        nodes: () => nodesStore.state.nodes,
-        minNodes: () => nodesStore.state.minNodes,
-        maxNodes: () => nodesStore.state.maxNodes,
+        nodes: () => nodesStore.nodes,
+        minNodes: () => nodesStore.minNodes,
+        maxNodes: () => nodesStore.maxNodes,
         nodesCount: nodesStore.property("nodesCount")
     },
     methods: {

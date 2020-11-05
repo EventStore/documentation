@@ -15,10 +15,7 @@ Each SDK has its own way to configure the client, but it's always possible to us
 ## Connecting to EventStoreDB
 
 <xode-group>
-<xode-block title="C#" code="connectionString">
-```csharp
-var connectionString = "{{connectionString}}";
-```
+<xode-block title="C#" language="csharp" code="connectionString">
 </xode-block>
 </xode-group>
 

@@ -1,5 +1,5 @@
 import nodesStore from "../../store/configurator/nodes";
-import {error, ok, validateItem} from "../../lib/validate";
+import {ok, validateItem} from "../../lib/validate";
 import validationMixin from "./validationMixin";
 
 export default {
@@ -30,7 +30,7 @@ export default {
             this.checkFormField(`Node ${index}`, field, result, error);
         },
         revalidate(formPrefix, field) {
-            nodesStore.state.nodes.forEach(node => {
+            nodesStore.nodes.forEach(node => {
                 const formRef = `${formPrefix}-${node.index}`;
                 let form = this.$refs[formRef];
                 if (Array.isArray(form)) form = form[0];

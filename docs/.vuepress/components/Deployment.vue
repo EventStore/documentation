@@ -109,7 +109,7 @@ export default {
         }
     },
     computed:   {
-        isSecure: () => security.state.secure,
+        isSecure: () => security.secure,
     },
     methods:    {
         async validateConfiguration() {

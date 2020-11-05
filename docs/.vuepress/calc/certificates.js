@@ -7,23 +7,23 @@ import caDirs from "./dirs";
 import platform from "../store/configurator/platform";
 
 function isExtIp(node) {
-    return node.dnsName === "" || topology.state.gossip.isDnsGossip();
+    return node.dnsName === "" || topology.gossip.isDnsGossip();
 }
 
 function ipCerts(node) {
     let ips = [];
     if (isExtIp(node)) ips.push(node.extIp);
-    if (topology.state.separateNetworks) ips.push(node.intIp);
-    if (client.state.advertiseToClient && node.isClientIp()) ips.push(node.clientAddress);
+    if (topology.separateNetworks) ips.push(node.intIp);
+    if (client.advertiseToClient && node.isClientIp()) ips.push(node.clientAddress);
     return ips;
 }
 
 function dnsCerts(node) {
     let dns = [];
     if (!isExtIp(node)) dns.push(node.dnsName);
-    if (topology.state.gossip.isDnsGossip()) dns.push(topology.state.gossip.dnsName);
-    if (client.state.gossip.isDnsGossip()) dns.push(client.state.gossip.dnsName);
-    if (client.state.advertiseToClient && !node.isClientIp()) dns.push(node.clientAddress);
+    if (topology.gossip.isDnsGossip()) dns.push(topology.gossip.dnsName);
+    if (client.gossip.isDnsGossip()) dns.push(client.gossip.dnsName);
+    if (client.advertiseToClient && !node.isClientIp()) dns.push(node.clientAddress);
     return dns;
 }
 
@@ -56,13 +56,13 @@ function getTool(os) {
 
 export default function (os) {
     const result = {
-        cn: security.state.certCommonName
+        cn: security.certCommonName
     };
 
     if (!security.isSelfSigned) {
         result.publicCa = true;
-        if (client.state.advertiseToClient && client.isDnsGossip()) {
-            result.extraDns = client.state.gossip;
+        if (client.advertiseToClient && client.isDnsGossip()) {
+            result.extraDns = client.gossip;
         }
         return result;
     }
@@ -78,12 +78,12 @@ export default function (os) {
     result.caDir    = dirs.caDir;
     result.isLinux  = platform.isLinux();
 
-    result.nodes = nodes.state.nodes.map(node => {
+    result.nodes = nodes.nodes.map(node => {
         const ips = ipCerts(node);
         const dns = dnsCerts(node);
         return {
             index:  node.index,
-            cn:     security.state.certCommonName,
+            cn:     security.certCommonName,
             ips:    ips,
             dns:    dns,
             script: nodeCertGen(dns, ips, prefix(os), sep, node.index),

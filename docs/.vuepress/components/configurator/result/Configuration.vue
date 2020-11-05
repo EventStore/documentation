@@ -31,7 +31,7 @@ export default {
         projections: Object
     },
     computed:   {
-        nodes: () => nodes.state.nodes
+        nodes: () => nodes.nodes
     },
 }
 </script>

@@ -8,7 +8,7 @@
   >
     <el-divider content-position="right">Protocols and client connection</el-divider>
 
-    <FormSwitch label="Enable TCP for client apps:" prop="enableTcp" v-model="client.enableTcp">
+    <FormSwitch label="Enable TCP for client apps:" prop="enableTcp" v-model="enableTcp">
       TCP protocol is disabled by default. If you plan to use the legacy TCP client, you need to enable this
       option.
     </FormSwitch>
@@ -41,9 +41,9 @@
     </transition>
     <transition name="slide">
       <Port label="Translated TCP"
-            v-show="client.advertiseToClient && client.enableTcp"
+            v-show="client.advertiseToClient && client.tcpEnabled"
             prop="externalTcpPort"
-            :enabled="client.enableTcp && client.advertiseToClient"
+            :enabled="client.tcpEnabled && client.advertiseToClient"
             v-model="client.externalTcpPort"
       >
         This port is used for TCP clients if the translated port doesn't match the port used by the node.
@@ -68,16 +68,18 @@ export default {
     mixins:     [validationMixin],
     components: {Gossip, Port, FormSwitch, ClientNodes},
     computed:   {
-        client:  () => store.state,
-        gossip:  () => store.state.gossip,
-        nodes:   () => nodes.state.nodes,
-        section: () => "Client connection"
+        client:  () => store,
+        gossip:  () => store.gossip,
+        nodes:   () => nodes.nodes,
+        section: () => "Client connection",
+        enableTcp: store.extendedProperty("tcpEnabled", "enableTcp")
     },
     methods: {
         validate() {
             this.$refs.clientForm.validate();
             this.$refs.clientGossip.validate();
-            this.$refs.clientNodes.validate();
+            if (this.nodes && this.nodes.length > 0)
+              this.$refs.clientNodes.validate();
         }
     }
 }

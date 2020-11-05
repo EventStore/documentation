@@ -1,6 +1,7 @@
 import Vue from "vue";
 import {PlatformChanged} from "./events";
-import {createStore} from "../baseStore";
+import properties from "../properties";
+import {EventBus} from "../eventBus";
 
 const defaults = {
     linux:   {
@@ -21,44 +22,41 @@ const privateState = Vue.observable({
     configDisabled: true
 });
 
-export default createStore(
-    {
-        state:   {
+export default new Vue({
+    data() {
+        return {
             data:   "",
             index:  "",
             logs:   "",
             config: ""
-        },
-        methods: {
-            update(which, value) {
-                this.state[which] = value;
-            },
-            disableConfig() {
-                return privateState.configDisabled;
-            },
-            changePlatform(platform) {
-                switch (platform) {
-                    case "linux":
-                        this.state.data             = defaults.linux.data;
-                        this.state.index            = defaults.linux.index;
-                        this.state.logs             = defaults.linux.logs;
-                        this.state.config           = defaults.linux.config;
-                        privateState.configDisabled = true;
-                        break;
-                    case "windows":
-                        this.state.data             = defaults.windows.data;
-                        this.state.index            = defaults.windows.index;
-                        this.state.logs             = defaults.windows.logs;
-                        this.state.config           = defaults.windows.config;
-                        privateState.configDisabled = false;
-                        break;
-                }
-            },
-        },
-        eventHandlers: {
-            [PlatformChanged]: (s, x) => s.changePlatform(x)
         }
     },
-    "directories"
-);
+    methods: {
+        disableConfig() {
+            return privateState.configDisabled;
+        },
+        changePlatform(platform) {
+            switch (platform) {
+                case "linux":
+                    this.data                   = defaults.linux.data;
+                    this.index                  = defaults.linux.index;
+                    this.logs                   = defaults.linux.logs;
+                    this.config                 = defaults.linux.config;
+                    privateState.configDisabled = true;
+                    break;
+                case "windows":
+                    this.data                   = defaults.windows.data;
+                    this.index                  = defaults.windows.index;
+                    this.logs                   = defaults.windows.logs;
+                    this.config                 = defaults.windows.config;
+                    privateState.configDisabled = false;
+                    break;
+            }
+        },
+        ...properties
+    },
+    created() {
+        EventBus.$on(PlatformChanged, x => this.changePlatform(x));
+    }
+});
 

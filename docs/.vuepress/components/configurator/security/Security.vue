@@ -65,10 +65,10 @@ export default {
         cert:           store.extendedProperty("cert", "updateCertType"),
         certCommonName: store.extendedProperty("certCommonName", "updateCn"),
 
-        model:          () => store.state,
-        publicCaPrompt: () => store.cnPrompt(),
-        certCnHelp:     () => store.certCnHelp(),
-        isSelfSigned:   () => store.isSelfSigned(),
+        model:          () => store,
+        publicCaPrompt: () => store.cnPrompt,
+        certCnHelp:     () => store.certCnHelp,
+        isSelfSigned:   () => store.isSelfSigned,
         section:        () => "Security"
     },
     methods:  {

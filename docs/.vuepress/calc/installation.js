@@ -15,14 +15,14 @@ export default function (os, ent, key) {
 sudo ${pkgmgr} install eventstore-${ent ? "commercial" : "oss"}${ver}`;
 
     return {
-        isLinux:    platform.isLinux(),
-        secure:     security.state.secure,
-        selfSigned: security.isSelfSigned(),
+        isLinux:    platform.isLinux,
+        secure:     security.secure,
+        selfSigned: security.isSelfSigned,
         version:    ver,
         pkgmgr:     pkgmgr,
         certDir:    dirs.certDir,
         caDir:      dirs.caDir,
-        configDir:  directories.state.config,
+        configDir:  directories.config,
         installCmd: installCmd
     }
 }

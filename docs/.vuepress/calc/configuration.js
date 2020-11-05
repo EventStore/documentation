@@ -8,38 +8,38 @@ import client from "../store/configurator/client";
 
 export default function(node, projections) {
     const cert = () => {
-        const s = sep(platform.state.platform);
-        const certsDir = `${directories.state.config}${s}certs`;
+        const s = sep(platform.platform);
+        const certsDir = `${directories.config}${s}certs`;
         return {
             file: `${certsDir}${s}node.crt`,
             key: `${certsDir}${s}node.key`,
-            trusted: !security.isSelfSigned()
+            trusted: !security.isSelfSigned
                       ? platform.isLinux() ? "/etc/ssl/certs" : undefined
                       : `${certsDir}${s}ca`,
-            cn: security.isSelfSigned() ? undefined : security.state.certCommonName
+            cn: security.isSelfSigned ? undefined : security.certCommonName
         }
     };
 
-    const intIp = x => topology.state.separateNetworks ? x.intIp : x.extIp;
+    const intIp = x => topology.separateNetworks ? x.intIp : x.extIp;
 
     const extAdvertiseAs = x => x.dnsName === "" ? undefined : x.dnsName;
 
-    const intAdvertiseAs = x => topology.state.separateNetworks ? undefined : extAdvertiseAs(x);
+    const intAdvertiseAs = x => topology.separateNetworks ? undefined : extAdvertiseAs(x);
 
     const gossip = () => {
-        if (!topology.isCluster()) return undefined;
-        if (topology.state.gossip.isDnsGossip()) {
+        if (!topology.isCluster) return undefined;
+        if (topology.gossip.isDnsGossip()) {
             return {
                 discoverViaDns: true,
-                clusterSize: nodes.state.nodesCount,
-                clusterDns: safe(topology.state.gossip.dnsName)
+                clusterSize: nodes.nodesCount,
+                clusterDns: safe(topology.gossip.dnsName)
             }
         } else {
-            const otherNodes = nodes.state.nodes.filter(x => x.index !== node.index);
+            const otherNodes = nodes.nodes.filter(x => x.index !== node.index);
             return {
                 discoverViaDns: false,
-                clusterSize: nodes.state.nodesCount,
-                gossipSeeds: otherNodes.map(x => `${safe(x.dnsName === "" ? intIp(x) : x.dnsName)}:${topology.state.httpPort}`)
+                clusterSize: nodes.nodesCount,
+                gossipSeeds: otherNodes.map(x => `${safe(x.dnsName === "" ? intIp(x) : x.dnsName)}:${topology.httpPort}`)
             }
         }
     };
@@ -50,28 +50,28 @@ export default function(node, projections) {
             extIp:             node.extIp,
             extHost:           extAdvertiseAs(node),
             intHost:           intAdvertiseAs(node),
-            httpPort:          topology.state.httpPort,
-            intTcpPort:        topology.state.internalTcpPort,
-            extTcpPort:        topology.state.externalTcpPort,
-            enableTcp:         client.state.enableTcp,
-            enableAtom:        client.state.enableAtomPub,
-            advertiseToClient: client.state.advertiseToClient,
+            httpPort:          topology.httpPort,
+            intTcpPort:        topology.internalTcpPort,
+            extTcpPort:        topology.externalTcpPort,
+            enableTcp:         client.isTcpEnabled,
+            enableAtom:        client.enableAtomPub,
+            advertiseToClient: client.advertiseToClient,
             advNodeAddress:    node.clientAddress,
-            advTcpPort:        client.state.externalTcpPort,
-            advHttpPort:       client.state.httpPort,
+            advTcpPort:        client.externalTcpPort,
+            advHttpPort:       client.httpPort,
         }
     };
 
     return {
         index: node.index,
-        platform: platform.state.platform,
+        platform: platform.platform,
         path: {
-            db: directories.state.data,
-            log: directories.state.logs,
-            index: directories.state.index,
-            config: directories.state.config
+            db: directories.data,
+            log: directories.logs,
+            index: directories.index,
+            config: directories.config
         },
-        certificate: security.state.secure ? cert() : undefined,
+        certificate: security.secure ? cert() : undefined,
         network: network(),
         gossip: gossip(),
         projections: projections

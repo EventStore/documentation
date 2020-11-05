@@ -5,14 +5,14 @@ import nodes from "../store/configurator/nodes";
 import security from "../store/configurator/security";
 
 export default function (sdk) {
-    const nodeAddress = node => client.state.advertiseToClient
-        ? `${safe(node.clientAddress)}:${client.state.httpPort}`
-        : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${topology.state.httpPort}`;
+    const nodeAddress = node => client.advertiseToClient
+        ? `${safe(node.clientAddress)}:${client.httpPort}`
+        : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${topology.httpPort}`;
 
-    const httpPort        = client.state.advertiseToClient ? client.state.httpPort : topology.state.httpPort;
-    const gossip          = client.state.gossip.isDnsGossip()
-        ? `${safe(client.state.gossip.dnsName)}:${httpPort}`
-        : safeJoin(nodes.state.nodes.map(x => nodeAddress(x)));
+    const httpPort        = client.advertiseToClient ? client.httpPort : topology.httpPort;
+    const gossip          = client.gossip.isDnsGossip()
+        ? `${safe(client.gossip.dnsName)}:${httpPort}`
+        : safeJoin(nodes.nodes.map(x => nodeAddress(x)));
     const disableValidate = () => {
         switch (sdk) {
             case "dotnet-tcp":
@@ -26,27 +26,27 @@ export default function (sdk) {
 
     return {
         httpPort:         httpPort,
-        isTcpEnabled:     client.isTcpEnabled(),
+        isTcpEnabled:     client.isTcpEnabled,
         gossip:           gossip,
         connectionString: connString,
         example:          code,
         disableValidate:  disableValidate(),
-        selfSigned:       security.isSelfSigned(),
+        selfSigned:       security.isSelfSigned,
     }
 }
 
 function connectionString(sdk, gossip, httpPort) {
     switch (sdk) {
         case "dotnet-tcp":
-            const isClientDnsGossip = client.state.gossip.isDnsGossip();
-            return `${nodes.isSingleNode() ? "ConnectTo" : isClientDnsGossip ? "ClusterDns" : "GossipSeeds"}=`
-                + `${nodes.isSingleNode() === 1 ? "tcp://" : ""}`
-                + `${isClientDnsGossip ? client.state.gossip.dnsName : gossip};`
+            const isClientDnsGossip = client.gossip.isDnsGossip();
+            return `${nodes.isSingleNode ? "ConnectTo" : isClientDnsGossip ? "ClusterDns" : "GossipSeeds"}=`
+                + `${nodes.isSingleNode ? "tcp://" : ""}`
+                + `${isClientDnsGossip ? client.gossip.dnsName : gossip};`
                 + `${isClientDnsGossip ? "ExternalGossipPort=" + httpPort + ";" : ""}`
-                + `UseSsl=${client.isSecure()};`
+                + `UseSsl=${client.isSecure};`
                 + `DefaultCredentials=admin:changeit`;
         default:
-            return `esdb://${gossip}?Tls=${client.isSecure()}`;
+            return `esdb://${gossip}?Tls=${client.isSecure}`;
     }
 }
 
@@ -94,5 +94,4 @@ await client.AppendToStreamAsync(
     eventData
 );`;
     }
-
 }
