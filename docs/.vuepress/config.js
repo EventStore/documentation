@@ -68,24 +68,42 @@ module.exports = {
                 text:  "Clients & APIs",
                 items: [
                     {text: "Overview", link: "/clients/"},
+                    {text: "gRPC clients", link: "/clients/grpc/getting-started/"},
                     {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "getting-started/")},
                     {text: "HTTP API", items: versioning.linksFor("http-api")},
                 ]
             },
             {text: "Cloud", link: "/cloud/intro/"},
             {
-                text:  "Resources",
+                text:  "Need help?",
                 items: [
-                    {text: "Discuss", link: "https://discuss.eventstore.com"},
+                    {text: "Community forum", link: "https://discuss.eventstore.com"},
                     {text: "Articles", link: "https://eventstore.com/blog/articles/"},
                     {text: "Webinars", link: "https://eventstore.com/webinars/"},
                     {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
-                    {text: "Old Docs", link: "https://eventstore.com/docs/"}
                 ]
             },
         ],
         sidebar:              {
             ...versioning.sidebars,
+            "/clients/grpc/": [
+                {
+                    title: "Getting Started",
+                    collapsable: true,
+                    path: "/clients/grpc/getting-started/",
+                    children: [
+                        "/clients/grpc/getting-started/",
+                    ]
+                },
+                {
+                    title: "Connecting to server",
+                    path: "/clients/grpc/connecting/",
+                    collapsable: true,
+                    children: [
+                        "/clients/grpc/connecting/",
+                    ]
+                },
+            ],
             "/cloud/": [
                 {
                     title:    "Introduction",

@@ -34,6 +34,7 @@ import connection from "../store/client/connection";
 import ClusterConnection from "./client/ClusterConnection";
 import Cloud from "./client/Cloud";
 import {isTrue} from "../lib/parse";
+import {SubmitCodeBlock} from "../theme/store/mutations";
 
 export default {
     name:       "Connection",
@@ -43,6 +44,7 @@ export default {
         cloud:   () => connection.cloud,
         cluster: connection.extendedProperty("cluster", "changeTopology"),
         secure:  connection.extendedProperty("secure", "changeSecurity"),
+        connectionString: () => connection.connectionString,
     },
     mounted() {
         connection.changeTopology(isTrue(this.$route.query.cluster));
@@ -51,6 +53,12 @@ export default {
             connection.setClusterId(this.$route.query.clusterId);
         }
     },
+    watch:      {
+        connectionString() {
+            console.log("watch out!")
+            this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: this.connectionString});
+        }
+    }
 }
 </script>
 

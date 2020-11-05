@@ -27,7 +27,10 @@ import {SubmitCodeBlock} from "../theme/store/mutations";
 export default {
     name:     "ConnectionString",
     computed: {
-        cs: () => connection.connectionString,
+        cs() {
+            console.log("computed")
+            return this.$store.state.connectionString;
+        }
     },
     data() {
         return {
@@ -36,11 +39,9 @@ export default {
     },
     watch:    {
         cs(s) {
+            console.log("cs")
             if (s) this.connectionString = s;
         },
-        connectionString(s) {
-            this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: s});
-        }
     }
 }
 </script>
