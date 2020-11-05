@@ -23,7 +23,6 @@ export default {
         const find = `{{${this.code}}}`;
         const replace  = (vNodes) => {
             return vNodes.map(x => {
-                console.log(x);
                 const newNode = {...x};
                 if (typeof x.text == "string" && x.text.includes(find)) {
                     newNode.text = x.text.replaceAll(find, this.content);
@@ -36,6 +35,7 @@ export default {
         }
 
         const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
+        console.log(nodes);
         return h('div', nodes);
     }
 }

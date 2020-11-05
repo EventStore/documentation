@@ -22,7 +22,7 @@
 
 <script>
 import connection from "../store/client/connection";
-import {SubmitCodeBlock, UpdateConnectionString} from "../theme/store/mutations";
+import {SubmitCodeBlock} from "../theme/store/mutations";
 
 export default {
     name:     "ConnectionString",
