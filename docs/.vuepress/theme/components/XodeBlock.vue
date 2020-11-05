@@ -18,7 +18,7 @@ export default {
         }
     },
     render:   function (h) {
-        console.log("render");
+        console.log(this.content);
 
         const find = `{{${this.code}}}`;
         const replace  = (vNodes) => {

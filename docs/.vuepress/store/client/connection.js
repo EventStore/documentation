@@ -105,7 +105,7 @@ export default new Vue({
         },
     },
     created() {
-        this.populateNodes();
+        Vue.nextTick(() => this.populateNodes());
     }
 });
 
