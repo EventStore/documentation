@@ -16,6 +16,7 @@ Each SDK has its own way to configure the client, but it's always possible to us
 
 First thing first, we need a client.
 
+<!--
 <xode-group>
 <xode-block title="C#" language="csharp" code="connectionString">
 ```csharp
@@ -23,6 +24,7 @@ var s = "{{connectionString}}";
 ```
 </xode-block>
 </xode-group>
+-->
 
 Now, we need to write events.
 
