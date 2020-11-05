@@ -33,9 +33,11 @@ export default {
             const replace  = (vNodes) => {
                 return vNodes.map(x => {
                     const newNode = {...x};
-                    if (typeof x.text == "string" && x.text.includes(find)) {
-                        newNode.text = x.text.replaceAll(find, this.content);
-                    }
+                    try {
+                        if (typeof x.text == "string" && x.text.includes(find)) {
+                            newNode.text = x.text.replaceAll(find, this.content);
+                        }
+                    } catch {}
                     if (x.children) {
                         newNode.children = replace(x.children);
                     }
