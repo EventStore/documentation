@@ -18,8 +18,6 @@ export default {
         }
     },
     render:   function (h) {
-        console.log(this.content);
-
         const find = `{{${this.code}}}`;
         const replace  = (vNodes) => {
             return vNodes.map(x => {
@@ -35,7 +33,6 @@ export default {
         }
 
         const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
-        console.log(nodes);
         return h('div', nodes);
     }
 }
