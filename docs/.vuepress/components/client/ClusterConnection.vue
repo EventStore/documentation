@@ -1,22 +1,25 @@
 <template>
   <ClientOnly>
     <div>
-      <transition name="slide">
-        <div v-show="showGossip">
+      <transition name="slide" mode="out-in">
+        <div v-show="gossip.showGossip">
           <GossipConfig ref="clientGossip" :gossip="gossip"/>
 
-          <Port
-                  label="HTTP"
-                  prop="gossipPort"
-                  :enabled="enableHttpPort"
-                  v-model="gossipPort"
-          >
-          </Port>
+          <transition name="slide" mode="out-in">
+            <Port
+                    label="HTTP"
+                    prop="gossipPort"
+                    :enabled="enableHttpPort"
+                    v-model="gossipPort"
+                    v-show="!showNodes"
+            >
+            </Port>
+          </transition>
 
         </div>
       </transition>
 
-      <transition name="slide">
+      <transition name="slide" mode="out-in">
         <el-form-item
                 v-show="showNodesCount"
                 label="Number of nodes:"
@@ -34,9 +37,10 @@
         </el-form-item>
       </transition>
 
-      <transition-group name="slide">
+      <transition-group name="slide" mode="out-in">
         <NodeDetails
                 v-show="showNodes"
+                :single="!cluster"
                 v-for="node in nodes"
                 :key="`clientNode-${node.index}`"
                 :node="node"
@@ -56,15 +60,15 @@ export default {
     name:       "ClusterConnection",
     components: {GossipConfig, NodeDetails, Port},
     computed:   {
-        gossip:            () => connection.state.gossip,
-        nodes:             () => connection.state.nodes,
-        showGossip:        () => connection.state.cluster,
-        showNodes:         () => !connection.state.cluster || !connection.state.gossip.isDnsGossip(),
-        showNodesCount:    () => connection.state.cluster && !connection.state.gossip.isDnsGossip(),
-        disableNodesCount: () => connection.state.cloud,
-        enableHttpPort:    () => !connection.state.cloud,
-        minNodes:          () => connection.state.minNodes,
-        maxNodes:          () => connection.state.maxNodes,
+        gossip:            () => connection.gossip,
+        nodes:             () => connection.nodes,
+        cluster:           () => connection.cluster,
+        showNodes:         () => !connection.cluster || !connection.isDnsGossip(),
+        showNodesCount:    () => connection.cluster && !connection.isDnsGossip(),
+        disableNodesCount: () => connection.cloud,
+        enableHttpPort:    () => !connection.cloud && connection.isDnsGossip(),
+        minNodes:          () => connection.minNodes,
+        maxNodes:          () => connection.maxNodes,
 
         nodesCount: connection.extendedProperty("nodesCount", "setNodesCount"),
         gossipPort: connection.property("gossipPort"),

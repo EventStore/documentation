@@ -24,7 +24,7 @@ export default class Gossip {
     }
 
     isDnsGossip() {
-        return this.method === DnsGossip;
+        return this.showGossip && this.method === DnsGossip;
     }
 
     handleSelfSigned(selfSigned) {
@@ -56,5 +56,9 @@ export default class Gossip {
         return this.showGossip && this.disableGossipMethod
             ? "When nodes use wildcard certificate, cluster gossip can only use the nodes seed."
             : "";
+    }
+
+    isValid(gossipPort) {
+        return !this.isDnsGossip() || (this.dnsName !== "" && gossipPort > 0);
     }
 }

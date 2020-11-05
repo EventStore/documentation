@@ -4,7 +4,7 @@
             label-width="240px"
             :model="node"
     >
-      <el-form-item :label="`Node ${node.index} address`" required>
+      <el-form-item :label="`Node ${single ? '' : `${node.index} `}address`" required>
         <el-col :span="10">
           <el-form-item
                   prop="address"
@@ -21,10 +21,11 @@
         <el-col :span="4">
           <el-form-item
                   prop="port"
-                  :rules="[{required: true, type: 'number', trigger: 'blur', message: 'HTTP port required'}]"
+                  :rules="[{required: true, trigger: 'blur', message: 'HTTP port required'}]"
           >
-            <el-input
+            <el-input-number
                     placeholder="HTTP port"
+                    :controls="false"
                     v-model="node.port"
                     style="width: 100%;"
             />
@@ -41,7 +42,8 @@ import {validateItem} from "../../lib/validate";
 export default {
     name:    "NodeDetails",
     props:   {
-        node: Object
+        node: Object,
+        single: Boolean
     },
     methods: {
         validateAddress(rule, value, callback) {

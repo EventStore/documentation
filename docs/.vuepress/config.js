@@ -4,18 +4,20 @@ const versioning = require("./lib/versioning.js");
 versioning.load();
 
 module.exports = {
-    base: "/",
-    dest: "public",
-    title: "EventStoreDB Documentation",
-    description: "The stream database built for Event Sourcing",
-    head: [
-      ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.png"}],
-      ['link', { rel: "shortcut icon", href: "/favicon.ico"}],
+    base:            "/",
+    dest:            "public",
+    title:           "EventStoreDB Documentation",
+    description:     "The stream database built for Event Sourcing",
+    head:            [
+        ['link', {rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.png"}],
+        ['link', {rel: "shortcut icon", href: "/favicon.ico"}],
     ],
-    plugins: [
+    plugins:         [
         "@vuepress/active-header-links",
-        "one-click-copy",
-        ["check-md", { pattern: "**/*.md" }],
+        ["one-click-copy", {
+            copySelector: ['div[class*="language-"] pre', 'div[class*="aside-code"] aside', 'pre[class*="language-"]'],
+        }],
+        ["check-md", {pattern: "**/*.md"}],
         containers("code-group", "code-group"),
         containers("code", "code-block", title => `title="${title}"`),
         containers("tabs", "el-tabs", type => `${type ? ` type='${type}'` : ""}`),
@@ -23,9 +25,9 @@ module.exports = {
         [
             "vuepress-plugin-container",
             {
-                type: "detail",
+                type:   "detail",
                 before: title => `<details class="custom-block details"><summary>${title}</summary>`,
-                after: '</details>',
+                after:  '</details>',
             },
         ],
         containers("card", "el-card", _ => `body-style="padding: 0px"`),
@@ -34,36 +36,36 @@ module.exports = {
         "**/sidebar.js",
         "store/**/*.js"
     ],
-    themeConfig: {
-        logo: "/eventstore-logo-alt.svg",
-        gtm: "GTM-WLD9W3L",
+    themeConfig:     {
+        logo:                 "/eventstore-logo-alt.svg",
+        gtm:                  "GTM-WLD9W3L",
         // repo: "EventStore/documentation-next",
         // editLinks: true,
         // editLinkText: "Help us improve this page!",
-        codeLanguages: {
+        codeLanguages:        {
             csharp: "C#",
-            go: "Go",
+            go:     "Go",
         },
-        versions: {
-            latest: versioning.versions.latest,
+        versions:             {
+            latest:   versioning.versions.latest,
             selected: versioning.versions.latest,
-            all: versioning.versions.all
+            all:      versioning.versions.all
         },
-        sidebarDepth: 1,
-        searchPlaceholder: "Search",
+        sidebarDepth:         1,
+        searchPlaceholder:    "Search",
         searchMaxSuggestions: 20,
-        lastUpdated: "Last Updated",
-        nav: [
+        lastUpdated:          "Last Updated",
+        nav:                  [
             {
                 text: "Getting started",
                 link: "/latest.html"
             },
             {
-                text: "Server",
+                text:  "Server",
                 items: versioning.linksFor("server", "introduction/") // TODO create custom component
             },
             {
-                text: "Clients & APIs",
+                text:  "Clients & APIs",
                 items: [
                     {text: "Overview", link: "/clients/"},
                     {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "getting-started/")},
@@ -72,7 +74,7 @@ module.exports = {
             },
             {text: "Cloud", link: "/cloud/intro/"},
             {
-                text: "Resources",
+                text:  "Resources",
                 items: [
                     {text: "Discuss", link: "https://discuss.eventstore.com"},
                     {text: "Articles", link: "https://eventstore.com/blog/articles/"},
@@ -82,12 +84,12 @@ module.exports = {
                 ]
             },
         ],
-        sidebar: {
+        sidebar:              {
             ...versioning.sidebars,
             "/cloud/": [
                 {
-                    title: "Introduction",
-                    path: "/cloud/intro/",
+                    title:    "Introduction",
+                    path:     "/cloud/intro/",
                     children: [
                         "/cloud/intro/",
                         "/cloud/intro/quick-start.md",
@@ -95,20 +97,20 @@ module.exports = {
                     ]
                 },
                 {
-                    title: "Provisioning",
+                    title:       "Provisioning",
                     collapsable: true,
-                    path: "/cloud/provision/",
-                    children: [
+                    path:        "/cloud/provision/",
+                    children:    [
                         "/cloud/provision/",
                         "/cloud/provision/aws/",
                         "/cloud/provision/gcp/",
                     ]
                 },
                 {
-                    title: "Using cloud clusters",
+                    title:       "Using cloud clusters",
                     collapsable: true,
-                    path: "/cloud/use/",
-                    children: [
+                    path:        "/cloud/use/",
+                    children:    [
                         "/cloud/use/",
                         "/cloud/use/tailscale.md"
                     ]
@@ -116,7 +118,7 @@ module.exports = {
             ]
         }
     },
-    markdown: {
+    markdown:        {
         extendMarkdown: md => {
             // md.use(require("./theme/markup/elementui"));
         }

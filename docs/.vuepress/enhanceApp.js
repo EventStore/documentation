@@ -11,22 +11,26 @@ import "prismjs/components/prism-bash";
 import * as gtm from "./gtm/inject";
 import Vuex from "vuex";
 import connection from "./store/client/connection";
-
+import XodeBlock from "./theme/components/XodeBlock";
+import XodeGroup from "./theme/components/XodeGroup";
 // import CodeToggle from "./components/CodeToggle";
 // import {SetSiteLanguages} from "./store/mutations";
+import store from "./theme/store";
 
 export default ({Vue, options, router, siteData}) => {
     Vue.use(Vuex);
     Vue.use(ElementUI);
     // Vue.component("code-toggle", CodeToggle);
     Vue.component("prism", Prism);
+    Vue.component("xode-block", XodeBlock);
+    Vue.component("xode-group", XodeGroup);
 
     // store.commit(SetSiteLanguages, siteData.themeConfig.codeLanguages);
     Object.assign(options, {
         //data: {
         //    codeLanguage: null,
         //},
-        connection: connection
+        store: new Vuex.Store(store)
     });
     router.addRoutes([
         {

@@ -1,4 +1,4 @@
-import {ChangeLanguage, SetSiteLanguages} from "./mutations";
+import {ChangeLanguage, SetSiteLanguages, UpdateConnectionString} from "./mutations";
 import {GetSelectedLanguage, GetSiteLanguages} from "./getters";
 import {setStorageValue} from "../util/localStorage";
 
@@ -8,6 +8,7 @@ const langStorageName = "codeLanguage";
 const state = {
     codeLanguage: null, //getStorageValue(langStorageName),
     siteLanguages: {},
+    connectionString: ""
 };
 
 const mutations = {
@@ -18,7 +19,9 @@ const mutations = {
     [SetSiteLanguages](state, languages) {
         state.siteLanguages = languages;
     },
-
+    [UpdateConnectionString](state, conn) {
+        state.connectionString = conn;
+    }
 };
 
 const getters = {

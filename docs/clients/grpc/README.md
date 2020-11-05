@@ -12,7 +12,13 @@ Each SDK has its own way to configure the client, but it's always possible to us
 
 <ConnectionString></ConnectionString>
 
-<pre><code>{{ $page.connectionString }}</code></pre>
-
 ## Connecting to EventStoreDB
+
+<xode-group>
+<xode-block title="C#" code="connectionString">
+```csharp
+var connectionString = "{{connectionString}}";
+```
+</xode-block>
+</xode-group>
 

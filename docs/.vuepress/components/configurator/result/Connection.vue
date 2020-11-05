@@ -33,6 +33,7 @@ import connection from "../../../calc/connection";
 
 export default {
     name:     "Connection",
+    // mixins: []
     data() {
         return {
             client: "dotnet-grpc"
