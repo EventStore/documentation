@@ -1,4 +1,4 @@
-import {ChangeLanguage, SetSiteLanguages, UpdateConnectionString} from "./mutations";
+import {ChangeLanguage, SetSiteLanguages, SubmitCodeBlock, UpdateConnectionString} from "./mutations";
 import {GetSelectedLanguage, GetSiteLanguages} from "./getters";
 import {setStorageValue} from "../util/localStorage";
 
@@ -8,7 +8,8 @@ const langStorageName = "codeLanguage";
 const state = {
     codeLanguage: null, //getStorageValue(langStorageName),
     siteLanguages: {},
-    connectionString: ""
+    connectionString: "",
+    codeBlocks: {}
 };
 
 const mutations = {
@@ -21,6 +22,9 @@ const mutations = {
     },
     [UpdateConnectionString](state, conn) {
         state.connectionString = conn;
+    },
+    [SubmitCodeBlock](state, block) {
+        state.codeBlocks = {...state.codeBlocks, [block.key]: block.value};
     }
 };
 

@@ -22,7 +22,7 @@
 
 <script>
 import connection from "../store/client/connection";
-import {UpdateConnectionString} from "../theme/store/mutations";
+import {SubmitCodeBlock, UpdateConnectionString} from "../theme/store/mutations";
 
 export default {
     name:     "ConnectionString",
@@ -39,7 +39,7 @@ export default {
             if (s) this.connectionString = s;
         },
         connectionString(s) {
-            this.$store.commit(UpdateConnectionString, s);
+            this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: s});
         }
     }
 }

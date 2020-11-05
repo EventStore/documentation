@@ -14,25 +14,27 @@ export default {
     },
     computed: {
         content() {
-            return this.$store.state[this.code];
+            return this.$store.state.codeBlocks[this.code];
         }
     },
     render:   function (h) {
+        console.log("render");
+
         const find = `{{${this.code}}}`;
-        const xxx  = (vNodes) => {
+        const replace  = (vNodes) => {
             return vNodes.map(x => {
                 const newNode = {...x};
                 if (typeof x.text == "string" && x.text.includes(find)) {
                     newNode.text = x.text.replaceAll(find, this.content);
                 }
                 if (x.children) {
-                    newNode.children = xxx(x.children);
+                    newNode.children = replace(x.children);
                 }
                 return newNode;
             });
         }
 
-        const nodes = this.content ? xxx(this.$slots.default) : this.$slots.default;
+        const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
         return h('div', nodes);
     }
 }
