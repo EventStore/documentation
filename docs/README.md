@@ -16,6 +16,10 @@ footer: Copyright © 2020 EventStoreDB Limited
 
 ## Latest updates
 
+### 6 November 2020
+- Fixes for the deployment configurator.
+- <badge>preview</badge> Added the combined [gRPC clients](/clients/grpc/getting-started/) page.
+
 ### 28 October 2020
 - Many fixes in v5 server documentation.
 - Documentation for v20 server essentially covers everything.

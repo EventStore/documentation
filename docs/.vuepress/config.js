@@ -67,7 +67,6 @@ module.exports = {
             {
                 text:  "Clients & APIs",
                 items: [
-                    {text: "Overview", link: "/clients/"},
                     {text: "gRPC clients", link: "/clients/grpc/getting-started/"},
                     {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "getting-started/")},
                     {text: "HTTP API", items: versioning.linksFor("http-api")},
