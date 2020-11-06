@@ -5,14 +5,14 @@ import nodes from "../store/configurator/nodes";
 import security from "../store/configurator/security";
 
 export default function (sdk) {
-    const nodeAddress = node => client.advertiseToClient
-        ? `${safe(node.clientAddress)}:${client.httpPort}`
-        : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${topology.httpPort}`;
+    const nodeAddress = (node, tcp) => client.advertiseToClient
+        ? `${safe(node.clientAddress)}:${tcp ? client.externalTcpPort : client.httpPort}`
+        : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${tcp ? topology.externalTcpPort : topology.httpPort}`;
 
     const httpPort        = client.advertiseToClient ? client.httpPort : topology.httpPort;
-    const gossip          = client.gossip.isDnsGossip()
+    const gossip          = (tcp) => client.gossip.isDnsGossip()
         ? `${safe(client.gossip.dnsName)}:${httpPort}`
-        : safeJoin(nodes.nodes.map(x => nodeAddress(x)));
+        : safeJoin(nodes.nodes.map(x => nodeAddress(x, tcp)));
     const disableValidate = () => {
         switch (sdk) {
             case "dotnet-tcp":
@@ -21,13 +21,14 @@ export default function (sdk) {
                 return "&TlsVerifyCert=false";
         }
     };
-    const connString      = connectionString(sdk, gossip, httpPort);
+    const tcp             = sdk === "dotnet-tcp";
+    const connString      = connectionString(sdk, gossip(tcp), httpPort);
     const code            = example(sdk, connString);
 
     return {
         httpPort:         httpPort,
         isTcpEnabled:     client.isTcpEnabled,
-        gossip:           gossip,
+        gossip:           gossip(tcp),
         connectionString: connString,
         example:          code,
         disableValidate:  disableValidate(),
@@ -43,7 +44,7 @@ function connectionString(sdk, gossip, httpPort) {
                 + `${nodes.isSingleNode ? "tcp://" : ""}`
                 + `${isClientDnsGossip ? client.gossip.dnsName : gossip};`
                 + `${isClientDnsGossip ? "ExternalGossipPort=" + httpPort + ";" : ""}`
-                + `UseSsl=${client.isSecure};`
+                + `UseSslConnection=${client.isSecure};`
                 + `DefaultCredentials=admin:changeit`;
         default:
             return `esdb://${gossip}?Tls=${client.isSecure}`;

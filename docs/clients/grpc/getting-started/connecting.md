@@ -11,7 +11,7 @@ Install the client SDK package to your project.
 $ dotnet add package EventStore.Client.Grpc.Streams --version 20.6.1
 ```
 </xode-block>
-<xode-block title="NodeJS" code="connectionString">
+<xode-block title="NodeJS (preview)" code="connectionString">
 
 ```
 # Yarn
@@ -43,12 +43,20 @@ First thing first, we need a client.
 <xode-block title="NodeJS" code="connectionString">
 
 ```javascript
-const s = "{connectionString}";
+const client = EventStoreConnection.connectionString("{connectionString}");
 ```
 </xode-block>
 </xode-group>
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
+
+::: warning Preview clients
+The following SDKs are currently in preview and can get API changes:
+- NodeJS
+- Java
+- Go
+- Rust
+:::
 
 ## Creating an event
 
@@ -70,7 +78,10 @@ The code snippet below creates an event object instance, serializes it and puts 
 <xode-block title="NodeJS">
 
 ```javascript
-await writeEvents();
+const event = EventData.json("TestEvent", {
+    "entityId": uuid().toString(),
+    "importantData": "I wrote my first event!"
+}).build();
 ```
 </xode-block>
 </xode-group>
@@ -89,10 +100,39 @@ In the snippet below, we append the event to the stream `testStream`.
 <xode-block title="NodeJS">
 
 ```javascript
-await writeEvents();
+const writeResult = await writeEventsToStream("testStream")
+    .send(event)
+    .execute(connection);
 ```
 </xode-block>
 </xode-group>
 
-Here we used `StreamState.Any`, which allows us to write an event without checking if the stream exists or if the stream version matches the expected event version.
+Here we are writing events without checking if the stream exists or if the stream version matches the expected event version.
+
+## Reading events
+
+Finally, we can read events back from the `testStream` stream.
+
+<xode-group>
+<xode-block title="C#">
+
+```csharp
+var result = client.ReadStreamAsync(Direction.Forwards, "testStream", StreamPosition.Start);
+var events = await result.ToListAsync(cancellationToken);
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```javascript
+const events = await readEventsFromStream("testStream")
+    .fromStart()
+    .forward()
+    .count(10)
+    .execute(connection);
+```
+</xode-block>
+</xode-group>
+
+When you read events from the stream, you can a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized.
+ 
 
