@@ -6,3 +6,7 @@ Get started by connecting your application to EventStoreDB. Complete the form be
 
 <Connection></Connection>
 
+### Next step
+
+Explore code example for connecting to EventStoreDB on the [Connecting to server](./connecting.md) page.
+

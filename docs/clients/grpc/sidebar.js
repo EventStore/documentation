@@ -4,16 +4,7 @@ module.exports = [
         collapsable: true,
         children: [
             "getting-started/",
-        ]
-    },
-    {
-        title: "Connecting to server",
-        path: "connecting/",
-        collapsable: true,
-        children: [
-            "connecting/",
-            // "connecting/options.md",
-            // "connecting/connection-string.md",
+            "getting-started/connecting",
         ]
     },
     // {

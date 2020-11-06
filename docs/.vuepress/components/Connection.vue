@@ -25,6 +25,13 @@
 
       <ClusterConnection/>
 
+      <h2>Connection string</h2>
+      <p>Each SDK has its own way to configure the client, but it's always possible to use the connection string. The
+        connection string below is generated according to the configuration you specified above, and it should work with
+        each official SDK of EventStoreDB.</p>
+
+      <pre><code>{{ connectionString ? connectionString : "Fill out the form to get the connection string" }}</code></pre>
+
     </el-form>
   </ClientOnly>
 </template>
@@ -40,10 +47,10 @@ export default {
     name:       "Connection",
     components: {Cloud, ClusterConnection},
     computed:   {
-        state:   () => connection,
-        cloud:   () => connection.cloud,
-        cluster: connection.extendedProperty("cluster", "changeTopology"),
-        secure:  connection.extendedProperty("secure", "changeSecurity"),
+        state:            () => connection,
+        cloud:            () => connection.cloud,
+        cluster:          connection.extendedProperty("cluster", "changeTopology"),
+        secure:           connection.extendedProperty("secure", "changeSecurity"),
         connectionString: () => connection.connectionString,
     },
     mounted() {

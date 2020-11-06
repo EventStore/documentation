@@ -93,14 +93,7 @@ module.exports = {
                     path: "/clients/grpc/getting-started/",
                     children: [
                         "/clients/grpc/getting-started/",
-                    ]
-                },
-                {
-                    title: "Connecting to server",
-                    path: "/clients/grpc/connecting/",
-                    collapsable: true,
-                    children: [
-                        "/clients/grpc/connecting/",
+                        "/clients/grpc/getting-started/connecting",
                     ]
                 },
             ],
