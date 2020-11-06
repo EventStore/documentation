@@ -29,25 +29,25 @@ export default {
     },
     render:   function (h) {
         // const r = () => {
-            const find = `{{${this.code}}}`;
-            const replace  = (vNodes) => {
-                return vNodes.map(x => {
-                    const newNode = {...x};
-                    try {
-                        if (typeof x.text == "string" && x.text.includes(find)) {
-                            newNode.text = x.text.replaceAll(find, this.content);
-                        }
-                    } catch {}
-                    if (x.children) {
-                        newNode.children = replace(x.children);
+        const find    = `{{${this.code}}}`;
+        const replace = (vNodes) => {
+            return vNodes.map(x => {
+                const newNode = {...x};
+                try {
+                    if (typeof x.text == "string" && x.text.includes(find)) {
+                        newNode.text = x.text.replaceAll(find, this.content);
                     }
-                    return newNode;
-                });
-            }
+                } catch {
+                }
+                if (x.children) {
+                    newNode.children = replace(x.children);
+                }
+                return newNode;
+            });
+        }
 
-            const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
-        console.log(this);
-            return h('div', nodes);
+        const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
+        return h('div', nodes);
         // };
         //
         // if (this.$parent._isMounted) {

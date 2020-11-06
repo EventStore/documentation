@@ -21,27 +21,20 @@
 </template>
 
 <script>
-import connection from "../store/client/connection";
+
 import {SubmitCodeBlock} from "../theme/store/mutations";
 
 export default {
     name:     "ConnectionString",
     computed: {
-        cs() {
-            console.log("computed")
-            return this.$store.state.connectionString;
+        connectionString: {
+            get() {
+                return this.$store.state.codeBlocks.connectionString;
+            },
+            set(v) {
+                this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: v});
+            }
         }
     },
-    data() {
-        return {
-            connectionString: "",
-        }
-    },
-    watch:    {
-        cs(s) {
-            console.log("cs")
-            if (s) this.connectionString = s;
-        },
-    }
 }
 </script>

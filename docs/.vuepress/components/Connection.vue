@@ -55,7 +55,6 @@ export default {
     },
     watch:      {
         connectionString() {
-            console.log("watch out!")
             this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: this.connectionString});
         }
     }
