@@ -1,5 +1,26 @@
 # Connecting to EventStoreDB
 
+## Required packages
+
+Install the client SDK package to your project.
+
+<xode-group>
+<xode-block title="C#">
+
+```
+$ dotnet add
+```
+</xode-block>
+<xode-block title="NodeJS" code="connectionString">
+
+```
+$ npm install
+or
+$ yarn add
+```
+</xode-block>
+</xode-group>
+
 ## Connection string
 
 Each SDK has its own way to configure the client, but it's always possible to use the connection string. The connection string below is generated according to the configuration you specified above, and it should work with each official SDK of EventStoreDB.
@@ -27,11 +48,17 @@ const s = "{connectionString}";
 
 Now, we need to write events.
 
-<code-group>
-<code-block title="C#">
+<xode-group>
+<xode-block title="C#">
 
 ```csharp
 await WriteEvents();
 ```
-</code-block>
-</code-group>
+</xode-block>
+<xode-block title="NodeJS">
+
+```javascript
+await writeEvents();
+```
+</xode-block>
+</xode-group>

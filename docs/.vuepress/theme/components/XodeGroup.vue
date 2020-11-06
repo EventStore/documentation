@@ -26,43 +26,72 @@
 </template>
 
 <script>
+import {ChangeLanguage} from "../store/mutations";
+
 export default {
-    name:    'XodeGroup',
+    name:     'XodeGroup',
     data() {
         return {
             codeTabs:           [],
             activeCodeTabIndex: -1
         }
     },
-    watch:   {
+    computed: {
+        activeLanguage: {
+            get() {
+                return this.$store.state.codeLanguage;
+            },
+            set(v) {
+                this.$store.commit(ChangeLanguage, v);
+            }
+        }
+    },
+    watch:    {
         activeCodeTabIndex(index) {
             this.codeTabs.forEach(tab => {
-                if (tab.elm !== undefined)
-                    tab.elm.classList.remove('theme-code-block__active')
+                if (tab.elm !== undefined) {
+                    tab.elm.classList.remove('theme-code-block__active');
+                }
             })
-            if (this.codeTabs[index].elm !== undefined)
-                this.codeTabs[index].elm.classList.add('theme-code-block__active')
+            if (this.codeTabs[index].elm !== undefined) {
+                this.codeTabs[index].elm.classList.add('theme-code-block__active');
+            }
+        },
+        activeLanguage(language) {
+            this.changeLanguage(language);
         }
     },
     mounted() {
-        this.codeTabs = (this.$slots.default || []).filter(slot => Boolean(slot.componentOptions)).map((slot, index) => {
-            if (slot.componentOptions.propsData.active === '') {
-                this.activeCodeTabIndex = index
-            }
+        this.codeTabs = (this.$slots.default || [])
+            .filter(slot => Boolean(slot.componentOptions))
+            .map((slot, index) => {
+                if (slot.componentOptions.propsData.active) {
+                    this.activeCodeTabIndex = index
+                }
 
-            return {
-                title: slot.componentOptions.propsData.title,
-                elm:   slot.elm
-            }
-        })
+                return {
+                    index: index,
+                    title: slot.componentOptions.propsData.title,
+                    elm:   slot.elm
+                }
+            });
 
         if (this.activeCodeTabIndex === -1 && this.codeTabs.length > 0) {
-            this.activeCodeTabIndex = 0
+            if (this.activeLanguage) {
+                this.changeLanguage(this.activeLanguage);
+            } else {
+                this.activeCodeTabIndex = 0;
+            }
         }
     },
-    methods: {
+    methods:  {
         changeCodeTab(index) {
-            this.activeCodeTabIndex = index
+            this.activeCodeTabIndex = index;
+            this.activeLanguage     = this.codeTabs[index].title;
+        },
+        changeLanguage(language) {
+            const tab               = this.codeTabs.find(x => x.title === language);
+            this.activeCodeTabIndex = tab ? tab.index : 0;
         }
     }
 }

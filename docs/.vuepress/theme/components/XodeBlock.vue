@@ -23,7 +23,7 @@ export default {
     },
     computed: {
         content() {
-            const c = this.$store.state.codeBlocks[this.code];
+            const c = this.code ? this.$store.state.codeBlocks[this.code] : null;
             return c ? c : "<your value>";
         }
     },
@@ -45,7 +45,7 @@ export default {
             });
         }
 
-        const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
+        const nodes = (this.code && this.content) ? replace(this.$slots.default) : this.$slots.default;
         return h(
             'div',
             {
