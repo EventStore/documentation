@@ -28,8 +28,7 @@ export default {
         }
     },
     render:   function (h) {
-        // const r = () => {
-        const find    = `{{${this.code}}}`;
+        const find    = `{${this.code}}`;
         const replace = (vNodes) => {
             return vNodes.map(x => {
                 const newNode = {...x};
@@ -47,18 +46,15 @@ export default {
         }
 
         const nodes = this.content ? replace(this.$slots.default) : this.$slots.default;
-        return h('div', nodes);
-        // };
-        //
-        // if (this.$parent._isMounted) {
-        //     return r();
-        // } else {
-        //     this.$parent.$once('hook:mounted', () => {
-        //         this.$parent.$forceUpdate()
-        //     })
-        // }
-        //
-        // return r();
+        return h(
+            'div',
+            {
+                class: {
+                    "theme-code-block": true,
+                    "theme-code-block__active": this.active
+                }
+            },
+            nodes);
     }
 }
 </script>
