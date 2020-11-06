@@ -11,7 +11,7 @@ Install the client SDK package to your project.
 $ dotnet add package EventStore.Client.Grpc.Streams --version 20.6.1
 ```
 </xode-block>
-<xode-block title="NodeJS (preview)" code="connectionString">
+<xode-block title="NodeJS" code="connectionString">
 
 ```
 # Yarn
@@ -22,6 +22,14 @@ $ npm install --save @eventstore/db-client
 ```
 </xode-block>
 </xode-group>
+
+::: warning Preview clients
+The following SDKs are currently in preview and can get API changes:
+- NodeJS
+- Java
+- Go
+- Rust
+:::
 
 ## Connection string
 
@@ -49,14 +57,6 @@ const client = EventStoreConnection.connectionString("{connectionString}");
 </xode-group>
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
-
-::: warning Preview clients
-The following SDKs are currently in preview and can get API changes:
-- NodeJS
-- Java
-- Go
-- Rust
-:::
 
 ## Creating an event
 
