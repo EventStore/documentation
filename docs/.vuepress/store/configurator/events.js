@@ -1,0 +1,9 @@
+export const PlatformChanged          = "PlatformChanged";
+export const ClusteringChanged        = "ClusteringChanged";
+export const SecurityChanged          = "SecurityChanged";
+export const ValidationError          = "ValidationError";
+export const ValidationClear          = "ValidationClear";
+export const ValidationSectionRemoved = "ValidationSectionRemoved";
+export const CertificateTypeChanged   = "CertificateTypeChanged";
+export const TcpChanged               = "TcpChanged";
+export const CertCnChanged            = "CertCnChanged";

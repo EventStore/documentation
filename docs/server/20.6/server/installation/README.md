@@ -8,4 +8,9 @@ EventStoreDB can run as a single node or as a highly-available cluster. For the 
 
 Fill out the form below to generate the necessary configuration for your deployment.
 
+::: tip Event Store Cloud
+Avoid deploying, configuring, and maintaining the EventStoreDB instance yourself by using
+[Event Store Cloud](https://www.eventstore.com/event-store-cloud).
+:::
+
 <Deployment></Deployment>

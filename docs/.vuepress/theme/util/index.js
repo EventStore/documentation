@@ -3,6 +3,10 @@ export const extRE = /\.(md|html)$/
 export const endingSlashRE = /\/$/
 export const outboundRE = /^[a-z]+:/i
 
+export function isUndefined(x) {
+  return typeof x === "undefined";
+}
+
 export function normalize (path) {
   return decodeURI(path)
     .replace(hashRE, '')

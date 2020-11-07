@@ -1,6 +1,6 @@
 # Optimistic concurrency and idempotence
 
-Writing supports an [optimistic concurrency](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/optimistic-concurrency) check on the version of the stream to which events are written. The method of specifying what the expected version is depends whether you are making writes using the HTTP or .NET API.
+Writing supports an [optimistic concurrency](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/optimistic-concurrency) check on the version of the stream to which events are written.
 
 The .NET API has constants which you can use to represent certain conditions:
 

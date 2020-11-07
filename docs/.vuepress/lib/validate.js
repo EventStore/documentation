@@ -12,7 +12,7 @@ export function error(callback, message) {
 }
 
 export function validateDnsName(rule, value, callback) {
-    return networks.isValidDns(value) ? true : error(callback, "Invalid DNS name");
+    return networks.isValidDns(value) ? null : error(callback, "Invalid DNS name");
 }
 
 export function validateIpAddress(rule, value, callback) {
@@ -30,4 +30,14 @@ export async function validateGossip(nodes, value, callback) {
     return notFound.length === 0
         ? ok(callback)
         : error(callback, `${value} does not resolve to ${notFound[0].extIp}`);
+}
+
+export function ensureCaDomainMatch(dnsName, cert) {
+    if (!cert || cert.selfSigned || dnsName === "" || cert.cn === "") return true;
+    const caDomain = cert.cn.substring(2);
+    return dnsName.endsWith(caDomain);
+}
+
+export function validateItem(result, callback) {
+    return !result || result === "" ? ok(callback) : error(callback, result);
 }

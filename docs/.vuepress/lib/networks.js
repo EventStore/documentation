@@ -10,6 +10,10 @@ export function isValidIpAddress(ipAddress) {
     return !ipAddress || ipAddress.match(ipFormat);
 }
 
+export function isValidAddress(address) {
+    return isValidIpAddress(address) || isValidDns(address);
+}
+
 export async function resolveDns(dnsName) {
     if (dnsName === "" || !isValidDns(dnsName)) return undefined;
 

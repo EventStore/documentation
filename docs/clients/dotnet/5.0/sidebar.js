@@ -8,10 +8,12 @@ module.exports = [
     },
     {
         title: "Connecting to server",
+        path: "connecting/",
         collapsable: true,
         children: [
             "connecting/",
-            "connecting/connecting-to-a-server.md",
+            "connecting/options.md",
+            "connecting/connection-string.md",
         ]
     },
     {
@@ -72,16 +74,16 @@ module.exports = [
             "embedded/"
         ]
     },
-    {
-        title: "Examples",
-        collapsable: true,
-        children: [
-            "examples/",
-            "examples/aggregate.md",
-            "examples/aggregate-store.md",
-            "examples/read-models.md"
-        ]
-    },
+    // {
+    //     title: "Examples",
+    //     collapsable: true,
+    //     children: [
+    //         "examples/",
+    //         "examples/aggregate.md",
+    //         "examples/aggregate-store.md",
+    //         "examples/read-models.md"
+    //     ]
+    // },
     {
         title: "Code documentation",
         collapsable: true,
