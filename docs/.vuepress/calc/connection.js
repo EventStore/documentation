@@ -44,7 +44,7 @@ function connectionString(sdk, gossip, httpPort) {
                 + `${nodes.isSingleNode ? "tcp://" : ""}`
                 + `${isClientDnsGossip ? client.gossip.dnsName : gossip};`
                 + `${isClientDnsGossip ? "ExternalGossipPort=" + httpPort + ";" : ""}`
-                + `UseSslConnection=${client.isSecure};`
+                +  `UseSslConnection=${client.isSecure};`
                 + `DefaultCredentials=admin:changeit`;
         default:
             return `esdb://${gossip}?Tls=${client.isSecure}`;
