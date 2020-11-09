@@ -1,5 +1,5 @@
 <template>
-  <ClientNode>
+  <ClientOnly>
     <el-form
             label-width="240px"
             ref="clusterNode"
@@ -54,7 +54,7 @@
         </el-form-item>
       </transition>
     </el-form>
-  </ClientNode>
+  </ClientOnly>
 </template>
 
 <script>

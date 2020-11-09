@@ -69,8 +69,7 @@ var eventData = new EventData(
 await client.AppendToStreamAsync(
     "test", StreamState.Any,
     new[] {eventData}
-);
-`;
+);`;
         case "dotnet-tcp":
             return `// Create the connection
 var connection = EventStoreConnection.Create(

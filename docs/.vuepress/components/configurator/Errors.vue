@@ -53,11 +53,11 @@ export default {
             return validation.hasSectionErrors(section);
         },
         validateConfiguration() {
-            EventBus.$emit("validate");
+            this.$emit("validate");
             this.validated = true;
         },
         proceed() {
-            EventBus.$emit("proceed");
+            this.$emit("proceed");
         }
     }
 }

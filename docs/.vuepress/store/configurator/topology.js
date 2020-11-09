@@ -29,7 +29,7 @@ export default new Vue({
         },
     },
     created() {
-        this.updateClustering(true);
+        Vue.nextTick(() => this.updateClustering(true));
         EventBus.$on(TcpChanged, x => this.tcpEnabled = x);
     }
 });
