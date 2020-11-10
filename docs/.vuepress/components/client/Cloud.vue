@@ -39,6 +39,9 @@ import {error, ok} from "../../lib/validate";
 
 export default {
     name:     "Cloud",
+    props:    {
+        clusterId: String
+    },
     data() {
         return {
             form:      {
@@ -58,7 +61,9 @@ export default {
     },
     watch:    {
         "form.clusterId"() {
-            this.$refs.clusterForm.clearValidate();
+            if (this.$refs.clusterForm) {
+                this.$refs.clusterForm.clearValidate();
+            }
             this.addresses = [];
         }
     },
@@ -82,6 +87,10 @@ export default {
                 ? ok(callback)
                 : error(callback, `Unable to resolve the ${this.dnsName} DNS name`);
         }
+    },
+    async mounted() {
+        this.form.clusterId = this.clusterId;
+        if (this.clusterId !== "") await this.fetchConfig();
     }
 }
 </script>

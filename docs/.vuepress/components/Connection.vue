@@ -16,7 +16,7 @@
       </el-form>
 
       <transition name="slide">
-        <cloud v-show="fetch.from === 'cloud'" @proceed="proceed"/>
+        <cloud v-show="fetch.from === 'cloud'" :cluster-id="clusterId" @proceed="proceed"/>
       </transition>
 
       <transition name="slide">
@@ -61,7 +61,8 @@ export default {
             fetch: {
                 from: "cloud"
             },
-            showConfig: false
+            showConfig: false,
+            clusterId: ""
         }
     },
     computed:   {
@@ -85,6 +86,10 @@ export default {
         proceed() {
             this.showConfig = true;
         }
+    },
+    mounted() {
+        const clusterId = this.$route.query.clusterId;
+        if (clusterId) this.clusterId = clusterId;
     }
 }
 </script>
