@@ -2,7 +2,7 @@ import * as axios from "axios";
 
 export function isValidDns(domain) {
     const re = /^((?:(?:(?:\w[.\-+]?)*)\w)+)((?:(?:(?:\w[.\-+]?){0,62})\w)+)\.(\w{2,6})$/;
-    return !domain || domain.match(re);
+    return !domain || domain === "localhost" || domain.match(re);
 }
 
 export function isValidIpAddress(ipAddress) {
