@@ -10,11 +10,11 @@
 
         <Platform />
 
-        <Directories ref="directories" />
+        <Directories ref="directories"/>
 
         <Security ref="security" />
 
-        <Topology ref="topology" />
+        <Topology ref="topology"  />
 
         <Client ref="client" />
 
@@ -28,7 +28,7 @@
                 <el-radio-button label="System"></el-radio-button>
               </el-radio-group>
             </el-col>
-            <el-col :span="12" class="form-help">
+            <el-col :span="10" class="form-help">
               Enabling projections impacts performance. Read more at the
               <a
                 target="_blank"
@@ -156,109 +156,102 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./styles/slide";
-.air {
-  padding-bottom: 0.5rem;
-}
+    @import "./styles/slide";
 
-.el-row {
-  margin-bottom: 20px;
-  height: 3.5rem;
-}
+        .el-divider__text.is-right {
+          right: 30px !important;
+          transform: translateY(-50%);
+          }
 
-.form-text {
-  font-size: 16px;
-}
+        .el-row {
+            margin-bottom: 20px;
+            height: 3.5rem;
+            }
 
-.form-help {
-  font-size: 14px;
-  line-height: 18px;
-  margin-left: 10px;
-}
+        .form-text {
+            font-size: 16px;
+            }
 
-.el-divider__text.is-right {
-  right: 80px;
-  transform: translateY(-50%);
-}
+        .form-help {
+            font-size: 14px;
+            line-height: 18px;
+            margin-left: 10px;
+            }
 
-.el-col-6 {
-  width: 3%;
-}
-.el-col-10 {
-  display: flex;
-  justify-content: center;
-}
+        .el-divider__text.is-right {
+           right: 80px;
+           transform: translateY(-50%);
+            }
 
-.el-form-item__label {
-  line-height: 34px !important;
-  padding-top: 4px !important;
-}
+        .el-form-item__label {
+            line-height: 34px !important;
+            padding-top: 4px !important;
+          }
 
 
-.el-switch {
-  padding-left: 60px;
-  padding-top: 8px;
-  line-height: 20px;
-}
+        .el-switch {
+          padding-left: 20px;
+          padding-top: 8px;
+          line-height: 20px;
+        }
 
-.el-input-number {
-  width: 290px !important;
-}
+          .el-input-number {
+          width: 110px !important;
+          display:flex;
+          justify-content: center;
+          }
+          .el-col-12 {
+            width: 45%;
+            margin-left: 18px;
+            
+          }
 
-.el-radio-button__inner {
-  padding: 12px 28px;
-}
+      
 
-@media screen and (max-width: 600px) {
-  .el-divider__text.is-right {
-    right: 20px;
-    transform: translateY(-50%);
-  }
+  @media screen and (max-width: 600px) {
+      .el-divider__text.is-right {
+        right: 10px;
+        transform: translateY(-50%);
+        
+      }
 
-  .el-form-item__label {
-    text-align: left;
-    line-height: 20px;
-    font-weight: 700;
-  }
-  .el-input-number {
-    width: 200px !important;
-  }
+      .el-form-item__label {
+          text-align: left;
+          line-height: 20px;
+          font-weight: 700;
+      }
+      .el-input-number {
+        width: 120px !important;
+      }
 
-  .el-form-item__content {
-    margin-left: 0px !important;
-    margin-right: 5px !important;
-  }
-  .form-help {
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
+      .el-form-item__content {
+        margin-left: 0px !important;
+        margin-right: 5px !important;
+      }
+      .form-help {
+      padding-top: 10px;
+      padding-bottom: 20px;
+    }
 
-  .el-switch {
-    padding-left: 0px;
-  }
+      .el-col-4 {
+        width: 100%;
+      }
 
-  .el-col-4 {
-    width: 20.6%;
-  }
 
-  .el-col-6 {
-    display: none;
-  }
+      .el-col-10 {
+        width: 90%;
+        justify-content: left;
+      }
+      .el-col-12 {
+        width: 90%;
+        margin-left: 0;
+      }
+    }
 
-  .el-col-10 {
-    width: 90%;
-    justify-content: left;
-  }
-  .el-col-12 {
-    width: 90%;
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 1048px) {
-  .el-col-10 {
-    width: 100%;
-    justify-content: left;
-  }
-}
+    @media screen and (max-width: 1048px) {
+      .el-col-10 {
+        width: 100%;
+        justify-content: left;
+      }
+    }
 </style>
