@@ -2,18 +2,21 @@
   <ClientOnly>
     <el-tabs v-model="activeTab">
       <el-tab-pane label="Specification" name="spec">
-        <br>
-        <span>Specify the configuration details in the form below, then click Validate and Proceed at the bottom.</span>
+        <br />
+        <span
+          >Specify the configuration details in the form below, then click
+          Validate and Proceed at the bottom.</span
+        >
 
-        <Platform/>
+        <Platform />
 
-        <Directories ref="directories"/>
+        <Directories ref="directories" />
 
-        <Security ref="security"/>
+        <Security ref="security" />
 
-        <Topology ref="topology"/>
+        <Topology ref="topology" />
 
-        <Client ref="client"/>
+        <Client ref="client" />
 
         <el-form :model="projections" ref="projections" label-width="240px">
           <el-divider content-position="right">Projections</el-divider>
@@ -27,43 +30,53 @@
             </el-col>
             <el-col :span="12" class="form-help">
               Enabling projections impacts performance. Read more at the
-              <a target="_blank" href="/server/20.6/server/projections/#performance-impact">Projections</a>
+              <a
+                target="_blank"
+                href="/server/20.6/server/projections/#performance-impact"
+                >Projections</a
+              >
               documentation page.
             </el-col>
           </el-form-item>
-
         </el-form>
 
         <!-- Summary -->
 
         <el-divider content-position="right">Summary</el-divider>
 
-        <Errors @validate="validateConfiguration" @proceed="gotoConfig"/>
+        <Errors @validate="validateConfiguration" @proceed="gotoConfig" />
       </el-tab-pane>
 
-      <el-tab-pane label="Certificates" name="certs" :disabled="!proceed || !isSecure">
+      <el-tab-pane
+        label="Certificates"
+        name="certs"
+        :disabled="!proceed || !isSecure"
+      >
         <Certificates />
 
-        <br><br>
+        <br /><br />
         <el-button @click="gotoTab('spec')">Back to specification</el-button>
-        <el-button type="primary" @click="gotoTab('config')">Proceed to configuration</el-button>
+        <el-button type="primary" @click="gotoTab('config')"
+          >Proceed to configuration</el-button
+        >
       </el-tab-pane>
 
       <el-tab-pane label="Configuration" name="config" :disabled="!proceed">
-        <Configuration :projections="projections"/>
+        <Configuration :projections="projections" />
 
-        <br><br>
+        <br /><br />
         <el-button @click="gotoTab('certs')">Back to certificates</el-button>
-        <el-button type="primary" @click="gotoTab('client')">Proceed to client connection</el-button>
+        <el-button type="primary" @click="gotoTab('client')"
+          >Proceed to client connection</el-button
+        >
       </el-tab-pane>
 
       <el-tab-pane label="Client connection" name="client" :disabled="!proceed">
         <Connection />
 
-        <br><br>
+        <br /><br />
         <el-button @click="gotoTab('config')">Back to configuration</el-button>
       </el-tab-pane>
-
     </el-tabs>
   </ClientOnly>
 </template>
@@ -84,66 +97,69 @@ import Client from "./configurator/client/Client";
 import validation from "../store/configurator/validation";
 
 export default {
-    name:       "Deployment",
-    components: {
-        Client,
-        Topology,
-        Platform,
-        Directories,
-        Security,
-        Certificates,
-        Configuration,
-        Connection,
-        FormSwitch,
-        Port,
-        Errors
+  name: "Deployment",
+  components: {
+    Client,
+    Topology,
+    Platform,
+    Directories,
+    Security,
+    Certificates,
+    Configuration,
+    Connection,
+    FormSwitch,
+    Port,
+    Errors,
+  },
+  data() {
+    return {
+      projections: {
+        enable: "All",
+      },
+      validated: false,
+      proceed: false,
+      activeTab: "spec",
+    };
+  },
+  computed: {
+    isSecure: () => security.secure,
+  },
+  methods: {
+    async validateConfiguration() {
+      validation.clear();
+      this.$refs.directories.validate();
+      this.$refs.topology.validate();
+      this.$refs.security.validate();
+      this.$refs.client.validate();
+      this.validated = true;
+      this.track("validate");
     },
-    data() {
-        return {
-            projections: {
-                enable: "All",
-            },
-            validated:   false,
-            proceed:     false,
-            activeTab:   "spec"
-        }
+    gotoConfig() {
+      this.proceed = true;
+      this.gotoTab(this.isSecure ? "certs" : "config");
     },
-    computed:   {
-        isSecure: () => security.secure,
+    gotoTab(tab) {
+      this.track(tab);
+      this.activeTab = tab;
     },
-    methods:    {
-        async validateConfiguration() {
-            validation.clear();
-            this.$refs.directories.validate();
-            this.$refs.topology.validate();
-            this.$refs.security.validate();
-            this.$refs.client.validate();
-            this.validated = true;
-            this.track("validate");
-        },
-        gotoConfig() {
-            this.proceed = true;
-            this.gotoTab(this.isSecure ? "certs" : "config");
-        },
-        gotoTab(tab) {
-            this.track(tab);
-            this.activeTab = tab;
-        },
-        track(action, value) {
-            this.$gtm.trackEvent({
-                event:    null, // Event type [default = 'interaction'] (Optional)
-                category: "Documentation",
-                action:   action,
-                label:    "Configurator",
-                value:    value,
-            });
-        }
+    track(action, value) {
+      this.$gtm.trackEvent({
+        event: null, // Event type [default = 'interaction'] (Optional)
+        category: "Documentation",
+        action: action,
+        label: "Configurator",
+        value: value,
+      });
     },
-}
+  },
+};
 </script>
 
 <style lang="scss">
 @import "./styles/slide";
+.air {
+  padding-bottom: 0.5rem;
+}
 
 .el-row {
   margin-bottom: 20px;
@@ -160,4 +176,89 @@ export default {
   margin-left: 10px;
 }
 
+.el-divider__text.is-right {
+  right: 80px;
+  transform: translateY(-50%);
+}
+
+.el-col-6 {
+  width: 3%;
+}
+.el-col-10 {
+  display: flex;
+  justify-content: center;
+}
+
+.el-form-item__label {
+  line-height: 34px !important;
+  padding-top: 4px !important;
+}
+
+
+.el-switch {
+  padding-left: 60px;
+  padding-top: 8px;
+  line-height: 20px;
+}
+
+.el-input-number {
+  width: 290px !important;
+}
+
+.el-radio-button__inner {
+  padding: 12px 28px;
+}
+
+@media screen and (max-width: 600px) {
+  .el-divider__text.is-right {
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
+  .el-form-item__label {
+    text-align: left;
+    line-height: 20px;
+    font-weight: 700;
+  }
+  .el-input-number {
+    width: 200px !important;
+  }
+
+  .el-form-item__content {
+    margin-left: 0px !important;
+    margin-right: 5px !important;
+  }
+  .form-help {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+  .el-switch {
+    padding-left: 0px;
+  }
+
+  .el-col-4 {
+    width: 20.6%;
+  }
+
+  .el-col-6 {
+    display: none;
+  }
+
+  .el-col-10 {
+    width: 90%;
+    justify-content: left;
+  }
+  .el-col-12 {
+    width: 90%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1048px) {
+  .el-col-10 {
+    width: 100%;
+    justify-content: left;
+  }
+}
 </style>
