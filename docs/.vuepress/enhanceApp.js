@@ -13,6 +13,8 @@ import Vuex from "vuex";
 import XodeBlock from "./theme/components/XodeBlock";
 import XodeGroup from "./theme/components/XodeGroup";
 import store from "./theme/store";
+import grpcClientModule from "../modules/grpcClient";
+import esdbConfigModule from "../modules/esdbConfig";
 
 export default ({Vue, options, router, siteData}) => {
     Vue.use(Vuex);
@@ -20,6 +22,10 @@ export default ({Vue, options, router, siteData}) => {
     Vue.component("prism", Prism);
     Vue.component("xode-block", XodeBlock);
     Vue.component("xode-group", XodeGroup);
+
+    // interactive modules in the docs
+    Vue.use(grpcClientModule);
+    Vue.use(esdbConfigModule);
 
     Object.assign(options, {
         store: new Vuex.Store(store)
