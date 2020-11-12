@@ -11,7 +11,7 @@
                   :rules="[ { validator: validateAddress, required: true, trigger: 'blur'} ]"
           >
             <el-input
-                    placeholder="Server address"
+                    :placeholder="placeholder ? placeholder : 'Server address'"
                     v-model="node.address"
                     style="width: 100%;"
             />
@@ -43,7 +43,8 @@ export default {
     name:    "NodeDetails",
     props:   {
         node: Object,
-        single: Boolean
+        single: Boolean,
+        placeholder: String
     },
     methods: {
         validateAddress(rule, value, callback) {

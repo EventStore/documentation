@@ -1,69 +1,95 @@
 <template>
   <ClientOnly>
-    <el-form
-            label-width="240px"
-            :model="state"
-    >
-      <el-form-item label="Connect to:" prop="cluster">
-        <el-switch
-                v-model="cluster"
-                active-text="Cluster"
-                inactive-text="Single node">
-        </el-switch>
-      </el-form-item>
+    <div>
+      <p></p>
+      <el-form
+              label-width="240px"
+              :model="fetch"
+      >
+        <el-form-item label="Fetch configuration:" prop="from">
+          <el-radio-group v-model="fetch.from">
+            <el-radio-button label="cloud">Event Store Cloud</el-radio-button>
+            <el-radio-button label="url">Node URL</el-radio-button>
+            <el-radio-button label="manual">Specify manually</el-radio-button>
+          </el-radio-group>
+        </el-form-item>
+      </el-form>
 
-      <el-form-item label="Protocol security:" prop="secure">
-        <el-switch
-                v-model="secure"
-                :disabled="cloud"
-                active-text="Secure"
-                inactive-text="Insecure">
-        </el-switch>
-      </el-form-item>
+      <transition name="slide">
+        <cloud v-show="fetch.from === 'cloud'" :cluster-id="clusterId" @proceed="proceed"/>
+      </transition>
 
-      <Cloud/>
+      <transition name="slide">
+        <node-url v-show="fetch.from === 'url'" @proceed="proceed"/>
+      </transition>
 
-      <ClusterConnection/>
+      <el-form
+              label-width="240px"
+              :model="state"
+      >
+        <transition name="slide">
+          <manual v-show="showManual"/>
+        </transition>
+      </el-form>
 
       <h2>Connection string</h2>
       <p>Each SDK has its own way to configure the client, but it's always possible to use the connection string. The
-        connection string below is generated according to the configuration you specified above, and it should work with
+        connection string below is generated according to the configuration you specified above, and it should work
+        with
         each official SDK of EventStoreDB.</p>
 
-      <pre><code>{{ connectionString ? connectionString : "Fill out the form to get the connection string" }}</code></pre>
+      <pre><code>{{
+          connectionString ? connectionString : "Fill out the form to get the connection string"
+        }}</code></pre>
 
-    </el-form>
+    </div>
   </ClientOnly>
 </template>
 
 <script>
 import connection from "../store/client/connection";
-import ClusterConnection from "./client/ClusterConnection";
 import Cloud from "./client/Cloud";
-import {isTrue} from "../lib/parse";
 import {SubmitCodeBlock} from "../theme/store/mutations";
+import NodeUrl from "./client/NodeUrl";
+import Manual from "./client/Manual";
 
 export default {
     name:       "Connection",
-    components: {Cloud, ClusterConnection},
-    computed:   {
-        state:            () => connection,
-        cloud:            () => connection.cloud,
-        cluster:          connection.extendedProperty("cluster", "changeTopology"),
-        secure:           connection.extendedProperty("secure", "changeSecurity"),
-        connectionString: () => connection.connectionString,
-    },
-    mounted() {
-        connection.changeTopology(isTrue(this.$route.query.cluster));
-        connection.changeHosting(isTrue(this.$route.query.cloud));
-        if (this.$route.query.clusterId) {
-            connection.setClusterId(this.$route.query.clusterId);
+    components: {Manual, Cloud, NodeUrl},
+    data() {
+        return {
+            fetch: {
+                from: "cloud"
+            },
+            showConfig: false,
+            clusterId: ""
         }
     },
+    computed:   {
+        state:            () => connection,
+        cluster:          connection.extendedProperty("cluster", "changeTopology"),
+        secure:           connection.extendedProperty("secure", "changeSecurity"),
+        showManual() {
+            return this.fetch.from === 'manual' || this.showConfig;
+        },
+        connectionString: () => connection.connectionString,
+    },
     watch:      {
+        "fetch.from"() {
+            this.showConfig = false;
+        },
         connectionString() {
             this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: this.connectionString});
         }
+    },
+    methods: {
+        proceed() {
+            this.showConfig = true;
+        }
+    },
+    mounted() {
+        const clusterId = this.$route.query.clusterId;
+        if (clusterId) this.clusterId = clusterId;
     }
 }
 </script>

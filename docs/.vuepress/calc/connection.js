@@ -5,14 +5,10 @@ import nodes from "../store/configurator/nodes";
 import security from "../store/configurator/security";
 
 export default function (sdk) {
-    const nodeAddress = (node, tcp) => client.advertiseToClient
-        ? `${safe(node.clientAddress)}:${tcp ? client.externalTcpPort : client.httpPort}`
-        : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${tcp ? topology.externalTcpPort : topology.httpPort}`;
-
     const httpPort        = client.advertiseToClient ? client.httpPort : topology.httpPort;
-    const gossip          = (tcp) => client.gossip.isDnsGossip()
+    const gossip          = () => client.gossip.isDnsGossip()
         ? `${safe(client.gossip.dnsName)}:${httpPort}`
-        : safeJoin(nodes.nodes.map(x => nodeAddress(x, tcp)));
+        : safeJoin(nodes.nodes.map(x => nodeAddress(x, false)));
     const disableValidate = () => {
         switch (sdk) {
             case "dotnet-tcp":
@@ -22,7 +18,7 @@ export default function (sdk) {
         }
     };
     const tcp             = sdk === "dotnet-tcp";
-    const connString      = connectionString(sdk, gossip(tcp), httpPort);
+    const connString      = connectionString(sdk, gossip(), httpPort);
     const code            = example(sdk, connString);
 
     return {
@@ -36,15 +32,21 @@ export default function (sdk) {
     }
 }
 
+function nodeAddress(node, tcp) {
+    return client.advertiseToClient
+        ? `${safe(node.clientAddress)}:${tcp ? client.externalTcpPort : client.httpPort}`
+        : `${safe(node.dnsName === "" ? node.extIp : node.dnsName)}:${tcp ? topology.externalTcpPort : topology.httpPort}`;
+}
+
 function connectionString(sdk, gossip, httpPort) {
     switch (sdk) {
         case "dotnet-tcp":
             const isClientDnsGossip = client.gossip.isDnsGossip();
-            return `${nodes.isSingleNode ? "ConnectTo" : isClientDnsGossip ? "ClusterDns" : "GossipSeeds"}=`
-                + `${nodes.isSingleNode ? "tcp://" : ""}`
-                + `${isClientDnsGossip ? client.gossip.dnsName : gossip};`
-                + `${isClientDnsGossip ? "ExternalGossipPort=" + httpPort + ";" : ""}`
-                +  `UseSslConnection=${client.isSecure};`
+            const csBase            = nodes.isSingleNode
+                ? `ConnectTo=tcp://${nodeAddress(nodes.nodes[0], true)}`
+                : isClientDnsGossip ? `ClusterDns=${client.gossip.dnsName};ExternalGossipPort=${httpPort};` : `GossipSeeds=${gossip}`
+            return csBase
+                + `UseSslConnection=${client.isSecure};`
                 + `DefaultCredentials=admin:changeit`;
         default:
             return `esdb://${gossip}?Tls=${client.isSecure}`;
