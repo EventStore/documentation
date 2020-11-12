@@ -17,10 +17,12 @@ export default new Vue({
             this.platform = platform;
             EventBus.$emit(PlatformChanged, platform);
         },
+        ...properties
+    },
+    computed: {
         isLinux() {
             return this.platform === "linux";
-        },
-        ...properties
+        }
     },
 
     created() {
