@@ -14,7 +14,7 @@ export default function(node, projections) {
             file: `${certsDir}${s}node.crt`,
             key: `${certsDir}${s}node.key`,
             trusted: !security.isSelfSigned
-                      ? platform.isLinux() ? "/etc/ssl/certs" : undefined
+                      ? platform.isLinux ? "/etc/ssl/certs" : undefined
                       : `${certsDir}${s}ca`,
             cn: security.isSelfSigned ? undefined : security.certCommonName
         }

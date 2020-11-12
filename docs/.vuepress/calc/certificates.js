@@ -76,7 +76,7 @@ export default function (os) {
     result.caGenCmd = `${result.tool} create-ca -out .${sep}certs${sep}ca`;
     result.certDir  = dirs.certDir;
     result.caDir    = dirs.caDir;
-    result.isLinux  = platform.isLinux();
+    result.isLinux  = platform.isLinux;
 
     result.nodes = nodes.nodes.map(node => {
         const ips = ipCerts(node);
