@@ -43,8 +43,8 @@ function connectionString(sdk, gossip, httpPort) {
         case "dotnet-tcp":
             const isClientDnsGossip = client.gossip.isDnsGossip();
             const csBase            = nodes.isSingleNode
-                ? `ConnectTo=tcp://${nodeAddress(nodes.nodes[0], true)}`
-                : isClientDnsGossip ? `ClusterDns=${client.gossip.dnsName};ExternalGossipPort=${httpPort};` : `GossipSeeds=${gossip}`
+                ? `ConnectTo=tcp://${nodeAddress(nodes.nodes[0], true)};`
+                : isClientDnsGossip ? `ClusterDns=${client.gossip.dnsName};ExternalGossipPort=${httpPort};` : `GossipSeeds=${gossip};`
             return csBase
                 + `UseSslConnection=${client.isSecure};`
                 + `DefaultCredentials=admin:changeit`;
