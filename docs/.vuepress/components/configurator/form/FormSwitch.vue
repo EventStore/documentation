@@ -3,7 +3,7 @@
       :label="label"
       :prop="prop"
   >
-    <el-col :span="10">
+    <el-col :span="4">
       <el-switch
           v-bind:value="value"
           v-on:input="updateValue($event)"

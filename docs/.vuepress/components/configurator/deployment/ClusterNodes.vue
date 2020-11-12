@@ -2,7 +2,7 @@
   <ClientOnly>
     <div>
       <el-form-item label="Number of nodes:" prop="nodesCount">
-        <el-col :span="10">
+        <el-col :span="4">
           <el-input-number
                   v-model="nodesCount"
                   :min="minNodes"

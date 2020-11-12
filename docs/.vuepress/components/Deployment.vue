@@ -2,8 +2,11 @@
   <ClientOnly>
     <el-tabs v-model="activeTab">
       <el-tab-pane label="Specification" name="spec">
-        <br>
-        <span>Specify the configuration details in the form below, then click Validate and Proceed at the bottom.</span>
+        <br/>
+        <span>
+          Specify the configuration details in the form below, then click
+          Validate and Proceed at the bottom.
+        </span>
 
         <Platform/>
 
@@ -25,13 +28,12 @@
                 <el-radio-button label="System"></el-radio-button>
               </el-radio-group>
             </el-col>
-            <el-col :span="12" class="form-help">
+            <el-col :span="10" class="form-help">
               Enabling projections impacts performance. Read more at the
               <a target="_blank" href="/server/20.6/server/projections/#performance-impact">Projections</a>
               documentation page.
             </el-col>
           </el-form-item>
-
         </el-form>
 
         <!-- Summary -->
@@ -41,29 +43,36 @@
         <Errors @validate="validateConfiguration" @proceed="gotoConfig"/>
       </el-tab-pane>
 
-      <el-tab-pane label="Certificates" name="certs" :disabled="!proceed || !isSecure">
-        <Certificates />
+      <el-tab-pane
+              label="Certificates"
+              name="certs"
+              :disabled="!proceed || !isSecure"
+      >
+        <Certificates/>
 
-        <br><br>
+        <br/><br/>
         <el-button @click="gotoTab('spec')">Back to specification</el-button>
-        <el-button type="primary" @click="gotoTab('config')">Proceed to configuration</el-button>
+        <el-button type="primary" @click="gotoTab('config')"
+        >Proceed to configuration
+        </el-button>
       </el-tab-pane>
 
       <el-tab-pane label="Configuration" name="config" :disabled="!proceed">
         <Configuration :projections="projections"/>
 
-        <br><br>
+        <br/><br/>
         <el-button @click="gotoTab('certs')">Back to certificates</el-button>
-        <el-button type="primary" @click="gotoTab('client')">Proceed to client connection</el-button>
+        <el-button type="primary" @click="gotoTab('client')"
+        >Proceed to client connection
+        </el-button>
       </el-tab-pane>
 
       <el-tab-pane label="Client connection" name="client" :disabled="!proceed">
-        <Connection />
+        <Connection/>
 
-        <br><br>
+        <br/><br/>
         <el-button @click="gotoTab('config')">Back to configuration</el-button>
       </el-tab-pane>
-
     </el-tabs>
   </ClientOnly>
 </template>
@@ -96,7 +105,7 @@ export default {
         Connection,
         FormSwitch,
         Port,
-        Errors
+        Errors,
     },
     data() {
         return {
@@ -105,8 +114,8 @@ export default {
             },
             validated:   false,
             proceed:     false,
-            activeTab:   "spec"
-        }
+            activeTab:   "spec",
+        };
     },
     computed:   {
         isSecure: () => security.secure,
@@ -137,13 +146,18 @@ export default {
                 label:    "Configurator",
                 value:    value,
             });
-        }
+        },
     },
-}
+};
 </script>
 
 <style lang="scss">
 @import "./styles/slide";
+
+.el-divider__text.is-right {
+  right: 30px !important;
+  transform: translateY(-50%);
+}
 
 .el-row {
   margin-bottom: 20px;
@@ -160,4 +174,80 @@ export default {
   margin-left: 10px;
 }
 
+.el-divider__text.is-right {
+  right: 80px;
+  transform: translateY(-50%);
+}
+
+.el-form-item__label {
+  line-height: 34px !important;
+  padding-top: 4px !important;
+}
+
+
+.el-switch {
+  padding-left: 20px;
+  padding-top: 8px;
+  line-height: 20px;
+}
+
+.el-input-number {
+  width: 110px !important;
+  display: flex;
+  justify-content: center;
+}
+
+.el-col-12 {
+  width: 45%;
+  margin-left: 18px;
+
+}
+
+@media screen and (max-width: 600px) {
+  .el-divider__text.is-right {
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+  .el-form-item__label {
+    text-align: left;
+    line-height: 20px;
+    font-weight: 700;
+  }
+
+  .el-input-number {
+    width: 120px !important;
+  }
+
+  .el-form-item__content {
+    margin-left: 0 !important;
+    margin-right: 5px !important;
+  }
+
+  .form-help {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  .el-col-4 {
+    width: 100%;
+  }
+
+  .el-col-10 {
+    width: 90%;
+    justify-content: left;
+  }
+
+  .el-col-12 {
+    width: 90%;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 1048px) {
+  .el-col-10 {
+    width: 100%;
+    justify-content: left;
+  }
+}
 </style>

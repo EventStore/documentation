@@ -8,7 +8,7 @@
       <el-col :span="4">
         <el-input v-bind:value="value" v-on:input="updateValue($event)"/>
       </el-col>
-      <el-col :span="6">&nbsp;</el-col>
+    
       <el-col :span="12" class="form-help">
         <slot></slot>
       </el-col>
