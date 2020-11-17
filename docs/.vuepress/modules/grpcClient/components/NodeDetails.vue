@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import {validateItem} from "../../../.vuepress/lib/validate";
+import {validateItem} from "../../../lib/validate";
 
 export default {
     name:    "NodeDetails",

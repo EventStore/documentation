@@ -1,11 +1,11 @@
 import nodesStore from "../esdbConfig/domain/nodes";
-import {ok, validateItem} from "../../.vuepress/lib/validate";
+import {ok, validateItem} from "../../lib/validate";
 import validationMixin from "./validationMixin";
 
 export default {
     mixins: [validationMixin],
     methods: {
-        ignore(field){
+        ignore(_){
             return false;
         },
         validateNodeDns(rule, value, callback) {

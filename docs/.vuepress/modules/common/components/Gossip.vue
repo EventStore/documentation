@@ -44,7 +44,6 @@
       </transition>
     </el-form>
   </transition>
-
 </template>
 
 <script>
@@ -90,9 +89,10 @@ export default {
             await this.gossip.validateGossip(this.nodes, value, callback);
         },
         async validate() {
-            try  {
+            try {
                 await this.$refs.gossipForm.validate();
-            } catch { }
+            } catch {
+            }
         }
     }
 }

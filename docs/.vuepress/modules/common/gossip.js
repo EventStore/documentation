@@ -1,7 +1,7 @@
 import {DnsGossip} from "./gossipTypes";
 import {EventBus} from "./eventBus";
 import {CertCnChanged, CertificateTypeChanged, ClusteringChanged} from "../esdbConfig/domain/events";
-import {ensureCaDomainMatch, ok, error, validateGossip} from "../../.vuepress/lib/validate";
+import {ensureCaDomainMatch, ok, error, validateGossip} from "../../lib/validate";
 
 export default class Gossip {
     constructor(type, message, subscribe) {

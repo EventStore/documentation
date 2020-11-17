@@ -54,7 +54,7 @@
 
 <script>
 import store from "../../domain/security";
-import {error, ok} from "../../../../.vuepress/lib/validate";
+import {error, ok} from "../../../../lib/validate";
 import validationMixin from "../../../common/validationMixin";
 
 export default {

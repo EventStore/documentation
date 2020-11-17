@@ -1,6 +1,6 @@
 import Vue from "vue";
 import {CertCnChanged, CertificateTypeChanged, ClusteringChanged, SecurityChanged} from "./events";
-import * as networks from "../../../.vuepress/lib/networks";
+import * as networks from "../../../lib/networks";
 import {EventBus} from "../../common/eventBus";
 import properties from "../../common/properties";
 

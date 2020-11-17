@@ -49,7 +49,7 @@
 <script>
 import connection from "../domain/connection";
 import Cloud from "./Cloud";
-import {SubmitCodeBlock} from "../../../.vuepress/theme/store/mutations";
+import {SubmitCodeBlock} from "../../../theme/store/mutations";
 import NodeUrl from "./NodeUrl";
 import Manual from "./Manual";
 

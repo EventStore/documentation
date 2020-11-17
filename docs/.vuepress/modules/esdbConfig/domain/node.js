@@ -1,4 +1,4 @@
-import * as networks from "../../../.vuepress/lib/networks";
+import * as networks from "../../../lib/networks";
 
 export default class Node {
     constructor(index) {

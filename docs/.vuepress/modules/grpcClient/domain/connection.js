@@ -4,7 +4,6 @@ import {SeedGossip} from "../../common/gossipTypes";
 import ClientNode from "./clientNode";
 import {safe} from "../../common/strings";
 import properties from "../../common/properties";
-import {SubmitCodeBlock} from "../../../.vuepress/theme/store/mutations";
 
 export default new Vue({
     data() {

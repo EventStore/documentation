@@ -1,4 +1,4 @@
-import {isValidAddress} from "../../../.vuepress/lib/networks";
+import {isValidAddress} from "../../../lib/networks";
 
 export default class ClientNode {
     /**

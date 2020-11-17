@@ -13,8 +13,8 @@ import Vuex from "vuex";
 import XodeBlock from "./theme/components/XodeBlock";
 import XodeGroup from "./theme/components/XodeGroup";
 import store from "./theme/store";
-import grpcClientModule from "../modules/grpcClient";
-import esdbConfigModule from "../modules/esdbConfig";
+import grpcClientModule from "./modules/grpcClient";
+import esdbConfigModule from "./modules/esdbConfig";
 
 export default ({Vue, options, router, siteData}) => {
     Vue.use(Vuex);
@@ -42,7 +42,7 @@ export default ({Vue, options, router, siteData}) => {
 
     // Select docs version based on url path
     // Example: "/2.6/guides/installation.html" will use "2.6"
-    router.afterEach((to, from) => {
+    router.afterEach((to, _) => {
         const version = to.path.split('/')[1]
 
         if (siteData.themeConfig.versions.all.includes(version)) {

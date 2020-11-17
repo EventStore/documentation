@@ -22,7 +22,7 @@
 
 <script>
 
-import {SubmitCodeBlock} from "../../../.vuepress/theme/store/mutations";
+import {SubmitCodeBlock} from "../../../theme/store/mutations";
 
 export default {
     name:     "ConnectionString",

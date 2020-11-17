@@ -34,8 +34,8 @@
 
 <script>
 import connection from "../domain/connection";
-import {resolveDns} from "../../../.vuepress/lib/networks";
-import {error, ok} from "../../../.vuepress/lib/validate";
+import {resolveDns} from "../../../lib/networks";
+import {error, ok} from "../../../lib/validate";
 
 export default {
     name:     "Cloud",

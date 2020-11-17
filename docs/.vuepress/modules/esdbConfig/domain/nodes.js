@@ -1,9 +1,9 @@
 import Vue from "vue";
 import {CertCnChanged, ClusteringChanged, ValidationSectionRemoved} from "./events";
-import {isValidDns} from "../../../.vuepress/lib/networks";
+import {isValidDns} from "../../../lib/networks";
 import Node from "./node";
-import * as networks from "../../../.vuepress/lib/networks";
-import {ensureCaDomainMatch, error} from "../../../.vuepress/lib/validate";
+import * as networks from "../../../lib/networks";
+import {ensureCaDomainMatch} from "../../../lib/validate";
 import {EventBus} from "../../common/eventBus";
 import properties from "../../common/properties";
 

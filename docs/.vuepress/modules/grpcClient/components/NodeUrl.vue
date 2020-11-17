@@ -18,7 +18,7 @@
 <script>
 import connection from "../domain/connection";
 import NodeDetails from "./NodeDetails";
-import {getClusterConfig} from "../../../.vuepress/lib/gossip";
+import {getClusterConfig} from "../../../lib/gossip";
 import ClientNode from "../domain/clientNode";
 import {SeedGossip} from "../../common/gossipTypes";
 

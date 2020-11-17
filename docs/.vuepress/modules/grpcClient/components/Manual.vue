@@ -30,7 +30,7 @@
 <script>
 import connection from "../domain/connection";
 import ClusterConnection from "./ClusterConnection";
-import {isTrue} from "../../../.vuepress/lib/parse";
+import {isTrue} from "../../../lib/parse";
 
 export default {
     name:       "Manual",
