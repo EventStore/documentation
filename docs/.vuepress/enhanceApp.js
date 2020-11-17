@@ -24,8 +24,8 @@ export default ({Vue, options, router, siteData}) => {
     Vue.component("xode-group", XodeGroup);
 
     // interactive modules in the docs
-    Vue.use(grpcClientModule);
     Vue.use(esdbConfigModule);
+    Vue.use(grpcClientModule);
 
     Object.assign(options, {
         store: new Vuex.Store(store)
