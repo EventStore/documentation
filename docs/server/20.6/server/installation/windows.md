@@ -1,8 +1,8 @@
 # Windows
 
-The prerequisites for installing on Windows are:
-
-- NET Framework 4.0+
+::: warning
+EventStoreDB doesn't install as a Windows service. You need to ensure that the server executable starts automatically.
+:::
 
 ## Install from Chocolatey
 
