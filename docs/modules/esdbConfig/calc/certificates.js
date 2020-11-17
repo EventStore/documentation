@@ -1,7 +1,7 @@
 import security from "../domain/security";
 import client from "../domain/client";
 import topology from "../domain/topology";
-import * as strings from "../../../.vuepress/theme/util/strings";
+import * as strings from "../../common/strings";
 import nodes from "../domain/nodes";
 import caDirs from "./dirs";
 import platform from "../domain/platform";

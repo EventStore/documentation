@@ -1,5 +1,5 @@
 import topology from "../domain/topology";
-import {safe, sep} from "../../../.vuepress/theme/util/strings";
+import {safe, sep} from "../../common/strings";
 import platform from "../domain/platform";
 import directories from "../domain/directories";
 import security from "../domain/security";

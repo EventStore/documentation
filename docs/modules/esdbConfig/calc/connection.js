@@ -1,6 +1,6 @@
 import client from "../domain/client";
 import topology from "../domain/topology";
-import {safe, safeJoin} from "../../../.vuepress/theme/util/strings";
+import {safe, safeJoin} from "../../common/strings";
 import nodes from "../domain/nodes";
 import security from "../domain/security";
 

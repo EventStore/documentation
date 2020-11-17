@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import {safe} from "../../../../.vuepress/theme/util/strings";
+import {safe} from "../../../common/strings";
 import configuration from "../../calc/configuration";
 
 export default {

@@ -1,4 +1,4 @@
-import * as strings from "../../../.vuepress/theme/util/strings";
+import * as strings from "../../common/strings";
 import platform from "../domain/platform";
 import directories from "../domain/directories";
 

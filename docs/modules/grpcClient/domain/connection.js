@@ -2,7 +2,7 @@ import Vue from "vue";
 import Gossip from "../../common/gossip";
 import {SeedGossip} from "../../common/gossipTypes";
 import ClientNode from "./clientNode";
-import {safe} from "../../../.vuepress/theme/util/strings";
+import {safe} from "../../common/strings";
 import properties from "../../common/properties";
 import {SubmitCodeBlock} from "../../../.vuepress/theme/store/mutations";
 
