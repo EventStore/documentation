@@ -24,4 +24,4 @@ The option can be set as follows:
 | YAML                 | `DisableHttpCaching` |
 | Environment variable | `EVENTSTORE_DISABLE_HTTP_CACHING` | 
 
-**Default**: `true`, so the HTTP caching is enabled by default.
+**Default**: `false`, so the HTTP caching is **enabled** by default.

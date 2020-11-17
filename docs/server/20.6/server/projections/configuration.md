@@ -52,11 +52,9 @@ Use the `ProjectionThreads` option to adjust the number of threads dedicated to 
 
 ## Fault out of order projections
 
-The projections engine keeps track of the latest processed event for each projection. It allows projections to guarantee ordered handling of events.
+It is possible that in some cases a projection would get an unexpected event version. It won't get an event that precedes the last processed event, such a situation is very unlikely. But, it might get the next event that doesn't satisfy the `N+1` condition for the event number. The projection expects to get an event number `5` after processing the event number `4`, but eventually it might get an event number `7` because events `5` and `6` got deleted and scavenged.
 
-However, it is possible that in some cases a projection would get an unexpected event version. It won't get an event that precedes the last processed event, such a situation is very unlikely. But, it might get the next event that doesn't satisfy the `N+1` condition for the event number. The projection expects to get an event number `5` after processing the event number `4`, but eventually it might get an event number `7` because events `5` and `6` got deleted and scavenged.
-
-Under those circumstances, the projection would normally fail and get stuck. You can override this behaviour by setting the `FailOutOfOrderProjections` to `false`.
+The projections engine can keep track of the latest processed event for each projection. It allows projections to guarantee ordered handling of events. By default, the projections engine ignore ordering failures like described above. You can force out of order projections to fail by setting the `FailOutOfOrderProjections` to `true`.
 
 | Format               | Syntax |
 | :------------------- | :----- |
