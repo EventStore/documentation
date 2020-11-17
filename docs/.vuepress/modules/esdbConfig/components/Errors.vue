@@ -24,7 +24,6 @@
 <script>
 import ErrorSection from "./ErrorSection";
 import validation from "../domain/validation";
-import {EventBus} from "../../common/eventBus";
 
 export default {
     name:       "Errors",
