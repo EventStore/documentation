@@ -1,4 +1,4 @@
-import {DnsGossip} from "./gossipTypes";
+import {DnsGossip, SeedGossip} from "./gossipTypes";
 import {EventBus} from "./eventBus";
 import {CertCnChanged, CertificateTypeChanged, ClusteringChanged} from "../esdbConfig/domain/events";
 import {ensureCaDomainMatch, ok, error, validateGossip} from "../../lib/validate";
@@ -30,7 +30,7 @@ export default class Gossip {
     handleSelfSigned(selfSigned) {
         this.disableGossip(!selfSigned);
         if (!selfSigned) {
-            this.method = DnsGossip;
+            this.method = SeedGossip;
         }
     }
 
