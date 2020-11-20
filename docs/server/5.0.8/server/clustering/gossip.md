@@ -28,7 +28,7 @@ The default value is one second. For cloud deployments, we recommend using two s
 | :------------------- | :----- |
 | Command line         | `--gossip-interval-ms` |
 | YAML                 | `GossipIntervalMs` |
-| Environment variable | `EVENTSTORE_INTERVAL_MS` |
+| Environment variable | `EVENTSTORE_GOSSIP_INTERVAL_MS` |
 
 **Default**: `1000` (in milliseconds), which is one second.
 
