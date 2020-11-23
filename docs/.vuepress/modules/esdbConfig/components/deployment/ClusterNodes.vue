@@ -37,8 +37,9 @@ export default {
     name:       "ClusterNodes",
     components: {ClusterNode},
     props:      {
-        showIntIp: Boolean,
-        isCluster: Boolean
+        showIntIp:        Boolean,
+        isCluster:        Boolean,
+        hostnameRequired: Boolean
     },
     computed:   {
         nodes:      () => nodesStore.nodes,

@@ -1,5 +1,5 @@
 import Vue from "vue";
-import {ClusteringChanged, TcpChanged} from "./events";
+import {CertificateTypeChanged, ClusteringChanged, TcpChanged} from "./events";
 import Gossip from "../../common/gossip";
 import {EventBus} from "../../common/eventBus";
 import properties from "../../common/properties";
@@ -13,10 +13,11 @@ export default new Vue({
             internalTcpPort:  1112,
             externalTcpPort:  1113,
             tcpEnabled:       true,
+            selfSigned:       true,
             gossip:           new Gossip("Cluster", "cluster nodes", true)
         }
     },
-    methods:       {
+    methods:  {
         updateClustering(value) {
             this.cluster = value;
             EventBus.$emit(ClusteringChanged, value);
@@ -31,5 +32,6 @@ export default new Vue({
     created() {
         Vue.nextTick(() => this.updateClustering(true));
         EventBus.$on(TcpChanged, x => this.tcpEnabled = x);
+        EventBus.$on(CertificateTypeChanged, x => this.selfSigned = x);
     }
 });
