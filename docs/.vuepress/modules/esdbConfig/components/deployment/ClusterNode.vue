@@ -10,10 +10,13 @@
       <el-form-item
               prop="dnsName"
               :label="`Node ${nodeIndex} address:`"
-              :rules="[ { validator: validateNodeDns, trigger: 'blur'} ]"
+              :rules="[
+                  {required: hostnameRequired, message: 'Node hostname is required'},
+                  { validator: validateNodeDns, trigger: 'blur'}
+                  ]"
       >
         <el-input
-                placeholder="DNS name (optional)"
+                :placeholder="`DNS name ${hostnameRequired ? '' : ' (optional)'}`"
                 v-model="node.dnsName"
                 @change="resolveNodeDns()"
                 autocomplete="false"
@@ -66,12 +69,17 @@ export default {
     mixins:   [nodeMixin],
     props:    {
         nodeIndex: Number,
-        showIntIp: Boolean
+        showIntIp: Boolean,
+        hostnameRequired: Boolean
     },
     watch:    {
         showIntIp(v) {
             if (v) return;
             setTimeout(_ => this.revalidate("node", "intIp"), 100);
+        },
+        hostnameRequired(v) {
+            if (!v) return;
+            setTimeout(_ => this.revalidate("node", "dnsName"), 100);
         }
     },
     computed: {

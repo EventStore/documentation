@@ -21,7 +21,12 @@
         Enable this option if internal and external communication should use different network interfaces.
       </FormSwitch>
 
-      <ClusterNodes ref="clusterNodes" :is-cluster="topology.cluster" :show-int-ip="topology.separateNetworks"/>
+      <ClusterNodes
+              ref="clusterNodes"
+              :is-cluster="topology.cluster"
+              :show-int-ip="topology.separateNetworks"
+              :hostname-required="!isSelfSigned"
+      />
 
       <Gossip ref="clusterGossip" :gossip="topology.gossip" :nodes="nodes"/>
 
@@ -62,7 +67,7 @@ import Port from "../shared/Port";
 import ClusterNode from "./ClusterNode";
 import ClusterNodes from "./ClusterNodes";
 import Gossip from "../../../common/components/Gossip";
-import topologyStore from "../../domain/topology";
+import topology from "../../domain/topology";
 import nodes from "../../domain/nodes";
 import validationMixin from "../../../common/validationMixin";
 
@@ -71,11 +76,12 @@ export default {
     mixins:     [validationMixin],
     components: {ClusterNodes, ClusterNode, Security, FormSwitch, Port, Gossip},
     computed:   {
-        topology:     () => topologyStore,
+        topology:     () => topology,
         nodes:        () => nodes.nodes,
-        isTcpEnabled: () => topologyStore.tcpEnabled,
+        isTcpEnabled: () => topology.tcpEnabled,
+        isSelfSigned: () => topology.selfSigned,
 
-        cluster: topologyStore.extendedProperty("cluster", "updateClustering"),
+        cluster: topology.extendedProperty("cluster", "updateClustering"),
 
         section: () => "Deployment topology"
     },
