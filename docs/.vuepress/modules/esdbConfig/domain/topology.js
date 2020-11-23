@@ -32,6 +32,6 @@ export default new Vue({
     created() {
         Vue.nextTick(() => this.updateClustering(true));
         EventBus.$on(TcpChanged, x => this.tcpEnabled = x);
-        EventBus.$on(CertificateTypeChanged, x => this.selfSigned = x);
+        EventBus.$on(CertificateTypeChanged, x => {this.selfSigned = x; console.log(this.selfSigned)});
     }
 });

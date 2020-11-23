@@ -9,7 +9,7 @@
     >
       <el-form-item
               prop="dnsName"
-              :label="`Node ${nodeIndex} hostname:`"
+              :label="`Node ${nodeIndex} address:`"
               :rules="[
                   {required: hostnameRequired, message: 'Node hostname is required'},
                   { validator: validateNodeDns, trigger: 'blur'}
@@ -76,6 +76,10 @@ export default {
         showIntIp(v) {
             if (v) return;
             setTimeout(_ => this.revalidate("node", "intIp"), 100);
+        },
+        hostnameRequired(v) {
+            if (!v) return;
+            setTimeout(_ => this.revalidate("node", "dnsName"), 100);
         }
     },
     computed: {

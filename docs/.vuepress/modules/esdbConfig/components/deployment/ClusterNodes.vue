@@ -22,6 +22,7 @@
                 :key="`node-${item.index}`"
                 :node-index="item.index"
                 :show-int-ip="showIntIp"
+                :hostname-required="hostnameRequired"
         />
       </transition-group>
 
