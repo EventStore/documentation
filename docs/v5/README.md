@@ -3,7 +3,7 @@ home: true
 heroText: EventStoreDB v5
 tagline: Documentation for the legacy version
 extraText: Click here for the latest EventStoreDB docs
-extraLink: /latest.html
+extraLink: /
 actions:
 - text: Server v5
   link: /server/5.0.8/server/introduction/
