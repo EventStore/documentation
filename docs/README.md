@@ -2,8 +2,13 @@
 home: true
 heroText: EventStoreDB Documentation
 tagline: The stream database built for Event Sourcing
-actionText: Get started →
-actionLink: /latest.html
+extraText: Click here for EventStoreDB v5 docs
+extraLink: /v5/
+actions:
+- text: Database server →
+  link: /latest.html
+- text: gRPC clients →
+  link: /clients/grpc/getting-started/
 features:
 - title: "Event Sourcing"
   details: EventStoreDB is built to support Event Sourcing. We support idempotent writes and reading events from individual streams.

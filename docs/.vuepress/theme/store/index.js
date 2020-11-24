@@ -6,8 +6,6 @@ const prefix = "eventstore-docs";
 const langStorageName = "codeLanguage";
 
 const state = {
-    codeLanguage: null, //getStorageValue(langStorageName),
-    siteLanguages: {},
     connectionString: "",
     codeBlocks: {}
 };

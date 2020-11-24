@@ -1,6 +1,5 @@
 <template>
   <main class="page">
-<!--    <CodeLanguageSwitcher v-if="usePageToggle"/>-->
 
     <slot name="top"/>
     <Content class="theme-default-content"/>
@@ -15,10 +14,9 @@
 <script>
 import PageEdit from "@theme/components/PageEdit.vue";
 import PageNav from "@theme/components/PageNav.vue";
-import CodeLanguageSwitcher from "./CodeLanguageSwitcher";
 
 export default {
-  components: {PageEdit, PageNav, CodeLanguageSwitcher},
+  components: {PageEdit, PageNav},
   props: ["sidebarItems"],
   computed: {
     usePageToggle() {
