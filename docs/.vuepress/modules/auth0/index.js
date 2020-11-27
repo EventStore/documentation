@@ -21,7 +21,7 @@ export default function(router) {
                     router.push(
                         appState && appState.targetUrl
                             ? appState.targetUrl
-                            : window.location.pathname
+                            : window ? window.location.pathname : "/"
                     );
                 }
             });

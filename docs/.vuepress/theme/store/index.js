@@ -7,6 +7,7 @@ const langStorageName = "codeLanguage";
 
 const state = {
     connectionString: "",
+    codeLanguage: "",
     codeBlocks: {}
 };
 
