@@ -42,10 +42,6 @@ module.exports = {
         // repo: "EventStore/documentation-next",
         // editLinks: true,
         // editLinkText: "Help us improve this page!",
-        codeLanguages:        {
-            csharp: "C#",
-            go:     "Go",
-        },
         versions:             {
             latest:   versioning.versions.latest,
             selected: versioning.versions.latest,
