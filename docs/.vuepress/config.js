@@ -82,21 +82,22 @@ module.exports = {
                     {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
                 ]
             },
+            {text: "Login", link: "/profile"}
         ],
         sidebar:              {
             ...versioning.sidebars,
             "/clients/grpc/": [
                 {
-                    title: "Getting Started",
+                    title:       "Getting Started",
                     collapsable: true,
-                    path: "/clients/grpc/getting-started/",
-                    children: [
+                    path:        "/clients/grpc/getting-started/",
+                    children:    [
                         "/clients/grpc/getting-started/",
                         "/clients/grpc/getting-started/connecting",
                     ]
                 },
             ],
-            "/cloud/": [
+            "/cloud/":        [
                 {
                     title:    "Introduction",
                     path:     "/cloud/intro/",

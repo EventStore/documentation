@@ -15,6 +15,7 @@ import XodeGroup from "./theme/components/XodeGroup";
 import store from "./theme/store";
 import grpcClientModule from "./modules/grpcClient";
 import esdbConfigModule from "./modules/esdbConfig";
+import auth0module from "./modules/auth0";
 
 export default ({Vue, options, router, siteData}) => {
     Vue.use(Vuex);
@@ -26,6 +27,7 @@ export default ({Vue, options, router, siteData}) => {
     // interactive modules in the docs
     Vue.use(esdbConfigModule);
     Vue.use(grpcClientModule);
+    Vue.use(auth0module(router));
 
     Object.assign(options, {
         store: new Vuex.Store(store)
