@@ -5,7 +5,7 @@ import Profile from "./components/Profile";
 export default function(router) {
     router.addRoutes([
         {
-            path: "/profile",
+            path: "/profile/",
             name: "profile",
             component: Profile,
             beforeEnter: authGuard

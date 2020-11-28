@@ -11,6 +11,7 @@ module.exports = {
     head:            [
         ['link', {rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon.png"}],
         ['link', {rel: "shortcut icon", href: "/favicon.ico"}],
+        ['script', {}, "if (typeof window != \"undefined\") window.global = window;"]
     ],
     plugins:         [
         "@vuepress/active-header-links",
@@ -78,7 +79,7 @@ module.exports = {
                     {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
                 ]
             },
-            {text: "Login", link: "/profile"}
+            {text: "Profile", link: "/profile/"}
         ],
         sidebar:              {
             ...versioning.sidebars,
