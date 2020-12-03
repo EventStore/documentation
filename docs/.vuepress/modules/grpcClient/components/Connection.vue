@@ -1,7 +1,6 @@
 <template>
   <ClientOnly>
     <div>
-      <el-button @click="login">Login</el-button>
       <p></p>
       <el-form
               label-width="240px"
@@ -53,7 +52,6 @@ import Cloud from "./Cloud";
 import {SubmitCodeBlock} from "../../../theme/store/mutations";
 import NodeUrl from "./NodeUrl";
 import Manual from "./Manual";
-import {useAuth0} from "../../auth0/plugin";
 
 export default {
     name:       "Connection",
@@ -89,18 +87,13 @@ export default {
             this.showConfig = true;
         },
         async login() {
-            // console.log(window.location);
-            // await this.$auth.init();
-            // await this.$auth.loginWithPopup();
             await this.$auth.loginWithRedirect({
               appState: { targetUrl: this.$route.path }
-                // redirect_uri: window.location.origin
             });
             console.log(this.$auth.user);
         }
     },
     mounted() {
-        // this.$auth = useAuth0(options);
         const clusterId = this.$route.query.clusterId;
         if (clusterId) this.clusterId = clusterId;
     }
