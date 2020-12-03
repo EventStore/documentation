@@ -85,6 +85,12 @@ export default {
     methods: {
         proceed() {
             this.showConfig = true;
+        },
+        async login() {
+            await this.$auth.loginWithRedirect({
+              appState: { targetUrl: this.$route.path }
+            });
+            console.log(this.$auth.user);
         }
     },
     mounted() {
