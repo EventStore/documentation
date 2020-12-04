@@ -2,6 +2,12 @@
 
 Next Gen docos using VuePress.
 
+## Contributing
+
+Feel free to [create a GitHub](https://github.com/EventStore/documentation/issues/new) issue if you have any questions or request for more explanation or samples.
+
+We're open for any contribution. If you noticed some inconsistency, missing piece, or you'd like to extend existing docs - we'll be happy to [get your Pull Request](https://github.com/EventStore/documentation/compare).
+
 ## Local development
 
 ### Prerequisites
