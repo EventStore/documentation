@@ -30,9 +30,8 @@
     "watchpack": "1.6.1"
   },
   "scripts": {
-    "import-clients": "node ./import/import-client-docs.js",
-    "predocs:dev": "node ./import/import-client-docs.js",
     "docs:dev": "vuepress dev docs --no-cache",
+    "predocs:build": "node ./import/import-client-docs.js",
     "docs:build": "vuepress build docs",
     "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
   }
