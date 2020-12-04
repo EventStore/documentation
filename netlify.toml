@@ -1,3 +1,3 @@
 [build]
     publish = "public/"
-    command = "yarn predocs:dev && yarn docs:build"
+    command = "yarn predocs:dev"
