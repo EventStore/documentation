@@ -79,7 +79,7 @@ module.exports = {
                     {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
                 ]
             },
-            {text: "Profile", link: "/profile/"}
+            // {text: "Profile", link: "/profile/"}
         ],
         sidebar:              {
             ...versioning.sidebars,
