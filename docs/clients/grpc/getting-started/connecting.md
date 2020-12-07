@@ -50,9 +50,7 @@ First thing first, we need a client.
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
-```javascript
-const client = EventStoreConnection.connectionString("{connectionString}");
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
 </xode-block>
 </xode-group>
 
