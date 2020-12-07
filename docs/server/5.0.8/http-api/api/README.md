@@ -1941,11 +1941,11 @@ basicAuth
 
 ``` shell
 # You can also use wget
-curl -X DELETE https://eventstore.com/admin/mergeindexes
+curl -X POST -d{} https://eventstore.com/admin/mergeindexes
 
 ```
 
- `DELETE /admin/mergeindexes`
+ `POST /admin/mergeindexes`
 *Merge indexes*
 
 Manually merge indexes after a scavenge operation
