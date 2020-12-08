@@ -1,8 +1,8 @@
 import express from "express";
-import getStarted from "../samples/getStarted";
+import getStarted from "../samples/getStarted.js";
 
 const router = express.Router();
 
 getStarted(router);
 
-module.exports = router;
+export default router;

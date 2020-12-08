@@ -1,9 +1,14 @@
-var express = require('express');
-var router = express.Router();
+import express from "express";
+
+const router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  // Set a response type of plain text for the response
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+
+  // Send back a response and end the connection
+  res.end('Hello World!\n');
 });
 
-module.exports = router;
+export default router;

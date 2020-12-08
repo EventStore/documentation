@@ -13,7 +13,9 @@ As you can see `AppendToStreamAsync()` a `IEnumerable<EventData>` so it is also 
  
 As well as the example above there is also a number of other options for dealing with different scenarios. 
 
-> If you are new to event sourcing its probably wise to pay special attention to handling concurrency that is detailed below.
+::: tip
+If you are new to event sourcing its probably wise to pay special attention to handling concurrency that is detailed below.
+:::
 
 ## Working with EventData
 
