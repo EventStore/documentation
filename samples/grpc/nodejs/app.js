@@ -18,6 +18,11 @@ app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+// // setup swagger
+// import swaggerUi from "swagger-ui-express";
+// import swaggerDocument from "./swagger.json"; 
+// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
