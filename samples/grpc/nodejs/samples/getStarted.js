@@ -1,4 +1,4 @@
-import {EventStoreConnection, readEventsFromStream} from "@eventstore/db-client";
+import { EventStoreDBClient } from "@eventstore/db-client";
 
 export default function(router) {
     router.get("/", async function(req, res, next) {
@@ -7,14 +7,14 @@ export default function(router) {
         // #endregion createClient
 
         // #region readEvents
-        const events = await readEventsFromStream("testStream")
-            .fromStart()
-            .forward()
-            .count(10)
-            .execute(client);
+        const streamName = "testStream";
+        const events = await client.readEventsFromStream(streamName, 10, {
+            fromRevision: "start",
+            direction: "forward" 
+        });
         // #endregion readEvents
 
-        res.render("index", { title: "Express" });
+        res.render("index", events);
     });
 
 }
