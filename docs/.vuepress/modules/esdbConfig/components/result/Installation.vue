@@ -91,7 +91,7 @@ export default {
     },
     computed:   {
         result() {
-            return installation(this.os, this.ent);
+            return installation(this.os, this.ent, this.key);
         },
     }
 }
