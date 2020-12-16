@@ -83,6 +83,10 @@ Finally, when you click on `Create cluster`, the provisioning process starts and
 
 When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the network and consequently to all the clusters in that network, you'd need to peer the EventStoreDB Cloud network to your own AWS network. Normally, your AWS network would be also accessible by applications, which you want to connect to the new cloud EventStoreDB cluster.
 
+::: warning Peering limitations
+Currently, you can peer one Event Store Cloud network with only one AWS VPC on your account. We expect to lift this limitation in the future.
+:::
+
 For this example, we'll use a VPC in AWS in the same region (`eu-central-1`).
 
 ::: card
