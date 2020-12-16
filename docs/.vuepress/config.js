@@ -69,7 +69,7 @@ module.exports = {
                     {text: "HTTP API", items: versioning.linksFor("http-api")},
                 ]
             },
-            {text: "Cloud", link: "/cloud/intro/"},
+            {text: "Cloud", link: "/cloud/"},
             {
                 text:  "Need help?",
                 items: [

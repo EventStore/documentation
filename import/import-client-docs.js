@@ -57,7 +57,7 @@ async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
 
         await replaceCodePath(destinationPath, samplesPath);
 
-        return {path: path.join('generated', id), version: id.substr(1)};
+        return {path: path.join('generated', id), version: id.substr(1) + " gRPC"};
     } else {
         log.info('docs not there, skipping');
     }

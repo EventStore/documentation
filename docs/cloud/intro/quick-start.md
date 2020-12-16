@@ -6,12 +6,14 @@ Follow the steps in this guide to get access to the EventStoreDB Cloud console, 
 
 EventStoreDB offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
 
-At the moment, you need to visit out community forum ([Discuss](https://discuss.eventstore.com)) to create an account. If you already have an account at EventStoreDB Discuss, you can use it for the Cloud console.
-
-To get an account, open the [Discuss](https://discuss.eventstore.com) front page and click on `Log in`. There you get an option to sign up:
+To get an account, proceed to the [Cloud console](https://discuss.eventstore.com)  where you'll the the login screen. There you get an option to sign up:
 
 ::: card 
 ![Sign up screen](./images/discuss-signup.png)
+:::
+
+::: tip
+If you already have an account at our community forum (Discuss), you can use it to log in to Event Store Cloud.
 :::
 
 To finalize the sign-up process, you'd need to confirm your email address by clicking the link in the confirmation email. It might happen that the confirmation email doesn't get through, please check the junk email folder in your email client as you might find it there.
@@ -20,8 +22,8 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 
 With the new account you can login to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
 
-::: warning Preview customers only
-Since EventStoreDB Cloud is currently in preview, only a selected group of customers get the full set of features. You can only provision new clusters if you got onboarded as a Preview customer.
+::: warning Gated provisioning
+Since EventStoreDB Cloud is currently in preview, you won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
 :::
 
 In the console, you first get to the list of organisations, which you have access to.
@@ -30,11 +32,11 @@ In the console, you first get to the list of organisations, which you have acces
 ![Cloud organisations](./images/cloud-console-orgs.png)
 :::
 
-::: tip Your first organisation
-During the Preview phase, each customer gets an organisation created upfront by EventStoreDB staff. That organisation is enabled for provisioning cloud resources.
-:::
+You start with an empty list, so you'd need to add an organisation.
 
+::: tip
 The Cloud console has the concept of Context. You'd normally be in the organisation context, or in the project context.
+:::
 
 ## Organisations
 
@@ -84,6 +86,6 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 
 - [Amazon Web Services (AWS)](../provision/aws)
 - [Google Cloud Platform (GCP)](../provision/gcp)
-- Microsoft Azure (coming soon)
+- Microsoft Azure (documentation is work in progress)
 
 
