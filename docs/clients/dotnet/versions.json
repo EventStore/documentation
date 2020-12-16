@@ -5,7 +5,7 @@
     "basePath": "clients/dotnet",
     "versions": [
       {
-        "version": "5.0.9",
+        "version": "5.0.9 TCP",
         "path": "5.0",
         "startPage": "getting-started/"
       }
