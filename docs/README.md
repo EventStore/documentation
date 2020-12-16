@@ -9,6 +9,8 @@ actions:
   link: /latest.html
 - text: gRPC clients →
   link: /clients/grpc/getting-started/
+- text: Event Store Cloud →
+  link: /cloud/
 features:
 - title: "Event Sourcing"
   details: EventStoreDB is built to support Event Sourcing. We support idempotent writes and reading events from individual streams.

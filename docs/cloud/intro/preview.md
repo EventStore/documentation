@@ -8,9 +8,7 @@ At this stage, EventStoreDB Cloud uses the latest available production release o
 
 The Preview stage only applies to the managed cloud. We consider it production-ready, but it lacks some important features, which we believe are necessary for the generally available (GA) product.
 
-In order to ensure the best customer experience for early adopters of EventStoreDB Cloud, the Preview phase is by invite only. We create organisations for Preview customers upfront and do the online on-boarding session with each Preview customer. During the session we show the Cloud console and its features, and also describe the provisioning process.
-
-If you want to participate in the EventStoreDB Cloud Preview program, please [register your interest](https://eventstore.com/event-store-cloud/) on the Cloud page of our website.
+In order to ensure the best customer experience for early adopters of EventStoreDB Cloud, the Preview phase is enabled for everyone but new customers cannot provision paid cloud resources right after creating the account. You, however, can see what cloud providers we support, available instance sizes and prices. When you decide to move on and provision one or more clusters, request us to enable provisioning for you in the Cloud console.
 
 ## Preview status
 
@@ -22,12 +20,12 @@ If you want to participate in the EventStoreDB Cloud Preview program, please [re
 - Terraform provider
 - Backup and restore
 - Online disk expansion
-
-### Preview roadmap
-
 - Fine grain policies
 - Service tokens
 - Alerts
+
+### Preview roadmap
+
 - OpsGenie integration
 - PagerDuty integration
 - Cluster health
@@ -43,4 +41,4 @@ If you want to participate in the EventStoreDB Cloud Preview program, please [re
 - Identity providers
 - Access log
 - Prevention against project deletion
-
+- Read-only replicas
