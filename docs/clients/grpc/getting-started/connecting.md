@@ -75,12 +75,7 @@ The code snippet below creates an event object instance, serializes it and puts 
 </xode-block>
 <xode-block title="NodeJS">
 
-```javascript
-const event = EventData.json("TestEvent", {
-    "entityId": uuid().toString(),
-    "importantData": "I wrote my first event!"
-}).build();
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#createEvent
 </xode-block>
 </xode-group>
 
