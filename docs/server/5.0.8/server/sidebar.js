@@ -5,7 +5,6 @@ module.exports = [
         path: "introduction/",
         children: [
             "introduction/",
-            "introduction/introduction.md",
             "introduction/clients.md"
         ]
     },
