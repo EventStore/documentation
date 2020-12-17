@@ -24,7 +24,7 @@ Add the sample data to four different streams:
 ## Writing your first projection
 
 ::: tip Next steps
-Read [this guide](../projections/user-defined-projections.md) to find out more about the user defined projection's API.
+Read [this guide](../projections/api.md) to find out more about the user defined projection's API.
 :::
 
 The projection counts the number of 'XBox One S's that customers added to their shopping carts.

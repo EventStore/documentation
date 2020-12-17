@@ -14,7 +14,7 @@ namespace DocsExample.GettingStarted
             );
             await connection.ConnectAsync();
             #endregion connect
-            return conn;
+            return connection;
         }
     }
 }

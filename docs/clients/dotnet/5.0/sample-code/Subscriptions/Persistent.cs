@@ -4,15 +4,13 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DocsExample
-{
-    public class CreatePersistentSubscription
-    {
+namespace DocsExample {
+    public class PersistentSubscriptions {
         readonly IEventStoreConnection conn = null;
 
-        public async Task Method()
-        {
+        public async Task Crate() {
             #region CreatePersistentSubscription
+
             var userCredentials = new UserCredentials("admin", "changeit");
 
             var settings = PersistentSubscriptionSettings
@@ -20,13 +18,19 @@ namespace DocsExample
                 .DoNotResolveLinkTos()
                 .StartFromCurrent();
 
-            conn.CreatePersistentSubscriptionAsync("newstream", "gr1", settings, userCredentials).Wait();
+            await conn.CreatePersistentSubscriptionAsync(
+                "myStream",
+                "grour1",
+                settings,
+                userCredentials
+            );
 
             var subscription = await conn.ConnectToPersistentSubscriptionAsync(
-                "newstream",
-                "gr1",
+                "myStream",
+                "group1",
                 (_, evt) => Console.WriteLine($"Received: {Encoding.UTF8.GetString(evt.Event.Data)}")
             );
+
             #endregion CreatePersistentSubscription
         }
     }

@@ -55,7 +55,7 @@ namespace DocsExample
             const string streamName = Globals.StreamName;
 
             var conn           = await Connection.CreateConnection();
-            var step1EventData = Step3_UserProjections.ReadEvents(Globals.FilePath);
+            var step1EventData = UserProjections.ReadEvents(Globals.FilePath);
             var eventData      = step1EventData.ToArray();
 
             await conn.AppendToStreamAsync(streamName, ExpectedVersion.Any, eventData);
