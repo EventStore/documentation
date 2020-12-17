@@ -7,7 +7,16 @@ Packages needed:
 
 The simplest way to write an event to EventStoreDb is to create an `EventData` object and call `AppendToStreamAsync()`
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/writing-events/Program.cs#append-to-stream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-to-stream
+</xode-block>
+</xode-group>
 
 As you can see `AppendToStreamAsync()` a `IEnumerable<EventData>` so it is also possible to provide a collection of events to be saved in a single batch. 
  
@@ -27,7 +36,16 @@ This takes the format of of a `Uuid` and is used to uniquely identify the event 
 
 For example:
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/writing-events/Program.cs#append-duplicate-event
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-duplicate-event
+</xode-block>
+</xode-group>
 
 will result in only a single event being written
 
@@ -59,7 +77,16 @@ When appending events to a stream you can supply a `StreamState` or `StreamRevis
 
 For example if we try and write the same record twice expecting both times that the stream doesn't exist we will get an `WrongExpectedVersionException` exception on the second:
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/writing-events/Program.cs#append-with-no-stream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-with-no-stream
+</xode-block>
+</xode-group>
 
 There are three available stream states: 
 - Any
@@ -67,6 +94,17 @@ There are three available stream states:
 - StreamExists
 
 This check can be used to implement optimistic concurrency. When you retrieve a stream from EventStoreDB, you take note of the current version number, then when you save it back you can determine if somebody else has modified the record in the meantime.
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/writing-events/Program.cs#append-with-concurrency-check
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-with-concurrency-check
+</xode-block>
+</xode-group>
 
 ## Options
 TODO
