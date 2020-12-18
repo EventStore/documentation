@@ -133,6 +133,6 @@ const events = await readEventsFromStream("testStream")
 </xode-block>
 </xode-group>
 
-When you read events from the stream, you can a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized.
+When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized.
  
 
