@@ -6,11 +6,29 @@ Reading from the all stream is similar to reading from an individual stream but 
 
 The simplest way to read the `$all` stream forwards is to supply a direction and transaction log position to start from. This can either be a `Position.Start` or a `ulong`:
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream
+</xode-block>
+</xode-group>
 
 This will return an AsyncEnumerable that can be iterated on:
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-iterate
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-iterate
+</xode-block>
+</xode-group>
 
 There are a number of additional arguments you can provide when reading a stream.
 
@@ -21,6 +39,17 @@ Passing in the max count allows you to limit the number of events that returned.
 ### resolveLinkTos
 
 When using projections to create new events you can set whether the generated events are pointers to existing events. Setting this value to true will tell EventStoreDB to return the event as well as the event linking to it.
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-resolving-link-Tos
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-resolving-link-Tos
+</xode-block>
+</xode-group>
 
 ### configureOperationOptions
 
@@ -34,7 +63,16 @@ The credentials used to read the data can be supplied. Please see [here](authent
 
 As well as being able to read a stream forwards you can also go backwards. When reading backwards is the the `Position` will have to be set to the end if you want to read all the events:
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-backwards 
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-backwards 
+</xode-block>
+</xode-group>
 
 :::tip
 You can use reading backwards to find the last position in the stream. Just read backwards one event and get the position.
@@ -46,7 +84,16 @@ When reading from the all stream EventStoreDB will also return system events. In
 
 All system events begin with `$` or `$$` and can be easily ignored by checking the `EventType` property.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#ignore-system-events
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/reading-events/index.js#ignore-system-events 
+</xode-block>
+</xode-group>
  
 ## Understanding the $all stream position
 TODO

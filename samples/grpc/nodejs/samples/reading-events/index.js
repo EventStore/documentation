@@ -77,61 +77,90 @@ export async function readFromStreamBackwards(client) {
   return events;
 }
 
-// private static async Task ReadFromAllStream(EventStoreClient client) {
-//     #region read-from-all-stream
-//     var events = client.ReadAllAsync(
-//         Direction.Forwards, Position.Start);
-//     #endregion read-from-all-stream
+export async function readFromAllStream(client) {
+  // region read-from-all-stream
+  const events = await client.readEventsFromStream(10, {
+    fromPosition: START,
+    direction: FORWARD,
+  });
+  // endregion read-from-all-stream
 
-//     #region read-from-all-stream-iterate
-//     await foreach (var e in events) {
-//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-//     }
-//     #endregion read-from-all-stream-iterate
-// }
+  // #region read-from-all-stream-iterate
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion read-from-all-stream-iterate
 
-// private static async Task IgnoreSystemEvents(EventStoreClient client) {
-//     #region ignore-system-events
-//     var events = client.ReadAllAsync(
-//         Direction.Forwards, Position.Start);
+  return events;
+}
 
-//     await foreach (var e in events) {
-//         if (e.Event.EventType.StartsWith("$")) {
-//             continue;
-//         }
+export async function ignoreSystemEvents(client) {
+  // region ignore-system-events
+  const events = await client.readEventsFromStream(10, {
+    fromPosition: START,
+    direction: FORWARD,
+  });
 
-//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-//     }
-//     #endregion ignore-system-events
-// }
+  for (var resolvedEvent of events) {
+    if (resolvedEvent.event.eventType.startsWith("$")) {
+      continue;
+    }
+    console.log(resolvedEvent.event.eventType);
+  }
+  // #endregion ignore-system-events
 
-// private static async Task ReadFromAllStreamBackwards(EventStoreClient client) {
-//     #region read-from-all-stream-backwards
-//     var events = client.ReadAllAsync(
-//         Direction.Backwards, Position.End);
-//     #endregion read-from-all-stream-backwards
+  return events;
+}
 
-//     #region read-from-all-stream-iterate
-//     await foreach (var e in events) {
-//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-//     }
-//     #endregion read-from-all-stream-iterate
-// }
+export async function readFromAllStreamBackwards(client) {
+  // region read-from-all-stream-backwards
+  const events = await client.readEventsFromStream(10, {
+    fromPosition: END,
+    direction: BACKWARD,
+  });
+  // endregion read-from-all-stream-backwards
 
-// private static async Task FilteringOutSystemEvents(EventStoreClient client) {
-//     var events = client.ReadAllAsync(Direction.Forwards, Position.Start);
+  // #region read-from-all-stream-iterate
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion read-from-all-stream-iterate
 
-//     await foreach (var e in events) {
-//         if (!e.Event.EventType.StartsWith("$")) {
-//             Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-//         }
-//     }
-// }
+  return events;
+}
 
-// private static async Task ReadFromStreamResolvingLinkTos(EventStoreClient client) {
-//     var events = client.ReadAllAsync(Direction.Forwards, Position.Start, resolveLinkTos: true);
+export async function filterOutSystemEvents(client) {
+  // region filter-out-system-events
+  const events = await client.readEventsFromStream(10, {
+    fromPosition: START,
+    direction: FORWARD,
+  });
 
-//     await foreach (var e in events) {
-//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-//     }
-// }
+  for (var resolvedEvent of events) {
+    if (resolvedEvent.event.eventType.startsWith("$")) {
+      continue;
+    }
+    console.log(resolvedEvent.event.eventType);
+  }
+  // #endregion filter-out-system-events
+
+  return events;
+}
+
+export async function readFromAllStreamResolvingLinkTos(client) {
+  // region read-from-all-stream-resolving-link-Tos
+  const events = await client.readEventsFromStream(10, {
+    fromPosition: END,
+    direction: BACKWARD,
+    resolveLinks: true,
+  });
+  // endregion read-from-all-stream-resolving-link-Tos
+
+  // #region read-from-all-stream-iterate
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion read-from-all-stream-iterate
+
+  return events;
+}
