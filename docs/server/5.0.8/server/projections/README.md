@@ -44,3 +44,9 @@ System projections `$streams` and `$stream-by-category` produce new events too, 
 Custom projections create the most significant write amplification since they produce new events or link events, which in turn get processed by system projections.
 
 Projections only run on a leader node of the cluster due to consistency concerns. It creates more CPU and IO load on the leader node compared to follower nodes.
+
+## Limitations
+
+Streams where projections emit events cannot be used to write events from applications. When this happens, the projection will detect events not produced by the projection itself and it will break.
+
+The reason projections exclusively own their streams is because otherwise they would lose all predictability. The projection would no longer have any idea what should be in that stream. For example, when a projection starts up from a checkpoint, it first goes through all the events after that checkpoint and checks them against the emitted stream. By doing this, the projection can understand if it up to the last event and can continue from where it left off. On top of that, the projection can verify that everything is in order, no events missing, etc. If anyone can write to the emitted streams, then the projection would have no idea where it got to last in terms of processing. Therefore, it can no longer trust that the projection itself emitted that event or if something else did.
