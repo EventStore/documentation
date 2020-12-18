@@ -1,6 +1,6 @@
 # Connect with Tailscale
 
-In many organisations, which work with the cloud you can find the connection between the cloud networks and your local network already established using a Virtual Private Gateway or Site-to-Site VPN connection. However, if you starting on the side and want to keep things simple, you can use Tailscale to connect to the EventStoreDB Cloud cluster.
+In many organisations which work with the cloud, you can find the connection between the cloud networks and your local network already established using a Virtual Private Gateway or Site-to-Site VPN connection. However, if you're starting on the side and want to keep things simple, you can use Tailscale to connect to the EventStoreDB Cloud cluster.
 
 ## What is Tailscale?
 
@@ -10,19 +10,19 @@ You can use the Solo plan with Tailscale free of charge.
 
 ## Get started
 
-You need a Tailscale account first and then install their client software on your machine. The client will ask you to log in after the installation and then you get your first machine connected to your private VPN.
+First, set up a Tailscale account, then install their client software on your machine. The client will ask you to log in after the installation, and then give you your first machine connected to your private VPN.
 
 Follow the [installation instructions](https://tailscale.com/kb/1017/install) to get started.
 
 ## Provision the cloud VM
 
-Next, you'd need to create a small VM in the cloud, connected to the VPC with the EventStoreDB Cloud.
+Next, you need to create a small VM in the cloud, connected to the VPC with the EventStoreDB Cloud.
 
 You can choose the smallest available instance size, like `t4g.nano` in AWS or `f1.micro` in GCP. For this guide we use Ubuntu 20.04 LTS image.
 
-When creating the VM, ensure to:
+When creating the VM, make sure you:
 - Connect the default network interface to the VPC peered with EventStoreDB Cloud
-- Enable public ip if you want to connect to the VM from your local machine
+- Enable public IP if you want to connect to the VM from your local machine
 - GCP: enable _IP Forwarding_ on the default NIC
 - AWS: disable _Source / destination checking_
 
@@ -83,4 +83,4 @@ Now, visit the EventStoreDB Cloud console, switch to the Clusters page and choos
 
 ## Future plans
 
-In the nearest future we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside EventStoreDB Cloud and set up routing to your Tailscale account automatically.
+Soon, we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside EventStoreDB Cloud and set up routing to your Tailscale account automatically.
