@@ -1,142 +1,137 @@
-export async function appendToStream(client) {
-    // region append-to-stream
-    const event = jsonEvent({
-      id: uuid(),
-      eventType: "some-event",
-      payload: {
-        id: "1",
-        value: "some value",
-      },
-    });
+import {
+  START,
+  END,
+  FORWARD,
+  BACKWARD,
+  ErrorType,
+} from "@eventstore/db-client";
 
-    const events = await client.readEventsFromStream("testStream", 10, {
-        fromRevision: "start",
-        direction: "forward",
-      });
-  
-    await client.writeEventsToStream("some-stream", event, {
-      expectedRevision: NO_STREAM,
+export async function readFromStream(client) {
+  // region read-from-stream
+  const events = await client.readEventsFromStream("some-stream", 10, {
+    fromRevision: START,
+    direction: FORWARD,
+  });
+  // endregion read-from-stream
+
+  // #region iterate-stream
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion iterate-stream
+
+  return events;
+}
+
+export async function readFromStreamPosition(client) {
+  // region read-from-stream-position
+  const events = await client.readEventsFromStream("some-stream", 20, {
+    fromRevision: BigInt(10),
+    direction: FORWARD,
+  });
+  // endregion read-from-stream-position
+
+  // #region iterate-stream
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion iterate-stream
+
+  return events;
+}
+
+export async function readFromStreamPositionCheck(client) {
+  // region checking-for-stream-presence
+  let events = [];
+  try {
+    events = await client.readEventsFromStream("some-stream", 20, {
+      fromRevision: BigInt(10),
+      direction: FORWARD,
     });
-    // endregion append-to-stream
+  } catch (error) {
+    if (error.type == ErrorType.STREAM_NOT_FOUND) return;
+
+    throw error;
   }
 
-private static async Task ReadFromStream(EventStoreClient client) {
-    #region read-from-stream
-    var events = client.ReadStreamAsync(
-        Direction.Forwards,
-        "some-stream",
-        StreamPosition.Start);
-    #endregion read-from-stream
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion checking-for-stream-presence
 
-    #region iterate-stream
-    await foreach (var @event in events) {
-        Console.WriteLine(Encoding.UTF8.GetString(@event.Event.Data.ToArray()));
-    }
-    #endregion iterate-stream
+  return events;
 }
 
-private static async Task ReadFromStreamPosition(EventStoreClient client) {
-    #region read-from-stream-position
-    var events = client.ReadStreamAsync(
-        Direction.Forwards,
-        "some-stream",
-        revision: 10,
-        maxCount: 20);
-    #endregion read-from-stream-position
+export async function readFromStreamBackwards(client) {
+  // region read-from-stream
+  const events = await client.readEventsFromStream("some-stream", 10, {
+    fromRevision: END,
+    direction: BACKWARD,
+  });
 
-    #region iterate-stream
-    await foreach (var @event in events) {
-        Console.WriteLine(Encoding.UTF8.GetString(@event.Event.Data.ToArray()));
-    }
-    #endregion iterate-stream
+  for (var resolvedEvent of events) {
+    console.log(resolvedEvent.event.data);
+  }
+  // #endregion reading-backwards
+
+  return events;
 }
 
-private static async Task ReadFromStreamPositionCheck(EventStoreClient client) {
-    #region checking-for-stream-presence
-    var result = client.ReadStreamAsync(
-        Direction.Forwards,
-        "some-stream",
-        revision: 10,
-        maxCount: 20);
+// private static async Task ReadFromAllStream(EventStoreClient client) {
+//     #region read-from-all-stream
+//     var events = client.ReadAllAsync(
+//         Direction.Forwards, Position.Start);
+//     #endregion read-from-all-stream
 
-    if (await result.ReadState == ReadState.StreamNotFound) {
-        return;
-    }
+//     #region read-from-all-stream-iterate
+//     await foreach (var e in events) {
+//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
+//     }
+//     #endregion read-from-all-stream-iterate
+// }
 
-    await foreach (var e in result) {
-        Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-    }
-    #endregion checking-for-stream-presence
-}
+// private static async Task IgnoreSystemEvents(EventStoreClient client) {
+//     #region ignore-system-events
+//     var events = client.ReadAllAsync(
+//         Direction.Forwards, Position.Start);
 
-private static async Task ReadFromStreamBackwards(EventStoreClient client) {
-    #region reading-backwards
-    var events = client.ReadStreamAsync(
-        Direction.Backwards,
-        "some-stream",
-        StreamPosition.End);
+//     await foreach (var e in events) {
+//         if (e.Event.EventType.StartsWith("$")) {
+//             continue;
+//         }
 
-    await foreach (var e in events) {
-        Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-    }
-    #endregion reading-backwards
-}
+//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
+//     }
+//     #endregion ignore-system-events
+// }
 
-private static async Task ReadFromAllStream(EventStoreClient client) {
-    #region read-from-all-stream
-    var events = client.ReadAllAsync(
-        Direction.Forwards, Position.Start);
-    #endregion read-from-all-stream
+// private static async Task ReadFromAllStreamBackwards(EventStoreClient client) {
+//     #region read-from-all-stream-backwards
+//     var events = client.ReadAllAsync(
+//         Direction.Backwards, Position.End);
+//     #endregion read-from-all-stream-backwards
 
-    #region read-from-all-stream-iterate
-    await foreach (var e in events) {
-        Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-    }
-    #endregion read-from-all-stream-iterate
-}
+//     #region read-from-all-stream-iterate
+//     await foreach (var e in events) {
+//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
+//     }
+//     #endregion read-from-all-stream-iterate
+// }
 
-private static async Task IgnoreSystemEvents(EventStoreClient client) {
-    #region ignore-system-events
-    var events = client.ReadAllAsync(
-        Direction.Forwards, Position.Start);
+// private static async Task FilteringOutSystemEvents(EventStoreClient client) {
+//     var events = client.ReadAllAsync(Direction.Forwards, Position.Start);
 
-    await foreach (var e in events) {
-        if (e.Event.EventType.StartsWith("$")) {
-            continue;
-        }
+//     await foreach (var e in events) {
+//         if (!e.Event.EventType.StartsWith("$")) {
+//             Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
+//         }
+//     }
+// }
 
-        Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-    }
-    #endregion ignore-system-events
-}
+// private static async Task ReadFromStreamResolvingLinkTos(EventStoreClient client) {
+//     var events = client.ReadAllAsync(Direction.Forwards, Position.Start, resolveLinkTos: true);
 
-private static async Task ReadFromAllStreamBackwards(EventStoreClient client) {
-    #region read-from-all-stream-backwards
-    var events = client.ReadAllAsync(
-        Direction.Backwards, Position.End);
-    #endregion read-from-all-stream-backwards
-
-    #region read-from-all-stream-iterate
-    await foreach (var e in events) {
-        Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-    }
-    #endregion read-from-all-stream-iterate
-}
-
-private static async Task FilteringOutSystemEvents(EventStoreClient client) {
-    var events = client.ReadAllAsync(Direction.Forwards, Position.Start);
-
-    await foreach (var e in events) {
-        if (!e.Event.EventType.StartsWith("$")) {
-            Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-        }
-    }
-}
-
-private static async Task ReadFromStreamResolvingLinkTos(EventStoreClient client) {
-    var events = client.ReadAllAsync(Direction.Forwards, Position.Start, resolveLinkTos: true);
-
-    await foreach (var e in events) {
-        Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
-    }
-}
+//     await foreach (var e in events) {
+//         Console.WriteLine(Encoding.UTF8.GetString(e.Event.Data.ToArray()));
+//     }
+// }

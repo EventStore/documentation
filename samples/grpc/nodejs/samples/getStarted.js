@@ -1,4 +1,9 @@
-import { EventStoreDBClient, jsonEvent, START, FORWARD } from "@eventstore/db-client";
+import {
+  EventStoreDBClient,
+  jsonEvent,
+  START,
+  FORWARD,
+} from "@eventstore/db-client";
 import { v4 as uuid } from "uuid";
 
 export default function (router) {
@@ -21,13 +26,13 @@ export default function (router) {
     // #endregion createEvent
 
     // #region writeEvents
-    await client.writeEventsToStream("testStream", event, {
+    await client.writeEventsToStream("some-stream", event, {
       expectedRevision,
     });
     // #endregion writeEvents
 
     // #region readEvents
-    const events = await client.readEventsFromStream("testStream", 10, {
+    const events = await client.readEventsFromStream("some-stream", 10, {
       fromRevision: START,
       direction: FORWARD,
     });
