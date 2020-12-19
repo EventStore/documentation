@@ -16,7 +16,9 @@ In order for the server to load-balance subscribers, it uses the concept of cons
 
 **Use our own illustration**
 
-![Consumer groups](https://i.stack.imgur.com/jhUNt.png)
+::: card
+![Consumer groups](./images/Persistent%20subscriptions.jpg)
+:::
 
 ::: warning
 Just as in the world of message brokers, processing events in a group of consumers running in parallel processes will most likely get evens out of order within a certain window. For example, if a consumer group has ten consumers, ten messages will be distributed among the available consumers, based on the [strategy](#consumer-strategies) of the group. Even though some strategies make an attempt to consistently deliver ordered events to a single consumer, it's done on the best effort basis and there is no guarantee of events coming in order with any strategy.
