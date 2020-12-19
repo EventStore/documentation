@@ -14,8 +14,6 @@ Since it is the server who decides from where the subscription should start rece
 
 In order for the server to load-balance subscribers, it uses the concept of consumer groups. All clients that belong to a single consumer group will get a portion of events and that's how load balancing works inside a group. It is possible to create multiple consumer groups for the same stream and they will be completely independent from each other, receiving and processing events in their own pace and having their own last known position handled by the server.
 
-**Use our own illustration**
-
 ::: card
 ![Consumer groups](./images/Persistent%20subscriptions.jpg)
 :::
