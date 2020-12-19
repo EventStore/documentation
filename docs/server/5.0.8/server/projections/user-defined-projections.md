@@ -2,7 +2,11 @@
 
 <!-- TODO: Again refactor to shopping cart? -->
 
-TODO: Use cases and performance implications.
+In addition to [system projections](system-projections.md), you can create custom projections, which run on the server. User defined projections only work with events stored in JSON format. Use cases for custom projections include aggregation (stateful projections), transformations and partitioning.
+
+::: warning
+All user defined projections increase the number of write operations on the master node. Stateful projections write one event for each state change, projections with emit operations like `emit` and `linkTo` explicitly create new events. Those events might get picked up by system projections, which write even more events. Therefore, carefully evaluate your need for custom projections, considering your cluster load as the cluster performance might degrade substantially.
+:::
 
 ## Overview
 
@@ -10,25 +14,25 @@ You write user defined projections in JavaScript. For example, the `my_demo_proj
 
 ```javascript
 options({
-	resultStreamName: "my_demo_projection_result",
-	$includeLinks: false,
-	reorderEvents: false,
-	processingLag: 0
+  resultStreamName: "my_demo_projection_result",
+  $includeLinks: false,
+  reorderEvents: false,
+  processingLag: 0
 })
 
 fromStream('account-1')
 .when({
-	$init:function(){
-		return {
-			count: 0
-		}
-	},
-	myEventType: function(state, event){
-		state.count += 1;
-	}
+  $init: function() {
+    return {
+      count: 0
+    }
+  },
+  myEventType: function(state, event) {
+    state.count += 1;
+  }
 })
-.transformBy(function(state){
-	state.count = 10;
+.transformBy(function(state) {
+  state.count = 10;
 })
 .outputState()
 ```
