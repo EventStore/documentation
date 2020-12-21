@@ -8,7 +8,7 @@ import {
 
 export async function readFromStream(client) {
   // region read-from-stream
-  const events = await client.readEventsFromStream("some-stream", 10, {
+  const events = await client.readStream("some-stream", 10, {
     direction: FORWARD,
     fromRevision: START,
   });
@@ -25,7 +25,7 @@ export async function readFromStream(client) {
 
 export async function readFromStreamPosition(client) {
   // region read-from-stream-position
-  const events = await client.readEventsFromStream("some-stream", 20, {
+  const events = await client.readStream("some-stream", 20, {
     direction: FORWARD,
     fromRevision: BigInt(10),
   });
@@ -44,7 +44,7 @@ export async function readFromStreamPositionCheck(client) {
   // region checking-for-stream-presence
   let events = [];
   try {
-    events = await client.readEventsFromStream("some-stream", 20, {
+    events = await client.readStream("some-stream", 20, {
       direction: FORWARD,
       fromRevision: BigInt(10),
     });
@@ -64,7 +64,7 @@ export async function readFromStreamPositionCheck(client) {
 
 export async function readFromStreamBackwards(client) {
   // region reading-backwards
-  const events = await client.readEventsFromStream("some-stream", 10, {
+  const events = await client.readStream("some-stream", 10, {
     direction: BACKWARD,
     fromRevision: END,
   });
@@ -79,7 +79,7 @@ export async function readFromStreamBackwards(client) {
 
 export async function readFromAllStream(client) {
   // region read-from-all-stream
-  const events = await client.readAllEvents(10, {
+  const events = await client.readAll(10, {
     direction: FORWARD,
     fromPosition: START,
   });
@@ -96,7 +96,7 @@ export async function readFromAllStream(client) {
 
 export async function ignoreSystemEvents(client) {
   // region ignore-system-events
-  const events = await client.readAllEvents(10, {
+  const events = await client.readAll(10, {
     direction: FORWARD,
     fromPosition: START,
   });
@@ -114,7 +114,7 @@ export async function ignoreSystemEvents(client) {
 
 export async function readFromAllStreamBackwards(client) {
   // region read-from-all-stream-backwards
-  const events = await client.readAllEvents(10, {
+  const events = await client.readAll(10, {
     direction: BACKWARD,
     fromPosition: END,
   });
@@ -131,7 +131,7 @@ export async function readFromAllStreamBackwards(client) {
 
 export async function filterOutSystemEvents(client) {
   // region filter-out-system-events
-  const events = await client.readAllEvents(10, {
+  const events = await client.readAll(10, {
     direction: FORWARD,
     fromPosition: START,
   });
@@ -149,7 +149,7 @@ export async function filterOutSystemEvents(client) {
 
 export async function readFromAllStreamResolvingLinkTos(client) {
   // region read-from-all-stream-resolving-link-Tos
-  const events = await client.readAllEvents(10, {
+  const events = await client.readAll(10, {
     direction: BACKWARD,
     fromPosition: END,
     resolveLinks: true,

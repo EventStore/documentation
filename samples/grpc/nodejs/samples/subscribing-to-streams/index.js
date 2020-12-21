@@ -1,11 +1,4 @@
-import {
-  jsonEvent,
-  ANY,
-  NO_STREAM,
-  START,
-  FORWARD,
-  STREAM_NAME,
-} from "@eventstore/db-client";
+import { START, STREAM_NAME } from "@eventstore/db-client";
 
 export async function subscribeToStream(client) {
   // region subscribe-to-stream
