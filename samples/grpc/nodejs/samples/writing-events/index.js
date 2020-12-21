@@ -48,7 +48,7 @@ export async function appendWithSameId(client) {
 
 export async function appendWithNoStream(client) {
   // region append-with-no-stream
-  const event = jsonEvent({
+  const eventOne = jsonEvent({
     id: uuid(),
     eventType: "some-event",
     payload: {
@@ -57,12 +57,21 @@ export async function appendWithNoStream(client) {
     },
   });
 
-  await client.writeEventsToStream("no-stream-stream", event, {
+  const eventTwo = jsonEvent({
+    id: uuid(),
+    eventType: "some-event",
+    payload: {
+      id: "2",
+      value: "some other value",
+    },
+  });
+
+  await client.writeEventsToStream("no-stream-stream", eventOne, {
     expectedRevision: NO_STREAM,
   });
 
   // attempt to append the same event again
-  await client.writeEventsToStream("no-stream-stream", event, {
+  await client.writeEventsToStream("no-stream-stream", eventTwo, {
     expectedRevision: NO_STREAM,
   });
   // endregion append-with-no-stream

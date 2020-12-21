@@ -10,7 +10,16 @@ If events already exist, the handler will be called for each event one by one un
 
 The simplest stream subscription looks like the following :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream
+</xode-block>
+</xode-group>
 
 The provided handler will be called for every event in the stream.
 
@@ -18,7 +27,16 @@ The provided handler will be called for every event in the stream.
 
 Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event written after the starting position.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-all
+</xode-block>
+</xode-group>
 
 ## Subscribing from a specific position
 
@@ -39,7 +57,16 @@ To subscribe to a stream from a specific position, you need to provide a `Stream
 
 The following subscribes to the stream "some-stream" at position 20, this means that events 21 and onward will be handled:
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-from-position
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream-from-position
+</xode-block>
+</xode-group>
 
 ### Subscribing to $all
 
@@ -49,17 +76,44 @@ The corresponding `$all` subscription will subscribe from the event after the on
 
 Please note that this position will need to be a legitimate position in `$all`.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all-from-position
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-all-from-position
+</xode-block>
+</xode-group>
 
 ## Subscribing to a stream for live updates
 
 You can subscribe to a stream to get live updates by subscribing to the end of the stream :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-live
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream-live
+</xode-block>
+</xode-group>
 
 And the same works with `$all` :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all-live
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-all-live
+</xode-block>
+</xode-group>
 
 This won't read through the history of the stream, but will rather notify the handler when a new event appears in the respective stream.
 
@@ -73,7 +127,16 @@ Filtered subscriptions make it easier and faster to subscribe to all events of a
 
 When reading a stream you can specify whether to resolve link tos or not. By default, link-to events are not resolved. You can set this with the `resolveLinkTos` parameter :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-resolving-linktos
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream-resolving-linktos
+</xode-block>
+</xode-group>
 
 ## Dropped subscriptions
 
@@ -93,11 +156,29 @@ The possible reasons for a subscription dropping are :
 
 You can start from where you left off by keeping a record of the last processed event and continuing from there :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-subscription-dropped
+</xode-block>
+<xode-block title="NodeJS">
+
+<!--TODO -->
+</xode-block>
+</xode-group>
 
 When subscribed to `$all` you want to keep the position of the event in the `$all` stream :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all-subscription-dropped
+</xode-block>
+<xode-block title="NodeJS">
+
+<!--TODO -->
+</xode-block>
+</xode-group>
 
 ## Filter options
 
@@ -105,7 +186,16 @@ Subscriptions to `$all` can include a filter option. This will only notify the e
 
 A simple stream prefix filter looks like this :
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#stream-prefix-filtered-subscription
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#stream-prefix-filtered-subscription
+</xode-block>
+</xode-group>
 
 The filtering api is described more in-depth in the filtering section. 
 
@@ -115,4 +205,14 @@ The user creating a subscription must have read access to the stream it's subscr
 
 You can provide user credentials to be used by the subscription as follows. This will override the default credentials set on the connection.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#overriding-user-credentials
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#overriding-user-credentials
+</xode-block>
+</xode-group>
+

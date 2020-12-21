@@ -100,7 +100,7 @@ const writeResult = await writeEventsToStream("testStream")
 </xode-block>
 </xode-group>
 
-Here we are writing events without checking if the stream exists or if the stream version matches the expected event version.
+Here we are writing events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [writing events documentation](../writing-events/README.md).
 
 ## Reading events
 
@@ -126,6 +126,4 @@ const events = await readEventsFromStream("testStream")
 </xode-block>
 </xode-group>
 
-When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized.
- 
-
+When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized. See more advanced scenarios in [reading events documentation](../reading-events/README.md).
