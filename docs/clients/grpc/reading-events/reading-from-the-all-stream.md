@@ -98,8 +98,3 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
  
 ## Understanding the $all stream position
 TODO
-
-
-
-
-

@@ -1,135 +1,72 @@
-// using System;
-// using System.Collections.Generic;
-// using System.Diagnostics;
-// using System.Net.Http;
-// using System.Text;
-// using System.Threading;
-// using System.Threading.Tasks;
-// using EventStore.Client;
-// using EventTypeFilter = EventStore.Client.EventTypeFilter;
+import { START, STREAM_NAME, EVENT_TYPE } from "@eventstore/db-client";
 
-// namespace server_side_filtering {
-// 	class Program {
-// 		static async Task Main() {
-// 			var settings = new EventStoreClientSettings {
-// 				DefaultCredentials = new UserCredentials("admin", "changeit"),
-// 				ConnectivitySettings = {
-// 					Address = new Uri("http://localhost:2113")
-// 				}
-// 			};
+export async function subscribeToAllExcludeSystemEvents(client) {
+  // region exclude-system
+  const excludeSystemEventsRegex = /^[^\$].*/;
+  const subscription = client
+    .subscribeToAll({
+      fromRevision: START,
+      filter: { filterOn: EVENT_TYPE, regex: excludeSystemEventsRegex },
+    })
+    .on("data", function (resolvedEvent) {
+      console.log(
+        `Received event ${resolvedEvent.event.revision}@${resolvedEvent.event.streamId}`
+      );
+    });
+  // endregion exclude-system
+}
 
-// 			var client = new EventStoreClient(settings);
+export async function subscribeToAllFilteringByEventTypePrefix(client) {
+  // region event-type-prefix
+  const prefixes = ["customer-"];
+  const filter = { filterOn: EVENT_TYPE, prefixes };
+  // endregion event-type-prefix
+  const subscription = client
+    .subscribeToAll({
+      fromRevision: START,
+      filter,
+    })
+    .on("data", handleEvent);
+}
 
-// 			await client.SubscribeToAllAsync(Position.Start,
-// 				(s, e, c) => {
-// 					Console.WriteLine($"{e.Event.EventType} @ {e.Event.Position.PreparePosition}");
-// 					return Task.CompletedTask;
-// 				},
-// 				filterOptions: new SubscriptionFilterOptions(
-// 					EventTypeFilter.Prefix("some-"),
-// 					1,
-// 					(s, p, c) => {
-// 						Console.WriteLine($"checkpoint taken at {p.PreparePosition}");
-// 						return Task.CompletedTask;
-// 					})
-// 			);
+export async function subscribeToAllFilteringByEventTypeRegex(client) {
+  // region event-type-regex
+  const regex = /^user|^company/;
+  const filter = { filterOn: EVENT_TYPE, regex };
+  // endregion event-type-regex
+  const subscription = client
+    .subscribeToAll({
+      fromRevision: START,
+      filter,
+    })
+    .on("data", handleEvent);
+}
 
-// 			Thread.Sleep(2000);
+export async function subscribeToAllFilteringByStreamPrefix(client) {
+  // region stream-prefix
+  const prefixes = ["user-"];
+  const filter = { filterOn: STREAM_NAME, prefixes };
+  // endregion stream-prefix
+  const subscription = client
+    .subscribeToAll({
+      fromRevision: START,
+      filter,
+    })
+    .on("data", handleEvent);
+}
 
-// 			for (var i = 0; i < 100; i++) {
-// 				var eventData = new EventData(
-// 					Uuid.NewUuid(),
-// 					i % 2 == 0 ? "some-event" : "other-event",
-// 					Encoding.UTF8.GetBytes("{\"id\": \"1\" \"value\": \"some value\"}")
-// 				);
-
-// 				await client.AppendToStreamAsync(
-// 					Guid.NewGuid().ToString("N"),
-// 					StreamRevision.None,
-// 					new List<EventData> {eventData}
-// 				);
-// 			}
-
-// 			Console.ReadLine();
-// 		}
-
-// 		private static async Task ExcludeSystemEvents(EventStoreClient client) {
-// 			#region exclude-system
-// 			await client.SubscribeToAllAsync(Position.Start,
-// 				(s, e, c) => {
-// 					Console.WriteLine(
-// 						$"{e.Event.EventType} @ {e.Event.Position.PreparePosition}");
-// 					return Task.CompletedTask;
-// 				},
-// 				filterOptions: new SubscriptionFilterOptions(
-// 					EventTypeFilter.ExcludeSystemEvents())
-// 			);
-// 			#endregion exclude-system
-// 		}
-
-// 		private static async Task EventTypePrefix(EventStoreClient client) {
-// 			#region event-type-prefix
-// 			var filter = new SubscriptionFilterOptions(
-// 				EventTypeFilter.Prefix("customer-"));
-// 			#endregion event-type-prefix
-
-// 			await client.SubscribeToAllAsync(Position.Start,
-// 				(s, e, c) => {
-// 					Console.WriteLine(
-// 						$"{e.Event.EventType} @ {e.Event.Position.PreparePosition}");
-// 					return Task.CompletedTask;
-// 				},
-// 				filterOptions: filter
-// 			);
-// 		}
-
-// 		private static async Task EventTypeRegex(EventStoreClient client) {
-// 			#region event-type-regex
-// 			var filter = new SubscriptionFilterOptions(
-// 				EventTypeFilter.RegularExpression("^user|^company"));
-// 			#endregion event-type-regex
-
-// 			await client.SubscribeToAllAsync(Position.Start,
-// 				(s, e, c) => {
-// 					Console.WriteLine(
-// 						$"{e.Event.EventType} @ {e.Event.Position.PreparePosition}");
-// 					return Task.CompletedTask;
-// 				},
-// 				filterOptions: filter
-// 			);
-// 		}
-
-// 		private static async Task StreamPrefix(EventStoreClient client) {
-// 			#region stream-prefix
-// 			var filter = new SubscriptionFilterOptions(
-// 				StreamFilter.Prefix("user-"));
-// 			#endregion stream-prefix
-
-// 			await client.SubscribeToAllAsync(Position.Start,
-// 				(s, e, c) => {
-// 					Console.WriteLine(
-// 						$"{e.Event.EventType} @ {e.Event.Position.PreparePosition}");
-// 					return Task.CompletedTask;
-// 				},
-// 				filterOptions: filter
-// 			);
-// 		}
-
-// 		private static async Task StreamRegex(EventStoreClient client) {
-// 			#region stream-regex
-// 			var filter = new SubscriptionFilterOptions(
-// 				StreamFilter.RegularExpression("^account|^savings"));
-// 			#endregion stream-regex
-
-// 			await client.SubscribeToAllAsync(Position.Start,
-// 				(s, e, c) => {
-// 					Console.WriteLine(
-// 						$"{e.Event.EventType} @ {e.Event.Position.PreparePosition}");
-// 					return Task.CompletedTask;
-// 				},
-// 				filterOptions: filter
-// 			);
-// 		}
+export async function subscribeToAllFilteringByStreamRegex(client) {
+  // region stream-regex
+  const regex = /^account|^savings/;
+  const filter = { filterOn: STREAM_NAME, regex };
+  // endregion stream-regex
+  const subscription = client
+    .subscribeToAll({
+      fromRevision: START,
+      filter,
+    })
+    .on("data", handleEvent);
+}
 
 // 		private static async Task CheckpointCallback(EventStoreClient client) {
 // 			#region checkpoint
@@ -151,6 +88,22 @@
 // 				filterOptions: filter
 // 			);
 // 		}
+
+export async function subscribeToAllWithCheckpointInterval(client) {
+  // region checkpoint-with-interval
+  const excludeSystemEventsRegex = /^[^\$].*/;
+  const filter = { filterOn: EVENT_TYPE, checkpointIntervalMul: 1000, regex };
+  // endregion checkpoint-with-interval
+  const subscription = client
+    .subscribeToStream({
+      filter: { filterOn: STREAM_NAME, regex },
+    })
+    .on("data", handleEvent);
+}
+
+function handleEvent(event) {
+  console.log(event);
+}
 
 // 		private static async Task CheckpointCallbackWithInterval(EventStoreClient client) {
 // 			#region checkpoint-with-interval
