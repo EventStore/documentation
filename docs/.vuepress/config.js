@@ -96,9 +96,9 @@ module.exports = {
                 {
                     title: "Writing events",
                     collapsable: true,
-                    path: "/clients/grpc/writing-events/",
+                    path: "/clients/grpc/appending-events/",
                     children: [
-                        "/clients/grpc/writing-events/"
+                        "/clients/grpc/appending-events/"
                     ]
                 },
                 {

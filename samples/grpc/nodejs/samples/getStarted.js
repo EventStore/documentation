@@ -26,13 +26,13 @@ export default function (router) {
     // #endregion createEvent
 
     // #region writeEvents
-    await client.writeEventsToStream("some-stream", event, {
+    await client.appendToStream("some-stream", event, {
       expectedRevision,
     });
     // #endregion writeEvents
 
     // #region readEvents
-    const events = await client.readEventsFromStream("some-stream", 10, {
+    const events = await client.readStream("some-stream", 10, {
       fromRevision: START,
       direction: FORWARD,
     });

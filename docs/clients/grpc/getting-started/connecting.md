@@ -100,7 +100,7 @@ const writeResult = await writeEventsToStream("testStream")
 </xode-block>
 </xode-group>
 
-Here we are writing events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [writing events documentation](../writing-events/README.md).
+Here we are writing events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [writing events documentation](../appending-events/README.md).
 
 ## Reading events
 

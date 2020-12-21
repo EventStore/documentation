@@ -14,7 +14,7 @@ The simplest way to write an event to EventStoreDb is to create an `EventData` o
 </xode-block>
 <xode-block title="NodeJS">
 
-<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-to-stream
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-to-stream
 </xode-block>
 </xode-group>
 
@@ -43,13 +43,13 @@ For example:
 </xode-block>
 <xode-block title="NodeJS">
 
-<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-duplicate-event
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-duplicate-event
 </xode-block>
 </xode-group>
 
 will result in only a single event being written
 
-![Duplicate Event](/docs/writing-events/images/duplicate-event.png)
+![Duplicate Event](/docs/appending-events/images/duplicate-event.png)
 
 For most scenarios you can just provide `Uuid.NewUuid()` although there are methods for generating a `Uuid` from other types if you need to change how this `Uuid` is generated
 
@@ -84,7 +84,7 @@ For example if we try and write the same record twice expecting both times that 
 </xode-block>
 <xode-block title="NodeJS">
 
-<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-with-no-stream
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-no-stream
 </xode-block>
 </xode-group>
 
@@ -102,7 +102,7 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 </xode-block>
 <xode-block title="NodeJS">
 
-<<< @/samples/grpc/nodejs/samples/writing-events/index.js#append-with-concurrency-check
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-concurrency-check
 </xode-block>
 </xode-group>
 
