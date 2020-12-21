@@ -43,7 +43,7 @@ When using projections to create new events you can set whether the generated ev
 <xode-group>
 <xode-block title="C#">
 
-TODO
+<!--TODO -->
 
 </xode-block>
 <xode-block title="NodeJS">

@@ -24,27 +24,22 @@ export async function subscribeToStreamFromPosition(client) {
   // region subscribe-to-stream-from-position
   const subscription = client
     .subscribeToStream("some-stream", { fromRevision: BigInt(20) })
-    .on("data", function (resolvedEvent) {
-      console.log(
-        `Received event ${resolvedEvent.event.revision}@${resolvedEvent.event.streamId}`
-      );
-      handleEvent(resolvedEvent);
-    });
+    .on("data", handleEvent);
   // endregion subscribe-to-stream-from-position
 }
 
 export async function subscribeToStreamLive(client) {
-  // region subscribe-to-stream-from-position
+  // region subscribe-to-stream-live
   const subscription = client
     .subscribeToStream("some-stream", { fromRevision: END })
     .on("data", handleEvent);
-  // endregion subscribe-to-stream-from-position
+  // endregion subscribe-to-stream-live
 }
 
 export async function subscribeToStreamResolvingLinkTos(client) {
   // region subscribe-to-stream-resolving-linktos
   const subscription = client
-    .subscribeToStream("some-stream", {
+    .subscribeToStream("$et-myEventType", {
       fromRevision: START,
       resolveLinks: true,
     })
@@ -67,9 +62,6 @@ export async function subscribeToStreamSubscriptionDropped(client) {
   // endregion subscribe-to-stream-resolving-linktos
 }
 
-function handleEvent(event) {
-  console.log(event);
-}
 // 			#region subscribe-to-stream-subscription-dropped
 // 			var checkpoint = StreamPosition.Start;
 // 			await client.SubscribeToStreamAsync(
@@ -91,21 +83,14 @@ function handleEvent(event) {
 
 export async function subscribeToAll(client) {
   // region subscribe-to-all
-  const subscription = client
-    .subscribeToAll()
-    .on("data", function (resolvedEvent) {
-      console.log(
-        `Received event ${resolvedEvent.event.revision}@${resolvedEvent.event.streamId}`
-      );
-      handleEvent(resolvedEvent);
-    });
+  const subscription = client.subscribeToAll().on("data", handleEvent);
   // endregion subscribe-to-all
 }
 
 export async function subscribeToAllFromPosition(client) {
   // region subscribe-to-all-from-position
   const subscription = client
-    .subscribeToAll({ fromRevision: BigInt(20) })
+    .subscribeToAll({ fromRevision: BigInt(1056) })
     .on("data", function (resolvedEvent) {
       console.log(
         `Received event ${resolvedEvent.event.revision}@${resolvedEvent.event.streamId}`
@@ -118,7 +103,7 @@ export async function subscribeToAllFromPosition(client) {
 export async function subscribeToAllLive(client) {
   // region subscribe-to-all-live
   const subscription = client
-    .subscribeToStream({ fromRevision: END })
+    .subscribeToAll({ fromRevision: END })
     .on("data", handleEvent);
   // endregion subscribe-to-all-live
 }
@@ -177,4 +162,8 @@ export async function subscribeToAllOverridingUserCredentials(client) {
     })
     .on("data", handleEvent);
   // endregion overriding-user-credentials
+}
+
+function handleEvent(event) {
+  console.log(event);
 }
