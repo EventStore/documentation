@@ -1,4 +1,4 @@
-import { START, STREAM_NAME } from "@eventstore/db-client";
+import { START, END } from "@eventstore/db-client";
 
 export async function subscribeToStream(client) {
   // region subscribe-to-stream
@@ -41,18 +41,17 @@ export async function subscribeToStreamResolvingLinkTos(client) {
 }
 
 export async function subscribeToStreamSubscriptionDropped(client) {
-  // region subscribe-to-stream-resolving-linktos
+  // region subscribe-to-stream-subscription-dropped
   let checkpoint = START;
   const subscription = client
     .subscribeToStream("some-stream", {
       fromRevision: checkpoint,
-      resolveLinks: true,
     })
     .on("data", function (resolvedEvent) {
       handleEvent(resolvedEvent);
       checkpoint = resolvedEvent.event.revision;
     });
-  // endregion subscribe-to-stream-resolving-linktos
+  // endregion subscribe-to-stream-subscription-dropped
 }
 
 // 			#region subscribe-to-stream-subscription-dropped
@@ -119,29 +118,6 @@ export async function subscribeToAllLive(client) {
 // 				}));
 // 			#endregion subscribe-to-all-subscription-dropped
 // 		}
-
-export async function subscribeToAllPrefixFiltered(client) {
-  // region stream-prefix-filtered-subscription
-  const prefixes = ["test-", "other-"];
-  const subscription = client
-    .subscribeToStream({
-      fromRevision: END,
-      filter: { filterOn: STREAM_NAME, prefixes },
-    })
-    .on("data", handleEvent);
-  // endregion stream-prefix-filtered-subscription
-}
-
-export async function subscribeToAllRegexFiltered(client) {
-  // region stream-regex-filtered-subscription
-  const regex = /invoice-\d\d\d/g;
-  const subscription = client
-    .subscribeToStream({
-      filter: { filterOn: STREAM_NAME, regex },
-    })
-    .on("data", handleEvent);
-  // endregion stream-regex-filtered-subscription
-}
 
 export async function subscribeToAllOverridingUserCredentials(client) {
   // region overriding-user-credentials

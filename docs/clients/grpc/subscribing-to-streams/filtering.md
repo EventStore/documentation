@@ -12,7 +12,16 @@ Server-side filtering introduced as a simpler alternative to projections. Before
 
 There are a number of events in EventStoreDB called system events. These are prefixed with a `$` and under most circumstances you won't care about these. They can be filtered out by passing in a `SubscriptionFilterOptions` when subscribing to the `$all` stream.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#exclude-system
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#exclude-system
+</xode-block>
+</xode-group>
 
 ::: tip
 `$stats` events are no longer stored in EventStoreDB by default so there won't be as many `$` events as before.
@@ -26,7 +35,16 @@ If you only want to subscribe to events of a given type there are two options. Y
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `EventTypeFilter.Prefix`.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#event-type-prefix
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-prefix
+</xode-block>
+</xode-group>
 
 This will only subscribe to events with a type that begin with `customer-`.
 
@@ -34,7 +52,16 @@ This will only subscribe to events with a type that begin with `customer-`.
 
 If you want to subscribe to multiple event types then it might be better to provide a regular expression.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#event-type-regex
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-regex
+</xode-block>
+</xode-group>
 
 This will subscribe to any event that begins with `user` or `company`.
 
@@ -46,7 +73,16 @@ If you only want to subscribe to streams with a given there are two options. You
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `StreamFilter.Prefix`.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#stream-prefix
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-prefix
+</xode-block>
+</xode-group>
 
 This will only subscribe to streams with a name that begin with `user-`.
 
@@ -54,7 +90,16 @@ This will only subscribe to streams with a name that begin with `user-`.
 
 If you want to subscribe to multiple streams then it might be better to provide a regular expression.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#stream-regex
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-regex
+</xode-block>
+</xode-group>
 
 This will subscribe to any stream with a name that begins with `account` or `savings`.
 
@@ -66,11 +111,25 @@ In this case you can make use of an additional delegate that will be triggered e
 
 To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` class.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint
+</xode-block>
+</xode-group>
 
  This will be called every `n` number of events. If you want to be specific about the number of events threshold you can also pass that as a parameter.
 
+<xode-group>
+<xode-block title="C#">
+
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint-with-interval
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#checkpoint-with-interval
+</xode-block>
+</xode-group>
 
 ::: warning
 This number will be called every `n * 32` events.
