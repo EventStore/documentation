@@ -84,8 +84,7 @@ export async function appendWithConcurrencyCheck(client) {
     direction: FORWARD,
   });
   const lastEvent = events[events.length - 1];
-  const revision =
-    !!lastEvent || !!lastEvent.event ? lastEvent.event.revision : undefined;
+  const revision = lastEvent?.event?.revision;
 
   const clientOneEvent = jsonEvent({
     id: uuid(),

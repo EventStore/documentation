@@ -8,11 +8,11 @@ import { v4 as uuid } from "uuid";
 
 export default function (router) {
   router.get("/", async function (req, res, next) {
-    // #region createClient
+    // region createClient
     const client = EventStoreDBClient.connectionString("{connectionString}");
-    // #endregion createClient
+    // endregion createClient
 
-    // #region createEvent
+    // region createEvent
     const event = jsonEvent({
       eventType: "TestEvent",
       payload: {
@@ -20,21 +20,21 @@ export default function (router) {
         importantData: "I wrote my first event!",
       },
     });
-    // #endregion createEvent
+    // endregion createEvent
 
     const expectedRevision = 20;
-    // #region appendEvents
+    // region appendEvents
     await client.appendToStream("some-stream", event, {
       expectedRevision,
     });
-    // #endregion appendEvents
+    // endregion appendEvents
 
-    // #region readStream
+    // region readStream
     const events = await client.readStream("some-stream", 10, {
       fromRevision: START,
       direction: FORWARD,
     });
-    // #endregion readStream
+    // endregion readStream
 
     res.render("index", events);
   });
