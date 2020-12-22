@@ -6,6 +6,10 @@ You provide an event handler and an optional starting point to the subscription.
 
 If events already exist, the handler will be called for each event one by one until it reaches the end of the stream. From there, the server will notify the handler whenever a new event appears.
 
+:::tip
+Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to know how to configure and use the client SDK.
+:::
+
 ## Subscribing to a stream
 
 The simplest stream subscription looks like the following :
