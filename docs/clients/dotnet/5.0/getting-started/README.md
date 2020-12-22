@@ -21,7 +21,7 @@ Then run the command.
 docker-compose up
 ```
 
-This will launch a new instance of the EventStoreDb server.
+This will launch a new instance of the EventStoreDB server.
 
 ## Connect to EventStoreDB
 
