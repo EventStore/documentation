@@ -112,7 +112,7 @@ You need to add the certificate thumbprint setting on Windows so the server can 
 
 ## TCP protocol security
 
-Although TCP is disabled by default for external connections (clients), cluster nodes still use TCP for replication. If you aren't running EventStoreDb in insecure mode, all TCP communication will use TLS using the same certificates as SSL.
+Although TCP is disabled by default for external connections (clients), cluster nodes still use TCP for replication. If you aren't running EventStoreDB in insecure mode, all TCP communication will use TLS using the same certificates as SSL.
 
 You can, however, disable TLS for both internal and external TCP.
 
