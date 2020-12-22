@@ -100,6 +100,18 @@ export async function subscribeToAllLive(client) {
   // endregion subscribe-to-all-live
 }
 
+export async function subscribeToAllFilteringByStreamPrefix(client) {
+  // region stream-prefix-filtered-subscription
+  const prefixes = ["test-", "other-"];
+  const filter = { filterOn: STREAM_NAME, prefixes };
+  const subscription = client
+    .subscribeToAll({
+      filter,
+    })
+    .on("data", handleEvent);
+  // endregion stream-prefix-filtered-subscription
+}
+
 // 			#region subscribe-to-all-subscription-dropped
 
 // 			var checkpoint = Position.Start;
