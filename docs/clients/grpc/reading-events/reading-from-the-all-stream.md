@@ -4,7 +4,7 @@ Reading from the all stream is similar to reading from an individual stream but 
 
 ## Reading forwards
 
-The simplest way to read the `$all` stream forwards is to supply a direction and transaction log position to start from. This can either be a `Position.Start` or a `ulong`:
+The simplest way to read the `$all` stream forwards is to supply a direction and transaction log position to start from. This can either be a *stream position* `Start` or a `ulong`:
 
 <xode-group>
 <xode-block title="C#">
@@ -43,7 +43,7 @@ When using projections to create new events you can set whether the generated ev
 <xode-group>
 <xode-block title="C#">
 
-<!--TODO -->
+<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#read-from-all-stream-resolving-link-Tos
 
 </xode-block>
 <xode-block title="NodeJS">
@@ -54,15 +54,25 @@ When using projections to create new events you can set whether the generated ev
 
 ### configureOperationOptions
 
-This argument is generic setting class for all operations that can be set on all operations executed against EventStoreDB. To find out more see [here]().
+This argument is generic setting class for all operations that can be set on all operations executed against EventStoreDB.
 
 ### userCredentials
-The credentials used to read the data can be supplied. Please see [here](authentication/authenticating-with-username-password.html).
- for more information.
+The credentials used to read the data can be supplied. to be used by the subscription as follows. This will override the default credentials set on the connection.
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#read-all-overriding-user-credentials
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-all-overriding-user-credentials
+</xode-block>
+</xode-group>
  
 ## Reading backwards
 
-As well as being able to read a stream forwards you can also go backwards. When reading backwards is the the `Position` will have to be set to the end if you want to read all the events:
+As well as being able to read a stream forwards you can also go backwards. When reading backwards is the *position* will have to be set to the end if you want to read all the events:
 
 <xode-group>
 <xode-block title="C#">

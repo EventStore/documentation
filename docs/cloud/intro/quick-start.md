@@ -6,7 +6,7 @@ Follow the steps in this guide to get access to the EventStoreDB Cloud console, 
 
 EventStoreDB offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
 
-To get an account, proceed to the [Cloud console](https://discuss.eventstore.com)  where you'll the the login screen. There you get an option to sign up:
+To get an account, proceed to the [Cloud console](https://discuss.eventstore.com)  where you'll the login screen. There you get an option to sign up:
 
 ::: card 
 ![Sign up screen](./images/discuss-signup.png)

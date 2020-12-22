@@ -62,6 +62,22 @@ export async function readFromStreamPositionCheck(client) {
   return events;
 }
 
+export async function readFromStreamOverridingCredentials(client) {
+  // region overriding-user-credentials
+  const credentials = {
+    username: "admin",
+    password: "changeit",
+  };
+  const events = await client.readStream("some-stream", 10, {
+    direction: FORWARD,
+    fromRevision: START,
+    credentials,
+  });
+  // endregion overriding-user-credentials
+
+  return events;
+}
+
 export async function readFromStreamBackwards(client) {
   // region reading-backwards
   const events = await client.readStream("some-stream", 10, {
@@ -125,6 +141,22 @@ export async function readFromAllStreamBackwards(client) {
     console.log(resolvedEvent.event.data);
   }
   // #endregion read-from-all-stream-iterate
+
+  return events;
+}
+
+export async function readFromAllOverridingCredentials(client) {
+  // region read-all-overriding-user-credentials
+  const credentials = {
+    username: "admin",
+    password: "changeit",
+  };
+  const events = await client.readAll(10, {
+    direction: FORWARD,
+    fromPosition: START,
+    credentials,
+  });
+  // endregion read-all-overriding-user-credentials
 
   return events;
 }

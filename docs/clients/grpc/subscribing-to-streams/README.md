@@ -7,7 +7,7 @@ You provide an event handler and an optional starting point to the subscription.
 If events already exist, the handler will be called for each event one by one until it reaches the end of the stream. From there, the server will notify the handler whenever a new event appears.
 
 :::tip
-Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to know how to configure and use the client SDK.
+Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to learn how to configure and use the client SDK.
 :::
 
 ## Subscribing to a stream
@@ -57,7 +57,7 @@ The positions provided to the subscriptions are exclusive. You will only receive
 
 ### Subscribing to a stream
 
-To subscribe to a stream from a specific position, you need to provide a `StreamPosition`. This can be `StreamPosition.Start`, `StreamPosition.End` or a position provided by `StreamPosition.FromInt64`.
+To subscribe to a stream from a specific position, you need to provide a *stream position*. This can be `Start`, `End` or a `ulong` position.
 
 The following subscribes to the stream "some-stream" at position 20, this means that events 21 and onward will be handled:
 
@@ -74,7 +74,7 @@ The following subscribes to the stream "some-stream" at position 20, this means 
 
 ### Subscribing to $all
 
-Subscribing to $all is much like subscribing to a stream, but you need to provide a `Position` instead. This can be `Position.Start`, `Position.End` or a `Position` created from a commit and prepare position.
+Subscribing to $all is much like subscribing to a stream, but you need to provide a `Position` instead. This can be `Start`, `End` or a `Position` created from a commit and prepare position.
 
 The corresponding `$all` subscription will subscribe from the event after the one at commit position `1056` and prepare position `1056`.
 
@@ -167,7 +167,9 @@ You can start from where you left off by keeping a record of the last processed 
 </xode-block>
 <xode-block title="NodeJS">
 
-<!--TODO -->
+```
+// TODO
+```
 </xode-block>
 </xode-group>
 
@@ -180,7 +182,9 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 </xode-block>
 <xode-block title="NodeJS">
 
-<!--TODO -->
+```
+// TODO
+```
 </xode-block>
 </xode-group>
 

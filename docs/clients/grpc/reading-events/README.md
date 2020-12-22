@@ -7,5 +7,5 @@ All events in EventStoreDB belong to an individual stream name. When reading eve
 All events have a `StreamPosition`, which is the place of the event in the stream, represented by a `ulong` and a `Position` that is the events logical position that is represented by `CommitPosition` and a `PreparePosition`. This means that when reading events you have to supply a different "position" depending on if you are reading from a stream or the `$all` stream.
 
 :::tip
-Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to know how to configure and use the client SDK.
+Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to learn how to configure and use the client SDK.
 :::
