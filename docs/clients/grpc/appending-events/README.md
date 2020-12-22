@@ -1,7 +1,7 @@
 # Writing Events
 
 :::tip
-Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to know how to configure and use the client SDK.
+Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to learn how to configure and use the client SDK.
 :::
 
 The simplest way to write an event to EventStoreDB is to create an `EventData` object and call `AppendToStream` method.

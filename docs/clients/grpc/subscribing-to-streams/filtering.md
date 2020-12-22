@@ -116,6 +116,12 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint
 </xode-block>
+<xode-block title="NodeJS">
+
+```
+// TODO
+```
+</xode-block>
 </xode-group>
 
  This will be called every `n` number of events. If you want to be specific about the number of events threshold you can also pass that as a parameter.
