@@ -1,21 +1,26 @@
 using System;
+using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using EventStore.Client;
 using GrpcDocs.Contracts;
 
-namespace GrpcDocs {
-    public class Producer {
-        protected async Task ExecuteAsync(CancellationToken cancellationToken) {
+namespace GrpcDocs
+{
+    public class Producer
+    {
+        protected async Task ExecuteAsync(CancellationToken cancellationToken)
+        {
             #region createClient
             var settings = EventStoreClientSettings
                 .Create("{connectionString}");
-            var client   = new EventStoreClient(settings);
+            var client = new EventStoreClient(settings);
             #endregion createClient
 
             #region createEvent
-            var evt = new TestEvent {
+            var evt = new TestEvent
+            {
                 EntityId = Guid.NewGuid().ToString("N"),
                 ImportantData = "I wrote my first event!"
             };
@@ -27,14 +32,14 @@ namespace GrpcDocs {
             );
             #endregion createEvent
 
-            #region writingEvent
+            #region appendEvents
             await client.AppendToStreamAsync(
-                "testStream",
+                "some-stream",
                 StreamState.Any,
-                new[] {eventData},
+                new[] { eventData },
                 cancellationToken: cancellationToken
             );
-            #endregion writingEvent
+            #endregion appendEvents
         }
     }
 }
