@@ -83,20 +83,16 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 Each event in the database has its own unique identifier (UUID). The database uses it to ensure idempotent writes, but it only works if you specify the stream revision when appending events to the stream.
 
-In the snippet below, we append the event to the stream `testStream`.
+In the snippet below, we append the event to the stream `some-stream`.
 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#writingEvent
+<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#appendEvents
 </xode-block>
 <xode-block title="NodeJS">
 
-```javascript
-const writeResult = await writeEventsToStream("testStream")
-    .send(event)
-    .execute(connection);
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#appendEvents
 </xode-block>
 </xode-group>
 
@@ -104,25 +100,16 @@ Here we are writing events without checking if the stream exists or if the strea
 
 ## Reading events
 
-Finally, we can read events back from the `testStream` stream.
+Finally, we can read events back from the `some-stream` stream.
 
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-var result = client.ReadStreamAsync(Direction.Forwards, "testStream", StreamPosition.Start);
-var events = await result.ToListAsync(cancellationToken);
-```
+<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#readStream
 </xode-block>
 <xode-block title="NodeJS">
 
-```javascript
-const events = await readEventsFromStream("testStream")
-    .fromStart()
-    .forward()
-    .count(10)
-    .execute(connection);
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#readStream
 </xode-block>
 </xode-group>
 

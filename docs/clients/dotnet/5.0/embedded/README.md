@@ -61,7 +61,7 @@ using var embeddedConn = EmbeddedEventStoreConnection.Create(node);
 
 await embeddedConn.ConnectAsync();
 await embeddedConn.AppendToStreamAsync(
-    "testStream", 
+    "some-stream", 
     ExpectedVersion.Any,
     new EventData(Guid.NewGuid(), "eventType", true,
     Encoding.UTF8.GetBytes("{\"Foo\":\"Bar\"}"), null)

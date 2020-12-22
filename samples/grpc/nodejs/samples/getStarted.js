@@ -25,18 +25,19 @@ export default function (router) {
     });
     // #endregion createEvent
 
-    // #region writeEvents
+    const expectedRevision = 20;
+    // #region appendEvents
     await client.appendToStream("some-stream", event, {
       expectedRevision,
     });
-    // #endregion writeEvents
+    // #endregion appendEvents
 
-    // #region readEvents
+    // #region readStream
     const events = await client.readStream("some-stream", 10, {
       fromRevision: START,
       direction: FORWARD,
     });
-    // #endregion readEvents
+    // #endregion readStream
 
     res.render("index", events);
   });
