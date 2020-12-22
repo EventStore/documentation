@@ -31,8 +31,8 @@ export default function (router) {
 
     // region readStream
     const events = await client.readStream("some-stream", 10, {
-      fromRevision: START,
       direction: FORWARD,
+      fromRevision: START,
     });
     // endregion readStream
 

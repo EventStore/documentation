@@ -1,11 +1,10 @@
 # Writing Events
 
 :::tip
-Packages needed:
-- `EventStore.Client.Grpc.Streams`   
+Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to know how to configure and use the client SDK.
 :::
 
-The simplest way to write an event to EventStoreDb is to create an `EventData` object and call `AppendToStreamAsync()`
+The simplest way to write an event to EventStoreDb is to create an `EventData` object and call `AppendToStream` method.
 
 <xode-group>
 <xode-block title="C#">
@@ -18,7 +17,7 @@ The simplest way to write an event to EventStoreDb is to create an `EventData` o
 </xode-block>
 </xode-group>
 
-As you can see `AppendToStreamAsync()` a `IEnumerable<EventData>` so it is also possible to provide a collection of events to be saved in a single batch. 
+As you can see `AppendToStream` method allows takes a collection of `EventData`, which makes possible saving more than one event in a single batch.
  
 As well as the example above there is also a number of other options for dealing with different scenarios. 
 
