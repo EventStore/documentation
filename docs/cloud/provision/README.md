@@ -11,4 +11,4 @@ The provisioning process consists of the following steps:
 Find the detailed guideline for your cloud provider:
 - [Amazon Web Services (AWS)](aws)
 - [Google Cloud Platform (GCP)](gcp)
-- Microsoft Azure (documentation is in progress)
+- [Microsoft Azure](azure)

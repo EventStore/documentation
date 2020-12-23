@@ -86,6 +86,19 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 
 - [Amazon Web Services (AWS)](../provision/aws)
 - [Google Cloud Platform (GCP)](../provision/gcp)
-- Microsoft Azure (documentation is work in progress)
+- [Microsoft Azure](../provision/azure)
+
+## Events and notifications
+
+On the Event Console, you will find messages about issues with your provisioned resources in the `Issues` section, and errors that happened during provisioning in the `Notifications` section.
+
+For example, if the network peering failed, you can discover potential causes of the failure in the `Notifications` section of the Event Console:
+
+::: card
+![Notifications](./images/event-console.png)
+:::
+
+
+
 
 
