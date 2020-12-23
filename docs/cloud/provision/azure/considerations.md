@@ -1,6 +1,6 @@
 # Considerations for Microsoft Azure
 
-Due to limitations in Microsoft Azure itself, the provisioning process in Event Store Cloud is different from AWS and GCP. Event Store Cloud also has certain limitations when it comes to Azure, which you can also find on this page.
+Due to differences between Microsoft Azure and other cloud providers, the provisioning process in Event Store Cloud is different from AWS and GCP. Event Store Cloud also has certain limitations when it comes to Azure, which you can also find on this page.
 
 ## Network peering
 
