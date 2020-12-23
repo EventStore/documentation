@@ -52,30 +52,28 @@ When you click on the button, you get to the cluster creation form.
 On the first part of the form you need to specify the new cluster name, the cloud provider (AWS) and the EventStoreDB version (currently it's only 20.6). Further, you need to choose the deployment size (single instance or three-node cluster) and whether to start server-side projections by default.
 
 ::: card
-
 ![AWS cluster first part](./images/aws-new-cluster-1.png)
-
 :::
 
 ::: warning Projections impact performance
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/5.0.8/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two other sizes - `C4` and `M4` are production-grade.
+The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Other instance sizes are production-grade.
 
-Moving forward, EventStoreDB Cloud would have more instance sizes available.
+::: tip Vertical scaling
+At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
+:::
 
 ::: card
-
 ![AWS cluster second part](./images/aws-new-cluster-2.png)
-
 :::
 
 Further, you need to specify the storage capacity. One one disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
 Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
-The screenshot above shows that we do not calculate the cluster price just yet, it will be available in a short while. Please consult the pricing schedule that we make available to all onboarded customers for more details.
+You will get the monthly price for the selected cluster size down below in the form.
 
 Finally, when you click on `Create cluster`, the provisioning process starts and you will get a new cluster available after a few minutes.
 
@@ -90,9 +88,7 @@ Currently, you can peer one Event Store Cloud network with only one AWS VPC on y
 For this example, we'll use a VPC in AWS in the same region (`eu-central-1`).
 
 ::: card
-
 ![AWS VPC details](./images/aws-vpc.png)
-
 :::
 
 The network page provide us enough details to start the peering process. In EventStoreDB Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
@@ -100,9 +96,7 @@ The network page provide us enough details to start the peering process. In Even
 Then, give the new peering a name and select the network created earlier.
 
 ::: card
-
 ![AWS peering - first](./images/aws-peering-1.png) 
-
 :::
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
@@ -117,9 +111,7 @@ Then, you'd need to fill out the remaining fields, using the information from AW
 For our example, here is the complete form:
 
 ::: card
-
 ![AWS peering - complete form](./images/aws-peering-2.png)
-
 :::
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`. If the status doesn't change after 10 minutes, delete the peering and try again, ensuring the details were entered correctly. Mismatching network region and address range are most common reasons for the peering to not being provisioned properly.
@@ -127,9 +119,7 @@ When you click on the `Create peering` button, you'll be redirected to the peeri
 When the peering is initiated, get back to AWS console and navigate to `Virtual Private Cloud` - `Peering Connections list`. There, you will see the incoming peering request.
 
 ::: card
-
 ![Incoming peering request](./images/aws-peering-3.png)
-
 :::
 
 Select the pending peering and click on `Actions` - `Accept request`. Validate the request details and ensure that all the details match the peering, which you can see in EventStoreDB Cloud console. If everything is correct, click on the `Yes, Accept` button. After you get a confirmation, you will see the peering in AWS console to become `Active`. Now, you can get back to EventStoreDB Cloud console, refresh the peering list to ensure that the pending record also changed its status to `Active`.
@@ -139,17 +129,17 @@ Now, although both networks are now connected, AWS doesn't create proper routes 
 Click on `Edit routes` and then `Add route`. In the `Destination`, enter the CIDR of the EventStoreDB Cloud network. For the `Target`, choose the `Peering Connection` option.
 
 ::: card
-
 ![AWS route](./images/aws-network-route.png)
-
 :::
 
 The list of available peering connections will pop up. Select the recently created peering from the list and click on `Save routes`. The route table would then look like shown on the screenshot below.
 
 ::: card
-
 ![AWS route complete](./images/aws-network-route-done.png)
+:::
 
+::: tip Peering issues
+You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the [Event Console](docs/cloud/intro/quick-start.md#events-and-notifications) in Event Store Cloud.
 :::
 
 At this moment, you should be able to connect to the EventStoreDB cluster in the cloud from any VM, which is connected to your AWS VPC network.

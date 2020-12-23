@@ -59,19 +59,21 @@ On the first part of the form you need to specify the new cluster name, the clou
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/5.0.8/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two other sizes - `C4` and `M4` are production-grade.
+The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two instance sizes are production-grade.
 
-Moving forward, EventStoreDB Cloud would have more instance sizes available.
+::: tip Vertical scaling
+At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
+:::
 
 ::: card 
 ![GCP cluster second part](./images/gcp-new-cluster-2.png)
 :::
 
-Further, you need to specify the storage capacity. One one disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
 Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
-The screenshot above shows that we do not calculate the cluster price just yet, it will be available in a short while. Please consult the pricing schedule that we make available to all onboarded customers for more details.
+You will get the monthly price for the selected cluster size down below in the form.
 
 Finally, when you click on `Create cluster`, the provisioning process starts and you will get a new cluster available after a few minutes.
 
@@ -132,6 +134,10 @@ Here is how our example GCP peering form would look like:
 :::
 
 Click the `Create` button and when in the `VPC network peering` list, click `Refresh` until the peering status changes to `Active`. The peering status in EventStoreDB Cloud console should also change to `Active`.
+
+::: tip Peering issues
+You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the `Event Console` in Event Store Cloud. 
+:::
 
 At this moment, you should be able to connect to the EventStoreDB cluster in the cloud from any VM, which is connected to your GCP VPC network.
 

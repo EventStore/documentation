@@ -112,6 +112,8 @@ module.exports = {
                         "/cloud/provision/",
                         "/cloud/provision/aws/",
                         "/cloud/provision/gcp/",
+                        "/cloud/provision/azure/",
+                        "/cloud/provision/azure/considerations.md",
                     ]
                 },
                 {
