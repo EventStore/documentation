@@ -139,7 +139,7 @@ The list of available peering connections will pop up. Select the recently creat
 :::
 
 ::: tip Peering issues
-You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the `Event Console` in Event Store Cloud.
+You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the [Event Console](docs/cloud/intro/quick-start.md#events-and-notifications) in Event Store Cloud.
 :::
 
 At this moment, you should be able to connect to the EventStoreDB cluster in the cloud from any VM, which is connected to your AWS VPC network.
