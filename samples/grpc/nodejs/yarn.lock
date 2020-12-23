@@ -39,13 +39,14 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@eventstore/db-client@0.0.0-alpha.10":
-  version "0.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-0.0.0-alpha.10.tgz#334b82d2de93e9a6301a6e8fc49799c310fb010e"
-  integrity sha512-4LXFB+jQ/Efy2/R/w1uiUYGFuozUWWeKXtI4ap88BiWu5EoKgPrJqeV0WcIC4xnxW0BdUjB1JxJsB6/qK9qFfA==
+"@eventstore/db-client@0.0.0-alpha.11":
+  version "0.0.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-0.0.0-alpha.11.tgz#ff8e4f234d8222de4bf145e86f71f5aa8484b2b1"
+  integrity sha512-lv+PpwymZN+zAxqjVcTDc519o9kepF7+f+1kiZeKF1/HbPuxwlD+tQLyX/tukOC+feG6ZOnLOG5q1vKP3RaRug==
   dependencies:
     "@grpc/grpc-js" "^1.1.5"
     "@types/debug" "^4.1.5"
+    "@types/node" "^12.12.47"
     debug "^4.2.0"
     google-protobuf "^3.13.0"
     uuid "^8.2.0"
