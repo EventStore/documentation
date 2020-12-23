@@ -3,7 +3,7 @@
 For Microsoft Azure customers, EventStoreDB Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure lowest latency.
 
 ::: warning Azure considerations
-Microsoft Azure has a few limitations and drawbacks that you need to consider when using Event Store Cloud with Azure. We listed all currently known issues and limitations on a [separate page](./considerations.md). Please ensure you are aware of it before starting to use EventStoreDB in Azure.
+Microsoft Azure has a few differences that you need to consider when using Event Store Cloud with Azure. We listed all currently known limitations on a [separate page](./considerations.md). Please ensure you are aware of it before starting to use EventStoreDB in Azure.
 :::
 
 Pre-requisites:

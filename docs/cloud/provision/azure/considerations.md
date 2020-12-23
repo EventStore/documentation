@@ -12,7 +12,7 @@ Currently, it is impossible to expand disks on EventStoreDB cloud nodes provisio
 
 We advise to choose the disk size accordingly from the start, so the volume size will accommodate the growth of your data over time. Another workaround would be to backup an existing cluster and restore the data to a new cluster with larger disks.
 
-Keep in mind that Azure Premium SSD volumes have severe IOPS limit and this limit depends on the volume size. Very small volumes do not provide enough throughput for most of production scenarios. Consider using at least 246 GiB disks (`P15`) to get enough IOPS for the database. You can check the current throughput limits for Azure Premium SSD volumes in [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types#premium-ssd).
+Keep in mind that Azure Premium SSD volumes have severe IOPS limit and this limit depends on the volume size. Very small volumes do not provide enough throughput for most of production scenarios. Consider using at least 246 GiB disks to get enough IOPS for the database. You can check the current throughput limits for Azure Premium SSD volumes in [Azure documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/disks-types#premium-ssd).
 
 ## Resource provisioning
 
@@ -28,4 +28,4 @@ Many Azure regions do not have the minimum number of availability zones required
 
 Prices for compute resources (virtual machines) in Azure are generally higher, compared with AWS and GCP. Therefore, you will find that managed EventStoreDB deployments in Azure are more expensive.
 
-In particular, the `F1` instance size in Azure is much more expensive than the same size in AWS and GCP. It's because we require at least two CPU cores and the smallest suitable instance size in Azure is `B2s`.
+In particular, the `F1` instance size in Azure is much more expensive than the same size in AWS and GCP. It's because we require at least two CPU cores and the smallest suitable instance size in Azure is significantly more expensive, compared to other cloud providers.
