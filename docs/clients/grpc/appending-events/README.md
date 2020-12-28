@@ -60,7 +60,7 @@ It is common to see the explicit event code type name used as the type as it mak
 
 ### data
 
-A byte encoded representation of your event. It is recommended that you store your events as JSON objects as this will allow you to make use of all of EventStoreDB's functionality such as projections. Ultimately though, you can save it using whatever format you like.
+Representation of your event data. It is recommended that you store your events as JSON objects as this will allow you to make use of all of EventStoreDB's functionality such as projections. Ultimately though, you can save it using whatever format you like as eventually, it will be stored as encoded bytes.
 
 ### metadata
 
