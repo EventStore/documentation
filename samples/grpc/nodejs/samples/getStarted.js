@@ -1,7 +1,6 @@
 import {
   EventStoreDBClient,
   jsonEvent,
-  ANY,
   START,
   FORWARD,
 } from "@eventstore/db-client";
@@ -24,9 +23,7 @@ export default function (router) {
     // endregion createEvent
 
     // region appendEvents
-    await client.appendToStream("some-stream", event, {
-      expectedRevision: ANY,
-    });
+    await client.appendToStream("some-stream", event);
     // endregion appendEvents
 
     // region readStream

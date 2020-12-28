@@ -1,10 +1,4 @@
-import {
-  jsonEvent,
-  ANY,
-  NO_STREAM,
-  START,
-  FORWARD,
-} from "@eventstore/db-client";
+import { jsonEvent, NO_STREAM, START, FORWARD } from "@eventstore/db-client";
 import { v4 as uuid } from "uuid";
 
 export async function appendToStream(client) {
@@ -35,14 +29,10 @@ export async function appendWithSameId(client) {
     },
   });
 
-  await client.appendToStream("same-event-stream", event, {
-    expectedRevision: ANY,
-  });
+  await client.appendToStream("same-event-stream", event);
 
   // attempt to append the same event again
-  await client.appendToStream("same-event-stream", event, {
-    expectedRevision: ANY,
-  });
+  await client.appendToStream("same-event-stream", event);
   // endregion append-duplicate-event
 }
 
