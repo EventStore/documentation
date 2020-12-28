@@ -30,7 +30,7 @@
             </el-col>
             <el-col :span="10" class="form-help">
               Enabling projections impacts performance. Read more at the
-              <a target="_blank" href="/server/20.6/server/projections/#performance-impact">Projections</a>
+              <a target="_blank" href="/server/v20/server/projections/#performance-impact">Projections</a>
               documentation page.
             </el-col>
           </el-form-item>

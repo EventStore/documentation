@@ -30,7 +30,7 @@ footer: Copyright © 2020 EventStoreDB Limited
 ### 28 October 2020
 - Many fixes in v5 server documentation.
 - Documentation for v20 server essentially covers everything.
-- <badge>preview</badge> Server configurator for v20 is [available](/server/20.6/server/installation/)!
+- <badge>preview</badge> Server configurator for v20 is [available](/server/v20/server/installation/)!
 
 ### 12 October 2020
 - We have added the initial version of the [Cloud](/cloud/intro/) docs, including detailed instructions for provisioning resources in AWS and GCP.
