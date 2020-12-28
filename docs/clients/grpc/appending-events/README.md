@@ -50,8 +50,6 @@ will result in only a single event being written
 
 ![Duplicate Event](/docs/clients/grpc/appending-events/images/duplicate-event.png)
 
-For most scenarios you can just provide `Uuid.NewUuid()` although there are methods for generating a `Uuid` from other types if you need to change how this `Uuid` is generated
-
 ### type
 
 An event type should be supplied for each event. This is a unique string used to identify the type of event you are saving. 
