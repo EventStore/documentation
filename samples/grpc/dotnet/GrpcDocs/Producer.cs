@@ -40,6 +40,16 @@ namespace GrpcDocs
                 cancellationToken: cancellationToken
             );
             #endregion appendEvents
+            
+            #region overriding-user-credentials
+            await client.AppendToStreamAsync(
+                "some-stream",
+                StreamState.Any,
+                new[] { eventData },
+                userCredentials: new UserCredentials("admin", "changeit"),
+                cancellationToken: cancellationToken
+            );
+            #endregion overriding-user-credentials
         }
     }
 }

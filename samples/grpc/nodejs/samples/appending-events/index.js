@@ -113,3 +113,23 @@ export async function appendWithConcurrencyCheck(client) {
   });
   // endregion append-with-concurrency-check
 }
+
+export async function appendWithNoStreamOverridingCredentials(client) {  
+  const event = jsonEvent({
+    id: uuid(),
+    eventType: "some-event",
+    payload: {
+      id: "1",
+      value: "some value",
+    },
+  });
+  // region overriding-user-credentials
+  const credentials = {
+    username: "admin",
+    password: "changeit",
+  };
+  await client.appendToStream("some-stream", event, {
+    credentials
+  });
+  // endregion overriding-user-credentials
+}
