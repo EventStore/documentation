@@ -4,7 +4,7 @@ Reading from the all stream is similar to reading from an individual stream but 
 
 ## Reading forwards
 
-The simplest way to read the `$all` stream forwards is to supply a direction and transaction log position to start from. This can either be a *stream position* `Start` or a `ulong`:
+The simplest way to read the `$all` stream forwards is to supply a direction and transaction log position to start from. This can either be a *stream position* `Start` or a *big int* (unsigned 64 bit integer):
 
 <xode-group>
 <xode-block title="C#">

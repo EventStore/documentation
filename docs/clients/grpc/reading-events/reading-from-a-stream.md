@@ -4,7 +4,7 @@ When using EventStoreDB it's possible to read events from a given stream.
 
 ## Reading forwards
 
-The simplest way to read a stream forwards is to supply a stream name, direction and revision to start from. This can either be a *stream position* `Start` or a `ulong`:
+The simplest way to read a stream forwards is to supply a stream name, direction and revision to start from. This can either be a *stream position* `Start` or a an *big int* (unsigned 64 bit integer):
 
 <xode-group>
 <xode-block title="C#">
@@ -60,7 +60,7 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 ## Reading from a revision
 
-As well as providing a `StreamPosition` you can also provide a specific stream revision in the form of a `ulong`
+As well as providing a `StreamPosition` you can also provide a specific stream revision in the form of a *big int* (unsigned 64 bit integer).
 
 <xode-group>
 <xode-block title="C#">
