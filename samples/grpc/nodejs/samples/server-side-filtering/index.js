@@ -1,4 +1,8 @@
-import { START, STREAM_NAME, EVENT_TYPE } from "@eventstore/db-client";
+import {
+  START,
+  eventTypeFilter,
+  streamNameFilter,
+} from "@eventstore/db-client";
 
 export async function subscribeToAllExcludeSystemEvents(client) {
   // region exclude-system
@@ -6,7 +10,7 @@ export async function subscribeToAllExcludeSystemEvents(client) {
   const subscription = client
     .subscribeToAll({
       fromRevision: START,
-      filter: { filterOn: EVENT_TYPE, regex: excludeSystemEventsRegex },
+      filter: eventTypeFilter({ regex: excludeSystemEventsRegex }),
     })
     .on("data", function (resolvedEvent) {
       console.log(
@@ -19,7 +23,7 @@ export async function subscribeToAllExcludeSystemEvents(client) {
 export async function subscribeToAllFilteringByEventTypePrefix(client) {
   // region event-type-prefix
   const prefixes = ["customer-"];
-  const filter = { filterOn: EVENT_TYPE, prefixes };
+  const filter = eventTypeFilter({ prefixes });
   // endregion event-type-prefix
   const subscription = client
     .subscribeToAll({
@@ -32,7 +36,7 @@ export async function subscribeToAllFilteringByEventTypePrefix(client) {
 export async function subscribeToAllFilteringByEventTypeRegex(client) {
   // region event-type-regex
   const regex = /^user|^company/;
-  const filter = { filterOn: EVENT_TYPE, regex };
+  const filter = eventTypeFilter({ regex });
   // endregion event-type-regex
   const subscription = client
     .subscribeToAll({
@@ -45,7 +49,7 @@ export async function subscribeToAllFilteringByEventTypeRegex(client) {
 export async function subscribeToAllFilteringByStreamPrefix(client) {
   // region stream-prefix
   const prefixes = ["user-"];
-  const filter = { filterOn: STREAM_NAME, prefixes };
+  const filter = streamNameFilter({ prefixes });
   // endregion stream-prefix
   const subscription = client
     .subscribeToAll({
@@ -58,7 +62,7 @@ export async function subscribeToAllFilteringByStreamPrefix(client) {
 export async function subscribeToAllFilteringByStreamRegex(client) {
   // region stream-regex
   const regex = /^account|^savings/;
-  const filter = { filterOn: STREAM_NAME, regex };
+  const filter = streamNameFilter({ regex });
   // endregion stream-regex
   const subscription = client
     .subscribeToAll({
@@ -92,11 +96,14 @@ export async function subscribeToAllFilteringByStreamRegex(client) {
 export async function subscribeToAllWithCheckpointInterval(client) {
   // region checkpoint-with-interval
   const excludeSystemEventsRegex = /^[^\$].*/;
-  const filter = { filterOn: EVENT_TYPE, checkpointIntervalMul: 1000, regex };
+  const filter = eventTypeFilter({
+    checkpointIntervalMul: 1000,
+    regex: excludeSystemEventsRegex,
+  });
   // endregion checkpoint-with-interval
   const subscription = client
     .subscribeToStream({
-      filter: { filterOn: STREAM_NAME, regex },
+      filter: streamNameFilter({ regex }),
     })
     .on("data", handleEvent);
 }
