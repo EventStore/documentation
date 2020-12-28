@@ -109,4 +109,15 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 TODO
 
 ## User credentials
-The credentials used to append the data can be supplied. Please see [here](/authentication/authenticating-with-username-password.html) for more information.
+You can provide user credentials to be used to append the data as follows. This will override the default credentials set on the connection.
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#overriding-user-credentials
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#overriding-user-credentials
+</xode-block>
+</xode-group>
