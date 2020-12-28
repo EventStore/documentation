@@ -84,6 +84,17 @@ If the certificate file doesn't contain the certificate private key, you need to
 | YAML                 | `CertificatePrivateKeyFile` |
 | Environment variable | `EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE` |
 
+::: warning RSA private key
+EventStoreDB expects the private key to be in RSA format. Check the first line of the key file and ensure that it looks like this:
+```
+-----BEGIN RSA PRIVATE KEY-----
+```
+If you have non-RSA private key, you can use `openssl` to convert it:
+```bash
+openssl rsa -in privkey.pem -out privkeyrsa.pem
+```
+:::
+
 ### Certificate store (Windows)
 
 The certificate store location is the location of the Windows certificate store, for example `CurrentUser`.
