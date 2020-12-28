@@ -57,7 +57,7 @@ The positions provided to the subscriptions are exclusive. You will only receive
 
 ### Subscribing to a stream
 
-To subscribe to a stream from a specific position, you need to provide a *stream position*. This can be `Start`, `End` or a `ulong` position.
+To subscribe to a stream from a specific position, you need to provide a *stream position*. This can be `Start`, `End` or a *big int* (unsigned 64 bit integer) position.
 
 The following subscribes to the stream "some-stream" at position 20, this means that events 21 and onward will be handled:
 
