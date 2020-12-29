@@ -103,8 +103,8 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 </xode-block>
 </xode-group>
 
-## Options
-TODO
+<!-- ## Options
+TODO -->
 
 ## User credentials
 You can provide user credentials to be used to append the data as follows. This will override the default credentials set on the connection.

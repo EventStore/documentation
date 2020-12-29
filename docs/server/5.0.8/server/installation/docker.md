@@ -1,6 +1,6 @@
 # Docker
 
-**TODO: explain more about using Docker and Compose. Volume mappings and other relevant configuration**
+<!-- **TODO: explain more about using Docker and Compose. Volume mappings and other relevant configuration** -->
 
 ## Run with Docker
 

@@ -34,6 +34,6 @@ Persistent subscriptions exist in version 3.2.0 and above of EventStoreDB.
 
 In contrast to volatile and Catch-up types persistent subscriptions are not dropped when connection is closed. Moreover, this subscription type supports the "[competing consumers](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html)" messaging pattern and are useful when you need to distribute messages to many workers. EventStoreDB saves the subscription state server-side and allows for at-least-once delivery guarantees across multiple consumers on the same stream. It is possible to have many groups of consumers compete on the same stream, with each group getting an at-least-once guarantee.
 
-## TODO: Need HTTP API examples for subscriptions with Atom
+<!-- ## TODO: Need HTTP API examples for subscriptions with Atom -->
 
 
