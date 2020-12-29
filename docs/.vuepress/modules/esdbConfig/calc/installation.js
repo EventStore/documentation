@@ -31,10 +31,10 @@ function version(os) {
         case "ubuntu":
             return "=20.10.0"
         case "centos":
-            return "-v20.1-1.el7"
+            return "-v20.10.0-1.x80_64"
         case "amazon":
-            return "-v20.1-1.amzn2"
+            return "-v20.10.0-1.x80_64"
         case "oracle":
-            return "-v20.1-1.ol7"
+            return "-v20.10.0-1.x80_64"
     }
 }
