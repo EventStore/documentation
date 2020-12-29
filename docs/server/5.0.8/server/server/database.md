@@ -109,7 +109,7 @@ With this option enabled, EventStoreDB will still write data to the disk at the 
 ## Minimum flush delay
 
 The minimum flush delay in milliseconds.
-TODO
+<!-- TODO -->
 
 | Format               | Syntax |
 | :------------------- | :----- |
