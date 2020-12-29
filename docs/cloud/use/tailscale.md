@@ -18,7 +18,7 @@ Follow the [installation instructions](https://tailscale.com/kb/1017/install) to
 
 Next, you need to create a small VM in the cloud, connected to the VPC with the EventStoreDB Cloud.
 
-You can choose the smallest available instance size, like `t4g.nano` in AWS or `f1.micro` in GCP. For this guide we use Ubuntu 20.04 LTS image.
+You can choose the smallest available instance size, like `t4g.nano` in AWS, `f1.micro` in GCP, or `Standard B1ls` in Azure. For this guide we use Ubuntu 20.04 LTS image (18.04 LTS in Azure).
 
 When creating the VM, make sure you:
 - Connect the default network interface to the VPC peered with EventStoreDB Cloud
@@ -51,7 +51,7 @@ Remember to create the VM instance in the same region as the VPC, which is peere
 
 When you get the cloud VM instance running, connect to it using SSH. The easiest way is to use the cloud browser console.
 
-After logging in, install the Tailscale client for the Linux distribution used for the cloud VM, following the [Tailscale guidelines](https://tailscale.com/kb/1017/install). [Here (direct link)](https://tailscale.com/kb/1039/install-ubuntu-2004) you can also find required steps for Ubuntu 20.04 LTS (focal) distribution.
+After logging in, install the Tailscale client for the Linux distribution used for the cloud VM, following the [Tailscale guidelines](https://tailscale.com/kb/1017/install). Here you can also find required steps for [Ubuntu 20.04 LTS (focal)]() and [Ubuntu 18.04 LTS (bionic)](https://tailscale.com/download/linux/ubuntu-1804) distributions.
 
 When the initial steps are completed, you should be able to ping the cloud VM using its internal IP address from your local machine.
 

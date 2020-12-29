@@ -50,6 +50,10 @@ When you [delete a stream](../streams/deleting-streams-and-events.md), you can u
 
 You can override this behaviour and tell EventStoreDB that you want to delete all the traces of hard-deleted streams too, using the option specified below. After a scavenge operation runs, all hard-deleted streams will be open for writing new events again.
 
+::: warning Active chunk
+If you hard-delete a stream in the current chunk, it will remain hard-deleted even with this option enabled. It's because the active chunk won't be affected by the scavenge.
+:::
+
 | Format               | Syntax |
 | :------------------- | :----- |
 | Command line         | `--unsafe-ignore-hard-delete` |
@@ -58,6 +62,6 @@ You can override this behaviour and tell EventStoreDB that you want to delete al
 
 **Default**: `false`
 
-::: warning
+::: warning Unsafe
 Setting this option to `true` disables hard deletes and allows clients to write to deleted streams. For that reason, the option is considered unsafe and should be used with caution.
 :::

@@ -28,6 +28,8 @@ After you provision the cloud cluster, you can find connection details for the c
 
 In the cluster details you can find URIs for the EventStoreDB Admin UI and HTTP API, TCP client and gRPC client.
 
-The DNS name of the cluster resolves to IP addresses of all the cluster nodes or to the IP address of a single instance, depending on the deployment topology. When connecting to a multi-node cluster, you'd need to use the DNS-based gossip with the cluster DNS name.
+The DNS name of the cluster resolves to IP addresses of all the cluster nodes or to the IP address of a single instance, depending on the deployment topology. When connecting to a multi-node cluster, you'd need to use the seed-based gossip with all the cluster nodes when using 20.6. 
+
+For 20.6+ gRPC clients, we advise to use the [gRPC connection generator](https://developers.eventstore.com/clients/grpc/getting-started/) page in the documentation where you can use your cloud cluster ID to get a properly composed connection string.
 
 Each cluster node has its own DNS name, which can be used for accessing individual nodes for node-specific operations like stats collection or scavenging.
