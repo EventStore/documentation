@@ -82,7 +82,12 @@ export async function subscribeToAll(client) {
 export async function subscribeToAllFromPosition(client) {
   // region subscribe-to-all-from-position
   const subscription = client
-    .subscribeToAll({ fromRevision: BigInt(1056) })
+    .subscribeToAll({
+      fromPosition: {
+        commit: BigInt(1056),
+        prepare: BigInt(1056),
+      },
+    })
     .on("data", function (resolvedEvent) {
       console.log(
         `Received event ${resolvedEvent.event.revision}@${resolvedEvent.event.streamId}`
@@ -95,7 +100,7 @@ export async function subscribeToAllFromPosition(client) {
 export async function subscribeToAllLive(client) {
   // region subscribe-to-all-live
   const subscription = client
-    .subscribeToAll({ fromRevision: END })
+    .subscribeToAll({ fromPosition: END })
     .on("data", handleEvent);
   // endregion subscribe-to-all-live
 }
