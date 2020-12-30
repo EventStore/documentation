@@ -2,7 +2,7 @@ import {
   EventStoreDBClient,
   jsonEvent,
   START,
-  FORWARD,
+  FORWARDS,
 } from "@eventstore/db-client";
 import { v4 as uuid } from "uuid";
 
@@ -14,8 +14,8 @@ export default function (router) {
 
     // region createEvent
     const event = jsonEvent({
-      eventType: "TestEvent",
-      payload: {
+      type: "TestEvent",
+      data: {
         entityId: uuid(),
         importantData: "I wrote my first event!",
       },
@@ -28,7 +28,7 @@ export default function (router) {
 
     // region readStream
     const events = await client.readStream("some-stream", 10, {
-      direction: FORWARD,
+      direction: FORWARDS,
       fromRevision: START,
     });
     // endregion readStream

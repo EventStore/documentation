@@ -1,12 +1,12 @@
-import { jsonEvent, NO_STREAM, START, FORWARD } from "@eventstore/db-client";
+import { jsonEvent, NO_STREAM, START, FORWARDS } from "@eventstore/db-client";
 import { v4 as uuid } from "uuid";
 
 export async function appendToStream(client) {
   // region append-to-stream
   const event = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "1",
       value: "some value",
     },
@@ -22,8 +22,8 @@ export async function appendWithSameId(client) {
   // region append-duplicate-event
   const event = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "1",
       value: "some value",
     },
@@ -40,8 +40,8 @@ export async function appendWithNoStream(client) {
   // region append-with-no-stream
   const eventOne = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "1",
       value: "some value",
     },
@@ -49,8 +49,8 @@ export async function appendWithNoStream(client) {
 
   const eventTwo = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "2",
       value: "some other value",
     },
@@ -71,15 +71,15 @@ export async function appendWithConcurrencyCheck(client) {
   // region append-with-concurrency-check
   const events = await client.readStream("concurrency-stream", 10, {
     fromRevision: START,
-    direction: FORWARD,
+    direction: FORWARDS,
   });
   const lastEvent = events[events.length - 1];
   const revision = lastEvent?.event?.revision;
 
   const clientOneEvent = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "1",
       value: "some value",
     },
@@ -91,8 +91,8 @@ export async function appendWithConcurrencyCheck(client) {
 
   const clientTwoEvent = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "2",
       value: "some value",
     },
@@ -107,8 +107,8 @@ export async function appendWithConcurrencyCheck(client) {
 export async function appendWithNoStreamOverridingCredentials(client) {
   const event = jsonEvent({
     id: uuid(),
-    eventType: "some-event",
-    payload: {
+    type: "some-event",
+    data: {
       id: "1",
       value: "some value",
     },

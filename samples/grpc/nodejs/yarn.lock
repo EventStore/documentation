@@ -39,19 +39,19 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@eventstore/db-client@0.0.0-alpha.11":
-  version "0.0.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-0.0.0-alpha.11.tgz#ff8e4f234d8222de4bf145e86f71f5aa8484b2b1"
-  integrity sha512-lv+PpwymZN+zAxqjVcTDc519o9kepF7+f+1kiZeKF1/HbPuxwlD+tQLyX/tukOC+feG6ZOnLOG5q1vKP3RaRug==
+"@eventstore/db-client@0.0.0-alpha.12":
+  version "0.0.0-alpha.12"
+  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-0.0.0-alpha.12.tgz#1a8ab115ff7da7f96a2bee259c273b2604ad234c"
+  integrity sha512-7ykLyisEFXYM7p9K4/JqWZDCiCZn9jgp8vaQWfKnE015EQIsGdR4A3TK/kG5qtPpMJK83K9hiqOaHdDjqzIUdA==
   dependencies:
-    "@grpc/grpc-js" "^1.1.5"
+    "@grpc/grpc-js" "^1.2.2"
     "@types/debug" "^4.1.5"
     "@types/node" "^12.12.47"
-    debug "^4.2.0"
-    google-protobuf "^3.13.0"
-    uuid "^8.2.0"
+    debug "^4.3.1"
+    google-protobuf "^3.14.0"
+    uuid "^8.3.2"
 
-"@grpc/grpc-js@^1.1.5":
+"@grpc/grpc-js@^1.2.2":
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.2.2.tgz#ee4a7417fe15a686a8e369c36ec4c80678445c67"
   integrity sha512-iK/T984Ni6VnmlQK/LJdUk+VsXSaYIWkgzJ0LyOcxN2SowAmoRjG28kS7B1ui/q/MAv42iM3051WBt5QorFxmg==
@@ -319,7 +319,7 @@ debug@2.6.9, debug@~2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.0.1, debug@^4.1.1, debug@^4.2.0:
+debug@4, debug@^4.0.1, debug@^4.1.1, debug@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
@@ -689,7 +689,7 @@ google-p12-pem@^3.0.3:
   dependencies:
     node-forge "^0.10.0"
 
-google-protobuf@^3.13.0:
+google-protobuf@^3.14.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/google-protobuf/-/google-protobuf-3.14.0.tgz#20373d22046e63831a5110e11a84f713cc43651e"
   integrity sha512-bwa8dBuMpOxg7COyqkW6muQuvNnWgVN8TX/epDRGW5m0jcrmq2QJyCyiV8ZE2/6LaIIqJtiv9bYokFhfpy/o6w==
@@ -1285,7 +1285,7 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^8.2.0:
+uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==

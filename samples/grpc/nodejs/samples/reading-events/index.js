@@ -1,15 +1,15 @@
 import {
   START,
   END,
-  FORWARD,
-  BACKWARD,
+  FORWARDS,
+  BACKWARDS,
   ErrorType,
 } from "@eventstore/db-client";
 
 export async function readFromStream(client) {
   // region read-from-stream
   const events = await client.readStream("some-stream", 10, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromRevision: START,
   });
   // endregion read-from-stream
@@ -26,7 +26,7 @@ export async function readFromStream(client) {
 export async function readFromStreamPosition(client) {
   // region read-from-stream-position
   const events = await client.readStream("some-stream", 20, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromRevision: BigInt(10),
   });
   // endregion read-from-stream-position
@@ -45,7 +45,7 @@ export async function readFromStreamPositionCheck(client) {
   let events = [];
   try {
     events = await client.readStream("some-stream", 20, {
-      direction: FORWARD,
+      direction: FORWARDS,
       fromRevision: BigInt(10),
     });
   } catch (error) {
@@ -69,7 +69,7 @@ export async function readFromStreamOverridingCredentials(client) {
     password: "changeit",
   };
   const events = await client.readStream("some-stream", 10, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromRevision: START,
     credentials,
   });
@@ -81,7 +81,7 @@ export async function readFromStreamOverridingCredentials(client) {
 export async function readFromStreamBackwards(client) {
   // region reading-backwards
   const events = await client.readStream("some-stream", 10, {
-    direction: BACKWARD,
+    direction: BACKWARDS,
     fromRevision: END,
   });
 
@@ -96,7 +96,7 @@ export async function readFromStreamBackwards(client) {
 export async function readFromAllStream(client) {
   // region read-from-all-stream
   const events = await client.readAll(10, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromPosition: START,
   });
   // endregion read-from-all-stream
@@ -113,15 +113,15 @@ export async function readFromAllStream(client) {
 export async function ignoreSystemEvents(client) {
   // region ignore-system-events
   const events = await client.readAll(10, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromPosition: START,
   });
 
   for (var resolvedEvent of events) {
-    if (resolvedEvent.event.eventType.startsWith("$")) {
+    if (resolvedEvent.event.type.startsWith("$")) {
       continue;
     }
-    console.log(resolvedEvent.event.eventType);
+    console.log(resolvedEvent.event.type);
   }
   // #endregion ignore-system-events
 
@@ -131,7 +131,7 @@ export async function ignoreSystemEvents(client) {
 export async function readFromAllStreamBackwards(client) {
   // region read-from-all-stream-backwards
   const events = await client.readAll(10, {
-    direction: BACKWARD,
+    direction: BACKWARDS,
     fromPosition: END,
   });
   // endregion read-from-all-stream-backwards
@@ -152,7 +152,7 @@ export async function readFromAllOverridingCredentials(client) {
     password: "changeit",
   };
   const events = await client.readAll(10, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromPosition: START,
     credentials,
   });
@@ -164,15 +164,15 @@ export async function readFromAllOverridingCredentials(client) {
 export async function filterOutSystemEvents(client) {
   // region filter-out-system-events
   const events = await client.readAll(10, {
-    direction: FORWARD,
+    direction: FORWARDS,
     fromPosition: START,
   });
 
   for (var resolvedEvent of events) {
-    if (resolvedEvent.event.eventType.startsWith("$")) {
+    if (resolvedEvent.event.type.startsWith("$")) {
       continue;
     }
-    console.log(resolvedEvent.event.eventType);
+    console.log(resolvedEvent.event.type);
   }
   // #endregion filter-out-system-events
 
@@ -182,9 +182,9 @@ export async function filterOutSystemEvents(client) {
 export async function readFromAllStreamResolvingLinkTos(client) {
   // region read-from-all-stream-resolving-link-Tos
   const events = await client.readAll(10, {
-    direction: BACKWARD,
+    direction: BACKWARDS,
     fromPosition: END,
-    resolveLinks: true,
+    resolveLinkTos: true,
   });
   // endregion read-from-all-stream-resolving-link-Tos
 

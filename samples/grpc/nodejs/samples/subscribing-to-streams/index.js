@@ -34,7 +34,7 @@ export async function subscribeToStreamResolvingLinkTos(client) {
   const subscription = client
     .subscribeToStream("$et-myEventType", {
       fromRevision: START,
-      resolveLinks: true,
+      resolveLinkTos: true,
     })
     .on("data", handleEvent);
   // endregion subscribe-to-stream-resolving-linktos
