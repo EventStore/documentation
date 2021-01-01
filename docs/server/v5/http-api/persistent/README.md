@@ -94,7 +94,7 @@ Read [Reading Streams](reading-streams.md) for information on the different embe
 
 ### Response
 
-<<< @/docs/server/5.0.8/http-api/sample-code/persistent-subscriptions/read-stream-response.json
+<<< @/docs//server/v5/http-api/sample-code/persistent-subscriptions/read-stream-response.json
 
 ## Acknowledgements
 
@@ -174,7 +174,7 @@ For example:
 
 ### Response
 
-<<< @/docs/server/5.0.8/http-api/sample-code/persistent-subscriptions/get-all-subscriptions-response.json
+<<< @/docs//server/v5/http-api/sample-code/persistent-subscriptions/get-all-subscriptions-response.json
 
 ## Get subscriptions for a stream
 
@@ -184,7 +184,7 @@ For example:
 
 ### Response
 
-<<< @/docs/server/5.0.8/http-api/sample-code/persistent-subscriptions/get-subscriptions-for-stream-response.json
+<<< @/docs//server/v5/http-api/sample-code/persistent-subscriptions/get-subscriptions-for-stream-response.json
 
 ## Getting a specific subscription
 
@@ -194,7 +194,7 @@ For example:
 
 ### Response
 
-<<< @/docs/server/5.0.8/http-api/sample-code/persistent-subscriptions/get-subscription-response.json
+<<< @/docs//server/v5/http-api/sample-code/persistent-subscriptions/get-subscription-response.json
 
 <!-- TODO: Is this better as a general subscriptions page? -->
 <!-- TODO: Somehow get this better integrated with API docs -->

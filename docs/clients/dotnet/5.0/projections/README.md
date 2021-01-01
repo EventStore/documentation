@@ -122,7 +122,7 @@ You want to define a projection that produces a count per stream for a category,
 
 Below is the projection:
 
-<<< @/docs/server/5.0.8/http-api/sample-code/projections/shopping-cart-counter.js
+<<< @/docs//server/v5/http-api/sample-code/projections/shopping-cart-counter.js
 
 Create the projection with the following request:
 
@@ -136,4 +136,4 @@ Querying for the state of the projection is different due to the partitioning of
 
 The server then returns the state for the partition:
 
-<<< @/docs/server/5.0.8/http-api/sample-code/projections/read-state-partition.json
+<<< @/docs//server/v5/http-api/sample-code/projections/read-state-partition.json
