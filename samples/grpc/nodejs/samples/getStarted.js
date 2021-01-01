@@ -1,20 +1,38 @@
-import {EventStoreConnection, readEventsFromStream} from "@eventstore/db-client";
+import {
+  EventStoreDBClient,
+  jsonEvent,
+  START,
+  FORWARDS,
+} from "@eventstore/db-client";
+import { v4 as uuid } from "uuid";
 
-export default function(router) {
-    router.get('/', async function(req, res, next) {
-// #region createClient
-const client = EventStoreConnection.connectionString("{connectionString}");
-// #endregion createClient
+export default function (router) {
+  router.get("/", async function (req, res, next) {
+    // region createClient
+    const client = EventStoreDBClient.connectionString("{connectionString}");
+    // endregion createClient
 
-        // #region readEvents
-        const events = await readEventsFromStream("testStream")
-            .fromStart()
-            .forward()
-            .count(10)
-            .execute(client);
-        // #endregion readEvents
-
-        res.render('index', { title: 'Express' });
+    // region createEvent
+    const event = jsonEvent({
+      type: "TestEvent",
+      data: {
+        entityId: uuid(),
+        importantData: "I wrote my first event!",
+      },
     });
+    // endregion createEvent
 
+    // region appendEvents
+    await client.appendToStream("some-stream", event);
+    // endregion appendEvents
+
+    // region readStream
+    const events = await client.readStream("some-stream", 10, {
+      direction: FORWARDS,
+      fromRevision: START,
+    });
+    // endregion readStream
+
+    res.render("index", events);
+  });
 }

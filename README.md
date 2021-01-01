@@ -1,6 +1,8 @@
 # EventStoreDB documentation
 
-Next Gen docos using VuePress.
+EventStoreDB is the open-source, functional database with Complex Event Processing in Javascript.
+
+This repository contains documentation for both server and client SDK.
 
 ## Contributing
 
@@ -8,7 +10,15 @@ Feel free to [create a GitHub](https://github.com/EventStore/documentation/issue
 
 We're open for any contribution. If you noticed some inconsistency, missing piece, or you'd like to extend existing docs - we'll be happy to [get your Pull Request](https://github.com/EventStore/documentation/compare).
 
+## Samples
+
+GRPC Clients:
+- C# - [see more](./samples/grpc/dotnet/)
+- NodeJS - [see more](./samples/grpc/nodejs/)
+
 ## Local development
+
+Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 
 ### Prerequisites
 

@@ -64,9 +64,9 @@ module.exports = {
             {
                 text:  "Clients & APIs",
                 items: [
-                    {text: "gRPC clients", link: "/clients/grpc/getting-started/"},
-                    {text: ".NET SDK", items: versioning.linksFor("dotnet-client", "getting-started/")},
-                    {text: "HTTP API", items: versioning.linksFor("http-api")},
+                    {text: "gRPC", link: "/clients/grpc/getting-started/"},
+                    {text: "TCP", items: versioning.linksFor("dotnet-client")},
+                    {text: "HTTP", items: versioning.linksFor("http-api")},
                 ]
             },
             {text: "Cloud", link: "/cloud/"},
@@ -91,6 +91,33 @@ module.exports = {
                     children:    [
                         "/clients/grpc/getting-started/",
                         "/clients/grpc/getting-started/connecting",
+                    ]
+                },
+                {
+                    title: "Writing events",
+                    collapsable: true,
+                    path: "/clients/grpc/appending-events/",
+                    children: [
+                        "/clients/grpc/appending-events/"
+                    ]
+                },
+                {
+                    title: "Reading events",
+                    collapsable: true,
+                    path: "/clients/grpc/reading-events/",
+                    children: [
+                        "/clients/grpc/reading-events/",
+                        "/clients/grpc/reading-events/reading-from-a-stream",
+                        "/clients/grpc/reading-events/reading-from-the-all-stream"
+                    ]
+                },
+                {
+                    title: "Subscribing to streams",
+                    collapsable: true,
+                    path: "/clients/grpc/subscribing-to-streams/",
+                    children: [
+                        "/clients/grpc/subscribing-to-streams/",
+                        "/clients/grpc/subscribing-to-streams/filtering"
                     ]
                 },
             ],

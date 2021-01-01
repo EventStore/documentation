@@ -50,9 +50,7 @@ First thing first, we need a client.
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
-```javascript
-const client = EventStoreConnection.connectionString("{connectionString}");
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
 </xode-block>
 </xode-group>
 
@@ -77,12 +75,7 @@ The code snippet below creates an event object instance, serializes it and puts 
 </xode-block>
 <xode-block title="NodeJS">
 
-```javascript
-const event = EventData.json("TestEvent", {
-    "entityId": uuid().toString(),
-    "importantData": "I wrote my first event!"
-}).build();
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#createEvent
 </xode-block>
 </xode-group>
 
@@ -90,49 +83,34 @@ const event = EventData.json("TestEvent", {
 
 Each event in the database has its own unique identifier (UUID). The database uses it to ensure idempotent writes, but it only works if you specify the stream revision when appending events to the stream.
 
-In the snippet below, we append the event to the stream `testStream`.
+In the snippet below, we append the event to the stream `some-stream`.
 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#writingEvent
+<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#appendEvents
 </xode-block>
 <xode-block title="NodeJS">
 
-```javascript
-const writeResult = await writeEventsToStream("testStream")
-    .send(event)
-    .execute(connection);
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#appendEvents
 </xode-block>
 </xode-group>
 
-Here we are writing events without checking if the stream exists or if the stream version matches the expected event version.
+Here we are writing events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [writing events documentation](../appending-events/README.md).
 
 ## Reading events
 
-Finally, we can read events back from the `testStream` stream.
+Finally, we can read events back from the `some-stream` stream.
 
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-var result = client.ReadStreamAsync(Direction.Forwards, "testStream", StreamPosition.Start);
-var events = await result.ToListAsync(cancellationToken);
-```
+<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#readStream
 </xode-block>
 <xode-block title="NodeJS">
 
-```javascript
-const events = await readEventsFromStream("testStream")
-    .fromStart()
-    .forward()
-    .count(10)
-    .execute(connection);
-```
+<<< @/samples/grpc/nodejs/samples/getStarted.js#readStream
 </xode-block>
 </xode-group>
 
-When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized.
- 
-
+When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized. See more advanced scenarios in [reading events documentation](../reading-events/README.md).
