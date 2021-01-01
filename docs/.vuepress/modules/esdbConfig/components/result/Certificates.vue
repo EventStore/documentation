@@ -6,6 +6,7 @@
         <div v-if="config.publicCa">
           <SingleColumnRow>
             You need a wildcard certificate signed by a public trusted certificate authority (CA).
+            The certificate private key <b>must be in RSA format</b>.
           </SingleColumnRow>
           <SingleColumnRow>
             The certificate needs to have the following attributes:

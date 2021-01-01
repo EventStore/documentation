@@ -1,2 +1,2 @@
 # Redirects from what the browser requests to what we serve
-/latest.html	/server/20.6/server/introduction/	301
+/latest.html	/server/v20/server/introduction/	301

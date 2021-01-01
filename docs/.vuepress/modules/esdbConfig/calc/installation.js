@@ -10,8 +10,7 @@ export default function (os, ent, key) {
     const pkgmgr  = os === "ubuntu" ? "apt" : "yum";
     const safeKey = ent ? key !== "" ? `${key}@` : "<your key>@" : "";
 
-    const installCmd = `curl -s https://${safeKey}packagecloud.io/install/repositories/EventStore/EventStore-${ent ? "Commercial" : "OSS"}
-/script.deb.sh | sudo bash
+    const installCmd = `curl -s https://${safeKey}packagecloud.io/install/repositories/EventStore/EventStore-${ent ? "Commercial" : "OSS"}/script.deb.sh | sudo bash
 sudo ${pkgmgr} install eventstore-${ent ? "commercial" : "oss"}${ver}`;
 
     return {
@@ -30,12 +29,12 @@ sudo ${pkgmgr} install eventstore-${ent ? "commercial" : "oss"}${ver}`;
 function version(os) {
     switch (os) {
         case "ubuntu":
-            return "=20.6.1-2"
+            return "=20.10.0"
         case "centos":
-            return "-20.6.1-1.el7"
+            return "-v20.10.0-1.x80_64"
         case "amazon":
-            return "-20.6.1-1.amzn2"
+            return "-v20.10.0-1.x80_64"
         case "oracle":
-            return "-20.6.1-1.ol7"
+            return "-v20.10.0-1.x80_64"
     }
 }
