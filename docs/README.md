@@ -23,6 +23,15 @@ footer: Copyright © 2020 EventStoreDB Limited
 
 ## Latest updates
 
+### 30 December 2020
+- <badge>preview</badge> Extended [gRPC clients](/clients/grpc/getting-started/) page with documentation and samples for [writing](clients/grpc/appending-events/README.md) and [reading](clients/grpc/reading-events/README.md) events, [subscribing to streams](clients/grpc/subscribing-to-streams/README.md).
+
+### 23 December 2020
+-  Added [Cloud EventStoreDB in Azure](cloud/provision/azure/README.md) documentation.
+ 
+### 19 December 2020
+-  Improve [subscriptions documentation](clients/dotnet/5.0/subscriptions/README.md) documentation.
+
 ### 6 November 2020
 - Fixes for the deployment configurator.
 - <badge>preview</badge> Added the combined [gRPC clients](/clients/grpc/getting-started/) page.
