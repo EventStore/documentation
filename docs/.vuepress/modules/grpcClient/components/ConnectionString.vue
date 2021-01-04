@@ -10,7 +10,7 @@
         >
           <el-col :span="20">
             <el-input
-                    placeholder="Fill out the form above or enter manually"
+                    placeholder="Fill out the form on the connection details page or enter manually"
                     v-model="connectionString"
             />
           </el-col>
