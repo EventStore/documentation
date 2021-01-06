@@ -6,7 +6,7 @@ Follow the steps in this guide to get access to the EventStoreDB Cloud console, 
 
 EventStoreDB offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
 
-To get an account, proceed to the [Cloud console](https://discuss.eventstore.com)  where you'll the login screen. There you get an option to sign up:
+To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/)  where you'll see the login screen. There you get an option to sign up:
 
 ::: card 
 ![Sign up screen](./images/discuss-signup.png)
@@ -26,21 +26,21 @@ With the new account you can login to the [Cloud console](https://console.events
 Since EventStoreDB Cloud is currently in preview, you won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
 :::
 
-In the console, you first get to the list of organisations, which you have access to.
+In the console, you first get to the list of organisations that you have access to.
 
 ::: card 
 ![Cloud organisations](./images/cloud-console-orgs.png)
 :::
 
-You start with an empty list, so you'd need to add an organisation.
+You start with an empty list, so you'll need to add an organisation.
 
 ::: tip
-The Cloud console has the concept of Context. You'd normally be in the organisation context, or in the project context.
+The Cloud console has the concept of Context. You'd normally be in the organisation context or in the project context.
 :::
 
 ## Organisations
 
-With your account, you might have more than one organisation. Each organisation has its own billing account and therefore is invoiced separately for all the resources within the organisation. For example, if you have several customers and want to have separate EventStoreDB cluster for each customer and also be able to bill the customer for the cloud resources, you can separate each customer in its own organisation.
+With your account, you might have more than one organisation. Each organisation has its own billing account and therefore is invoiced separately for all the resources within the organisation. For example, if you have several customers and want to have a separate EventStoreDB cluster for each customer and also be able to bill the customer for the cloud resources, you can separate each customer into its own organisation.
 
 When you click on an organisation in the list, you get to the projects screen, where you can see all the projects for the selected organisation.
 
