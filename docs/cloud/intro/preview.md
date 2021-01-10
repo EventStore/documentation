@@ -4,7 +4,7 @@ EventStoreDB Cloud is currently in Preview. On this page we describe what Previe
 
 ## Why Preview?
 
-At this stage, EventStoreDB Cloud uses the latest available production release of EventStoreDB. It is important to understand that as part of the Preview our customers use the **production** version of our product.
+At this stage, EventStoreDB Cloud uses the latest available production release of EventStoreDB. It is important to understand that as part of the Preview our customers use the **production** version of our underlying database product.
 
 The Preview stage only applies to the managed cloud. We consider it production-ready, but it lacks some important features, which we believe are necessary for the generally available (GA) product.
 
