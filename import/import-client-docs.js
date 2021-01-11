@@ -7,7 +7,7 @@ const exec = require('child_process').exec;
 const del = require('del');
 const log = require('../docs/.vuepress/lib/log');
 
-const repos = require("./repos.json");
+const repos = require('./repos.json');
 
 async function sh(cmd) {
     return new Promise(function (resolve, reject) {
@@ -42,22 +42,26 @@ async function replaceCodePath(mdPath, samplesPath) {
     await sh(replaceCommand);
 }
 
-async function copy(clientRepo, repoLocation, docsLocation, id, tag) {
+async function copy(clientRepo, repoLocation, docsLocation, id, tag, innerPath) {
     log.info(`checking out ${tag}...`);
     await clientRepo.checkout(tag);
 
-    if (fs.existsSync(path.join(repoLocation, 'docs', 'docs'))) {
+    const pathElements = [repoLocation, ...(innerPath || ['docs'])];
+
+    if (fs.existsSync(path.join(...pathElements))) {
         log.info('docs exist, copying...');
 
         const samplesPath = path.join(docsLocation, id, 'samples');
         const destinationPath = path.join(docsLocation, id);
 
-        await fsExtra.copy(path.join(repoLocation, 'docs', 'docs'), destinationPath);
-        await fsExtra.copy(path.join(repoLocation, 'docs', 'samples'), samplesPath);
+        if (fs.existsSync(path.join(...[...pathElements, 'docs']))) {
+            await fsExtra.copy(path.join(...[...pathElements, 'docs']), destinationPath);
+        }
+        await fsExtra.copy(path.join(...[...pathElements, 'samples']), samplesPath);
 
         await replaceCodePath(destinationPath, samplesPath);
 
-        return {path: path.join('generated', id), version: id.substr(1) + " gRPC"};
+        return {path: path.join('generated', id), version: id.substr(1) + ' gRPC'};
     } else {
         log.info('docs not there, skipping');
     }
@@ -93,7 +97,7 @@ async function main() {
             .filter(i => i)
 
         if (deployCurrent) {
-            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch));
+            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch, repo.innerPath));
         }
 
         for (let i = 0; i < tags.length - 1; i++) {
