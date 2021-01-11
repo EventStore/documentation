@@ -54,6 +54,10 @@ First thing first, we need a client.
 
 <<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
 </xode-block>
+<xode-block title="Java" code="connectionString">
+
+<<< @/docs/clients/java/generated/0.5/samples/GetStarted.java#createClient
+</xode-block>
 </xode-group>
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
@@ -79,6 +83,10 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 <<< @/samples/grpc/nodejs/samples/getStarted.js#createEvent
 </xode-block>
+<xode-block title="Java" code="connectionString">
+
+<<< @/docs/clients/java/generated/0.5/samples/GetStarted.java#createEvent
+</xode-block>
 </xode-group>
 
 ## Writing events
@@ -96,6 +104,10 @@ In the snippet below, we append the event to the stream `some-stream`.
 
 <<< @/samples/grpc/nodejs/samples/getStarted.js#appendEvents
 </xode-block>
+<xode-block title="Java" code="connectionString">
+
+<<< @/docs/clients/java/generated/0.5/samples/GetStarted.java#appendEvents
+</xode-block>
 </xode-group>
 
 Here we are writing events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [writing events documentation](../appending-events/README.md).
@@ -112,6 +124,10 @@ Finally, we can read events back from the `some-stream` stream.
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/getStarted.js#readStream
+</xode-block>
+<xode-block title="Java" code="connectionString">
+
+<<< @/docs/clients/java/generated/0.5/samples/GetStarted.java#readStream
 </xode-block>
 </xode-group>
 

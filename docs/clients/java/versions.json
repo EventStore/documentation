@@ -1,0 +1,14 @@
+[
+  {
+    "id": "java-client",
+    "group": "Java SDK",
+    "basePath": "clients/java",
+    "versions": [
+      {
+        "version": "0.5 (Java)",
+        "path": "0.5",
+        "startPage": "getting-started/"
+      }
+    ]
+  }
+]

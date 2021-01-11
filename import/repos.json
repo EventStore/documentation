@@ -5,5 +5,13 @@
     "basePath": "clients/dotnet",
     "currentBranch": "initial-docs",
     "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git"
+  },
+  {
+    "id": "java-client",
+    "group": "Java SDK",
+    "basePath": "clients/java",
+    "innerPath": ["db-client-java","src","test","java","com","eventstore","dbclient"],
+    "currentBranch": "samples",
+    "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git"
   }
 ]
