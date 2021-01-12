@@ -15,6 +15,10 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-stream
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-from-stream
+</xode-block>
 </xode-group>
 
 This will return an enumerable that can be iterated on:
@@ -27,6 +31,10 @@ This will return an enumerable that can be iterated on:
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#iterate-stream
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#iterate-stream
 </xode-block>
 </xode-group>
  
@@ -52,9 +60,13 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 <<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#overriding-user-credentials
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="NodeJS"> 
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#overriding-user-credentials
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#overriding-user-credentials
 </xode-block>
 </xode-group>
 
@@ -71,6 +83,10 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-stream-position
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-from-stream-position
+</xode-block>
 </xode-group>
 
 ## Reading backwards
@@ -85,6 +101,10 @@ As well as being able to read a stream forwards you can also go backwards. When 
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#reading-backwards 
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#reading-backwards
 </xode-block>
 </xode-group>
 
@@ -105,5 +125,9 @@ It is important to check the value of this field before attempting to iterate an
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#checking-for-stream-presence
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
 </xode-block>
 </xode-group>
