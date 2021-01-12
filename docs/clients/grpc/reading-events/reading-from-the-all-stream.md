@@ -2,6 +2,7 @@
 
 Reading from the all stream is similar to reading from an individual stream but with some small differences. Primarily the need to provide an admin user account credentials and that you need to to provide a transaction log position instead of a stream revision.
 
+
 ## Reading forwards
 
 The simplest way to read the `$all` stream forwards is to supply a direction and transaction log position to start from. This can either be a *stream position* `Start` or a *big int* (unsigned 64 bit integer):
@@ -15,6 +16,10 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-from-all-stream
+</xode-block>
 </xode-group>
 
 This will return an AsyncEnumerable that can be iterated on:
@@ -27,6 +32,10 @@ This will return an AsyncEnumerable that can be iterated on:
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-iterate
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-from-all-stream-iterate
 </xode-block>
 </xode-group>
 
@@ -50,6 +59,10 @@ When using projections to create new events you can set whether the generated ev
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-resolving-link-Tos
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-from-all-stream-resolving-link-Tos
+</xode-block>
 </xode-group>
 
 ### configureOperationOptions
@@ -68,6 +81,10 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-all-overriding-user-credentials
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-all-overriding-user-credentials
+</xode-block>
 </xode-group>
  
 ## Reading backwards
@@ -82,6 +99,10 @@ As well as being able to read a stream forwards you can also go backwards. When 
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-backwards 
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#read-from-all-stream-backwards 
 </xode-block>
 </xode-group>
 
@@ -104,7 +125,8 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 
 <<< @/samples/grpc/nodejs/samples/reading-events/index.js#ignore-system-events 
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/reading_events/ReadingEvents.java#ignore-system-events
+</xode-block>
 </xode-group>
- 
-<!--## Understanding the $all stream position
-TODO--!>
