@@ -23,6 +23,10 @@ The simplest stream subscription looks like the following :
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
+</xode-block>
 </xode-group>
 
 The provided handler will be called for every event in the stream.
@@ -39,6 +43,10 @@ Subscribing to `$all` is much the same as subscribing to a single stream. The ha
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-all
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
 </xode-block>
 </xode-group>
 
@@ -70,6 +78,10 @@ The following subscribes to the stream "some-stream" at position 20, this means 
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream-from-position
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
+</xode-block>
 </xode-group>
 
 ### Subscribing to $all
@@ -89,6 +101,10 @@ Please note that this position will need to be a legitimate position in `$all`.
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-all-from-position
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
+</xode-block>
 </xode-group>
 
 ## Subscribing to a stream for live updates
@@ -104,6 +120,10 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream-live
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
+</xode-block>
 </xode-group>
 
 And the same works with `$all` :
@@ -116,6 +136,10 @@ And the same works with `$all` :
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-all-live
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
 </xode-block>
 </xode-group>
 
@@ -139,6 +163,10 @@ When reading a stream you can specify whether to resolve link tos or not. By def
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#subscribe-to-stream-resolving-linktos
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
 </xode-block>
 </xode-group>
 
@@ -171,6 +199,10 @@ You can start from where you left off by keeping a record of the last processed 
 // TODO
 ```
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
+</xode-block>
 </xode-group>
 
 When subscribed to `$all` you want to keep the position of the event in the `$all` stream :
@@ -185,6 +217,10 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 ```
 // TODO
 ```
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
 </xode-block>
 </xode-group>
 
@@ -202,6 +238,10 @@ A simple stream prefix filter looks like this :
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#stream-prefix-filtered-subscription
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
 </xode-block>
 </xode-group>
 
@@ -221,6 +261,10 @@ You can provide user credentials to be used by the subscription as follows. This
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/subscribing-to-streams/index.js#overriding-user-credentials
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
 </xode-block>
 </xode-group>
 
