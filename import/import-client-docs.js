@@ -42,11 +42,11 @@ async function replaceCodePath(mdPath, samplesPath) {
     await sh(replaceCommand);
 }
 
-async function copy(clientRepo, repoLocation, docsLocation, id, tag, innerPath) {
+async function copy(clientRepo, repoLocation, docsLocation, id, tag, relativePath) {
     log.info(`checking out ${tag}...`);
     await clientRepo.checkout(tag);
 
-    const pathElements = [repoLocation, ...(innerPath || ['docs'])];
+    const pathElements = [repoLocation, ...(relativePath || ['docs'])];
 
     if (fs.existsSync(path.join(...pathElements))) {
         log.info('docs exist, copying...');
@@ -97,7 +97,7 @@ async function main() {
             .filter(i => i)
 
         if (deployCurrent) {
-            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch, repo.innerPath));
+            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch, repo.relativePath));
         }
 
         for (let i = 0; i < tags.length - 1; i++) {
