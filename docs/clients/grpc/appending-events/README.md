@@ -15,6 +15,10 @@ The simplest way to write an event to EventStoreDB is to create an `EventData` o
 
 <<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-to-stream
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/appending_events/AppendingEvents.java#append-to-stream
+</xode-block>
 </xode-group>
 
 As you can see `AppendToStream` method allows takes a collection of `EventData`, which makes possible saving more than one event in a single batch.
@@ -43,6 +47,10 @@ For example:
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-duplicate-event
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/appending_events/AppendingEvents.java#append-duplicate-event
 </xode-block>
 </xode-group>
 
@@ -83,6 +91,10 @@ For example if we try and write the same record twice expecting both times that 
 
 <<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-no-stream
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/appending_events/AppendingEvents.java#append-with-no-stream
+</xode-block>
 </xode-group>
 
 There are three available stream states: 
@@ -101,6 +113,10 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 <<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-concurrency-check
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
+</xode-block>
 </xode-group>
 
 <!-- ## Options
@@ -117,5 +133,9 @@ You can provide user credentials to be used to append the data as follows. This 
 <xode-block title="NodeJS">
 
 <<< @/samples/grpc/nodejs/samples/appending-events/index.js#overriding-user-credentials
+</xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.5/samples/appending_events/AppendingEvents.java#overriding-user-credentials
 </xode-block>
 </xode-group>
