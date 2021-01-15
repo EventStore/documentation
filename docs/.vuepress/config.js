@@ -154,6 +154,16 @@ module.exports = {
                         "/cloud/use/",
                         "/cloud/use/tailscale.md"
                     ]
+                }, 
+                {
+                    title:       "Automation",
+                    collapsable: true,
+                    path:        "/cloud/automation/",
+                    children:    [
+                        "/cloud/automation/", 
+                        "/cloud/automation/terraform.md"
+                    ]
+                    
                 }
             ]
         }
