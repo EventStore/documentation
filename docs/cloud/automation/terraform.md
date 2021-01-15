@@ -281,14 +281,3 @@ As well as the input arguments, the following properties are exposed:
   the network in which the cluster is created.
 - `region` (`string`) - the region in which the cluster was provisioned. This is controlled by the network in which
   the cluster is created.
-
-## Contributing
-
-The Event Store Cloud Terraform provider is released under the Mozilla Public License version 2, like most Terraform
-providers. We welcome pull requests and issues! We adhere to the [Contributor Covenant][codeofconduct] Code of Conduct,
-and ask that contributors familiarize themselves with it. We also have a set of [Contributing Guidelines][contributing].
-
-[terraform]: (https://terraform.io)
-[esc]: https://eventstore.com/event-store-cloud/
-[codeofconduct]: https://github.com/EventStore/terraform-provider-eventstorecloud/tree/trunk/CODE-OF-CONDUCT.md
-[contributing]: https://github.com/EventStore/terraform-provider-eventstorecloud/tree/trunk/CONTRIBUTING.md
