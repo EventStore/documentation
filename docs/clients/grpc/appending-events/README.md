@@ -56,7 +56,7 @@ For example:
 
 will result in only a single event being written
 
-![Duplicate Event](/docs/clients/grpc/appending-events/images/duplicate-event.png)
+![Duplicate Event](./images/dupicate-event.png)
 
 ### type
 
