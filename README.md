@@ -31,6 +31,14 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 2. Run `yarn install`
 3. Run `yarn docs:dev`
 
+### Adding new programming language snippets
+
+To add new language snippet it's needed to add import of [Prism.JS](https://prismjs.com/) plugin to [VuePress plugins config](docs/.vuepress/enhanceApp.js), e.g.:
+
+```javascript
+import "prismjs/components/prism-java";
+```
+
 ### Troubleshooting
 
 #### Windows
