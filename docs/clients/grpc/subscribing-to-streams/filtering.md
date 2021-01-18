@@ -23,7 +23,7 @@ There are a number of events in EventStoreDB called system events. These are pre
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
 </xode-block>
 </xode-group>
 
@@ -50,7 +50,7 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
 </xode-block>
 </xode-group>
 
@@ -71,7 +71,7 @@ If you want to subscribe to multiple event types then it might be better to prov
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
 </xode-block>
 </xode-group>
 
@@ -96,7 +96,7 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
 </xode-block>
 </xode-group>
 
@@ -117,7 +117,7 @@ If you want to subscribe to multiple streams then it might be better to provide 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
 </xode-block>
 </xode-group>
 
@@ -144,7 +144,7 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
 </xode-block>
 </xode-group>
 
@@ -161,7 +161,7 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
+<<< @/docs/clients/java/generated/0.6/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
 </xode-block>
 </xode-group>
 

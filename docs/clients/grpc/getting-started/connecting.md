@@ -37,7 +37,7 @@ $ npm install --save @eventstore/db-client
 implementation 'com.eventstore:db-client-java:0.5'
 
 # SBT
-libraryDependencies += "com.eventstore" % "db-client-java" % "0.5"
+libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 </xode-block>
 </xode-group>
@@ -73,7 +73,7 @@ First thing first, we need a client.
 </xode-block>
 <xode-block title="Java" code="connectionString">
 
-<<< @/docs/clients/java/generated/0.5/samples/quick_start/QuickStart.java#createClient
+<<< @/docs/clients/java/generated/0.6/samples/quick_start/QuickStart.java#createClient
 </xode-block>
 </xode-group>
 
@@ -102,7 +102,7 @@ The code snippet below creates an event object instance, serializes it and puts 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/quick_start/QuickStart.java#createEvent
+<<< @/docs/clients/java/generated/0.6/samples/quick_start/QuickStart.java#createEvent
 </xode-block>
 </xode-group>
 
@@ -123,7 +123,7 @@ In the snippet below, we append the event to the stream `some-stream`.
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/quick_start/QuickStart.java#appendEvents
+<<< @/docs/clients/java/generated/0.6/samples/quick_start/QuickStart.java#appendEvents
 </xode-block>
 </xode-group>
 
@@ -144,7 +144,7 @@ Finally, we can read events back from the `some-stream` stream.
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.5/samples/quick_start/QuickStart.java#readStream
+<<< @/docs/clients/java/generated/0.6/samples/quick_start/QuickStart.java#readStream
 </xode-block>
 </xode-group>
 
