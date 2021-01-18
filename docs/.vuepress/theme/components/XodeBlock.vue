@@ -34,7 +34,7 @@ export default {
                 const newNode = {...x};
                 try {
                     if (typeof x.text == "string" && x.text.includes(find)) {
-                        newNode.text = x.text.replaceAll(find, this.content);
+                        newNode.text = x.text.replace(find, this.content);
                     }
                 } catch {
                 }
