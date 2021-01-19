@@ -38,8 +38,8 @@ module.exports = {
         "store/**/*.js"
     ],
     themeConfig:     {
-        logo:                 "/eventstore-logo-alt.svg",
-        gtm:                  "GTM-WLD9W3L",
+        logo: "/eventstore-logo-alt.svg",
+        gtm:  "GTM-WLD9W3L",
         // repo: "EventStore/documentation-next",
         // editLinks: true,
         // editLinkText: "Help us improve this page!",
@@ -96,26 +96,26 @@ module.exports = {
                 {
                     title: "Appending events",
                     collapsable: true,
-                    path: "/clients/grpc/appending-events/",
-                    children: [
+                    path:        "/clients/grpc/appending-events/",
+                    children:    [
                         "/clients/grpc/appending-events/"
                     ]
                 },
                 {
-                    title: "Reading events",
+                    title:       "Reading events",
                     collapsable: true,
-                    path: "/clients/grpc/reading-events/",
-                    children: [
+                    path:        "/clients/grpc/reading-events/",
+                    children:    [
                         "/clients/grpc/reading-events/",
                         "/clients/grpc/reading-events/reading-from-a-stream",
                         "/clients/grpc/reading-events/reading-from-the-all-stream"
                     ]
                 },
                 {
-                    title: "Subscribing to streams",
+                    title:       "Subscribing to streams",
                     collapsable: true,
-                    path: "/clients/grpc/subscribing-to-streams/",
-                    children: [
+                    path:        "/clients/grpc/subscribing-to-streams/",
+                    children:    [
                         "/clients/grpc/subscribing-to-streams/",
                         "/clients/grpc/subscribing-to-streams/filtering"
                     ]

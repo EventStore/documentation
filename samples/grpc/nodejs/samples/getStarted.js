@@ -8,9 +8,10 @@ import { v4 as uuid } from "uuid";
 
 export default function (router) {
   router.get("/", async function (req, res, next) {
-// region createClient
+    // region createClient
     const client = EventStoreDBClient.connectionString("{connectionString}");
-// endregion createClient
+
+    // endregion createClient
 
     // region createEvent
     const event = jsonEvent({
@@ -24,6 +25,7 @@ export default function (router) {
 
     // region appendEvents
     await client.appendToStream("some-stream", event);
+
     // endregion appendEvents
 
     // region readStream

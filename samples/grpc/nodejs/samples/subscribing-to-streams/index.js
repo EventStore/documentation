@@ -76,6 +76,7 @@ export async function subscribeToStreamSubscriptionDropped(client) {
 export async function subscribeToAll(client) {
   // region subscribe-to-all
   const subscription = client.subscribeToAll().on("data", handleEvent);
+  
   // endregion subscribe-to-all
 }
 

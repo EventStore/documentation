@@ -40,6 +40,19 @@ libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 </xode-block>
 </xode-group>
 
+<!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
+
+::: warning Insecure connection with .NET
+When connecting to an insecure EventStoreDB instance, make sure you enable insecure gRPC in the application as described Microsoft [documentation](https://docs.microsoft.com/en-us/aspnet/core/grpc/troubleshoot?view=aspnetcore-5.0#call-insecure-grpc-services-with-net-core-client).
+
+For .NET Core, you need to set the application context switch:
+```csharp
+AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
+```
+
+For .NET 5, you need to manually add a reference to the newer gRPC client package (2.32.0 or later.)
+:::
+
 ::: warning Preview clients
 The following SDKs are currently in preview and can get API changes:
 - NodeJS
@@ -91,7 +104,6 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 <xode-group>
 <xode-block title="C#">
-
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createEvent
 </xode-block>
 <xode-block title="NodeJS">

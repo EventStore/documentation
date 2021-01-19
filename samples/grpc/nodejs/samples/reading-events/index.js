@@ -117,7 +117,7 @@ export async function ignoreSystemEvents(client) {
     fromPosition: START,
   });
 
-  for (var resolvedEvent of events) {
+  for (const resolvedEvent of events) {
     if (resolvedEvent.event.type.startsWith("$")) {
       continue;
     }
@@ -137,7 +137,7 @@ export async function readFromAllStreamBackwards(client) {
   // endregion read-from-all-stream-backwards
 
   // #region read-from-all-stream-iterate
-  for (var resolvedEvent of events) {
+  for (const resolvedEvent of events) {
     console.log(resolvedEvent.event.data);
   }
   // #endregion read-from-all-stream-iterate
@@ -168,7 +168,7 @@ export async function filterOutSystemEvents(client) {
     fromPosition: START,
   });
 
-  for (var resolvedEvent of events) {
+  for (const resolvedEvent of events) {
     if (resolvedEvent.event.type.startsWith("$")) {
       continue;
     }
@@ -189,7 +189,7 @@ export async function readFromAllStreamResolvingLinkTos(client) {
   // endregion read-from-all-stream-resolving-link-Tos
 
   // #region read-from-all-stream-iterate
-  for (var resolvedEvent of events) {
+  for (const resolvedEvent of events) {
     console.log(resolvedEvent.event.data);
   }
   // #endregion read-from-all-stream-iterate

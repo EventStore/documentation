@@ -56,7 +56,9 @@ For example:
 
 will result in only a single event being appended.
 
+::: card
 ![Duplicate Event](./images/dupicate-event.png)
+:::
 
 ### type
 
