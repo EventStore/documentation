@@ -1,6 +1,6 @@
 # Description document
 
-<!-- TODO: Combine with CC pages? -->
+<!-- TODO: Combine with CC pages?  -->
 
 With the addition of Competing Consumers, which is another way of reading streams, the need arose to expose these different methods to consumers.
 

@@ -8,12 +8,10 @@ Install the client SDK package to your project.
 <xode-block title="C#">
 
 ```
-$ dotnet add package EventStore.Client.Grpc.Streams --version 20.6.1
-$ dotnet add package Grpc.Net.Client --version 2.32.0
+$ dotnet add package EventStore.Client.Grpc.Streams --version 20.10
 ```
-<!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="NodeJS" code="connectionString">
 
 ```
 # Yarn
