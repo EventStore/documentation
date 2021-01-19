@@ -42,29 +42,40 @@ async function replaceCodePath(mdPath, samplesPath) {
     await sh(replaceCommand);
 }
 
-async function copy(clientRepo, repoLocation, docsLocation, id, tag, relativePath) {
+async function tryCopy(pathElements, subFolderName, destinationPath) {
+    const sourcePath = path.join(...[...pathElements, subFolderName]);
+
+    if (!fs.existsSync(sourcePath)) {
+        log.info(`${sourcePath} does not exist, skipping...`);
+        return false;
+    }
+        
+    log.info(`${subFolderName}  exist, copying...`);
+
+    await fsExtra.copy(sourcePath, destinationPath);
+
+    return true;
+}
+
+async function copyDocsAndSamples(clientRepo, repoLocation, docsLocation, id, tag, relativePath) {
     log.info(`checking out ${tag}...`);
     await clientRepo.checkout(tag);
 
     const pathElements = [repoLocation, ...(relativePath || ['docs'])];
 
-    if (fs.existsSync(path.join(...pathElements))) {
-        log.info('docs exist, copying...');
+    const samplesDestinationPath = path.join(docsLocation, id, 'samples');
+    const docsDestinationPath = path.join(docsLocation, id);
 
-        const samplesPath = path.join(docsLocation, id, 'samples');
-        const destinationPath = path.join(docsLocation, id);
+    const wereDocsCopied = await tryCopy(pathElements, 'docs', docsDestinationPath);
+    const wereSamplesCopied = await tryCopy(pathElements, 'samples', samplesDestinationPath);
 
-        if (fs.existsSync(path.join(...[...pathElements, 'docs']))) {
-            await fsExtra.copy(path.join(...[...pathElements, 'docs']), destinationPath);
-        }
-        await fsExtra.copy(path.join(...[...pathElements, 'samples']), samplesPath);
-
-        await replaceCodePath(destinationPath, samplesPath);
-
-        return {path: path.join('generated', id), version: id.substr(1) + ' gRPC'};
-    } else {
-        log.info('docs not there, skipping');
+    if (!wereDocsCopied && !wereSamplesCopied) {
+        return;
     }
+    
+    await replaceCodePath(docsDestinationPath, samplesDestinationPath);
+
+    return {path: path.join('generated', id), version: id.substr(1) + ' gRPC'};
 }
 
 async function main() {
@@ -97,11 +108,11 @@ async function main() {
             .filter(i => i)
 
         if (deployCurrent) {
-            definition[0].versions.push(await copy(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch, repo.relativePath));
+            definition[0].versions.push(await copyDocsAndSamples(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch, repo.relativePath));
         }
 
         for (let i = 0; i < tags.length - 1; i++) {
-            const version = await copy(clientRepo, repoLocation, docsLocation, tags[i], tags[i + 1]);
+            const version = await copyDocsAndSamples(clientRepo, repoLocation, docsLocation, tags[i], tags[i + 1]);
 
             if (version !== undefined) {
                 definition[0].versions.push(version);
