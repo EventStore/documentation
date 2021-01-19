@@ -11,7 +11,7 @@
     "group": "Java SDK",
     "basePath": "clients/java",
     "relativePath": ["db-client-java","src","test","java","com","eventstore","dbclient"],
-    "currentBranch": "samples",
+    "currentBranch": "trunk",
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git"
   }
 ]
