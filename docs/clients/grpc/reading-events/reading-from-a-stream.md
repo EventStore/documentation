@@ -58,7 +58,7 @@ The credentials used to read the data can be supplied. to be used by the subscri
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS"> 
 

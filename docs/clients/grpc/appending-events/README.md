@@ -128,7 +128,7 @@ You can provide user credentials to be used to append the data as follows. This 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/writing-events/Program.cs#overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS">
 
