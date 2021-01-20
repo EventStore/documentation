@@ -65,7 +65,7 @@ First thing first, we need a client.
 <xode-group>
 <xode-block title="C#" code="connectionString">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#createClient
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createClient
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
@@ -94,7 +94,7 @@ The code snippet below creates an event object instance, serializes it and puts 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#createEvent
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createEvent
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -115,7 +115,7 @@ In the snippet below, we append the event to the stream `some-stream`.
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Producer.cs#appendEvents
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#appendEvents
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -136,7 +136,7 @@ Finally, we can read events back from the `some-stream` stream.
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#readStream
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#readStream
 </xode-block>
 <xode-block title="NodeJS">
 

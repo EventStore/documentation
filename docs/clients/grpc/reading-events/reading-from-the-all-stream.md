@@ -52,7 +52,7 @@ When using projections to create new events you can set whether the generated ev
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#read-from-all-stream-resolving-link-Tos
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-resolving-link-Tos
 
 </xode-block>
 <xode-block title="NodeJS">
@@ -75,7 +75,7 @@ The credentials used to read the data can be supplied. to be used by the subscri
 <xode-group>
 <xode-block title="C#">
 
-<<< @/samples/grpc/dotnet/GrpcDocs/Consumer.cs#read-all-overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-all-overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS">
 
