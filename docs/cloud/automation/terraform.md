@@ -1,8 +1,8 @@
 # Terraform provider 
 
-# Installation
+## Installation
 
-## Terraform 0.12
+### Terraform 0.12
 
 We provide binary releases for macOS, Windows and Linux via GitHub releases. In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory, the location of which varies by operating system:
 
@@ -24,6 +24,9 @@ development environment.
 Terraform now supports third party modules installed via the plugin registry. Add the following to your terraform module
 configuration.
 
+<xode-group>
+<xode-block title="C#" code="connectionString">
+
 ```
 terraform {
   required_providers {
@@ -34,6 +37,8 @@ terraform {
   }
 }
 ```
+</xode-block>
+</xode-group>
 
 # Provider Configuration
 
