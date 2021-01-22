@@ -9,6 +9,11 @@ Install the client SDK package to your project.
 
 ```
 $ dotnet add package EventStore.Client.Grpc.Streams --version 20.10
+
+<!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
+
+# Add the gRPC Client 2.32+ if you're connecting to an insecure cluster
+$ dotnet add package Grpc.Net.Client --version 2.34.0
 ```
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
@@ -39,19 +44,6 @@ libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 </xode-block>
 </xode-group>
-
-<!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
-
-::: warning Insecure connection with .NET
-When connecting to an insecure EventStoreDB instance, make sure you enable insecure gRPC in the application as described Microsoft [documentation](https://docs.microsoft.com/en-us/aspnet/core/grpc/troubleshoot?view=aspnetcore-5.0#call-insecure-grpc-services-with-net-core-client).
-
-For .NET Core, you need to set the application context switch:
-```csharp
-AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
-```
-
-For .NET 5, you need to manually add a reference to the newer gRPC client package (2.32.0 or later.)
-:::
 
 ::: warning Preview clients
 The following SDKs are currently in preview and can get API changes:
