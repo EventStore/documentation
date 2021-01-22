@@ -7,10 +7,9 @@ Install the client SDK package to your project.
 <xode-group>
 <xode-block title="C#">
 
+<!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
 ```
 $ dotnet add package EventStore.Client.Grpc.Streams --version 20.10
-
-<!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
 
 # Add the gRPC Client 2.32+ if you're connecting to an insecure cluster
 $ dotnet add package Grpc.Net.Client --version 2.34.0

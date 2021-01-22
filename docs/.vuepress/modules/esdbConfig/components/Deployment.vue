@@ -68,10 +68,10 @@
       </el-tab-pane>
 
       <el-tab-pane label="Client connection" name="client" :disabled="!proceed">
-        <Connection/>
+        <Connection>
+          <el-button @click="gotoTab('config')">Back to configuration</el-button>
+        </Connection>
 
-        <br/><br/>
-        <el-button @click="gotoTab('config')">Back to configuration</el-button>
       </el-tab-pane>
     </el-tabs>
   </ClientOnly>

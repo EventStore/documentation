@@ -4,18 +4,12 @@
       <h2>Connecting clients</h2>
 
       <el-radio-group v-model="client">
-        <el-radio-button label="dotnet-tcp" :disabled="!conn.isTcpEnabled">.NET TCP</el-radio-button>
-        <el-radio-button label="dotnet-grpc">.NET gRPC</el-radio-button>
-        <el-radio-button label="nodejs" disabled>NodeJS</el-radio-button>
-        <el-radio-button label="java" disabled>Java</el-radio-button>
-        <el-radio-button label="go" disabled>Go</el-radio-button>
+        <el-radio-button label="tcp" :disabled="!conn.isTcpEnabled">TCP</el-radio-button>
+        <el-radio-button label="grpc">gRPC</el-radio-button>
       </el-radio-group>
 
       <p>Connection string:</p>
       <pre><code>{{ conn.connectionString }}</code></pre>
-
-      <p>Example:</p>
-      <prism language="csharp">{{ conn.example }}</prism>
 
       <div v-show="conn.selfSigned">
         <p>Note:</p>
@@ -24,19 +18,27 @@
           <code>{{ conn.disableValidate }}</code> to the connection string.
         </p>
       </div>
+
+      <slot></slot>
+      <el-button
+              type="primary"
+              @click="gotoClientDocs"
+      >Go to the gRPC clients documentation
+      </el-button>
     </div>
   </ClientOnly>
 </template>
 
 <script>
 import connection from "../../calc/connection";
+import {SubmitCodeBlock} from "../../../../theme/store/mutations";
 
 export default {
-    name:     "Connection",
+    name: "Connection",
     // mixins: []
     data() {
         return {
-            client: "dotnet-grpc"
+            client: "grpc"
         }
     },
     computed: {
@@ -49,5 +51,11 @@ export default {
 
         }
     },
+    methods: {
+        gotoClientDocs() {
+            this.$store.commit(SubmitCodeBlock, {key: "connectionString", value: this.conn.connectionString});
+            this.$router.push("/clients/grpc/getting-started/connecting.html")
+        }
+    }
 }
 </script>

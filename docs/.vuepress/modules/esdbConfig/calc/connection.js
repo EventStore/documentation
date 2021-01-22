@@ -11,22 +11,20 @@ export default function (sdk) {
         : safeJoin(nodes.nodes.map(x => nodeAddress(x, false)));
     const disableValidate = () => {
         switch (sdk) {
-            case "dotnet-tcp":
+            case "tcp":
                 return "ValidateServer=false";
             default:
-                return "&TlsVerifyCert=false";
+                return "&tlsVerifyCert=false";
         }
     };
-    const tcp             = sdk === "dotnet-tcp";
+    const tcp             = sdk === "tcp";
     const connString      = connectionString(sdk, gossip(), httpPort);
-    const code            = example(sdk, connString);
 
     return {
         httpPort:         httpPort,
         isTcpEnabled:     client.isTcpEnabled,
         gossip:           gossip(tcp),
         connectionString: connString,
-        example:          code,
         disableValidate:  disableValidate(),
         selfSigned:       security.isSelfSigned,
     }
@@ -39,9 +37,9 @@ function nodeAddress(node, tcp) {
 }
 
 function connectionString(sdk, gossip, httpPort) {
+    const isClientDnsGossip = client.gossip.isDnsGossip();
     switch (sdk) {
-        case "dotnet-tcp":
-            const isClientDnsGossip = client.gossip.isDnsGossip();
+        case "tcp":
             const csBase            = nodes.isSingleNode
                 ? `ConnectTo=tcp://${nodeAddress(nodes.nodes[0], true)};`
                 : isClientDnsGossip ? `ClusterDns=${client.gossip.dnsName};ExternalGossipPort=${httpPort};` : `GossipSeeds=${gossip};`
@@ -49,51 +47,7 @@ function connectionString(sdk, gossip, httpPort) {
                 + `UseSslConnection=${client.isSecure};`
                 + `DefaultCredentials=admin:changeit`;
         default:
-            return `esdb://${gossip}?Tls=${client.isSecure}`;
-    }
-}
-
-function example(sdk, connectionString) {
-    switch (sdk) {
-        case "dotnet-grpc":
-            return `// Create the client
-var settings = EventStoreClientSettings.Create("${connectionString}");
-var client = new EventStoreClient(settings);
-
-// Append an event
-var eventData = new EventData(
-    Uuid.NewUuid(), "TestEvent",
-    JsonSerializer.SerializeToUtf8Bytes(
-      new { SomeString = "some value" }
-    )
-);
-
-await client.AppendToStreamAsync(
-    "test", StreamState.Any,
-    new[] {eventData}
-);`;
-        case "dotnet-tcp":
-            return `// Create the connection
-var connection = EventStoreConnection.Create(
-    "${connectionString}"
-);
-await connection.ConnectAsync();
-
-// Append an event
-var eventData = new EventData(
-    Guid.NewGuid(),
-    "TestEvent",
-    true,
-    JsonSerializer.SerializeToUtf8Bytes(
-      new { SomeString = "some value" }
-    ),
-    null
-);
-
-await client.AppendToStreamAsync(
-    "test",
-    ExpectedVersion.Any,
-    eventData
-);`;
+            const scheme = isClientDnsGossip ? "esdb+discover" : "esdb";
+            return `${scheme}://admin:changeit@${gossip}?tls=${client.isSecure}`;
     }
 }
