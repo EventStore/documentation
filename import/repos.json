@@ -4,7 +4,7 @@
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
     "relativePath": [],
-    "currentBranch": "initial-snippets",
+    "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git"
   },
   {
