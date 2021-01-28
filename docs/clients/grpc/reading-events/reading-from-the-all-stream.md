@@ -18,7 +18,7 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-from-all-stream
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream
 </xode-block>
 </xode-group>
 
@@ -35,7 +35,7 @@ This will return an AsyncEnumerable that can be iterated on:
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-from-all-stream-iterate
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream-iterate
 </xode-block>
 </xode-group>
 
@@ -61,7 +61,7 @@ When using projections to create new events you can set whether the generated ev
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-from-all-stream-resolving-link-Tos
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream-resolving-link-Tos
 </xode-block>
 </xode-group>
 
@@ -83,7 +83,7 @@ The credentials used to read the data can be supplied. to be used by the subscri
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-all-overriding-user-credentials
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-all-overriding-user-credentials
 </xode-block>
 </xode-group>
  
@@ -102,7 +102,7 @@ As well as being able to read a stream forwards you can also go backwards. When 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-from-all-stream-backwards 
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream-backwards 
 </xode-block>
 </xode-group>
 
@@ -127,6 +127,6 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#ignore-system-events
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#ignore-system-events
 </xode-block>
 </xode-group>

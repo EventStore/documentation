@@ -17,7 +17,7 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-from-stream
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-stream
 </xode-block>
 </xode-group>
 
@@ -34,7 +34,7 @@ This will return an enumerable that can be iterated on:
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#iterate-stream
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#iterate-stream
 </xode-block>
 </xode-group>
  
@@ -66,7 +66,7 @@ The credentials used to read the data can be supplied. to be used by the subscri
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#overriding-user-credentials
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#overriding-user-credentials
 </xode-block>
 </xode-group>
 
@@ -85,7 +85,7 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#read-from-stream-position
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-stream-position
 </xode-block>
 </xode-group>
 
@@ -104,7 +104,7 @@ As well as being able to read a stream forwards you can also go backwards. When 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#reading-backwards
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#reading-backwards
 </xode-block>
 </xode-group>
 
@@ -128,6 +128,6 @@ It is important to check the value of this field before attempting to iterate an
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
+<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
 </xode-block>
 </xode-group>
