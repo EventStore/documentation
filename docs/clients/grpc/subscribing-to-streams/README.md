@@ -25,7 +25,7 @@ The simplest stream subscription looks like the following :
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
 </xode-block>
 </xode-group>
 
@@ -46,7 +46,7 @@ Subscribing to `$all` is much the same as subscribing to a single stream. The ha
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
 </xode-block>
 </xode-group>
 
@@ -80,7 +80,7 @@ The following subscribes to the stream "some-stream" at position 20, this means 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
 </xode-block>
 </xode-group>
 
@@ -103,7 +103,7 @@ Please note that this position will need to be a legitimate position in `$all`.
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
 </xode-block>
 </xode-group>
 
@@ -122,7 +122,7 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
 </xode-block>
 </xode-group>
 
@@ -139,7 +139,7 @@ And the same works with `$all` :
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
 </xode-block>
 </xode-group>
 
@@ -166,7 +166,7 @@ When reading a stream you can specify whether to resolve link tos or not. By def
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
 </xode-block>
 </xode-group>
 
@@ -178,11 +178,11 @@ The `subscriptionDropped` handler allows you to inspect the reason the subscript
 
 The possible reasons for a subscription dropping are :
 
-| Reason | Why it might happen |
-| :----- | :------------------ |
-| `Disposed` | The subscription got cancelled or disposed by the client. |
-| `SubscriberError` | An error occurred while handling an event in the subscription handler. |
-| `ServerError` | An error occurred on the server, and the server closed the subscription. Check the server logs for more information. |
+| Reason            | Why it might happen                                                                                                  |
+| :---------------- | :------------------------------------------------------------------------------------------------------------------- |
+| `Disposed`        | The subscription got cancelled or disposed by the client.                                                            |
+| `SubscriberError` | An error occurred while handling an event in the subscription handler.                                               |
+| `ServerError`     | An error occurred on the server, and the server closed the subscription. Check the server logs for more information. |
 
 ### Handling subscription drops
 
@@ -201,7 +201,7 @@ You can start from where you left off by keeping a record of the last processed 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
 </xode-block>
 </xode-group>
 
@@ -220,7 +220,7 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
 </xode-block>
 </xode-group>
 
@@ -241,7 +241,7 @@ A simple stream prefix filter looks like this :
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
 </xode-block>
 </xode-group>
 
@@ -264,7 +264,7 @@ You can provide user credentials to be used by the subscription as follows. This
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.6/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
+<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
 </xode-block>
 </xode-group>
 
