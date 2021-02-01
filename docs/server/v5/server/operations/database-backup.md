@@ -9,7 +9,7 @@ Backing up an EventStoreDB database is straightforward, but relies on you carryi
 3. Copy the remaining chunks files to your backup location.
 
 For example:
-s
+
 ```bash
 rsync -a /data/eventstore/db/index /backup/eventstore/db/
 rsync -a /data/eventstore/db/*.chk /backup/eventstore/db/
