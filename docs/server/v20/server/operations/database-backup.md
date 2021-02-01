@@ -4,14 +4,15 @@ Backing up an EventStoreDB database is straightforward, but relies on you carryi
 
 ## Backing up a database
 
-1.  Copy all _*.chk_ files to your backup location.
-2.  Copy the remaining files and directories to your backup location.
+1. Copy indexes to your backup location.
+2. Copy all _*.chk_ files to your backup location.
+3. Copy the remaining chunks files to your backup location.
 
 For example:
 
 ```bash
-rsync -a /data/eventstore/db/*.chk /backup/eventstore/db/
 rsync -a /data/eventstore/db/index /backup/eventstore/db/
+rsync -a /data/eventstore/db/*.chk /backup/eventstore/db/
 rsync -a /data/eventstore/db/*.0* /backup/eventstore/db/
 ```
 
