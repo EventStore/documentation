@@ -60,7 +60,7 @@ function example(sdk, connectionString) {
 var settings = EventStoreClientSettings.Create("${connectionString}");
 var client = new EventStoreClient(settings);
 
-// Write an event
+// Append an event
 var eventData = new EventData(
     Uuid.NewUuid(), "TestEvent",
     JsonSerializer.SerializeToUtf8Bytes(
@@ -79,7 +79,7 @@ var connection = EventStoreConnection.Create(
 );
 await connection.ConnectAsync();
 
-// Write an event
+// Append an event
 var eventData = new EventData(
     Guid.NewGuid(),
     "TestEvent",

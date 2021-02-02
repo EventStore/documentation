@@ -20,7 +20,7 @@ Then, we can use this function and push events to EventStoreDB:
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#SeedEvents
 
-## Writing your first projection
+## Creating your first projection
 
 ::: tip Next steps
 Read [this guide](/docs/server/v5/server/projections/user-defined-projections.md) to find out more about the user defined projection's API.
@@ -53,7 +53,7 @@ Now the projection is running, you can query the state of the projection. As thi
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#GetProjectionState
 
-## Writing to streams from projections
+## Appending to streams from projections
 
 The above gives you the correct result but requires you to poll for the state of a projection. What if you wanted EventStoreDB to notify you about state updates via subscriptions?
 

@@ -28,10 +28,10 @@ You can recreate the stream by appending new events to it (like creating a new s
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-append.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-append.http
+<<< @/docs/server/v5/http-api/sample-code/append-event.http
 :::
 ::::
 
@@ -71,9 +71,9 @@ If you try to recreate the stream as in the above example you also receive a `41
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/delete-stream/write-event-append-deleted.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/delete-stream/append-event-deleted.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/delete-stream/write-event-append-deleted.sh#response
+<<< @/docs/server/v5/http-api/sample-code/delete-stream/append-event-deleted.sh#response
 :::
 ::::

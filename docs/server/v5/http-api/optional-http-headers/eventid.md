@@ -1,15 +1,15 @@
 # EventID
 
-When you write to a stream and don't use the `application/vnd.eventstore.events+json/+xml` media type, you need to specify an event ID with the event you post. This is not required with the custom media type as it is specified within the format (there is an `EventId` on each entry in the format). EventStoreDB uses `EventId` for impotency.
+When you append to a stream and don't use the `application/vnd.eventstore.events+json/+xml` media type, you need to specify an event ID with the event you post. This is not required with the custom media type as it is specified within the format (there is an `EventId` on each entry in the format). EventStoreDB uses `EventId` for impotency.
 
 You can include an event ID on an event by specifying this header.
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-to-new-stream.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-to-new-stream.sh#response
 :::
 ::::
 
@@ -17,10 +17,10 @@ If you don't add an `ES-EventId` header on an append where the body is considere
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-no-id.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-no-id.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-no-id.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-no-id.sh#response
 :::
 ::::
 

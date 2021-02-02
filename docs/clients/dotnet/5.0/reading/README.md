@@ -120,7 +120,7 @@ To ensure that the EventStoreDB server follows link events when reading, ensure 
 | `string EventStreamId` | The Event Stream this event belongs to |
 | `Guid EventId`         | The Unique Identifier representing this |
 | `long EventNumber`     | The number of this event in the stream |
-| `string EventType`     | The event type (supplied when writing) |
+| `string EventType`     | The event type (supplied when appending) |
 | `byte[] Data`          | A byte array representing the data of this event |
 | `byte[] Metadata`      | A byte array representing the metadata associated with this event  |
 | `bool IsJson` | Indicates whether the content was internally marked as JSON |
@@ -141,7 +141,7 @@ This method returns an instance of `EventReadResult` which indicates if the read
 
 ## Reading a stream forwards
 
-The `ReadStreamEventsForwardAsync` method reads the requested number of events in the order in which they were originally written to the stream from a nominated starting point in the stream.
+The `ReadStreamEventsForwardAsync` method reads the requested number of events in the order in which they were originally appended to the stream from a nominated starting point in the stream.
 
 The parameters are:
 
@@ -154,7 +154,7 @@ The parameters are:
 
 ## Read a stream backwards
 
-The `ReadStreamEventsBackwardAsync` method reads the requested number of events in the reverse order from that in which they were originally written to the stream from a specified starting point.
+The `ReadStreamEventsBackwardAsync` method reads the requested number of events in the reverse order from that in which they were originally appended to the stream from a specified starting point.
 
 The parameters are:
 

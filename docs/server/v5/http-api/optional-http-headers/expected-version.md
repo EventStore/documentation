@@ -1,15 +1,15 @@
 # Expected Version
 
-When you write to a stream you often want to use `Expected Version` to allow for optimistic concurrency with a stream. You commonly use this for a domain object projection.
+When you append to a stream you often want to use `Expected Version` to allow for optimistic concurrency with a stream. You commonly use this for a domain object projection.
 
-i.e., "A write can succeed if I have seen everyone else's writes."
+i.e., "A append operations can succeed if I have seen everyone else's append operations."
 
 You set `ExpectedVersion` with the syntax `ES-ExpectedVersion: #`, where `#` is an integer version number. There are other special values available:
 
-- `0`, the stream should exist but be empty when writing.
-- `-1`, the stream should not exist when writing.
+- `0`, the stream should exist but be empty when appending.
+- `-1`, the stream should not exist when appending.
 - `-2`, the write should not conflict with anything and should always succeed.
-- `-4`, the stream or a metadata stream should exist when writing.
+- `-4`, the stream or a metadata stream should exist when appending.
 
 If the `ExpectedVersion` does not match the version of the stream, EventStoreDB returns an HTTP 400 `Wrong expected EventNumber` response. This response contains the current version of the stream in an `ES-CurrentVersion` header.
 
@@ -17,10 +17,10 @@ In the following cURL command `ExpectedVersion` is not set, and it appends or cr
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-to-new-stream.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-to-new-stream.sh#response
 :::
 ::::
 
@@ -28,10 +28,10 @@ The stream `newstream` has one event. If you append with an expected version of 
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-wrong-version.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-wrong-version.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-wrong-version.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-wrong-version.sh#response
 :::
 ::::
 
@@ -39,9 +39,9 @@ You can see from the `ES-CurrentVersion` header above that the stream is at vers
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-version.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-version.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-version.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-version.sh#response
 :::
 ::::

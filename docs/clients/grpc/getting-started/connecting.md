@@ -106,7 +106,7 @@ The code snippet below creates an event object instance, serializes it and puts 
 </xode-block>
 </xode-group>
 
-## Writing events
+## Appending events
 
 Each event in the database has its own unique identifier (UUID). The database uses it to ensure idempotent writes, but it only works if you specify the stream revision when appending events to the stream.
 
@@ -127,7 +127,7 @@ In the snippet below, we append the event to the stream `some-stream`.
 </xode-block>
 </xode-group>
 
-Here we are writing events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [writing events documentation](../appending-events/README.md).
+Here we are appending events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [appending events documentation](../appending-events/README.md).
 
 ## Reading events
 

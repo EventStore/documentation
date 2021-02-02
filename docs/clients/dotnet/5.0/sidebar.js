@@ -17,11 +17,11 @@ module.exports = [
         ]
     },
     {
-        title: "Writing events",
+        title: "Appending events",
         collapsable: true,
         children: [
-            "writing/",
-            "writing/optimistic-concurrency-and-idempotence.md",
+            "appending/",
+            "appending/optimistic-concurrency-and-idempotence.md",
         ]
     },
     {

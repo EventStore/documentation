@@ -1,14 +1,14 @@
-# Creating and writing to a stream
+# Creating and appending to a stream
 
 Sending events to a non-existing stream, implicitly creates the stream.
 
-## Writing to a stream
+## Appending to a stream
 
-You can use the client API to write one or more events to a stream atomically. You do this by appending the events to the stream in one operation, or by using transactions.
+You can use the client API to append one or more events to a stream atomically. You do this by appending the events to the stream in one operation, or by using transactions.
 
-It is possible to make an optimistic concurrency check during the write by specifying the version at which you expect the stream to be. Identical write operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](/v5/dotnet-api/optimistic-concurrency-and-idempotence.md).
+It is possible to make an optimistic concurrency check during the append operation by specifying the version at which you expect the stream to be. Identical append operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](/v5/dotnet-api/optimistic-concurrency-and-idempotence.md).
 
-The writing methods all use a type named `EventData` to represent an event to store.
+The appending methods all use a type named `EventData` to represent an event to store.
 
 ## Append to a stream in a single write
 
@@ -39,11 +39,11 @@ Parameters:
 
 Example single event in single write:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/WriteStreamEvents.cs#WriteOneEvent
+<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/AppendStreamEvents.cs#AppendOneEvent
 
 Example list of events in single write:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/WriteStreamEvents.cs#CreateSampleData
+<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/AppendStreamEvents.cs#CreateSampleData
 
 ## Using a transaction to append to a stream across multiple writes
 
@@ -77,13 +77,13 @@ void Rollback()
 
 Example:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/WriteStreamEvents.cs#CreateSampleData
+<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/AppendStreamEvents.cs#CreateSampleData
 
-Events are written in the following order: `3, 1, 2, 4, 5`.
+events are appended in the following order: `3, 1, 2, 4, 5`.
 
 ## EventData
 
-The writing methods all use a type named `EventData` to represent an event to be stored. Instances of `EventData` are immutable.
+The appending methods all use a type named `EventData` to represent an event to be stored. Instances of `EventData` are immutable.
 
 EventStoreDB does not have any built-in serialisation, so the body and metadata for each event are represented in `EventData` as a `byte[]`.
 
@@ -91,7 +91,7 @@ The members on `EventData` are:
 
 | Member | Type | Description |
 |:-------|:-----|:--------|
-| `EventId` | `Guid` | A unique identifier representing this event. EventStoreDB uses this for idempotency if you write the same event twice you should use the same identifier both times. |
+| `EventId` | `Guid` | A unique identifier representing this event. EventStoreDB uses this for idempotency if you append the same event twice you should use the same identifier both times. |
 | `Type`  | `string` | The name of the event type. You can use this for pattern matching in projections, so should be a "friendly" name rather than a CLR type name, for example. |
 | `IsJson`  | `bool` | If the data and metadata fields are serialized as JSON, you should set this to `true`. Setting this to `true` will cause the projections framework to attempt to deserialize the data and metadata later. |
 | `Data` | `byte[]` | The serialized data representing the event to be stored. |

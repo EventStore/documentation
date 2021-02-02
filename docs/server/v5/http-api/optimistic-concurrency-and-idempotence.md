@@ -2,7 +2,7 @@
 
 ## Idempotence
 
-All operations on the HTTP interface are idempotent (unless the [expected version](creating-writing-a-stream.md#expected-version-header) is ignored). It is the responsibility of the client to retry operations under failure conditions, ensuring that the event IDs of the events posted are the same as the first attempt.
+All operations on the HTTP interface are idempotent (unless the [expected version](appending-events.md#expected-version-header) is ignored). It is the responsibility of the client to retry operations under failure conditions, ensuring that the event IDs of the events posted are the same as the first attempt.
 
 Provided the client maintains this EventStoreDB will treat all operations as idempotent.
 
@@ -29,7 +29,7 @@ Keep-Alive: timeout=15,max=100
 ::::
 :::::
 
-Assuming you were posting to a new stream you would get the event written once (and the stream created). The second event returns as the first but not write again.
+Assuming you were posting to a new stream you would get the event appended once (and the stream created). The second event returns as the first but not write again.
 
 ::: tip
 This allows the client rule of “if you get an unknown condition, retry” to work.

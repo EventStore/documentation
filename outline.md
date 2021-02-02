@@ -10,7 +10,7 @@
 - Getting started
   - Run EventStoreDB in Docker
   - Overview of the web UI
-  - Write an event using curl?
+  - Append an event using curl?
   - View the stream in the web UI
   - Read events using curl?
 - Event Sourcing (with code samples) [#40](https://github.com/EventStore/documentation-next/issues/40)

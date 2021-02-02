@@ -1,4 +1,4 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
   description: The HTTP API for EventStoreDB
   version: 5.0.4
@@ -7,7 +7,7 @@ info:
     email: chris.ward@eventstore.com
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: eventstore.com
 securityDefinitions:
   basicAuth:
@@ -26,7 +26,7 @@ paths:
         - application/json
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
       security:
         - basicAuth: []
@@ -54,13 +54,13 @@ paths:
           required: false
           default: 1
       responses:
-        '200':
+        "200":
           description: OK
-        '401':
+        "401":
           description: Unauthorized
       security:
         - basicAuth: []
-  '/admin/scavenge/{scavengeId}':
+  "/admin/scavenge/{scavengeId}":
     delete:
       description: Stop a running scavenge operation.
       summary: Stop a scavenge operation
@@ -76,9 +76,9 @@ paths:
           required: true
           type: integer
       responses:
-        '200':
+        "200":
           description: OK
-        '401':
+        "401":
           description: Unauthorized
       security:
         - basicAuth: []
@@ -92,9 +92,9 @@ paths:
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: OK
-        '401':
+        "401":
           description: Unauthorized
       security:
         - basicAuth: []
@@ -109,9 +109,9 @@ paths:
         - application/json
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
-        '401':
+        "401":
           description: Unauthorized
       security:
         - basicAuth: []
@@ -126,18 +126,18 @@ paths:
         - application/json
       parameters: []
       responses:
-        '200':
+        "200":
           description: OK
-        '401':
+        "401":
           description: Unauthorized
       security:
         - basicAuth: []
-  '/streams/{stream}':
+  "/streams/{stream}":
     get:
       summary: Reads a stream
       tags:
         - Streams
-      description: 'Read a stream, receiving a standard AtomFeed document as a response.'
+      description: "Read a stream, receiving a standard AtomFeed document as a response."
       operationId: Read a stream
       produces:
         - application/json
@@ -160,16 +160,16 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     post:
-      summary: Write to a stream
+      summary: Append to a stream
       tags:
         - Streams
-      description: Write to a stream.
-      operationId: Write to a stream
+      description: Append to a stream.
+      operationId: Append to a stream
       produces:
         - application/json
         - application/xml
@@ -184,17 +184,17 @@ paths:
           description: Stream events to create
           required: true
           schema:
-            $ref: '#/definitions/streamData'
-        - $ref: '#/parameters/ES-ExpectedVersion'
-        - $ref: '#/parameters/ES-EventType'
-        - $ref: '#/parameters/ES-EventId'
-        - $ref: '#/parameters/ES-RequiresMaster'
+            $ref: "#/definitions/streamData"
+        - $ref: "#/parameters/ES-ExpectedVersion"
+        - $ref: "#/parameters/ES-EventType"
+        - $ref: "#/parameters/ES-EventId"
+        - $ref: "#/parameters/ES-RequiresMaster"
       responses:
-        '201':
+        "201":
           description: New stream created
-        '307':
+        "307":
           description: Temporary Redirect
-        '400':
+        "400":
           description: Write request body invalid
     delete:
       summary: Deletes a stream
@@ -212,9 +212,9 @@ paths:
           required: true
           type: string
       responses:
-        '204':
+        "204":
           description: Stream deleted
-  '/streams/{stream}/incoming/{guid}':
+  "/streams/{stream}/incoming/{guid}":
     post:
       tags:
         - Streams
@@ -238,11 +238,11 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: New event created
-        '400':
+        "400":
           description: Bad request
-  '/streams/{stream}/{event}':
+  "/streams/{stream}/{event}":
     get:
       tags:
         - Streams
@@ -275,17 +275,17 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/streams/{stream}/{event}/{count}':
+  "/streams/{stream}/{event}/{count}":
     get:
       tags:
         - Streams
       summary: Paginate backwards through stream events
       description: Paginate backwards though stream events by a specified amount.
-      operationId: 'Get {n} events'
+      operationId: "Get {n} events"
       produces:
         - application/json
         - application/xml
@@ -318,11 +318,11 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/streams/{stream}/{event}/backward/{count}':
+  "/streams/{stream}/{event}/backward/{count}":
     get:
       tags:
         - Streams
@@ -361,11 +361,11 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/streams/{stream}/{event}/forward/{count}':
+  "/streams/{stream}/{event}/forward/{count}":
     get:
       tags:
         - Streams
@@ -404,11 +404,11 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/streams/{stream}/metadata':
+  "/streams/{stream}/metadata":
     get:
       tags:
         - Streams
@@ -438,7 +438,7 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
     post:
       tags:
@@ -460,18 +460,18 @@ paths:
           description: Metadata object
           required: false
           schema:
-            $ref: '#/definitions/StreamMetadataItem'
+            $ref: "#/definitions/StreamMetadataItem"
       responses:
-        '201':
+        "201":
           description: New stream created
-        '400':
+        "400":
           description: Bad request
   /streams/$all:
     get:
       tags:
         - Streams
       summary: Returns all events from all streams
-      description: 'Returns all events from all streams, you must provide user details.'
+      description: "Returns all events from all streams, you must provide user details."
       operationId: Get all events
       produces:
         - application/json
@@ -489,9 +489,9 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
   /subscriptions:
     get:
@@ -505,11 +505,11 @@ paths:
         - application/vnd.eventstore.competingatom+xml
       parameters: []
       responses:
-        '200':
+        "200":
           description: New persistant subscription
-        '400':
+        "400":
           description: bad input parameter
-  '/subscriptions/{stream}':
+  "/subscriptions/{stream}":
     get:
       tags:
         - Subscriptions
@@ -526,9 +526,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-  '/subscriptions/{stream}/{subscription}/info':
+  "/subscriptions/{stream}/{subscription}/info":
     get:
       tags:
         - Subscriptions
@@ -550,9 +550,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-  '/subscriptions/{stream}/{subscription}':
+  "/subscriptions/{stream}/{subscription}":
     get:
       tags:
         - Subscriptions
@@ -586,7 +586,7 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
     post:
       tags:
@@ -616,9 +616,9 @@ paths:
           description: Subscription to create
           required: false
           schema:
-            $ref: '#/definitions/SubscriptionItem'
+            $ref: "#/definitions/SubscriptionItem"
       responses:
-        '200':
+        "200":
           description: Subscription updated
     put:
       tags:
@@ -649,9 +649,9 @@ paths:
           description: Subscription to create
           required: false
           schema:
-            $ref: '#/definitions/SubscriptionItem'
+            $ref: "#/definitions/SubscriptionItem"
       responses:
-        '200':
+        "200":
           description: Subscription created
     delete:
       tags:
@@ -674,9 +674,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-  '/subscriptions/{stream}/{subscription}/{count}':
+  "/subscriptions/{stream}/{subscription}/{count}":
     get:
       tags:
         - Subscriptions
@@ -686,7 +686,7 @@ paths:
       description: >-
         Reads a stream via a persistent subscription and return a specific
         number of events
-      operationId: 'Get {n} subscription events'
+      operationId: "Get {n} subscription events"
       produces:
         - application/vnd.eventstore.competingatom+json
         - application/vnd.eventstore.competingatom+xml
@@ -719,9 +719,9 @@ paths:
             - PrettyBody
             - TryHarder
       responses:
-        '200':
+        "200":
           description: OK
-  '/subscriptions/{stream}/{subscription}/ack/{messageid}':
+  "/subscriptions/{stream}/{subscription}/ack/{messageid}":
     post:
       tags:
         - Subscriptions
@@ -753,11 +753,11 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: New persistant subscription
-        '400':
+        "400":
           description: bad input parameter
-  '/subscriptions/{stream}/{subscription}/ack':
+  "/subscriptions/{stream}/{subscription}/ack":
     post:
       tags:
         - Subscriptions
@@ -789,11 +789,11 @@ paths:
           required: false
           type: string
       responses:
-        '200':
+        "200":
           description: New persistant subscription
-        '400':
+        "400":
           description: bad input parameter
-  '/subscriptions/{stream}/{subscription}/nack/{messageid}':
+  "/subscriptions/{stream}/{subscription}/nack/{messageid}":
     post:
       tags:
         - Subscriptions
@@ -839,11 +839,11 @@ paths:
             - Skip
             - Stop
       responses:
-        '200':
+        "200":
           description: New persistant subscription
-        '400':
+        "400":
           description: bad input parameter
-  '/subscriptions/{stream}/{subscription}/nack':
+  "/subscriptions/{stream}/{subscription}/nack":
     post:
       tags:
         - Subscriptions
@@ -889,11 +889,11 @@ paths:
             - Skip
             - Stop
       responses:
-        '200':
+        "200":
           description: New persistant subscription
-        '400':
+        "400":
           description: bad input parameter
-  '/subscriptions/{stream}/{subscription}/replayParked':
+  "/subscriptions/{stream}/{subscription}/replayParked":
     post:
       tags:
         - Subscriptions
@@ -917,7 +917,7 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
   /users/:
     get:
@@ -930,9 +930,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     post:
       tags:
@@ -951,15 +951,15 @@ paths:
           description: User to create
           required: false
           schema:
-            $ref: '#/definitions/UserItem'
+            $ref: "#/definitions/UserItem"
       responses:
-        '201':
+        "201":
           description: New user created
-        '400':
+        "400":
           description: Bad request
-        '401':
+        "401":
           description: Unauthorized
-  '/users/{login}':
+  "/users/{login}":
     get:
       tags:
         - Users
@@ -978,9 +978,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     put:
       tags:
@@ -1002,11 +1002,11 @@ paths:
           description: User to update
           required: false
           schema:
-            $ref: '#/definitions/UserUpdateItem'
+            $ref: "#/definitions/UserUpdateItem"
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     delete:
       tags:
@@ -1024,9 +1024,9 @@ paths:
           required: true
           type: string
       responses:
-        '204':
+        "204":
           description: User deleted
-  '/users/{login}/command/enable':
+  "/users/{login}/command/enable":
     put:
       tags:
         - Users
@@ -1043,11 +1043,11 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/users/{login}/command/disable':
+  "/users/{login}/command/disable":
     put:
       tags:
         - Users
@@ -1064,11 +1064,11 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/users/{login}/command/reset-password':
+  "/users/{login}/command/reset-password":
     post:
       tags:
         - Users
@@ -1089,13 +1089,13 @@ paths:
           description: The new password for the user
           required: true
           schema:
-            $ref: '#/definitions/PasswordResetItem'
+            $ref: "#/definitions/PasswordResetItem"
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad request
-  '/users/{login}/command/change-password':
+  "/users/{login}/command/change-password":
     post:
       tags:
         - Users
@@ -1116,11 +1116,11 @@ paths:
           description: The new password for the user
           required: true
           schema:
-            $ref: '#/definitions/PasswordChangeItem'
+            $ref: "#/definitions/PasswordChangeItem"
       responses:
-        '200':
+        "200":
           description: OK
-        '400':
+        "400":
           description: Bad request
   /projections/any:
     get:
@@ -1133,9 +1133,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
   /projections/all-non-transient:
     get:
@@ -1148,9 +1148,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
   /projections/onetime:
     get:
@@ -1163,9 +1163,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     post:
       tags:
@@ -1212,9 +1212,9 @@ paths:
           required: false
           type: boolean
       responses:
-        '201':
+        "201":
           description: New projection created
-        '400':
+        "400":
           description: Bad request
   /projections/continuous:
     get:
@@ -1227,9 +1227,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     post:
       tags:
@@ -1276,9 +1276,9 @@ paths:
           required: false
           type: boolean
       responses:
-        '201':
+        "201":
           description: New projection created
-        '400':
+        "400":
           description: Bad request
   /projections/read-events:
     post:
@@ -1293,9 +1293,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
   /projections/transient:
     get:
@@ -1308,9 +1308,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     post:
       tags:
@@ -1340,11 +1340,11 @@ paths:
           required: false
           type: boolean
       responses:
-        '201':
+        "201":
           description: New user created
-        '400':
+        "400":
           description: Bad request
-  '/projection/{name}/query':
+  "/projection/{name}/query":
     get:
       tags:
         - Projections
@@ -1366,9 +1366,9 @@ paths:
           type: boolean
           description: Wether to return the projection definition config.
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     put:
       tags:
@@ -1398,11 +1398,11 @@ paths:
           required: false
           type: boolean
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/state':
+  "/projection/{name}/state":
     get:
       tags:
         - Projections
@@ -1424,11 +1424,11 @@ paths:
           type: string
           description: The partition name in state
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/result':
+  "/projection/{name}/result":
     get:
       tags:
         - Projections
@@ -1450,11 +1450,11 @@ paths:
           type: string
           description: The partition name in state
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/statistics':
+  "/projection/{name}/statistics":
     get:
       tags:
         - Projections
@@ -1473,11 +1473,11 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/command/disable':
+  "/projection/{name}/command/disable":
     post:
       tags:
         - Projections
@@ -1499,11 +1499,11 @@ paths:
           required: false
           type: boolean
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/command/enable':
+  "/projection/{name}/command/enable":
     post:
       tags:
         - Projections
@@ -1525,11 +1525,11 @@ paths:
           required: false
           type: boolean
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/command/reset':
+  "/projection/{name}/command/reset":
     post:
       tags:
         - Projections
@@ -1551,11 +1551,11 @@ paths:
           required: false
           type: boolean
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/command/abort':
+  "/projection/{name}/command/abort":
     post:
       tags:
         - Projections
@@ -1577,11 +1577,11 @@ paths:
           required: false
           type: boolean
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}/config':
+  "/projection/{name}/config":
     get:
       tags:
         - Projections
@@ -1598,9 +1598,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     put:
       tags:
@@ -1618,11 +1618,11 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
-  '/projection/{name}':
+  "/projection/{name}":
     get:
       tags:
         - Projections
@@ -1639,9 +1639,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     delete:
       tags:
@@ -1674,7 +1674,7 @@ paths:
           required: false
           type: boolean
       responses:
-        '204':
+        "204":
           description: Projection deleted
   /stats:
     get:
@@ -1687,13 +1687,13 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: A list of stats
           schema:
-            $ref: '#/definitions/Stats'
-        '404':
+            $ref: "#/definitions/Stats"
+        "404":
           description: Not found
-  '/stats/{statPath}':
+  "/stats/{statPath}":
     get:
       tags:
         - Stats
@@ -1710,9 +1710,9 @@ paths:
           required: true
           type: string
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
   /gossip:
     get:
@@ -1725,9 +1725,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
     post:
       tags:
@@ -1739,9 +1739,9 @@ paths:
         - application/json
         - application/xml
       responses:
-        '200':
+        "200":
           description: OK
-        '404':
+        "404":
           description: Not found
 parameters:
   ES-ExpectedVersion:
@@ -1949,7 +1949,7 @@ definitions:
         type: string
         description: The type of event
       data:
-        $ref: '#/definitions/StreamMetadataItem_data'
+        $ref: "#/definitions/StreamMetadataItem_data"
   SubscriptionItem:
     type: object
     properties:
@@ -2218,14 +2218,14 @@ definitions:
                     description: Total bytes of space used by EventStoreDB
       es:
         type: object
-        description: ''
+        description: ""
         properties:
           checksum:
             type: number
-            description: ''
+            description: ""
           checksumNonFlushed:
             type: number
-            description: ''
+            description: ""
           queue:
             type: object
             description: Multiple queue instance stats
@@ -2296,7 +2296,7 @@ definitions:
                 description: Queued flush messages
           readIndex:
             type: object
-            description: ''
+            description: ""
             properties:
               cachedRecord:
                 type: number
@@ -2306,19 +2306,19 @@ definitions:
                 description: Number of uncached record reads
               cachedStreamInfo:
                 type: number
-                description: ''
+                description: ""
               notCachedStreamInfo:
                 type: number
-                description: ''
+                description: ""
               cachedTransInfo:
                 type: number
-                description: ''
+                description: ""
               notCachedTransInfo:
                 type: number
-                description: ''
+                description: ""
               hashCollisions:
                 type: number
-                description: ''
+                description: ""
 tags:
   - name: Streams
     description: Endpoints for Stream operations
@@ -2335,4 +2335,4 @@ tags:
   - name: Stats
     description: Endpoints for Statistics operations
     externalDocs:
-      url: 'http://docs.my-api.com/pet-operations.htm'
+      url: "http://docs.my-api.com/pet-operations.htm"

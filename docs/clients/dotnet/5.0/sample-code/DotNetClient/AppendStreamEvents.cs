@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DocsExample
 {
-    public class WriteStreamEvents
+    public class AppendStreamEvents
     {
-        #region WriteOneEvent
-        public static async Task WriteOneEvent()
+        #region AppendOneEvent
+        public static async Task AppendOneEvent()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
             await conn.ConnectAsync();
@@ -21,12 +21,12 @@ namespace DocsExample
 
             await conn.AppendToStreamAsync("newstream", ExpectedVersion.Any, evt);
         }
-        #endregion WriteOneEvent
+        #endregion AppendOneEvent
 
         #region CreateSampleData
         static EventData CreateSample(int i)
         {
-            var sampleObject = new {a = i};
+            var sampleObject = new { a = i };
             var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(sampleObject));
             var metadata = Encoding.UTF8.GetBytes("{}");
             var eventPayload = new EventData(Guid.NewGuid(), "event-type", true, data, metadata);
@@ -34,7 +34,7 @@ namespace DocsExample
         }
         #endregion CreateSampleData
 
-        #region WriteMultipleEvents
+        #region AppendMultipleEvents
         public static async Task WriteEvents()
         {
             var conn = EventStoreConnection.Create(new Uri("tcp://admin:changeit@localhost:1113"));
@@ -48,7 +48,7 @@ namespace DocsExample
                 CreateSample(3)
             );
         }
-        #endregion WriteMultipleEvents
+        #endregion AppendMultipleEvents
 
         #region WriteTransaction
         public static async Task WriteTransaction()

@@ -71,7 +71,7 @@ Read a stream, receiving a standard AtomFeed document as a response.
 This operation does not require authentication
 </aside>
 
-## Write to a stream
+## Append to a stream
 
 <a id="opIdWrite to a stream"></a>
 
@@ -89,9 +89,9 @@ curl -X POST https://eventstore.com/streams/{stream} \
 ```
 
  `POST /streams/{stream}`
-*Write to a stream*
+*Append to a stream*
 
-Write to a stream.
+Append to a stream.
 
 > Body parameter
 
@@ -101,7 +101,7 @@ Write to a stream.
 }
 ```
 
-<h3 id="write-to-a-stream-parameters">Parameters</h3>
+<h3 id="append-to-a-stream-parameters">Parameters</h3>
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
@@ -112,13 +112,13 @@ Write to a stream.
 |ES-RequiresMaster|header|boolean|false|Wether to run on a master node|
 |body|body|[streamData](#schemastreamdata)|true|Stream events to create|
 
-<h3 id="write-to-a-stream-responses">Responses</h3>
+<h3 id="append-to-a-stream-responses">Responses</h3>
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|New stream created|None|
 |307|[Temporary Redirect](https://tools.ietf.org/html/rfc7231#section-6.4.7)|Temporary Redirect|None|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Write request body invalid|None|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Append request body invalid|None|
 
 <aside class="success">
 This operation does not require authentication

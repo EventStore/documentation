@@ -12,7 +12,7 @@ You can see a similar example in reading a feed. If a stream has 50 events in it
 
 This caching behaviour is great for performance in a production environment and we recommended you use it, but in a developer environment it can become confusing.
 
-For example, what happens if you started a database, wrote `/streams/foo/0` and performed a `GET` request? The `GET` request is cachable and now in your cache. Since this is a development environment, you shutdown EventStoreDB and delete the database. You then restart EventStoreDB and write a different event to `/streams/foo/0`. You open your browser and inspect the `/streams/foo/0` stream, and you see the event written before you deleted the database.
+For example, what happens if you started a database, wrote `/streams/foo/0` and performed a `GET` request? The `GET` request is cachable and now in your cache. Since this is a development environment, you shutdown EventStoreDB and delete the database. You then restart EventStoreDB and append a different event to `/streams/foo/0`. You open your browser and inspect the `/streams/foo/0` stream, and you see the event appended before you deleted the database.
 
 To avoid this during development it's best to run EventStoreDB with the `--disable-http-caching` command line option. This disables all caching and solve the issue.
 

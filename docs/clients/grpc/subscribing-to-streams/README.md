@@ -33,7 +33,7 @@ The provided handler will be called for every event in the stream.
 
 ## Subscribing to `$all`
 
-Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event written after the starting position.
+Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event appended after the starting position.
 
 <xode-group>
 <xode-block title="C#">

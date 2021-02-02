@@ -1,6 +1,6 @@
-# Writing Events
+# Appending Events
 
-You write to a stream over HTTP using a `POST` request to the resource of the stream. If the stream does not exist then the stream is implicitly created.
+You append to a stream over HTTP using a `POST` request to the resource of the stream. If the stream does not exist then the stream is implicitly created.
 
 ## EventStoreDB media types
 
@@ -21,9 +21,9 @@ The format represents data with the following jschema (`eventId` must be a UUID)
 ]
 ```
 
-## Writing a single event
+## Appending a single event to a new stream
 
-If you issue a `POST` request with data to a stream and the correct content type set it writes the event to the stream, and generates a `201` response from the server, giving you the location of the event. Using the following event, which [you can also download as a file](sample-code/event.json):
+If you issue a `POST` request with data to a stream and the correct content type set it appends the event to the stream, and generates a `201` response from the server, giving you the location of the event. Using the following event, which [you can also download as a file](sample-code/event.json):
 
 <<< @/docs/server/v5/http-api/sample-code/event.json
 
@@ -31,10 +31,10 @@ If you issue a `POST` request with data to a stream and the correct content type
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-to-new-stream.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-to-new-stream.sh#response
 :::
 ::::
 
@@ -44,10 +44,10 @@ If you leave off the `ES-EventId` header you see different behavior:
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-no-id.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-no-id.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-no-id.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-no-id.sh#response
 :::
 ::::
 
@@ -55,10 +55,10 @@ In this case EventStoreDB has responded with a `307 Temporary Redirect`. The loc
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-follow.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-follow.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-follow.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-follow.sh#response
 :::
 ::::
 
@@ -68,29 +68,29 @@ When posting to either the stream or to the returned redirect, clients must incl
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-no-type.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-no-type.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-no-type.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-no-type.sh#response
 :::
 ::::
 
-## Batch writes
+## Batch append operation
 
-You can include more than one write in a single post by placing multiple events inside of the array representing the events, including metadata.
+You can append more than one event in a single post by placing multiple events inside of the array representing the events, including metadata.
 
 For example, the below has two events:
 
 <<< @/docs/server/v5/http-api/sample-code/multiple-events.json
 
-When you write multiple events in a single post, EventStoreDB treats them as one transaction, it writes all events together or fails.
+When you append multiple events in a single post, EventStoreDB treats them as one transaction, it appends all events together or fails.
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-multiple-events.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-multiple-events.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-multiple-events.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-multiple-events.sh#response
 :::
 ::::
 
@@ -102,10 +102,10 @@ To append events, issue a `POST` request to the same resource with a new `eventI
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-append.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-append.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event.sh#response
 :::
 ::::
 
@@ -115,10 +115,10 @@ Version 3.7.0 of EventStoreDB added support for the `application/octet-stream` c
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-data-event.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-data-event.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-data-event.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-data-event.sh#response
 :::
 ::::
 
@@ -126,7 +126,7 @@ Version 3.7.0 of EventStoreDB added support for the `application/octet-stream` c
 
 The expected version header represents the version of the stream you expect.
 
-For example if you write to a stream at version 1, then you expect it to be at version 1 next time you write. This can allow for optimistic locking when multiple applications are reading/writing to streams.
+For example if you append to a stream at version 1, then you expect it to be at version 1 next time you append. This can allow for optimistic locking when multiple applications are reading/appending to streams.
 
 If your expected version is not the current version you receive an HTTP status code of 400.
 
@@ -134,34 +134,34 @@ If your expected version is not the current version you receive an HTTP status c
 See the idempotence section below, if you post the same event twice it is idempotent and won't return a version error.
 :::
 
-First write an event to a stream, setting a version:
+First append an event to a stream, setting a version:
 
 <<< @/docs/server/v5/http-api/sample-code/event-version.json
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-version.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-version.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-version.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-version.sh#response
 :::
 ::::
 
-If you now write to the stream with the incorrect version, you receive an HTTP status code 400 error.
+If you now append to the stream with the incorrect version, you receive an HTTP status code 400 error.
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-event-wrong-version.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-event-wrong-version.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-event-wrong-version.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-event-wrong-version.sh#response
 :::
 ::::
 
 There are special values you can use in the expected version header:
 
--   `-2` states that this write should never conflict and should **always** succeed.
--   `-1` states that the stream should not exist at the time of the writing (this write creates it).
+-   `-2` states that this append operation should never conflict and should **always** succeed.
+-   `-1` states that the stream should not exist at the time of the appending (this append operation creates it).
 -   `0` states that the stream should exist but should be empty.
 
 ## Idempotence

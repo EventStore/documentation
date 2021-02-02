@@ -10,7 +10,7 @@ Security features of EventStoreDB include:
 
 ## Protocol security
 
-EventStoreDB supports the proprietary TCP protocol for high-throughput real-time communication, and the more traditional HTTP REST API for read and write operations, as well as for the management operations like scavenging, creating projections and so on. EventStoreDB also uses HTTP for the gossip seed endpoint, both internally for the cluster gossip, and internally for clients that connect to the cluster using discovery mode.
+EventStoreDB supports the proprietary TCP protocol for high-throughput real-time communication, and the more traditional HTTP REST API for read and append operations, as well as for the management operations like scavenging, creating projections and so on. EventStoreDB also uses HTTP for the gossip seed endpoint, both internally for the cluster gossip, and internally for clients that connect to the cluster using discovery mode.
 
 Both those protocols support encryption with TLS and SSL. Each protocol has its own security configuration, but you can only use one set of certificates for both TLS and HTTPS.
 

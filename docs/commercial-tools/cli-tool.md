@@ -75,14 +75,14 @@ es-cli [<options>] <command> [<args>]
 
 ### Options
 
-| Option        | Description                                             |
-| ------------- | ------------------------------------------------------- |
+| Option        | Description                                              |
+| ------------- | -------------------------------------------------------- |
 | `--version`   | Get the version of EventStoreDB CLI                      |
-| `--help`      | Display help                                            |
-| `--output`    | How output should be formatted (`text` or `json`)       |
-| `--password`  | The admin password                                      |
+| `--help`      | Display help                                             |
+| `--output`    | How output should be formatted (`text` or `json`)        |
+| `--password`  | The admin password                                       |
 | `--serverurl` | The url of the EventStoreDB server                       |
-| `--username`  | The admin username                                      |
+| `--username`  | The admin username                                       |
 | `--verbose`   | Verbose output of requests sent to the EventStoreDB node |
 
 ### Commands summary
@@ -103,21 +103,21 @@ es-cli [<options>] <command> [<args>]
 es-cli admin [--version] [--help] <command> [<args>]
 ```
 
-| Command                                                 | Description                                                                               |
-| ------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Command                                                 | Description                                                                                |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | [azure_backup](#admin-azure_backup)                     | Backs up the EventStoreDB database to the specified container in Azure Blob Storage        |
 | [azure_restore](#admin-azure_restore)                   | Restores an EventStoreDB database from a specified container in Azure Blob Storage         |
 | [backup](#admin-backup)                                 | Backs up the EventStoreDB database to the destination directory                            |
-| [calculate_stream_size](#admin-calculate_stream_size)   | Calculates the size on disk of the give stream                                            |
-| [clear_scavenge_streams](#admin-clear_scavenge_streams) | Deletes all the scavenge history streams                                                  |
-| [delete_streams](#admin-delete_streams)                 | Deletes streams matching the specified regular expression                                 |
+| [calculate_stream_size](#admin-calculate_stream_size)   | Calculates the size on disk of the give stream                                             |
+| [clear_scavenge_streams](#admin-clear_scavenge_streams) | Deletes all the scavenge history streams                                                   |
+| [delete_streams](#admin-delete_streams)                 | Deletes streams matching the specified regular expression                                  |
 | [merge_indexes](#admin-merge_indexes)                   | Manually merge indexes of EventStoreDB                                                     |
 | [restore](#admin-restore)                               | Restores the EventStoreDB database from the provided location to the destination directory |
 | [s3_backup](#admin-s3_backup)                           | Backs up the EventStoreDB to an S3 bucket                                                  |
 | [s3_restore](#admin-s3_restore)                         | Restores EventStoreDB from an S3 bucket                                                    |
 | [scavenge](#admin-scavenge)                             | Schedule a scavenge on EventStoreDB                                                        |
 | [shutdown](#admin-shutdown)                             | Shutdown the EventStoreDB instance                                                         |
-| [verify_db](#admin-verify_db)                           | Verify the integrity of an EventStore database                                            |
+| [verify_db](#admin-verify_db)                           | Verify the integrity of an EventStore database                                             |
 
 #### admin azure_backup
 
@@ -129,8 +129,8 @@ Backs up the EventStoreDB database to the specified container in Azure Blob Stor
 
 | Option                | Description                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------- |
-| `-databasesource`     | The location of the EventStoreDB database                                                  |
-| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                     |
+| `-databasesource`     | The location of the EventStoreDB database                                                 |
+| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                    |
 | `-differential`       | Backup only new or changed files                                                          |
 | `-deleteextra`        | Delete extraneous files from the destination (with -differential only)                    |
 | `-storageaccountname` | The name of the storage account                                                           |
@@ -150,8 +150,8 @@ Restores an EventStoreDB database from a specified container in Azure Blob Stora
 
 | Option                | Description                                                                               |
 | --------------------- | ----------------------------------------------------------------------------------------- |
-| `-databasesource`     | The location of the EventStoreDB database                                                  |
-| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                     |
+| `-databasesource`     | The location of the EventStoreDB database                                                 |
+| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                    |
 | `-storageaccountname` | The name of the storage account                                                           |
 | `-storageaccountkey`  | The account key of the storage account (found in **security** > **access keys** on azure) |
 | `-databasecontainer`  | The container of the database backup                                                      |
@@ -169,7 +169,7 @@ Backs up the EventStoreDB database to the destination directory.
 
 | Option                 | Description                                                                 |
 | ---------------------- | --------------------------------------------------------------------------- |
-| `-databasesource`      | The location of the EventStoreDB database                                    |
+| `-databasesource`      | The location of the EventStoreDB database                                   |
 | `-databasedestination` | The backup destination                                                      |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
 | `-indexdestination`    | The index backup destination (default: databasedestination/index)           |
@@ -243,7 +243,7 @@ Backs up an EventStoreDB database to the destination S3 bucket.
 
 | Option                 | Description                                                                 |
 | ---------------------- | --------------------------------------------------------------------------- |
-| `-databasesource`      | The location of the EventStoreDB database                                    |
+| `-databasesource`      | The location of the EventStoreDB database                                   |
 | `-databasedestination` | The backup destination in the s3 bucket                                     |
 | `-s3bucket`            | The name of the S3 bucket                                                   |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
@@ -293,12 +293,12 @@ es-cli admin verify_db [options]
 
 Verify the integrity of an EventStoreDB database.
 
-| Option             | Description                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------- |
+| Option             | Description                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------- |
 | `-databasepath`    | The path to the EventStoreDB database directory on disk                             |
 | `-indexpath`       | The path to the EventStoreDB index directory on disk  (default: databasepath/index) |
-| `-skipdbverify`    | Skip database verification (default: false)                                        |
-| `-skipindexverify` | Skip index verification (default: false)                                           |
+| `-skipdbverify`    | Skip database verification (default: false)                                         |
+| `-skipindexverify` | Skip index verification (default: false)                                            |
 
 An output file called 'verify_db.error.log' will be written to the current working directory.
 
@@ -308,8 +308,8 @@ An output file called 'verify_db.error.log' will be written to the current worki
 es-cli user [--version] [--help] <command> [<args>]
 ```
 
-| Command                                 | Description              |
-| --------------------------------------- | ------------------------ |
+| Command                                  | Description              |
+| ---------------------------------------- | ------------------------ |
 | [add](#user-add)                         | Add a user               |
 | [change_password](#user-change_password) | Change the user password |
 | [delete](#user-delete)                   | Delete a user            |
@@ -427,8 +427,8 @@ Reset a user's password.
 es-cli projections [--version] [--help] <command> [<args>]
 ```
 
-| Command                                              | Description                                          |
-| ---------------------------------------------------- | ---------------------------------------------------- |
+| Command                                               | Description                                          |
+| ----------------------------------------------------- | ---------------------------------------------------- |
 | [delete](#projections-delete)                         | Delete a projection                                  |
 | [disable](#projections-disable)                       | Disable a projection                                 |
 | [enable](#projections-enable)                         | Enable a projection                                  |
@@ -568,8 +568,8 @@ Determines whether a projection has stalled.
 es-cli competing [--version] [--help] <command> [<args>]
 ```
 
-| Command                    | Description                     |
-| -------------------------- | ------------------------------- |
+| Command                     | Description                     |
+| --------------------------- | ------------------------------- |
 | [create](#competing-create) | Create a new subscription       |
 | [delete](#competing-delete) | Delete an existing subscription |
 | [list](#competing-list)     | List the subscriptions          |
@@ -644,9 +644,9 @@ General options:
 
 | Option             | Description                                         |
 | ------------------ | --------------------------------------------------- |
-| `-db`              | The location of the EventStoreDB database            |
-| `-index`           | The location of the EventStoreDB index               |
-| `-log`             | The location of the EventStoreDB logs                |
+| `-db`              | The location of the EventStoreDB database           |
+| `-index`           | The location of the EventStoreDB index              |
+| `-log`             | The location of the EventStoreDB logs               |
 | `-run_projections` | The level of projections to run (none, system, all) |
 
 Cluster options:
@@ -713,5 +713,5 @@ If you encounter any issues, please open a ticket on freshdesk.
 
 ### 1.1.0
 
--   There was an issue with versions prior to 3.7.0 of EventStoreDB where bad events could be written to $scavenge-{id} and the $scavenges streams.
+-   There was an issue with versions prior to 3.7.0 of EventStoreDB where bad events could be appended to $scavenge-{id} and the $scavenges streams.
 -   With the release of version 1.1.0 of the CLI we have included a clear_scavenge_streams command under the admin section which will read through the $all stream and delete the $scavenges-{id} and $scavenges streams.

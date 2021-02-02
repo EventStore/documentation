@@ -37,7 +37,7 @@ Reads are queued until a reader thread becomes available to service them. If an 
 
 ### Effect on reads
 
-The size of read operations is dependent on the size of the events written, not on the database chunk size, which has a fixed logical size. Larger reads (subject to the operating system page size) result in more time being spent in system calls, and less availability of reader threads.
+The size of read operations is dependent on the size of the events appended, not on the database chunk size, which has a fixed logical size. Larger reads (subject to the operating system page size) result in more time being spent in system calls, and less availability of reader threads.
 
 ### Increasing the readers count
 

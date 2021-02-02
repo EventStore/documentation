@@ -10,7 +10,7 @@ This page is work in progress.
 
 <!-- ## Overview -->
 
-You write user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
+You create user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
 
 ```javascript
 options({
@@ -97,5 +97,5 @@ Each handler is provided with the current state of the projection as well as the
 
 | Handler | Description |
 |:------- |:----------- |
-| `emit(streamId, eventType, eventBody, metadata)` | Writes an event to the designated stream |
+| `emit(streamId, eventType, eventBody, metadata)` | Appends an event to the designated stream |
 | `linkTo(streamId, event, metadata)` | Writes a link to event to the designated stream |

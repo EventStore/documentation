@@ -3,7 +3,7 @@
 Settings in this section concern projections that are running on the server. Read more about projections [here](../projections/README.md).
 
 ::: warning
-Server-side projections impact the performance of the EventStoreDB server. For example, some standard [system projections](../projections/system-projections.md) like Category or Event Type projections produce new (link) events that are stored in the database in addition to the original event. This effectively doubles or triples the number of events written and therefore creates pressure on the IO of the server node. We often call this effect "write amplification".
+Server-side projections impact the performance of the EventStoreDB server. For example, some standard [system projections](../projections/system-projections.md) like Category or Event Type projections produce new (link) events that are stored in the database in addition to the original event. This effectively doubles or triples the number of events appended and therefore creates pressure on the IO of the server node. We often call this effect "write amplification".
 :::
 
 ## Run projections

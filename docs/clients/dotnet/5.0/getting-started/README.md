@@ -1,6 +1,6 @@
 # Quick tour
 
-This is a quick tour into the basic operations with EventStoreDB. We will look at creating a connection, writing an event and reading an event.
+This is a quick tour into the basic operations with EventStoreDB. We will look at creating a connection, appending an event and reading an event.
 
 ## Requirements
 
@@ -37,13 +37,13 @@ To use a client API, you use port `1113` and create a connection:
 
 It will create a connection to EventStoreDB running locally in Docker container using the TCP protocol.
 
-## Write events
+## Appending events
 
-The most basic operation is to write a single event to the database:
+The most basic operation is to append a single event to the database:
 
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/ConnectEventStore.cs#appendEvent
 
-## Read events
+## Reading events
 
 After you wrote an event to the database, you can then read it back. Use the following method passing the stream name, the start point in the stream, the number of events to read and whether to follow links to the event data:
 
