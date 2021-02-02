@@ -42,7 +42,7 @@ In this code, we create an instance of `CatchUpSubscriptionSettings`. You can al
 
 ## Subscribing to `$all`
 
-Subscribing to the global event stream gives you a possibility to create read models from many different event streams. It is a powerful method to create, for example, reporting models with aggregated and denormalized data without using common database operations like `JOIN`. You must, however, carefully evaluate your subscription performance, as when you subscribe to `$all`, you'll get absolutely everything what gets written to the EventStoreDB cluster. You might also need to filter out system events, by checking if event type starts with `$`. In normal applications, you won't need to process system events.
+Subscribing to the global event stream gives you a possibility to create read models from many different event streams. It is a powerful method to create, for example, reporting models with aggregated and denormalized data without using common database operations like `JOIN`. You must, however, carefully evaluate your subscription performance, as when you subscribe to `$all`, you'll get absolutely everything what gets appended to the EventStoreDB cluster. You might also need to filter out system events, by checking if event type starts with `$`. In normal applications, you won't need to process system events.
 
 As mentioned before, the checkpoint for `$all` is not a single numeric value, like it is for a single stream. You need to handle the checkpoint with two positions instead: commit and prepare position.
 

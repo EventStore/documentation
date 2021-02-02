@@ -41,7 +41,7 @@ The buttons on the top right when you are viewing an event stream are:
 - _Pause_: Stop showing events arriving into this stream.
 - _Resume_: Resume showing events arriving into this stream.
 - _Edit ACL_: Edit [the access control lists](../security/acl.md) for a stream.
-- _Add Event_: [Add a new event](../../http-api/writing-events.md) to the stream.
+- _Add Event_: [Add a new event](../../http-api/appending-events.md) to the stream.
 - _Delete_: [Delete a stream](../../http-api/deleting-a-stream.md) to the stream.
 - _Query_:
 

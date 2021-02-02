@@ -5,12 +5,12 @@
 In addition to [system projections](system-projections.md), you can create custom projections, which run on the server. User defined projections only work with events stored in JSON format. Use cases for custom projections include aggregation (stateful projections), transformations and partitioning.
 
 ::: warning
-All user defined projections increase the number of write operations on the master node. Stateful projections write one event for each state change, projections with emit operations like `emit` and `linkTo` explicitly create new events. Those events might get picked up by system projections, which write even more events. Therefore, carefully evaluate your need for custom projections, considering your cluster load as the cluster performance might degrade substantially.
+All user defined projections increase the number of append operations on the master node. Stateful projections append one event for each state change, projections with emit operations like `emit` and `linkTo` explicitly create new events. Those events might get picked up by system projections, which append even more events. Therefore, carefully evaluate your need for custom projections, considering your cluster load as the cluster performance might degrade substantially.
 :::
 
 ## Overview
 
-You write user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
+You create user defined projections in JavaScript. For example, the `my_demo_projection_result` projection below counts the number of `myEventType` events from the `account-1` stream. It then uses the `transformBy` function to change the final state:
 
 ```javascript
 options({
@@ -97,5 +97,5 @@ Each handler is provided with the current state of the projection as well as the
 
 | Handler | Description |
 |:------- |:----------- |
-| `emit(streamId, eventType, eventBody, metadata)` | Writes an event to the designated stream |
+| `emit(streamId, eventType, eventBody, metadata)` | Appends an event to the designated stream |
 | `linkTo(streamId, event, metadata)` | Writes a link to event to the designated stream |

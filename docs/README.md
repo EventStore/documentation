@@ -13,7 +13,7 @@ actions:
   link: /cloud/
 features:
 - title: "Event Sourcing"
-  details: EventStoreDB is built to support Event Sourcing. We support idempotent writes and reading events from individual streams.
+  details: EventStoreDB is built to support Event Sourcing. We support idempotent appending and reading events from individual streams.
 - title: gRPC for clients
   details: Using gRPC protocol for client-server communication allows us to provide SDKs for a wide range of languages and platforms.
 - title: Immutable data
@@ -24,7 +24,7 @@ footer: Copyright © 2020 EventStoreDB Limited
 ## Latest updates
 
 ### 30 December 2020
-- <badge>preview</badge> Extended [gRPC clients](/clients/grpc/getting-started/) page with documentation and samples for [writing](clients/grpc/appending-events/README.md) and [reading](clients/grpc/reading-events/README.md) events, [subscribing to streams](clients/grpc/subscribing-to-streams/README.md).
+- <badge>preview</badge> Extended [gRPC clients](/clients/grpc/getting-started/) page with documentation and samples for [appending](clients/grpc/appending-events/README.md) and [reading](clients/grpc/reading-events/README.md) events, [subscribing to streams](clients/grpc/subscribing-to-streams/README.md).
 
 ### 23 December 2020
 -  Added [Cloud EventStoreDB in Azure](cloud/provision/azure/README.md) documentation.

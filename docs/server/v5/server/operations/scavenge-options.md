@@ -46,7 +46,7 @@ EventStoreDB will always keep one event in the stream even if the stream was del
 
 ## Ignore hard delete
 
-When you [delete a stream](../streams/deleting-streams-and-events.md), you can use either a soft delete or hard delete. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to write to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
+When you [delete a stream](../streams/deleting-streams-and-events.md), you can use either a soft delete or hard delete. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to append to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
 
 You can override this behaviour and tell EventStoreDB that you want to delete all the traces of hard-deleted streams too, using the option specified below. After a scavenge operation runs, all hard-deleted streams will be open for writing new events again.
 
@@ -63,5 +63,5 @@ If you hard-delete a stream in the current chunk, it will remain hard-deleted ev
 **Default**: `false`
 
 ::: warning Unsafe
-Setting this option to `true` disables hard deletes and allows clients to write to deleted streams. For that reason, the option is considered unsafe and should be used with caution.
+Setting this option to `true` disables hard deletes and allows clients to append to deleted streams. For that reason, the option is considered unsafe and should be used with caution.
 :::

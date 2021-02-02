@@ -4,11 +4,11 @@ Metadata in EventStoreDB defines whether an event is deleted or not. You can use
 
 You cannot delete events from the middle of the stream. EventStoreDB only allows to _truncate_ the stream.
 
-When you delete a stream, you can use either a soft delete or hard delete. When a stream is soft-deleted, all events from the stream get scavenged during the next scavenging run. It means that you can reopen the stream by writing to it again. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to write to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
+When you delete a stream, you can use either a soft delete or hard delete. When a stream is soft-deleted, all events from the stream get scavenged during the next scavenging run. It means that you can reopen the stream by appending to it again. When using hard delete, the stream gets closed with a tombstone event. Such an event tells the database that the stream cannot be reopened, so any attempt to append to the hard-deleted stream will fail. The tombstone event doesn't get scavenged.
 
 The `$all` stream bypasses the index, meaning that it does not check the metadata to determine whether events exist or not. As such, events that have been deleted are still be readable until a scavenge has removed them. There are requirements for a scavenge to successfully remove events, for more information about this, read the [scavenging guide](../scavenge/).
 
-EventStoreDB will always keep one event in the stream even if the stream was deleted, to indicate the stream existence and the last event version. Therefore, we advise you to write a specific event like `StreamDeleted` and then set the max count to one to keep the stream or delete the stream. Keep that in mind when deleting streams that contain sensitive information that you really want to remove without a trace.
+EventStoreDB will always keep one event in the stream even if the stream was deleted, to indicate the stream existence and the last event version. Therefore, we advise you to append a specific event like `StreamDeleted` and then set the max count to one to keep the stream or delete the stream. Keep that in mind when deleting streams that contain sensitive information that you really want to remove without a trace.
 
 ## Soft delete and `TruncateBefore`
 
@@ -29,9 +29,9 @@ If you set the `TruncateBefore` or `$tb` value to 3, a read of the stream would 
 ```
 
 A **soft delete** makes use of `TruncateBefore` and `$tb`. When you delete a stream, its `TruncateBefore` or `$tb` is set to the streams current last event number. When you read a soft deleted stream, the read returns a `StreamNotFound` or `404` result.
-After deleting the stream, you are able to write to it again, continuing from where it left off.
+After deleting the stream, you are able to append to it again, continuing from where it left off.
 
-For example, if you soft deleted the above example stream, the `TruncateBefore` or `$tb` is set to 3 (the stream's current event number). If you were to write to the stream again, the next event is written with event number 4. Only events from event number 4 onwards are visible when you read this stream.
+For example, if you soft deleted the above example stream, the `TruncateBefore` or `$tb` is set to 3 (the stream's current event number). If you were to append to the stream again, the next event is appended with event number 4. Only events from event number 4 onwards are visible when you read this stream.
 
 ## Max count and Max age
 
@@ -41,11 +41,11 @@ For example, if you soft deleted the above example stream, the `TruncateBefore` 
 
 ## Hard delete
 
-A **hard delete** writes a `tombstone` event to the stream, permanently deleting it. You cannot recreate the stream, or write to it again. Tombstone events are written with the event type `$streamDeleted`. When you read a hard deleted stream, the read returns a `StreamDeleted` or `410` result.
+A **hard delete** appends a `tombstone` event to the stream, permanently deleting it. You cannot recreate the stream, or append to it again. Tombstone events are appended with the event type `$streamDeleted`. When you read a hard deleted stream, the read returns a `StreamDeleted` or `410` result.
 
 The events in the deleted stream are liable to be removed in a scavenge, but the tombstone event remains.
 
-A hard delete of a stream is permanent. You cannot write to the stream or recreate it. As such, you should generally soft delete streams unless you have a specific need to permanently delete the stream. On rare occasions when you need to re-open a hard-deleted stream, you can force EventStoreDB to scavenge it by using the [ignore hard deletes](../scavenge/options.md#ignore-hard-delete) option.
+A hard delete of a stream is permanent. You cannot append to the stream or recreate it. As such, you should generally soft delete streams unless you have a specific need to permanently delete the stream. On rare occasions when you need to re-open a hard-deleted stream, you can force EventStoreDB to scavenge it by using the [ignore hard deletes](../scavenge/options.md#ignore-hard-delete) option.
 
 ## Deleted events and projections
 

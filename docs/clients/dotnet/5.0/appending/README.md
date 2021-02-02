@@ -1,18 +1,18 @@
-# Writing events
+# Appending events
 
-You can use the client API to write one or more events to a stream atomically. You do this by appending the events to the stream in one operation, or by using transactions.
+You can use the client API to append one or more events to a stream atomically. You do this by appending the events to the stream in one operation, or by using transactions.
 
 ::: note
 Sending events to a non-existing stream, implicitly creates the stream.
 :::
 
-It is possible to make an optimistic concurrency check during the write by specifying the version at which you expect the stream to be. Identical write operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](optimistic-concurrency-and-idempotence.md).
+It is possible to make an optimistic concurrency check during the append by specifying the version at which you expect the stream to be. Identical append operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](optimistic-concurrency-and-idempotence.md).
 
 The writing methods all use a type named `EventData` to represent an event to store (described [below](#eventdata)). The client library doesn't perform any serialization work, so you'd need to serialize both your event and its metadata to byte arrays. It allows you to use any serializer.
 
-## Append to a stream in a single write
+## Append to a stream in a single batch
 
-The `AppendToStreamAsync` method writes a single event or list of events atomically to the end of a stream, working in an asynchronous manner.
+The `AppendToStreamAsync` method appends a single event or list of events atomically to the end of a stream, working in an asynchronous manner.
 
 Method definitions:
 
@@ -73,9 +73,9 @@ static async Task Main()
 
 ## Transactions
 
-You might perform multiple writes to EventStoreDB as one transaction. However, the transaction can only write events to one stream. Transactions across multiple streams are not supported.
+You might perform multiple writes to EventStoreDB as one transaction. However, the transaction can only append events to one stream. Transactions across multiple streams are not supported.
 
-You can open a transaction by using the `StartTransactionAsync` method of the `IEventStoreConnection` instance. After you got the transaction instance, you can use it to write events. Finally, you can either commit or roll back the transaction.
+You can open a transaction by using the `StartTransactionAsync` method of the `IEventStoreConnection` instance. After you got the transaction instance, you can use it to append events. Finally, you can either commit or roll back the transaction.
 
 A transaction can be long-lived and opening a transaction for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with expected version.
 

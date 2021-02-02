@@ -1,10 +1,10 @@
-# Writing Events
+# Appending Events
 
 :::tip
 Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to learn how to configure and use the client SDK.
 :::
 
-The simplest way to write an event to EventStoreDB is to create an `EventData` object and call `AppendToStream` method.
+The simplest way to append an event to EventStoreDB is to create an `EventData` object and call `AppendToStream` method.
 
 <xode-group>
 <xode-block title="C#">
@@ -54,7 +54,7 @@ For example:
 </xode-block>
 </xode-group>
 
-will result in only a single event being written
+will result in only a single event being appended.
 
 ![Duplicate Event](./images/dupicate-event.png)
 
@@ -80,7 +80,7 @@ Simple boolean field to tell EventStoreDB if the event is stored as json, true b
 
 When appending events to a stream you can supply a *stream state* or *stream revision*. Your client can use this to tell EventStoreDB what state or version you expect the stream to be in when you append. If the stream isn't in that state then an exception will be thrown. 
 
-For example if we try and write the same record twice expecting both times that the stream doesn't exist we will get an exception on the second:
+For example if we try and append the same record twice expecting both times that the stream doesn't exist we will get an exception on the second:
 
 <xode-group>
 <xode-block title="C#">

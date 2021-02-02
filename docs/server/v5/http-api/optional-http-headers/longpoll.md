@@ -4,7 +4,7 @@ You use the `ES-LongPoll` header to tell EventStoreDB that when on the head link
 
 You can use this to give lower latency for Atom clients instead of client initiated polling.
 
-Instead of the client polling every 5 seconds to get data from the feed the client sends a request with `ES-LongPoll: 15`. This instructs EventStoreDB to wait for up to 15 seconds before returning with no result. The latency is therefore lowered from the poll interval to about 10ms from the time an event is written until the time the HTTP connection is notified.
+Instead of the client polling every 5 seconds to get data from the feed the client sends a request with `ES-LongPoll: 15`. This instructs EventStoreDB to wait for up to 15 seconds before returning with no result. The latency is therefore lowered from the poll interval to about 10ms from the time an event is appended until the time the HTTP connection is notified.
 
 You can see the use of the `ES-LongPoll` header in the following cURL command.
 

@@ -31,7 +31,7 @@ URI | Description | HTTP Verb
 
 * checkpoints: Enable checkpoints (true/false)
 
-* emit: Enable the ability for the projection to write to streams (true/false)
+* emit: Enable the ability for the projection to append to streams (true/false)
 
 * trackemittedstreams: Write the name of the streams the projection is managing to a separate stream. $projections-{projection-name}-emittedstreams (true/false)
 
@@ -47,7 +47,7 @@ URI | Description | HTTP Verb
 
 * enabled: Enable the projection (true/false)
 
-* emit: Allow the projection to write to streams (true/false)
+* emit: Allow the projection to append to streams (true/false)
 
 * trackemittedstreams: Write the name of the streams the projection is managing to a separate stream. $projections-{projection-name}-emittedstreams (true/false)
 

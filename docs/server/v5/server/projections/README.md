@@ -1,6 +1,6 @@
 # Introduction to projections
 
-Projections is an EventStoreDB subsystem that lets you write new events or link existing events to streams in a reactive manner.
+Projections is an EventStoreDB subsystem that lets you append new events or link existing events to streams in a reactive manner.
 
 Projections are good at solving one specific query type, a category known as 'temporal correlation queries'. This query type is common in business systems and few can execute these queries well.
 
@@ -47,6 +47,6 @@ Projections only run on a leader node of the cluster due to consistency concerns
 
 ## Limitations
 
-Streams where projections emit events cannot be used to write events from applications. When this happens, the projection will detect events not produced by the projection itself and it will break.
+Streams where projections emit events cannot be used to append events from applications. When this happens, the projection will detect events not produced by the projection itself and it will break.
 
-The reason projections exclusively own their streams is because otherwise they would lose all predictability. The projection would no longer have any idea what should be in that stream. For example, when a projection starts up from a checkpoint, it first goes through all the events after that checkpoint and checks them against the emitted stream. By doing this, the projection can understand if it up to the last event and can continue from where it left off. On top of that, the projection can verify that everything is in order, no events missing, etc. If anyone can write to the emitted streams, then the projection would have no idea where it got to last in terms of processing. Therefore, it can no longer trust that the projection itself emitted that event or if something else did.
+The reason projections exclusively own their streams is because otherwise they would lose all predictability. The projection would no longer have any idea what should be in that stream. For example, when a projection starts up from a checkpoint, it first goes through all the events after that checkpoint and checks them against the emitted stream. By doing this, the projection can understand if it up to the last event and can continue from where it left off. On top of that, the projection can verify that everything is in order, no events missing, etc. If anyone can append to the emitted streams, then the projection would have no idea where it got to last in terms of processing. Therefore, it can no longer trust that the projection itself emitted that event or if something else did.

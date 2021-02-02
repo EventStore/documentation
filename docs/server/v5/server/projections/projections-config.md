@@ -29,7 +29,7 @@ You change the configuration of a projection by setting the relevant key and val
 
 ## Emit options
 
-These options control how projections write events.
+These options control how projections append events.
 
 In busy systems, projections can put a lot of extra pressure on the master node. This is especially true for EventStoreDB servers that also have persistent subscriptions running, which only the master node can process. If you see a lot of commit timeouts and slow writes from your projections and other clients, then start with these settings.
 
@@ -52,7 +52,7 @@ The `trackemittedstreams` boolean setting enables tracking of a projection's emi
 Tracking emitted streams enables you to delete a projection and all the streams that it has created. You should only the setting if you intend to delete a projection and create new ones that project to the same stream.
 
 ::: warning
-By default, EventStoreDB disables the `trackemittedstreams` setting for projections. When enabled, an event written records the stream name (in `$projections-{projection_name}-emittedstreams`) of each event emitted by the projection. This means that write amplification is a possibility, as each event that the projection emits writes a separate event. As such, this option is not recommended for projections that emit a lot of events, and you should enable only where necessary.
+By default, EventStoreDB disables the `trackemittedstreams` setting for projections. When enabled, an event appended records the stream name (in `$projections-{projection_name}-emittedstreams`) of each event emitted by the projection. This means that write amplification is a possibility, as each event that the projection emits appends a separate event. As such, this option is not recommended for projections that emit a lot of events, and you should enable only where necessary.
 :::
 
 ::: tip
@@ -86,7 +86,7 @@ The default for this option is 500.
 
 ## Checkpoint options
 
-Checkpoints store how far along a projection is in the streams it is processing from. There is a performance overhead with writing a checkpoint, as it does more than write an event, and writing them too often can slow projections down.
+Checkpoints store how far along a projection is in the streams it is processing from. There is a performance overhead with writing a checkpoint, as it does more than append an event, and writing them too often can slow projections down.
 
 We recommend you try other methods of improving projections before changing these values, as checkpoints are an important part of running projections.
 

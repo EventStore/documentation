@@ -11,7 +11,7 @@ Once a scavenge has run, you cannot recover any deleted events.
 After processing the chunks, the operation updates the chunk indexes using a merge sort algorithm, skipping events whose data is no longer available.
 
 ::: warning Active chunk
-The active (last) chunk won't be affected by teh scavenge operation as scavenging requires creating a new empty chunk file and copy all the relevant events to it. As the last chunk is the one were events are being actively written, scavenging of the currently active chunk is not possible. It also means that all the events from truncated and deleted streams won't be removed from the current chunk.
+The active (last) chunk won't be affected by teh scavenge operation as scavenging requires creating a new empty chunk file and copy all the relevant events to it. As the last chunk is the one were events are being actively appended, scavenging of the currently active chunk is not possible. It also means that all the events from truncated and deleted streams won't be removed from the current chunk.
 :::
 
 ## Starting a scavenge

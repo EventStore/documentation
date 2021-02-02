@@ -21,7 +21,7 @@ Add the sample data to four different streams:
 
 <<< @/docs//server/v5/http-api/sample-code/add-sample-data.sh
 
-## Writing your first projection
+## Creating your first projection
 
 ::: tip Next steps
 Read [this guide](../projections/api.md) to find out more about the user defined projection's API.
@@ -61,7 +61,7 @@ The server will send a response similar to this:
 
 <<< @/docs//server/v5/http-api/sample-code/projections/query-state.json
 
-## Writing to streams from projections
+## Appending to streams from projections
 
 The above gives you the correct result but requires you to poll for the state of a projection. What if you wanted EventStoreDB to notify you about state updates via subscriptions?
 

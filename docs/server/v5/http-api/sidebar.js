@@ -5,7 +5,7 @@ module.exports = [
         path: "",
         children: [
             "",
-            "writing-events.md",
+            "appending-events.md",
             "reading-streams.md",
             "deleting-a-stream.md",
             "description-document.md",

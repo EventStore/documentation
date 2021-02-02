@@ -4,7 +4,7 @@ Describe connecting to the single node and to the cluster.
 
 Gossip seeds, using ip addresses and DNS.
 
-The .NET Client API communicates with EventStoreDB over TCP, using length-prefixed serialised protocol buffers. The API allows for reading and writing operations, as well as for subscriptions to individual event streams or all events written.
+The .NET Client API communicates with EventStoreDB over TCP, using length-prefixed serialised protocol buffers. The API allows for reading and appending operations, as well as for subscriptions to individual event streams or all events appended.
 
 ## EventStoreConnection
 
@@ -18,7 +18,7 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 ## Quick start
 
-The code below shows how to connect to an EventStoreDB server, write to a stream, and read back the events. For more detailed information, read the full pages for [connecting to a server](connecting-to-a-server.md), [reading events](../reading/README.md) and [writing to a stream](../writing/README.md)
+The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for [connecting to a server](connecting-to-a-server.md), [reading events](../reading/README.md) and [appending to a stream](../appending/README.md)
 
 :::: code-group
 ::: code JSON format event

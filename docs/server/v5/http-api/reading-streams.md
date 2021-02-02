@@ -71,10 +71,10 @@ Let's now try an example with more than a single page. First create the multiple
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/write-paging-events.sh#curl
+<<< @/docs/server/v5/http-api/sample-code/append-paging-events.sh#curl
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/write-paging-events.sh#response
+<<< @/docs/server/v5/http-api/sample-code/append-paging-events.sh#response
 :::
 ::::
 
