@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   setup:
@@ -8,9 +8,9 @@ services:
     command: >
       -c "mkdir -p ./certs && cd /certs
       && es-gencert-cli create-ca
-      && es-gencert-cli create-node -out ./node1 --dns-names node1.eventstore
-      && es-gencert-cli create-node -out ./node2 --dns-names node2.eventstore
-      && es-gencert-cli create-node -out ./node3 --dns-names node3.eventstore
+      && es-gencert-cli create-node -out ./node1 -ip-addresses 127.0.0.1,172.30.240.11 -dns-names localhost
+      && es-gencert-cli create-node -out ./node2 -ip-addresses 127.0.0.1,172.30.240.12 -dns-names localhost
+      && es-gencert-cli create-node -out ./node3 -ip-addresses 127.0.0.1,172.30.240.13 -dns-names localhost
       && find . -type f -print0 | xargs -0 chmod 666"
     container_name: setup
     volumes:
@@ -22,18 +22,18 @@ services:
     env_file:
       - vars.env
     environment:
-      - EVENTSTORE_EXT_HOST_ADVERTISE_AS=node1.eventstore
-      - EVENTSTORE_INT_HOST_ADVERTISE_AS=node1.eventstore
-      - EVENTSTORE_GOSSIP_SEED=node2.eventstore:2113,node3.eventstore:2113
-      - EVENTSTORE_CERTIFICATE_FILE=/certs/node1/node.crt
-      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node1/node.key
+      - EVENTSTORE_INT_IP=172.30.240.11
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2111
       - EVENTSTORE_ADVERTISE_TCP_PORT_TO_CLIENT_AS=1111
+      - EVENTSTORE_GOSSIP_SEED=172.30.240.12:2113,172.30.240.13:2113
+      - EVENTSTORE_TRUSTED_ROOT_CERTIFICATES_PATH=/certs/ca
+      - EVENTSTORE_CERTIFICATE_FILE=/certs/node1/node.crt
+      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node1/node.key
     healthcheck:
       test:
         [
-            'CMD-SHELL',
-            'curl --fail --insecure https://node1.eventstore:2113/health/live || exit 1',
+          "CMD-SHELL",
+          "curl --fail --insecure https://node1.eventstore:2113/health/live || exit 1",
         ]
       interval: 5s
       timeout: 5s
@@ -46,23 +46,28 @@ services:
     depends_on:
       - setup
     restart: always
+    networks:
+      clusternetwork:
+        ipv4_address: 172.30.240.11
 
   node2.eventstore:
     <<: *template
     container_name: node2.eventstore
+    env_file:
+      - vars.env
     environment:
-      - EVENTSTORE_EXT_HOST_ADVERTISE_AS=node2.eventstore
-      - EVENTSTORE_INT_HOST_ADVERTISE_AS=node2.eventstore
-      - EVENTSTORE_GOSSIP_SEED=node1.eventstore:2113,node3.eventstore:2113
-      - EVENTSTORE_CERTIFICATE_FILE=/certs/node2/node.crt
-      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node2/node.key
+      - EVENTSTORE_INT_IP=172.30.240.12
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2112
       - EVENTSTORE_ADVERTISE_TCP_PORT_TO_CLIENT_AS=1112
+      - EVENTSTORE_GOSSIP_SEED=172.30.240.11:2113,172.30.240.13:2113
+      - EVENTSTORE_TRUSTED_ROOT_CERTIFICATES_PATH=/certs/ca
+      - EVENTSTORE_CERTIFICATE_FILE=/certs/node2/node.crt
+      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node2/node.key
     healthcheck:
       test:
         [
-            'CMD-SHELL',
-            'curl --fail --insecure https://node2.eventstore:2113/health/live || exit 1',
+          "CMD-SHELL",
+          "curl --fail --insecure https://node2.eventstore:2113/health/live || exit 1",
         ]
       interval: 5s
       timeout: 5s
@@ -70,23 +75,26 @@ services:
     ports:
       - 1112:1113
       - 2112:2113
+    networks:
+      clusternetwork:
+        ipv4_address: 172.30.240.12
 
   node3.eventstore:
     <<: *template
     container_name: node3.eventstore
     environment:
-      - EVENTSTORE_EXT_HOST_ADVERTISE_AS=node3.eventstore
-      - EVENTSTORE_INT_HOST_ADVERTISE_AS=node3.eventstore
-      - EVENTSTORE_GOSSIP_SEED=node1.eventstore:2113,node2.eventstore:2113
-      - EVENTSTORE_CERTIFICATE_FILE=/certs/node3/node.crt
-      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node3/node.key
+      - EVENTSTORE_INT_IP=172.30.240.13
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2113
       - EVENTSTORE_ADVERTISE_TCP_PORT_TO_CLIENT_AS=1113
+      - EVENTSTORE_GOSSIP_SEED=172.30.240.11:2113,172.30.240.12:2113
+      - EVENTSTORE_TRUSTED_ROOT_CERTIFICATES_PATH=/certs/ca
+      - EVENTSTORE_CERTIFICATE_FILE=/certs/node3/node.crt
+      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node3/node.key
     healthcheck:
       test:
         [
-            'CMD-SHELL',
-            'curl --fail --insecure https://node3.eventstore:2113/health/live || exit 1',
+          "CMD-SHELL",
+          "curl --fail --insecure https://node3.eventstore:2113/health/live || exit 1",
         ]
       interval: 5s
       timeout: 5s
@@ -94,3 +102,15 @@ services:
     ports:
       - 1113:1113
       - 2113:2113
+    networks:
+      clusternetwork:
+        ipv4_address: 172.30.240.13
+
+networks:
+  clusternetwork:
+    name: eventstoredb.local
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.240.0/24

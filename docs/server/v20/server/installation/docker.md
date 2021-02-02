@@ -73,7 +73,7 @@ Now you are ready to start the cluster.
 docker-compose up
 ```
 
-Check the log messages, after some time the elections process completes and you'd be able to connect to each node using the Admin UI. Nodes should be accessible on the loopback address (`127.0.0.1`) over HTTP and TCP, using ports specified below:
+Check the log messages, after some time the elections process completes and you'd be able to connect to each node using the Admin UI. Nodes should be accessible on the loopback address (`127.0.0.1` or `localhost`) over HTTP and TCP, using ports specified below:
 
 | Node | TCP port | HTTP port |
 | :--- | :------- | :-------- |
