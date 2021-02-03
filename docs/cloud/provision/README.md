@@ -12,3 +12,12 @@ Find the detailed guideline for your cloud provider:
 - [Amazon Web Services (AWS)](aws)
 - [Google Cloud Platform (GCP)](gcp)
 - [Microsoft Azure](azure)
+
+
+This is how networking will look like when all provisioning steps are performed:
+
+::: card
+
+![ES_Cloud_Networking](./images/es-cloud-networking.svg)
+
+:::
