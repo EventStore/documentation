@@ -81,6 +81,14 @@ Next, visit your Tailscale Admin Console, find the cloud VM in the list and use 
 
 Now, visit the EventStoreDB Cloud console, switch to the Clusters page and choose the EventStoreDB cluster. In the cluster details select the `Addresses` tab and click on the UI link. You should then get the EventStoreDB Admin UI opened in your local machine browser.
 
+This is how the network looks like when using Tailscale: 
+
+::: card
+
+![ES_Cloud_Networking_tailsacle](./images/es-cloud-networking-tailscale.svg)
+
+::: 
+
 ## Future plans
 
 Soon, we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside EventStoreDB Cloud and set up routing to your Tailscale account automatically.
