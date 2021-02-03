@@ -32,9 +32,9 @@ In this section, you can find settings related to protocol security (HTTPS and T
 
 ### Certificate common name
 
-SSL certificates can be created with a common name (CN), which is an arbitrary string. Usually is contains the DNS name for which the certificate is issued. When cluster nodes connect to each other, they need to ensure that they indeed talk to another node and not something that pretends to be a node. Therefore, EventStoreDB expects the connecting party to have a certificate with a pre-defined CN `eventstoredb-node`.
+SSL certificates can be created with a common name (CN), which is an arbitrary string. Usually is contains the DNS name for which the certificate is issued. When cluster nodes connect to each other, they need to ensure that they indeed talk to another node and not something that pretends to be a node. Therefore, EventStoreDB expects the connecting party to have a certificate with a pre-defined CN `eventstoredb-node`. 
 
-When using the Event Store [certificate generator](https://github.com/EventStore/es-gencert-cli), the CN is properly set by default. However, you might want to change the CN and in this case, you'd also need to tell EventStoreDB what value it should expect instead of the default one, using the setting below:
+When using the Event Store [certificate generator](#certificate-generation-cli), the CN is properly set by default. However, you might want to change the CN and in this case, you'd also need to tell EventStoreDB what value it should expect instead of the default one, using the setting below:
  
 | Format               | Syntax |
 | :------------------- | :----- |
@@ -43,6 +43,11 @@ When using the Event Store [certificate generator](https://github.com/EventStore
 | Environment variable | `EVENTSTORE_CERTIFICATE_RESERVED_NODE_COMMON_NAME` |
 
 **Default**: `eventstoredb-node`
+
+
+::: warning
+Server certificates **must** have the internal and external IP addresses or DNS names as subject alternative names.
+:::
 
 ### Trusted root certificates
 
@@ -120,6 +125,117 @@ You need to add the certificate thumbprint setting on Windows so the server can 
 | Command line         | `--certificate-thumbprint` |
 | YAML                 | `CertificateThumbprint` |
 | Environment variable | `EVENTSTORE_CERTIFICATE_THUMBPRINT` |
+
+## Certificate Generation CLI
+
+Event Store provides the interactive Certificate Generation CLI, which creates self-signed certificates for EventStoreDB. You can use the [configuration wizard](../installation/README.md), that will provide you exact CLI commands that you need to run to generates certificates matching your configuration. 
+
+### Getting Started
+
+CLI is available as Open Source project in the [Github Repository.](https://github.com/EventStore/es-gencert-cli) The latest release can be found under the [GitHub releases page.](https://github.com/EventStore/es-gencert-cli/releases)
+
+We're releasing binaries for Windows, Linux and macOS. We also publish the tool as a Docker image.
+
+Basic usage for Certificate Generation CLI:
+
+```bash
+./es-gencert-cli [options] <command> [args]
+```
+
+Getting help for a specific command:
+
+```bash
+./es-gencert-cli -help <command>
+```
+
+#### Generating the CA certificate
+
+CA certificate will be generated with pre-defined CN `eventstoredb-node`.
+
+To generate CA certificate run:
+
+```bash
+./es-gencert-cli create-ca
+```
+
+you can customise generated cert by providing following params:
+
+| Param | Description |
+| :------------------- | :----- |
+| `-days` | The validity period of the certificate in days (default: 5 years) |
+| `-out` | The output directory (default: ./ca) |
+
+Example:
+
+```bash
+./es-gencert-cli create-ca -out ./es-ca
+```
+
+#### Generating the Node certificate
+
+Each node should have generated its own certificate. 
+
+```bash
+./es-gencert-cli -help create_node
+```
+
+you can customise generated cert by providing following params:
+
+| Param | Description |
+| :-- | :-- |
+| `-ca-certificate` | The path to the CA certificate file (default: ./ca/ca.crt) |
+| `-ca-key` | The path to the CA key file (default: ./ca/ca.key) |
+| `-days` | The output directory (default: ./nodeX where X is an auto-generated number) |
+| `-out` | The output directory (default: ./ca) |
+| `-ip-addresses` | Comma-separated list of IP addresses of the node |
+| `-dns-names` | Comma-separated list of DNS names of the node |
+
+::: warning
+While generating the certificate, you need to remember to pass internal end external:
+- IP addresses to `-ip-addresses`: e.g. `127.0.0.1,172.20.240.1` or 
+- DNS names to `-dns-names`: e.g. `localhost,node1.eventstore`
+that will match the URLs that you will be accessing EventStoreDB nodes.
+:::
+
+Sample:
+
+```
+./es-gencert-cli-cli create-node -ca-certificate ./es-ca/ca.crt -ca-key ./es-ca/ca.key -out ./node1 -ip-addresses 127.0.0.1,172.20.240.1 -dns-names localhost,node1.eventstore
+```
+
+#### Running with Docker
+
+You could also run the tool using Docker interactive container:
+
+```bash
+docker run --rm -i eventstore/es-gencert-cli <command> <options>
+```
+
+One useful scenario is to use the tool inside the Docker Compose file to generate all the necessary certificates before starting cluster nodes.
+
+Sample:
+
+```yaml
+version: "3.5"
+
+services:
+  setup:
+    image: eventstore/es-gencert-cli:1.0.2
+    entrypoint: bash
+    user: "1000:1000"
+    command: >
+      -c "mkdir -p ./certs && cd /certs
+      && es-gencert-cli create-ca
+      && es-gencert-cli create-node -out ./node1 -ip-addresses 127.0.0.1,172.20.240.1 -dns-names localhost,node1.eventstore
+      && es-gencert-cli create-node -out ./node1 -ip-addresses 127.0.0.1,172.20.240.2 -dns-names localhost,node2.eventstore
+      && es-gencert-cli create-node -out ./node1 -ip-addresses 127.0.0.1,172.20.240.3 -dns-names localhost,node3.eventstore
+      && find . -type f -print0 | xargs -0 chmod 666"
+    container_name: setup
+    volumes:
+      - ./certs:/certs
+```
+
+See more in the [complete sample of docker-compose secured cluster configuration.](../installation/docker.md#use-docker-compose)
 
 ## TCP protocol security
 

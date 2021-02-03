@@ -18,7 +18,7 @@ EventStoreDB supports two protocols: gRPC and TCP, described below.
 - [Go](https://github.com/EventStore/EventStore-Client-Go)
 - [Rust](https://github.com/EventStore/EventStoreDB-Client-Rust)
 
-Read more in the [gRPC clients documentation](../../../clients/grpc/getting-started/README.md).
+Read more in the [gRPC clients documentation](../../../../clients/grpc/getting-started/README.md).
 
 ### Community developed clients
 
@@ -73,4 +73,4 @@ We plan to phase out the HTTP protocol in the later versions. Please consider mi
 
 ### Community developed clients
 
-- [Ruby](https://github.com/yousty/event_store_client
+- [Ruby](https://github.com/yousty/event_store_client)
