@@ -148,7 +148,23 @@ Getting help for a specific command:
 ./es-gencert-cli -help <command>
 ```
 
+::: warning
+If you are running EventStoreDB on Linux, remember that all certificate files should have restrictive rights, otherwise the OS won't allow using them.
+Usually, you'd need to change rights for each certificate file to prevent the "permissions are too open" error.
+
+You can do it by running the following command:
+```bash
+chmod 600 [file]
+```
+:::
+
 #### Generating the CA certificate
+
+As the first step CA certificate needs to be generated. It'll need to be trusted for each of the nodes and client environment. 
+
+By default, the tool will create the `ca` directory in the `certs` directory you created. Two keys will be generated:
+- `ca.crt` - public file that need to be used also for the nodes and client configuration,
+- `ca.key` - private key file that should be used only in the nodes configuration (**Do not copy it to client environment**). 
 
 CA certificate will be generated with pre-defined CN `eventstoredb-node`.
 
@@ -158,7 +174,7 @@ To generate CA certificate run:
 ./es-gencert-cli create-ca
 ```
 
-you can customise generated cert by providing following params:
+You can customise generated cert by providing following params:
 
 | Param | Description |
 | :------------------- | :----- |
@@ -173,26 +189,32 @@ Example:
 
 #### Generating the Node certificate
 
-Each node should have generated its own certificate. 
+You need to generate self-signed certificates for each node. They should be installed only on the specific node machine.
+
+By default, the tool will create the `ca` directory in the `certs` directory you created. Two keys will be generated:
+- `node.crt` - the public file that needs to be also used for the nodes and client configuration,
+- `node.key` - the private key file that should be used only in the node's configuration (**Do not copy it to client environment**). 
+
+To generate node certificate run command:
 
 ```bash
 ./es-gencert-cli -help create_node
 ```
 
-you can customise generated cert by providing following params:
+You can customise generated cert by providing following params:
 
 | Param | Description |
 | :-- | :-- |
-| `-ca-certificate` | The path to the CA certificate file (default: ./ca/ca.crt) |
-| `-ca-key` | The path to the CA key file (default: ./ca/ca.key) |
-| `-days` | The output directory (default: ./nodeX where X is an auto-generated number) |
-| `-out` | The output directory (default: ./ca) |
+| `-ca-certificate` | The path to the CA certificate file (default: `./ca/ca.crt`) |
+| `-ca-key` | The path to the CA key file (default: `./ca/ca.key`) |
+| `-days` | The output directory (default: `./nodeX` where X is an auto-generated number) |
+| `-out` | The output directory (default: `./ca`) |
 | `-ip-addresses` | Comma-separated list of IP addresses of the node |
 | `-dns-names` | Comma-separated list of DNS names of the node |
 
 ::: warning
 While generating the certificate, you need to remember to pass internal end external:
-- IP addresses to `-ip-addresses`: e.g. `127.0.0.1,172.20.240.1` or 
+- IP addresses to `-ip-addresses`: e.g. `127.0.0.1,172.20.240.1` and/or 
 - DNS names to `-dns-names`: e.g. `localhost,node1.eventstore`
 that will match the URLs that you will be accessing EventStoreDB nodes.
 :::
@@ -211,7 +233,7 @@ You could also run the tool using Docker interactive container:
 docker run --rm -i eventstore/es-gencert-cli <command> <options>
 ```
 
-One useful scenario is to use the tool inside the Docker Compose file to generate all the necessary certificates before starting cluster nodes.
+One useful scenario is to use the Docker Compose file tool to generate all the necessary certificates before starting cluster nodes.
 
 Sample:
 
@@ -236,6 +258,37 @@ services:
 ```
 
 See more in the [complete sample of docker-compose secured cluster configuration.](../installation/docker.md#use-docker-compose)
+
+## Certificate installation on a client environment
+
+To connect to EventStoreDB, you need to install generated CA public certificate on the client machine (e.g. machine where the client is hosted, or your dev environment).
+
+#### Linux (Ubuntu, Debian)
+
+1. Copy generated CA file to dir `/usr/local/share/ca-certificates/`, e.g. using command: 
+  ```bash
+  sudo cp ca.crt /usr/local/share/ca-certificates/event_store_ca.crt
+  ```
+2. Update the CA store: 
+  ```bash
+  sudo update-ca-certificates
+  ```
+#### Windows
+
+1. You can manually import it to the local CA cert store through `Certificates Local Machine Management Console`. To do that select **Run** from the **Start** menu, and then enter `certmgr.msc`. Then import certificate to `Trusted Root Certification`.
+2. You can also run the PowerShell script instead:
+
+```powershell
+Import-Certificate -FilePath ".\certs\ca\ca.crt" -CertStoreLocation Cert:\CurrentUser\Root
+```
+#### MacOS
+
+1. In the Keychain Access app on your Mac, select either the login or System keychain. Drag the certificate file onto the Keychain Access app. If you're asked to provide a name and password, type the name and password for an administrator user on this computer.
+2. You can also run the bash script:
+
+```bash
+sudo security add-certificates -k /Library/Keychains/System.keychain ca.crt 
+```
 
 ## TCP protocol security
 
