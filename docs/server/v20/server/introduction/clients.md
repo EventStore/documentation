@@ -32,7 +32,7 @@ EventStoreDB offers a low-level protocol in the form of an asynchronous TCP prot
 We plan to phase out the TCP protocol in the later versions. Please consider migrating your applications that use the TCP protocol and refactor them to use gRPC instead.
 :::
 
-Find out more about configuring the TCO protocol on the [TCP configuration](../networking/tcp.md) page.
+Find out more about configuring the TCP protocol on the [TCP configuration](../networking/tcp.md) page.
 
 ### EventStoreDB supported clients
 
@@ -58,10 +58,6 @@ Find out more about configuring the TCO protocol on the [TCP configuration](../n
 EventStoreDB also offers an HTTP-based interface, based specifically on the [AtomPub protocol](http://tools.ietf.org/html/rfc5023). As it operates over HTTP, this is less efficient, but nearly every environment supports it. 
 
 Find out more about configuring the HTTP protocol on the [HTTP configuration](../networking/http.md) page.
-
-::: warning
-We plan to phase out the HTTP protocol in the later versions. Please consider migrating your applications that use the TCP protocol and refactor them to use gRPC instead.
-:::
 
 ### Community developed clients
 
