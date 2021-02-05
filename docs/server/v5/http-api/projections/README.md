@@ -12,14 +12,14 @@ The response is a list of all known projections and useful information about the
 
 Download the following files that contain sample data used throughout this step of the getting started guide.
 
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/clients/dotnet/5.0/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/clients/dotnet/5.0/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/clients/dotnet/5.0/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/clients/dotnet/5.0/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
 
 Add the sample data to four different streams:
 
-<<< @/docs//server/v5/http-api/sample-code/add-sample-data.sh
+<<< @/docs/server/v5/http-api/sample-code/add-sample-data.sh
 
 ## Creating your first projection
 
@@ -104,7 +104,7 @@ Then send the update to the projection:
 <<< @/docs//server/v5/http-api/sample-code/projections/update-projection-options.sh
 
 ::: tip
-You can find all the options available in the [user defined projections guide](/docs/server/5.0/projections/user-defined-projections.md).
+You can find all the options available in the [user defined projections guide](/server/5.0/projections/user-defined-projections.md).
 :::
 
 Now you can read the result as above, but use the new stream name:

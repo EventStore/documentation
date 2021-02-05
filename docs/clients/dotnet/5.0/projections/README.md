@@ -1,15 +1,15 @@
 # Projections
 
-This page provides an example of using [user-defined projections](/docs/server/v5/server/projections/README.md#types-of-projections) in your application.
+This page provides an example of using [user-defined projections](/server/v5/server/projections/README.md#types-of-projections) in your application.
 
 ## Adding sample data
 
 Download the following files that contain sample data used throughout this step of the getting started guide.
 
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
 
 Add the sample data to four different streams:
 First, we need a function to read JSON files and construct the list of `EventData` instances:
@@ -23,7 +23,7 @@ Then, we can use this function and push events to EventStoreDB:
 ## Creating your first projection
 
 ::: tip Next steps
-Read [this guide](/docs/server/v5/server/projections/user-defined-projections.md) to find out more about the user defined projection's API.
+Read [this guide](/server/v5/server/projections/user-defined-projections.md) to find out more about the user defined projection's API.
 :::
 
 The projection counts the number of 'XBox One S's that customers added to their shopping carts.
@@ -44,7 +44,7 @@ You can send the projection code as text along the other parameters, using the `
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#CreateUserProjection
 
 ::: tip Next steps
-[Read here](projections-management.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/docs/server/v5/server/projections/README.md) for details on projection syntax.
+[Read here](projections-management.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/server/v5/server/projections/README.md) for details on projection syntax.
 :::
 
 ## Querying for the state of the projection
@@ -92,7 +92,7 @@ Then send the update to the projection:
 <<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#UpdateProjectionProperties
 
 ::: tip
-You can find all the options available in the [user defined projections guide](/docs/server/v5/server/projections/user-defined-projections.md).
+You can find all the options available in the [user defined projections guide](/server/v5/server/projections/user-defined-projections.md).
 :::
 
 Now you can read the result as above, but use the new stream name:
