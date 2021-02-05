@@ -1,13 +1,18 @@
 import {ChangeLanguage, SetSiteLanguages, SubmitCodeBlock, UpdateConnectionString} from "./mutations";
 import {GetSelectedLanguage, GetSiteLanguages} from "./getters";
-import {setStorageValue} from "../util/localStorage";
+import {setStorageValue, getStorageValue} from "../util/localStorage";
+import {getUrlParamValue} from "../util/url"
 
 const prefix = "eventstore-docs";
 const langStorageName = "codeLanguage";
 
+function getSelectedCodeLanguage() {
+    return getUrlParamValue(langStorageName) || getStorageValue(prefix, langStorageName) || "";
+}
+
 const state = {
     connectionString: "",
-    codeLanguage: "",
+    codeLanguage: getSelectedCodeLanguage(),
     codeBlocks: {}
 };
 
