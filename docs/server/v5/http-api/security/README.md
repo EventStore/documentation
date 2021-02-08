@@ -34,7 +34,7 @@ If you were to use the wrong user or no user when a request requires one, you re
 :::
 ::::
 
-As you pass the username and password in the request we recommend you to enable SSL to encrypt the user information. [Read this guide for instructions](/docs/server/v5/server/security/).
+As you pass the username and password in the request we recommend you to enable SSL to encrypt the user information. [Read this guide for instructions](/server/v5/server/security/).
 
 ## Access control lists
 

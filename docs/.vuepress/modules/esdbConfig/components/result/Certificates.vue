@@ -16,7 +16,7 @@
           <CertSan v-if="config.extraDns" ext-type="DNS Name" :ext-value="config.extraDns"/>
         </div>
         <div v-else>
-          We have a <a href="https://github.com/EventStore/es-gencert-cli" target="_blank">certificate generation
+          We have a <a href="../security/configuration.html#certificate-generation-cli" target="_blank">certificate generation
           tool</a>, which creates certificated adopted for EventStoreDB.<br><br>
 
           <el-divider content-position="right">Download the tool</el-divider>

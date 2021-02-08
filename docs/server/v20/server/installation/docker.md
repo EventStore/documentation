@@ -73,7 +73,7 @@ Now you are ready to start the cluster.
 docker-compose up
 ```
 
-Check the log messages, after some time the elections process completes and you'd be able to connect to each node using the Admin UI. Nodes should be accessible on the loopback address (`127.0.0.1`) over HTTP and TCP, using ports specified below:
+Check the log messages, after some time the elections process completes and you'd be able to connect to each node using the Admin UI. Nodes should be accessible on the loopback address (`127.0.0.1` or `localhost`) over HTTP and TCP, using ports specified below:
 
 | Node | TCP port | HTTP port |
 | :--- | :------- | :-------- |
@@ -88,6 +88,8 @@ You have tell your client to use secure connection for both TCP and gRPC.
 | TCP | `GossipSeeds=localhost:1111,localhost:1112,localhost:1113;ValidateServer=False;UseSslConnection=True` |
 | gRPC | `esdb://localhost:2111,localhost:2112,localhost:2113?tls=true&tlsVerifyCert=false` |
 
-As you might've noticed, both connection strings have a setting to disable the certificate validation. It would prevent the invalid certificate error since the cluster uses self-signed certificates. However, we do not recommend using this setting in production. Instead, you can either add the CA certificated to the trusted root CA store or instruct your application to use such a certificate.
+As you might've noticed, both connection strings have a setting to disable the certificate validation (`ValidateServer=False` for `TCP` and `tlsVerifyCert=false` for `gRPC`). It would prevent the invalid certificate error since the cluster uses self-signed certificates. 
+
+However, **we do not recommend using this setting in production**. Instead, you can either add the CA certificated to the trusted root CA store or instruct your application to use such a certificate. See the [instruction of how to do it.](../security/configuration.md#certificate-installation-on-a-client-environment)
 
 

@@ -16,7 +16,7 @@ Find out more about configuring the HTTP protocol on the [HTTP configuration](./
 
 ## TCP configuration
 
-Find out more about configuring the TCO protocol on the [TCP configuration](./tcp.md) page.
+Find out more about configuring the TCP protocol on the [TCP configuration](./tcp.md) page.
 
 ## Address translation
 
