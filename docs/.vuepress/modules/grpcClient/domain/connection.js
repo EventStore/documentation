@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Gossip from "../../common/gossip";
-import {SeedGossip} from "../../common/gossipTypes";
+import {DnsGossip, SeedGossip} from "../../common/gossipTypes";
 import ClientNode from "./clientNode";
 import {safe} from "../../common/strings";
 import properties from "../../common/properties";
@@ -12,7 +12,7 @@ export default new Vue({
             cloud: false,
             secure: true,
             clusterId: "",
-            gossip: new Gossip("Client", "clients", false),
+            gossip: new Gossip("Client", "clients", false, true),
             gossipPort: 2113,
             nodes: [],
             nodesCount: 0,
@@ -26,9 +26,8 @@ export default new Vue({
         },
         changeHosting(cloud) {
             this.cloud = cloud;
-            this.gossip.disableGossip(cloud);
             if (cloud) {
-                this.gossip.setMethod(SeedGossip);
+                this.gossip.setMethod(DnsGossip);
                 this.changeSecurity(true);
             }
         },
@@ -58,13 +57,17 @@ export default new Vue({
         },
         populateCloudNodes() {
             if (!this.cloud) return;
+
+            const cloudBase = ".mesdb.eventstore.cloud";
+
             if (this.cluster) {
+                this.gossip.dnsName = `${this.clusterId}${cloudBase}`;
                 for (let i = 0; i < this.nodesCount; i++) {
-                    this.nodes[i].address = `${this.clusterId}-${i}.mesdb.eventstore.cloud`;
+                    this.nodes[i].address = `${this.clusterId}-${i}${cloudBase}`;
                     this.nodes[i].port = 2113;
                 }
             } else {
-                this.nodes[0].address = `${this.clusterId}.mesdb.eventstore.cloud`;
+                this.nodes[0].address = `${this.clusterId}${cloudBase}`;
                 this.nodes[0].port = 2113;
             }
         },
@@ -97,10 +100,12 @@ export default new Vue({
         connectionString() {
             if (!this.showConnectionString) return null;
 
-            const gossip = this.gossip.isDnsGossip()
+            const isDns = this.gossip.isDnsGossip();
+            const gossip = isDns
                 ? `${safe(this.gossip.dnsName)}:${this.gossipPort}`
                 : this.nodes.map(x => `${safe(x.address)}:${x.port}`).join(",");
-            return gossip && gossip !== "" ? `esdb://${gossip}?Tls=${this.secure}` : null;
+            const scheme = isDns ? "esdb+discover" : "esdb";
+            return gossip && gossip !== "" ? `${scheme}://${gossip}?tls=${this.secure}` : null;
         },
     },
     created() {

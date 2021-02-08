@@ -4,13 +4,14 @@ import {CertCnChanged, CertificateTypeChanged, ClusteringChanged} from "../esdbC
 import {ensureCaDomainMatch, ok, error, validateGossip} from "../../lib/validate";
 
 export default class Gossip {
-    constructor(type, message, subscribe) {
+    constructor(type, message, subscribe, dnsAlwaysOn) {
         this.type                = type;
         this.message             = message;
         this.method              = DnsGossip;
         this.disableGossipMethod = false;
         this.showGossip          = true;
         this.dnsName             = "";
+        this.dnsAlwaysOn         = dnsAlwaysOn;
 
         if (subscribe) {
             EventBus.$on(ClusteringChanged, x => this.changeClustering(x));
@@ -28,6 +29,8 @@ export default class Gossip {
     }
 
     handleSelfSigned(selfSigned) {
+        if (this.dnsAlwaysOn) return;
+
         this.disableGossip(!selfSigned);
         if (!selfSigned) {
             this.method = SeedGossip;

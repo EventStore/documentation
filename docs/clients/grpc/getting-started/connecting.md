@@ -7,13 +7,15 @@ Install the client SDK package to your project.
 <xode-group>
 <xode-block title="C#">
 
-```
-$ dotnet add package EventStore.Client.Grpc.Streams --version 20.6.1
-$ dotnet add package Grpc.Net.Client --version 2.32.0
-```
 <!-- TODO: when https://github.com/EventStore/EventStore/issues/2707 is resolved and new version with the fix is released - remove the manual Grpc.Net.Client installation -->
+```
+$ dotnet add package EventStore.Client.Grpc.Streams --version 20.10
+
+# Add the gRPC Client 2.32+ if you're connecting to an insecure cluster
+$ dotnet add package Grpc.Net.Client --version 2.34.0
+```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="NodeJS" code="connectionString">
 
 ```
 # Yarn
@@ -93,7 +95,6 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 <xode-group>
 <xode-block title="C#">
-
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createEvent
 </xode-block>
 <xode-block title="NodeJS">
