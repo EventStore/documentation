@@ -1,68 +1,83 @@
+---
+terraform_current_version: 1.5.1
+---
+
 # Terraform provider 
 
 ## Installation
 
+The current version of the provider is : {{ $frontmatter.terraform_current_version }}.
+
+The releases are available in Terraform's official [registry][terraform registry] and via [GitHub releases][terraform github releases].
+
+### Terraform 0.13+
+
+Terraform supports third party modules installed via the plugin registry.  
+Add the following to your terraform module configuration.
+
+```hcl
+terraform {
+  required_providers {
+    eventstorecloud = {
+      source = "EventStore/eventstorecloud"
+      version = "1.5.1"
+    }
+  }
+}
+```
+
 ### Terraform 0.12
 
-We provide binary releases for macOS, Windows and Linux via GitHub releases. In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory, the location of which varies by operating system:
+In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory.  
+The location of which varies by operating system:
 
-- `%APPDATA%\terraform.d\plugins` on Windows
-- `~/.terraform.d/plugins` on macOS or Linux
+- Windows `%APPDATA%\terraform.d\plugins`
+- Linux and macOS `~/.terraform.d/plugins`
 
 Alternatively, the binary can be placed alongside the main `terraform` binary.
 
 On macOS and Linux, you can download the provider using the following commands:
 
-- macOS: `curl -o ./terraform-provider-eventstorecloud.zip -L https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v1.5.0/terraform-provider-eventstorecloud_1.5.0_darwin_amd64.zip && unzip ./terraform-provider-eventstorecloud.zip && mv ./terraform-provider-eventstorecloud ~/.terraform.d/plugins/terraform-provider-eventstorecloud`
-- Linux: `curl -o ./terraform-provider-eventstorecloud.zip -L https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v1.5.0/terraform-provider-eventstorecloud_1.5.0_linux_amd64.zip && unzip ./terraform-provider-eventstorecloud.zip && mv ./terraform-provider-eventstorecloud ~/.terraform.d/plugins/terraform-provider-eventstorecloud`
+- macOS:   
+ `
+  curl -o ./terraform-provider-eventstorecloud.zip -L https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v{{$frontmatter.terraform_current_version}}/terraform-provider-eventstorecloud_{{$frontmatter.terraform_current_version}}_darwin_amd64.zip 
+  && unzip ./terraform-provider-eventstorecloud.zip && mv ./terraform-provider-eventstorecloud ~/.terraform.d/plugins/terraform-provider-eventstorecloud
+  `
+  
+- Linux: `curl -o ./terraform-provider-eventstorecloud.zip -L https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v{{$frontmatter.terraform_current_version}}/terraform-provider-eventstorecloud_{{$frontmatter.terraform_current_version}}_linux_amd64.zip && unzip ./terraform-provider-eventstorecloud.zip && mv ./terraform-provider-eventstorecloud ~/.terraform.d/plugins/terraform-provider-eventstorecloud`
 
-If you prefer to install from source, use the `make install` target in this repository. You'll need a Go 1.13+
-development environment.
 
-## Terraform 0.13+
+If you prefer to install from source, use the `make install` target in this [repository][terraform github].  
+You will need a Go 1.13+ development environment.
 
-Terraform now supports third party modules installed via the plugin registry. Add the following to your terraform module
-configuration.
+## Installation
+f
+qsdfqsd
 
-<xode-group>
-<xode-block title="C#" code="connectionString">
+## Provider Configuration
 
-```
-terraform {
-  required_providers {
-    eventstorecloud = {
-      source = "EventStore/eventstorecloud"
-      version = "1.5.0"
-    }
-  }
-}
-```
-</xode-block>
-</xode-group>
-
-# Provider Configuration
-
-The Event Store Cloud provider must be configured with an access token, however there are several additional
-options which may be useful.
+The Event Store Cloud provider must be configured with an access token.  
+However there are several additional options which may be useful.
 
 Provider configuration options are:
 
-- `token` - (`ESC_TOKEN` via the environment) - *Required* - an access token for Event Store Cloud. Currently this token must be created and displayed with the esc cli tool [esc cli](https://github.com/EventStore/esc). The token id displayed in the cloud console is not a valid token.
-- `organization_id` - (`ESC_ORG_ID` via the environment) - *Required* - the identifier of the Event Store Cloud
-  organization into which to provision resources.
+| Option            | Environment Variable | Description           |
+|:------------------|:---------------------| :---------------------|
+| `token`           | `ESC_TOKEN`          | *Required*, an access token for Event Store Cloud|
+| `organization_id` | `ESC_ORG_ID`         | *Required*, the identifier of the Event Store Cloud organization into which to provision resources. |
+| `url`             | `ESC_URL`            | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud|
+| `token_store`     | `ESC_TOKEN_STORE`    | *Optional*,  the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.|
 
-- `url` - (`ESC_URL` via the environment) - *Optional* - the URL of the Event Store Cloud API. This defaults
-  to the public cloud instance of Event Store Cloud, but may be overridden to provision resources in another
-  instance.
-- `token_store` - (`ESC_TOKEN_STORE` via the environment) - *Optional* - the location on the local filesystem
-  of the token cache. This is shared with the Event Store Cloud CLI.
+### Obtaining the `token`
+Currently this token must be created and displayed with the esc cli tool [esc cli][esc cli github]. 
+The token id displayed in the cloud console is not a valid token.
 
-# Resources
+## Resources
 
 All resources in Event Store Cloud can be provisioned using the Terraform provider, and existing projects
 can be queried using a data source in the provider.
 
-## Data Source `eventstorecloud_project`
+### Data Source `eventstorecloud_project`
 
 Looks up a project in the organization with which the provider is configured by name.
 
@@ -286,3 +301,8 @@ As well as the input arguments, the following properties are exposed:
   the network in which the cluster is created.
 - `region` (`string`) - the region in which the cluster was provisioned. This is controlled by the network in which
   the cluster is created.
+
+[terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
+[terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
+[terraform registry]: https://registry.terraform.io/providers/EventStore/eventstorecloud/latest
+[esc cli github]: https://github.com/EventStore/esc
