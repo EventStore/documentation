@@ -40,9 +40,12 @@ module.exports = {
     themeConfig:     {
         logo: "/eventstore-logo-alt.svg",
         gtm:  "GTM-WLD9W3L",
-        // repo: "EventStore/documentation-next",
-        // editLinks: true,
-        // editLinkText: "Help us improve this page!",
+        // if your docs are in a different repo from your main project:
+        docsRepo: "EventStore/documentation",
+        // if your docs are not at the root of the repo:
+        docsDir: 'docs',
+        editLinks: true,
+        editLinkText: "Help us improve this page!",
         versions:             {
             latest:   versioning.versions.latest,
             selected: versioning.versions.latest,
