@@ -123,7 +123,7 @@ When the peering is initiated, get back to Google Cloud console and navigate to 
 | EventStoreDB Cloud | GCP connection peering |
 | :---------------- | :--------------------- |
 | Peer Project ID | Project ID |
-| Peer Network ID | VPC network name |
+| Peer Network Name | VPC network name |
 
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 
