@@ -4,7 +4,7 @@ Due to differences between Microsoft Azure and other cloud providers, the provis
 
 ## Network peering
 
-When creating peering links Azure require the user to configure a security principle referencing the application ID of Event Store Cloud, and also configure and apply a role allowing that principle to modify the network resource of the remote network. Event Store Cloud console provides the necessary Azure CLI commands at creation time, to support this operation.
+When creating peering links Azure require the user to configure a security principal referencing the application ID of Event Store Cloud, and also configure and apply a role allowing that principal to modify the network resource of the remote network. Event Store Cloud console provides the necessary Azure CLI commands at creation time, to support this operation.
 
 ## Disk resize
 
