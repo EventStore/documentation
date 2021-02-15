@@ -20,7 +20,7 @@
     "group": "Rust SDK",
     "basePath": "clients/rust",
     "relativePath": ["examples"],
-    "currentBranch": "snippets_fixes_for_docs",
+    "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git"
   }
 ]

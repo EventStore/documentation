@@ -25,6 +25,10 @@ There are a number of events in EventStoreDB called system events. These are pre
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#exclude-system
+</xode-block>
 </xode-group>
 
 ::: tip
@@ -52,6 +56,10 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#event-type-prefix
+</xode-block>
 </xode-group>
 
 This will only subscribe to events with a type that begin with `customer-`.
@@ -72,6 +80,10 @@ If you want to subscribe to multiple event types then it might be better to prov
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#event-type-regex
 </xode-block>
 </xode-group>
 
@@ -98,6 +110,10 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#stream-prefix
+</xode-block>
 </xode-group>
 
 This will only subscribe to streams with a name that begin with `user-`.
@@ -118,6 +134,10 @@ If you want to subscribe to multiple streams then it might be better to provide 
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#stream-regex
 </xode-block>
 </xode-group>
 
@@ -146,6 +166,10 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#checkpoint
+</xode-block>
 </xode-group>
 
  This will be called every `n` number of events. If you want to be specific about the number of events threshold you can also pass that as a parameter.
@@ -162,6 +186,10 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/server_side_filtering.rust#checkpoint-with-interval
 </xode-block>
 </xode-group>
 

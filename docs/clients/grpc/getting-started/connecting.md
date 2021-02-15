@@ -15,7 +15,7 @@ $ dotnet add package EventStore.Client.Grpc.Streams --version 20.10
 $ dotnet add package Grpc.Net.Client --version 2.34.0
 ```
 </xode-block>
-<xode-block title="NodeJS" code="connectionString">
+<xode-block title="NodeJS">
 
 ```
 # Yarn
@@ -40,6 +40,12 @@ implementation 'com.eventstore:db-client-java:0.5'
 
 # SBT
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
+```
+</xode-block>
+<xode-block title="Rust">
+
+```
+No additional configuration is needed having Rust installed. Go check https://rustup.rs.
 ```
 </xode-block>
 </xode-group>
@@ -77,6 +83,10 @@ First thing first, we need a client.
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#createClient
 </xode-block>
+<xode-block title="Rust" code="connectionString">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/quickstart.rust#createClient
+</xode-block>
 </xode-group>
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
@@ -105,6 +115,10 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#createEvent
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/quickstart.rust#createEvent
+</xode-block>
 </xode-group>
 
 ## Appending events
@@ -126,6 +140,10 @@ In the snippet below, we append the event to the stream `some-stream`.
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#appendEvents
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/quickstart.rust#appendEvents
+</xode-block>
 </xode-group>
 
 Here we are appending events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [appending events documentation](../appending-events/README.md).
@@ -146,6 +164,10 @@ Finally, we can read events back from the `some-stream` stream.
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#readStream
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/quickstart.rust#readStream
 </xode-block>
 </xode-group>
 

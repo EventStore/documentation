@@ -57,6 +57,13 @@ async function tryCopy(pathElements, destinationPath) {
     return true;
 }
 
+async function replaceFileExtensions(samplesDir,  from, to) {
+    // this is needed because of the VuePress issue: https://github.com/vuejs/vuepress/issues/1189
+    const command = "cd " + samplesDir + "; find . -depth -name \"*." + from + "\" -exec sh -c 'mv \"$3\" \"${3%." + from + "}." + to + "\"' sh \"" + from + "\" \"" + to + "\" {} ';'";
+    
+    await sh(command);
+}
+
 async function copySamples(clientRepo, repoLocation, destinationPath, id, tag, relativePath) {
     log.info(`checking out ${tag}...`);
     await clientRepo.checkout(tag);
@@ -72,6 +79,7 @@ async function copySamples(clientRepo, repoLocation, destinationPath, id, tag, r
         return;
     }
     
+    await replaceFileExtensions('docs', 'rs', 'rust');
     await replaceCodePath(destinationPathWithId, samplesDestinationPath);
 
     return {path: path.join('generated', id), version: id.substr(1) + ' gRPC'};
