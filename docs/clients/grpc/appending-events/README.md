@@ -21,7 +21,7 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 </xode-block>
 <xode-block title="Rust">
 
-<<< @/docs/clients/rust/generated/0.9.9/samples/appending_events.rs#append-to-stream
+<<< @/docs/clients/rust/generated/1.0.0/samples/appending_events.rust#append-to-stream
 </xode-block>
 </xode-group>
 
@@ -55,6 +55,10 @@ For example:
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-duplicate-event
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/appending_events.rust#append-duplicate-event
 </xode-block>
 </xode-group>
 
@@ -103,31 +107,7 @@ For example if we try and append the same record twice expecting both times that
 </xode-block>
 <xode-block title="Rust">
 
-```rust
-
-    let data = TestEvent {
-        id: "1".to_string(),
-        important_data: "some value".to_string(),
-    };
-
-    let event = EventData::json("some-event", &data)?.id(Uuid::new_v4());
-    let options = AppendToStreamOptions::default().expected_revision(ExpectedRevision::NoStream);
-
-    let _ = client
-        .append_to_stream("same-event-stream", &options, event)
-        .await?;
-
-    let data = TestEvent {
-        id: "2".to_string(),
-        important_data: "some other value".to_string(),
-    };
-
-    let event = EventData::json("some-event", &data)?.id(Uuid::new_v4());
-
-    let _ = client
-        .append_to_stream("same-event-stream", &options, event)
-        .await?;
-```
+<<< @/docs/clients/rust/generated/1.0.0/samples/appending_events.rust#append-with-no-stream
 </xode-block>
 </xode-group>
 
@@ -151,6 +131,10 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/appending_events.rust#append-with-concurrency-check
+</xode-block>
 </xode-group>
 
 <!-- ## Options
@@ -171,5 +155,9 @@ You can provide user credentials to be used to append the data as follows. This 
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#overriding-user-credentials
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/appending_events.rust#overriding-user-credentials
 </xode-block>
 </xode-group>

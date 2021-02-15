@@ -19,6 +19,10 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 
 <<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-stream
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#read-from-stream
+</xode-block>
 </xode-group>
 
 This will return an enumerable that can be iterated on:
@@ -35,6 +39,10 @@ This will return an enumerable that can be iterated on:
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#iterate-stream
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#iterate-stream
 </xode-block>
 </xode-group>
  
@@ -68,6 +76,10 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 <<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#overriding-user-credentials
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#overriding-user-credentials
+</xode-block>
 </xode-group>
 
 ## Reading from a revision
@@ -87,6 +99,10 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 
 <<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-stream-position
 </xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#read-from-position
+</xode-block>
 </xode-group>
 
 ## Reading backwards
@@ -105,6 +121,10 @@ As well as being able to read a stream forwards you can also go backwards. When 
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#reading-backwards
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#reading-backwards
 </xode-block>
 </xode-group>
 
@@ -129,5 +149,9 @@ It is important to check the value of this field before attempting to iterate an
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
+</xode-block>
+<xode-block title="Rust">
+
+<<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#checking-for-stream-presence
 </xode-block>
 </xode-group>
