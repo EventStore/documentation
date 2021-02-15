@@ -42,38 +42,37 @@ async function replaceCodePath(mdPath, samplesPath) {
     await sh(replaceCommand);
 }
 
-async function tryCopy(pathElements, subFolderName, destinationPath) {
-    const sourcePath = path.join(...[...pathElements, subFolderName]);
+async function tryCopy(pathElements, destinationPath) {
+    const sourcePath = path.join(...pathElements);
 
     if (!fs.existsSync(sourcePath)) {
         log.info(`${sourcePath} does not exist, skipping...`);
         return false;
     }
         
-    log.info(`${subFolderName}  exist, copying...`);
+    log.info(`${sourcePath}  exist, copying...`);
 
     await fsExtra.copy(sourcePath, destinationPath);
 
     return true;
 }
 
-async function copyDocsAndSamples(clientRepo, repoLocation, docsLocation, id, tag, relativePath) {
+async function copySamples(clientRepo, repoLocation, destinationPath, id, tag, relativePath) {
     log.info(`checking out ${tag}...`);
     await clientRepo.checkout(tag);
 
-    const pathElements = [repoLocation, ...(relativePath || ['docs'])];
+    const pathElements = [repoLocation, ...relativePath];
 
-    const samplesDestinationPath = path.join(docsLocation, id, 'samples');
-    const docsDestinationPath = path.join(docsLocation, id);
+    const destinationPathWithId = path.join(destinationPath, id);
+    const samplesDestinationPath = path.join(destinationPathWithId, 'samples');
 
-    const wereDocsCopied = await tryCopy(pathElements, 'docs', docsDestinationPath);
-    const wereSamplesCopied = await tryCopy(pathElements, 'samples', samplesDestinationPath);
+    const wereSamplesCopied = await tryCopy(pathElements, samplesDestinationPath);
 
-    if (!wereDocsCopied && !wereSamplesCopied) {
+    if (!wereSamplesCopied) {
         return;
     }
     
-    await replaceCodePath(docsDestinationPath, samplesDestinationPath);
+    await replaceCodePath(destinationPathWithId, samplesDestinationPath);
 
     return {path: path.join('generated', id), version: id.substr(1) + ' gRPC'};
 }
@@ -84,10 +83,10 @@ async function main() {
 
     for (const repo of repos) {
         const repoPath = path.join('docs', repo.basePath);
-        const docsLocation = path.join(repoPath, 'generated');
+        const samplesLocation = path.join(repoPath, 'generated');
         const repoLocation = path.join('temp', repo.id);
 
-        await safeRmdir(docsLocation);
+        await safeRmdir(samplesLocation);
         await git.clone(repo.repo, repoLocation);
 
         const clientRepo = simpleGit(repoLocation);
@@ -108,11 +107,11 @@ async function main() {
             .filter(i => i)
 
         if (deployCurrent) {
-            definition[0].versions.push(await copyDocsAndSamples(clientRepo, repoLocation, docsLocation, tags.slice(-1)[0], repo.currentBranch, repo.relativePath));
+            definition[0].versions.push(await copySamples(clientRepo, repoLocation, samplesLocation, tags.slice(-1)[0], repo.currentBranch, repo.relativePath));
         }
 
         for (let i = 0; i < tags.length - 1; i++) {
-            const version = await copyDocsAndSamples(clientRepo, repoLocation, docsLocation, tags[i], tags[i + 1]);
+            const version = await copySamples(clientRepo, repoLocation, samplesLocation, tags[i], tags[i + 1], repo.relativePath);
 
             if (version !== undefined) {
                 definition[0].versions.push(version);

@@ -8,6 +8,7 @@ import Prism from "vue-prism-component";
 import "prismjs/components/prism-csharp";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-yaml";
+import "prismjs/components/prism-rust";
 import "prismjs/components/prism-bash";
 import * as gtm from "./gtm/inject";
 import Vuex from "vuex";

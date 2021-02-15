@@ -3,7 +3,7 @@
     "id": "dotnet-client",
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
-    "relativePath": [],
+    "relativePath": ["samples"],
     "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git"
   },
@@ -11,8 +11,16 @@
     "id": "java-client",
     "group": "Java SDK",
     "basePath": "clients/java",
-    "relativePath": ["db-client-java","src","test","java","com","eventstore","dbclient"],
+    "relativePath": ["db-client-java","src","test","java","com","eventstore","dbclient", "samples"],
     "currentBranch": "trunk",
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git"
+  },
+  {
+    "id": "rust-client",
+    "group": "Rust SDK",
+    "basePath": "clients/rust",
+    "relativePath": ["examples"],
+    "currentBranch": "snippets_fixes_for_docs",
+    "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git"
   }
 ]
