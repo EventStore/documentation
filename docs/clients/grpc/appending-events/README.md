@@ -56,10 +56,6 @@ For example:
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-duplicate-event
 </xode-block>
-<xode-block title="Rust">
-
-<<< @/docs/clients/rust/generated/0.9.9/samples/appending_events.rs#append-duplicate-event
-</xode-block>
 </xode-group>
 
 will result in only a single event being appended.
@@ -107,7 +103,31 @@ For example if we try and append the same record twice expecting both times that
 </xode-block>
 <xode-block title="Rust">
 
-<<< @/docs/clients/rust/generated/0.9.9/samples/appending_events.rs#append-with-no-stream
+```rust
+
+    let data = TestEvent {
+        id: "1".to_string(),
+        important_data: "some value".to_string(),
+    };
+
+    let event = EventData::json("some-event", &data)?.id(Uuid::new_v4());
+    let options = AppendToStreamOptions::default().expected_revision(ExpectedRevision::NoStream);
+
+    let _ = client
+        .append_to_stream("same-event-stream", &options, event)
+        .await?;
+
+    let data = TestEvent {
+        id: "2".to_string(),
+        important_data: "some other value".to_string(),
+    };
+
+    let event = EventData::json("some-event", &data)?.id(Uuid::new_v4());
+
+    let _ = client
+        .append_to_stream("same-event-stream", &options, event)
+        .await?;
+```
 </xode-block>
 </xode-group>
 
@@ -131,10 +151,6 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
 </xode-block>
-<xode-block title="Rust">
-
-<<< @/docs/clients/rust/generated/0.9.9/samples/appending_events.rs#append-with-concurrency-check
-</xode-block>
 </xode-group>
 
 <!-- ## Options
@@ -155,9 +171,5 @@ You can provide user credentials to be used to append the data as follows. This 
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#overriding-user-credentials
-</xode-block>
-<xode-block title="Rust">
-
-<<< @/docs/clients/rust/generated/0.9.9/samples/appending_events.rs#overriding-user-credentials
 </xode-block>
 </xode-group>
