@@ -1,5 +1,6 @@
 ---
 terraform_current_version: 1.5.1
+terraform_github_releases: https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download
 ---
 
 # Terraform provider 
@@ -15,226 +16,179 @@ The releases are available in Terraform's official [registry][terraform registry
 Terraform supports third party modules installed via the plugin registry.  
 Add the following to your terraform module configuration.
 
-```hcl
-terraform {
-  required_providers {
-    eventstorecloud = {
-      source = "EventStore/eventstorecloud"
-      version = "1.5.1"
-    }
-  }
-}
-```
+
+<<< @/docs/cloud/automation/snippets/providers_eventstore.tf.hcl
 
 ### Terraform 0.12
 
 In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory.  
-The location of which varies by operating system:
+The location varies by operating system:
 
-- Windows `%APPDATA%\terraform.d\plugins`
 - Linux and macOS `~/.terraform.d/plugins`
+- Windows `%APPDATA%\terraform.d\plugins`
 
 Alternatively, the binary can be placed alongside the main `terraform` binary.
 
-On macOS and Linux, you can download the provider using the following commands:
+You can download the provider using the following commands:
 
-- macOS:   
- `
-  curl -o ./terraform-provider-eventstorecloud.zip -L https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v{{$frontmatter.terraform_current_version}}/terraform-provider-eventstorecloud_{{$frontmatter.terraform_current_version}}_darwin_amd64.zip 
-  && unzip ./terraform-provider-eventstorecloud.zip && mv ./terraform-provider-eventstorecloud ~/.terraform.d/plugins/terraform-provider-eventstorecloud
-  `
-  
-- Linux: `curl -o ./terraform-provider-eventstorecloud.zip -L https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v{{$frontmatter.terraform_current_version}}/terraform-provider-eventstorecloud_{{$frontmatter.terraform_current_version}}_linux_amd64.zip && unzip ./terraform-provider-eventstorecloud.zip && mv ./terraform-provider-eventstorecloud ~/.terraform.d/plugins/terraform-provider-eventstorecloud`
+- Linux:
 
+<<< @/docs/cloud/automation/snippets/download_provider_linux.sh
+ 
+- macOS:  
 
-If you prefer to install from source, use the `make install` target in this [repository][terraform github].  
+<<< @/docs/cloud/automation/snippets/download_provider_macos.sh
+
+- Windows (PowerShell): 
+
+<<< @/docs/cloud/automation/snippets/download_provider_windows.ps1.powershell
+
+## From Source 
+
+If you prefer to install from source, use the `make install` target in this [repository][terraform github].
+
 You will need a Go 1.13+ development environment.
-
-## Installation
-f
-qsdfqsd
 
 ## Provider Configuration
 
-The Event Store Cloud provider must be configured with an access token.  
-However there are several additional options which may be useful.
+The Event Store Cloud provider must be configured with an access token.   
+There are several additional options that may be useful.
 
 Provider configuration options are:
 
-| Option            | Environment Variable | Description           |
-|:------------------|:---------------------| :---------------------|
-| `token`           | `ESC_TOKEN`          | *Required*, an access token for Event Store Cloud|
-| `organization_id` | `ESC_ORG_ID`         | *Required*, the identifier of the Event Store Cloud organization into which to provision resources. |
-| `url`             | `ESC_URL`            | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud|
-| `token_store`     | `ESC_TOKEN_STORE`    | *Optional*,  the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.|
-
+| Option              | Environment Variable   | Description                                                                                                          |
+| :------------------ | :--------------------- | :------------------------------------------------------------------------------------------------------------------- |
+| `token`             | `ESC_TOKEN`            | *Required*, your access token for Event Store Cloud                                                                  |
+| `organization_id`   | `ESC_ORG_ID`           | *Required*, the identifier of your  Event Store Cloud organization.                                                  |
+| `url`               | `ESC_URL`              | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud    |
+| `token_store`       | `ESC_TOKEN_STORE`      | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.  |
+                                                                                                                                                                       
 ### Obtaining the `token`
-Currently this token must be created and displayed with the esc cli tool [esc cli][esc cli github]. 
+Currently this token must be created and displayed with the [esc cli][esc cli github releases] tool.  
+
 The token id displayed in the cloud console is not a valid token.
+
+The command to obtain a token from the esc cli tool is  
+`esc access tokens create --email <email>`
 
 ## Resources
 
-All resources in Event Store Cloud can be provisioned using the Terraform provider, and existing projects
-can be queried using a data source in the provider.
+All resources in Event Store Cloud can be provisioned using the Terraform provider.  
+Existing projects can be queried using a data source in the provider.  
+More complete samples can be found [here][terraform github samples].
 
-### Data Source `eventstorecloud_project`
+The following resources are available : 
+- Projects : `eventstorecloud_project`
+- Networks : `eventstorecloud_network`
+- Peering  : `eventstorecloud_peering`
 
-Looks up a project in the organization with which the provider is configured by name.
 
-### Example
+## eventstorecloud_project
 
-```hcl
-# This assumes a project with the name "Example Project" exists
-data "eventstorecloud_project" "example" {
-  name = "Example Project"
-}
+Looks up and creates project in the organization with which the provider is configured by name.
+### Arguments
+| Name       | Type   | Description                         |
+| :--------- | :----- | :-------------                      |
+| name       | string | *Required*, the name of the project |
 
-output "project_id" {
-  value = data.eventstorecloud_project.example.id
-}
-```
+### Attributes
+| Name       | Type   | Description           | 
+| :--------- | :----- | :-------------        | 
+| id         | string | the ID of the project | 
+
+### Looking up a project
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
+
+### Creating a project 
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
+
+## eventstorecloud_network
 
 ### Arguments
+| Name              | Type   | Description                                                                                      |
+| :---------        | :----- | :-------------                                                                                   |
+| name              | string | *Required*, the name of the network                                                              |
+| project_id        | string | *Required*, the ID of the project in which the network should be created                         |
+| resource_provider | string | *Required*, the name of the cloud (`aws`, `gcp`, `azure`) in which the network should be created |
+| region            | string | *Required*, the name of the region in which the network should be created                        |
+| cidr_block        | string | *Required*, the address space of the network.                                                    |
 
-- `name` - (`string`, Required) - the name of the project.
+### Attributes
+| Name       | Type   | Description           | 
+| :--------- | :----- | :-------------        | 
+| id         | string | the ID of the project | 
+
+::: tip
+`region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, or `East US` for Azure
+:::
+
+::: tip
+`cidr_block`: the maximum prefix length is `/9` and  the minimum is `/24`.  
+However what is allowed is provider dependent.  
+Smaller networks can hold fewer managed clusters, but may be easier to peer to infrastructure hosting your applications.
+:::
+
+### Creating a network
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_network.create.tf.hcl
+
+## eventstorecloud_peering
+
+Creates a new peering in a cloud network.  
+Peering can be created from customer-managed networks in the same cloud and region
+as the network with which the peering exists.
+
+::: tip
+The following arguments have a format dependent on the cloud provider:
+- `peer_account_id`
+- `peer_network_region`  
+- `peer_network_id`
+:::
+
+### Arguments
+| Name                   | Type   | Description                                                                                                             | 
+| :---------             | :----- | :-------------                                                                                                          | 
+| name                   | string | *Required*, the name of the peering                                                                                     | 
+| project_id             | string | *Required*, the ID of the project in which the peering should be created                                                | 
+| network_id             | string | *Required*, the ID of the EventStore Cloud network into which the peering should be created.                            | 
+| peer_resource_provider | string | *Required*, the name of the cloud (`aws`, `gcp`, `azure`) in which your managed network exists                          | 
+| peer_network_region    | string | *Required*, the name of the region in which your managed network exists.                                                | 
+| peer_account_id        | string | *Required*, the account identifier for the account in which your managed network exists                                 | 
+| peer_network_id        | string | *Required*, the network identifier for your managed network.                                                            | 
+| routes                 | string | *Required*,  CIDR Blocks representing routes to be created from the Event Store Cloud network into your managed network |
 
 ### Attributes
 
-As well as the input arguments, the following properties are exposed:
+| Name                | Type   | Description                                                                                    | 
+| :---------          | :----- | :-------------                                                                                 | 
+| id                  | string | the ID of the peering                                                                          | 
+| provider_metadata   | string | metadata supplied by the resource provider cloud about the peering link:                       | 
+| aws_peering_link_id | string | ID of the peering link in AWS.                                                                 | 
+| gcp_project_id      | string | project ID of the peering link in GCP                                                          | 
+| gcp_network_name    | string | network name for the peering link in GCP                                                       | 
+| gcp_network_id      | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
 
-- `id` - (`string`) - the ID of the project.
+::: tip
+`peer_resource_provider`
+Currently this must be the same as the resource provider of the Event Store Cloud network.
+:::
 
+::: tip
+`peer_network_region`
+Currently this must be the same as the region of the Event Store Cloud network, and specified in the format used by your
+cloud - for example `us-west-2` in AWS, and `westus2` for Azure.
+:::
 
-## Resource `eventstorecloud_project`
+::: tip
+`routes`
+Typically this consists of one element, the address space of your managed network.
+:::
 
-Creates a project in the organization with which the provider is configured.
+### Creating a peering (AWS)
 
-### Example
-
-```hcl
-resource "eventstorecloud_project" "example" {
-  name = "Example Project"
-}
-```
-
-### Arguments
-
-- `name` - (`string`, Required) - the name of the project.
-
-### Attributes
-
-As well as the input arguments, the following properties are exposed:
-
-- `id` - (`string`) - the ID of the project.
-
-
-## Resource `eventstorecloud_network`
-
-Creates a new network in a cloud project. Networks are specific to a given cloud provider and region.
-
-### Example
-
-```hcl
-resource "eventstorecloud_project" "example" {
-  name = "Example Project"
-}
-
-resource "eventstorecloud_network" "example" {
-  name = "Example Network"
-
-  project_id = data.eventstorecloud_project.example.id
-
-  resource_provider = "aws"
-  region = "us-west-2"
-  cidr_block = "172.21.0.0/16"
-}
-```
-
-### Arguments
-
-- `name` - (`string`, Required) - the name of the network.
-- `project_id` - (`string`, Required) - the ID of the project in which the network should be created.
-- `resource_provider` - (`string`, Required) - the name of the cloud in which the network should be created. Valid
-  values for `resource_provider` are `aws`, `gcp` and `azure`.
-- `region` - (`string`, Required) - the name of the region in which the network should be created. Region names must
-  be in the format used by the resource provider, for example `us-west-2` for AWS, or `East US` for Azure.
-- `cidr_block` - (`string`, Required) - the address space of the network. The maximum prefix length is `/9` however what
-  is allowed is provider dependent, and the minimum is `/24`. Smaller networks can hold fewer managed clusters, but may
-  be easier to peer to infrastructure hosting applications.
-
-### Attributes
-
-As well as the input arguments, the following properties are exposed:
-
-- `id` - (`string`) - the ID of the network.
-
-## Resource `eventstorecloud_peering`
-
-Creates a new peering in a cloud network. Peerings can be created from customer-managed networks in the same
-cloud and region as the network with which the peering exists. A number of arguments have a format dependent
-on the cloud provider.
-
-### Example (AWS)
-
-```hcl
-resource "eventstorecloud_project" "example" {
-  name = "Example Project"
-}
-
-resource "eventstorecloud_network" "example" {
-  name = "Example Network"
-
-  project_id = data.eventstorecloud_project.example.id
-
-  resource_provider = "aws"
-  region = "us-west-2"
-  cidr_block = "172.21.0.0/16"
-}
-
-resource "eventstorecloud_peering" "example" {
-	name = "Peering from AWS into Example Network"
-
-	project_id = eventstorecloud_network.example.project_id
-	network_id = eventstorecloud_network.example.id
-
-	peer_resource_provider = eventstorecloud_network.example.resource_provider
-	peer_network_region = eventstorecloud_network.example.region
-
-	peer_account_id = "<Customer AWS Account ID>"
-	peer_network_id = "<Customer VPC ID>"
-	routes = ["<Address space of the customer VPC>"]
-}
-```
-
-### Arguments
-
-- `name` - (`string`, Required) - the name of the peering.
-- `project_id` - (`string`, Required) - the ID of the project in which the peering should be created.
-- `network_id` - (`string`, Required) - the ID of the network into which the peering should be created.
-- `peer_resource_provider` - (`string`, Required) - the name of the cloud in which the customer managed network exists.
-  Currently this must be the same as the resource provider of the Event Store Cloud network.
-- `peer_network_region` - (`string`, Required) - the name of the region in which the customer managed network exists.
-  Currently this must be the same as the region of the Event Store Cloud network, and specified in the format used by the
-  customer cloud - for example `us-west-2` in AWS, and `westus2` for Azure.
-- `peer_account_id` - (`string`, Required) - the account identifier for the account in which the customer-managed network
-  exists. The required format is dependent on the target cloud:
-  - AWS: The Account ID (12 digit numeric value available from the account drop down in the AWS console)
-- `peer_network_id` - (`string`, Required) - the network identifier for the customer-managed network. The required format
-  is dependent on the target cloud:
-  - AWS: The VPC ID (`vpc-XXXXXXXX`, available via the VPC section of the AWS console)
-- `routes` - (`string`, Required) - CIDR Blocks representing routes to be created from the Event Store Cloud network into
-  the customer-managed network. Typically this consists of one element, the address space of the customer-managed network.
-
-### Attributes
-
-As well as the input arguments, the following properties are exposed:
-
-- `id` - (`string`) - the ID of the peering.
-- `provider_metadata` - metadata supplied by the resource provider cloud about the peering link:
-  - `aws_peering_link_id` - (`string`) - the ID of the peering link in AWS. Empty if the resource provider is not AWS.
-  - `gcp_project_id` - (`string`) - the project ID of the peering link in GCP. Empty if the resource provider is not GCP.
-  - `gcp_network_name` - (`string`) - the network name for the peering link in GCP. Empty if the resource provider is not GCP.
-  - `gcp_network_id` - (`string`) - GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources. Empty if the peering Provider is not GCP.
+<<< @/docs/cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
 
 ## Resource `eventstorecloud_managed_cluster`
 
@@ -304,5 +258,7 @@ As well as the input arguments, the following properties are exposed:
 
 [terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
 [terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
+[terraform github samples]: https://github.com/EventStore/terraform-provider-eventstorecloud/tree/trunk/examples
 [terraform registry]: https://registry.terraform.io/providers/EventStore/eventstorecloud/latest
 [esc cli github]: https://github.com/EventStore/esc
+[esc cli github releases]: https://github.com/EventStore/esc/releases

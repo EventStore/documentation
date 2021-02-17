@@ -10,6 +10,8 @@ import "prismjs/components/prism-csharp";
 import "prismjs/components/prism-java";
 import "prismjs/components/prism-yaml";
 import "prismjs/components/prism-bash";
+import "prismjs/components/prism-hcl";
+import "prismjs/components/prism-powershell";
 import * as gtm from "./gtm/inject";
 import Vuex from "vuex";
 import XodeBlock from "./theme/components/XodeBlock";
