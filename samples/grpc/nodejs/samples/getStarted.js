@@ -29,9 +29,10 @@ export default function (router) {
     // endregion appendEvents
 
     // region readStream
-    const events = await client.readStream("some-stream", 10, {
+    const events = await client.readStream("some-stream", {
       direction: FORWARDS,
       fromRevision: START,
+      maxCount: 10
     });
     // endregion readStream
 

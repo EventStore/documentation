@@ -39,13 +39,14 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@eventstore/db-client@0.0.0-alpha.12":
-  version "0.0.0-alpha.12"
-  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-0.0.0-alpha.12.tgz#1a8ab115ff7da7f96a2bee259c273b2604ad234c"
-  integrity sha512-7ykLyisEFXYM7p9K4/JqWZDCiCZn9jgp8vaQWfKnE015EQIsGdR4A3TK/kG5qtPpMJK83K9hiqOaHdDjqzIUdA==
+"@eventstore/db-client@0.0.0-alpha.17":
+  version "0.0.0-alpha.17"
+  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-0.0.0-alpha.17.tgz#83f46ecaaf7ca4728d0c690406f96f0357e4b713"
+  integrity sha512-yRIEY/PK6rkKmk71tdsNht+idIlX9AMKZ6FnxMYLcPwJB7nxon8RpkN+/+xe8BavLn+qTNttozZf+pSHVVzOwA==
   dependencies:
     "@grpc/grpc-js" "^1.2.2"
     "@types/debug" "^4.1.5"
+    "@types/google-protobuf" "^3.7.4"
     "@types/node" "^12.12.47"
     debug "^4.3.1"
     google-protobuf "^3.14.0"
@@ -64,6 +65,11 @@
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
   integrity sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
+
+"@types/google-protobuf@^3.7.4":
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/@types/google-protobuf/-/google-protobuf-3.7.4.tgz#1621c50ceaf5aefa699851da8e0ea606a2943a39"
+  integrity sha512-6PjMFKl13cgB4kRdYtvyjKl8VVa0PXS2IdVxHhQ8GEKbxBkyJtSbaIeK1eZGjDKN7dvUh4vkOvU9FMwYNv4GQQ==
 
 "@types/node@^12.12.47":
   version "12.19.9"
