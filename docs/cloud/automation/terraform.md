@@ -174,15 +174,12 @@ The following arguments have a format dependent on the cloud provider:
 ::: tip
 `peer_resource_provider`
 Currently this must be the same as the resource provider of the Event Store Cloud network.
-:::
 
-::: tip
 `peer_network_region`
-Currently this must be the same as the region of the Event Store Cloud network, and specified in the format used by your
-cloud - for example `us-west-2` in AWS, and `westus2` for Azure.
-:::
+Currently this must be the same as the region of the Event Store Cloud network, 
+and specified in the format used by your cloud.  
+For example `us-west-2` in AWS, and `westus2` for Azure.
 
-::: tip
 `routes`
 Typically this consists of one element, the address space of your managed network.
 :::
@@ -221,18 +218,18 @@ Creates a new Managed Event StoreDB cluster in a network.
 
 ### Attributes
 
-| Name                | Type   | Description                                                                                    | 
-| :---------          | :----- | :-------------                                                                                 | 
-| id                  | string | the ID of the cluster.                                                                        | 
-| dns_name   | string | the DNS name at which the cluster can be found                       | 
-| resource_provider | string | the resource provider into which the cluster was provisioned.                                                               | 
-| region      | string | the region in which the cluster was provisioned.                                                         | 
-| gcp_network_name    | string | network name for the peering link in GCP                                                       | 
-| gcp_network_id      | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
+| Name              | Type   | Description                                                                                    | 
+| :---------        | :----- | :-------------                                                                                 | 
+| id                | string | the ID of the cluster.                                                                         | 
+| dns_name          | string | the DNS name at which the cluster can be found                                                 | 
+| resource_provider | string | the resource provider into which the cluster was provisioned.                                  | 
+| region            | string | the region in which the cluster was provisioned.                                               | 
+| gcp_network_name  | string | network name for the peering link in GCP                                                       | 
+| gcp_network_id    | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
 
 
 ::: tip
-`dns_name` and `resource_provider` values are controlled by the network in which the cluster is created.
+`region` and `resource_provider` values are controlled by the network in which the cluster is created.
 :::
 
 ### Creating a cluster (AWS)
