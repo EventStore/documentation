@@ -81,6 +81,7 @@ The following resources are available :
 - Projects : `eventstorecloud_project`
 - Networks : `eventstorecloud_network`
 - Peering  : `eventstorecloud_peering`
+- Cluster  :  `eventstorecloud_managed_cluster`
 
 
 ## eventstorecloud_project
