@@ -2,15 +2,15 @@ import {
   START,
   eventTypeFilter,
   streamNameFilter,
+  excludeSystemEvents,
 } from "@eventstore/db-client";
 
 export async function subscribeToAllExcludeSystemEvents(client) {
   // region exclude-system
-  const excludeSystemEventsRegex = /^[^\$].*/;
   const subscription = client
     .subscribeToAll({
       fromRevision: START,
-      filter: eventTypeFilter({ regex: excludeSystemEventsRegex }),
+      filter: excludeSystemEvents(),
     })
     .on("data", function (resolvedEvent) {
       console.log(
