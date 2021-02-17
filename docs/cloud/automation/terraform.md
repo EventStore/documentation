@@ -190,71 +190,53 @@ Typically this consists of one element, the address space of your managed networ
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
 
-## Resource `eventstorecloud_managed_cluster`
+## eventstorecloud_managed_cluster
 
 Creates a new Managed Event StoreDB cluster in a network.
 
-### Example
-
-```hcl
-data "eventstorecloud_project" "example" {
-  name = "Example Project"
-}
-
-resource "eventstorecloud_network" "example" {
-  name = "Example Network"
-
-  project_id = data.eventstorecloud_project.example.id
-
-  resource_provider = "aws"
-  region = "us-west-2"
-  cidr_block = "172.21.0.0/16"
-}
-
-resource "eventstorecloud_managed_cluster" "example" {
-	name = "Example Cluster"
-
-	project_id = eventstorecloud_network.example.project_id
-	network_id = eventstorecloud_network.example.id
-
-	topology = "three-node-multi-az"
-	instance_type = "F1"
-	disk_size = 24
-	disk_type = "gp2"
-	server_version = "20.6"
-}
-```
 
 ### Arguments
 
-- `name` - (`string`, Required) - the name of the managed cluster.
-- `project_id` - (`string`, Required) - the ID of the project in which the managed cluster should be created.
-- `network_id` - (`string`, Required) - the ID of the network in which the managed cluster should be created. This
-  determines which cloud and region the managed cluster will be hosted in.
-- `topology` - (`string`, Required) - the topology of the managed cluster. This determines the fault tolerance of
-  the cluster. Valid values are `single-node` and `three-node-multi-az`. The actual implementation of each topology
-  is specific to the resource provider.
-- `instance_type` - (`string`, Required) - the size of the instances to use in the managed cluster. This determines
-  the performance of the cluster. Valid values are `F1` and `C4`.
-- `disk_size` - (`int`, Required) - the size of the data disks in gigabytes. This determines how much data can be
-  stored by the cluster. The minimum size is 8GB for a cluster in AWS and 10GB for a cluster in GCP.
-- `disk_type` - (`string`, Required) - the type of data disks, which helps determine the performance profile of the
-  cluster. Currently `gp2` is the only option.
-- `server_version` - (`string`, Required) - the version of Event Store Server with which the cluster is provisioned.
-  Currently only `20.6` is available.
-- `projection_level` - (`string`, Optional) - the mode in which to enable projections. Valid values are `off`, `system`
-  and `user`. Defaults to `off`.
+| Name             | Type   | Description                                                                                                                                                    | 
+| :---------       | :----- | :-------------                                                                                                                                                 | 
+| name             | string | *Required*, the name of the managed cluster.                                                                                                                   | 
+| project_id       | string | *Required*, the ID of the project in which the managed cluster should be created.                                                                              | 
+| network_id       | string | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created.                                                           | 
+| topology         | string | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-az`. | 
+| instance_type    | string | *Required*, the size of the instances to use in the managed cluster                                                                                            | 
+| disk_size        | int    | *Required*, the size of the data disks in gigabytes                                                                                                            | 
+| disk_type        | string | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)                                                                                                | 
+| server_version   | string | *Required*,  `20.6`,`20.10`                                                                                                                                    | 
+| projection_level | string | *Optional*, default: `off`, the mode in which to enable projections. Valid values are `off`, `system`,  `user`                                                 | 
+
+
+::: tip
+ The actual implementation of each topology is specific to the resource provider.
+ 
+`instance_type` values can be `F1`, `C4`, `M8`, `M16`, `M32`, `M64`, `M128`  
+`disk_size`:  The minimum size is 10GB.  
+`disk_type`: The values depend on the cloud you're using `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)
+::: 
 
 ### Attributes
 
-As well as the input arguments, the following properties are exposed:
+| Name                | Type   | Description                                                                                    | 
+| :---------          | :----- | :-------------                                                                                 | 
+| id                  | string | the ID of the cluster.                                                                        | 
+| dns_name   | string | the DNS name at which the cluster can be found                       | 
+| resource_provider | string | the resource provider into which the cluster was provisioned.                                                               | 
+| region      | string | the region in which the cluster was provisioned.                                                         | 
+| gcp_network_name    | string | network name for the peering link in GCP                                                       | 
+| gcp_network_id      | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
 
-- `id` - (`string`) - the ID of the network.
-- `dns_name` (`string`) - the DNS name at which the cluster can be found from networks peered into cluster network.
-- `resource_provider` (`string`) - the resource provider into which the cluster was provisioned. This is controlled by
-  the network in which the cluster is created.
-- `region` (`string`) - the region in which the cluster was provisioned. This is controlled by the network in which
-  the cluster is created.
+
+::: tip
+`dns_name` and `resource_provider` values are controlled by the network in which the cluster is created.
+:::
+
+### Creating a cluster (AWS)
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.tf.hcl
 
 [terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
 [terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
