@@ -184,7 +184,7 @@ The following arguments have a format dependent on the cloud provider:
 | peer_network_region    | string | *Required*, the name of the region in which your managed network exists.                                                | 
 | peer_account_id        | string | *Required*, the account identifier for the account in which your managed network exists                                 | 
 | peer_network_id        | string | *Required*, the network identifier for your managed network.                                                            | 
-| routes                 | string | *Required*,  CIDR Blocks representing routes to be created from the Event Store Cloud network into your managed network |
+| routes                 | string | *Required*, CIDR Blocks representing routes to be created from the Event Store Cloud network into your managed network  |
 
 ### Attributes
 
@@ -204,7 +204,7 @@ Currently this must be the same as the resource provider of the Event Store Clou
 `peer_network_region`
 Currently this must be the same as the region of the Event Store Cloud network, 
 and specified in the format used by your cloud.  
-For example `us-west-2` in AWS, and `westus2` for Azure.
+For example `us-west-2` for AWS,`westus2` for Azure and `us-east1` for GCP
 
 `routes`
 Typically this consists of one element, the address space of your managed network.
