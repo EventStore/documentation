@@ -74,11 +74,11 @@ Provider configuration options are:
 | `token_store`       | `ESC_TOKEN_STORE`      | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.  |
                                                                                                                                                                        
 ### Obtaining the `token`
-Currently this token must be created and displayed with the [esc cli][esc cli github releases] tool.  
+Currently this token must be created and displayed with the [EvenStoreDB Cloud CLI][[esc cli github] tool.  
 
 The token id displayed in the cloud console is not a valid token.
 
-The command to obtain a token from the esc cli tool is  
+The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is  
 `esc access tokens create --email <email>`
 
 ## Resources
