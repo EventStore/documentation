@@ -7,7 +7,7 @@ terraform_github_releases: https://github.com/EventStore/terraform-provider-even
 
 ## Installation
 
-The current version of the provider is : {{ $frontmatter.terraform_current_version }}.
+The current version of the provider is: {{ $frontmatter.terraform_current_version }}.
 
 The releases are available in Terraform's official [registry][terraform registry] and via [GitHub releases][terraform github releases].
 
