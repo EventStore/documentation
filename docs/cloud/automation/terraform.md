@@ -11,6 +11,16 @@ The current version of the provider is: {{ $frontmatter.terraform_current_versio
 
 The releases are available in Terraform's official [registry][terraform registry] and via [GitHub releases][terraform github releases].
 
+The binaries are available for the following platforms:  
+- AMD64
+  - Darwin: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip 
+  - Freebsd: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip
+  - Linux: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip 
+  - Windows: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip
+- ARM64  
+  - Freebsd: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip 
+  - Linux: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip
+ 
 ### Terraform 0.13+
 
 Terraform supports third party modules installed via the plugin registry.  
@@ -77,16 +87,18 @@ All resources in Event Store Cloud can be provisioned using the Terraform provid
 Existing projects can be queried using a data source in the provider.  
 More complete samples can be found [here][terraform github samples].
 
-The following resources are available : 
+The following resources are available: 
 - Projects : `eventstorecloud_project`
 - Networks : `eventstorecloud_network`
 - Peering  : `eventstorecloud_peering`
-- Cluster  :  `eventstorecloud_managed_cluster`
+- Cluster  : `eventstorecloud_managed_cluster`
 
+The following data source is available: 
+- Projects : `eventstorecloud_project` 
 
 ## eventstorecloud_project
 
-Looks up and creates project in the organization with which the provider is configured by name.
+Looks up and creates a project in the organization with which the provider is configured by name.
 ### Arguments
 | Name       | Type   | Description                         |
 | :--------- | :----- | :-------------                      |
