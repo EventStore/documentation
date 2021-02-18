@@ -140,7 +140,7 @@ Looks up and creates a project in the organization with which the provider is co
 
 ::: tip
 `cidr_block`: the maximum prefix length is `/9` and  the minimum is `/24`.  
-However what is allowed is provider dependent.  
+However what is allowed is provider dependent:  
 - AWS [VPC Addressing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html)
 - Azure [Virtual Network FAQ](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-address-ranges-can-i-use-in-my-vnets)
 - GCP [VPC Network](https://cloud.google.com/vpc/docs/vpc#valid-ranges)
