@@ -210,7 +210,8 @@ For example `us-west-2` for AWS,`westus2` for Azure and `us-east1` for GCP
 Typically this consists of one element, the address space of your managed network.
 :::
 
-### Creating a peering (AWS)
+
+### Creating a peering
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
 
@@ -218,21 +219,19 @@ Typically this consists of one element, the address space of your managed networ
 
 Creates a new Managed Event StoreDB cluster in a network.
 
-
 ### Arguments
 
-| Name             | Type   | Description                                                                                                                                                    | 
-| :---------       | :----- | :-------------                                                                                                                                                 | 
-| name             | string | *Required*, the name of the managed cluster.                                                                                                                   | 
-| project_id       | string | *Required*, the ID of the project in which the managed cluster should be created.                                                                              | 
-| network_id       | string | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created.                                                           | 
-| topology         | string | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-az`. | 
-| instance_type    | string | *Required*, the size of the instances to use in the managed cluster                                                                                            | 
-| disk_size        | int    | *Required*, the size of the data disks in gigabytes                                                                                                            | 
-| disk_type        | string | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)                                                                                                | 
-| server_version   | string | *Required*,  `20.6`,`20.10`                                                                                                                                    | 
-| projection_level | string | *Optional*, default: `off`, the mode in which to enable projections. Valid values are `off`, `system`,  `user`                                                 | 
-
+| Name             | Type   | Description                                                                                                                                                      | 
+| :---------       | :----- | :-------------                                                                                                                                                   | 
+| name             | string | *Required*, the name of the managed cluster.                                                                                                                     | 
+| project_id       | string | *Required*, the ID of the project in which the managed cluster should be created.                                                                                | 
+| network_id       | string | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created.                                                             | 
+| topology         | string | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. | 
+| instance_type    | string | *Required*, the size of the instances to use in the managed cluster                                                                                              | 
+| disk_size        | int    | *Required*, the size of the data disks in gigabytes                                                                                                              | 
+| disk_type        | string | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)                                                                                                  | 
+| server_version   | string | *Required*,  `20.6`,`20.10`                                                                                                                                      | 
+| projection_level | string | *Optional*, default: `off`, the mode in which to enable projections. Valid values are `off`, `system`,  `user`                                                   | 
 
 ::: tip
  The actual implementation of each topology is specific to the resource provider.
@@ -253,14 +252,29 @@ Creates a new Managed Event StoreDB cluster in a network.
 | gcp_network_name  | string | network name for the peering link in GCP                                                       | 
 | gcp_network_id    | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
 
-
 ::: tip
 `region` and `resource_provider` values are controlled by the network in which the cluster is created.
 :::
 
-### Creating a cluster (AWS)
+### Creating a cluster
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.tf.hcl
+<xode-group>
+<xode-block title="AWS">
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.aws.tf.hcl
+
+</xode-block>
+<xode-block title="Azure">
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.az.tf.hcl
+
+</xode-block>
+<xode-block title="GCP">
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.gcp.tf.hcl
+
+</xode-block>
+</xode-group>
 
 [terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
 [terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
