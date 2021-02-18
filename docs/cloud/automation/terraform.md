@@ -74,7 +74,7 @@ Provider configuration options are:
 | `token_store`       | `ESC_TOKEN_STORE`      | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.  |
                                                                                                                                                                        
 ### Obtaining the `token`
-Currently this token must be created and displayed with the [EvenStoreDB Cloud CLI][[esc cli github] tool.  
+Currently this token must be created and displayed with the [EvenStoreDB Cloud CLI][esc cli github] tool.  
 
 The token id displayed in the cloud console is not a valid token.
 
@@ -134,12 +134,17 @@ Looks up and creates a project in the organization with which the provider is co
 | id         | string | the ID of the project | 
 
 ::: tip
-`region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, or `East US` for Azure
+`region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, 
+`East US` for Azure, `us-east1` for GCP
 :::
 
 ::: tip
 `cidr_block`: the maximum prefix length is `/9` and  the minimum is `/24`.  
 However what is allowed is provider dependent.  
+- AWS [VPC Addressing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html)
+- Azure [Virtual Network FAQ](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-address-ranges-can-i-use-in-my-vnets)
+- GCP [VPC Network](https://cloud.google.com/vpc/docs/vpc#valid-ranges)
+
 Smaller networks can hold fewer managed clusters, but may be easier to peer to infrastructure hosting your applications.
 :::
 
