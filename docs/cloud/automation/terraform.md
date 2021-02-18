@@ -96,7 +96,7 @@ The following resources are available:
 The following data source is available: 
 - Projects : `eventstorecloud_project` 
 
-## eventstorecloud_project
+## Resource eventstorecloud_project
 
 Looks up and creates a project in the organization with which the provider is configured by name.
 ### Arguments
@@ -109,15 +109,24 @@ Looks up and creates a project in the organization with which the provider is co
 | :--------- | :----- | :-------------        | 
 | id         | string | the ID of the project | 
 
+### Creating a project
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
+
+## Data source  eventstorecloud_project
+
+### Arguments
+| Name       | Type   | Description                         |
+| :--------- | :----- | :-------------                      |
+| name       | string | *Required*, the name of the project |
+| id         | string | *Optional*, the name of the project |
+
 ### Looking up a project
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
 
-### Creating a project 
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
-
-## eventstorecloud_network
+## Resource eventstorecloud_network
 
 ### Arguments
 | Name              | Type   | Description                                                                                      |
@@ -152,7 +161,7 @@ Smaller networks can hold fewer managed clusters, but may be easier to peer to i
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_network.create.tf.hcl
 
-## eventstorecloud_peering
+## Resource eventstorecloud_peering
 
 Creates a new peering in a cloud network.  
 Peering can be created from customer-managed networks in the same cloud and region
@@ -205,7 +214,7 @@ Typically this consists of one element, the address space of your managed networ
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
 
-## eventstorecloud_managed_cluster
+## Resource eventstorecloud_managed_cluster
 
 Creates a new Managed Event StoreDB cluster in a network.
 
