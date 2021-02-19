@@ -211,7 +211,7 @@ Currently this must be the same as the resource provider of the Event Store Clou
 `peer_network_region`
 Currently this must be the same as the region of the Event Store Cloud network, 
 and specified in the format used by your cloud.  
-For example `us-west-2` for AWS,`westus2` for Azure and `us-east1` for GCP
+For example `us-west-2` for AWS, `westus2` for Azure and `us-east1` for GCP
 
 `routes`
 Typically this consists of one element, the address space of your managed network.
