@@ -154,6 +154,11 @@ module.exports = {
                         "/cloud/use/",
                         "/cloud/use/tailscale.md"
                     ]
+                },
+                {
+                    title:      "Faq",
+                    collapsable: false,
+                    path:        "/cloud/faq/",
                 }
             ]
         }
