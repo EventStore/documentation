@@ -74,12 +74,18 @@ Provider configuration options are:
 | `token_store`       | `ESC_TOKEN_STORE`      | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.  |
                                                                                                                                                                        
 ### Obtaining the `token`
-Currently this token must be created and displayed with the [EvenStoreDB Cloud CLI][esc cli github] tool.  
+You can can use the [cloud console][cloud console tokens]  or the [EvenStoreDB Cloud CLI][esc cli github releases] to obtain a token.
 
-The token id displayed in the cloud console is not a valid token.
+The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is
 
-The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is  
 `esc access tokens create --email <email>`
+
+### Obtaining the `organization_id`
+You can use the [cloud console][cloud console organizations] or the [EvenStoreDB Cloud CLI][esc cli github releases] to find your organization id.
+
+The command to obtain the organization from the [EvenStoreDB Cloud CLI][esc cli github releases] is
+
+`esc resources organizations list`
 
 ## Resources
 
@@ -113,7 +119,7 @@ Looks up and creates a project in the organization with which the provider is co
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
 
-## Data source  eventstorecloud_project
+## Data source eventstorecloud_project
 
 ### Arguments
 | Name       | Type   | Description                         |
@@ -125,6 +131,9 @@ Looks up and creates a project in the organization with which the provider is co
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
 
+::: tip
+the value of `eventstorecloud_project.name` is case sensitive. So `Production Project` is not the same as `^production project`
+:::
 
 ## Resource eventstorecloud_network
 
@@ -145,9 +154,7 @@ Looks up and creates a project in the organization with which the provider is co
 ::: tip
 `region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, 
 `East US` for Azure, `us-east1` for GCP
-:::
 
-::: tip
 `cidr_block`: the maximum prefix length is `/9` and  the minimum is `/24`.  
 However what is allowed is provider dependent:  
 - AWS [VPC Addressing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html)
@@ -238,7 +245,7 @@ Creates a new Managed Event StoreDB cluster in a network.
  
 `instance_type` values can be `F1`, `C4`, `M8`, `M16`, `M32`, `M64`, `M128`  
 `disk_size`:  The minimum size is 10GB.  
-`disk_type`: The values depend on the cloud you're using `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)
+`disk_type`: The value depends on the cloud you are using `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)
 ::: 
 
 ### Attributes
@@ -276,9 +283,23 @@ Creates a new Managed Event StoreDB cluster in a network.
 </xode-block>
 </xode-group>
 
+## FAQ
+
+### Error  `error obtaining access token: error 400 requesting access token`
+You need to add the access token to your environment variables or the provider configuration.
+See [here](#provider-configuration)
+
+### Error `... Forbidden: Access to the requested method for the requested resources was denied`
+Make sure you used the correct Organisation Id:  See [here](#provider-configuration)
+
+### Error `Your query returned no results. Please change your search criteria and try again.`
+Data source names are case sensitive. See [here](#data-source-eventstorecloud-project)
+
 [terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
 [terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
 [terraform github samples]: https://github.com/EventStore/terraform-provider-eventstorecloud/tree/trunk/examples
 [terraform registry]: https://registry.terraform.io/providers/EventStore/eventstorecloud/latest
 [esc cli github]: https://github.com/EventStore/esc
 [esc cli github releases]: https://github.com/EventStore/esc/releases
+[cloud console tokens]:https://console.eventstore.cloud/authentication-tokens
+[cloud console organizations]:https://console.eventstore.cloud/organizations
