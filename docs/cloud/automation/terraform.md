@@ -7,9 +7,7 @@ terraform_github_releases: https://github.com/EventStore/terraform-provider-even
 
 ## Installation
 
-The current version of the provider is: {{ $frontmatter.terraform_current_version }}.
-
-The releases are available in Terraform's official [registry][terraform registry] and via [GitHub releases][terraform github releases].
+The current version of the provider is: {{ $frontmatter.terraform_current_version }}. The releases are available in Terraform's official [registry][terraform registry] and via [GitHub releases][terraform github releases].
 
 The binaries are available for the following platforms:  
 - AMD64
@@ -21,18 +19,7 @@ The binaries are available for the following platforms:
   - Freebsd: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip 
   - Linux: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip
  
-### Terraform 0.13+
-
-Terraform supports third party modules installed via the plugin registry.  
-Add the following to your terraform module configuration.
-
-
-<<< @/docs/cloud/automation/snippets/providers_eventstore.tf.hcl
-
-### Terraform 0.12
-
-In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory.  
-The location varies by operating system:
+In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory. The location varies by operating system:
 
 - Linux and macOS `~/.terraform.d/plugins`
 - Windows `%APPDATA%\terraform.d\plugins`
@@ -53,18 +40,19 @@ You can download the provider using the following commands:
 
 <<< @/docs/cloud/automation/snippets/download_provider_windows.ps1.powershell
 
+### Terraform 0.13+
+
+Terraform supports third party modules installed via the plugin registry. Add the following to your terraform module configuration:
+
+<<< @/docs/cloud/automation/snippets/providers_eventstore.tf.hcl
+
 ## From Source 
 
-If you prefer to install from source, use the `make install` target in this [repository][terraform github].
-
-You will need a Go 1.13+ development environment.
+If you prefer to install from source, use the `make install` target in this [repository][terraform github]. You will need a Go 1.13+ development environment.
 
 ## Provider Configuration
 
-The Event Store Cloud provider must be configured with an access token.   
-There are several additional options that may be useful.
-
-Provider configuration options are:
+The Event Store Cloud provider must be configured with an access token. There are several additional options that may be useful. Provider configuration options are:
 
 | Option              | Environment Variable   | Description                                                                                                          |
 | :------------------ | :--------------------- | :------------------------------------------------------------------------------------------------------------------- |
@@ -74,24 +62,22 @@ Provider configuration options are:
 | `token_store`       | `ESC_TOKEN_STORE`      | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.  |
                                                                                                                                                                        
 ### Obtaining the `token`
-You can can use the [cloud console][cloud console tokens]  or the [EvenStoreDB Cloud CLI][esc cli github releases] to obtain a token.
+You can can use the [cloud console][cloud console tokens] or the [EvenStoreDB Cloud CLI][esc cli github releases] to obtain a token
 
-The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is
+The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is:
 
 `esc access tokens create --email <email>`
 
 ### Obtaining the `organization_id`
 You can use the [cloud console][cloud console organizations] or the [EvenStoreDB Cloud CLI][esc cli github releases] to find your organization id.
 
-The command to obtain the organization from the [EvenStoreDB Cloud CLI][esc cli github releases] is
+The command to obtain the organization from the [EvenStoreDB Cloud CLI][esc cli github releases] is:
 
 `esc resources organizations list`
 
 ## Resources
 
-All resources in Event Store Cloud can be provisioned using the Terraform provider.  
-Existing projects can be queried using a data source in the provider.  
-More complete samples can be found [here][terraform github samples].
+All resources in Event Store Cloud can be provisioned using the Terraform provider. Existing projects can be queried using a data source in the provider. More complete samples can be found [here][terraform github samples].
 
 The following resources are available: 
 - Projects : `eventstorecloud_project`
@@ -99,45 +85,26 @@ The following resources are available:
 - Peering  : `eventstorecloud_peering`
 - Cluster  : `eventstorecloud_managed_cluster`
 
-The following data source is available: 
-- Projects : `eventstorecloud_project` 
-
-## Resource eventstorecloud_project
+### eventstorecloud_project
 
 Looks up and creates a project in the organization with which the provider is configured by name.
-### Arguments
+#### Arguments
 | Name       | Type   | Description                         |
 | :--------- | :----- | :-------------                      |
 | name       | string | *Required*, the name of the project |
 
-### Attributes
+#### Attributes
 | Name       | Type   | Description           | 
 | :--------- | :----- | :-------------        | 
 | id         | string | the ID of the project | 
 
-### Creating a project
+#### Creating a project
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
 
-## Data source eventstorecloud_project
+### eventstorecloud_network
 
-### Arguments
-| Name       | Type   | Description                         |
-| :--------- | :----- | :-------------                      |
-| name       | string | *Required*, the name of the project |
-| id         | string | *Optional*, the name of the project |
-
-### Looking up a project
-
-<<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
-
-::: tip
-the value of `eventstorecloud_project.name` is case sensitive. So `Production Project` is not the same as `^production project`
-:::
-
-## Resource eventstorecloud_network
-
-### Arguments
+#### Arguments
 | Name              | Type   | Description                                                                                      |
 | :---------        | :----- | :-------------                                                                                   |
 | name              | string | *Required*, the name of the network                                                              |
@@ -146,17 +113,15 @@ the value of `eventstorecloud_project.name` is case sensitive. So `Production Pr
 | region            | string | *Required*, the name of the region in which the network should be created                        |
 | cidr_block        | string | *Required*, the address space of the network.                                                    |
 
-### Attributes
+#### Attributes
 | Name       | Type   | Description           | 
 | :--------- | :----- | :-------------        | 
 | id         | string | the ID of the project | 
 
 ::: tip
-`region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, 
-`East US` for Azure, `us-east1` for GCP
+`region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, `East US` for Azure, `us-east1` for GCP.
 
-`cidr_block`: the maximum prefix length is `/9` and  the minimum is `/24`.  
-However what is allowed is provider dependent:  
+`cidr_block`: the maximum prefix length is `/9` and  the minimum is `/24`. However what is allowed is provider dependent:  
 - AWS [VPC Addressing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html)
 - Azure [Virtual Network FAQ](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-address-ranges-can-i-use-in-my-vnets)
 - GCP [VPC Network](https://cloud.google.com/vpc/docs/vpc#valid-ranges)
@@ -164,15 +129,13 @@ However what is allowed is provider dependent:
 Smaller networks can hold fewer managed clusters, but may be easier to peer to infrastructure hosting your applications.
 :::
 
-### Creating a network
+#### Creating a network
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_network.create.tf.hcl
 
-## Resource eventstorecloud_peering
+### eventstorecloud_peering
 
-Creates a new peering in a cloud network.  
-Peering can be created from customer-managed networks in the same cloud and region
-as the network with which the peering exists.
+Creates a new peering in a cloud network. Peering can be created from customer-managed networks in the same cloud and region as the network with which the peering exists.
 
 ::: tip
 The following arguments have a format dependent on the cloud provider:
@@ -181,7 +144,7 @@ The following arguments have a format dependent on the cloud provider:
 - `peer_network_id`
 :::
 
-### Arguments
+#### Arguments
 | Name                   | Type   | Description                                                                                                             | 
 | :---------             | :----- | :-------------                                                                                                          | 
 | name                   | string | *Required*, the name of the peering                                                                                     | 
@@ -193,7 +156,7 @@ The following arguments have a format dependent on the cloud provider:
 | peer_network_id        | string | *Required*, the network identifier for your managed network.                                                            | 
 | routes                 | string | *Required*, CIDR Blocks representing routes to be created from the Event Store Cloud network into your managed network  |
 
-### Attributes
+#### Attributes
 
 | Name                | Type   | Description                                                                                    | 
 | :---------          | :----- | :-------------                                                                                 | 
@@ -209,24 +172,21 @@ The following arguments have a format dependent on the cloud provider:
 Currently this must be the same as the resource provider of the Event Store Cloud network.
 
 `peer_network_region`
-Currently this must be the same as the region of the Event Store Cloud network, 
-and specified in the format used by your cloud.  
-For example `us-west-2` for AWS, `westus2` for Azure and `us-east1` for GCP
+Currently this must be the same as the region of the Event Store Cloud network, and specified in the format used by your cloud. For example `us-west-2` for AWS, `westus2` for Azure and `us-east1` for GCP
 
 `routes`
 Typically this consists of one element, the address space of your managed network.
 :::
 
-
-### Creating a peering
+#### Creating a peering
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
 
-## Resource eventstorecloud_managed_cluster
+### eventstorecloud_managed_cluster
 
 Creates a new Managed Event StoreDB cluster in a network.
 
-### Arguments
+#### Arguments
 
 | Name             | Type   | Description                                                                                                                                                      | 
 | :---------       | :----- | :-------------                                                                                                                                                   | 
@@ -248,7 +208,7 @@ Creates a new Managed Event StoreDB cluster in a network.
 `disk_type`: The value depends on the cloud you are using `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)
 ::: 
 
-### Attributes
+#### Attributes
 
 | Name              | Type   | Description                                                                                    | 
 | :---------        | :----- | :-------------                                                                                 | 
@@ -263,7 +223,7 @@ Creates a new Managed Event StoreDB cluster in a network.
 `region` and `resource_provider` values are controlled by the network in which the cluster is created.
 :::
 
-### Creating a cluster
+#### Creating a cluster
 
 <xode-group>
 <xode-block title="AWS">
@@ -283,11 +243,31 @@ Creates a new Managed Event StoreDB cluster in a network.
 </xode-block>
 </xode-group>
 
+## Data sources
+
+The following data source is available: 
+- Projects : `eventstorecloud_project` 
+
+### eventstorecloud_project
+
+#### Arguments
+| Name       | Type   | Description                         |
+| :--------- | :----- | :-------------                      |
+| name       | string | *Required*, the name of the project |
+| id         | string | *Optional*, the name of the project |
+
+#### Looking up a project
+
+<<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
+
+::: tip
+the value of `eventstorecloud_project.name` is case sensitive. So `Production Project` is not the same as `^production project`
+:::
+
 ## FAQ
 
 ### Error  `error obtaining access token: error 400 requesting access token`
-You need to add the access token to your environment variables or the provider configuration.
-See [here](#provider-configuration)
+You need to add the access token to your environment variables or the provider configuration. See [here](#provider-configuration)
 
 ### Error `... Forbidden: Access to the requested method for the requested resources was denied`
 Make sure you used the correct Organisation Id:  See [here](#provider-configuration)
