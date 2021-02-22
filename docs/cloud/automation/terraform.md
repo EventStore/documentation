@@ -68,9 +68,9 @@ Provider configuration options are:
 
 | Option              | Environment Variable   | Description                                                                                                          |
 | :------------------ | :--------------------- | :------------------------------------------------------------------------------------------------------------------- |
-| `token`             | `ESC_TOKEN`            | *Required*, your access token for Event Store Cloud                                                                  |
+| `token`             | `ESC_TOKEN`            | *Required*, your access token for Event Store Cloud.                                                                 |
 | `organization_id`   | `ESC_ORG_ID`           | *Required*, the identifier of your  Event Store Cloud organization.                                                  |
-| `url`               | `ESC_URL`              | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud    |
+| `url`               | `ESC_URL`              | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud.   |
 | `token_store`       | `ESC_TOKEN_STORE`      | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI.  |
                                                                                                                                                                        
 ### Obtaining the `token`
@@ -108,12 +108,12 @@ Looks up and creates a project in the organization with which the provider is co
 ### Arguments
 | Name       | Type   | Description                         |
 | :--------- | :----- | :-------------                      |
-| name       | string | *Required*, the name of the project |
+| name       | string | *Required*, the name of the project.|
 
 ### Attributes
 | Name       | Type   | Description           | 
 | :--------- | :----- | :-------------        | 
-| id         | string | the ID of the project | 
+| id         | string | the ID of the project.| 
 
 ### Creating a project
 
@@ -124,15 +124,15 @@ Looks up and creates a project in the organization with which the provider is co
 ### Arguments
 | Name       | Type   | Description                         |
 | :--------- | :----- | :-------------                      |
-| name       | string | *Required*, the name of the project |
-| id         | string | *Optional*, the name of the project |
+| name       | string | *Required*, the name of the project.|
+| id         | string | *Optional*, the name of the project.|
 
 ### Looking up a project
 
 <<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
 
 ::: tip
-the value of `eventstorecloud_project.name` is case sensitive. So `Production Project` is not the same as `^production project`
+the value of `eventstorecloud_project.name` is case sensitive, so `Production Project` is not the same as `^production project`
 :::
 
 ## Resource eventstorecloud_network
@@ -140,16 +140,16 @@ the value of `eventstorecloud_project.name` is case sensitive. So `Production Pr
 ### Arguments
 | Name              | Type   | Description                                                                                      |
 | :---------        | :----- | :-------------                                                                                   |
-| name              | string | *Required*, the name of the network                                                              |
-| project_id        | string | *Required*, the ID of the project in which the network should be created                         |
-| resource_provider | string | *Required*, the name of the cloud (`aws`, `gcp`, `azure`) in which the network should be created |
-| region            | string | *Required*, the name of the region in which the network should be created                        |
+| name              | string | *Required*, the name of the network.                                                             |
+| project_id        | string | *Required*, the ID of the project in which the network should be created.                        |
+| resource_provider | string | *Required*, the name of the cloud (`aws`, `gcp`, `azure`) in which the network should be created.|
+| region            | string | *Required*, the name of the region in which the network should be created.                       |
 | cidr_block        | string | *Required*, the address space of the network.                                                    |
 
 ### Attributes
 | Name       | Type   | Description           | 
 | :--------- | :----- | :-------------        | 
-| id         | string | the ID of the project | 
+| id         | string | the ID of the project.| 
 
 ::: tip
 `region` names must be in the format used by the resource provider, for example `us-west-2` for AWS, 
@@ -171,8 +171,7 @@ Smaller networks can hold fewer managed clusters, but may be easier to peer to i
 ## Resource eventstorecloud_peering
 
 Creates a new peering in a cloud network.  
-Peering can be created from customer-managed networks in the same cloud and region
-as the network with which the peering exists.
+Peering can be created from customer-managed networks in the same cloud and region as the network with which the peering exists.
 
 ::: tip
 The following arguments have a format dependent on the cloud provider:
@@ -184,25 +183,25 @@ The following arguments have a format dependent on the cloud provider:
 ### Arguments
 | Name                   | Type   | Description                                                                                                             | 
 | :---------             | :----- | :-------------                                                                                                          | 
-| name                   | string | *Required*, the name of the peering                                                                                     | 
-| project_id             | string | *Required*, the ID of the project in which the peering should be created                                                | 
-| network_id             | string | *Required*, the ID of the EventStore Cloud network into which the peering should be created.                            | 
-| peer_resource_provider | string | *Required*, the name of the cloud (`aws`, `gcp`, `azure`) in which your managed network exists                          | 
+| name                   | string | *Required*, the name of the peering.                                                                                    | 
+| project_id             | string | *Required*, the ID of the project in which the peering should be created.                                               | 
+| network_id             | string | *Required*, the ID of the EventStore Cloud network into which the peering should be create.                             | 
+| peer_resource_provider | string | *Required*, the name of the cloud (`aws`, `gcp`, `azure`) in which your managed network exists.                         | 
 | peer_network_region    | string | *Required*, the name of the region in which your managed network exists.                                                | 
-| peer_account_id        | string | *Required*, the account identifier for the account in which your managed network exists                                 | 
+| peer_account_id        | string | *Required*, the account identifier for the account in which your managed network exists.                                | 
 | peer_network_id        | string | *Required*, the network identifier for your managed network.                                                            | 
-| routes                 | string | *Required*, CIDR Blocks representing routes to be created from the Event Store Cloud network into your managed network  |
+| routes                 | string | *Required*, CIDR Blocks representing routes to be created from the Event Store Cloud network into your managed network. |
 
 ### Attributes
 
 | Name                | Type   | Description                                                                                    | 
 | :---------          | :----- | :-------------                                                                                 | 
-| id                  | string | the ID of the peering                                                                          | 
-| provider_metadata   | string | metadata supplied by the resource provider cloud about the peering link:                       | 
+| id                  | string | the ID of the peering.                                                                         | 
+| provider_metadata   | string | metadata supplied by the resource provider cloud about the peering link.                       | 
 | aws_peering_link_id | string | ID of the peering link in AWS.                                                                 | 
-| gcp_project_id      | string | project ID of the peering link in GCP                                                          | 
-| gcp_network_name    | string | network name for the peering link in GCP                                                       | 
-| gcp_network_id      | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
+| gcp_project_id      | string | project ID of the peering link in GCP.                                                         | 
+| gcp_network_name    | string | network name for the peering link in GCP.                                                      | 
+| gcp_network_id      | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources.| 
 
 ::: tip
 `peer_resource_provider`
@@ -234,11 +233,11 @@ Creates a new Managed Event StoreDB cluster in a network.
 | project_id       | string | *Required*, the ID of the project in which the managed cluster should be created.                                                                                | 
 | network_id       | string | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created.                                                             | 
 | topology         | string | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. | 
-| instance_type    | string | *Required*, the size of the instances to use in the managed cluster                                                                                              | 
-| disk_size        | int    | *Required*, the size of the data disks in gigabytes                                                                                                              | 
-| disk_type        | string | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP)                                                                                                  | 
-| server_version   | string | *Required*,  `20.6`,`20.10`                                                                                                                                      | 
-| projection_level | string | *Optional*, default: `off`, the mode in which to enable projections. Valid values are `off`, `system`,  `user`                                                   | 
+| instance_type    | string | *Required*, the size of the instances to use in the managed cluster.                                                                                             | 
+| disk_size        | int    | *Required*, the size of the data disks in gigabytes.                                                                                                             | 
+| disk_type        | string | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                                 | 
+| server_version   | string | *Required*,  `20.6`,`20.10`.                                                                                                                                     | 
+| projection_level | string | *Optional*, default: `off`, the mode in which to enable projections. Valid values are `off`, `system`,  `user`.                                                  | 
 
 ::: tip
  The actual implementation of each topology is specific to the resource provider.
@@ -253,11 +252,11 @@ Creates a new Managed Event StoreDB cluster in a network.
 | Name              | Type   | Description                                                                                    | 
 | :---------        | :----- | :-------------                                                                                 | 
 | id                | string | the ID of the cluster.                                                                         | 
-| dns_name          | string | the DNS name at which the cluster can be found                                                 | 
+| dns_name          | string | the DNS name at which the cluster can be found.                                                | 
 | resource_provider | string | the resource provider into which the cluster was provisioned.                                  | 
 | region            | string | the region in which the cluster was provisioned.                                               | 
-| gcp_network_name  | string | network name for the peering link in GCP                                                       | 
-| gcp_network_id    | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources | 
+| gcp_network_name  | string | network name for the peering link in GCP.                                                      | 
+| gcp_network_id    | string | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources.| 
 
 ::: tip
 `region` and `resource_provider` values are controlled by the network in which the cluster is created.
