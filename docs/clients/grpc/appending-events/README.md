@@ -11,13 +11,13 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-to-stream
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-to-stream
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-to-stream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-to-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -48,13 +48,13 @@ For example:
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-duplicate-event
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-duplicate-event
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-duplicate-event
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-duplicate-event
 </xode-block>
 <xode-block title="Rust">
 
@@ -97,13 +97,13 @@ For example if we try and append the same record twice expecting both times that
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-with-no-stream
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-no-stream
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-with-no-stream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-no-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -123,13 +123,13 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-with-concurrency-check
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-concurrency-check
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-concurrency-check
 </xode-block>
 <xode-block title="Rust">
 
@@ -148,13 +148,13 @@ You can provide user credentials to be used to append the data as follows. This 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#overriding-user-credentials
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#overriding-user-credentials
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#overriding-user-credentials
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/appending-events/index.js#overriding-user-credentials
 </xode-block>
 <xode-block title="Rust">
 

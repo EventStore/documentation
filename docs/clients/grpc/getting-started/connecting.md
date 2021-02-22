@@ -15,16 +15,6 @@ $ dotnet add package EventStore.Client.Grpc.Streams --version 20.10
 $ dotnet add package Grpc.Net.Client --version 2.34.0
 ```
 </xode-block>
-<xode-block title="NodeJS">
-
-```
-# Yarn
-$ yarn add @eventstore/db-client
-
-# NPM
-$ npm install --save @eventstore/db-client
-```
-</xode-block>
 <xode-block title="Java">
 
 ```
@@ -40,6 +30,16 @@ implementation 'com.eventstore:db-client-java:0.5'
 
 # SBT
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```
+# Yarn
+$ yarn add @eventstore/db-client
+
+# NPM
+$ npm install --save @eventstore/db-client
 ```
 </xode-block>
 <xode-block title="Rust">
@@ -75,13 +75,13 @@ First thing first, we need a client.
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createClient
 </xode-block>
-<xode-block title="NodeJS" code="connectionString">
-
-<<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
-</xode-block>
 <xode-block title="Java" code="connectionString">
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#createClient
+</xode-block>
+<xode-block title="NodeJS" code="connectionString">
+
+<<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
@@ -107,13 +107,13 @@ The code snippet below creates an event object instance, serializes it and puts 
 <xode-block title="C#">
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createEvent
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/getStarted.js#createEvent
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#createEvent
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/getStarted.js#createEvent
 </xode-block>
 <xode-block title="Rust">
 
@@ -132,13 +132,13 @@ In the snippet below, we append the event to the stream `some-stream`.
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#appendEvents
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/getStarted.js#appendEvents
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#appendEvents
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/getStarted.js#appendEvents
 </xode-block>
 <xode-block title="Rust">
 
@@ -157,13 +157,13 @@ Finally, we can read events back from the `some-stream` stream.
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#readStream
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/getStarted.js#readStream
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#readStream
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/getStarted.js#readStream
 </xode-block>
 <xode-block title="Rust">
 
