@@ -335,3 +335,8 @@ version.txt
 generated
 generated-versions.json
 /temp/
+.esctf/
+.terraform/
+*.lock.hcl
+*.tfstate
+*.tfstate.backup
