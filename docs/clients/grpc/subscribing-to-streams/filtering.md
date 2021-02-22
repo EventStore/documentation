@@ -17,13 +17,13 @@ There are a number of events in EventStoreDB called system events. These are pre
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#exclude-system
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#exclude-system
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#exclude-system
 </xode-block>
 <xode-block title="Rust">
 
@@ -48,13 +48,13 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#event-type-prefix
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-prefix
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-prefix
 </xode-block>
 <xode-block title="Rust">
 
@@ -73,13 +73,13 @@ If you want to subscribe to multiple event types then it might be better to prov
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#event-type-regex
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-regex
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-regex
 </xode-block>
 <xode-block title="Rust">
 
@@ -102,13 +102,13 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#stream-prefix
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-prefix
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-prefix
 </xode-block>
 <xode-block title="Rust">
 
@@ -127,13 +127,13 @@ If you want to subscribe to multiple streams then it might be better to provide 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#stream-regex
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-regex
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-regex
 </xode-block>
 <xode-block title="Rust">
 
@@ -156,15 +156,15 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint
 </xode-block>
+<xode-block title="Java">
+
+<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
+</xode-block>
 <xode-block title="NodeJS">
 
 ```
 // TODO
 ```
-</xode-block>
-<xode-block title="Java">
-
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
 </xode-block>
 <xode-block title="Rust">
 
@@ -179,13 +179,13 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 <<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint-with-interval
 </xode-block>
-<xode-block title="NodeJS">
-
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#checkpoint-with-interval
-</xode-block>
 <xode-block title="Java">
 
 <<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
+</xode-block>
+<xode-block title="NodeJS">
+
+<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#checkpoint-with-interval
 </xode-block>
 <xode-block title="Rust">
 
