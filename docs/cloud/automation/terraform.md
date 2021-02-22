@@ -19,6 +19,14 @@ The binaries are available for the following platforms:
   - Freebsd: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip 
   - Linux: terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip
  
+### Terraform 0.13+
+
+Terraform supports third party modules installed via the plugin registry. Add the following to your terraform module configuration:
+
+<<< @/docs/cloud/automation/snippets/providers_eventstore.tf.hcl
+
+### Terraform 0.12
+
 In order for Terraform to find the plugin, the appropriate binary must be placed into the Terraform third-party plugin directory. The location varies by operating system:
 
 - Linux and macOS `~/.terraform.d/plugins`
@@ -40,13 +48,7 @@ You can download the provider using the following commands:
 
 <<< @/docs/cloud/automation/snippets/download_provider_windows.ps1.powershell
 
-### Terraform 0.13+
-
-Terraform supports third party modules installed via the plugin registry. Add the following to your terraform module configuration:
-
-<<< @/docs/cloud/automation/snippets/providers_eventstore.tf.hcl
-
-## From Source 
+### From Source 
 
 If you prefer to install from source, use the `make install` target in this [repository][terraform github]. You will need a Go 1.13+ development environment.
 
