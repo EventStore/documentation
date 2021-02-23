@@ -62,6 +62,4 @@ KeepAlive timeout controls the amount of time (in milliseconds) the sender of th
 
 **Default**: `10000`
 
-
 As a general rule, we do not recommend putting EventStoreDB behind a load balancer. However, if you are using it and want to benefit from the Keepalive feature, then you should make sure if the compatible settings are properly set. Some load balancers may also override the Keepalive settings. Most of them require setting the idle timeout larger/longer than the `keepAliveTimeout`. We suggest checking the load balancer documentation before using Keepalive pings. 
-

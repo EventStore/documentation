@@ -33,9 +33,9 @@ export async function validateGossip(nodes, value, callback) {
 }
 
 export function validateKeepAlive(value, callback) {
-    return true
+    return value === undefined || value >= -1
         ? ok(callback)
-        : error(callback, `${value} does not resolve to`);
+        : error(callback, `${value} has to be greater or equal to -1`);
 }
 
 export function ensureCaDomainMatch(dnsName, cert) {
