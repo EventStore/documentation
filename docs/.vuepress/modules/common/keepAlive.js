@@ -1,8 +1,14 @@
 import {validateKeepAlive} from "../../lib/validate";
 
 function formatKeepAlive(name, value) {
-    console.log(value);
     return value !== undefined ? `$${name}=${value};` : "";
+}
+
+function getKeepAliveValueHelp(isEnabled, name, value) {
+    return isEnabled 
+        && value !== undefined && value != -1 && value < 10000
+            ? `We recommend setting ${name} greater or equal to 10 000 ms.`
+            : "";
 }
 
 export default class KeepAlive {
@@ -20,17 +26,11 @@ export default class KeepAlive {
     }
 
     minKeepAliveTimeoutValueHelp() {
-        return this.isEnabled 
-            && this.keepAliveTimeout !== undefined && this.keepAliveTimeout < 10000
-            ? "We recommended setting keepAliveTimeout greater or equal to 10 000 ms."
-            : "";
+        return getKeepAliveValueHelp(this.isEnabled, "keepAliveTimeout", this.keepAliveTimeout);
     }
 
     minKeepAliveIntervalValueHelp() {
-        return this.isEnabled 
-            && this.keepAliveInterval !== undefined && this.keepAliveInterval < 10000
-            ? "We recommended setting keepAliveInterval greater or equal to 10 000 ms."
-            : "";
+        return getKeepAliveValueHelp(this.isEnabled, "keepAliveInterval", this.keepAliveInterval);
     }
 
     getConnectionStringValue() {
