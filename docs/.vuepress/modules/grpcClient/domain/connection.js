@@ -1,9 +1,10 @@
 import Vue from "vue";
 import Gossip from "../../common/gossip";
-import {DnsGossip, SeedGossip} from "../../common/gossipTypes";
+import {DnsGossip} from "../../common/gossipTypes";
 import ClientNode from "./clientNode";
 import {safe} from "../../common/strings";
 import properties from "../../common/properties";
+import KeepAlive from "../../common/keepAlive";
 
 export default new Vue({
     data() {
@@ -11,6 +12,7 @@ export default new Vue({
             cluster: true,
             cloud: false,
             secure: true,
+            keepAlive: new KeepAlive(),
             clusterId: "",
             gossip: new Gossip("Client", "clients", false, true),
             gossipPort: 2113,
@@ -54,6 +56,9 @@ export default new Vue({
         },
         changeSecurity(secure) {
             this.secure = secure;
+        },
+        changeKeepAlive(keepAlive) {
+            this.keepAlive = keepAlive;
         },
         populateCloudNodes() {
             if (!this.cloud) return;
@@ -105,7 +110,10 @@ export default new Vue({
                 ? `${safe(this.gossip.dnsName)}:${this.gossipPort}`
                 : this.nodes.map(x => `${safe(x.address)}:${x.port}`).join(",");
             const scheme = isDns ? "esdb+discover" : "esdb";
-            return gossip && gossip !== "" ? `${scheme}://${gossip}?tls=${this.secure}` : null;
+
+            const keepAlive = this.keepAlive.getConnectionStringValue();
+
+            return gossip && gossip !== "" ? `${scheme}://${gossip}?tls=${this.secure}${keepAlive}` : null;
         },
     },
     created() {
