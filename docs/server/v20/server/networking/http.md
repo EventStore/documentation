@@ -1,6 +1,6 @@
 # HTTP configuration
 
-HTTP is the primary protocol for EventStoreDB. It is used gRPC communication and HTTP APIs (management, gossip and diagnostics).
+HTTP is the primary protocol for EventStoreDB. It is used in gRPC communication and HTTP APIs (management, gossip and diagnostics).
 
 Unlike for [TCP protocol](./tcp.md), there is no separation between internal and external communication. The HTTP endpoint always binds to the IP address configured in the `ExtIp` setting.
 
@@ -25,3 +25,43 @@ You can change the HTTP port using the `HttpPort` setting:
 **Default**: `2113`
 
 If your network setup requires any kind of IP address, DNS name and port translation for internal or external communication, you can use available [address translation](./nat.md) settings.
+
+## KeepAlive pings
+
+The reliability of the connection between the client application and database is crucial for the stability of the solution. If the network is not stable or has some periodic issues, the client may drop the connection. Stability is essential for the [stream subscriptions](/docs/clients/grpc/subscribing-to-streams/README.md) where a client is listening to database notifications. Having an existing connection open when an app resumes activity allows for the initial gRPC calls to be made quickly, without any delay caused by the reestablished connection.
+
+EventStoreDB supports for the built-in gRPC mechanism for keeping the connection alive. gRPC allows sending http2 pings on the transport to detect if the connection is down. If the other side does not acknowledge the ping within a certain period, the connection will be closed. Note that pings are only necessary when there's no activity on the connection.
+
+Keepalive pings are enabled by default, with the default interval set to 10 seconds. Value bases on the [gRPC proposal](https://github.com/grpc/proposal/blob/master/A8-client-side-keepalive.md#extending-for-basic-health-checking) that suggests this value as the minimum. This value compromises making sure that the connection is open and not making too many redundant network calls. 
+
+You can customise the following Keepalive settings:
+
+### keepAliveInterval
+
+KeepAlive interval controls the period (in milliseconds) after which a keepalive ping is sent on the transport.
+
+To disable the Keepalive ping, you need to set the `keepAliveInterval` value to `-1`.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--keep-alive-interval` |
+| YAML                 | `KeepAliveInterval` |
+| Environment variable | `KEEP_ALIVE_INTERVAL` |
+
+**Default**: `10000`
+
+### keepAliveTimeout
+
+KeepAlive timeout controls the amount of time (in milliseconds) the sender of the keepalive ping waits for an acknowledgement. If it does not receive an acknowledgement within this time, it will close the connection.
+
+| Format               | Syntax |
+| :------------------- | :----- |
+| Command line         | `--keep-alive-timeout` |
+| YAML                 | `KeepAliveTimeout` |
+| Environment variable | `KEEP_ALIVE_TIMEOUT` |
+
+**Default**: `10000`
+
+
+As a general rule, we do not recommend putting EventStoreDB behind a load balancer. However, if you are using it and want to benefit from the Keepalive feature, then you should make sure if the compatible settings are properly set. Some load balancers may also override the Keepalive settings. Most of them require setting the idle timeout larger/longer than the `keepAliveTimeout`. We suggest checking the load balancer documentation before using Keepalive pings. 
+
