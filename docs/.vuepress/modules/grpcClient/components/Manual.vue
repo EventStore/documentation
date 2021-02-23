@@ -22,12 +22,17 @@
       </el-form-item>
 
       <el-form-item label="KeepAlive:" prop="keepAlive.isEnabled">
-        <el-switch
-                v-model="keepAlive.isEnabled"
-                :disabled="disableKeepAlive"
-                active-text="Enabled"
-                inactive-text="Disabled">
-        </el-switch>
+        <el-col :span="22">
+          <el-switch
+                  v-model="keepAlive.isEnabled"
+                  :disabled="disableKeepAlive"
+                  active-text="Enabled"
+                  inactive-text="Disabled">
+          </el-switch>
+        </el-col>
+        <el-col :span="12">
+          Read more in <a href="/server/v20/server/networking/http.html#keepalive-pings" target="_blank">KeepAlive settings docs</a>
+        </el-col>
       </el-form-item>
 
       <KeepAlive ref="keepAliveForm" :keepAlive="keepAlive"/>
