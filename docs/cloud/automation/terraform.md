@@ -75,7 +75,18 @@ You can can use the [cloud console][cloud console tokens] or the [EvenStoreDB Cl
 
 The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is:
 
- `esc access tokens create --email <email>`
+ ``` bash
+ esc access tokens create --email <email>
+ 
+ Password:
+ Token created for audience https://api.eventstore.cloud
+ OeTjTf***********************************0IWP
+  ```
+
+In the cloud console:
+::: card
+![token in cloud console](./images/token_console.png)
+:::
 
 ### Obtaining the `organization_id`
 
@@ -83,8 +94,12 @@ You can use the [cloud console][cloud console organizations] or the [EvenStoreDB
 
 The command to obtain the organization from the [EvenStoreDB Cloud CLI][esc cli github releases] is:
 
- `esc resources organizations list`
+``` bash
+ esc resources organizations list
+ Organization { id: OrgId("bt****************80"), name: "Event Store Ltd"
+```
 
+In the cloud console 
 ## Resources
 
 All resources in Event Store Cloud can be provisioned using the Terraform provider. Existing projects can be queried using a data source in the provider. More complete samples can be found [here][terraform github samples].
