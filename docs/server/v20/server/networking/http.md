@@ -38,7 +38,7 @@ You can customise the following Keepalive settings:
 
 ### keepAliveInterval
 
-KeepAlive interval controls the period (in milliseconds) after which a keepalive ping is sent on the transport.
+After a duration of `keepAliveInterval` (in milliseconds), if the server doesn't see any activity, it pings the client to see if the transport is still alive.
 
 To disable the Keepalive ping, you need to set the `keepAliveInterval` value to `-1`.
 
@@ -52,7 +52,7 @@ To disable the Keepalive ping, you need to set the `keepAliveInterval` value to 
 
 ### keepAliveTimeout
 
-KeepAlive timeout controls the amount of time (in milliseconds) the sender of the keepalive ping waits for an acknowledgement. If it does not receive an acknowledgement within this time, it will close the connection.
+After having pinged for keepalive check, the server waits for a duration of `keepAliveTimeout` (in milliseconds). If no activity is seen even after that, the connection is closed.
 
 | Format               | Syntax |
 | :------------------- | :----- |
