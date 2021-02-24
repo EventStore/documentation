@@ -166,10 +166,14 @@ module.exports = {
                     
                 },
                 {
-                    title:      "Faq",
+                    title:       "Faq",
                     collapsable: false,
                     path:        "/cloud/faq/",
+                    children:    [
+                        "/cloud/faq/README.md",
+                    ]
                 }
+                
             ]
         }
     },
