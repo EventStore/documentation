@@ -166,7 +166,7 @@ module.exports = {
                     
                 },
                 {
-                    title:       "Faq",
+                    title:       "FAQ",
                     collapsable: true,
                     path:        "/cloud/faq/",
                     children:    [
