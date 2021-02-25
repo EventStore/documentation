@@ -167,10 +167,10 @@ module.exports = {
                 },
                 {
                     title:       "Faq",
-                    collapsable: true,
+                    collapsable: false,
                     path:        "/cloud/faq/",
                     children:    [
-                        //"/cloud/faq/faq.md",
+                        "/cloud/faq/readme.md",
                     ]
                 }
                 
