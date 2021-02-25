@@ -99,7 +99,10 @@ The command to obtain the organization from the [EvenStoreDB Cloud CLI][esc cli 
  Organization { id: OrgId("bt****************80"), name: "Event Store Ltd"
 ```
 
-In the cloud console 
+In the [cloud console][cloud console organizations]
+::: card
+![organisation id in the cloud console](./images/organisation_console.png)
+:::
 ## Resources
 
 All resources in Event Store Cloud can be provisioned using the Terraform provider. Existing projects can be queried using a data source in the provider. More complete samples can be found [here][terraform github samples].
