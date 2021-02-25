@@ -1,4 +1,4 @@
-# FAQ
+# Troubleshooting
 
 ## No DNS Resolution of the cluster
 
@@ -21,7 +21,7 @@ To check if the domain exists, perform the same check with a specific DNS server
 ``` bash
 nslookup buh63kqrh41nfqpviing.mesdb.eventstore.cloud 1.1.1.1
 ```
-If the answer looks like the following, either change or contact the administrator of the DNS server you use: 
+If the answer looks like the following, either change or contact the administrator of the DNS server you use:
 ```
 Server:  one.one.one.one
 Address:  1.1.1.1
