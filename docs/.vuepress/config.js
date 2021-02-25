@@ -170,7 +170,7 @@ module.exports = {
                     collapsable: false,
                     path:        "/cloud/faq/",
                     children:    [
-                        "/cloud/faq/readme.md",
+                        "/cloud/faq/README.md",
                     ]
                 }
                 
