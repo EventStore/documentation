@@ -51,7 +51,7 @@ Remember to create the VM instance in the same region as the VPC, which is peere
 
 When you get the cloud VM instance running, connect to it using SSH. The easiest way is to use the cloud browser console.
 
-After logging in, install the Tailscale client for the Linux distribution used for the cloud VM, following the [Tailscale guidelines](https://tailscale.com/kb/1017/install). Here you can also find required steps for [Ubuntu 20.04 LTS (focal)]() and [Ubuntu 18.04 LTS (bionic)](https://tailscale.com/download/linux/ubuntu-1804) distributions.
+After logging in, install the Tailscale client for the Linux distribution used for the cloud VM, following the [Tailscale guidelines](https://tailscale.com/kb/1017/install). Here you can also find required steps for [Ubuntu 20.04 LTS (focal)](https://tailscale.com/download/linux/ubuntu-2004) and [Ubuntu 18.04 LTS (bionic)](https://tailscale.com/download/linux/ubuntu-1804) distributions.
 
 When the initial steps are completed, you should be able to ping the cloud VM using its internal IP address from your local machine.
 
