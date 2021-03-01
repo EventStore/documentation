@@ -9,7 +9,7 @@ When you don't change the configuration, EventStoreDB will use sensible defaults
 You can check what version of EventStoreDB you have installed by using the `--version` parameter in the command line. For example:
 
 ```bash
-$ eventstore --version
+$ eventstored --version
 EventStoreDB version v20.1.0 (tags/oss-v20.6.1/9ea108855, Unknown)
 ```
 
@@ -27,7 +27,7 @@ Db: "/volumes/data"
 Log: "/esdb/logs"
 ```
 
-:::tip
+::: tip
 You need to use the three dashes and spacing in your YAML file.
 :::
 
@@ -49,11 +49,13 @@ For example, starting EventStoreDB with the `--log` option will override the def
 
 :::: code-group
 ::: code Linux
+
 ```bash
-eventstore --log /tmp/eventstore/logs
+eventstored --log /tmp/eventstore/logs
 ```
 :::
 ::: code Windows
+
 ```
 EventStore.ClusterNode.exe --log C:\Temp\EventStore\Logs
 ```
@@ -66,9 +68,13 @@ If more than one method is used to configure the server, it might be hard to fin
 
 When you run EventStoreDB with this option, it will print out the effective configuration applied from all available sources (default and custom configuration file, environment variables and command line parameters) and print it out to the console.
 
+::: warning
+If you never run EventStoreDB on Linux as a service, when starting the service executable with `--what-if` option, the server _will create the data and log directories_ owned by the current user. It will prevent the service from running properly.
+:::
+
 ::: detail Click here to see a WhatIf example
 ```
-$ eventstore --what-if
+$ eventstored --what-if
 [    1, 1,21:25:31.253,INF] "ES VERSION:"             "20.6.1.0" ("tags/oss-v20.6.1"/"9ea108855", "Unknown")
 [    1, 1,21:25:31.270,INF] "OS:"                     Linux ("Unix 4.19.76.0")
 [    1, 1,21:25:31.271,INF] "RUNTIME:"                ".NET 3.1.8" (64-bit)

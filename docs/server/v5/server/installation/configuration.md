@@ -9,7 +9,7 @@ When you don't change the configuration, EventStoreDB will use sensible defaults
 You can check what version of EventStoreDB you have installed by using the `--version` parameter in the command line. For example:
 
 ```
-$ eventstore --version
+$ eventstored --version
 EventStore version 5.0.8.0 (HEAD/6b871e5659ed38775372456fb21be6a99392fddb, Thu, 26 Mar 2020 11:42:43 +0100)
 ```
 
@@ -67,9 +67,13 @@ If more than one method is used to configure the server, it might be hard to fin
 
 When you run EventStoreDB with this option, it will print out the effective configuration applied from all available sources (default and custom configuration file, environment variables and command line parameters) and print it out to the console.
 
+::: warning
+If you never run EventStoreDB on Linux as a service, when starting the service executable with `--what-if` option, the server _will create the data and log directories_ owned by the current user. It will prevent the service from running properly.
+:::
+
 ::: detail Click here to see a WhatIf example
 ```
-$ eventstore --what-if
+$ eventstored --what-if
 [38558,01,17:05:37.079]
 "ES VERSION:"             "5.0.8.0" ("HEAD"/"6b871e5659ed38775372456fb21be6a99392fddb", "Thu, 26 Mar 2020 11:42:43 +0100")
 [38558,01,17:05:37.110] "OS:"                     MacOS (Unix 19.5.0.0)

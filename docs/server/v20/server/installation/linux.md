@@ -10,9 +10,13 @@ If you installed from a pre-built package, the server gets registered as a servi
 sudo systemctl start eventstore
 ```
 
-When you install the EventStoreDB package, the service doesn't start by default. It's done to allow you to change the configuration, located at _/etc/eventstore/eventstore.conf_ and to prevent creating database and index files in the default location.
+When you install the EventStoreDB package, the service doesn't start by default. It's done to allow you to change the configuration, located at `/etc/eventstore/eventstore.conf` and to prevent creating database and index files in the default location.
 
 ::: warning
+Do not start the EventStoreDB service executable (`eventstored`) before starting it as a service. If you do that, all the directories that the server will create will be owned by your user, and the service will not get permissions to write files to those directories until you change the owner to the service user.
+:::
+
+::: note
 We recommend that when using Linux you set the 'open file limit' to a high number. The precise value depends on your use case, but at least between `30,000` and `60,000`.
 :::
 
