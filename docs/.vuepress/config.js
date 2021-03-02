@@ -170,7 +170,10 @@ module.exports = {
                     collapsable: true,
                     path:        "/cloud/faq/",
                     children:    [
-                        "/cloud/faq/"
+                        "/cloud/faq/",
+                        "/cloud/faq/azure.md",
+                        "/cloud/faq/roadmap.md",
+                        "/cloud/faq/troubleshooting.md"
                     ]
                 }
                 
