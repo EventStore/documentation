@@ -164,7 +164,16 @@ module.exports = {
                         "/cloud/automation/terraform.md"
                     ]
                     
+                },
+                {
+                    title:       "FAQ",
+                    collapsable: true,
+                    path:        "/cloud/faq/",
+                    children:    [
+                        "/cloud/faq/"
+                    ]
                 }
+                
             ]
         }
     },
