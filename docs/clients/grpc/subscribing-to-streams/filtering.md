@@ -15,11 +15,11 @@ There are a number of events in EventStoreDB called system events. These are pre
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#exclude-system
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#exclude-system
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -46,11 +46,11 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#event-type-prefix
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#event-type-prefix
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -71,11 +71,11 @@ If you want to subscribe to multiple event types then it might be better to prov
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#event-type-regex
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#event-type-regex
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -100,11 +100,11 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#stream-prefix
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#stream-prefix
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -125,11 +125,11 @@ If you want to subscribe to multiple streams then it might be better to provide 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#stream-regex
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#stream-regex
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -154,11 +154,11 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#checkpoint
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -177,11 +177,11 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/server-side-filtering/Program.cs#checkpoint-with-interval
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#checkpoint-with-interval
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
+<<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
 </xode-block>
 <xode-block title="NodeJS">
 

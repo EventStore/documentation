@@ -74,7 +74,7 @@ async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, id,
     if (samplesRelativePath)
         await copySamples(repoLocation, destinationPathWithId, samplesRelativePath);
 
-    return {path: path.join('generated', id), version: id.substr(1)};
+    return {path: path.join('generated', id), version: id};
 }
 
 async function copyDocs(repoLocation, destinationPathWithId, relativePath) {

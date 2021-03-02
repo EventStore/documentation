@@ -17,11 +17,11 @@ The simplest stream subscription looks like the following :
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -42,11 +42,11 @@ Subscribing to `$all` is much the same as subscribing to a single stream. The ha
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -79,11 +79,11 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-from-position
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-from-position
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -106,11 +106,11 @@ Please note that this position will need to be a legitimate position in `$all`.
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all-from-position
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all-from-position
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -129,11 +129,11 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-live
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-live
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -150,11 +150,11 @@ And the same works with `$all` :
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all-live
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all-live
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -183,11 +183,11 @@ When reading a stream you can specify whether to resolve link-to's or not. By de
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-resolving-linktos
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-resolving-linktos
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -222,11 +222,11 @@ An application, which hosts the subscription, can go offline for a period of tim
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-subscription-dropped
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-subscription-dropped
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -245,11 +245,11 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#subscribe-to-all-subscription-dropped
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all-subscription-dropped
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -272,11 +272,11 @@ A simple stream prefix filter looks like this:
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#stream-prefix-filtered-subscription
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#stream-prefix-filtered-subscription
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -299,11 +299,11 @@ The code below shows how you can provide user credentials for a subscription. Wh
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/subscribing-to-streams/Program.cs#overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#overriding-user-credentials
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
+<<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS">
 

@@ -6,7 +6,7 @@
     "versions": [
       {
         "version": "21.2",
-        "path": "generated/v21.2/docs"
+        "path": "generated/21.2/docs"
       },
       {
         "version": "20.10 LTS",
