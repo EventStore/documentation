@@ -6,7 +6,7 @@
     "docsRelativePath": ["docs"],
     "currentBranch": "docs_for_v21.2",
     "repo": "https://github.com/EventStore/EventStore.git",
-    "version": "v21.2",
+    "version": "21.2",
     "deployCurrent": true
   },
   {
@@ -15,7 +15,8 @@
     "basePath": "clients/dotnet",
     "samplesRelativePath": ["samples"],
     "currentBranch": "master",
-    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git",
+    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git",    
+    "version": "21.2.0",
     "deployCurrent": true
   },
   {
@@ -25,6 +26,7 @@
     "samplesRelativePath": ["db-client-java","src","test","java","com","eventstore","dbclient", "samples"],
     "currentBranch": "trunk",
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git",
+    "version": "1.0.0",
     "deployCurrent": true
   },
   {
@@ -34,6 +36,7 @@
     "samplesRelativePath": ["examples"],
     "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git",
+    "version": "1.0.0",
     "deployCurrent": true
   }
 ]

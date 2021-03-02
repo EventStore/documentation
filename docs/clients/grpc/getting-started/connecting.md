@@ -73,11 +73,11 @@ First thing first, we need a client.
 <xode-group>
 <xode-block title="C#" code="connectionString">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createClient
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/quick-start/Program.cs#createClient
 </xode-block>
 <xode-block title="Java" code="connectionString">
 
-<<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#createClient
+<<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createClient
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
@@ -105,11 +105,11 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 <xode-group>
 <xode-block title="C#">
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#createEvent
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/quick-start/Program.cs#createEvent
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#createEvent
+<<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createEvent
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -130,11 +130,11 @@ In the snippet below, we append the event to the stream `some-stream`.
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#appendEvents
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/quick-start/Program.cs#appendEvents
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#appendEvents
+<<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#appendEvents
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -155,11 +155,11 @@ Finally, we can read events back from the `some-stream` stream.
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/quick-start/Program.cs#readStream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/quick-start/Program.cs#readStream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/quick_start/QuickStart.java#readStream
+<<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#readStream
 </xode-block>
 <xode-block title="NodeJS">
 
