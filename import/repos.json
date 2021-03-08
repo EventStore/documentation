@@ -4,7 +4,7 @@
     "group": "Server",
     "basePath": "server",
     "docsRelativePath": ["docs"],
-    "currentBranch": "docs_for_v21.2",
+    "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStore.git",
     "version": "21.2",
     "deployCurrent": true
