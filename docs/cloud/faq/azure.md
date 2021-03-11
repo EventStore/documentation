@@ -1,5 +1,0 @@
-# Azure
-
-## Question
-
-Answer

@@ -171,9 +171,13 @@ module.exports = {
                     path:        "/cloud/faq/",
                     children:    [
                         "/cloud/faq/",
-                        "/cloud/faq/azure.md",
+                        "/cloud/faq/cluster_provisioning.md",
+                        "/cloud/faq/providers.md",
                         "/cloud/faq/roadmap.md",
-                        "/cloud/faq/troubleshooting.md"
+                        "/cloud/faq/sla.md",
+                        "/cloud/faq/support.md",
+                        "/cloud/faq/troubleshooting.md",
+                        
                     ]
                 }
                 
