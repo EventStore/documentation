@@ -1,6 +1,6 @@
 # Connect with Tailscale
 
-In many organisations which work with the cloud, you can find the connection between the cloud networks and your local network already established using a Virtual Private Gateway or Site-to-Site VPN connection. However, if you're starting on the side and want to keep things simple, you can use Tailscale to connect to the EventStoreDB Cloud cluster.
+In many organisations which work with the cloud, you can find the connection between the cloud networks and your local network already established using a Virtual Private Gateway or Site-to-Site VPN connection. However, if you're starting on the side and want to keep things simple, you can use Tailscale to connect to the Event Store Cloud cluster.
 
 ## What is Tailscale?
 
@@ -16,12 +16,12 @@ Follow the [installation instructions](https://tailscale.com/kb/1017/install) to
 
 ## Provision the cloud VM
 
-Next, you need to create a small VM in the cloud, connected to the VPC with the EventStoreDB Cloud.
+Next, you need to create a small VM in the cloud, connected to the VPC with the Event Store Cloud.
 
 You can choose the smallest available instance size, like `t4g.nano` in AWS, `f1.micro` in GCP, or `Standard B1ls` in Azure. For this guide we use Ubuntu 20.04 LTS image (18.04 LTS in Azure).
 
 When creating the VM, make sure you:
-- Connect the default network interface to the VPC peered with EventStoreDB Cloud
+- Connect the default network interface to the VPC peered with Event Store Cloud
 - Enable public IP if you want to connect to the VM from your local machine
 - GCP: enable _IP Forwarding_ on the default NIC
 - AWS: disable _Source / destination checking_
@@ -45,7 +45,7 @@ On the new VM instance page and scroll down to the `Management, security, disks,
 ::::
 :::::
 
-Remember to create the VM instance in the same region as the VPC, which is peered with EventStoreDB Cloud.
+Remember to create the VM instance in the same region as the VPC, which is peered with Event Store Cloud.
 
 ## Set up Tailscale subnet routing
 
@@ -55,7 +55,7 @@ After logging in, install the Tailscale client for the Linux distribution used f
 
 When the initial steps are completed, you should be able to ping the cloud VM using its internal IP address from your local machine.
 
-Next, visit the EventStoreDB Cloud console and open the peering page. There you will find the peering you created when following the provisioning guidelines. Write down the details from the `Local Address` and `Remote Address` fields.
+Next, visit the Event Store Cloud console and open the peering page. There you will find the peering you created when following the provisioning guidelines. Write down the details from the `Local Address` and `Remote Address` fields.
 
 For this example we will use the following peering details:
 ::: card
@@ -79,7 +79,7 @@ In the example above we used both address spaces of both sides of the peering as
 
 Next, visit your Tailscale Admin Console, find the cloud VM in the list and use the three dots popup menu to enable subnet routing and disable key expiry.
 
-Now, visit the EventStoreDB Cloud console, switch to the Clusters page and choose the EventStoreDB cluster. In the cluster details select the `Addresses` tab and click on the UI link. You should then get the EventStoreDB Admin UI opened in your local machine browser.
+Now, visit the Event Store Cloud console, switch to the Clusters page and choose the EventStoreDB cluster. In the cluster details select the `Addresses` tab and click on the UI link. You should then get the EventStoreDB Admin UI opened in your local machine browser.
 
 This is how the network looks like when using Tailscale: 
 
@@ -91,4 +91,4 @@ This is how the network looks like when using Tailscale:
 
 ## Future plans
 
-Soon, we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside EventStoreDB Cloud and set up routing to your Tailscale account automatically.
+Soon, we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside Event Store Cloud and set up routing to your Tailscale account automatically.

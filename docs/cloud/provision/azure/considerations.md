@@ -8,7 +8,7 @@ When creating a peering link, Azure requires the user to configure a security pr
 
 ## Disk resize
 
-Currently, it is impossible to expand disks on EventStoreDB cloud nodes provisioned to Azure. We plan to provide this feature at a later date, but as there is no native support within Azure, implementing this requires more planning and thought on our part.
+Currently, it is impossible to expand disks on Event Store Cloud nodes provisioned to Azure. We plan to provide this feature at a later date, but as there is no native support within Azure, implementing this requires more planning and thought on our part.
 
 There are positive ways around this, and we advise you to choose the disk size accordingly from the start, so the volume size will accommodate the growth of your data over time. You can also backup an existing cluster and restore the data to a new cluster with larger disks.
 
