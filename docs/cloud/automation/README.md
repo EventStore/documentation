@@ -1,6 +1,6 @@
 # Cloud automation
 
-In addition to the [Cloud console][cloud console], EventStoreDB Cloud provides the API, a [Terraform provider][terraform_registry], 
+In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider][terraform_registry], 
 as well as a [CLI tool][esc_cli github] to automate any operation accessible from the console. 
 
 ## Licence

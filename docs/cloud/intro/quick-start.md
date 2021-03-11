@@ -1,6 +1,6 @@
 # Cloud quick start
 
-Follow the steps in this guide to get access to the EventStoreDB Cloud console, provision your first cluster and connect it to your cloud infrastructure.
+Follow the steps in this guide to get access to the Event Store Cloud console, provision your first cluster and connect it to your cloud infrastructure.
 
 ## Get an account
 
@@ -23,7 +23,7 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 With the new account you can login to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
 
 ::: warning Gated provisioning
-Since EventStoreDB Cloud is currently in preview, you won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
+Since Event Store Cloud is currently in preview, you won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
 :::
 
 In the console, you first get to the list of organisations that you have access to.
@@ -57,7 +57,7 @@ You can always switch to another organisation by clicking on the selected organi
 Each organisation has its own access control. It includes the list of users, which have access to the organisation, groups, roles, policies and identity providers.
 
 ::: tip Preview functionality is limited
-Some features like roles, policies and identity providers are currently not available in Preview. We will roll out all the access control features during the Preview phase, before EventStoreDB Cloud reaches the GA status.
+Some features like roles, policies and identity providers are currently not available in Preview. We will roll out all the access control features during the Preview phase, before Event Store Cloud reaches the GA status.
 :::
 
 When you create an organisation, you will be the organisation admin by default. To invite more people, click on the `Access control` menu and then switch to `Invitations`. There, you will see the `Invite member` button, which brings the invite screen. You'd need to enter the email address for the new member and also the group, which the invited member gets added to when they accept the invite.
@@ -82,7 +82,7 @@ When you click on a project in the projects list, you get to the project context
 
 Within the project context you can manage project clusters, backups, networks, etc.
 
-By reaching this point, you are now ready to start provisioning cloud resources with EventStoreDB Cloud. Follow one of the available guidelines for your cloud provider:
+By reaching this point, you are now ready to start provisioning cloud resources with Event Store Cloud. Follow one of the available guidelines for your cloud provider:
 
 - [Amazon Web Services (AWS)](../provision/aws)
 - [Google Cloud Platform (GCP)](../provision/gcp)
