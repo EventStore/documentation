@@ -62,11 +62,11 @@ async function replaceFileExtensions(samplesDir,  from, to) {
     await sh(command);
 }
 
-async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, id, tagOrBranch, samplesRelativePath, docsRelativePath) {
+async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, version, tagOrBranch, samplesRelativePath, docsRelativePath) {
     log.info(`checking out ${tagOrBranch}...`);
     await clientRepo.checkout(tagOrBranch);
     
-    const destinationPathWithId = path.join(destinationPath, id);
+    const destinationPathWithId = path.join(destinationPath, version);
 
     if (docsRelativePath)
         await copyDocs(repoLocation, destinationPathWithId, docsRelativePath);
@@ -74,7 +74,7 @@ async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, id,
     if (samplesRelativePath)
         await copySamples(repoLocation, destinationPathWithId, samplesRelativePath);
 
-    return {path: path.join('generated', id), version: id};
+    return {path: path.join('generated', version), version};
 }
 
 async function copyDocs(repoLocation, destinationPathWithId, relativePath) {
@@ -125,20 +125,19 @@ async function main() {
 
         log.info(`processing repo ${repo.repo}...`);
 
-        const tags = (await clientRepo.tag())
-            .split('\n')
-            .filter(i => i)
+        for (const branch of repo.branches) {
+            const version = await copyDocsAndSamples(
+                clientRepo,
+                repoLocation,
+                samplesLocation, 
+                branch.version, 
+                branch.name, 
+                repo.samplesRelativePath, 
+                repo.docsRelativePath
+            );
 
-        if (repo.deployCurrent) {
-            definition[0].versions.push(await copyDocsAndSamples(clientRepo, repoLocation, samplesLocation, repo.version || tags.slice(-1)[0], repo.currentBranch, repo.samplesRelativePath, repo.docsRelativePath));
-        }
-        else {
-            for (let i = 0; i < tags.length - 1; i++) {
-                const version = await copyDocsAndSamples(clientRepo, repoLocation, samplesLocation, tags[i], tags[i + 1], repo.samplesRelativePath, repo.docsRelativePath);
-
-                if (version !== undefined) {
-                    definition[0].versions.push(version);
-                }
+            if (version !== undefined) {
+                definition[0].versions.push(version);
             }
         }
 
