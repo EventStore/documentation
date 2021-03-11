@@ -1,9 +1,9 @@
 # Cloud EventStoreDB in AWS
 
-For AWS customers, EventStoreDB Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure lowest latency.
+For AWS customers, Event Store Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure lowest latency.
 
 Pre-requisites:
-- You are a Preview customer of EventStoreDB Cloud
+- You are a Preview customer of Event Store Cloud
 - You have an organisation registered in Cloud console
 - You can login to the Cloud console as admin
 - Your organisation has at least one project
@@ -11,13 +11,13 @@ Pre-requisites:
 - You have access to create AWS resources in the AWS account of your organisation
 
 The provisioning process consists of three steps:
-1. Create a network in EventStoreDB Cloud
+1. Create a network in Event Store Cloud
 2. Provision the EventStoreDB instance or cluster
 3. Peer the new network with your own AWS network
 
 ## Create a network
 
-In the EventStoreDB Cloud console, go to the [project context](../../intro/quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the Event Store Cloud console, go to the [project context](../../intro/quick-start.md#projects) and switch to `Networks`. Then, click on the `New network` button.
  
  Make sure to fill out the required information:
  - Network name
@@ -29,7 +29,7 @@ In the EventStoreDB Cloud console, go to the [project context](../../intro/quick
 ![Create AWS network](./images/aws-create-network.png)
 :::
  
- In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, EventStoreDB Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
+ In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Event Store Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
  
  The network address range should not overlap with the address range of other networks in the same region and with your own AWS network, which you will be peering with. As any other cloud network, the CIDR block needs to be within the range specified by RFC1918.
  
@@ -79,7 +79,7 @@ Finally, when you click on `Create cluster`, the provisioning process starts and
 
 ## Network peering
 
-When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the network and consequently to all the clusters in that network, you'd need to peer the EventStoreDB Cloud network to your own AWS network. Normally, your AWS network would be also accessible by applications, which you want to connect to the new cloud EventStoreDB cluster.
+When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the network and consequently to all the clusters in that network, you'd need to peer the Event Store Cloud network to your own AWS network. Normally, your AWS network would be also accessible by applications, which you want to connect to the new cloud EventStoreDB cluster.
 
 ::: warning Peering limitations
 Currently, you can peer one Event Store Cloud network with only one AWS VPC on your account. We expect to lift this limitation in the future.
@@ -91,7 +91,7 @@ For this example, we'll use a VPC in AWS in the same region (`eu-central-1`).
 ![AWS VPC details](./images/aws-vpc.png)
 :::
 
-The network page provide us enough details to start the peering process. In EventStoreDB Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
+The network page provide us enough details to start the peering process. In Event Store Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
 
 Then, give the new peering a name and select the network created earlier.
 
@@ -122,11 +122,11 @@ When the peering is initiated, get back to AWS console and navigate to `Virtual 
 ![Incoming peering request](./images/aws-peering-3.png)
 :::
 
-Select the pending peering and click on `Actions` - `Accept request`. Validate the request details and ensure that all the details match the peering, which you can see in EventStoreDB Cloud console. If everything is correct, click on the `Yes, Accept` button. After you get a confirmation, you will see the peering in AWS console to become `Active`. Now, you can get back to EventStoreDB Cloud console, refresh the peering list to ensure that the pending record also changed its status to `Active`.
+Select the pending peering and click on `Actions` - `Accept request`. Validate the request details and ensure that all the details match the peering, which you can see in Event Store Cloud console. If everything is correct, click on the `Yes, Accept` button. After you get a confirmation, you will see the peering in AWS console to become `Active`. Now, you can get back to Event Store Cloud console, refresh the peering list to ensure that the pending record also changed its status to `Active`.
 
-Now, although both networks are now connected, AWS doesn't create proper routes automatically. To finish the setup, open the AWS VPC details and click on the route table link, then on the `Routes` tab. There you'll see that the network has no route to the EventStoreDB Cloud network, so you need to create one.
+Now, although both networks are now connected, AWS doesn't create proper routes automatically. To finish the setup, open the AWS VPC details and click on the route table link, then on the `Routes` tab. There you'll see that the network has no route to the Event Store Cloud network, so you need to create one.
 
-Click on `Edit routes` and then `Add route`. In the `Destination`, enter the CIDR of the EventStoreDB Cloud network. For the `Target`, choose the `Peering Connection` option.
+Click on `Edit routes` and then `Add route`. In the `Destination`, enter the CIDR of the Event Store Cloud network. For the `Target`, choose the `Peering Connection` option.
 
 ::: card
 ![AWS route](./images/aws-network-route.png)
