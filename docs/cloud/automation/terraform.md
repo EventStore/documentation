@@ -65,15 +65,15 @@ The Event Store Cloud provider must be configured with an access token. There ar
 | `token`           | `ESC_TOKEN`          | *Required*, your access token for Event Store Cloud.                                                                |
 | `organization_id` | `ESC_ORG_ID`         | *Required*, the identifier of your Event Store Cloud organization.                                                  |
 | `url`             | `ESC_URL`            | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud.  |
-| `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the EventStoreDB Cloud CLI. |
+| `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI. |
 
                                                                                                                                                                        
 
 ### Obtaining the `token`
 
-You can can use the [cloud console][cloud console tokens] or the [EventStoreDB Cloud CLI][esc cli github releases] to obtain a token
+You can can use the [cloud console][cloud console tokens] or the [Event Store Cloud CLI][esc cli github releases] to obtain a token
 
-The command to obtain a token from the [EventStoreDB Cloud CLI][esc cli github releases] is:
+The command to obtain a token from the [Event Store Cloud CLI][esc cli github releases] is:
 
  ``` bash
  esc access tokens create --email <email>
@@ -90,9 +90,9 @@ In the cloud console:
 
 ### Obtaining the `organization_id`
 
-You can use the [cloud console][cloud console organizations] or the [EventStoreDB Cloud CLI][esc cli github releases] to find your organization id.
+You can use the [cloud console][cloud console organizations] or the [Event Store Cloud CLI][esc cli github releases] to find your organization id.
 
-The command to obtain the organization from the [EventStoreDB Cloud CLI][esc cli github releases] is:
+The command to obtain the organization from the [Event Store Cloud CLI][esc cli github releases] is:
 
 ``` bash
  esc resources organizations list
