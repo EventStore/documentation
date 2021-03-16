@@ -7,7 +7,7 @@ Yes. See the [events console](../intro/quick-start.html#events-and-notifications
 
 ### Does the admin UI run on the provisioned cluster?
 
-Yes
+Yes.
 
 ### How are infrastructure related issue causing  unavailability or loss of function handled?
 
