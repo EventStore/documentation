@@ -20,6 +20,5 @@ Yes this on the roadmap.
 
 ### What is the ETA on the scheduled backups functionality being implemented?
 
-This is part of the next bit of functionality we are releasing
-
+This is part of the next bit of functionality we are releasing.
 
