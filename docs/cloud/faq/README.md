@@ -11,7 +11,6 @@ Yes
 
 ### How are infrastructure related issue causing  unavailability or loss of function handled?
 
-EventStore Cloud site reliability engineering (SRE) team manages cluster availability.
+EventStore Cloud Site Reliability Engineering (SRE) team manages cluster availability.
 
 Read more in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement) 
-
