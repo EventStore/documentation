@@ -9,7 +9,7 @@ Yes. See the [events console](../intro/quick-start.html#events-and-notifications
 
 Yes.
 
-### How are infrastructure related issue causing  unavailability or loss of function handled?
+### How are infrastructure-related issue causing unavailability or loss of function handled?
 
 EventStore Cloud Site Reliability Engineering (SRE) team manages cluster availability.
 
