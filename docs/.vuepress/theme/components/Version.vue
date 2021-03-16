@@ -1,5 +1,5 @@
 <template>
-  <h3 class="version" v-if="hasVersion">{{ version }}</h3>
+  <h3 class="version" v-if="hasVersion || hasChildrenTitle">{{ version }}</h3>
 </template>
 
 <script>
@@ -10,11 +10,24 @@ export default {
 
   computed: {
     hasVersion() {
-      return this.sidebarItem !== undefined && this.sidebarItem.group !== undefined;
+      return this.sidebarItem !== undefined && (this.sidebarItem.group !== undefined || (this.sidebarItem.children !== undefined && this.sidebarItem.children.length > 0));
+    },
+    hasChildrenTitle() {
+      return this.sidebarItem !== undefined && this.sidebarItem.children !== undefined && this.sidebarItem.children.length > 0 && this.sidebarItem.children[0].title;
     },
     version() {
-      const version = this.sidebarItem !== undefined ? `v${this.sidebarItem.version}` : "";
-      return `${this.sidebarItem.group} ${version}`;
+      if (this.sidebarItem === undefined || (!this.sidebarItem.group && !this.sidebarItem.children)) {
+        return "";
+      }
+      
+      var group = this.sidebarItem.group;
+
+      if (group) {
+        const version = this.sidebarItem.version ? `v${this.sidebarItem.version}` : "";
+        return `${this.sidebarItem.group} ${version}`
+      }
+
+      return this.sidebarItem.children[0].title;
     }
   }
 }

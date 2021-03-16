@@ -33,6 +33,14 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 2. Run `yarn install`
 3. Run `yarn docs:dev`
 
+### Running Algolia search locally
+
+To run Algolia search locally, you need to set the following environment variables:
+- `ALGOLIA_API_KEY`
+- `ALGOLIA_APP_ID`
+- `ALGOLIA_INDEX_NAME`
+with proper values taken from the Algolia configuration.
+
 ### Adding new programming language snippets
 
 To add new language snippet it's needed to add import of [Prism.JS](https://prismjs.com/) plugin to [VuePress plugins config](docs/.vuepress/enhanceApp.js), e.g.:
