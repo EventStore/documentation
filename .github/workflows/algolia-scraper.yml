@@ -1,0 +1,20 @@
+name: algolia-scraper
+on: push
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code 🛎
+        uses: actions/checkout@v2
+      # when scraping the site, inject secrets as environment variables
+      # then pass their values into the Docker container using "-e" syntax
+      # and inject config.json contents as another variable
+      - name: scrape the site 🧽
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+        run: |
+          docker run \
+          -e APPLICATION_ID -e API_KEY \
+          -e CONFIG="$(cat .algolia/config.json | jq -r tostring)" \
+          algolia/docsearch-scraper:v1.13.0
