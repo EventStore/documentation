@@ -9,6 +9,6 @@ We do not utilize Azure file or blob storage for customer data.
 
 We have no plans to expose clusters via a public IP address
 
-### Kubernetes : Is there guidance in using Kubernetes with EvensStore cloud ? 
+### Kubernetes: Is there guidance in using Kubernetes with EventStoreDB Cloud? 
 
 Guidance on  linking resources hosted in  Kubernetes on  Azure (AKS) and Google Cloud (GKE) will be published soon.
