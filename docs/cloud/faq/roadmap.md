@@ -4,7 +4,7 @@
 
 ### What is the ETA on the tool being developed to assist in migration of existing customer data?
 
-We have a replicator that is available now. 
+We have a tool named Replicator that is available now. 
 Depending on your requirements this may be suitable
 
 ### Do you have indicative performance for each of your offered cluster sizes?
@@ -21,7 +21,6 @@ Yes this on the roadmap.
 ### What is the ETA on the scheduled backups functionality being implemented?
 
 This is part of the next bit of functionality we are releasing
-
 
 
 
