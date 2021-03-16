@@ -13,4 +13,4 @@ Yes.
 
 EventStore Cloud Site Reliability Engineering (SRE) team manages cluster availability.
 
-Read more in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement) 
+Read more in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement)
