@@ -1,6 +1,6 @@
-# Cluster Provisioning
+# Cluster provisioning
 
-### Are there plans to support automatic VM resize? Either online or offline, but without having to do back up and restore the cluster.
+### Are there plans to support automatic VM resize? Either online or offline, but without having to back up and restore the cluster.
 
 You will be able to do an online instance resize, but it won't be auto-scaling. You will have to initiate it yourself.
 

@@ -4,7 +4,7 @@
 
 Some Interner providers, routers, and DNS servers will not resolve or filter out answers to DNS queries for `xxxx.mesdb.eventstore.cloud` because the DNS name resolves to a private IP range.
 
-You can check if that's the issue you're experiencing, run the following `nslookup` query. Replace the domain name by your cluster DNS name.
+You can check if that's the issue you're experiencing by running the following `nslookup` query. Replace the domain name by your cluster DNS name.
 
 ``` bash
 nslookup buh63kqrh41nfqpviing.mesdb.eventstore.cloud
