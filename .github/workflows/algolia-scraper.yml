@@ -1,5 +1,8 @@
 name: algolia-scraper
 on:
+  push:
+    branches:
+      - master
   check_suite:
     types: [completed]
   workflow_dispatch:
