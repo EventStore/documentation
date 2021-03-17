@@ -1,20 +1,16 @@
-# Service Level Agreement & Security
+# Service levels and security
 
-## What are the SLA ?
+### What is the SLA for Event Store Cloud?
 
-Read more in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement) document
+You can find out about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement) .
 
-## Does EventStore Ltd have security policy
+### Does Event Store have a security policy?
 
-EventStore Ltd.  has a security policy.  
-The security hasn't been independently audited yet.
-We plan to achieve SOC 2 and ISO 27001 by second half 2021.
+Event Store Ltd has a security policy. The security policy hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
 
+### Has the system been independently audited?
 
-## Has the system being independently audited?
-
-The security hasn't been independently audited yet.
-We plan to achieve SOC 2 and ISO 27001 by second half 2021.
+Our security policy hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
 
 
 

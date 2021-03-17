@@ -1,14 +1,17 @@
 # Providers
 
-### Azure: Do you use Locally redundant storage (LRS) or Zone-redundant storage (ZRS) ?
+## Azure
 
-Customer data is only stored on Premium SSD block device targets. 
-We do not utilize Azure file or blob storage for customer data.
+### Do you use locally-redundant storage (LRS) or zone-redundant storage (ZRS)?
 
-### Azure: We use AKS , to simplify setup can you expose the cluster to the public internet?
+Customer data is only stored on Premium SSD block device targets. We do not utilize Azure file or blob storage for customer data.
 
-We have no plans to expose clusters via a public IP address
+### We use AKS, to simplify setup can you expose the cluster to the public internet?
 
-### Kubernetes : Is there guidance in using Kubernetes with EvensStore cloud ? 
+We have no plans to expose clusters via a public IP address. We will be providing guidelines on how to connect AKS clusters to Event Store CLoud.
 
-Guidance on  linking resources hosted in  Kubernetes on  Azure (AKS) and Google Cloud (GKE) will be published soon.
+## Google Cloud Platform
+
+### How can we connect GKE workloads to Event Store Cloud?
+
+Please read our [blog post](https://www.eventstore.com/blog/connecting-event-store-cloud-to-google-kubernetes-engine) on this topic. We will it to the documentation later on.

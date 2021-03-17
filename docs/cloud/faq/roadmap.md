@@ -4,24 +4,23 @@
 
 ### What is the ETA on the tool being developed to assist in migration of existing customer data?
 
-We have a replicator that is available now. 
-Depending on your requirements this may be suitable
+We have a replication tool, which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
 ### Do you have indicative performance for each of your offered cluster sizes?
 
-Yes, benchmarks will be published soon and will be available via the console.
+We are still measuring the performance of different cluster sizes and optimise the configuration for better utilisation of all the instance sizes. We will provide indicative figures on the Cloud Console as soon as we are confident in these numbers.
 
+Please remember, however, that each use case is different, and you might always get better or worse performance, compared with our advertised benchmarking figures. We can help you to analyse your needs and provide more detailed expected performance figures, please get in touch.
 
 ## Features
 
-### Are there plans for a scavenge scheduling feature?
+### Are there plans for the scheduled scavenge feature?
 
-Yes this on the roadmap.
+Yes, we are actively working on it.
 
-### What is the ETA on the scheduled backups functionality being implemented?
+### What is the ETA on the scheduled backup general availability?
 
-This is part of the next bit of functionality we are releasing
-
+The scheduled backup feature is in the QA phase and we are looking forward to release it soon.
 
 
 
