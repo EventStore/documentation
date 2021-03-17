@@ -33,13 +33,32 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 2. Run `yarn install`
 3. Run `yarn docs:dev`
 
-### Running Algolia search locally
+### Algolia Search
+
+Documentation is using Algolia for indexing and searching through the contents.
+
+#### Testing search locally
 
 To run Algolia search locally, you need to set the following environment variables:
 - `ALGOLIA_API_KEY`
 - `ALGOLIA_APP_ID`
 - `ALGOLIA_INDEX_NAME`
 with proper values taken from the Algolia configuration.
+
+### Scraping data locally
+
+Create [.algolia\.env](.algolia/.env) file with contents based on the Algolia configuration:
+
+```bash
+APPLICATION_ID=
+API_KEY=
+ALGOLIA_SITE_URL=
+ALGOLIA_INDEX_NAME=
+```
+
+_**Note:** Make sure that you saved it with LF eol characters._
+
+Go to the [.algolia](.algolia) folder and run the [scrape.sh](.algolia/scrape.sh) script.
 
 ### Adding new programming language snippets
 

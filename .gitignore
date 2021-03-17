@@ -340,3 +340,4 @@ generated-versions.json
 *.lock.hcl
 *.tfstate
 *.tfstate.backup
+.algolia/.env
