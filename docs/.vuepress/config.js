@@ -181,7 +181,7 @@ module.exports = {
         algolia: {
             apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
             indexName: process.env.ALGOLIA_INDEX_NAME,
-            appId: process.env.APPLICATION_ID,
+            appId: process.env.ALGOLIA_APPLICATION_ID,
             hitsPerPage: 10,
         }
     },
