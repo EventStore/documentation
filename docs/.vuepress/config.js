@@ -1,5 +1,7 @@
 const containers = require("./lib/containers.js");
 const versioning = require("./lib/versioning.js");
+const path = require('path');
+require('dotenv').config({path: path.join(__dirname, '..', '..', '.algolia', '.env')})
 
 versioning.load();
 
@@ -177,11 +179,11 @@ module.exports = {
             ]
         },
         algolia: {
-            apiKey: process.env.ALGOLIA_API_KEY,
+            apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
             indexName: process.env.ALGOLIA_INDEX_NAME,
-            appId: process.env.ALGOLIA_APPLICATION_ID,
+            appId: process.env.APPLICATION_ID,
             hitsPerPage: 10,
-          }
+        }
     },
     markdown:        {
         extendMarkdown: md => {
