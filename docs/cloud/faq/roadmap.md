@@ -6,7 +6,7 @@
 
 We have a replication tool, which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
-### Do you have indicative performance for each of your offered cluster sizes?
+### Do you have indicative performance benchmarks for each of your offered cluster sizes?
 
 We are still measuring the performance of different cluster sizes and optimising the configuration for better utilisation of all the instance sizes. We will provide indicative figures on the Cloud Console as soon as we are confident in these numbers.
 
@@ -21,6 +21,3 @@ Yes, we are actively working on it.
 ### What is the ETA on the scheduled backup general availability?
 
 The scheduled backup feature is in the QA phase, and we are looking to release it soon.
-
-
-

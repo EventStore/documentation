@@ -11,9 +11,3 @@ Event Store Ltd has a security policy. Our system security hasn't been independe
 ### Has the system been independently audited?
 
 Our system security hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
-
-
-
-
-
-

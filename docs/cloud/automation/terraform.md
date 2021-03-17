@@ -71,9 +71,9 @@ The Event Store Cloud provider must be configured with an access token. There ar
 
 ### Obtaining the `token`
 
-You can can use the [cloud console][cloud console tokens] or the [EvenStoreDB Cloud CLI][esc cli github releases] to obtain a token
+You can can use the [cloud console][cloud console tokens] or the [Event Store Cloud CLI][esc cli github releases] to obtain a token
 
-The command to obtain a token from the [EvenStoreDB Cloud CLI][esc cli github releases] is:
+The command to obtain a token from the [Event Store Cloud CLI][esc cli github releases] is:
 
  ``` bash
  esc access tokens create --email <email>
@@ -90,9 +90,9 @@ In the cloud console:
 
 ### Obtaining the `organization_id`
 
-You can use the [cloud console][cloud console organizations] or the [EvenStoreDB Cloud CLI][esc cli github releases] to find your organization id.
+You can use the [cloud console][cloud console organizations] or the [Event Store Cloud CLI][esc cli github releases] to find your organization id.
 
-The command to obtain the organization from the [EvenStoreDB Cloud CLI][esc cli github releases] is:
+The command to obtain the organization from the [Event Store Cloud CLI][esc cli github releases] is:
 
 ``` bash
  esc resources organizations list
