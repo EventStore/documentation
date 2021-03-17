@@ -1,5 +1,8 @@
 name: algolia-scraper
-on: push
+on:
+  check_suite:
+    types: [completed]
+  workflow_dispatch:
 jobs:
   scrape:
     runs-on: ubuntu-latest
