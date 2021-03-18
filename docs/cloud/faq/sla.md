@@ -8,6 +8,10 @@ You can find out about the SLA levels provided by Event Store Cloud in our [Serv
 
 Event Store Ltd has a security policy. Our system security hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
 
+If you have specific questions please [contact us](https://www.eventstore.com/contact)
+
 ### Has the system been independently audited?
 
 Our system security hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
+
+If you have specific questions please [contact us](https://www.eventstore.com/contact)
