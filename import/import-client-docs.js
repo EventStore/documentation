@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fsExtra = require('fs-extra')
+const fsExtra = require('fs-extra');
 const path = require('path');
 const simpleGit = require('simple-git');
 const git = simpleGit();

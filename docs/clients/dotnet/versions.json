@@ -1,7 +1,7 @@
 [
   {
     "id": "dotnet-client",
-    "group": ".NET SDK",
+    "group": "TCP SDK",
     "basePath": "clients/dotnet",
     "versions": [
       {

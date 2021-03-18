@@ -33,6 +33,26 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 2. Run `yarn install`
 3. Run `yarn docs:dev`
 
+### Algolia Search
+
+Documentation is using Algolia for indexing and searching through the contents.
+
+To run Algolia search locally, create [.algolia\.env](.algolia/.env) file filled with contents based on the Algolia configuration:
+
+```bash
+ALGOLIA_APPLICATION_ID=
+ALGOLIA_WRITE_API_KEY=
+ALGOLIA_SITE_URL=
+ALGOLIA_INDEX_NAME=
+ALGOLIA_SEARCH_API_KEY=
+```
+
+_**Note:** Make sure that you saved it with LF eol characters._
+
+### Scraping data locally
+
+Go to the [.algolia](.algolia) folder and run the [scrape.sh](.algolia/scrape.sh) script.
+
 ### Adding new programming language snippets
 
 To add new language snippet it's needed to add import of [Prism.JS](https://prismjs.com/) plugin to [VuePress plugins config](docs/.vuepress/enhanceApp.js), e.g.:
