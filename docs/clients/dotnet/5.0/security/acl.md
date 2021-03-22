@@ -2,7 +2,7 @@
 
 Alongside authentication, EventStoreDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
 
-For more information on the structure of Access Control Lists read [Access Control Lists](/server/generated/5/docs/server/security/users-and-access-control-lists.md).
+For more information on the structure of Access Control Lists read [Access Control Lists](/server/generated/v5/docs/server/security/users-and-access-control-lists.md).
 
 ### ACL example
 

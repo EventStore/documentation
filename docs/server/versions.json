@@ -6,15 +6,15 @@
     "versions": [
       {
         "version": "21.2",
-        "path": "generated/21.2/docs"
+        "path": "generated/v21.2/docs"
       },
       {
         "version": "20.10 LTS",
-        "path": "generated/20.10/docs"
+        "path": "generated/v20.10/docs"
       },
       {
         "version": "5.0.9",
-        "path": "generated/5/docs/server"
+        "path": "generated/v5/docs/server"
       }
     ]
   },
@@ -25,7 +25,7 @@
     "versions": [
       {
         "version": "5.0.9",
-        "path": "generated/5/docs/http-api"
+        "path": "generated/v5/docs/http-api"
       }
     ]
   }

@@ -56,7 +56,7 @@ On the first part of the form you need to specify the new cluster name, the clou
 :::
 
 ::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/generated/5/docs/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/generated/v5/docs/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two instance sizes are production-grade.
@@ -97,12 +97,12 @@ The network page provide us enough details to start the peering process. In Even
 
 Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC.
 
-| Peering form | GCP VPC screen |
-| :----------- | :------------- |
+| Peering form        | GCP VPC screen                                       |
+| :------------------ | :--------------------------------------------------- |
 | Peer GCP Project ID | GCP project ID, found in the project selection popup |
-| Peer Network Name | The VPC name |
-| GCP region | VPC subnet region, cannot be changed |
-| Peer address space | VPC subnet address range |
+| Peer Network Name   | The VPC name                                         |
+| GCP region          | VPC subnet region, cannot be changed                 |
+| Peer address space  | VPC subnet address range                             |
 
 For our example, here is the complete form:
 
@@ -122,8 +122,8 @@ When the peering is initiated, get back to Google Cloud console and navigate to 
 
 | Event Store Cloud | GCP connection peering |
 | :---------------- | :--------------------- |
-| Peer Project ID | Project ID |
-| Peer Network Name | VPC network name |
+| Peer Project ID   | Project ID             |
+| Peer Network Name | VPC network name       |
 
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 
