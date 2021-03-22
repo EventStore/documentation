@@ -63,12 +63,12 @@ EventStore.ClusterNode.exe --log C:\Temp\EventStore\Logs
 
 ## Testing the configuration
 
-If more than one method is used to configure the server, it might be hard to find out what the effective configuration will be when the server starts. To help finding out just that, you can use the `--what-if` option. 
+If more than one method is used to configure the server, it might be hard to find out what the effective configuration will be when the server starts. You can use the `--what-if` option for that purpose. 
 
 When you run EventStoreDB with this option, it will print out the effective configuration applied from all available sources (default and custom configuration file, environment variables and command line parameters) and print it out to the console.
 
 ::: warning
-If you never run EventStoreDB on Linux as a service, when starting the service executable with `--what-if` option, the server _will create the data and log directories_ owned by the current user. It will prevent the service from running properly.
+Always run EventStoreDB as a service first, so it creates all the necessary directories using the service permissions. Running the service executable with `--what-if` option before starting the service _will create the data and log directories_ owned by the current user. It might prevent the service from running properly due to lack of write permissions for those directories.
 :::
 
 ::: detail Click here to see a WhatIf example
