@@ -56,7 +56,7 @@ On the first part of the form you need to specify the new cluster name, the clou
 :::
 
 ::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/generated/5/docs/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../../server/generated/v5/docs/server/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Other instance sizes are production-grade.
@@ -101,12 +101,12 @@ Then, give the new peering a name and select the network created earlier.
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
 
-| Peering form | AWS VPC screen |
-| :----------- | :------------- |
-| Peer AWS Account ID | Owner ID |
-| Peer VPC ID | VPC ID |
-| AWS region | VPC region, cannot be changed |
-| Peer address space | IPv4 CIDR |
+| Peering form        | AWS VPC screen                |
+| :------------------ | :---------------------------- |
+| Peer AWS Account ID | Owner ID                      |
+| Peer VPC ID         | VPC ID                        |
+| AWS region          | VPC region, cannot be changed |
+| Peer address space  | IPv4 CIDR                     |
 
 For our example, here is the complete form:
 

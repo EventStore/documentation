@@ -4,40 +4,58 @@
     "group": "Server",
     "basePath": "server",
     "docsRelativePath": ["docs"],
+    "samplesRelativePath": ["samples"],
     "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStore.git",
-    "branches": [{
-      "version": "21.2",
-      "name": "master"
-    }, {
-      "version": "20.10",
-      "name": "docs/v20.10"
-    }, {
-      "version": "5",
-      "name": "docs/v5"
-    }]
+    "branches": [
+      {
+        "version": "v21.2",
+        "name": "docs/v21.2"
+      },
+      {
+        "version": "v20.10",
+        "name": "docs/v20.10"
+      },
+      {
+        "version": "v5",
+        "name": "docs/v5"
+      }
+    ]
   },
   {
     "id": "dotnet-client",
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git", 
-    "branches": [{
-      "version": "21.2.0",
-      "name": "master"
-    }]
+    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git",
+    "branches": [
+      {
+        "version": "21.2.0",
+        "name": "master"
+      }
+    ]
   },
   {
     "id": "java-client",
     "group": "Java SDK",
     "basePath": "clients/java",
-    "samplesRelativePath": ["db-client-java","src","test","java","com","eventstore","dbclient", "samples"],
+    "samplesRelativePath": [
+      "db-client-java",
+      "src",
+      "test",
+      "java",
+      "com",
+      "eventstore",
+      "dbclient",
+      "samples"
+    ],
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git",
-    "branches": [{
-      "version": "1.0.0",
-      "name": "trunk"
-    }]
+    "branches": [
+      {
+        "version": "1.0.0",
+        "name": "trunk"
+      }
+    ]
   },
   {
     "id": "rust-client",
@@ -45,9 +63,11 @@
     "basePath": "clients/rust",
     "samplesRelativePath": ["examples"],
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git",
-    "branches": [{
-      "version": "1.0.0",
-      "name": "master"
-    }]
+    "branches": [
+      {
+        "version": "1.0.0",
+        "name": "master"
+      }
+    ]
   }
 ]
