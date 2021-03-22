@@ -10,11 +10,11 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-from-all-stream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -31,11 +31,11 @@ This will return an AsyncEnumerable that can be iterated on:
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-iterate
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-from-all-stream-iterate
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream-iterate
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream-iterate
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -60,12 +60,12 @@ When using projections to create new events you can set whether the generated ev
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-resolving-link-Tos
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-from-all-stream-resolving-link-Tos
 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream-resolving-link-Tos
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream-resolving-link-Tos
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -87,11 +87,11 @@ The credentials used to read the data can be supplied. to be used by the subscri
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-all-overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-all-overriding-user-credentials
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-all-overriding-user-credentials
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-all-overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -110,11 +110,11 @@ As well as being able to read a stream forwards you can also go backwards. When 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-all-stream-backwards 
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-from-all-stream-backwards 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-all-stream-backwards 
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream-backwards 
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -139,11 +139,11 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#ignore-system-events
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#ignore-system-events
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#ignore-system-events
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#ignore-system-events
 </xode-block>
 <xode-block title="NodeJS">
 

@@ -1,0 +1,39 @@
+{
+  "index_name": "scraper-test",
+  "start_urls": ["https://developers.eventstore.com/"],
+  "selectors": {
+    "lvl0": ".sidebar h3.version",
+    "lvl1": {
+      "selector": ".sidebar-heading.open span",
+      "global": true,
+      "default_value": "Documentation"
+    },
+    "lvl2": {
+      "selector": ".content__default h1",
+      "strip_chars": "#"
+    },
+    "lvl3": {
+      "selector": ".content__default h2",
+      "strip_chars": "#"
+    },
+    "lvl4": {
+      "selector": ".content__default h3",
+      "strip_chars": "#"
+    },
+    "lvl5": {
+      "selector": ".content__default h4",
+      "strip_chars": "#"
+    },
+    "text": ".content__default p, .content__default li",
+    "lang": {
+      "selector": "/html/@lang",
+      "type": "xpath",
+      "global": true
+    }
+  },
+  "custom_settings": {
+    "attributesForFaceting": [
+      "lang"
+    ]
+  }
+}

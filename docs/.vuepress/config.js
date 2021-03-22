@@ -1,5 +1,7 @@
 const containers = require("./lib/containers.js");
 const versioning = require("./lib/versioning.js");
+const path = require('path');
+require('dotenv').config({path: path.join(__dirname, '..', '..', '.algolia', '.env')})
 
 versioning.load();
 
@@ -164,8 +166,30 @@ module.exports = {
                         "/cloud/automation/terraform.md"
                     ]
                     
+                },
+                {
+                    title:       "FAQ",
+                    collapsable: true,
+                    path:        "/cloud/faq/",
+                    children:    [
+                        "/cloud/faq/",
+                        "/cloud/faq/cluster_provisioning.md",
+                        "/cloud/faq/providers.md",
+                        "/cloud/faq/roadmap.md",
+                        "/cloud/faq/sla.md",
+                        "/cloud/faq/support.md",
+                        "/cloud/faq/troubleshooting.md",
+                        
+                    ]
                 }
+                
             ]
+        },
+        algolia: {
+            apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+            indexName: process.env.ALGOLIA_INDEX_NAME,
+            appId: process.env.ALGOLIA_APPLICATION_ID,
+            hitsPerPage: 10,
         }
     },
     markdown:        {

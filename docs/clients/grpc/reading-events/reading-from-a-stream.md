@@ -9,11 +9,11 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-stream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-from-stream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-stream
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-stream
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -30,11 +30,11 @@ This will return an enumerable that can be iterated on:
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#iterate-stream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#iterate-stream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#iterate-stream
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#iterate-stream
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -66,11 +66,11 @@ The credentials used to read the data can be supplied. to be used by the subscri
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#overriding-user-credentials
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#overriding-user-credentials
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS"> 
 
@@ -89,11 +89,11 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#read-from-stream-position
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#read-from-stream-position
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#read-from-stream-position
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-stream-position
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -112,11 +112,11 @@ As well as being able to read a stream forwards you can also go backwards. When 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#reading-backwards 
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#reading-backwards 
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#reading-backwards
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#reading-backwards
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -140,11 +140,11 @@ It is important to check the value of this field before attempting to iterate an
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/reading-events/Program.cs#checking-for-stream-presence
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/reading-events/Program.cs#checking-for-stream-presence
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
+<<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
 </xode-block>
 <xode-block title="NodeJS">
 

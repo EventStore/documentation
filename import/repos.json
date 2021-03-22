@@ -1,26 +1,42 @@
 [
   {
+    "id": "server",
+    "group": "Server",
+    "basePath": "server",
+    "docsRelativePath": ["docs"],
+    "currentBranch": "master",
+    "repo": "https://github.com/EventStore/EventStore.git",
+    "version": "21.2",
+    "deployCurrent": true
+  },
+  {
     "id": "dotnet-client",
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
-    "relativePath": ["samples"],
+    "samplesRelativePath": ["samples"],
     "currentBranch": "master",
-    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git"
+    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git",    
+    "version": "21.2.0",
+    "deployCurrent": true
   },
   {
     "id": "java-client",
     "group": "Java SDK",
     "basePath": "clients/java",
-    "relativePath": ["db-client-java","src","test","java","com","eventstore","dbclient", "samples"],
+    "samplesRelativePath": ["db-client-java","src","test","java","com","eventstore","dbclient", "samples"],
     "currentBranch": "trunk",
-    "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git"
+    "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git",
+    "version": "1.0.0",
+    "deployCurrent": true
   },
   {
     "id": "rust-client",
     "group": "Rust SDK",
     "basePath": "clients/rust",
-    "relativePath": ["examples"],
+    "samplesRelativePath": ["examples"],
     "currentBranch": "master",
-    "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git"
+    "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git",
+    "version": "1.0.0",
+    "deployCurrent": true
   }
 ]

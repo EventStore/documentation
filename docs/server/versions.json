@@ -5,6 +5,10 @@
     "basePath": "server",
     "versions": [
       {
+        "version": "21.2",
+        "path": "generated/21.2/docs"
+      },
+      {
         "version": "20.10 LTS",
         "path": "v20/server"
       },

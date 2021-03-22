@@ -9,11 +9,11 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-to-stream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/appending-events/Program.cs#append-to-stream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-to-stream
+<<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-to-stream
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -46,11 +46,11 @@ For example:
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-duplicate-event
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/appending-events/Program.cs#append-duplicate-event
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-duplicate-event
+<<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-duplicate-event
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -95,11 +95,11 @@ For example if we try and append the same record twice expecting both times that
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-with-no-stream
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/appending-events/Program.cs#append-with-no-stream
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-with-no-stream
+<<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-with-no-stream
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -121,11 +121,11 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#append-with-concurrency-check
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/appending-events/Program.cs#append-with-concurrency-check
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
+<<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
 </xode-block>
 <xode-block title="NodeJS">
 
@@ -146,11 +146,11 @@ You can provide user credentials to be used to append the data as follows. This 
 <xode-group>
 <xode-block title="C#">
 
-<<< @/docs/clients/dotnet/generated/v20.6.1/samples/appending-events/Program.cs#overriding-user-credentials
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/appending-events/Program.cs#overriding-user-credentials
 </xode-block>
 <xode-block title="Java">
 
-<<< @/docs/clients/java/generated/0.7/samples/appending_events/AppendingEvents.java#overriding-user-credentials
+<<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#overriding-user-credentials
 </xode-block>
 <xode-block title="NodeJS">
 

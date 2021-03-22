@@ -1,5 +1,5 @@
 const fs = require('fs');
-const fsExtra = require('fs-extra')
+const fsExtra = require('fs-extra');
 const path = require('path');
 const simpleGit = require('simple-git');
 const git = simpleGit();
@@ -20,8 +20,6 @@ async function sh(cmd) {
         });
     });
 }
-
-let deployCurrent = true;
 
 async function safeRmdir(path) {
     if (fs.existsSync(path)) {
@@ -64,13 +62,32 @@ async function replaceFileExtensions(samplesDir,  from, to) {
     await sh(command);
 }
 
-async function copySamples(clientRepo, repoLocation, destinationPath, id, tag, relativePath) {
-    log.info(`checking out ${tag}...`);
-    await clientRepo.checkout(tag);
+async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, id, tagOrBranch, samplesRelativePath, docsRelativePath) {
+    log.info(`checking out ${tagOrBranch}...`);
+    await clientRepo.checkout(tagOrBranch);
+    
+    const destinationPathWithId = path.join(destinationPath, id);
 
+    if (docsRelativePath)
+        await copyDocs(repoLocation, destinationPathWithId, docsRelativePath);
+
+    if (samplesRelativePath)
+        await copySamples(repoLocation, destinationPathWithId, samplesRelativePath);
+
+    return {path: path.join('generated', id), version: id};
+}
+
+async function copyDocs(repoLocation, destinationPathWithId, relativePath) {
     const pathElements = [repoLocation, ...relativePath];
 
-    const destinationPathWithId = path.join(destinationPath, id);
+    const docsDestinationPath = path.join(destinationPathWithId, 'docs');
+
+    await tryCopy(pathElements, docsDestinationPath);
+}
+
+async function copySamples(repoLocation, destinationPathWithId, relativePath) {
+    const pathElements = [repoLocation, ...relativePath];
+
     const samplesDestinationPath = path.join(destinationPathWithId, 'samples');
 
     const wereSamplesCopied = await tryCopy(pathElements, samplesDestinationPath);
@@ -81,8 +98,6 @@ async function copySamples(clientRepo, repoLocation, destinationPath, id, tag, r
     
     await replaceFileExtensions('docs', 'rs', 'rust');
     await replaceCodePath(destinationPathWithId, samplesDestinationPath);
-
-    return {path: path.join('generated', id), version: id.substr(1) + ' gRPC'};
 }
 
 async function main() {
@@ -114,15 +129,16 @@ async function main() {
             .split('\n')
             .filter(i => i)
 
-        if (deployCurrent) {
-            definition[0].versions.push(await copySamples(clientRepo, repoLocation, samplesLocation, tags.slice(-1)[0], repo.currentBranch, repo.relativePath));
+        if (repo.deployCurrent) {
+            definition[0].versions.push(await copyDocsAndSamples(clientRepo, repoLocation, samplesLocation, repo.version || tags.slice(-1)[0], repo.currentBranch, repo.samplesRelativePath, repo.docsRelativePath));
         }
+        else {
+            for (let i = 0; i < tags.length - 1; i++) {
+                const version = await copyDocsAndSamples(clientRepo, repoLocation, samplesLocation, tags[i], tags[i + 1], repo.samplesRelativePath, repo.docsRelativePath);
 
-        for (let i = 0; i < tags.length - 1; i++) {
-            const version = await copySamples(clientRepo, repoLocation, samplesLocation, tags[i], tags[i + 1], repo.relativePath);
-
-            if (version !== undefined) {
-                definition[0].versions.push(version);
+                if (version !== undefined) {
+                    definition[0].versions.push(version);
+                }
             }
         }
 
