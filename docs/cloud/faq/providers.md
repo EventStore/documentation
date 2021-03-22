@@ -2,7 +2,7 @@
 
 ## Azure
 
-### Do you use locally-redundant storage (LRS) or zone-redundant storage (ZRS)?
+### Do you use Locally-Redundant Storage (LRS) or Zone-Redundant Storage (ZRS)?
 
 Customer data is only stored on Premium SSD block device targets. We do not utilize Azure file or blob storage for customer data.
 
