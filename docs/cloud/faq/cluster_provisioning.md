@@ -2,7 +2,7 @@
 
 ### Is it possible to change the cluster instance size or topology?
 
-We don't have this feature available yet. However, you can always do it using backup and restore. The sequence of steps would be:
+We don't have this feature available yet. However, you can always do it using backup and restore.
 
 ### Are there plans to support automatic VM resize? Either online or offline, but without having to back up and restore the cluster.
 

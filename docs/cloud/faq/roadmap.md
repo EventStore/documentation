@@ -20,4 +20,4 @@ Yes, we are actively working on it.
 
 ### What is the ETA on the scheduled backup general availability?
 
-The scheduled backup feature is in the QA phase, and we are looking to release it soon.
+The scheduled backup feature has been released in March 2021.
