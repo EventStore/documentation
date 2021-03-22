@@ -8,4 +8,4 @@ Our support response time windows are provided in GMT time zone.
 
 Customers do not have direct access to VMs, where the database cluster nodes are running. A lot of management functions are available via the HTTP API, which is available for customers to access and use.
 
-You can also use our cloud automation tools (Terraform provider and CLI) to manage your cloud resources.
+You can also use our cloud automation tools ([Terraform](../automation/terraform.md) provider and CLI) to manage your cloud resources.
