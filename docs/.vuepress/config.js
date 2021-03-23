@@ -34,6 +34,14 @@ module.exports = {
             },
         ],
         containers("card", "el-card", _ => `body-style="padding: 0px"`),
+        containers("note", "note", title => `${title ? ` type='${title}'` : ""}`),
+        [
+            'vuepress-plugin-container', {
+            type:   "note",
+            before: title => `<div class="custom-block note d" title="${title}">`,
+            after:  `</div>`,
+        },
+        ],
     ],
     extraWatchFiles: [
         "**/sidebar.js",
