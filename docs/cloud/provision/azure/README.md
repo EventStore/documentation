@@ -99,12 +99,12 @@ You also need to find your tenant ID, which is only visible on the Azure AD [pro
 
 Finally, you'd need to fill out all the fields:
 
-| Peering form       | Azure network details                                                             |
-| :----------------- | :-------------------------------------------------------------------------------- |
-| Peer Tenant ID     | Tenant ID from Azure AD                                                           |
-| Peer Network ID    | Network resource ID (can be found on the network Properties page or in JSON view) |
-| Azure region       | Network region, cannot be changed                                                 |
-| Peer address space | IPv4 CIDR (address space for the whole network)                                   |
+| Peering form | Azure network details |
+| :----------- | :------------- |
+| Peer Tenant ID | Tenant ID from Azure AD |
+| Peer Network ID | Network resource ID (can be found on the network Properties page or in JSON view) |
+| Azure region | Network region, cannot be changed |
+| Peer address space | IPv4 CIDR (address space for the whole network) |
 
 For our example, here is the complete form:
 

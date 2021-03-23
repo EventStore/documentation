@@ -30,17 +30,17 @@ To get maximum performance from the connection we recommend that you use it asyn
 
 The `EventStoreConnection` classes uses the static `Create` methods to create a new connection. All method overloads allow you to optionally specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
 
-| Method                                                                              | Description                                                                                                                           |
-| :---------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
-| `Create(ConnectionSettings connectionSettings)`                                     | Connects to EventStoreDB using specified settings                                                                                     |
-| `Create(Uri uri)`                                                                   | Connects to EventStoreDB (see URIs below) with default settings                                                                       |
-| `Create(ConnectionSettings connectionSettings, Uri uri)`                            | Connects to EventStoreDB (see URIs below) with specified settings                                                                     |
-| `Create(string connectionString)`                                                   | Connects to EventStoreDB with settings from connection string                                                                         |
-| `Create(string connectionString, ConnectionSettingsBuilder builder)`                | Connects to EventStoreDB by merging connection string settings with pre-populated builder                                             |
-| `Create(IPEndPoint tcpEndPoint)`                                                    | **Obsolete** Connects to a single node with default settings                                                                          |
-| `Create(ConnectionSettings settings, IPEndPoint tcpEndPoint)`                       | **Obsolete** Connects to a single node with custom settings (see [Customising Connection Settings](#customising-connection-settings)) |
-| `Create(ConnectionSettings connectionSettings, ClusterSettings clusterSettings)`    | **Obsolete** Connects to an EventStoreDB HA cluster with custom settings (see [Cluster Settings](#cluster-settings))                  |
-| `Create(ConnectionSettings connectionSettings, IEndPointDiscover endPointDiscover)` | Connects to an EventStoreDB HA cluster with custom settings (see [Cluster Settings](#cluster-settings))                               |
+| Method | Description |
+|:-------|:------------|
+| `Create(ConnectionSettings connectionSettings)` | Connects to EventStoreDB using specified settings  |
+| `Create(Uri uri)` | Connects to EventStoreDB (see URIs below) with default settings |
+| `Create(ConnectionSettings connectionSettings, Uri uri)` | Connects to EventStoreDB (see URIs below) with specified settings |
+| `Create(string connectionString)` | Connects to EventStoreDB with settings from connection string |
+| `Create(string connectionString, ConnectionSettingsBuilder builder)` | Connects to EventStoreDB by merging connection string settings with pre-populated builder |
+| `Create(IPEndPoint tcpEndPoint)` | **Obsolete** Connects to a single node with default settings |
+| `Create(ConnectionSettings settings, IPEndPoint tcpEndPoint)`        | **Obsolete** Connects to a single node with custom settings (see [Customising Connection Settings](#customising-connection-settings)) |
+| `Create(ConnectionSettings connectionSettings, ClusterSettings clusterSettings)` | **Obsolete** Connects to an EventStoreDB HA cluster with custom settings (see [Cluster Settings](#cluster-settings)) |
+| `Create(ConnectionSettings connectionSettings, IEndPointDiscover endPointDiscover)` | Connects to an EventStoreDB HA cluster with custom settings (see [Cluster Settings](#cluster-settings)) |
 
 ::: tip
 The connection returned by these methods is inactive. Use the `ConnectAsync()` method to establish a connection with the server.
@@ -73,30 +73,30 @@ You can set the following values using the connection string:
 
 <!-- TODO: Moved, to check and what about ConnectTo? -->
 
-| Name                        | Format                                        | Description                                                          |
-| :-------------------------- | :-------------------------------------------- | :------------------------------------------------------------------- |
-| VerboseLogging              | True/false                                    | Enables verbose logging                                              |
-| MaxQueueSize                | Integer                                       | Maximum number of outstanding operations                             |
-| MaxConcurrentItems          | Integer                                       | Maximum number of concurrent async operations                        |
-| MaxRetries                  | Integer                                       | Maximum number of retry attempts                                     |
-| MaxReconnections            | Integer                                       | The maximum number of times to try reconnecting                      |
-| RequireMaster               | True/false                                    | If set the server will only process if it is master                  |
-| ReconnectionDelay           | Integer (milliseconds)                        | The delay before attempting to reconnect                             |
-| OperationTimeout            | Integer (milliseconds)                        | The time before considering an operation timed out                   |
-| OperationTimeoutCheckPeriod | Integer (milliseconds)                        | The frequency in which to check timeouts                             |
-| DefaultUserCredentials      | String in format username:password            | The default credentials for the connection                           |
-| UseSslConnection            | True/false                                    | Whether to use SSL for this connection                               |
-| TargetHost                  | String                                        | The hostname expected on the certificate                             |
-| ValidateServer              | True/false                                    | Whether to validate the remote server                                |
-| FailOnNoServerResponse      | True/False                                    | Whether to fail on no server response                                |
-| HeartbeatInterval           | Integer (milliseconds)                        | The interval at which to send the server a heartbeat                 |
-| HeartbeatTimeout            | Integer (milliseconds)                        | The amount of time to receive a heartbeat response before timing out |
-| ClusterDns                  | String                                        | The DNS name of the cluster for discovery                            |
-| MaxDiscoverAttempts         | Integer                                       | The maximum number of attempts to try to discover the cluster        |
-| ExternalGossipPort          | Integer                                       | The port to try to gossip on                                         |
-| GossipTimeout               | Integer (milliseconds)                        | The amount of time before timing out a gossip response               |
-| GossipSeeds                 | Comma separated list of ip:port               | A list of seeds to try to discover from                              |
-| ConnectTo                   | A URI in format described above to connect to | The URI to connect to                                                |
+| Name | Format | Description |
+|:-----|:-------|:------------|
+| VerboseLogging | True/false | Enables verbose logging |
+| MaxQueueSize | Integer | Maximum number of outstanding operations |
+| MaxConcurrentItems | Integer | Maximum number of concurrent async operations |
+| MaxRetries | Integer | Maximum number of retry attempts |
+| MaxReconnections | Integer | The maximum number of times to try reconnecting |
+| RequireMaster | True/false | If set the server will only process if it is master |
+| ReconnectionDelay | Integer (milliseconds) | The delay before attempting to reconnect |
+| OperationTimeout | Integer (milliseconds) | The time before considering an operation timed out |
+| OperationTimeoutCheckPeriod | Integer (milliseconds) | The frequency in which to check timeouts |
+| DefaultUserCredentials | String in format username:password | The default credentials for the connection |
+| UseSslConnection | True/false | Whether to use SSL for this connection |
+| TargetHost | String | The hostname expected on the certificate |
+| ValidateServer | True/false | Whether to validate the remote server |
+| FailOnNoServerResponse | True/False | Whether to fail on no server response |
+| HeartbeatInterval | Integer (milliseconds) | The interval at which to send the server a heartbeat |
+| HeartbeatTimeout | Integer (milliseconds) | The amount of time to receive a heartbeat response before timing out |
+| ClusterDns | String | The DNS name of the cluster for discovery |
+| MaxDiscoverAttempts | Integer | The maximum number of attempts to try to discover the cluster |
+| ExternalGossipPort | Integer | The port to try to gossip on |
+| GossipTimeout | Integer (milliseconds) | The amount of time before timing out a gossip response |
+| GossipSeeds | Comma separated list of ip:port | A list of seeds to try to discover from |
+| ConnectTo | A URI in format described above to connect to | The URI to connect to |
 
 ::: tip
 You can also use spacing instead of camel casing in your connection string.
@@ -148,12 +148,12 @@ The .NET API can log information to different destinations. By default logging i
 
 <!-- TODO: Moved, to check. Actually missing options. -->
 
-| Builder Method           | Description                                                                                                                                                     |
-| :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `UseConsoleLogger()`     | Output log messages using `Console.WriteLine`                                                                                                                   |
-| `UseDebugLogger()`       | Output log messages using `Debug.WriteLine`                                                                                                                     |
-| `UseCustomLogger()`      | Output log messages to the specified instance of `ILogger` (You should implement this interface in order to log using another library such as NLog or log4net). |
-| `EnableVerboseLogging()` | Turns on verbose logging.                                                                                                                                       |
+| Builder Method | Description |
+|:---------------|:------------|
+| `UseConsoleLogger()` | Output log messages using `Console.WriteLine`  |
+| `UseDebugLogger()` | Output log messages using `Debug.WriteLine` |
+| `UseCustomLogger()` | Output log messages to the specified instance of `ILogger` (You should implement this interface in order to log using another library such as NLog or log4net). |
+| `EnableVerboseLogging()` | Turns on verbose logging. |
 
 By default information about connection, disconnection and errors are logged, however it can be useful to have more information about specific operations as they are occurring.
 
@@ -161,8 +161,8 @@ By default information about connection, disconnection and errors are logged, ho
 
 EventStoreDB supports [Access Control Lists](/server/generated/v5/docs/server/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
-| Builder Method                                           | Description                                                                                                                       |
-| :------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| Builder Method | Description |
+|:---------------|:------------|
 | `SetDefaultUserCredentials(UserCredentials credentials)` | Sets the default `UserCredentials` to use for this connection. If you don't supply any credentials, the operation will use these. |
 
 You create a `UserCredentials` object as follows:
@@ -191,8 +191,8 @@ In production systems where credentials are sent from the client to EventStoreDB
 
 When connecting to an EventStoreDB HA cluster you can specify that operations are performed on any node, or only on the node that is the master.
 
-| Builder Method          | Description                                                                                                |
-| :---------------------- | :--------------------------------------------------------------------------------------------------------- |
+| Builder Method | Description |
+|:---------------|:------------|
 | `PerformOnMasterOnly()` | Require the master to serve all write and read requests (Default).                                         |
 | `PerformOnAnyNode()`    | Allow for writes to be forwarded and read requests to be served locally if the current node is not master. |
 
@@ -202,26 +202,26 @@ The following methods on the `ConnectionSettingsBuilder` allow you to change the
 
 #### Reconnections
 
-| Builder Method                                        | Description                                                                                                                                         |
-| :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `WithConnectionTimeoutOf (TimeSpan timeout)`          | Sets the timeout to connect to a server before aborting and attempting a reconnect (Default: 1 second).                                             |
-| `LimitReconnectionsTo (int limit)`                    | Limits the number of reconnections this connection can try to make (Default: 10).                                                                   |
-| `KeepReconnecting()`                                  | Allows infinite reconnection attempts.                                                                                                              |
-| `SetReconnectionDelayTo (TimeSpan reconnectionDelay)` | Sets the delay between reconnection attempts (Default: 100ms).                                                                                      |
-| `SetHeartbeatInterval (TimeSpan interval)`            | Sets how often the connection should expect heartbeats (lower values detect broken sockets faster) (Default: 750ms).                                |
-| `SetHeartbeatTimeout (TimeSpan timeout)`              | Sets how long to wait without heartbeats before determining a connection to be dead (must be longer than the heartbeat interval) (Default: 1500ms). |
+| Builder Method | Description |
+|:---------------|:------------|
+| `WithConnectionTimeoutOf (TimeSpan timeout)`  | Sets the timeout to connect to a server before aborting and attempting a reconnect (Default: 1 second). |
+| `LimitReconnectionsTo (int limit)` | Limits the number of reconnections this connection can try to make (Default: 10). |
+| `KeepReconnecting()` | Allows infinite reconnection attempts.|
+| `SetReconnectionDelayTo (TimeSpan reconnectionDelay)` | Sets the delay between reconnection attempts (Default: 100ms).|
+| `SetHeartbeatInterval (TimeSpan interval)`| Sets how often the connection should expect heartbeats (lower values detect broken sockets faster) (Default: 750ms). |
+| `SetHeartbeatTimeout (TimeSpan timeout)` | Sets how long to wait without heartbeats before determining a connection to be dead (must be longer than the heartbeat interval) (Default: 1500ms). |
 
 #### Operations
 
-| Builder Method                                          | Description                                                              |
-| :------------------------------------------------------ | :----------------------------------------------------------------------- |
-| `SetOperationTimeout (TimeSpan timeout)`                | Sets the operation timeout duration (Default: 7 seconds).                |
-| `SetTimeoutCheckPeriodTo (TimeSpan timeoutCheckPeriod)` | Sets how often to check for timeouts (Default: 1 second).                |
-| `LimitAttemptsForOperationTo (int limit)`               | Limits the number of operation attempts (Default: 11).                   |
-| `LimitRetriesForOperationTo (int limit)`                | Limits the number of operation retries (Default: 10).                    |
-| `KeepRetrying()`                                        | Allows infinite operation retries.                                       |
-| `LimitOperationsQueueTo (int limit)`                    | Sets the limit for number of outstanding operations (Default: 5000).     |
-| `FailOnNoServerResponse()`                              | Marks that no response from server should cause an error on the request. |
+| Builder Method | Description |
+|:---------------|:------------|
+| `SetOperationTimeout (TimeSpan timeout)` | Sets the operation timeout duration (Default: 7 seconds). |
+| `SetTimeoutCheckPeriodTo (TimeSpan timeoutCheckPeriod)` | Sets how often to check for timeouts (Default: 1 second). |
+| `LimitAttemptsForOperationTo (int limit)` | Limits the number of operation attempts (Default: 11). |
+| `LimitRetriesForOperationTo (int limit)` | Limits the number of operation retries (Default: 10). |
+| `KeepRetrying()` | Allows infinite operation retries. |
+| `LimitOperationsQueueTo (int limit)` | Sets the limit for number of outstanding operations (Default: 5000). |
+| `FailOnNoServerResponse()` | Marks that no response from server should cause an error on the request. |
 
 ## Cluster settings
 
@@ -235,12 +235,12 @@ Use `ClusterSettings.Create().DiscoverClusterViaDns()` followed by:
 
 <!-- TODO: Moved, to check. -->
 
-| Builder Method                                    | Description                                                                           |
-| :------------------------------------------------ | :------------------------------------------------------------------------------------ |
-| `SetClusterDns(string clusterDns)`                | Sets the DNS name under which to list cluster nodes.                                  |
-| `SetClusterGossipPort(int clusterGossipPort)`     | Sets the well-known port on which the cluster gossip is taking place.                 |
-| `SetMaxDiscoverAttempts(int maxDiscoverAttempts)` | Sets the maximum number of attempts for discovery (Default: 10).                      |
-| `SetGossipTimeout(TimeSpan timeout)`              | Sets the period after which gossip times out if none is received (Default: 1 second). |
+| Builder Method | Description |
+|:---------------|:------------|
+| `SetClusterDns(string clusterDns)` | Sets the DNS name under which to list cluster nodes. |
+| `SetClusterGossipPort(int clusterGossipPort)` | Sets the well-known port on which the cluster gossip is taking place. |
+| `SetMaxDiscoverAttempts(int maxDiscoverAttempts)` | Sets the maximum number of attempts for discovery (Default: 10). |
+| `SetGossipTimeout(TimeSpan timeout)` | Sets the period after which gossip times out if none is received (Default: 1 second). |
 
 ::: tip
  If you are using the commercial edition of EventStoreDB HA with Manager nodes in place, the gossip port should be the port number of the external HTTP port on which the managers are running. If you are using the open source edition of EventStoreDB HA the gossip port should be the External HTTP port that the nodes are running on. If you cannot use a well-known port for this across all nodes you can instead use gossip seed discovery and set the `IPEndPoint` of some seed nodes instead.
@@ -254,12 +254,12 @@ Use `ClusterSettings.Create().DiscoverClusterViaGossipSeeds()` followed by:
 
 <!-- TODO: Moved, to check. -->
 
-| Builder Method                                            | Description                                                                           |
-| :-------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `SetGossipSeedEndPoints(params IPEndPoint[] gossipSeeds)` | Sets gossip seed endpoints for the client.                                            |
+| Builder Method | Description |
+|:---------------| ------------|
+| `SetGossipSeedEndPoints(params IPEndPoint[] gossipSeeds)` | Sets gossip seed endpoints for the client. |
 | `SetGossipSeedEndPoints(params GossipSeed[] gossipSeeds)` | Same as above, but allows a specific `Host` header to be sent with all HTTP requests. |
-| `SetMaxDiscoverAttempts(int maxDiscoverAttempts)`         | Sets the maximum number of attempts for discovery (Default: 10).                      |
-| `SetGossipTimeout(TimeSpan timeout)`                      | Sets the period after which gossip times out if none is received (Default: 1 second). |
+| `SetMaxDiscoverAttempts(int maxDiscoverAttempts)` | Sets the maximum number of attempts for discovery (Default: 10). |
+| `SetGossipTimeout(TimeSpan timeout)` | Sets the period after which gossip times out if none is received (Default: 1 second). |
 
 ## Connection events
 
@@ -267,11 +267,11 @@ Use `ClusterSettings.Create().DiscoverClusterViaGossipSeeds()` followed by:
 
 <!-- TODO: Not moved. -->
 
-| Event                                                                    | Description                                                                                                                                                                |
-| :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `EventHandler<ClientConnectionEventArgs> Connected`                      | Fired when an `IEventStoreConnection` connects to an EventStoreDB server.                                                                                                  |
-| `EventHandler<ClientConnectionEventArgs> Disconnected`                   | Fired when an `IEventStoreConnection` disconnects from an EventStoreDB server by some means other than by calling the `Close` method.                                      |
-| `EventHandler<ClientReconnectingEventArgs> Reconnecting`                 | Fired when an `IEventStoreConnection` is attempting to reconnect to an EventStoreDB server following a disconnection.                                                      |
-| `EventHandler<ClientClosedEventArgs> Closed`                             | Fired when an `IEventStoreConnection` is closed either using the `Close` method or when reconnection limits are reached without a successful connection being established. |
-| `EventHandler<ClientErrorEventArgs> ErrorOccurred`                       | Fired when an error is thrown on an `IEventStoreConnection`.                                                                                                               |
-| `EventHandler<ClientAuthenticationFailedEventArgs> AuthenticationFailed` | Fired when a client fails to authenticate to an EventStoreDB server.                                                                                                       |
+| Event | Description |
+|:------|:-------------|
+| `EventHandler<ClientConnectionEventArgs> Connected` | Fired when an `IEventStoreConnection` connects to an EventStoreDB server. |
+| `EventHandler<ClientConnectionEventArgs> Disconnected` | Fired when an `IEventStoreConnection` disconnects from an EventStoreDB server by some means other than by calling the `Close` method. |
+| `EventHandler<ClientReconnectingEventArgs> Reconnecting` | Fired when an `IEventStoreConnection` is attempting to reconnect to an EventStoreDB server following a disconnection. |
+| `EventHandler<ClientClosedEventArgs> Closed` | Fired when an `IEventStoreConnection` is closed either using the `Close` method or when reconnection limits are reached without a successful connection being established. |
+| `EventHandler<ClientErrorEventArgs> ErrorOccurred` | Fired when an error is thrown on an `IEventStoreConnection`.|
+| `EventHandler<ClientAuthenticationFailedEventArgs> AuthenticationFailed` | Fired when a client fails to authenticate to an EventStoreDB server. |
