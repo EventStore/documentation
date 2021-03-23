@@ -1,2 +1,6 @@
 # Redirects from what the browser requests to what we serve
-/latest.html	/server/v20/server/introduction/	301
+/latest.html                       /server/v20/server/introduction/ 301
+/server/generated/21.2/docs/*      /server/v21.2/docs/:splat        301!
+/server/v20/server/*               /server/v20.10/docs/:splat       301!
+/server/v5/server/*                /server/v5/docs/server/:splat    301!
+/server/5.0.8/server/*             /server/v5/docs/server/:splat    301!

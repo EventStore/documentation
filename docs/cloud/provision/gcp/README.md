@@ -97,12 +97,12 @@ The network page provide us enough details to start the peering process. In Even
 
 Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC.
 
-| Peering form        | GCP VPC screen                                       |
-| :------------------ | :--------------------------------------------------- |
+| Peering form | GCP VPC screen |
+| :----------- | :------------- |
 | Peer GCP Project ID | GCP project ID, found in the project selection popup |
-| Peer Network Name   | The VPC name                                         |
-| GCP region          | VPC subnet region, cannot be changed                 |
-| Peer address space  | VPC subnet address range                             |
+| Peer Network Name | The VPC name |
+| GCP region | VPC subnet region, cannot be changed |
+| Peer address space | VPC subnet address range |
 
 For our example, here is the complete form:
 
@@ -122,8 +122,8 @@ When the peering is initiated, get back to Google Cloud console and navigate to 
 
 | Event Store Cloud | GCP connection peering |
 | :---------------- | :--------------------- |
-| Peer Project ID   | Project ID             |
-| Peer Network Name | VPC network name       |
+| Peer Project ID | Project ID |
+| Peer Network Name | VPC network name |
 
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 

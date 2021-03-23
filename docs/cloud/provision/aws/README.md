@@ -101,12 +101,12 @@ Then, give the new peering a name and select the network created earlier.
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
 
-| Peering form        | AWS VPC screen                |
-| :------------------ | :---------------------------- |
-| Peer AWS Account ID | Owner ID                      |
-| Peer VPC ID         | VPC ID                        |
-| AWS region          | VPC region, cannot be changed |
-| Peer address space  | IPv4 CIDR                     |
+| Peering form | AWS VPC screen |
+| :----------- | :------------- |
+| Peer AWS Account ID | Owner ID |
+| Peer VPC ID | VPC ID |
+| AWS region | VPC region, cannot be changed |
+| Peer address space | IPv4 CIDR |
 
 For our example, here is the complete form:
 
