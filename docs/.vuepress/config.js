@@ -200,6 +200,7 @@ module.exports = {
                         "/cloud/faq/sla.md",
                         "/cloud/faq/support.md",
                         "/cloud/faq/troubleshooting.md",
+                        "/cloud/faq/operational-characteristics.md"
 
                     ]
                 }
