@@ -11,7 +11,7 @@ The schedule format used by the Event Store Cloud CLI tool and API is a simplifi
 In the future we may support more cron features, but for now though there are the following restrictions:
 
 * the third and fourth fields (representing the day of month and month) accept nothing but wildcards ("*")
-* the first field, minute, may be a wildcard ("*"), a number between 0 and 59 (inclusive), or a "rate" between (written as the number divided by a wildcard, like "15/*") (note: scheduled backups do not currently support frequencies of less than 60 minutes)
+* the first field, minute, may be a wildcard ("*"), a number between 0 and 59 (inclusive), or a "rate" between (written as a wildcard divided by a number, like "*/15") (note: scheduled backups do not currently support frequencies of less than 60 minutes)
 * the second field, hour, works like the first but the number must be between 0 and 23 (inclusive)
 * the fifth and final field works like the first two but the number must be between 0 and 7 (inclusive)
 
