@@ -39,25 +39,9 @@ export default ({Vue, options, router, siteData}) => {
     router.addRoutes([
         {
             path: "/latest.html",
-            redirect: "/server/v20/server/introduction/"
+            redirect: "/server/v21.2/docs/introduction/"
             //`/${siteData.themeConfig.versions.latest}/introduction/`
-        },
-        {
-            path: "/server/generated/21.2/docs/*",
-            redirect: "/server/v21.2/docs/:splat"
-        },
-        {
-            path: "/server/v20/server/*",
-            redirect: "/server/v20/docs/:splat"
-        },
-        {
-            path: "/server/v5/server/*",
-            redirect: "/server/v5/docs/server/:splat"
-        },
-        {
-            path: "/server/5.0.8/server/*",
-            redirect: "/server/v5/docs/server/:splat"
-        },
+        }
     ]);
 
     gtm.addGtm(router, Vue, siteData.themeConfig.gtm);

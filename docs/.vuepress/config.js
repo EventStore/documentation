@@ -55,7 +55,7 @@ module.exports = {
         docsRepo: "EventStore/documentation",
         // if your docs are not at the root of the repo:
         docsDir: 'docs',
-        editLinks: true,
+        editLinks: false,
         editLinkText: "Help us improve this page!",
         versions:             {
             latest:   versioning.versions.latest,
