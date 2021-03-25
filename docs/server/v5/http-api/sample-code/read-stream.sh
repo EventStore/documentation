@@ -28,6 +28,7 @@ Keep-Alive: timeout=15,max=100
   "headOfStream": true,
   "selfUrl": "http://127.0.0.1:2113/streams/newstream",
   "eTag": "0;-2060438500",
+#region links
   "links": [
     {
       "uri": "http://127.0.0.1:2113/streams/newstream",
@@ -46,6 +47,7 @@ Keep-Alive: timeout=15,max=100
       "relation": "metadata"
     }
   ],
+#endregion links
   "entries": [
     {
       "title": "0@newstream",

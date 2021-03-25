@@ -32,16 +32,18 @@ The non-atom version of the event has fewer details about the event.
 
 :::: code-group
 ::: code Request
-<<< @/docs/server/v5/http-api/sample-code/read-event.sh#curl
+
+<<< @/docs/server/v5/http-api/sample-code/read-event.sh
 :::
 ::: code Response
-<<< @/docs/server/v5/http-api/sample-code/read-event.sh#response
+
+<<< @/docs/server/v5/http-api/sample-code/read-event.json
 :::
 ::::
 
 ## Feed paging
 
-The next step in understanding how to read a stream is the `first`/`last`/`previous`/`next` links within a stream. EventStoreDB supplies these links so you can read through a stream, and they follow the pattern defined in [RFC 5005](http://tools.ietf.org/html/rfc5005).
+The next step in understanding how to read a stream is the `first`/`last`/`previous`/`next` links within a stream. EventStoreDB supplies these links, so you can read through a stream, and they follow the pattern defined in [RFC 5005](http://tools.ietf.org/html/rfc5005).
 
 In the example above the server returned the following `links` as part of its result:
 
@@ -56,9 +58,11 @@ If you want to follow a live stream, then you keep following the `previous` link
 
 :::: code-group
 ::: code Request
+
 <<< @/docs/server/v5/http-api/sample-code/read-stream-forwards.sh#curl
 :::
 ::: code Response
+
 <<< @/docs/server/v5/http-api/sample-code/read-stream-forwards.sh#response
 :::
 ::::
@@ -71,9 +75,11 @@ Let's now try an example with more than a single page. First create the multiple
 
 :::: code-group
 ::: code Request
+
 <<< @/docs/server/v5/http-api/sample-code/append-paging-events.sh#curl
 :::
 ::: code Response
+
 <<< @/docs/server/v5/http-api/sample-code/append-paging-events.sh#response
 :::
 ::::
@@ -82,9 +88,11 @@ If you request the stream of events, you see a series of links above the events:
 
 :::: code-group
 ::: code Request
+
 <<< @/docs/server/v5/http-api/sample-code/request-paging-events.sh#curl
 :::
 ::: code Response
+
 <<< @/docs/server/v5/http-api/sample-code/request-paging-events.sh#response
 :::
 ::::
