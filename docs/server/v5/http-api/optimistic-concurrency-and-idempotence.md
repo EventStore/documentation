@@ -26,8 +26,8 @@ Date: Thu, 06 Sep 2012 19:49:37 GMT
 Content-Length: 107
 Keep-Alive: timeout=15,max=100
 ```
+:::
 ::::
-:::::
 
 Assuming you were posting to a new stream you would get the event appended once (and the stream created). The second event returns as the first but not write again.
 
