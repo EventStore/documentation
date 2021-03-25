@@ -9,7 +9,7 @@
     "markdown-it-container": "^3.0.0",
     "simple-git": "^2.31.0",
     "swagger-markdown": "^1.2.0",
-    "vuepress": "^1.8.0",
+    "vuepress": "^1.8.2",
     "vuepress-plugin-check-md": "^0.0.2",
     "vuepress-plugin-element-tabs": "^0.2.8",
     "webpack-shell-plugin": "^0.5.0"
