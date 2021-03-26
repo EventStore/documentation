@@ -51,7 +51,7 @@ The following call will create a new scheduled backup of the cluster with ID `c1
 esc orchestrate jobs create  --description 'My Hourly Backup' --schedule '0 */1 * * *' scheduled-backup --description '{cluster} Hourly Backup {datetime:RFC3339}' --max-backup-count 2 --cluster-id c196ogto0aeqohe3ommq
 ```
 
-For details on the scheduled field, see [Job Schedules](README.md#Job Schedules).
+For details on the scheduled field, see [Job Schedules](./README.md).
 
 To list current jobs, run:
 
