@@ -42,7 +42,7 @@ module.exports = {
 	            after:  `</div>`,
 	        },
         ],
-        require("./plugins/remove_generated_from_url.js")
+        // require("./plugins/remove_generated_from_url.js")
     ],
     extraWatchFiles: [
         "**/sidebar.js",
