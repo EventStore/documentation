@@ -160,9 +160,13 @@ module.exports = {
                 {
                     title:      "Operations",
                     collapsable: true,
-                    path:        "/clouds/operations",
+                    path:        "/cloud/ops",
                     children:    [
-                        "/cloud/ops/backup.md",
+                        "/cloud/ops/",
+                        "/cloud/ops/manual_backups.md",
+                        "/cloud/ops/scheduled_backups.md",
+                        "/cloud/ops/restore.md",
+                        
                     ]
                 },
                 {
