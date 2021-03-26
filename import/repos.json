@@ -10,15 +10,15 @@
     "branches": [
       {
         "version": "v21.2",
-        "name": "docs/v21.2"
+        "name": "release/oss-v21.2"
       },
       {
         "version": "v20.10",
-        "name": "docs/v20.10"
+        "name": "release/oss-v20.10"
       },
       {
         "version": "v5",
-        "name": "docs/v5"
+        "name": "release/oss-v5"
       }
     ]
   },
