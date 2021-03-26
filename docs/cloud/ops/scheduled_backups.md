@@ -6,8 +6,9 @@ Scheduled backup jobs can be run as frequently as once an hour. After each succe
 
 ::: note
 Multiple scheduled backups can target the same cluster, though if schedules overlap one of the jobs will fail as the cluster will already be locked.
+::: note
 For example, you could create one scheduled backup that executes every hour, along with a second scheduled backup that executes once a week. Backups from these scheduled jobs are pruned independently regardless of their age, so if both saved a maximum of four backups, the oldest backup from the weekly job might be close to a month old, while the hourly job's backups would never be older than a fraction of a day.
-::: 
+
 
 ## Console
 
