@@ -1,8 +1,8 @@
 # Event Store Cloud Jobs
 
-The Event Store Cloud runs scheduled jobs on the user's behalf. All of these jobs consist of a human readable description and a schedule.
+The Event Store Cloud runs scheduled jobs on the user's behalf. All of these jobs consist of a human-readable description and a schedule.
 
-Currently the following jobs are supported: 
+Currently, the following jobs are supported: 
 * [Scheduled backups](./scheduled_backups.md)
 
 ## Job Schedules
@@ -38,8 +38,7 @@ The supported subset is:
 ```
 
 ::: note
-Scheduled backups have a minimum frequency of 60 minutes.
-Currently it is not possible to schedule backups more frequently.
+Scheduled backups have a minimum frequency of 60 minutes. Currently, it is not possible to schedule backups more frequently.
 :::
 
 ### Examples:
