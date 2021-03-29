@@ -158,6 +158,18 @@ module.exports = {
                     ]
                 },
                 {
+                    title:      "Operations",
+                    collapsable: true,
+                    path:        "/cloud/ops",
+                    children:    [
+                        "/cloud/ops/",
+                        "/cloud/ops/manual_backups.md",
+                        "/cloud/ops/scheduled_backups.md",
+                        "/cloud/ops/restore.md",
+                        
+                    ]
+                },
+                {
                     title:       "Using cloud clusters",
                     collapsable: true,
                     path:        "/cloud/use/",
