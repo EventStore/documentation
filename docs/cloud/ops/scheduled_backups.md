@@ -10,16 +10,15 @@ Multiple scheduled backups can target the same cluster. However, if schedules ov
 
 For example, you could create one scheduled backup that executes every hour, along with a second scheduled backup that executes once a week. Backups from these scheduled jobs are pruned independently regardless of their age, so if both saved a maximum of four backups, the oldest backup from the weekly job might be close to a month old, while the hourly job's backups would never be older than a fraction of a day.
 
-
 ## Using the Cloud Console
 
-To create a scheduled backup in the console, navigate to the clusters view and click on the create backup icon and then on `Create backup schedule`.
+To create a scheduled backup in the console, navigate to the clusters view and click on the _create backup_ icon and then on `Create backup schedule`.
 
 ::: card
 ![take backup](./images/take_backup.png)
 :::
 
-Choose a description, the frequency as well as the number of backups to keep before pruning. Finally click the `Create backup schedule` button.
+Choose a description, the frequency as well as the number of backups to keep before pruning. Finally, click the `Create backup schedule` button.
 
 ::: card
 ![take scheduled backup](./images/take_scheduled_backup.png)

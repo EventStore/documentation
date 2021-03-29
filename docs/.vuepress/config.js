@@ -38,7 +38,7 @@ module.exports = {
         [
             'vuepress-plugin-container', {
 	            type:   "note",
-	            before: title => `<div class="custom-block note d" title="${title}">`,
+	            before: _ => `<div class="custom-block note">`,
 	            after:  `</div>`,
 	        },
         ],
@@ -166,7 +166,7 @@ module.exports = {
                         "/cloud/ops/manual_backups.md",
                         "/cloud/ops/scheduled_backups.md",
                         "/cloud/ops/restore.md",
-                        
+
                     ]
                 },
                 {
@@ -177,16 +177,16 @@ module.exports = {
                         "/cloud/use/",
                         "/cloud/use/tailscale.md"
                     ]
-                }, 
+                },
                 {
                     title:       "Automation",
                     collapsable: true,
                     path:        "/cloud/automation/",
                     children:    [
-                        "/cloud/automation/", 
+                        "/cloud/automation/",
                         "/cloud/automation/terraform.md"
                     ]
-                    
+
                 },
                 {
                     title:       "FAQ",
@@ -200,10 +200,10 @@ module.exports = {
                         "/cloud/faq/sla.md",
                         "/cloud/faq/support.md",
                         "/cloud/faq/troubleshooting.md",
-                        
+
                     ]
                 }
-                
+
             ]
         },
         algolia: {

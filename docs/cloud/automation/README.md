@@ -1,12 +1,10 @@
 # Cloud automation
 
-In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider][terraform_registry], 
-as well as a [CLI tool][esc_cli github] to automate any operation accessible from the console. 
+In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider][terraform_registry], as well as a [CLI tool][esc_cli github] to automate any operation accessible from the console. 
 
 ## Licence
 
-The Event Store Cloud Terraform provider is released under the [Mozilla Public License version 2][mpl 2.0], like most Terraform
-providers.
+The Event Store Cloud Terraform provider is released under the [Mozilla Public License version 2][mpl 2.0], like most Terraform providers.
 
 [terraform_registry]: [https://registry.terraform.io/providers/EventStore/eventstorecloud/latest]
 [esc]: https://eventstore.com/event-store-cloud/
