@@ -15,7 +15,7 @@ The supported subset is:
     * a wildcard `*`
     * a number between `0` and `59` (inclusive). 
     * a rate, written as a wildcard divided by a number. E.g:  `*/15`
-* fro the second field, hour:
+* For the second field, hour:
     * a wildcard `*`
     * a number must be between `0` and `23` (inclusive)
     * a rate, written as a wildcard divided by a number. E.g:  `*/1`
