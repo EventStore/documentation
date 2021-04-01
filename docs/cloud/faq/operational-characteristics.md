@@ -30,4 +30,4 @@ In the event of a failure, single node topology clusters may become unavailable 
 Multi-node, multi-zone topology clusters should sustain a single availability failure.
 
 ### Backups
-Clusters and single nodes are backed up by volume snapshots at the selected cloud provider. These snapshots are stored within fault tolerant object storage for the provisioned region. It is possible that access to backups may be impacted temporarily.
+Clusters and single nodes are backed up by volume snapshots at the selected cloud provider. These snapshots are stored within fault tolerant object storage for the provisioned region. It is possible that access to backups may be impacted temporarily. There is also the potential that scheduled backups will not run for the duration of the outage.
