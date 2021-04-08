@@ -2,8 +2,6 @@
 home: true
 heroText: EventStoreDB Documentation
 tagline: The stream database built for Event Sourcing
-extraText: Click here for EventStoreDB v5 docs
-extraLink: /v5/
 actions:
 - text: Database server →
   link: /latest.html
