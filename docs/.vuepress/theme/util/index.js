@@ -200,16 +200,9 @@ export function resolveMatchingConfig (regularPath, config) {
   const regularPathWithSlash = ensureEndingSlash(regularPath)
 
   const matchingConfig = Object.entries(config)
-    .filter(([base, _]) => regularPathWithSlash.indexOf(encodeURI(base)) === 0)
-    .sort(([base, _value], [nextBase, _nextValue]) => {
-      return nextBase.length - base.length;
-    })
-    .map(([base, value]) => {
-      return {
-        base,
-        config: value
-      }
-    })[0]
+    .map(([base, config]) => ({ base, config }))
+    .sort(({ base: a }, { base: b }) => b.length - a.length)
+    .find(({ base }) => regularPathWithSlash.includes(base));
 
   return matchingConfig || {}
 }
