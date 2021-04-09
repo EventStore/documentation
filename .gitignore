@@ -328,7 +328,6 @@ tools
 exclusive.lck
 *.dll
 *.exe
-.vscode
 version.txt
 /public/
 generated
