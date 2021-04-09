@@ -197,15 +197,21 @@ export function resolveMatchingConfig (regularPath, config) {
       config: config
     }
   }
-  for (const base in config) {
-    if (ensureEndingSlash(regularPath).indexOf(encodeURI(base)) === 0) {
+  const regularPathWithSlash = ensureEndingSlash(regularPath)
+
+  const matchingConfig = Object.entries(config)
+    .filter(([base, _]) => regularPathWithSlash.indexOf(encodeURI(base)) === 0)
+    .sort(([base, _value], [nextBase, _nextValue]) => {
+      return nextBase.length - base.length;
+    })
+    .map(([base, value]) => {
       return {
         base,
-        config: config[base]
+        config: value
       }
-    }
-  }
-  return {}
+    })[0]
+
+  return matchingConfig || {}
 }
 
 function ensureEndingSlash (path) {

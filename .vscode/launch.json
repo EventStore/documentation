@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug VuePress",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+            "run-script",
+            "debug"
+        ],
+        "port": 9229
+    }
+  ]
+}
