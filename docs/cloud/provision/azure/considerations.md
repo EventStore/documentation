@@ -1,6 +1,6 @@
 # Considerations for Microsoft Azure
 
-Due to differences between Microsoft Azure and other cloud providers, the provisioning process in Event Store Cloud is different from AWS and GCP. We’ve made a list of these differences here in order to help you make an informed decision about Cloud providers.
+Due to differences between Microsoft Azure and other cloud providers, the provisioning process in Event Store Cloud is different from AWS and GCP. We've made a list of these differences here in order to help you make an informed decision about Cloud providers.
 
 ## Network peering
 
@@ -24,6 +24,19 @@ During our tests and usage, AWS and GCP have proved to be more reliable support 
 
 At the moment, you can deploy EventStoreDB clusters only in regions with three or more availability zones, and many Azure regions do not have the minimum number of availability zones to support the deployment of managed EventStoreDB clusters. In the future, we plan to allow the deployment of single node topologies to all regions. We'll also introduce a new topology that allows cluster deployments to a single availability zone.
 
+Currently, we support following Azure regions:
+- Australia East,
+- Canada Central,
+- Central US,
+- East US,
+- East US 2,
+- France Central,
+- Japan East,
+- North Europe,
+- Southeast Asia,
+- UK South,
+- West Europe,
+- West US 2.
 
 ## Pricing
 
