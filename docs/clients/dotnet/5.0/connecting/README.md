@@ -20,14 +20,16 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for [connecting to a server](connecting-to-a-server.md), [reading events](../reading/README.md) and [appending to a stream](../appending/README.md)
 
-:::: code-group
-::: code JSON format event
+<xode-group>
+<xode-block title="JSON format event">
+
 <<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/QuickStartJsonFormat.cs
-:::
-::: code Plain-text format event
+</xode-block>
+<xode-block title="Plain-text format event">
+
 <<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/QuickStartPlainFormat.cs
-:::
-::::
+</xode-block>
+</xode-group>
 
 ::: tip
 We recommended to use the JSON format for data and metadata.

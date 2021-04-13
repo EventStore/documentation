@@ -42,14 +42,16 @@ Auto-compatibility mode does not enable Server Certificate Validation by default
 
 ### Connection Settings:
 
-:::: code-group
-::: code Using Cluster DNS Discovery
+<xode-group>
+<xode-block title="Using Cluster DNS Discovery">
+
 <<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/CompatibilityMode.cs#AutoCompatibilityWithClusterDns
-:::
-::: code Using Gossip Seeds
+</xode-block>
+<xode-block title="Using Gossip Seeds">
+
 <<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/CompatibilityMode.cs#AutoCompatibilityWithGossipSeeds
-:::
-::::
+</xode-block>
+</xode-group>
 
 ## v20 Compatibility Mode
 
