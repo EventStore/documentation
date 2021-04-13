@@ -14,6 +14,7 @@ module.exports = [
             "connecting/",
             "connecting/options.md",
             "connecting/connection-string.md",
+            "connecting/compatibility-mode.md",
         ]
     },
     {
