@@ -72,7 +72,7 @@ By default information about connection, disconnection and errors are logged, ho
 
 ### User credentials
 
-EventStoreDB supports [Access Control Lists](../../../../server/5.0.9/server/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+EventStoreDB supports [Access Control Lists](/server/generated/v5/docs/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -89,7 +89,7 @@ settingsBuilder.SetDefaultUserCredentials(credentials);
 
 The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](../../../../server/5.0.9/server/security/security.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](/server/generated/v5/docs/security/README.md).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)
