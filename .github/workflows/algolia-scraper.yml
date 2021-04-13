@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - master
-  check_suite:
-    types: [completed]
   workflow_dispatch:
 jobs:
   scrape:

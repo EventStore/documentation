@@ -1,4 +1,7 @@
 {
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
+  "files.exclude": {
+    "node_modules/": true,
+  },
 }
