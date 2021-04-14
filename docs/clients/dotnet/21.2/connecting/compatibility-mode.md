@@ -4,8 +4,8 @@ Compatibility Mode was added in v5.0.10 of the client to set certain configurati
 
 At the moment, the v5 client supports two modes:
 
-- "20" to allow connection to Event Store servers v20.6 and above, including v21.2 and above.
-- "auto" to allow discovering whether the Event Store server is a v5 or v20 server.
+- "5" to allow connection to Event Store servers v5.0.10.
+- "auto" to allow discovering whether the Event Store server is a v5 or v20 (or above) server.
 
 ## Auto-Compatibility Mode
 
@@ -45,22 +45,22 @@ Auto-compatibility mode does not enable Server Certificate Validation by default
 <xode-group>
 <xode-block title="Using Cluster DNS Discovery">
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/CompatibilityMode.cs#AutoCompatibilityWithClusterDns
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/CompatibilityMode.cs#AutoCompatibilityWithClusterDns
 </xode-block>
 <xode-block title="Using Gossip Seeds">
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/CompatibilityMode.cs#AutoCompatibilityWithGossipSeeds
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/CompatibilityMode.cs#AutoCompatibilityWithGossipSeeds
 </xode-block>
 </xode-group>
 
-## v20 Compatibility Mode
+## v5 Compatibility Mode
 
-The v20 Compatibility Mode allows the v5 client to connect to a cluster running in ES Cloud.
+The v5 Compatibility Mode allows the v21.2 client to connect to a cluster running in ES Cloud.
 
-You can set this with `CompatibilityMode=20` in the connection string, or with `.SetCompatibilityMode("20")` in the connection settings.
+You can set this with `CompatibilityMode=5` in the connection string, or with `.SetCompatibilityMode("5")` in the connection settings.
 
 For example:
 
 ```csharp
-var connectionString = $"ConnectTo=discover://{CloudClusterId}.mesdb.eventstore.cloud:2113?UseSslConnection=true;ValidateServer=true;CompatibilityMode=20;"
+var connectionString = $"ConnectTo=discover://{CloudClusterId}.mesdb.eventstore.cloud:2113?UseSslConnection=true;ValidateServer=true;CompatibilityMode=5;"
 ```
