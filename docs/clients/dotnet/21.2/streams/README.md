@@ -39,11 +39,11 @@ Parameters:
 
 Example single event in single write:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/AppendStreamEvents.cs#AppendOneEvent
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/AppendStreamEvents.cs#AppendOneEvent
 
 Example list of events in single write:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/AppendStreamEvents.cs#CreateSampleData
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/AppendStreamEvents.cs#CreateSampleData
 
 ## Using a transaction to append to a stream across multiple writes
 
@@ -77,7 +77,7 @@ void Rollback()
 
 Example:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/AppendStreamEvents.cs#CreateSampleData
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/AppendStreamEvents.cs#CreateSampleData
 
 events are appended in the following order: `3, 1, 2, 4, 5`.
 

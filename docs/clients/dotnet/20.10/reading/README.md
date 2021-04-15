@@ -16,7 +16,7 @@ Task<EventReadResult> ReadEventAsync(string stream, long eventNumber, bool resol
 
 Example:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Program.cs#ReadOneEvent
+<<< @/docs/clients/dotnet/20.10/sample-code/Program.cs#ReadOneEvent
 
 ### Read a specific stream forwards
 

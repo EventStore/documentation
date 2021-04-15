@@ -4,11 +4,11 @@
 
 To set up a connection as above, provide gossip seeds to the connection. The client then uses the gossip seeds to begin gossiping information about the cluster.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Server/ConnectClusterGossipSeeds.cs
+<<< @/docs/clients/dotnet/20.10/sample-code/Server/ConnectClusterGossipSeeds.cs
 
 As in the example above, you can also use DNS to avoid manually specifying the seeds. You add the nodes to a DNS record and then specify that DNS entry to the connection to locate nodes.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Server/ConnectClusterGossipDns.cs
+<<< @/docs/clients/dotnet/20.10/sample-code/Server/ConnectClusterGossipDns.cs
 
 The connection automatically reconnects during node failures. You can control this behaviour with options on the [`ConnectionSettings`](xref:EventStore.ClientAPI.ConnectionSettings) such as limiting retry attempts or frequency. The connection and durable subscription even manage a subscription during node failures, you will not receive duplicated messages over your durable subscription.
 

@@ -1,8 +1,8 @@
 # Compatibility Mode
 
-Compatibility Mode was added in v5.0.10 of the client to set certain configuration options depending on the Event Store version the client is connecting to.
+Compatibility Mode was added in v21.2 of the client to set certain configuration options depending on the Event Store version the client is connecting to.
 
-At the moment, the v5 client supports two modes:
+At the moment, the v21.2 client supports two modes:
 
 - "5" to allow connection to Event Store servers v5.0.10.
 - "auto" to allow discovering whether the Event Store server is a v5 or v20 (or above) server.

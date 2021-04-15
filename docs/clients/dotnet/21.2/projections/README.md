@@ -1,29 +1,29 @@
 # Projections
 
-This page provides an example of using [user-defined projections](/server/generated/v20.10/docs/projections/README.md#types-of-projections) in your application.
+This page provides an example of using [user-defined projections](/server/generated/v21.2/docs/projections/README.md#types-of-projections) in your application.
 
 ## Adding sample data
 
 Download the following files that contain sample data used throughout this step of the getting started guide.
 
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/server/generated/v21.2/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/server/generated/v21.2/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/server/generated/v21.2/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/server/generated/v21.2/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
 
 Add the sample data to four different streams:
 First, we need a function to read JSON files and construct the list of `EventData` instances:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ReadEventsFunction
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ReadEventsFunction
 
 Then, we can use this function and push events to EventStoreDB:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#SeedEvents
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#SeedEvents
 
 ## Creating your first projection
 
 ::: tip Next steps
-Read [this guide](/server/generated/v20.10/docs/projections/user-defined-projections.md) to find out more about the user defined projection's API.
+Read [this guide](/server/generated/v21.2/docs/projections/user-defined-projections.md) to find out more about the user defined projection's API.
 :::
 
 The projection counts the number of 'XBox One S's that customers added to their shopping carts.
@@ -34,24 +34,24 @@ The second part of a projection is a set of filters. There is a special filter c
 
 Here is the projection code:
 
-<<< @/docs/server/generated/v20.10/samples/http-api/xbox-one-s-counter.json
+<<< @/docs/server/generated/v21.2/samples/http-api/xbox-one-s-counter.json
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running. 
 
 You can send the projection code as text along the other parameters, using the `ProjectionsManager` instance:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#CreateUserProjection
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#CreateUserProjection
 
 ::: tip Next steps
-[Read here](projections-management.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/server/generated/v20.10/docs/projections/README.md) for details on projection syntax.
+[Read here](projections-management.md) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/server/generated/v21.2/docs/projections/README.md) for details on projection syntax.
 :::
 
 ## Querying for the state of the projection
 
 Now the projection is running, you can query the state of the projection. As this projection has a single state, query it with the following request:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#GetProjectionState
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#GetProjectionState
 
 ## Appending to streams from projections
 
@@ -63,41 +63,41 @@ Update the projection to output the state to a stream by calling the `outputStat
 
 Below is the updated projection:
 
-<<< @/docs/server/generated/v20.10/samples/http-api/xbox-one-s-counter-outputState.js
+<<< @/docs/server/generated/v21.2/samples/http-api/xbox-one-s-counter-outputState.js
 
 To update the projection, edit the projection definition with the following request:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#UpdateUserProjection
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#UpdateUserProjection
 
 Then reset the projection you created above:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ResetUserProjection
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ResetUserProjection
 
 You should get a response similar to the one below:
 
 You can now read the events in the result stream by issuing a read request.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#QueryUpdatedProjection
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#QueryUpdatedProjection
 
 ## Configure projection properties
 
 You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream:
 
-<<< @/docs/server/generated/v20.10/samples/http-api/projections/update-projection-options.js{2}
+<<< @/docs/server/generated/v21.2/samples/http-api/projections/update-projection-options.js{2}
 
 Then send the update to the projection:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#UpdateProjectionProperties
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#UpdateProjectionProperties
 
 ::: tip
-You can find all the options available in the [user defined projections guide](/server/generated/v20.10/docs/projections/user-defined-projections.md).
+You can find all the options available in the [user defined projections guide](/server/generated/v21.2/docs/projections/user-defined-projections.md).
 :::
 
 Now you can read the result as above, but use the new stream name:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ReadUpdatedProjectionStream
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ReadUpdatedProjectionStream
 
 ## The number of items per shopping cart
 
@@ -105,8 +105,8 @@ The example in this step so far relied on a global state for the projection, but
 
 EventStoreDB has a built-in `$by_category` projection that lets you select events from a particular list of streams. Enable this projection with the following command.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#EnableCategoryProjection
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#ProjectionsManager
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#EnableCategoryProjection
 
 The projection links events from existing streams to new streams by splitting the stream name by a separator. You can configure the projection to specify the position of where to split the stream `id` and provide a separator.
 
@@ -122,18 +122,18 @@ You want to define a projection that produces a count per stream for a category,
 
 Below is the projection:
 
-<<< @/docs//server/generated/v20.10/samples/http-api/projections/shopping-cart-counter.js
+<<< @/docs//server/generated/v21.2/samples/http-api/projections/shopping-cart-counter.js
 
 Create the projection with the following request:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#CreatePartitionedProjection
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#CreatePartitionedProjection
 
 #### Querying for the state of the projection by partition
 
 Querying for the state of the projection is different due to the partitioning of the projection. You have to specify the partition and the name of the stream.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/GettingStarted/UserProjections.cs#GetPartitionedProjectionState
+<<< @/docs/clients/dotnet/21.2/sample-code/GettingStarted/UserProjections.cs#GetPartitionedProjectionState
 
 The server then returns the state for the partition:
 
-<<< @/docs//server/generated/v20.10/samples/http-api/projections/read-state-partition.json
+<<< @/docs//server/generated/v21.2/samples/http-api/projections/read-state-partition.json

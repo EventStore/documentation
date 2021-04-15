@@ -20,7 +20,7 @@ The EventStoreDB .NET client includes helper methods that use the HTTP API to al
 
 ### Create UsersManager instance
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/UsersCreateUsersManager.cs#UserManager
+<<< @/docs/clients/dotnet/20.10/sample-code/DotNetClient/UsersCreateUsersManager.cs#UserManager
 
 Resolving the host name may be especially useful if the EventStoreDB Admin UI is not available under loopback address e.g., when container orchestrator assign dynamic DNS based on service name.
 
@@ -86,7 +86,7 @@ public Task UpdateUserAsync(string login, string fullName, string[] groups, User
 
 Although `UsersManager` does not have separate methods for idempotent adding/removing user groups it can be extended:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/UsersManagerExtensions.cs#Extensions
+<<< @/docs/clients/dotnet/20.10/sample-code/DotNetClient/UsersManagerExtensions.cs#Extensions
 
 ### Reset user password
 
