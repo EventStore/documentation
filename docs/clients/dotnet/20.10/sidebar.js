@@ -68,13 +68,6 @@ module.exports = [
             "security/acl.md"
         ]
     },
-    {
-        title: "Embedded",
-        collapsable: true,
-        children: [
-            "embedded/"
-        ]
-    },
     // {
     //     title: "Examples",
     //     collapsable: true,
