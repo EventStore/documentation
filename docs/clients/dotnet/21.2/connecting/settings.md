@@ -1,6 +1,6 @@
-# Connection options
+# Connection settings
 
-The `EventStoreConnection` class uses the static `Create` methods to create a new connection. All method overloads allow you to optionally specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
+The `EventStoreConnection` class uses the static `Create` methods to create a new connection. All method overloads allow you to settingally specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
 
 Instances of `ConnectionSettings` are created using a fluent builder class:
 
@@ -8,7 +8,7 @@ Instances of `ConnectionSettings` are created using a fluent builder class:
 var settingsBuilder = ConnectionSettings.Create();
 ```
 
-This creates an instance of `ConnectionSettingsBuilder` with default options. You can override these by chaining the additional builder methods described below. When you have a builder with all the settings configured, use the `Build` method to create the `ConnectionSettings` instance and then use it to create a connection:
+This creates an instance of `ConnectionSettingsBuilder` with default settings. You can override these by chaining the additional builder methods described below. When you have a builder with all the settings configured, use the `Build` method to create the `ConnectionSettings` instance and then use it to create a connection:
 
 ```csharp
 var settings = settingsBuilder.Build();
@@ -59,7 +59,7 @@ With the URI based mechanism you can pass a DNS name and the client will resolve
 
 The .NET client can log to different destinations. By default logging is disabled.
 
-<!-- TODO: Moved, to check. Actually missing options. -->
+<!-- TODO: Moved, to check. Actually missing settings. -->
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -72,7 +72,7 @@ By default information about connection, disconnection and errors are logged, ho
 
 ### User credentials
 
-EventStoreDB supports [Access Control Lists](/server/generated/v5/docs/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+EventStoreDB supports [Access Control Lists](/server/generated/v21.2/docs/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -89,7 +89,7 @@ settingsBuilder.SetDefaultUserCredentials(credentials);
 
 The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](/server/generated/v5/docs/security/README.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](/server/generated/v21.2/docs/security/README.md).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)
@@ -164,3 +164,24 @@ var connection = EventStoreConnection.Create(settings);
 | `EventHandler<ClientClosedEventArgs> Closed` | Fired when an `IEventStoreConnection` is closed either using the `Close` method or when reconnection limits are reached without a successful connection being established. |
 | `EventHandler<ClientErrorEventArgs> ErrorOccurred` | Fired when an error is thrown on an `IEventStoreConnection`.|
 | `EventHandler<ClientAuthenticationFailedEventArgs> AuthenticationFailed` | Fired when a client fails to authenticate to an EventStoreDB server. |
+
+## Compatibility Mode
+
+Enables the client to connect to either server configuration without needing to change the client's connection settings. Read more in [Compatibility Mode documentation](./compatibility-mode.md).
+
+| Builder Method | Description |
+|:---------------|:------------|
+| `SetCompatibilityMode(string value)` | Specifies if the client should run in a specific version compatibility mode. Set `"auto"` for Auto-Compatibility Mode or `"5"` for v5 Compatibility Mode |
+### Auto-Compatibility Mode
+
+Auto-Compatibility mode was added to make the upgrade from an insecure v5 cluster to a secure v20+ cluster easier by allowing the client to connect to either server configuration without needing to change the client's connection settings.
+
+Auto-Compatibility Mode is supported when connecting with Gossip Seeds or Cluster DNS Discovery.
+
+You can enable auto-compatibility mode with `.SetCompatibilityMode("auto")` in the connection settings.
+
+### v5 Compatibility Mode
+
+The v5 Compatibility Mode allows the v21.2 client to connect to a v5 cluster.
+
+You can set this with with `.SetCompatibilityMode("5")` in the connection settings.

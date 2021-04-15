@@ -37,6 +37,7 @@ You can set the following values using the connection string:
 | MaxDiscoverAttempts | Integer | The maximum number of attempts to try to discover the cluster |
 | GossipTimeout | Integer (milliseconds) | The amount of time before timing out a gossip response |
 | VerboseLogging | True/false | Enables verbose logging |
+| Compatibility Mode | auto, 5 | Enables the client to connect to either server configuration without needing to change the client's connection settings |
 
 You can specify only one of `ConnectTo`, `ClusterDns` and `GossipSeeds`. Also, you'd only need to define `ExternalGossipPort` if you connect to the cluster using the DNS name (`ClusterDns`). The gossip port is usually the external HTTP port. When connecting to the cluster using `GossipSeeds`, you need to specify the gossip port for each node address in the list of seeds.
 

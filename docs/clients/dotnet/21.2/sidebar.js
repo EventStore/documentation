@@ -12,7 +12,7 @@ module.exports = [
         collapsable: true,
         children: [
             "connecting/",
-            "connecting/options.md",
+            "connecting/settings.md",
             "connecting/connection-string.md",
             "connecting/compatibility-mode.md",
         ]
