@@ -1,6 +1,6 @@
 # Compatibility Mode
 
-Compatibility Mode was added in v5.0.10 and v21.2.0 of the client to set certain configuration options depending on the Event Store version the client is connecting to. It allowa discovering whether the Event Store server is a v5 or v20 server.
+Compatibility Mode was added in v5.0.10 and v21.2.0 of the client to set certain configuration options depending on the Event Store version the client is connecting to. It allows discovering whether the Event Store server is a v5 or v20 server.
 
 ::: warning
 Changes were not backported to the v20.10 TCP Client version. To use `Compatibility Mode` you have to upgrade to v21.2.0. It's fully compatible with v20.10.0. Check the details in the [TCP Compatibility Mode client v21.2 docs](/clients/dotnet/21.2/connecting/compatibility-mode.md).
