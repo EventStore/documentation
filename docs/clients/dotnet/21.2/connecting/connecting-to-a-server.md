@@ -4,11 +4,11 @@
 
 To set up a connection as above, provide gossip seeds to the connection. The client then uses the gossip seeds to begin gossiping information about the cluster.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Server/ConnectClusterGossipSeeds.cs
+<<< @/docs/clients/dotnet/21.2/sample-code/Server/ConnectClusterGossipSeeds.cs
 
 As in the example above, you can also use DNS to avoid manually specifying the seeds. You add the nodes to a DNS record and then specify that DNS entry to the connection to locate nodes.
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Server/ConnectClusterGossipDns.cs
+<<< @/docs/clients/dotnet/21.2/sample-code/Server/ConnectClusterGossipDns.cs
 
 The connection automatically reconnects during node failures. You can control this behaviour with options on the [`ConnectionSettings`](xref:EventStore.ClientAPI.ConnectionSettings) such as limiting retry attempts or frequency. The connection and durable subscription even manage a subscription during node failures, you will not receive duplicated messages over your durable subscription.
 
@@ -159,7 +159,7 @@ By default information about connection, disconnection and errors are logged, ho
 
 ### User credentials
 
-EventStoreDB supports [Access Control Lists](/server/generated/v20.10/docs/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+EventStoreDB supports [Access Control Lists](/server/generated/v21.2/docs/security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -175,7 +175,7 @@ UserCredentials credentials = new UserCredentials("username","password");
 
 The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](/server/generated/v20.10/docs/security/).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](/server/generated/v21.2/docs/security/).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)

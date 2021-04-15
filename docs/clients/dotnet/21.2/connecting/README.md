@@ -23,11 +23,11 @@ The code below shows how to connect to an EventStoreDB server, appends to a stre
 <xode-group>
 <xode-block title="JSON format event">
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/QuickStartJsonFormat.cs
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/QuickStartJsonFormat.cs
 </xode-block>
 <xode-block title="Plain-text format event">
 
-<<< @/docs/clients/dotnet/5.0/sample-code/DotNetClient/QuickStartPlainFormat.cs
+<<< @/docs/clients/dotnet/21.2/sample-code/DotNetClient/QuickStartPlainFormat.cs
 </xode-block>
 </xode-group>
 

@@ -36,7 +36,7 @@ You need to specify the stream, which you want to subscribe to, the last known c
 There are multiple reasons for a subscription to drop. The connection might close due to network issues, the subscription might get overloaded with events, or your event handler will throw an unhandled exception. It is usually a good idea to handle subscription drops and resubscribe when needed, to overcome transient issues. When a subscription drops, the application would keep working but will not process any events.
 :::
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Subscriptions/CatchUp.cs#SubscribeToStream
+<<< @/docs/clients/dotnet/20.10/sample-code/Subscriptions/CatchUp.cs#SubscribeToStream
 
 In this code, we create an instance of `CatchUpSubscriptionSettings`. You can also use `CatchUpSubscriptionSettings.Default` with default settings instead.
 
@@ -48,7 +48,7 @@ As mentioned before, the checkpoint for `$all` is not a single numeric value, li
 
 For the rest, the code for subscribing to `$all` is very similar to the previous snippet:
 
-<<< @/docs/clients/dotnet/5.0/sample-code/Subscriptions/CatchUp.cs#SubscribeToAll
+<<< @/docs/clients/dotnet/20.10/sample-code/Subscriptions/CatchUp.cs#SubscribeToAll
 
 The differences here are:
 - You don't need to specify the stream name, as we know it's the `$all` stream.
