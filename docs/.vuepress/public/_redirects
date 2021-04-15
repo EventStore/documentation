@@ -4,3 +4,5 @@
 /server/v20/server/*               /server/v20.10/docs/:splat       301!
 /server/v5/server/*                /server/v5/docs/:splat           301!
 /server/5.0.8/server/*             /server/v5/docs/:splat           301!
+
+/clients/dotnet/5.0/connecting/options.html /clients/dotnet/5.0/connecting/settings.html 301!
