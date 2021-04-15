@@ -21,7 +21,8 @@ Since auto-compatibility mode will send two requests at discovery and expect one
 
 ### Usage
 
-Auto-Compatibility Mode is supported when connecting with Gossip Seeds or Cluster DNS Discovery.  
+Auto-Compatibility Mode is supported when connecting with Gossip Seeds or Cluster DNS Discovery.
+
 You can enable auto-compatibility mode with `CompatibilityMode=auto` in the connection string, or with `.SetCompatibilityMode("auto")` in the connection settings.
 
 You can connect to a cluster running insecure v5, insecure v20+, or secure v20+ with the following configurations:

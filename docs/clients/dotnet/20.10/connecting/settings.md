@@ -1,6 +1,6 @@
-# Connection options
+# Connection settings
 
-The `EventStoreConnection` class uses the static `Create` methods to create a new connection. All method overloads allow you to optionally specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
+The `EventStoreConnection` class uses the static `Create` methods to create a new connection. All method overloads allow you to settingally specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
 
 Instances of `ConnectionSettings` are created using a fluent builder class:
 
@@ -8,7 +8,7 @@ Instances of `ConnectionSettings` are created using a fluent builder class:
 var settingsBuilder = ConnectionSettings.Create();
 ```
 
-This creates an instance of `ConnectionSettingsBuilder` with default options. You can override these by chaining the additional builder methods described below. When you have a builder with all the settings configured, use the `Build` method to create the `ConnectionSettings` instance and then use it to create a connection:
+This creates an instance of `ConnectionSettingsBuilder` with default settings. You can override these by chaining the additional builder methods described below. When you have a builder with all the settings configured, use the `Build` method to create the `ConnectionSettings` instance and then use it to create a connection:
 
 ```csharp
 var settings = settingsBuilder.Build();
@@ -59,7 +59,7 @@ With the URI based mechanism you can pass a DNS name and the client will resolve
 
 The .NET client can log to different destinations. By default logging is disabled.
 
-<!-- TODO: Moved, to check. Actually missing options. -->
+<!-- TODO: Moved, to check. Actually missing settings. -->
 
 | Builder Method           | Description                                                                                                                                                     |
 | :----------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------- |
