@@ -1,7 +1,7 @@
 import {validateKeepAlive} from "../../lib/validate";
 
 function formatKeepAlive(name, value) {
-    return value !== undefined ? `$${name}=${value};` : "";
+    return value !== undefined ? `&${name}=${value}` : "";
 }
 
 function getKeepAliveValueHelp(isEnabled, name, value) {
