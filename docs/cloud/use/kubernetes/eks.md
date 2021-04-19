@@ -1,4 +1,4 @@
-# Connect to AWS Elastic Kubernetes Services
+# Connect to Elastic Kubernetes Services
 
 On this page, you find instructions how to set up an AWS Elastic Kubernetes Services (EKS) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, AWS and networking in Kubernetes, as well as in AWS cloud platform.
 
