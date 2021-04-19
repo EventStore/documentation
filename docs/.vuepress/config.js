@@ -83,7 +83,7 @@ module.exports = {
                     {text: "HTTP", items: versioning.linksFor("http-api")},
                 ]
             },
-            {text: "Cloud", link: "/cloud/"},
+            {text: "Cloud", link: "/cloud/intro/"},
             {
                 text:  "Need help?",
                 items: [
@@ -175,7 +175,9 @@ module.exports = {
                     path:        "/cloud/use/",
                     children:    [
                         "/cloud/use/",
-                        "/cloud/use/tailscale.md"
+                        "/cloud/use/tailscale.md",
+                        "/cloud/use/kubernetes/gke.md",
+                        "/cloud/use/kubernetes/aks.md"
                     ]
                 },
                 {
