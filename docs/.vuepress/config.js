@@ -93,6 +93,7 @@ module.exports = {
                     {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
                 ]
             },
+            {text: 'Resources', link: '/resources/'},
             // {text: "Profile", link: "/profile/"}
         ],
         sidebar:              {
@@ -205,7 +206,6 @@ module.exports = {
                         "/cloud/automation/",
                         "/cloud/automation/terraform.md"
                     ]
-
                 },
                 {
                     title:       "FAQ",
@@ -220,12 +220,15 @@ module.exports = {
                         "/cloud/faq/support.md",
                         "/cloud/faq/troubleshooting.md",
                         "/cloud/faq/operational-characteristics.md"
-
                     ]
                 }
-
-            ]
+            ],
+            '/resources/': [
+                ['', "Resources"],
+                ["/tag/news/", "News"]
+            ],
         },
+        blogSidebarGroupTitle: "Categories",
         algolia: {
             apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
             indexName: process.env.ALGOLIA_INDEX_NAME,

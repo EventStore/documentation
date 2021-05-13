@@ -36,8 +36,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.el-tabs__item {
+<style lang="stylus">
+.el-tabs__item
   font-size: 16px;
-}
 </style>

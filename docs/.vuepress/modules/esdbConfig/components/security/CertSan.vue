@@ -30,8 +30,7 @@ export default {
     }
 }
 </script>
-<style scoped lang="scss">
-.el-row {
+<style scoped lang="stylus">
+.el-row
   margin-bottom: -20px;
-}
 </style>

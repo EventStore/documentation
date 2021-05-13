@@ -184,7 +184,6 @@ export default {
   padding-top: 4px !important;
 }
 
-
 .el-switch {
   padding-left: 20px;
   padding-top: 8px;
@@ -200,7 +199,6 @@ export default {
 .el-col-12 {
   width: 45%;
   margin-left: 18px;
-
 }
 
 @media screen and (max-width: 600px) {

@@ -1,8 +1,6 @@
 import * as axios from "axios";
 
 async function get(url, timeout) {
-    //http://bu6lsm2rh41uf5akmiog-2.mesdb.eventstore.cloud:2113/
-
     try {
         const response = await axios.default.get(url,
             {

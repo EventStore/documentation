@@ -122,14 +122,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
-h3 {
+<style scoped lang="stylus">
+h3
   padding-bottom: 0;
   padding-top: 1rem;
-}
 
-h4 {
+h4
   padding-bottom: 0;
   padding-top: 0.3rem;
-}
 </style>

@@ -339,3 +339,4 @@ generated-versions.json
 *.tfstate
 *.tfstate.backup
 .algolia/.env
+.vscode

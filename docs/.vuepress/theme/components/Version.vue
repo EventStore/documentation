@@ -4,32 +4,36 @@
 
 <script>
 export default {
-  name: "Version",
+    name: "Version",
 
-  props: ["sidebarItem"],
+    props: ["sidebarItem"],
 
-  computed: {
-    hasVersion() {
-      return this.sidebarItem !== undefined && (this.sidebarItem.group !== undefined || (this.sidebarItem.children !== undefined && this.sidebarItem.children.length > 0));
-    },
-    hasChildrenTitle() {
-      return this.sidebarItem !== undefined && this.sidebarItem.children !== undefined && this.sidebarItem.children.length > 0 && this.sidebarItem.children[0].title;
-    },
-    version() {
-      if (this.sidebarItem === undefined || (!this.sidebarItem.group && !this.sidebarItem.children)) {
-        return "";
-      }
-      
-      var group = this.sidebarItem.group;
+    computed: {
+        hasVersion() {
+            return this.sidebarItem !== undefined && (this.sidebarItem.group !== undefined || (this.sidebarItem.children !== undefined && this.sidebarItem.children.length > 0));
+        },
+        hasChildrenTitle() {
+            return this.sidebarItem !== undefined && this.sidebarItem.children !== undefined && this.sidebarItem.children.length > 0 && this.sidebarItem.children[0].title;
+        },
+        version() {
+            if (this.$frontmatter && this.$frontmatter.layout === "BlogLayout") {
+                return this.$frontmatter.title;
+            }
 
-      if (group) {
-        const version = this.sidebarItem.version ? `v${this.sidebarItem.version}` : "";
-        return `${this.sidebarItem.group} ${version}`
-      }
+            if (this.sidebarItem === undefined || (!this.sidebarItem.group && !this.sidebarItem.children)) {
+                return "";
+            }
 
-      return this.sidebarItem.children[0].title;
+            const group = this.sidebarItem.group;
+
+            if (group) {
+                const version = this.sidebarItem.version ? `v${this.sidebarItem.version}` : "";
+                return `${this.sidebarItem.group} ${version}`
+            }
+
+            return this.sidebarItem.children[0].title;
+        }
     }
-  }
 }
 </script>
 
