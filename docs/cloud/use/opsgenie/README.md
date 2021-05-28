@@ -3,7 +3,7 @@ we recommend the API to belong to a responder team.
 
 # How to create an API key?
 
-Those instructions assumes you are starting from scratch and don't have a team set up yet. We also assume that
+Those instructions assume you are starting from scratch and don't have a team set up yet. We also assume that
 you are currently on the landing page after log in [OpsGenie].
 
 ## Create a team
