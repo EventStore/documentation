@@ -21,7 +21,7 @@ you are currently on the landing page after log in [OpsGenie].
 4. Click on `Integrations`, located in the left sidebar.
 5. Click on the `Add integration` button.
 6. In the integration list, click on `API` then the `Add` button.
-7. By default, the form should be already pre-filled. Make sur that `Read Access`, `Create and Update Access`, `Delete Access` and `Enabled` are check.
+7. By default, the form should be already pre-filled. Make sure that `Read Access`, `Create and Update Access`, `Delete Access` and `Enabled` are checked.
 8. Click on `Save Integration` on the bottom.
 9. You can get your API key that should be located just below the `Name` property.
 
