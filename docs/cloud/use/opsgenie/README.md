@@ -1,5 +1,5 @@
 EventStore Cloud platform is using [OpsGenie] for its alerting system. Our minimal configuration requires an API key. For simplicity sake,
-we recommend the API to belong to a responder team.
+we recommend the API key to belong to a responder team.
 
 # How to create an API key?
 
@@ -25,5 +25,9 @@ you are currently on the landing page after log in [OpsGenie].
 8. Click on `Save Integration` on the bottom.
 9. You can get your API key that should be located just below the `Name` property.
 
+## Use your API Key in EventStore Cloud.
+::: card
+![Set your OpsGenie API Key](./images/opsgenie-apikey-form.png)
+:::
 
 [OpsGenie]: https://www.atlassian.com/software/opsgenie
