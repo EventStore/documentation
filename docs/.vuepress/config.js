@@ -155,6 +155,7 @@ module.exports = {
                         "/cloud/provision/gcp/",
                         "/cloud/provision/azure/",
                         "/cloud/provision/azure/considerations.md",
+                        "/cloud/provision/cloud-instance-guidance/"
                     ]
                 },
                 {
