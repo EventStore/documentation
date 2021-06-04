@@ -12,7 +12,8 @@ You can also use our cloud automation tools ([Terraform](../automation/terraform
 
 ### If a node goes down in a cluster, how is the cluster recovered and who does it?
 
-If the issue is cloud provider related our staff manages the replacement.  
+If the issue is cloud provider related, our staff manages the replacement.  
+
 If it is customer load related an issue will be created with a call to action for the customer to address.
 
 Please ensure to learn about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement)
