@@ -16,4 +16,4 @@ If the issue is cloud provider related, our staff manages the replacement.
 
 If it is customer load related, an issue will be created with a call to action for the customer to address.
 
-Please ensure to learn about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement)
+Please ensure to learn about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
