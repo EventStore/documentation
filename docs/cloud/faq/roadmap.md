@@ -24,4 +24,4 @@ The scheduled backup feature has been released in March 2021. Read more in [clou
 
 ### Are there plans to be able get an audit log of access to the console?
 
-Yes it will be on the public [roadmap](https://www.eventstore.com/event-store-cloud) page
+Yes, we will present the details of the schedule on the public [roadmap](https://www.eventstore.com/event-store-cloud) page.
