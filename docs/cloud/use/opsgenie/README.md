@@ -1,7 +1,9 @@
+ # OpsGenie Integration
+ 
 EventStore Cloud platform is using [OpsGenie] for its alerting system. Our minimal configuration requires an API key. For simplicity sake,
 we recommend the API key to belong to a responder team.
 
-# How to create an API key?
+## How to create an API key?
 
 Those instructions assume you are starting from scratch and don't have a team set up yet. We also assume that
 you are currently on the landing page after log in [OpsGenie].

@@ -179,7 +179,8 @@ module.exports = {
                         "/cloud/use/tailscale.md",
                         "/cloud/use/kubernetes/eks.md",
                         "/cloud/use/kubernetes/gke.md",
-                        "/cloud/use/kubernetes/aks.md"
+                        "/cloud/use/kubernetes/aks.md",
+                        "/cloud/use/opsgenie/"
                     ]
                 },
                 {
