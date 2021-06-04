@@ -21,3 +21,7 @@ Yes, we are actively working on it.
 ### What is the ETA on the scheduled backup general availability?
 
 The scheduled backup feature has been released in March 2021. Read more in [cloud backup documentation](../ops/scheduled_backups.md).
+
+### Are there plans to be able get an audit log of access to the console?
+
+Yes it will be on the public [roadmap](https://www.eventstore.com/event-store-cloud) page
