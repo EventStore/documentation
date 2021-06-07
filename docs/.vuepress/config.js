@@ -183,6 +183,19 @@ module.exports = {
                     ]
                 },
                 {
+                    title:      "Integrations",
+                    collapsable: true,
+                    path:        "/cloud/integrations",
+                    children:    [
+                        "/cloud/integrations/",
+                        "/cloud/integrations/issues.md",
+                        "/cloud/integrations/notifications.md",
+                        "/cloud/integrations/opsgenie.md",
+                        "/cloud/integrations/slack.md",
+
+                    ]
+                },
+                {
                     title:       "Automation",
                     collapsable: true,
                     path:        "/cloud/automation/",
