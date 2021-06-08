@@ -3,7 +3,6 @@
 For Google Cloud customers, Event Store Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure lowest latency.
 
 Pre-requisites:
-- You are a Preview customer of Event Store Cloud
 - You have an organisation registered in Cloud console
 - You can login to the Cloud console as admin
 - Your organisation has at least one project

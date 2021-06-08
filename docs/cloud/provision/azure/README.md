@@ -7,7 +7,6 @@ Microsoft Azure has a few differences that you need to consider when using Event
 :::
 
 Pre-requisites:
-- You are a Preview customer of Event Store Cloud
 - You have an organisation registered in Cloud console
 - You can login to the Cloud console as admin
 - Your organisation has at least one project

@@ -1,9 +1,5 @@
 # Event Store Cloud
 
-::: warning Preview notice
-Event Store Cloud is currently in preview. Read more about the Preview phase [here](preview.md).
-:::
-
 Event Store Cloud allows you to deploy a managed EventStoreDB cluster in AWS, GCP, and Azure. The cloud cluster is optimised for the specific cloud provider and provisioned as a multi-zone VM set.
 
 ::: tip Learn more
