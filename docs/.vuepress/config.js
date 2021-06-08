@@ -187,7 +187,7 @@ module.exports = {
                     collapsable: true,
                     path:        "/cloud/integrations",
                     children:    [
-                        "/cloud/integrations",
+                        "/cloud/integrations/",
                         "/cloud/integrations/opsgenie.md"
                     ]
                 },
