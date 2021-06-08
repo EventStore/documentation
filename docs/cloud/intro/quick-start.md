@@ -56,10 +56,6 @@ You can always switch to another organisation by clicking on the selected organi
 
 Each organisation has its own access control. It includes the list of users, which have access to the organisation, groups, roles, policies and identity providers.
 
-::: tip Preview functionality is limited
-Some features like roles, policies and identity providers are currently not available in Preview. We will roll out all the access control features during the Preview phase, before Event Store Cloud reaches the GA status.
-:::
-
 When you create an organisation, you will be the organisation admin by default. To invite more people, click on the `Access control` menu and then switch to `Invitations`. There, you will see the `Invite member` button, which brings the invite screen. You'd need to enter the email address for the new member and also the group, which the invited member gets added to when they accept the invite.
 
 When you invite someone, the invitation will stay in the `Invitations` list and will be inactive until the invite gets accepted. You can always resend the invite if the invitee accidentally removes it from their inbox.
