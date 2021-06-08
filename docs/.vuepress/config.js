@@ -179,8 +179,16 @@ module.exports = {
                         "/cloud/use/tailscale.md",
                         "/cloud/use/kubernetes/eks.md",
                         "/cloud/use/kubernetes/gke.md",
-                        "/cloud/use/kubernetes/aks.md",
-                        "/cloud/use/opsgenie/"
+                        "/cloud/use/kubernetes/aks.md"
+                    ]
+                },
+                {
+                    title:      "Integrations",
+                    collapsable: true,
+                    path:        "/cloud/integrations",
+                    children:    [
+                        "/cloud/integrations",
+                        "/cloud/integrations/opsgenie.md"
                     ]
                 },
                 {
