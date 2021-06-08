@@ -141,8 +141,7 @@ module.exports = {
                     path:     "/cloud/intro/",
                     children: [
                         "/cloud/intro/",
-                        "/cloud/intro/quick-start.md",
-                        "/cloud/intro/preview.md",
+                        "/cloud/intro/quick-start.md"
                     ]
                 },
                 {
