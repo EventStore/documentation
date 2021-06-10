@@ -131,7 +131,8 @@ module.exports = {
                     path:        "/clients/grpc/subscribing-to-streams/",
                     children:    [
                         "/clients/grpc/subscribing-to-streams/",
-                        "/clients/grpc/subscribing-to-streams/filtering"
+                        "/clients/grpc/subscribing-to-streams/filtering",
+                        "/clients/grpc/subscribing-to-streams/persistent-subscriptions"
                     ]
                 },
             ],
