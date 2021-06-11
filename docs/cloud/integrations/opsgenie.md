@@ -33,4 +33,12 @@ Select the OpsGenie sink and put the API Key as in the screen below:
 ![Set your OpsGenie API Key](./images/opsgenie-apikey-form.png)
 :::
 
+and create `Create integration` button.
+
+If all succeeded, then a new integration should be set up. See the example on the screen below.
+
+::: card
+![OpsGenie details](./images/opsgenie-details.png)
+:::
+
 [OpsGenie]: https://www.atlassian.com/software/opsgenie
