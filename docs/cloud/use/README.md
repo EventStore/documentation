@@ -4,15 +4,23 @@ Each major cloud provider implements the concept of a Virtual Private Cloud (VPC
 
 ## Networking
 
-Normally, organisations build internal practices in regards to VPCs isolation and access level. In particular, you would expect that some or all VPCs are available for direct access from local networks on-premises, for developers to be able to access cloud resources. Cloud providers let their customers to connect on-premises networks to VPCs using site-to-site VPN connections. In addition, cloud customers often set up virtual private gateways to allow point-to-site VPN connections for their remote users.
+Managed EventStoreDB clusters and instances are not accessible via public internet. You have the following options to ensure connectivity between Event Store Cloud and your workloads.
+
+### Cloud network peering
+
+Normally, organisations build internal practices in regard to VPCs isolation and access level. In particular, you would expect that some or all VPCs are available for direct access from local networks on-premises, for developers to be able to access cloud resources. Cloud providers let their customers to connect on-premises networks to VPCs using site-to-site VPN connections. In addition, cloud customers often set up virtual private gateways to allow point-to-site VPN connections for their remote users.
 
 Event Store Cloud deploys EventStoreDB clusters on a project-level VPC (network). By peering that network with your own VPC at the same cloud provider, you get access to the EventStoreDB cluster provisioned and managed by Event Store Cloud. Normally, your Ops engineers would be able to configure the routing and allow connecting to EventStoreDB clusters in the cloud.
 
-## TailScale
+### TailScale
 
 Another options to connect to the cloud cluster is to use a third-party VPN offering, which might be easier to use. One example would [TailScale](https://tailscale.com), which is a [WireGuard®](https://www.wireguard.com/) based mesh VPN. In addition to the basic functionality of connecting devices in a mesh network, TailGate also allows connecting a subnet to the private VPN. For that, you'd need to provision a VM in the cloud, which is connected to the network peered with Event Store Cloud network. Since that machine would be able to access the EventStoreDB cluster, by configuring the TailScale [subnet routing](https://tailscale.com/kb/1019/subnets) you will also make the cluster accessible for all users of your TailScale network.
 
 Check our [Tailscale guide](tailscale.md) for detailed instructions.
+
+## Data migration
+
+Currently, the only way to migrate data to the cloud cluster or instance is by using [live migration](./migration/replicator.md). Live migration can only handle small to medium size databases.
 
 ## Cluster connection
 

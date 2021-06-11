@@ -175,6 +175,7 @@ module.exports = {
                     path:        "/cloud/use/",
                     children:    [
                         "/cloud/use/",
+                        "/cloud/use/migration/replicator.md",
                         "/cloud/use/tailscale.md",
                         "/cloud/use/kubernetes/eks.md",
                         "/cloud/use/kubernetes/gke.md",
