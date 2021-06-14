@@ -28,8 +28,8 @@ The most important parameter to pass when connecting is the buffer size. This re
 | eventAppeared	| The action to call when an event arrives over the subscription. |
 | subscriptionDropped | The action to call if the subscription is dropped. |
 | credentials | The user credentials to use for this operation. |
-| bufferSize | The number of in-flight messages this client is allowed. |
-| autoAck | Whether to automatically acknowledge messages after eventAppeared returns. |
+| bufferSize | The number of in-flight messages this client is allowed. **Default: 10**|
+| autoAck | Whether to automatically acknowledge messages after eventAppeared returns. **Default: True** |
 
 ## Subscribing to $all
 
@@ -103,21 +103,21 @@ Both the Create and Update methods take some settings for configuring the persis
 
 The following table shows the configuration options you can set on a persistent subscription.
 
-| Option | Description |
-|:-------|:------------|
-| ResolveLinkTos | Whether the subscription should resolve linkTo events to their linked events. |
-| StartFrom | The exclusive position in the stream or transaction file the subscription should start from. |
-| ExtraStatistics | Whether to track latency statistics on this subscription. |
-| MessageTimeout | The amount of time after which to consider a message as timed out and retried. |
-| MaxRetryCount | The maximum number of retries (due to timeout) before a message is considered to be parked. |
-| LiveBufferSize | The size of the buffer (in-memory) listening to live messages as they happen before paging occurs. |
-| ReadBatchSize | The number of events read at a time when paging through history. |
-| HistoryBufferSize | The number of events to cache when paging through history. |
-| CheckPointAfter | The amount of time to try to checkpoint after. |
-| MinCheckPointCount | The minimum number of messages to write to a checkpoint. |
-| MaxCheckPointCount | The maximum number of messages not checkpointed before forcing a checkpoint. |
-| MaxSubscriberCount | The maximum number of subscribers allowed. |
-| NamedConsumerStrategy | The strategy to use for distributing events to client consumers. See the Consumer Strategies in this doc. |
+| Option | Description | Default |
+|:-------|:------------|:--------|
+| ResolveLinkTos | Whether the subscription should resolve linkTo events to their linked events. | False |
+| StartFrom | The exclusive position in the stream or transaction file the subscription should start from. | Null (Start from the End of the Stream) |
+| ExtraStatistics | Whether to track latency statistics on this subscription. | False |
+| MessageTimeout | The amount of time after which to consider a message as timed out and retried. | 30 seconds |
+| MaxRetryCount | The maximum number of retries (due to timeout) before a message is considered to be parked. | 10 |
+| LiveBufferSize | The size of the buffer (in-memory) listening to live messages as they happen before paging occurs. | 500 |
+| ReadBatchSize | The number of events read at a time when paging through history. | 20 |
+| HistoryBufferSize | The number of events to cache when paging through history. | 500 |
+| CheckPointAfter | The amount of time to try to checkpoint after. | 2 seconds |
+| MinCheckPointCount | The minimum number of messages to process before a checkpoint may be written. | 10 |
+| MaxCheckPointCount | The maximum number of messages not checkpointed before forcing a checkpoint. | 1000 |
+| MaxSubscriberCount | The maximum number of subscribers allowed. | 0 (Unbounded) |
+| NamedConsumerStrategy | The strategy to use for distributing events to client consumers. See the Consumer Strategies in this doc. | Round Robin |
 
 ## Deleting a subscription group
 
