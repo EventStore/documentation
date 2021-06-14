@@ -1,16 +1,16 @@
 <template>
-  <section>
-
-    <router-link :to="item.path">
-      <h3 class="blog-post__title">{{ item.title }}</h3>
-    </router-link>
-    <i>Written <span v-if="item.frontmatter.author"> by {{ item.frontmatter.author }} </span>
-    <time v-if="item.frontmatter.date">on {{ resolvePostDate }}</time></i>
-    <span v-html="getSummary"></span>
-
-<!--    <PostTags v-if="item.frontmatter.tag" :tags="item.frontmatter.tag"/>-->
-    <hr>
-  </section>
+  <el-card class="box-card" shadow="hover">
+    <div slot="header" class="clearfix">
+      <span><b>{{ item.title }}</b></span>
+      <el-button style="float: right; padding: 3px 0" type="text" @click="openPost">Open</el-button>
+    </div>
+    <span v-html="getSummary" class="summary"></span>
+    <el-divider></el-divider>
+    <div class="time">
+      Written <span v-if="item.frontmatter.author"> by {{ item.frontmatter.author }} </span>
+      <time v-if="item.frontmatter.date">on {{ resolvePostDate }}</time>
+    </div>
+  </el-card>
 </template>
 
 <script>
@@ -47,31 +47,23 @@ export default {
     methods: {
         tagPath(tag) {
             return this.$tag._metaMap[tag].path;
+        },
+        openPost() {
+            this.$router.push(this.item.path);
         }
     }
 }
 </script>
 
 <style scoped lang="stylus">
-.blog-post__button
-  margin-bottom: 1.5rem
-  display: inline-block
+.summary
+  color: #757575
 
-.blog-post__title
-  margin-top: 0.5rem
-  padding-bottom: 0
+.time
+  color: #757575
+  font-size: 14px
+  font-weight: 300
 
-.button
-  border: 1px solid $accentColor
-  border-radius: 4px
-  color: $accentColor
-  font-size: 0.8rem
-  padding: 0.5rem 0.75rem
-  text-transform: uppercase
-  font-weight: 700
-  box-shadow: 0 0
-  transition: box-shadow 0.2s ease-in
-
-  &:hover
-    box-shadow 0 0 5px $accentColor
+.box-card
+  width: 100%
 </style>

@@ -17,7 +17,7 @@ export default {
         },
         version() {
             if (this.$frontmatter && this.$frontmatter.layout === "BlogLayout") {
-                return this.$frontmatter.title;
+                return "Resources";
             }
 
             if (this.sidebarItem === undefined || (!this.sidebarItem.group && !this.sidebarItem.children)) {

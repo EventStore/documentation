@@ -1,56 +1,56 @@
 <template>
-    <main class="page">
-        <slot name="top"/>
+  <main class="page">
+    <slot name="top"/>
 
-        <component :is="layoutComponent" class="theme-default-content"/>
-        <PageEdit/>
+    <component :is="layoutComponent" class="theme-default-content"/>
+    <PageEdit/>
 
-        <PageNav v-bind="{ sidebarItems }"/>
+    <PageNav v-bind="{ sidebarItems }"/>
 
-        <slot name="bottom"/>
-    </main>
+    <slot name="bottom"/>
+  </main>
 </template>
 
 <script>
-    import PageEdit from '@parent-theme/components/PageEdit';
-    import PageNav from '@parent-theme/components/PageNav';
-    import TagsLayout from "../components/TagsLayout";
-    import PostsLayout from "../components/PostsLayout";
-    import PostLayout from "../components/PostLayout";
-    import {capitalizeFirstLetter} from "../blog";
+import PageEdit from '@parent-theme/components/PageEdit';
+import PageNav from '@parent-theme/components/PageNav';
+import TagsLayout from "../components/TagsLayout";
+import PostsLayout from "../components/PostsLayout";
+import PostLayout from "../components/PostLayout";
+import {capitalizeFirstLetter} from "../blog";
 
-    export default {
-        components: {PageEdit, PageNav, TagsLayout, PostsLayout, PostLayout},
+export default {
+    components: {PageEdit, PageNav, TagsLayout, PostsLayout, PostLayout},
 
-        props: ['sidebarItems'],
+    props: ['sidebarItems'],
 
-        computed: {
-            layoutComponent() {
-                let isArray = (p, getArray) => p && getArray(p) && getArray(p).length;
+    computed: {
+        layoutComponent() {
+            let isArray = (p, getArray) => p && getArray(p) && getArray(p).length;
 
-                if (isArray(this.$frontmatterKey, x => x.list))
-                    return "TagsLayout";
+            if (isArray(this.$frontmatterKey, x => x.list))
+                return "TagsLayout";
 
-                if (isArray(this.$pagination, x => x.pages))
-                    return "PostsLayout";
+            if (isArray(this.$pagination, x => x.pages))
+                return "PostsLayout";
 
-                if (this.$page.pid === "post")
-                    return "PostLayout";
+            if (this.$page.pid === "post")
+                return "PostLayout";
 
-                return "Content";
-            }
-        },
-
-        mounted() {
-            if (this.$currentTag)
-                this.$frontmatter.title = capitalizeFirstLetter(this.$currentTag.key)
+            return "Content";
         }
+    },
+
+    mounted() {
+        if (this.$currentTag)
+            this.$frontmatter.title = capitalizeFirstLetter(this.$currentTag.key)
     }
+}
 </script>
 
 <style lang="stylus">
-    @require '../styles/wrapper.styl'
-    .page
-        padding-bottom 2rem
-        display block
+@require '../styles/wrapper.styl'
+.page
+  padding-bottom 2rem
+  display block
 </style>

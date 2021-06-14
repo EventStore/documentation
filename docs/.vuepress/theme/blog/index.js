@@ -3,19 +3,24 @@ export function resolveSidebarItems(groupTitle, tags) {
 
     for (let key in tags._metaMap) {
         let item = tags._metaMap[key];
+        let children = [];
+        for (let i = 0; i < item.pages.length; i++) {
+            const page = item.pages[i];
+            children.push({
+                type: "page",
+                title: page.title,
+                path: page.path
+            });
+        }
         items.push({
-            type: 'page',
+            type: "group",
             title: capitalizeFirstLetter(item.key),
-            path: item.path
+            collapsable: false,
+            path: item.path,
+            children: children
         });
     }
-    return [{
-        type: "group",
-        title: groupTitle,
-        collapsable: false,
-        path: "/tag/",
-        children: items
-    }];
+    return items;
 }
 
 export function capitalizeFirstLetter(val) {
