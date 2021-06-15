@@ -55,8 +55,8 @@ export default {
             return new Date(this.item.frontmatter.date).toDateString();
         },
         getSummary() {
-            let valueOr   = (value, formatter, alternative) => value ? formatter(value) : alternative;
-            let paragraph = x => `<p>${x}</p>`;
+            const valueOr   = (value, formatter, alternative) => value ? formatter(value) : alternative;
+            const paragraph = x => `<p>${x}</p>`;
             return valueOr(
                 this.item.excerpt,
                 x => x,

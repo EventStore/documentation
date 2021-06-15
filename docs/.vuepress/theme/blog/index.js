@@ -15,7 +15,7 @@ export function resolveSidebarItems(groupTitle, tags) {
         items.push({
             type: "group",
             title: capitalizeFirstLetter(item.key),
-            collapsable: false,
+            collapsable: true,
             path: item.path,
             children: children
         });
