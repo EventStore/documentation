@@ -2,6 +2,7 @@
 title: "New documentation website"
 date: 2020-06-01
 author: "Alexey"
+kind: "Article"
 tag: 
   - news
 ---

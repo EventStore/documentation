@@ -21,7 +21,7 @@ module.exports = (themeConfig, ctx) => {
                     title: "Resources",
                 },
                 pagination: {
-                    lengthPerPage: 3,
+                    lengthPerPage: 20,
                     layout: "BlogLayout",
                 }
             },
@@ -37,7 +37,7 @@ module.exports = (themeConfig, ctx) => {
                     title: "Categories",
                 },
                 pagination: {
-                    lengthPerPage: 3,
+                    lengthPerPage: 20,
                     layout: "BlogLayout",
                 }
             },

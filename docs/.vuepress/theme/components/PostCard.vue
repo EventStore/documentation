@@ -2,14 +2,25 @@
   <el-card class="box-card" shadow="hover">
     <div slot="header" class="clearfix">
       <span><b>{{ item.title }}</b></span>
-      <el-button style="float: right; padding: 3px 0" type="text" @click="openPost">Open</el-button>
+      <el-tag size="small" :type="tagType" style="margin-left: 10px">{{ item.frontmatter.kind }}</el-tag>
+      <el-button class="op-button" type="text" @click="openPost">{{ buttonText }}</el-button>
     </div>
-    <span v-html="getSummary" class="summary"></span>
+    <div class="summary">
+      <span v-html="getSummary"></span>
+    </div>
     <el-divider></el-divider>
-    <div class="time">
-      Written <span v-if="item.frontmatter.author"> by {{ item.frontmatter.author }} </span>
-      <time v-if="item.frontmatter.date">on {{ resolvePostDate }}</time>
-    </div>
+    <el-row type="flex" justify="space-between">
+      <el-col :span="12">
+        <div class="time">
+          <time v-if="item.frontmatter.date">{{ resolvePostDate }}</time>
+          <br>
+          <span v-if="item.frontmatter.author">{{ item.frontmatter.author }}</span>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <PostTags :tags="item.frontmatter.tag"/>
+      </el-col>
+    </el-row>
   </el-card>
 </template>
 
@@ -27,6 +38,19 @@ export default {
     },
 
     computed: {
+        tagType() {
+            switch (this.item.frontmatter.kind.toLowerCase()) {
+                case "video":
+                    return "warning";
+                case "article":
+                    return "";
+                default:
+                    return "info";
+            }
+        },
+        buttonText() {
+            return this.item.frontmatter.kind.toLowerCase() === "video" ? "Watch" : "Read";
+        },
         resolvePostDate() {
             return new Date(this.item.frontmatter.date).toDateString();
         },
@@ -49,7 +73,11 @@ export default {
             return this.$tag._metaMap[tag].path;
         },
         openPost() {
-            this.$router.push(this.item.path);
+            if (this.item.frontmatter.link) {
+                window.open(this.item.frontmatter.link);
+            } else {
+                this.$router.push(this.item.path);
+            }
         }
     }
 }
@@ -58,6 +86,7 @@ export default {
 <style scoped lang="stylus">
 .summary
   color: #757575
+  height: 7.5rem;
 
 .time
   color: #757575
@@ -66,4 +95,14 @@ export default {
 
 .box-card
   width: 100%
+  margin-top: 0 !important
+
+.op-button
+  float: right
+  padding: 3px 0
+  font-family: museosans
+
+.el-row
+  margin-bottom: 0
+  height: 1.5rem
 </style>

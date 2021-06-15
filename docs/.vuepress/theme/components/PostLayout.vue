@@ -1,13 +1,17 @@
 <template>
   <div class="content__default">
     <h1 v-if="title">{{ title }}</h1>
-    <i>
-      Written <span v-if="$frontmatter.author"> by {{ $frontmatter.author }} </span>
-      <time v-if="$frontmatter.date">on {{ resolvePostDate }}</time>
-    </i>
-    <p></p>
-    <PostTags :tags="$frontmatter.tag"/>
-
+    <el-row type="flex" justify="space-between">
+      <el-col :span="12">
+        <div class="time">
+          <span v-if="$frontmatter.author">{{ $frontmatter.author }} </span>
+          <time v-if="$frontmatter.date">on {{ resolvePostDate }}</time>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <PostTags :tags="$frontmatter.tag"/>
+      </el-col>
+    </el-row>
     <Content/>
   </div>
 </template>
@@ -31,5 +35,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+.time
+  color: #757575
+  font-size: 14px
+  font-weight: 300
 </style>

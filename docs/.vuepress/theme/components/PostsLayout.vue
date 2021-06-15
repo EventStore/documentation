@@ -4,9 +4,11 @@
 
     <Pagination v-if="showPagination"/>
 
-      <div v-for="post in pages">
+    <el-row v-for="row in rows">
+      <el-col :span="12" v-for="post in row">
         <PostCard :item="post"/>
-      </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -20,8 +22,18 @@ export default {
     components: {PostPreview, Pagination, SimplePagination, PostCard},
 
     computed: {
+        rows() {
+            let r        = [];
+            const perRow = 2;
+            const rcount = Math.ceil(this.pages.length / perRow)
+            for (let i = 0; i < rcount; i++) {
+                const start = i * perRow;
+                r.push(this.pages.slice(start, start + perRow));
+            }
+            return r;
+        },
         pages() {
-            return this.$pagination.pages
+            return this.$pagination.pages;
         },
         showPagination() {
             return this.$pagination._paginationPages.length > 1;
@@ -40,5 +52,10 @@ export default {
 
 .blog-list__item
   list-style-type: none
+
+.el-row
+  margin-bottom: 0
+  &:last-child
+    margin-bottom: 0
 </style>
 

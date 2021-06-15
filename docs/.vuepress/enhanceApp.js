@@ -20,6 +20,7 @@ import XodeGroup from "./theme/components/XodeGroup";
 import store from "./theme/store";
 import grpcClientModule from "./modules/grpcClient";
 import esdbConfigModule from "./modules/esdbConfig";
+import YouTube from "./theme/components/YouTube";
 // import auth0module from "./modules/auth0";
 
 export default ({Vue, options, router, siteData}) => {
@@ -28,6 +29,7 @@ export default ({Vue, options, router, siteData}) => {
     Vue.component("prism", Prism);
     Vue.component("xode-block", XodeBlock);
     Vue.component("xode-group", XodeGroup);
+    Vue.component("YouTube", YouTube)
 
     // interactive modules in the docs
     Vue.use(esdbConfigModule);
