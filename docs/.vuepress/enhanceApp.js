@@ -36,13 +36,7 @@ export default ({Vue, options, router, siteData}) => {
     Object.assign(options, {
         store: new Vuex.Store(store)
     });
-    router.addRoutes([
-        {
-            path: "/latest.html",
-            redirect: "/server/v21.2/docs/introduction/"
-            //`/${siteData.themeConfig.versions.latest}/introduction/`
-        }
-    ]);
+    router.addRoutes([]);
 
     gtm.addGtm(router, Vue, siteData.themeConfig.gtm);
 
