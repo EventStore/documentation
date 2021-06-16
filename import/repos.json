@@ -32,10 +32,6 @@
       {
         "version": "21.2.0",
         "name": "master"
-      },
-      {
-        "version": "21.6.0",
-        "name": "persistent-subscription-docs"
       }
     ]
   },
