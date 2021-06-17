@@ -1,4 +1,4 @@
-export function resolveSidebarItems(groupTitle, tags) {
+export function resolveSidebarItems(groupTitle, tags, pluralize) {
     let items = [];
 
     for (let key in tags._metaMap) {
@@ -14,7 +14,7 @@ export function resolveSidebarItems(groupTitle, tags) {
         }
         items.push({
             type: "group",
-            title: capitalizeFirstLetter(item.key),
+            title: capitalizeFirstLetter(item.key) + (pluralize ? "s" : ""),
             collapsable: true,
             path: item.path,
             children: children

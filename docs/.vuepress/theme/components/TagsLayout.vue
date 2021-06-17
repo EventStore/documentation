@@ -1,7 +1,7 @@
 <template>
     <div class="content__default">
 
-        <h1>Categories</h1>
+        <h1>{{ $frontmatter.title }}</h1>
 
         <div class="blog-tags">
             <BlogTag

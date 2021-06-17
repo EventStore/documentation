@@ -4,11 +4,9 @@
 
     <Pagination v-if="showPagination"/>
 
-    <el-row v-for="row in rows">
-      <el-col :span="12" v-for="post in row">
-        <PostCard :item="post"/>
-      </el-col>
-    </el-row>
+    <div v-for="post in pages">
+      <PostCard :item="post"/>
+    </div>
   </div>
 </template>
 
@@ -39,7 +37,11 @@ export default {
             return this.$pagination._paginationPages.length > 1;
         },
         title() {
-            return capitalizeFirstLetter(this.$frontmatter.title.replace(" Tag", ""));
+            const t = capitalizeFirstLetter(this.$frontmatter.title);
+            if (t.endsWith(" Tag")) return t.replace(" Tag", "");
+            if (t.endsWith(" Kind")) return t.replace(" Kind", "s");
+
+            return t;
         }
     }
 }
@@ -55,6 +57,7 @@ export default {
 
 .el-row
   margin-bottom: 0
+
   &:last-child
     margin-bottom: 0
 </style>

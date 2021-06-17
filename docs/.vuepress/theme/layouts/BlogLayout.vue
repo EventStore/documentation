@@ -70,7 +70,9 @@
             },
 
             sidebarItems() {
-                return resolveSidebarItems(this.$themeConfig.blogSidebarGroupTitle, this.$tag)
+                const pluralize = this.$currentTag === undefined && this.$currentKind !== undefined;
+                const tags = this.$currentKind === undefined ? this.$tag : this.$kind;
+                return resolveSidebarItems(this.$themeConfig.blogSidebarGroupTitle, tags, pluralize);
             },
 
             pageClasses() {

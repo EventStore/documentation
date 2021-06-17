@@ -1,9 +1,9 @@
 <template>
-    <div class="tag-list" style="float: right">
+  <div class="tag-list">
       <span v-for="tag in tags" class="tag-list__item">
          <router-link :to="tagPath(tag)"><el-tag size="small" effect="plain">{{ tag }}</el-tag></router-link>
       </span>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
         tagPath(tag) {
             return this.$tag._metaMap[tag].path;
         }
-    }
+    },
 }
 </script>
 

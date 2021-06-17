@@ -1,17 +1,7 @@
 <template>
   <div class="content__default">
     <h1 v-if="title">{{ title }}</h1>
-    <el-row type="flex" justify="space-between">
-      <el-col :span="12">
-        <div class="time">
-          <span v-if="$frontmatter.author">{{ $frontmatter.author }} </span>
-          <time v-if="$frontmatter.date">on {{ resolvePostDate }}</time>
-        </div>
-      </el-col>
-      <el-col :span="12">
-        <PostTags :tags="$frontmatter.tag"/>
-      </el-col>
-    </el-row>
+    <PostTags :tags="$frontmatter.tag"/>
     <Content/>
   </div>
 </template>
@@ -30,8 +20,19 @@ export default {
             return this.$title.replace(" | " + this.$siteTitle, "")
         }
     },
-
-    methods: {}
+    methods: {
+        openExternalLink() {
+            if (this.$frontmatter.link) {
+                window.open(this.$frontmatter.link);
+            }
+        }
+    },
+    mounted() {
+        this.openExternalLink();
+    },
+    updated() {
+        this.openExternalLink();
+    }
 }
 </script>
 

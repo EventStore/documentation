@@ -23,18 +23,35 @@ module.exports = (themeConfig, ctx) => {
                 pagination: {
                     lengthPerPage: 20,
                     layout: "BlogLayout",
-                }
+                },
+                itemPermalink: '/resources/:slug',
             },
         ],
         frontmatters: [
             {
                 id: "tag",
                 keys: ['tag', 'tags'],
-                path: '/tag/',
+                path: '/resources/tag/',
                 layout: 'BlogLayout',
                 scopeLayout: "BlogLayout",
                 frontmatter: {
                     title: "Categories",
+                    type: "tag"
+                },
+                pagination: {
+                    lengthPerPage: 20,
+                    layout: "BlogLayout",
+                }
+            },
+            {
+                id: "kind",
+                keys: ['kind'],
+                path: '/resources/kind/',
+                layout: 'BlogLayout',
+                scopeLayout: "BlogLayout",
+                frontmatter: {
+                    title: "Kinds",
+                    type: "kind"
                 },
                 pagination: {
                     lengthPerPage: 20,
