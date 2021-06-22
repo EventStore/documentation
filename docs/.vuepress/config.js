@@ -142,7 +142,8 @@ module.exports = {
                     path:     "/cloud/intro/",
                     children: [
                         "/cloud/intro/",
-                        "/cloud/intro/quick-start.md"
+                        "/cloud/intro/quick-start.md",
+                        "/cloud/intro/eventstore-cloud-status.md"
                     ]
                 },
                 {
