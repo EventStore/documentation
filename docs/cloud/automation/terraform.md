@@ -1,5 +1,5 @@
 ---
-terraform_current_version: 1.5.3
+terraform_current_version: 1.5.4
 terraform_github_releases: https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download
 ---
 
