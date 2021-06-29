@@ -131,7 +131,8 @@ module.exports = {
                     path:        "/clients/grpc/subscribing-to-streams/",
                     children:    [
                         "/clients/grpc/subscribing-to-streams/",
-                        "/clients/grpc/subscribing-to-streams/filtering"
+                        "/clients/grpc/subscribing-to-streams/filtering",
+                        "/clients/grpc/subscribing-to-streams/persistent-subscriptions"
                     ]
                 },
             ],
@@ -141,7 +142,8 @@ module.exports = {
                     path:     "/cloud/intro/",
                     children: [
                         "/cloud/intro/",
-                        "/cloud/intro/quick-start.md"
+                        "/cloud/intro/quick-start.md",
+                        "/cloud/intro/eventstore-cloud-status.md"
                     ]
                 },
                 {

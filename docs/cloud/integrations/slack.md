@@ -22,11 +22,21 @@ You can be notified of new events and notifications in your Slack workspace by c
 
 1. In the Event Store Cloud console, select an organization and then a project.
 2. Once viewing a project, you should see `Integrations` under the heading `Project` in the sidebar to the left. Click it.
-3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Issues or Notifications. Then select the Sink `Slack`.
+3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Issues or Notifications. Then select the Sink `Slack` as in the screen below.
+
+::: card
+![Set your OpsGenie API Key](./images/slack-form.png)
+:::
+
 4. Under `Configuration`, next to `Channel ID`, enter the channel you want the slack bot to communicate with (this must be the same as the place you invited the bot earlier). Remember to start the channel ID with a hash sign if appropriate.
 5. In the box next to `Token` enter the OAuth token you copied from Slack's website.
 6. Finally click "Create Integration."
-7. Now back at the "Integrations" page, click on the row with recently created integration. In the bottom pane you should see a button marked `Test integration`. Click it.
+7. Now back at the "Integrations" page, click on the row with recently created integration. In the bottom pane you should see a button marked `Test integration` as in the screen below. Click it.
+
+::: card
+![Set your OpsGenie API Key](./images/slack-details.png)
+:::
+
 8. If your Slack App was created correctly you should see see a test message in the channel you selected.
 9. If you get an error message double check that you copied the OAuth token and Channel ID into the integration correctly. You may also wish to review the previous step to ensure you gave the app appropriate permissions. You can edit the integration by clicking on the pencil icon in it's row.
 10. If you see a slack message, you can rest you will receive events from the configured source when they occur.
