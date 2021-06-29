@@ -213,7 +213,7 @@ module.exports = {
                     path:        "/cloud/faq/",
                     children:    [
                         "/cloud/faq/",
-                        "/cloud/faq/cluster_provisioning.md",
+                        "/cloud/faq/cluster-provisioning.md",
                         "/cloud/faq/providers.md",
                         "/cloud/faq/roadmap.md",
                         "/cloud/faq/sla.md",
