@@ -1,14 +1,16 @@
 # Roadmap
 
+The Event Store Cloud roadmap is available on [our website](https://www.eventstore.com/event-store-cloud), scroll down to see the roadmap.
+
 ## Migrating to Cloud
 
-### What is the ETA on the tool being developed to assist in migration of existing customer data?
+### How can I migrate data from my self-hosted database to Event Store Cloud?
 
 We have a replication tool, which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
-### Do you have indicative performance benchmarks for each of your offered cluster sizes?
+### Do you have indicative performance benchmarks for the offered cluster sizes?
 
-We are still measuring the performance of different cluster sizes and optimising the configuration for better utilisation of all the instance sizes. We will provide indicative figures on the Cloud Console as soon as we are confident in these numbers.
+We published such benchmarks available on the [Cloud instance sizing guide](../provision/cloud-instance-guidance/) page.
 
 Please remember, however, that each use case is different, and you might always get better or worse performance, compared with our advertised benchmarking figures. We can help you to analyse your needs and provide more detailed expected performance figures, please get in touch.
 
