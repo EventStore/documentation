@@ -29,7 +29,7 @@ export default ({Vue, options, router, siteData}) => {
     Vue.component("prism", Prism);
     Vue.component("xode-block", XodeBlock);
     Vue.component("xode-group", XodeGroup);
-    Vue.component("YouTube", YouTube)
+    Vue.component("YouTube", YouTube);
 
     // interactive modules in the docs
     Vue.use(esdbConfigModule);

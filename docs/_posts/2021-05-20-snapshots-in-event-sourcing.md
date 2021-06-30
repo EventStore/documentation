@@ -3,6 +3,7 @@ title: "Snapshots in Event Sourcing"
 date: 2021-05-21
 author: "Oskar"
 kind: "Article"
+original: "https://eventstore.com/blog"
 tag:
 - event sourcing
 ---

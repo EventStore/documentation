@@ -36,13 +36,13 @@ module.exports = {
         containers("card", "el-card", _ => `body-style="padding: 0px"`),
         containers("note", "note", title => `${title ? ` type='${title}'` : ""}`),
         [
-            'vuepress-plugin-container', {
+            "vuepress-plugin-container", {
 	            type:   "note",
 	            before: _ => `<div class="custom-block note">`,
 	            after:  `</div>`,
 	        },
         ],
-        require("./plugins/remove_generated_from_url.js")
+        require("./plugins/removeGeneratedPath")
     ],
     extraWatchFiles: [
         "**/sidebar.js",

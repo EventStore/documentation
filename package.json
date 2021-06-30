@@ -3,7 +3,8 @@
     "@babel/cli": "^7.14.8",
     "@babel/core": "^7.14.8",
     "@babel/preset-typescript": "^7.14.5",
-    "chalk": "^2.0.0",
+    "@vuepress/plugin-blog": "^1.9.4",
+    "@vuepress/shared-utils": "^1.8.2",    "chalk": "^2.0.0",
     "commander": "^2.0.0",
     "core-js": "2",
     "del": "^5.1.0",
@@ -17,11 +18,9 @@
     "swagger-markdown": "^1.2.0",
     "vuepress": "^1.8.2",
     "vuepress-plugin-check-md": "^0.0.2",
-    "webpack-shell-plugin": "^0.5.0",
-    "@vuepress/plugin-blog": "^1.9.4"
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
-    "remove-markdown": "^0.3.0",
     "@auth0/auth0-spa-js": "^1.13.3",
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
@@ -29,6 +28,7 @@
     "markdown-it": "^12.0.4",
     "markdown-it-include": "^2.0.0",
     "prismjs": "^1.24.0",
+    "remove-markdown": "^0.3.0",
     "vue-prism-component": "^1.2.0",
     "vuepress-plugin-one-click-copy": "^1.0.2",
     "vuex": "^3.6.0"
