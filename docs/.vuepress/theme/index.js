@@ -71,7 +71,7 @@ module.exports = (themeConfig, ctx) => {
         [
             '@vuepress/blog',
             blogPluginOptions,
-        ],
+        ]
     ];
 
     const config = {

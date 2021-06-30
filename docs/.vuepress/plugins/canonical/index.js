@@ -1,4 +1,4 @@
-import {path} from "@vuepress/shared-utils";
+const { path } = require("@vuepress/shared-utils");
 
 module.exports = options => ({
     enhanceAppFiles () {

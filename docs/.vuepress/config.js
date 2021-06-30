@@ -42,7 +42,8 @@ module.exports = {
 	            after:  `</div>`,
 	        },
         ],
-        require("./plugins/removeGeneratedPath")
+        require("./plugins/removeGeneratedPath"),
+        require("./plugins/canonical/index")
     ],
     extraWatchFiles: [
         "**/sidebar.js",
