@@ -19,7 +19,6 @@
           </el-radio-group>
         </el-col>
         <el-col :span="12" class="form-help">
-          {{ gossipTypeHelp }}
         </el-col>
       </el-form-item>
 
@@ -62,9 +61,6 @@ export default {
         },
         showGossip() {
             return this.gossip.showGossip;
-        },
-        gossipTypeHelp() {
-            return this.gossip.gossipTypeHelp()
         },
         label() {
             return this.gossip.type + " gossip DNS name:";

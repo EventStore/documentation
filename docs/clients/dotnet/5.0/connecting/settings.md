@@ -1,6 +1,6 @@
 # Connection settings
 
-The `EventStoreConnection` class uses the static `Create` methods to create a new connection. All method overloads allow you to settingally specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
+The `EventStoreConnection` class uses the static `Create` methods to create a new connection. All method overloads allow you to specify a name for the connection, which the connection returns when it raises events (see [Connection Events](#connection-events)).
 
 Instances of `ConnectionSettings` are created using a fluent builder class:
 

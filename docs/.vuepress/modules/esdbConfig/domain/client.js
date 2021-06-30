@@ -17,7 +17,7 @@ export default new Vue({
             advertiseToClient: false,
             httpPort:          2113,
             externalTcpPort:   1113,
-            gossip:            new Gossip("Client", "clients", true, true)
+            gossip:            new Gossip("Client", "clients", true)
         }
     },
     methods: {

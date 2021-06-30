@@ -18,7 +18,7 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 ## Quick start
 
-The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for [connecting to a server](connecting-to-a-server.md), [reading events](../reading/README.md) and [appending to a stream](../appending/README.md)
+The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for connecting to a server using [connection string](connection-string.md) and [connection settings](settings.md), [reading events](../reading/README.md) and [appending to a stream](../appending/README.md)
 
 <xode-group>
 <xode-block title="JSON format event">

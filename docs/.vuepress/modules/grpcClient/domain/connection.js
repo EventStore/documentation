@@ -14,7 +14,7 @@ export default new Vue({
             secure: true,
             keepAlive: new KeepAlive(),
             clusterId: "",
-            gossip: new Gossip("Client", "clients", false, true),
+            gossip: new Gossip("Client", "clients", false),
             gossipPort: 2113,
             nodes: [],
             nodesCount: 0,

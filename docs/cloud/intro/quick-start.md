@@ -23,7 +23,7 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 With the new account you can login to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
 
 ::: warning Gated provisioning
-Since Event Store Cloud is currently in preview, you won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
+You won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
 :::
 
 In the console, you first get to the list of organisations that you have access to.
