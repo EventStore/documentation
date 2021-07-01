@@ -5,7 +5,7 @@ author: "Greg Young"
 kind: "Video"
 link: "https://www.youtube.com/watch?v=FKFu78ZEIi8"
 tag:
-- event sourcing
+- Event Sourcing
 ---
 
 Watch Greg Young's talk "Why event-sourced systems fail" on Highload fwdays'20 online conference that was held on October 24, 2020.

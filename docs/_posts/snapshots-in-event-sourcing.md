@@ -4,8 +4,8 @@ date: 2021-05-21
 author: "Oskar"
 kind: "Article"
 original: "https://eventstore.com/blog"
-tag:
-- event sourcing
+tags:
+- Event Sourcing
 ---
 
 ![cover](./images/snapshots/snapshots-1.svg)

@@ -12,9 +12,9 @@ module.exports = (themeConfig, ctx) => {
     const defaultBlogPluginOptions = {
         directories: [
             {
-                id: 'post',
-                dirname: '_posts',
-                path: '/resources/',
+                id: "post",
+                dirname: "_posts",
+                path: "/resources/",
                 layout: "BlogLayout",
                 itemLayout: 'BlogLayout',
                 frontmatter: {
@@ -24,15 +24,15 @@ module.exports = (themeConfig, ctx) => {
                     lengthPerPage: 20,
                     layout: "BlogLayout",
                 },
-                itemPermalink: '/resources/:slug',
+                itemPermalink: "/resources/:slug",
             },
         ],
         frontmatters: [
             {
                 id: "tag",
-                keys: ['tag', 'tags'],
-                path: '/resources/tag/',
-                layout: 'BlogLayout',
+                keys: ["tag", "tags"],
+                path: "/resources/tag/",
+                layout: "BlogLayout",
                 scopeLayout: "BlogLayout",
                 frontmatter: {
                     title: "Categories",
@@ -45,9 +45,9 @@ module.exports = (themeConfig, ctx) => {
             },
             {
                 id: "kind",
-                keys: ['kind'],
-                path: '/resources/kind/',
-                layout: 'BlogLayout',
+                keys: ["kind"],
+                path: "/resources/kind/",
+                layout: "BlogLayout",
                 scopeLayout: "BlogLayout",
                 frontmatter: {
                     title: "Kinds",
@@ -63,20 +63,20 @@ module.exports = (themeConfig, ctx) => {
 
     const {modifyBlogPluginOptions} = themeConfig;
 
-    const blogPluginOptions = typeof modifyBlogPluginOptions === 'function'
+    const blogPluginOptions = typeof modifyBlogPluginOptions === "function"
         ? modifyBlogPluginOptions(defaultBlogPluginOptions)
         : defaultBlogPluginOptions;
 
     const plugins = [
         [
-            '@vuepress/blog',
+            "@vuepress/blog",
             blogPluginOptions,
         ]
     ];
 
     const config = {
         plugins,
-        extend: '@vuepress/theme-default'
+        extend: "@vuepress/theme-default"
     };
 
     config.extendPageData = function (pageCtx) {
@@ -88,7 +88,7 @@ module.exports = (themeConfig, ctx) => {
                 .trim()
                 .replace(/^#+\s+(.*)/, '')
                 .slice(0, themeConfig.summaryLength)
-        ) + ' ...';
+        ) + " ...";
     };
 
     return config;
