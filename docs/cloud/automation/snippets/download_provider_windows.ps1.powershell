@@ -1,4 +1,4 @@
-$source="https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v1.5.3/terraform-provider-eventstorecloud_1.5.3_windows_amd64.zip" 
+$source="https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download/v1.5.4/terraform-provider-eventstorecloud_1.5.4_windows_amd64.zip" 
 $zip= "./terraform-provider-eventstorecloud.zip"
 $tfPlugin="$env:APPDATA/terraform.d/plugins/terraform-provider-eventstorecloud/"
 Invoke-WebRequest -Uri $source -OutFile $zip
