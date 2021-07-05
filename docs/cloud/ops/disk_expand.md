@@ -27,6 +27,6 @@ On the detail page specify the new disk size and click on _Expand cluster disk_.
 
 To expand disks with  the command line, use the `cluster expand` command, where `--id` is the cluster id. 
 
-``` bash
+```bash
 $ esc mesdb clusters expand --disk-size-in-gb 16 --id c3fi17to0aer9r834480 --project-id c3fhvdto0aepmg0789m0 --org-id bt77lfqrh41scaatc180
 ```
