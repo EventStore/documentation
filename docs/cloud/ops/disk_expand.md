@@ -1,9 +1,8 @@
 ﻿# Expanding disks
 
-A disk can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
+Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
 
 See also the cloud [sizing guide](/cloud/provision/cloud-instance-guidance/#sizes) for general guidance. 
-
 
 ::: note 
 Limitations:  
@@ -11,14 +10,16 @@ Limitations:
 * on Azure, it is currently not possible to expand disks. To increase disk size you need to perform a backup and restore or replicate to a cluster with larger disks.
 :::
 
-
-## Using the Cloud Console
+## Using the cloud console
 
 To expand disks in the console, navigate to the clusters view and click on the _Expand Disks_ icon.
+
 ::: card
 ![cluster list](./images/disk_expand_list.png)
 :::
+
 On the detail page specify the new disk size and click on _Expand cluster disk_.
+
 ::: card
 ![cluster_expand_detail](./images/disk_expand_detail.png)
 :::
