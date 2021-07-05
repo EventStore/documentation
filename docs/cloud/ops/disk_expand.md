@@ -1,6 +1,6 @@
 ﻿# Expanding disks
 
-Disk can be extended, to accomodate database growth,through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
+A disk can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
 
 See also the cloud [sizing guide](/cloud/provision/cloud-instance-guidance/#sizes) for general guidance. 
 
