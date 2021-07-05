@@ -168,7 +168,7 @@ module.exports = {
                         "/cloud/ops/manual_backups.md",
                         "/cloud/ops/scheduled_backups.md",
                         "/cloud/ops/restore.md",
-
+                        "/cloud/ops/disk_expand.md",
                     ]
                 },
                 {
