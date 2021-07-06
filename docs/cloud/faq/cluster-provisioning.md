@@ -10,4 +10,4 @@ You will be able to do an online instance resize, but it won't be auto-scaling. 
 
 ### Are there plans to support automatic disk resize?
 
-No, you have to resize the disks yourself. Cloud providers set certain limitations on how often you can perform the disk resize operation, please follow your provider guidelines.
+No, you have to resize the disks yourself, read the procedure in the [documentation](/cloud/ops/disk_expand/). Cloud providers set certain limitations on how often you can perform the disk resize operation, please follow your provider guidelines.
