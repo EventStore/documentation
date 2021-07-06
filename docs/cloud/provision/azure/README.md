@@ -72,7 +72,7 @@ At this moment, it is not possible to change the cluster node instance size. You
 ![Azure cluster second part](./images/azure-new-cluster-2.png)
 :::
 
-Further, you need to specify the storage capacity. One disk kind is available at the moment (Premium SSD LRS), but you can change the disk size. As we currently do not support online disk resize for Azure, you need to ensure that the disk size you choose will support your estimated data volume.
+Further, you need to specify the storage capacity. One disk kind is available at the moment (Premium SSD LRS). **As we currently do not support online disk resize for Azure, you need to ensure that the disk size you choose will support your estimated data volume**.
 
 Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
