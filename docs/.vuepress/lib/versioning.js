@@ -30,7 +30,8 @@ module.exports = {
     versions: {
         // latest stable release
         get latest() {
-            return `${versions[0].basePath}/${versions[0].versions[0].path}`;
+            const serverDocs = versions.find(v => v.id === "server")
+            return `${serverDocs.basePath}/${serverDocs.versions[0].path}`;
         },
         get all() {
             return versions
