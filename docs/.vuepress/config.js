@@ -131,7 +131,7 @@ module.exports = {
                     path:       "/clients/grpc/projections/",
                     children: [
                         "/clients/grpc/projections/",
-                        "/clients/grpc/projections/projections-management.md"
+                        //"/clients/grpc/projections/projections-management.md"
                     ]
                 },
                 {
