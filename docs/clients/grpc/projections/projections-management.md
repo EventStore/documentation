@@ -31,7 +31,6 @@ implementation 'com.eventstore:db-client-java:1.0.0'
 libraryDependencies += "com.eventstore" % "db-client-java" % "1.0.0"
 ```
 </xode-block>
-
 <xode-block title="NodeJS">
 
 ```
@@ -45,7 +44,7 @@ $ npm install --save @eventstore/db-client
 <xode-block title="Rust">
 
 ```
-TODO 
+No additional configuration is needed having Rust installed. Go check https://rustup.rs.
 ```
 </xode-block>
 </xode-group>
@@ -55,19 +54,13 @@ TODO
 Projection management operations are exposed through a dedicated client. 
 
 <xode-group>
-<xode-block title="C#">
+<xode-block title="C#" code="connectionString">
 
-```csharp
-var settings = EventStoreClientSettings.Create("<your value>");
-var client = new EventStoreProjectionManagementClient(settings);
-```
+<<< @/docs/clients/dotnet/generated/21.2.0/samples/quick-start/Program.cs#createClient
 </xode-block>
-<xode-block title="Java">
+<xode-block title="Java" code="connectionString">
 
-```java
-EventStoreDbClientSettings settings = EventStoreDBConnectionString.parseOrThrow("<your connection string>");
-EventStoreDBProjectionManagementClient client = EventStoreDBProjectionManagementClient.create(settings);
-```
+<<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createClient
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
@@ -79,7 +72,6 @@ EventStoreDBProjectionManagementClient client = EventStoreDBProjectionManagement
 </xode-block>
 </xode-group>
 
-
 ## Restart the subsystem
 Restarts the entire projection subsystem. The user must be in the `$ops` or `$admin` group to perform this operation
 
@@ -90,14 +82,12 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 public async Task RestartSubsystemAsync(UserCredentials? userCredentials = null,CancellationToken cancellationToken = default (CancellationToken))
 ```
 </xode-block>
-
 <xode-block title="Java">
 
 ```java
 // This is currently not available in the java client 
 ```
 </xode-block>
-
 <xode-block title="NodeJS">
 
 ```ts 
@@ -110,9 +100,6 @@ restartSubsystem(options?: RestartSubsystemOptions): Promise<void>;
 TODO 
 ```
 </xode-block>
-
-
-
 </xode-group>
 
 ## Enable a projection
@@ -141,8 +128,8 @@ public async Task EnableAsync(string name, UserCredentials? userCredentials = nu
 </xode-block>
 <xode-block title="Rust">
 
-```
-TODO 
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -177,8 +164,8 @@ disableProjection(projectionName: string, options?: DisableProjectionOptions): P
 </xode-block>
 <xode-block title="Rust">
 
-```
-TODO 
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -204,6 +191,12 @@ Deletes a projection
 
 ```ts
 deleteProjection(projectionName: string, options?: DeleteProjectionOptions): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -235,6 +228,12 @@ public Task AbortAsync(string name, UserCredentials? userCredentials = null, Can
 // This is currently not available in the NodeJS client
 ```
 </xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
 </xode-group>
 
 ## Reset a projection 
@@ -257,6 +256,12 @@ public async Task ResetAsync(string name, UserCredentials? userCredentials = nul
 
 ```ts
  resetProjection(projectionName: string,options?: ResetProjectionOptions): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -286,6 +291,12 @@ public CompletableFuture createContinuous(final String projectionName, final Str
 createContinuousProjection(projectionName: string, query: string, options?: CreateContinuousProjectionOptions): Promise<void>
 ```
 </xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
 </xode-group>
 
 ## Create a one-time projection
@@ -310,6 +321,12 @@ public CompletableFuture createOneTime(final String projectionName, final String
 ```ts
 createOneTimeProjection(query: string, options?: CreateOneTimeProjectionOptions): Promise<void>;
 createOneTimeProjection(query: TemplateStringsArray,...parts: string[]): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -337,6 +354,12 @@ public async Task UpdateAsync(string name, string query, bool? emitEnabled = nul
 updateProjection(projectionName: string,query: string,options?: UpdateProjectionOptions): Promise<void>;
 ```
 </xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
 </xode-group>
 
 ## List all projections
@@ -360,6 +383,12 @@ public IAsyncEnumerable<ProjectionDetails> ListAllAsync(UserCredentials? userCre
 
 ```
 // This is currently not available in the NodeJS client
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -387,6 +416,12 @@ public IAsyncEnumerable<ProjectionDetails> ListContinuousAsync(UserCredentials? 
 listContinuousProjections(options?: ListProjectionsOptions): Promise<ProjectionDetails[]>;
 ```
 </xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
 </xode-group>
 
 ## List one-time projections
@@ -412,6 +447,12 @@ public IAsyncEnumerable<ProjectionDetails> ListOneTimeAsync(UserCredentials? use
  listOneTimeProjections(options?: ListProjectionsOptions): Promise<ProjectionDetails[]>;
 ```
 </xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
 </xode-group>
 
 ## Get Status 
@@ -435,6 +476,12 @@ public Task<ProjectionDetails> GetStatusAsync(string name, UserCredentials? user
 
 ```ts
  getProjectionStatistics(projectionName: string,options?: GetProjectionStatisticsOptions): Promise<ProjectionDetails>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
@@ -464,6 +511,12 @@ public async Task<T> GetStateAsync<T>(string name, string? partition = null, Jso
 getProjectionState<T = unknown>(projectionName: string,options?: GetProjectionStateOptions): Promise<T>;
 ```
 </xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
 </xode-group>
 
 ## Get result
@@ -490,6 +543,12 @@ public <TResult> CompletableFuture<TResult> getResult(final String projectionNam
 
 ```ts
 getProjectionResult<T = unknown>(projectionName: string, options?: GetProjectionResultOptions): Promise<T>
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
 ```
 </xode-block>
 </xode-group>
