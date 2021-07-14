@@ -22,7 +22,7 @@
       },
       {
         "version": "v5",
-        "name": "release/oss-v5"
+        "name": "fixed_dead_link_to_v5_http_api"
       }
     ]
   },
