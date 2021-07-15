@@ -34,7 +34,7 @@ The second part of a projection is a set of filters. There is a special filter c
 
 Here is the projection code:
 
-<<< @/docs/server/generated/v5/samples/http-api/xbox-one-s-counter.json
+<<< @/docs/server/generated/v5/samples/http-api/xbox-one-s-counter.js
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running. 
 
