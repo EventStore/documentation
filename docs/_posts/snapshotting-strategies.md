@@ -1,6 +1,6 @@
 ---
 title: "Snapshots in Event Sourcing"
-date: 2021-05-21
+date: 2021-07-16
 author: "Oskar Dudycz"
 kind: "Article"
 original: "https://www.eventstore.com/blog/snapshotting-strategies"
