@@ -7,6 +7,7 @@ original: "https://www.eventstore.com/blog/snapshotting-strategies"
 tags:
 - Event Sourcing
 - Snapshots
+- NodeJS
 ---
 
 ![cover](./images/snapshots/snapshots-1.svg)
