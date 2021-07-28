@@ -5,7 +5,6 @@ author: "Oskar Dudycz"
 kind: "Post"
 original: "https://www.eventstore.com/blog/getting-started-with-v1-java-grpc-client"
 tags:
-- release notes
 - Java
 ---
 

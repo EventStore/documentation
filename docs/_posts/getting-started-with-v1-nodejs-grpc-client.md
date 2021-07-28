@@ -5,7 +5,6 @@ author: "Oskar Dudycz"
 kind: "Post"
 original: "https://www.eventstore.com/blog/nodejs-v1-release/"
 tags:
-- release notes
 - NodeJS
 ---
 

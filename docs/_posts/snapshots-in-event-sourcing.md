@@ -6,7 +6,6 @@ kind: "Article"
 original: "https://www.eventstore.com/blog/snapshots-in-event-sourcing"
 tags:
 - Event Sourcing
-- Snapshots
 ---
 
 ![cover](./images/snapshots/snapshots-1.svg)

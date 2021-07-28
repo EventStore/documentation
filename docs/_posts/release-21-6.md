@@ -1,6 +1,6 @@
 ---
 title: "21.6.0 Release Notes"
-date: 2021-03-01
+date: 2021-07-01
 author: "Hayley Campbell "
 kind: "Post"
 original: "https://www.eventstore.com/blog/21.6.0-release-notes"

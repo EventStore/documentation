@@ -6,8 +6,6 @@ kind: "Article"
 original: "https://event-driven.io/en/how_to_get_the_current_entity_state_in_event_sourcing/"
 tags:
 - Event Sourcing
-- NodeJS
-- .NET
 ---
 
 ![cover](./images/how-to-get-the-current-entity-state-from-events/how-to-get-the-current-entity-state-from-events-1.png)
