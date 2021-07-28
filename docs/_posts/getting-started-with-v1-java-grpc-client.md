@@ -1,13 +1,15 @@
 ---
 title: "Getting started with v1 Java gRPC client"
-date: 2021-03-01
+date: 2021-03-03
 author: "Oskar Dudycz"
-kind: "Article"
+kind: "Post"
 original: "https://www.eventstore.com/blog/getting-started-with-v1-java-grpc-client"
 tags:
 - release notes
 - Java
 ---
+
+![cover](images/getting-started-with-v1-java-grpc-client/getting-started-with-v1-java-grpc-client-1.svg)
 
 The first release of EventStoreDB gRPC happened on 23rd November 2020, one day after my birthday. If you're a JVM developer, I have a gift for you. I proudly announce the v1 release!
 

@@ -1,5 +1,5 @@
 ---
-title: "Snapshots in Event Sourcing"
+title: "Snapshotting Strategies"
 date: 2021-07-16
 author: "Oskar Dudycz"
 kind: "Article"

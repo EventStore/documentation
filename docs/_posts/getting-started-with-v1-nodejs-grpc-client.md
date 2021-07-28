@@ -2,12 +2,14 @@
 title: "Getting started with v1 NodeJS gRPC client"
 date: 2021-03-01
 author: "Oskar Dudycz"
-kind: "Article"
+kind: "Post"
 original: "https://www.eventstore.com/blog/nodejs-v1-release/"
 tags:
 - release notes
 - NodeJS
 ---
+
+![cover](images/getting-started-with-v1-nodejs-grpc-client/getting-started-with-v1-nodejs-grpc-client-1.svg)
 
 Back in version 20.6 of EventStoreDB, we added support for connecting to the database via gRPC. This widely adopted standard allows us to provide a unified dev experience across many platforms and environments, enabling first class support for Event Sourcing and Event-Driven Architecture with EventStoreDB. Since then, we've been working hard on writing first party clients for multiple languages and runtimes.
 
