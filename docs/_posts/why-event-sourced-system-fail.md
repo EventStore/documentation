@@ -8,7 +8,7 @@ tag:
 - Event Sourcing
 ---
 
-Watch Greg Young's talk "Why event-sourced systems fail" on Highload fwdays'20 online conference that was held on October 24, 2020.
+Watch Greg Young's talk _"Why event-sourced systems fail"+ on Highload fwdays'20 online conference that was held on October 24, 2020.
 
 <!-- more -->
 

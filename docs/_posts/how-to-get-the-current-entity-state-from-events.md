@@ -8,7 +8,7 @@ tags:
 - Event Sourcing
 ---
 
-![cover](./images/how-to-get-the-current-entity-state-from-events/how-to-get-the-current-entity-state-from-events-1.png)
+![cover](./images/how-to-get-the-current-entity-state-from-events/how-to-get-the-current-entity-state-from-events-1.svg)
 
 In Event Sourcing, the application state is stored in events. When we add an event, it is placed at the end of a structure called an append-only log (read more in this post [What if I told you that Relational Databases are in fact Event Stores?](https://event-driven.io/en/relational_databases_are_event_stores/)). Events are the source of truth. This has many advantages, such as:
 
