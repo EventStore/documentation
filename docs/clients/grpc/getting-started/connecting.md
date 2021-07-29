@@ -32,7 +32,17 @@ implementation 'com.eventstore:db-client-java:0.5'
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
+
+```
+# Yarn
+$ yarn add @eventstore/db-client
+
+# NPM
+$ npm install --save @eventstore/db-client
+```
+</xode-block>
+<xode-block title="JavaScript">
 
 ```
 # Yarn
@@ -79,9 +89,13 @@ First thing first, we need a client.
 
 <<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createClient
 </xode-block>
-<xode-block title="NodeJS" code="connectionString">
+<xode-block title="TypeScript" code="connectionString">
 
-<<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.ts#createClient
+</xode-block>
+<xode-block title="JavaScript" code="connectionString">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.js#createClient
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
@@ -111,9 +125,13 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createEvent
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/getStarted.js#createEvent
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.ts#createEvent
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.js#createEvent
 </xode-block>
 <xode-block title="Rust">
 
@@ -136,9 +154,13 @@ In the snippet below, we append the event to the stream `some-stream`.
 
 <<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#appendEvents
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/getStarted.js#appendEvents
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.ts#appendEvents
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.js#appendEvents
 </xode-block>
 <xode-block title="Rust">
 
@@ -161,9 +183,13 @@ Finally, we can read events back from the `some-stream` stream.
 
 <<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#readStream
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/getStarted.js#readStream
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.ts#readStream
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.js#readStream
 </xode-block>
 <xode-block title="Rust">
 

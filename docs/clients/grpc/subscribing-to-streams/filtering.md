@@ -21,9 +21,13 @@ There are a number of events in EventStoreDB called system events. These are pre
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#exclude-system
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#exclude-system
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#exclude-system
 </xode-block>
 <xode-block title="Rust">
 
@@ -52,9 +56,13 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-prefix
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#event-type-prefix
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#event-type-prefix
 </xode-block>
 <xode-block title="Rust">
 
@@ -77,9 +85,13 @@ If you want to subscribe to multiple event types then it might be better to prov
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#event-type-regex
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#event-type-regex
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#event-type-regex
 </xode-block>
 <xode-block title="Rust">
 
@@ -106,9 +118,13 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-prefix
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#stream-prefix
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#stream-prefix
 </xode-block>
 <xode-block title="Rust">
 
@@ -131,9 +147,13 @@ If you want to subscribe to multiple streams then it might be better to provide 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#stream-regex
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#stream-regex
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#stream-regex
 </xode-block>
 <xode-block title="Rust">
 
@@ -160,11 +180,13 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-```
-// TODO
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#checkpoint
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#checkpoint
 </xode-block>
 <xode-block title="Rust">
 
@@ -183,9 +205,13 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/server-side-filtering/index.js#checkpoint-with-interval
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.ts#checkpoint-with-interval
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/server-side-filtering.js#checkpoint-with-interval
 </xode-block>
 <xode-block title="Rust">
 

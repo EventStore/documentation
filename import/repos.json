@@ -73,5 +73,22 @@
         "name": "master"
       }
     ]
+  },
+  {
+    "id": "node-client",
+    "group": "NodeJS SDK",
+    "basePath": "clients/node",
+    "samplesRelativePath": ["samples"],
+    "repo": "https://github.com/EventStore/EventStore-Client-NodeJS.git",
+    "postprocess": [
+      "yarn babel <root>/samples --presets @babel/preset-typescript --retain-lines --out-dir <root>/samples --extensions .ts",
+      "yarn prettier --write <root>/samples/*.js"
+    ],
+    "branches": [
+      {
+        "version": "2.0.0",
+        "name": "snippets-to-repo"
+      }
+    ]
   }
 ]

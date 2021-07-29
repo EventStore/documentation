@@ -15,9 +15,13 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-to-stream
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-to-stream
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.ts#append-to-stream
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.js#append-to-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -52,9 +56,13 @@ For example:
 
 <<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-duplicate-event
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-duplicate-event
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.ts#append-duplicate-event
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.js#append-duplicate-event
 </xode-block>
 <xode-block title="Rust">
 
@@ -101,9 +109,13 @@ For example if we try and append the same record twice expecting both times that
 
 <<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-with-no-stream
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-no-stream
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.ts#append-with-no-stream
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.js#append-with-no-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -127,9 +139,13 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#append-with-concurrency-check
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#append-with-concurrency-check
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.ts#append-with-concurrency-check
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.js#append-with-concurrency-check
 </xode-block>
 <xode-block title="Rust">
 
@@ -152,9 +168,13 @@ You can provide user credentials to be used to append the data as follows. This 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/appending_events/AppendingEvents.java#overriding-user-credentials
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/appending-events/index.js#overriding-user-credentials
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.ts#overriding-user-credentials
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/appending-events.js#overriding-user-credentials
 </xode-block>
 <xode-block title="Rust">
 

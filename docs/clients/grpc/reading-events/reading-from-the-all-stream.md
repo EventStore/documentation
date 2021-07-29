@@ -16,9 +16,13 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-all-stream
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-all-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -37,9 +41,13 @@ This will return an AsyncEnumerable that can be iterated on:
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream-iterate
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-iterate
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-all-stream-iterate
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-all-stream-iterate
 </xode-block>
 <xode-block title="Rust">
 
@@ -67,9 +75,13 @@ When using projections to create new events you can set whether the generated ev
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream-resolving-link-Tos
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-resolving-link-Tos
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-all-stream-resolving-link-Tos
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-all-stream-resolving-link-Tos
 </xode-block>
 <xode-block title="Rust">
 
@@ -93,9 +105,13 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-all-overriding-user-credentials
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-all-overriding-user-credentials
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-all-overriding-user-credentials
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-all-overriding-user-credentials
 </xode-block>
 <xode-block title="Rust">
 
@@ -116,9 +132,13 @@ As well as being able to read a stream forwards you can also go backwards. When 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-all-stream-backwards 
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-all-stream-backwards 
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-all-stream-backwards 
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-all-stream-backwards 
 </xode-block>
 <xode-block title="Rust">
 
@@ -145,9 +165,13 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#ignore-system-events
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#ignore-system-events 
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#ignore-system-events 
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#ignore-system-events 
 </xode-block>
 <xode-block title="Rust">
 

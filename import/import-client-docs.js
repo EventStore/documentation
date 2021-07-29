@@ -62,19 +62,22 @@ async function replaceFileExtensions(samplesDir,  from, to) {
     await sh(command);
 }
 
-async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, version, tagOrBranch, samplesRelativePath, docsRelativePath) {
-    log.info(`checking out ${tagOrBranch}...`);
-    await clientRepo.checkout(tagOrBranch);
+async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, branch, repo) {
+    log.info(`checking out ${branch.name}...`);
+    await clientRepo.checkout(branch.name);
     
-    const destinationPathWithId = path.join(destinationPath, version);
+    const destinationPathWithId = path.join(destinationPath, branch.version);
 
-    if (docsRelativePath)
-        await copyDocs(repoLocation, destinationPathWithId, docsRelativePath);
+    if (repo.docsRelativePath)
+        await copyDocs(repoLocation, destinationPathWithId, repo.docsRelativePath);
 
-    if (samplesRelativePath)
-        await copySamples(repoLocation, destinationPathWithId, samplesRelativePath);
+    if (repo.samplesRelativePath)
+        await copySamples(repoLocation, destinationPathWithId, repo.samplesRelativePath);
 
-    return {path: path.join('generated', version), version};
+    if (repo.postprocess)
+        await postprocess(destinationPathWithId, repo.postprocess)
+
+    return {path: path.join('generated', branch.version), version: branch.version};
 }
 
 async function copyDocs(repoLocation, destinationPathWithId, relativePath) {
@@ -99,6 +102,15 @@ async function copySamples(repoLocation, destinationPathWithId, relativePath) {
     await replaceFileExtensions('docs', 'rs', 'rust');
     await replaceCodePath(destinationPathWithId, samplesDestinationPath);
 }
+
+async function postprocess(destinationPathWithId, postprocess) {
+    log.info('postprocessing');
+    for (const rawCommand of postprocess) {
+        const command = rawCommand.replace(/<root>/g, destinationPathWithId);
+        await sh(command);
+    }
+}
+
 
 async function main() {
     await safeRmdir('temp');
@@ -130,10 +142,8 @@ async function main() {
                 clientRepo,
                 repoLocation,
                 samplesLocation, 
-                branch.version, 
-                branch.name, 
-                repo.samplesRelativePath, 
-                repo.docsRelativePath
+                branch,
+                repo,
             );
 
             if (version !== undefined) {
