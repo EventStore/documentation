@@ -15,9 +15,13 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-stream
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-stream
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-stream
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -36,9 +40,13 @@ This will return an enumerable that can be iterated on:
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#iterate-stream
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#iterate-stream
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#iterate-stream
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#iterate-stream
 </xode-block>
 <xode-block title="Rust">
 
@@ -72,9 +80,13 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#overriding-user-credentials
 </xode-block>
-<xode-block title="NodeJS"> 
+<xode-block title="TypeScript"> 
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#overriding-user-credentials
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#overriding-user-credentials
+</xode-block>
+<xode-block title="JavaScript"> 
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#overriding-user-credentials
 </xode-block>
 <xode-block title="Rust">
 
@@ -95,9 +107,13 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-stream-position
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#read-from-stream-position
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-stream-position
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-stream-position
 </xode-block>
 <xode-block title="Rust">
 
@@ -118,9 +134,13 @@ As well as being able to read a stream forwards you can also go backwards. When 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#reading-backwards
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#reading-backwards 
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#reading-backwards 
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#reading-backwards 
 </xode-block>
 <xode-block title="Rust">
 
@@ -146,9 +166,13 @@ It is important to check the value of this field before attempting to iterate an
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="TypeScript">
 
-<<< @/samples/grpc/nodejs/samples/reading-events/index.js#checking-for-stream-presence
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#checking-for-stream-presence
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#checking-for-stream-presence
 </xode-block>
 <xode-block title="Rust">
 
