@@ -8,7 +8,7 @@ tag:
 - Projections
 ---
 
-Watch Derek Comartin's video _"Event Sourcing Example & Explained in plain English"_.
+Watch Derek Comartin's video "Event Sourcing Example & Explained in plain English".
 
 <!-- more -->
 

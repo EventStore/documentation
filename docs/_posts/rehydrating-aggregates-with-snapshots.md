@@ -8,7 +8,7 @@ tag:
 - Snapshots
 ---
 
-Watch Derek Comartin's video _"Event Sourcing: Rehydrating Aggregates with Snapshots"_.
+Watch Derek Comartin's video "Event Sourcing: Rehydrating Aggregates with Snapshots".
 
 <!-- more -->
 

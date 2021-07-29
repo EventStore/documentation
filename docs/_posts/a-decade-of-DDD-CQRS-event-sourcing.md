@@ -8,7 +8,7 @@ tag:
 - Event Sourcing
 ---
 
-Watch Greg Young's talk _"A Decade of DDD, CQRS, Event Sourcing"_ recorded at DDDEU 2016 conference.
+Watch Greg Young's talk "A Decade of DDD, CQRS, Event Sourcing" recorded at DDDEU 2016 conference.
 
 <!-- more -->
 

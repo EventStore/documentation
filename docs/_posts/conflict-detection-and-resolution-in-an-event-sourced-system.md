@@ -8,7 +8,7 @@ tag:
 - Event Sourcing
 ---
 
-Watch James Geall's talk _"Conflict Detection and Resolution in an EventSourced System"_ recorded at DDDEU 2020 conference.
+Watch James Geall's talk "Conflict Detection and Resolution in an EventSourced System" recorded at DDDEU 2020 conference.
 
 <!-- more -->
 

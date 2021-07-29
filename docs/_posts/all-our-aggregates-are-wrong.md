@@ -8,7 +8,7 @@ tag:
 - Modelling
 ---
 
-Watch Mauro Servienti's talk _"All our aggregates are wrong"_ recorded at NDC conference.
+Watch Mauro Servienti's talk "All our aggregates are wrong" recorded at NDC conference.
 
 <!-- more -->
 

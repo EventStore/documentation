@@ -8,7 +8,7 @@ tag:
 - Event Sourcing
 ---
 
-Watch Duncan Jones's talk _"Introduction to event sourcing and CQRS"_ recorded at RebelCon conference.
+Watch Duncan Jones's talk "Introduction to event sourcing and CQRS" recorded at RebelCon conference.
 
 <!-- more -->
 

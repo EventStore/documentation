@@ -8,7 +8,7 @@ tag:
 - Modelling
 ---
 
-Watch Thomas Pierrain's talk _"As Time Goes By… (a Bi-temporal Event Sourcing story)"_ recorded at DDD Europe 2018 conference.
+Watch Thomas Pierrain's talk "As Time Goes By… (a Bi-temporal Event Sourcing story)" recorded at DDD Europe 2018 conference.
 
 <!-- more -->
 

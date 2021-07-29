@@ -8,7 +8,7 @@ tag:
 - Projections
 ---
 
-Watch Derek Comartin's video _"Projections in Event Sourcing: Build ANY model you want!"_.
+Watch Derek Comartin's video "Projections in Event Sourcing: Build ANY model you want!".
 
 <!-- more -->
 

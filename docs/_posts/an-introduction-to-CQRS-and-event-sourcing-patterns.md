@@ -8,7 +8,7 @@ tag:
 - Event Sourcing
 ---
 
-Watch Mat McLoughlin's talk _"An Introduction to CQRS and Event Sourcing Patterns"_ recorded at NDC conference.
+Watch Mat McLoughlin's talk "An Introduction to CQRS and Event Sourcing Patterns" recorded at NDC conference.
 
 <!-- more -->
 

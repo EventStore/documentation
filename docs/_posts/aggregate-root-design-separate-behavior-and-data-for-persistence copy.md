@@ -8,7 +8,7 @@ tag:
 - Modelling
 ---
 
-Watch Derek Comartin's video _"Aggregate (Root) Design: Separate Behavior & Data for Persistence"_.
+Watch Derek Comartin's video "Aggregate (Root) Design: Separate Behavior & Data for Persistence".
 
 <!-- more -->
 
