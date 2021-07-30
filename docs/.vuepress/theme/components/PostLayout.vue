@@ -19,19 +19,6 @@ export default {
         title() {
             return this.$title.replace(" | " + this.$siteTitle, "")
         }
-    },
-    methods: {
-        openExternalLink() {
-            if (this.$frontmatter.link) {
-                window.open(this.$frontmatter.link);
-            }
-        }
-    },
-    mounted() {
-        this.openExternalLink();
-    },
-    updated() {
-        this.openExternalLink();
     }
 }
 </script>
