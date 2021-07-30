@@ -1,5 +1,5 @@
 ---
-title: "Projections in Event Sourcing: Build ANY model you want!"
+title: "📺 Projections in Event Sourcing: Build ANY model you want!"
 date: 2021-02-10
 author: "Derek Comartin"
 kind: "Video"

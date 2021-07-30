@@ -1,5 +1,5 @@
 ---
-title: "CQRS and Event Sourcing"
+title: "📺 CQRS and Event Sourcing"
 date: 2014-08-09
 author: "Greg Young"
 kind: "Video"

@@ -1,5 +1,5 @@
 ---
-title: "Introduction to event sourcing and CQRS"
+title: "📺 Introduction to event sourcing and CQRS"
 date: 2017-07-11
 author: "Duncan Jones"
 kind: "Video"

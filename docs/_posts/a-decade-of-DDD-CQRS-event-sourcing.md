@@ -1,5 +1,5 @@
 ---
-title: "A Decade of DDD, CQRS, Event Sourcing"
+title: "📺 A Decade of DDD, CQRS, Event Sourcing"
 date: 2016-04-11
 author: "Greg Young"
 kind: "Video"

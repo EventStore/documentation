@@ -1,5 +1,5 @@
 ---
-title: "All our aggregates are wrong"
+title: "📺 All our aggregates are wrong"
 date: 2019-04-08
 author: "Mauro Servienti"
 kind: "Video"

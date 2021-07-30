@@ -1,5 +1,5 @@
 ---
-title: "As Time Goes By… (a Bi-temporal Event Sourcing story)"
+title: "📺 As Time Goes By… (a Bi-temporal Event Sourcing story)"
 date: 2018-09-28
 author: "Thomas Pierrain"
 kind: "Video"

@@ -1,5 +1,5 @@
 ---
-title: "An Introduction to CQRS and Event Sourcing Patterns"
+title: "📺 An Introduction to CQRS and Event Sourcing Patterns"
 date: 2017-02-11
 author: "Mat McLoughlin"
 kind: "Video"

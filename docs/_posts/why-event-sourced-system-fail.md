@@ -1,5 +1,5 @@
 ---
-title: "Why event-sourced systems fail"
+title: "📺 Why event-sourced systems fail"
 date: 2020-10-24
 author: "Greg Young"
 kind: "Video"

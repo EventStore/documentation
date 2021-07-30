@@ -1,5 +1,5 @@
 ---
-title: "Event Sourcing Example & Explained in plain English"
+title: "📺 Event Sourcing Example & Explained in plain English"
 date: 2021-02-03
 author: "Derek Comartin"
 kind: "Video"

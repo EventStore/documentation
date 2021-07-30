@@ -1,5 +1,5 @@
 ---
-title: "Conflict Detection and Resolution in an EventSourced System"
+title: "📺 Conflict Detection and Resolution in an EventSourced System"
 date: 2020-10-02
 author: "James Geall"
 kind: "Video"

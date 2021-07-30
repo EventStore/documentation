@@ -1,5 +1,5 @@
 ---
-title: "Event Sourcing: Rehydrating Aggregates with Snapshots"
+title: "📺 Event Sourcing: Rehydrating Aggregates with Snapshots"
 date: 2021-03-03
 author: "Derek Comartin"
 kind: "Video"
