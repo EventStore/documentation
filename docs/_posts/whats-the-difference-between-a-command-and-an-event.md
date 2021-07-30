@@ -4,6 +4,7 @@ date: 2021-05-10
 author: "Oskar Dudycz"
 kind: "Article"
 original: "https://event-driven.io/en/whats_the_difference_between_event_and_command/"
+summary: The distinction between command and an event may seem apparent. However, if analysed in detail, it's not straightforward. Read more to learn the heuristics of how to use them in your project.
 tags:
 - Event Sourcing
 ---

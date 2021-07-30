@@ -4,6 +4,7 @@ date: 2021-03-01
 author: "Oskar Dudycz"
 kind: "Post"
 original: "https://www.eventstore.com/blog/nodejs-v1-release/"
+summary: NodeJS gRPC client release v1.0.0 brings an official support of EventStoreDB to NodeJS. It enables using both JavaScript and type-driven experience with TypeScript.
 tags:
 - NodeJS
 ---
@@ -212,7 +213,7 @@ for (const { event } of events) {
 
 ### NodeJS Version support
 
-We are officially supporting the Active LTS version. At the moment I write this post, it's v14\. It should also work at least with v12, but we recommend that you always use the Active LTS.
+We are officially supporting the Active LTS version. At the moment I write this post, it's v14. It should also work at least with v12, but we recommend that you always use the Active LTS.
 
 ### Source code and documentation
 

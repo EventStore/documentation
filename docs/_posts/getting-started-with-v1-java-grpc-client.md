@@ -4,6 +4,7 @@ date: 2021-03-03
 author: "Oskar Dudycz"
 kind: "Post"
 original: "https://www.eventstore.com/blog/getting-started-with-v1-java-grpc-client"
+summary: JVM gRPC client release v1.0.0 brings an official support of EventStoreDB to JVM environment.
 tags:
 - Java
 ---
@@ -14,7 +15,7 @@ The first release of EventStoreDB gRPC happened on 23rd November 2020, one day a
 
 The last few months have been busy. We were working hard to align both the feature set and naming conventions between the gRPC clients. If you were a preview version user, you might find some breaking API changes, but it should be stable from now on.
 
-The Java client supports all Java versions from 8\. You can use it also in Scala, Kotlin and Groovy.
+The Java client supports all Java versions from 8. You can use it also in Scala, Kotlin and Groovy.
 
 ### Installation
 

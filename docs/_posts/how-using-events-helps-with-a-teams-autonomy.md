@@ -4,6 +4,7 @@ date: 2021-05-08
 author: "Oskar Dudycz"
 kind: "Article"
 original: "https://event-driven.io/en/how_using_events_help_in_teams_autonomy/"
+summary: Autonomy is the Holy Grail for the management of multiple teams. The event-driven approach can help on improving not only a technical solution but also teams communication.
 tags:
 - Event Sourcing
 ---

@@ -4,6 +4,7 @@ date: 2021-07-16
 author: "Oskar Dudycz"
 kind: "Article"
 original: "https://www.eventstore.com/blog/snapshotting-strategies"
+summary: Snapshots are the technical optimisation for read model performance. Read more to learn how to apply them in practice when you need them.
 tags:
 - Snapshots
 ---

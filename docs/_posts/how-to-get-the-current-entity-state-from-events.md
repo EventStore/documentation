@@ -4,6 +4,7 @@ date: 2021-07-15
 author: "Oskar Dudycz"
 kind: "Article"
 original: "https://event-driven.io/en/how_to_get_the_current_entity_state_in_event_sourcing/"
+summary: In Event Sourcing, the application state is stored in events. Events are the source of truth. Read more to see how to get the entity state from them.
 tags:
 - Event Sourcing
 ---
@@ -147,13 +148,13 @@ var invoiceSent = new InvoiceSent(
     DateTime.UtcNow
 );
 
-// 1,2\. Get all events and sort them in the order of appearance
+// 1,2. Get all events and sort them in the order of appearance
 var events = new object[] {invoiceInitiated, invoiceIssued, invoiceSent};
 
-// 3\. Construct empty Invoice object
+// 3. Construct empty Invoice object
 var invoice = new Invoice();
 
-// 4\. Apply each event on the entity.
+// 4. Apply each event on the entity.
 foreach (var @event in events)
 {
     invoice.When(@event);

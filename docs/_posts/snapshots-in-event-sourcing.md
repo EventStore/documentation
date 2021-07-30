@@ -4,6 +4,7 @@ date: 2021-05-21
 author: "Oskar Dudycz"
 kind: "Article"
 original: "https://www.eventstore.com/blog/snapshots-in-event-sourcing"
+summary: The article explains the general rules for temporal modelling and when (not) to use snapshots.
 tags:
 - Snapshots
 ---
@@ -14,7 +15,7 @@ One of the great benefits of Event Sourcing is that you don't lose any business 
 
 ![cover](./images/snapshots/snapshots-2.svg)
 
-Isn't loading more than one event a performance issue? Frankly, it's not. Downloading even a dozen, or several dozens of small events is not a significant overhead. Events are concise, containing only the information needed. EventStoreDB is optimised for such operations, and the reads scale well. Still, you can't disagree that loading a few events will take longer than loading a single one.  In the article ["Why a bank account is not the best example of Event Sourcing?"](Https://event-driven.io/en/bank_account_event_sourcing/) I presented the following calculation:
+Isn't loading more than one event a performance issue? Frankly, it's not. Downloading even a dozen, or several dozens of small events is not a significant overhead. Events are concise, containing only the information needed. EventStoreDB is optimised for such operations, and the reads scale well. Still, you can't disagree that loading a few events will take longer than loading a single one. In the article ["Why a bank account is not the best example of Event Sourcing?"](Https://event-driven.io/en/bank_account_event_sourcing/) I presented the following calculation:
 
 Suppose I opened a bank account at the age of 18. Let's assume that I was making three transactions a day. If we multiply these numbers (3 x 17 x 365), we get 18,615 transactions.
 

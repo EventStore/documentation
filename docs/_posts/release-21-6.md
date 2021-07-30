@@ -4,6 +4,7 @@ date: 2021-07-01
 author: "Hayley Campbell "
 kind: "Post"
 original: "https://www.eventstore.com/blog/21.6.0-release-notes"
+summary: We are pleased to announce the official release of EventStoreDB 21.6.0
 tags:
 - release notes
 ---
