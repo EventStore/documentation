@@ -32,7 +32,7 @@ F1 instance size is designed for a low-cost development environment. We recommen
 
 Due to the burstable CPU class, CPU shares are limited, this results in the following implications:
 - EventStoreDB runs on the .NET managed runtime which requires CPU time for garbage collection operations. If CPU shares are not available and allocations are increasing this may result in client timeouts to the cluster or an out of memory condition.
-- CPU shares are required to maintain the cluster state topology via constant gossip message propagation. CPU shares are utilized to maintain cluster state even when the cluster is not under load.
+- CPU shares are required to maintain the cluster state topology via constant gossip message propagation. It means that the cluster needs CPU shares to maintain cluster state even when it's is not under load.
 - EventStoreDB requires CPU cycles to maintain indexes, and for other maintenance processes. Underpopulated or underloaded databases (such as demo or development setups) require little CPU time and overperform compared to fully populated systems with consistent throughput. Expect performance to level off as workloads increase.
 - If continuous load is applied it may be possible to exhaust the allowed CPU shares per time cycle, resulting in client timeouts or OOM conditions.
 - When ESC exited Preview and went into GA we increased the size of the backing instance type as the original F1 instance size was too small to provide enough memory and CPU shares to maintain cluster state adequately even at extremely low volumes. A backup and restore is required to move to the new backing size.
