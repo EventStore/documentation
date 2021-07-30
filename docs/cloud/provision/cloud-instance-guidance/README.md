@@ -21,11 +21,11 @@ The **Working Set** is the number of streams being read from and written to conc
 
 ### Performance vs self hosted
 
-If you're doing load tests to compare Event Store Cloud EventStoreDB clusters to self-hosted ones, you need to consider the following things. The results may differ even if you're using similar instance sizes.
+When load testing an application against Event Store Cloud EventStoreDB clusters, performance may differ from a self hosted solution when utilizing a similar instance size.
 
-Event Store Cloud uses [ZFS](https://en.wikipedia.org/wiki/ZFS) to ensure filesystem integrity/safety as well as block-level compression. Thanks to that, we're minimizing IOPs and lower storage costs for hosted data.
+Event Store Cloud utilizes [ZFS](https://en.wikipedia.org/wiki/ZFS) to ensure filesystem integrity/safety as well as block level compression, to ensure the minimization of IOPs and a lower storage cost for data hosted.
 
-ZFS requires additional CPU and memory to provide these capabilities. To get the relevant comparison, you should use a similar configuration on the self-hosted environment.
+ZFS requires additional CPU and memory to provide these capabilities. As such a self hosted comparison should utilize a similar configuration in order to provide a relevant comparison.
 
 ### Micro (F1) instance sizes
 F1 instance size is designed for a low-cost development environment. We recommend using it for the experiments like Proof of Concept or extremely low workload like 10-100 events a day per database (cluster). F1 instances are using a burstable CPU class to enable this goal across all supported public clouds.
