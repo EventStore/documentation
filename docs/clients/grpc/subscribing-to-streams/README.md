@@ -23,10 +23,6 @@ The simplest stream subscription looks like the following :
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream
@@ -34,6 +30,10 @@ The simplest stream subscription looks like the following :
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream
 </xode-block>
 </xode-group>
 
@@ -52,10 +52,6 @@ Subscribing to `$all` is much the same as subscribing to a single stream. The ha
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all
@@ -63,6 +59,10 @@ Subscribing to `$all` is much the same as subscribing to a single stream. The ha
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all
 </xode-block>
 </xode-group>
 
@@ -93,10 +93,6 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-from-position
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-from-position
@@ -104,6 +100,10 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-from-position
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-from-position
 </xode-block>
 </xode-group>
 
@@ -124,10 +124,6 @@ Please note that this position will need to be a legitimate position in `$all`.
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-from-position
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all-from-position
@@ -135,6 +131,10 @@ Please note that this position will need to be a legitimate position in `$all`.
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all-from-position
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-from-position
 </xode-block>
 </xode-group>
 
@@ -151,10 +151,6 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-live
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-live
@@ -162,6 +158,10 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-live
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-live
 </xode-block>
 </xode-group>
 
@@ -176,10 +176,6 @@ And the same works with `$all` :
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-live
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all-live
@@ -187,6 +183,10 @@ And the same works with `$all` :
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all-live
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-live
 </xode-block>
 </xode-group>
 
@@ -213,10 +213,6 @@ When reading a stream you can specify whether to resolve link-to's or not. By de
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-resolving-linktos
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-resolving-linktos
@@ -224,6 +220,10 @@ When reading a stream you can specify whether to resolve link-to's or not. By de
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-resolving-linktos
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-resolving-linktos
 </xode-block>
 </xode-group>
 
@@ -256,10 +256,6 @@ An application, which hosts the subscription, can go offline for a period of tim
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-subscription-dropped
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-subscription-dropped
@@ -267,6 +263,10 @@ An application, which hosts the subscription, can go offline for a period of tim
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-subscription-dropped
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-subscription-dropped
 </xode-block>
 </xode-group>
 
@@ -281,10 +281,6 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-subscription-dropped
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all-subscription-dropped
@@ -292,6 +288,10 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all-subscription-dropped
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-subscription-dropped
 </xode-block>
 </xode-group>
 
@@ -310,10 +310,6 @@ A simple stream prefix filter looks like this:
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#stream-prefix-filtered-subscription
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#stream-prefix-filtered-subscription
@@ -321,6 +317,10 @@ A simple stream prefix filter looks like this:
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#stream-prefix-filtered-subscription
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#stream-prefix-filtered-subscription
 </xode-block>
 </xode-group>
 
@@ -341,10 +341,6 @@ The code below shows how you can provide user credentials for a subscription. Wh
 
 <<< @/docs/clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#overriding-user-credentials
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.js#overriding-user-credentials
@@ -352,6 +348,10 @@ The code below shows how you can provide user credentials for a subscription. Wh
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#overriding-user-credentials
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#overriding-user-credentials
 </xode-block>
 </xode-group>
 

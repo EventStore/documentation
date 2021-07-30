@@ -15,10 +15,6 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-stream
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-stream
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-stream
@@ -26,6 +22,10 @@ The simplest way to read a stream forwards is to supply a stream name, direction
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#read-from-stream
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-stream
 </xode-block>
 </xode-group>
 
@@ -40,10 +40,6 @@ This will return an enumerable that can be iterated on:
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#iterate-stream
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#iterate-stream
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#iterate-stream
@@ -51,6 +47,10 @@ This will return an enumerable that can be iterated on:
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#iterate-stream
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#iterate-stream
 </xode-block>
 </xode-group>
  
@@ -80,10 +80,6 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#overriding-user-credentials
 </xode-block>
-<xode-block title="TypeScript"> 
-
-<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#overriding-user-credentials
-</xode-block>
 <xode-block title="JavaScript"> 
 
 <<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#overriding-user-credentials
@@ -91,6 +87,10 @@ The credentials used to read the data can be supplied. to be used by the subscri
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#overriding-user-credentials
+</xode-block>
+<xode-block title="TypeScript"> 
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#overriding-user-credentials
 </xode-block>
 </xode-group>
 
@@ -107,10 +107,6 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#read-from-stream-position
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-stream-position
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#read-from-stream-position
@@ -118,6 +114,10 @@ As well as providing a `StreamPosition` you can also provide a specific stream r
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#read-from-position
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#read-from-stream-position
 </xode-block>
 </xode-group>
 
@@ -134,10 +134,6 @@ As well as being able to read a stream forwards you can also go backwards. When 
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#reading-backwards
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#reading-backwards 
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#reading-backwards 
@@ -145,6 +141,10 @@ As well as being able to read a stream forwards you can also go backwards. When 
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#reading-backwards
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#reading-backwards 
 </xode-block>
 </xode-group>
 
@@ -166,10 +166,6 @@ It is important to check the value of this field before attempting to iterate an
 
 <<< @/docs/clients/java/generated/1.0.0/samples/reading_events/ReadingEvents.java#checking-for-stream-presence
 </xode-block>
-<xode-block title="TypeScript">
-
-<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#checking-for-stream-presence
-</xode-block>
 <xode-block title="JavaScript">
 
 <<< @/docs/clients/node/generated/2.0.0/samples/reading-events.js#checking-for-stream-presence
@@ -177,5 +173,9 @@ It is important to check the value of this field before attempting to iterate an
 <xode-block title="Rust">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/reading_events.rust#checking-for-stream-presence
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/reading-events.ts#checking-for-stream-presence
 </xode-block>
 </xode-group>
