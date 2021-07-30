@@ -19,7 +19,7 @@ We have profiled using single event transactions for the production rated cluste
 
 The **Working Set** is the number of streams being read from and written to concurrently. It's essential to recognise that writing one million events into one million streams is a very different scenario than writing one million events into a single stream.
 
-### Performance vs self hosted
+### Performance vs self hosted and/or development setups
 
 When load testing an application against Event Store Cloud EventStoreDB clusters, performance may differ from a self hosted solution when utilizing a similar instance size.
 
