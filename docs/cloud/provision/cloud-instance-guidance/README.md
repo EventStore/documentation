@@ -21,18 +21,16 @@ The **Working Set** is the number of streams being read from and written to conc
 
 ### Performance vs self hosted
 
-When load testing an application against Event Store Cloud EventStoreDB clusters, performance may differ from a self hosted solution when utilizing a similar instance size.
+If you're doing load tests to compare Event Store Cloud EventStoreDB clusters to self-hosted ones, you need to consider the following things. The results may differ even if you're using similar instance sizes.
 
-Event Store Cloud utilizes ZFS to ensure filesystem integrity/safety as well as block level compression, to ensure the minimization of IOPs and a lower storage cost for data hosted.
+Event Store Cloud uses [ZFS](https://en.wikipedia.org/wiki/ZFS) to ensure filesystem integrity/safety as well as block-level compression. Thanks to that, we're minimizing IOPs and lower storage costs for hosted data.
 
-ZFS requires additional CPU and memory to provide these capabilities, as such a self hosted comparison should utilize a similar configuration, in order to provide a relevant comparison.
+ZFS requires additional CPU and memory to provide these capabilities. To get the relevant comparison, you should use a similar configuration on the self-hosted environment.
 
 ### Micro (F1) instance sizes
-
-This rating is meant to enable a low cost point of entry for developers experimenting with Event Store Cloud, and to satisfy the use case of some customers that require multi-tenancy and whose application presents an extremely low volume workload (10-100) events a day per database (cluster). This size utilizes a burstable CPU class, which is how we achieve this goal across all supported public clouds.
+F1 instance size is designed for a low-cost development environment. We recommend using it for the experiments like Proof of Concept or extremely low workload like 10-100 events a day per database (cluster). F1 instances are using a burstable CPU class to enable this goal across all supported public clouds.
 
 Due to the burstable CPU class, CPU shares are limited, this results in the following implications:
-
 - EventStoreDB runs on the .Net runtime (managed) which requires CPU time for garbage collection operations. If CPU shares are not available and allocations are increasing this may result in client timeouts to the cluster, or an OOM condition.
 - CPU shares are required to maintain the cluster state topology via constant gossip message propagation. CPU shares are utilized to maintain cluster state even when the cluster is not under load.
 - EventStoreDB requires CPU cycles to maintain indexes, and for other maintenance processes. Underpopulated or underloaded databases (such as demo or development setups) require little CPU time and overperform compared to fully populated systems with consistent throughput. Expect performance to level off as workloads increase.
