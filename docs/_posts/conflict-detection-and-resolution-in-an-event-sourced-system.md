@@ -12,4 +12,4 @@ Watch James Geall's talk "Conflict Detection and Resolution in an EventSourced S
 
 <!-- more -->
 
-<YouTube id="zaa6FUYIQM"></YouTube>
+<YouTube id="-zaa6FUYIQM"></YouTube>

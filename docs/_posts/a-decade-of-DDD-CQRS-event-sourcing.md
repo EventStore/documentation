@@ -12,4 +12,4 @@ Watch Greg Young's talk "A Decade of DDD, CQRS, Event Sourcing" recorded at DDDE
 
 <!-- more -->
 
-<YouTube id="zaa6FUYIQM"></YouTube>
+<YouTube id="LDW0QWie21s"></YouTube>

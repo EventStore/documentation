@@ -12,4 +12,4 @@ Watch Mat McLoughlin's talk "An Introduction to CQRS and Event Sourcing Patterns
 
 <!-- more -->
 
-<YouTube id="zaa6FUYIQM"></YouTube>
+<YouTube id="9a1PqwFrMP0"></YouTube>
