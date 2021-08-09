@@ -6,6 +6,10 @@ The various gRPC client APIs includes dedicated clients that allow you to manage
 Currently not all clients fully expose all operations.
 :::
 
+For a detailed explanation of projections, see the [server](/server/v21.2/docs/projections/) documentation.
+
+The full sample code shown here can be found on the respective [clients repositories](https://github.com/eventStore/?q=client)
+
 ## Required packages
 <xode-group>
 <xode-block title="C#">
@@ -56,19 +60,23 @@ Projection management operations are exposed through a dedicated client.
 <xode-group>
 <xode-block title="C#" code="connectionString">
 
-<<< @/docs/clients/dotnet/generated/21.2.0/samples/quick-start/Program.cs#createClient
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#createClient
+
 </xode-block>
 <xode-block title="Java" code="connectionString">
 
 <<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createClient
+
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
 <<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
+
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
 <<< @/docs/clients/rust/generated/1.0.0/samples/quickstart.rust#createClient
+
 </xode-block>
 </xode-group>
 
@@ -78,9 +86,8 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task RestartSubsystemAsync(UserCredentials? userCredentials = null,CancellationToken cancellationToken = default (CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#RestartSubSystem
+
 </xode-block>
 <xode-block title="Java">
 
@@ -110,9 +117,8 @@ You must have access to a projection to disable it.
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task EnableAsync(string name, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default (CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Enable
+
 </xode-block>
 <xode-block title="Java">
 
@@ -146,9 +152,8 @@ The .net clients prior to version 21.6 had an incorrect behavior: they _will not
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public Task DisableAsync(string name, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Disable
+
 </xode-block>
 <xode-block title="Java">
 
@@ -212,9 +217,8 @@ The .net clients prior to version 21.6 had an incorrect behavior: they _will_ sa
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public Task AbortAsync(string name, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default)
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Abort
+
 </xode-block>
 <xode-block title="Java">
 
@@ -224,8 +228,10 @@ public Task AbortAsync(string name, UserCredentials? userCredentials = null, Can
 </xode-block>
 <xode-block title="NodeJS">
 
-```
-// This is currently not available in the NodeJS client
+```ts
+// This is currently not directly available in the NodeJS client.
+// However, disableProjection allows to pass writeCheckpoint: false in the options in order to abort the projection  
+await client.disableProjection("projection to abort", { writeCheckpoint: false });
 ```
 </xode-block>
 <xode-block title="Rust">
@@ -242,9 +248,8 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task ResetAsync(string name, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Reset
+
 </xode-block>
 <xode-block title="Java">
 
@@ -274,9 +279,8 @@ Continuous projections have explicit names, and you can enable or disable them v
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task CreateContinuousAsync(string name, string query, bool trackEmittedStreams = false, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous
+
 </xode-block>
 <xode-block title="Java">
 
@@ -299,38 +303,6 @@ createContinuousProjection(projectionName: string, query: string, options?: Crea
 </xode-block>
 </xode-group>
 
-## Create a one-time projection
-
-Creates a projection that runs until the end of the log and then stops. The query parameter contains the JavaScript you want created as a one time projection.
-
-<xode-group>
-<xode-block title="C#">
-
-```csharp
-public async Task CreateOneTimeAsync(string query, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
-</xode-block>
-<xode-block title="Java">
-
-```java
-public CompletableFuture createOneTime(final String projectionName, final String query, CreateOneTimeProjectionOptions options)
-```
-</xode-block>
-<xode-block title="NodeJS">
-
-```ts
-createOneTimeProjection(query: string, options?: CreateOneTimeProjectionOptions): Promise<void>;
-createOneTimeProjection(query: TemplateStringsArray,...parts: string[]): Promise<void>;
-```
-</xode-block>
-<xode-block title="Rust">
-
-```Rust
-// This is currently not available in the Rust client
-```
-</xode-block>
-</xode-group>
-
 ## Update a projection
 
 Updates a projection. The name parameter is the name of the projection to be updated. The query parameter contains the new JavaScript.
@@ -338,9 +310,8 @@ Updates a projection. The name parameter is the name of the projection to be upd
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task UpdateAsync(string name, string query, bool? emitEnabled = null, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Update
+
 </xode-block>
 <xode-block title="Java">
 
@@ -369,9 +340,8 @@ Returns a list of all projections.
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public IAsyncEnumerable<ProjectionDetails> ListAllAsync(UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#ListAll
+
 </xode-block>
 <xode-block title="Java">
 
@@ -400,9 +370,8 @@ Returns a list of all continuous projections
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public IAsyncEnumerable<ProjectionDetails> ListContinuousAsync(UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#ListContinuous
+
 </xode-block>
 <xode-block title="Java">
 
@@ -424,37 +393,6 @@ listContinuousProjections(options?: ListProjectionsOptions): Promise<ProjectionD
 </xode-block>
 </xode-group>
 
-## List one-time projections
-
-Returns a list of all One-Time Projections.
-
-<xode-group>
-<xode-block title="C#">
-
-```csharp
-public IAsyncEnumerable<ProjectionDetails> ListOneTimeAsync(UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
-</xode-block>
-<xode-block title="Java">
-
-```java
-// This is currently not available in the java client
-```
-</xode-block>
-<xode-block title="NodeJS">
-
-```ts 
- listOneTimeProjections(options?: ListProjectionsOptions): Promise<ProjectionDetails[]>;
-```
-</xode-block>
-<xode-block title="Rust">
-
-```Rust
-// This is currently not available in the Rust client
-```
-</xode-block>
-</xode-group>
-
 ## Get Status 
 
 Gets the status of a named projection
@@ -462,9 +400,8 @@ Gets the status of a named projection
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public Task<ProjectionDetails> GetStatusAsync(string name, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#GetStatus
+
 </xode-block>
 <xode-block title="Java">
 
@@ -526,10 +463,8 @@ Retrieves the result of the named projection and partition.
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task<JsonDocument> GetResultAsync(string name, string? partition = null, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-public async Task<T> GetResultAsync<T>(string name, string? partition = null, JsonSerializerOptions? serializerOptions = null, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-```
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#GetResult
+
 </xode-block>
 <xode-block title="Java">
 
