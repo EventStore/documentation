@@ -36,6 +36,10 @@
       {
         "version": "21.2.0",
         "name": "master"
+      },
+      {
+        "version": "main",
+        "name": "ylorph/projection-management-sample"
       }
     ]
   },
