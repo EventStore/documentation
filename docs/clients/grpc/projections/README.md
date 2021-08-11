@@ -140,6 +140,34 @@ You must have access to a projection to disable it.
 </xode-block>
 </xode-group>
 
+Enabling a projection that does not exists results in an error: 
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#EnableNotFound
+
+</xode-block>
+<xode-block title="Java">
+
+```java
+// This is currently not available in the java client
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```ts
+ enableProjection(projectionName: string, options?: EnableProjectionOptions): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+</xode-group>
+
 ## Disable a projection 
  
 Disables a projection, this will save the projection checkpoint.
@@ -156,6 +184,8 @@ The .net clients prior to version 21.6 had an incorrect behavior: they _will not
 
 </xode-block>
 <xode-block title="Java">
+
+
 
 ```java
 // This is currently not available in the java client
@@ -174,6 +204,37 @@ disableProjection(projectionName: string, options?: DisableProjectionOptions): P
 ```
 </xode-block>
 </xode-group>
+
+Disabling a projection that does not exists results in an error:
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#DisableNotFound
+
+</xode-block>
+<xode-block title="Java">
+
+
+
+```java
+// This is currently not available in the java client
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```ts
+disableProjection(projectionName: string, options?: DisableProjectionOptions): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+</xode-group>
+
 
 ## Delete a projection
 
@@ -242,6 +303,36 @@ await client.disableProjection("projection to abort", { writeCheckpoint: false }
 </xode-block>
 </xode-group>
 
+Trying to abort a projection that does not exists will result in an error:
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Abort_NotFound
+
+</xode-block>
+<xode-block title="Java">
+
+```java
+// This is currently not available in the java client
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```ts
+// This is currently not directly available in the NodeJS client.
+// However, disableProjection allows to pass writeCheckpoint: false in the options in order to abort the projection  
+await client.disableProjection("projection to abort", { writeCheckpoint: false });
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+</xode-group>
+
 ## Reset a projection 
 Resets a projection. This will re-emit events. Streams that are written to from the projection will also be soft deleted.
 
@@ -271,15 +362,72 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 </xode-block>
 </xode-group>
 
-## Create a continuous projection
+Resetting a projection that does not exists will result in an error. 
 
-Creates a projection that runs until the end of the log and then continues running. The query parameter contains the JavaScript you want created as a continuous projection.
-Continuous projections have explicit names, and you can enable or disable them via this name.
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Reset_NotFound
+
+</xode-block>
+<xode-block title="Java">
+
+```java
+// This is currently not available in the java client
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```ts
+ resetProjection(projectionName: string,options?: ResetProjectionOptions): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+</xode-group>
+
+## Create a projection
+
+Creates a projection that runs until the end of the log and then continues running. The query parameter contains the JavaScript you want created as a projection.
+Projections have explicit names, and you can enable or disable them via this name.
 
 <xode-group>
 <xode-block title="C#">
 
 <<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous
+
+</xode-block>
+<xode-block title="Java">
+
+```java
+public CompletableFuture createContinuous(final String projectionName, final String query)
+public CompletableFuture createContinuous(final String projectionName, final String query, CreateContinuousProjectionOptions options)
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```ts
+createContinuousProjection(projectionName: string, query: string, options?: CreateContinuousProjectionOptions): Promise<void>
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+</xode-group>
+
+Trying to create projections with the same name will result in an error:
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous_Conflict
 
 </xode-block>
 <xode-block title="Java">
@@ -311,6 +459,34 @@ Updates a projection. The name parameter is the name of the projection to be upd
 <xode-block title="C#">
 
 <<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Update
+
+</xode-block>
+<xode-block title="Java">
+
+```java
+// This is currently not available in the java client
+```
+</xode-block>
+<xode-block title="NodeJS">
+
+```ts
+updateProjection(projectionName: string,query: string,options?: UpdateProjectionOptions): Promise<void>;
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+</xode-group>
+
+Updating a projection that does not exists results in an error:
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#Update_NotFound
 
 </xode-block>
 <xode-block title="Java">
