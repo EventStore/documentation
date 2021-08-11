@@ -70,7 +70,7 @@ Projection management operations are exposed through a dedicated client.
 </xode-block>
 <xode-block title="NodeJS" code="connectionString">
 
-<<< @/samples/grpc/nodejs/samples/getStarted.js#createClient
+<<< @/docs/clients/node/generated/2.0.0/samples/get-started.js#createClient
 
 </xode-block>
 <xode-block title="Rust" code="connectionString">
