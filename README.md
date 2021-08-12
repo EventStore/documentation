@@ -33,6 +33,26 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 2. Run `yarn install`
 3. Run `yarn docs:dev`
 
+### Running production build
+
+To run the production build that will import documentation from database and client repositories run:
+
+```bash
+yarn docs:build-prod
+```
+
+To import documentation from external repositories:
+
+```bash
+yarn docs:import
+```
+
+To build documentation without importing documentation:
+
+```bash
+yarn docs:build
+```
+
 ### Algolia Search
 
 Documentation is using Algolia for indexing and searching through the contents.
