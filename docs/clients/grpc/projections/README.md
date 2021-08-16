@@ -512,6 +512,7 @@ updateProjection(projectionName: string,query: string,options?: UpdateProjection
 ## List all projections
 
 Returns a list of all projections.
+See the [projection details](##projection-details) section for an explanation of the returned values
 
 <xode-group>
 <xode-block title="C#">
@@ -520,6 +521,8 @@ Returns a list of all projections.
 
 </xode-block>
 <xode-block title="Java">
+
+
 
 ```java
 // This is currently not available in the java client
@@ -541,7 +544,8 @@ Returns a list of all projections.
 
 ## List continuous projections
 
-Returns a list of all continuous projections
+Returns a list of all continuous projections.
+See the [projection details](##projection-details) section for an explanation of the returned values
 
 <xode-group>
 <xode-block title="C#">
@@ -571,7 +575,8 @@ listContinuousProjections(options?: ListProjectionsOptions): Promise<ProjectionD
 
 ## Get Status 
 
-Gets the status of a named projection
+Gets the status of a named projection.
+See the [projection details](##projection-details) section for an explanation of the returned values
 
 <xode-group>
 <xode-block title="C#">
@@ -663,3 +668,50 @@ getProjectionResult<T = unknown>(projectionName: string, options?: GetProjection
 ```
 </xode-block>
 </xode-group>
+
+## Projection Details
+
+[List all](##list-all-projections), [list continuous](##list-continuous-projections) and [get status](##get-status) all returns details of the projections
+
+| Field | Description |
+| --- | --- |
+| `Name`, `EffectiveName`               | The name of the projection  |
+| `Status`                              | A human readable string of the current statuses of the projection (see below) |
+| `StateReason`                         | A human readable string explaining the reason the of the current projection state |
+| `CheckpointStatus`                    | A human readable string explaining the current operation of the projection checkpoint |
+| `Mode`                                | `Continuous`, `OneTime` , `Transient` |
+| `CoreProcessingTime`                  | The total time, in ms, the projection took to handle events since the last restart |
+| `Progress`                            | The progress, in %, indicates how far this projection has processed event, in case of a restart this could be -1% or some number. It will be updated as soon as a new event is appended and processed |
+| `WritesInProgress`                    | The number of events & metadata currently being appended to emitted streams |
+| `ReadsInProgress`                     | The number of events currently being read |
+| `PartitionsCached`                    | The number of cached projection partitions |
+| `Position`                            | The Position of the last processed event |
+| `LastCheckpoint`                      | The Position of the last checkpoint of this projection |
+| `EventsProcessedAfterRestart`         | The number of events processed since the last restart of this projection|
+| `BufferedEvents`                      | The number of events in the projection read buffer |
+| `WritePendingEventsBeforeCheckpoint`  | The number of events to be appended to emitted streams before the next checkpoint is written |
+| `WritePendingEventsAfterCheckpoint`   | The number of events to be appended to emitted streams since the last checkpoint |
+| `Version`                             | ???  This is used internally, the version this projection is at |
+| `Epoch`                               | ??? This is used internally |
+
+The `Status` string is a combination fo the following values.
+The first 3 are the most common one, as the other one are transient values while the projection is initialised or stopped 
+
+| Value| Description |
+| --- | --- |
+| Running | The projection is running and processing events |
+| Stopped | The projection is stopped and no longer processing new events |
+| Faulted | An error occured in the projections, `StateReason` will give the fault details, the projection is not processing events |
+| Initial | This is the initial state, before the projection is fully initialised |
+| Suspended | The projection is suspended and will not process events, this happens while stopping the projection |
+| LoadStateRequested | The state of the projection is being retrieved, this happens while the projection is starting |
+| StateLoaded | The state if the projection is loaded, this happens while the projection is starting |
+| Subscribed | This happens while the projection is starting |
+| FaultedStopping | This happens before the projection is stopped due to an error in the projection |
+| Stopping | The projection is being stopped |
+| CompletingPhase | This happens while the projection is stopping |
+| PhaseCompleted | This happens while the projection is stopping |
+
+
+
+
