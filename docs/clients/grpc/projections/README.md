@@ -288,7 +288,7 @@ Sample available soon
 ## Disable a projection 
  
 Disables a projection, this will save the projection checkpoint.
-Once disabled, the projection will not to process events even after restarting the server or the projection subsystem.
+Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
 You must have access to a projection to disable it, [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
 :::warning 
