@@ -8,7 +8,7 @@ Currently not all clients fully expose all operations.
 
 For a detailed explanation of projections, see the [server documentation](/server/v21.6/docs/projections/).
 
-The full sample code shown here can be found on the respective [clients repositories](https://github.com/eventStore/?q=client)
+You can find the full sample code from these documentation on the respective [clients repositories](https://github.com/eventStore/?q=client)
 
 ## Required packages
 <xode-group>
