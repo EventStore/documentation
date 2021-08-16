@@ -78,21 +78,21 @@ Projection management operations are exposed through a dedicated client.
 <xode-block title="Java" code="connectionString">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 
 </xode-block>
 <xode-block title="JavaScript" code="connectionString">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 
 </xode-block>
@@ -100,7 +100,78 @@ Sample available  soon
 <xode-block title="TypeScript" code="connectionString">
 
 ```
-Sample available  soon
+Sample available soon
+```
+</xode-block>
+</xode-group>
+
+## Create a projection
+
+Creates a projection that runs until the end of the log and then continues running. The query parameter contains the JavaScript you want created as a projection.
+Projections have explicit names, and you can enable or disable them via this name.
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous
+
+</xode-block>
+<xode-block title="Java">
+
+```
+Sample available soon
+```
+</xode-block>
+<xode-block title="JavaScript">
+
+```
+Sample available soon
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
+```
+</xode-block>
+</xode-group>
+
+Trying to create projections with the same name will result in an error:
+
+<xode-group>
+<xode-block title="C#">
+
+<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous_Conflict
+
+</xode-block>
+<xode-block title="Java">
+
+```
+Sample available soon
+```
+</xode-block>
+<xode-block title="JavaScript">
+
+```
+Sample available soon
+```
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -123,20 +194,20 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 <xode-block title="JavaScript">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 
 </xode-block>
 <xode-block title="JavaScript">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -144,7 +215,8 @@ Sample available  soon
 ## Enable a projection
 
 Enables an existing projection by name.
-You must have access to a projection to disable it.
+You must have access to a projection to enable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
+
 
 <xode-group>
 <xode-block title="C#">
@@ -161,7 +233,7 @@ You must have access to a projection to disable it.
 <xode-block title="JavaScript">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
@@ -173,7 +245,7 @@ Sample available  soon
 <xode-block title="TypeScript">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -195,7 +267,7 @@ Enabling a projection that does not exists results in an error:
 <xode-block title="JavaScript">
 
 ```
-Sample available  soon
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
@@ -215,7 +287,7 @@ Sample available soon
 ## Disable a projection 
  
 Disables a projection, this will save the projection checkpoint.
-You must have access to a projection to disable it.
+You must have access to a projection to disable it, [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
 :::warning 
 The .net clients prior to version 21.6 had an incorrect behavior: they _will not_ save the checkpoint  
@@ -228,8 +300,6 @@ The .net clients prior to version 21.6 had an incorrect behavior: they _will not
 
 </xode-block>
 <xode-block title="Java">
-
-
 
 ```java
 // This is currently not available in the java client
@@ -449,77 +519,6 @@ Resetting a projection that does not exists will result in an error.
 
 ```java
 // This is currently not available in the java client
-```
-</xode-block>
-<xode-block title="JavaScript">
-
-```
-Sample available soon
-```
-</xode-block>
-<xode-block title="Rust">
-
-```Rust
-// This is currently not available in the Rust client
-```
-</xode-block>
-<xode-block title="TypeScript">
-
-```
-Sample available soon
-```
-</xode-block>
-</xode-group>
-
-## Create a projection
-
-Creates a projection that runs until the end of the log and then continues running. The query parameter contains the JavaScript you want created as a projection.
-Projections have explicit names, and you can enable or disable them via this name.
-
-<xode-group>
-<xode-block title="C#">
-
-<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous
-
-</xode-block>
-<xode-block title="Java">
-
-```
-Sample available soon
-```
-</xode-block>
-<xode-block title="JavaScript">
-
-```
-Sample available soon
-```
-</xode-block>
-<xode-block title="Rust">
-
-```Rust
-// This is currently not available in the Rust client
-```
-</xode-block>
-<xode-block title="TypeScript">
-
-```
-Sample available soon
-```
-</xode-block>
-</xode-group>
-
-Trying to create projections with the same name will result in an error:
-
-<xode-group>
-<xode-block title="C#">
-
-<<< @/docs/clients/dotnet/generated/main/samples/projection-management/Program.cs#CreateContinuous_Conflict
-
-</xode-block>
-<xode-block title="Java">
-
-```
-Sample available soon
 ```
 </xode-block>
 <xode-block title="JavaScript">
@@ -798,7 +797,7 @@ Sample available soon
 
 ## Projection Details
 
-[List all](##list-all-projections), [list continuous](##list-continuous-projections) and [get status](##get-status) all returns details of the projections
+[List all](#list-all-projections), [list continuous](#list-continuous-projections) and [get status](#get-status) all return the details and statistics of projections
 
 | Field | Description |
 | --- | --- |
