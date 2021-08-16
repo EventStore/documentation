@@ -2,7 +2,7 @@
 
 The various gRPC client APIs include dedicated clients that allow you to manage projections.
 
-:::note
+:::warning
 Currently not all clients fully expose all operations.
 :::
 
@@ -77,18 +77,31 @@ Projection management operations are exposed through a dedicated client.
 </xode-block>
 <xode-block title="Java" code="connectionString">
 
-<<< @/docs/clients/java/generated/1.0.0/samples/quick_start/QuickStart.java#createClient
+```
+Sample available  soon
+```
 
 </xode-block>
-<xode-block title="NodeJS" code="connectionString">
+<xode-block title="JavaScript" code="connectionString">
 
-<<< @/docs/clients/node/generated/2.0.0/samples/get-started.js#createClient
+```
+Sample available  soon
+```
 
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
-<<< @/docs/clients/rust/generated/1.0.0/samples/quickstart.rust#createClient
+```
+Sample available  soon
+```
 
+</xode-block>
+
+<xode-block title="TypeScript" code="connectionString">
+
+```
+Sample available  soon
+```
 </xode-block>
 </xode-group>
 
@@ -107,16 +120,23 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 // This is currently not available in the java client 
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts 
-restartSubsystem(options?: RestartSubsystemOptions): Promise<void>;
+```
+Sample available  soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```
-TODO 
+Sample available  soon
+```
+
+</xode-block>
+<xode-block title="JavaScript">
+
+```
+Sample available  soon
 ```
 </xode-block>
 </xode-group>
@@ -138,16 +158,22 @@ You must have access to a projection to disable it.
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
- enableProjection(projectionName: string, options?: EnableProjectionOptions): Promise<void>;
+```
+Sample available  soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available  soon
 ```
 </xode-block>
 </xode-group>
@@ -166,16 +192,22 @@ Enabling a projection that does not exists results in an error:
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
- enableProjection(projectionName: string, options?: EnableProjectionOptions): Promise<void>;
+```
+Sample available  soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -203,16 +235,22 @@ The .net clients prior to version 21.6 had an incorrect behavior: they _will not
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-disableProjection(projectionName: string, options?: DisableProjectionOptions): Promise<void>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -227,22 +265,26 @@ Disabling a projection that does not exists results in an error:
 </xode-block>
 <xode-block title="Java">
 
-
-
 ```java
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-disableProjection(projectionName: string, options?: DisableProjectionOptions): Promise<void>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -265,16 +307,23 @@ Deletes a projection
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-deleteProjection(projectionName: string, options?: DeleteProjectionOptions): Promise<void>;
 ```
+Sample available soon
+```
+
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -299,18 +348,22 @@ The .net clients prior to version 21.6 had an incorrect behavior: they _will_ sa
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-// This is currently not directly available in the NodeJS client.
-// However, disableProjection allows to pass writeCheckpoint: false in the options in order to abort the projection  
-await client.disableProjection("projection to abort", { writeCheckpoint: false });
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -329,18 +382,22 @@ Trying to abort a projection that does not exists will result in an error:
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-// This is currently not directly available in the NodeJS client.
-// However, disableProjection allows to pass writeCheckpoint: false in the options in order to abort the projection  
-await client.disableProjection("projection to abort", { writeCheckpoint: false });
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScrip">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -360,16 +417,22 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
- resetProjection(projectionName: string,options?: ResetProjectionOptions): Promise<void>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -388,16 +451,22 @@ Resetting a projection that does not exists will result in an error.
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
- resetProjection(projectionName: string,options?: ResetProjectionOptions): Promise<void>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -415,21 +484,26 @@ Projections have explicit names, and you can enable or disable them via this nam
 </xode-block>
 <xode-block title="Java">
 
-```java
-public CompletableFuture createContinuous(final String projectionName, final String query)
-public CompletableFuture createContinuous(final String projectionName, final String query, CreateContinuousProjectionOptions options)
+```
+Sample available soon
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-createContinuousProjection(projectionName: string, query: string, options?: CreateContinuousProjectionOptions): Promise<void>
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -444,21 +518,26 @@ Trying to create projections with the same name will result in an error:
 </xode-block>
 <xode-block title="Java">
 
-```java
-public CompletableFuture createContinuous(final String projectionName, final String query)
-public CompletableFuture createContinuous(final String projectionName, final String query, CreateContinuousProjectionOptions options)
+```
+Sample available soon
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-createContinuousProjection(projectionName: string, query: string, options?: CreateContinuousProjectionOptions): Promise<void>
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -479,16 +558,22 @@ Updates a projection. The name parameter is the name of the projection to be upd
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-updateProjection(projectionName: string,query: string,options?: UpdateProjectionOptions): Promise<void>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -507,16 +592,22 @@ Updating a projection that does not exists results in an error:
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-updateProjection(projectionName: string,query: string,options?: UpdateProjectionOptions): Promise<void>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -534,22 +625,26 @@ See the [projection details](##projection-details) section for an explanation of
 </xode-block>
 <xode-block title="Java">
 
-
-
 ```java
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
 ```
-// This is currently not available in the NodeJS client
+// This is currently not available in the JavaScript client
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+// This is currently not available in the TypeScript client
 ```
 </xode-block>
 </xode-group>
@@ -571,16 +666,22 @@ See the [projection details](##projection-details) section for an explanation of
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-listContinuousProjections(options?: ListProjectionsOptions): Promise<ProjectionDetails[]>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -602,16 +703,22 @@ See the [projection details](##projection-details) section for an explanation of
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
- getProjectionStatistics(projectionName: string,options?: GetProjectionStatisticsOptions): Promise<ProjectionDetails>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -623,10 +730,8 @@ Retrieves the state of a projection.
 <xode-group>
 <xode-block title="C#">
 
-```csharp
-public async Task<JsonDocument> GetStateAsync(string name, string? partition = null, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-public async Task<T> GetStateAsync<T>(string name, string? partition = null, JsonSerializerOptions? serializerOptions = null, UserCredentials? userCredentials = null, CancellationToken cancellationToken = default(CancellationToken))
-
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Java">
@@ -635,16 +740,22 @@ public async Task<T> GetStateAsync<T>(string name, string? partition = null, Jso
 // This is currently not available in the java client
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-getProjectionState<T = unknown>(projectionName: string,options?: GetProjectionStateOptions): Promise<T>;
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
@@ -661,22 +772,26 @@ Retrieves the result of the named projection and partition.
 </xode-block>
 <xode-block title="Java">
 
-```java
-public <TResult> CompletableFuture<TResult> getResult(final String projectionName, Class<TResult> type)
-public <TResult> CompletableFuture<TResult> getResult(final String projectionName,  Function<TypeFactory, JavaType> javaTypeFunction)
-
+```
+Sample available soon
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
-```ts
-getProjectionResult<T = unknown>(projectionName: string, options?: GetProjectionResultOptions): Promise<T>
+```
+Sample available soon
 ```
 </xode-block>
 <xode-block title="Rust">
 
 ```Rust
 // This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+Sample available soon
 ```
 </xode-block>
 </xode-group>
