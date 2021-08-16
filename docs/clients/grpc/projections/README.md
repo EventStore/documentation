@@ -107,7 +107,7 @@ Sample available soon
 
 ## Create a projection
 
-Creates a projection that runs until the end of the log and then continues running. The query parameter contains the JavaScript you want created as a projection.
+Creates a projection that runs until the last event in the store, and then continues processing new events as they are appended to the store. The query parameter contains the JavaScript you want created as a projection.
 Projections have explicit names, and you can enable or disable them via this name.
 
 <xode-group>
@@ -218,7 +218,6 @@ Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem. 
 You must have access to a projection to enable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
-
 <xode-group>
 <xode-block title="C#">
 
@@ -289,7 +288,7 @@ Sample available soon
  
 Disables a projection, this will save the projection checkpoint.
 Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
-You must have access to a projection to disable it, [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
+You must have access to a projection to disable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
 :::warning 
 The .net clients prior up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
@@ -616,7 +615,7 @@ Sample available soon
 ## List all projections
 
 Returns a list of all projections, user defined & system projections.
-See the [projection details](##projection-details) section for an explanation of the returned values
+See the [projection details](#projection-details) section for an explanation of the returned values
 
 <xode-group>
 <xode-block title="C#">
@@ -653,7 +652,7 @@ See the [projection details](##projection-details) section for an explanation of
 ## List continuous projections
 
 Returns a list of all continuous projections.
-See the [projection details](##projection-details) section for an explanation of the returned values
+See the [projection details](#projection-details) section for an explanation of the returned values
 
 <xode-group>
 <xode-block title="C#">
@@ -690,7 +689,7 @@ Sample available soon
 ## Get Status 
 
 Gets the status of a named projection.
-See the [projection details](##projection-details) section for an explanation of the returned values
+See the [projection details](#projection-details) section for an explanation of the returned values
 
 <xode-group>
 <xode-block title="C#">
@@ -839,7 +838,3 @@ The first 3 are the most common one, as the other one are transient values while
 | Stopping | The projection is being stopped |
 | CompletingPhase | This happens while the projection is stopping |
 | PhaseCompleted | This happens while the projection is stopping |
-
-
-
-
