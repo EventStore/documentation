@@ -291,7 +291,7 @@ Once disabled, the projection will not process events even after restarting the 
 You must have access to a projection to disable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
 :::warning 
-The .net clients prior up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
+The .net clients up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
 :::
 
 <xode-group>
@@ -404,7 +404,7 @@ Sample available soon
 Aborts a projection, this will not save the projection's checkpoint.
 
 :::warning
-The .net clients prior up to version 21.2 had an incorrect behavior: they _will_ save the checkpoint. 
+The .net clients up to version 21.2 had an incorrect behavior: they _will_ save the checkpoint. 
 :::
 
 <xode-group>
