@@ -35,7 +35,7 @@ implementation 'com.eventstore:db-client-java:1.0.0'
 libraryDependencies += "com.eventstore" % "db-client-java" % "1.0.0"
 ```
 </xode-block>
-<xode-block title="NodeJS">
+<xode-block title="JavaScript">
 
 ```
 # Yarn
@@ -49,6 +49,16 @@ $ npm install --save @eventstore/db-client
 
 ```
 No additional configuration is needed having Rust installed. Go check https://rustup.rs.
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+```
+# Yarn
+$ yarn add @eventstore/db-client
+
+# NPM
+$ npm install --save @eventstore/db-client
 ```
 </xode-block>
 </xode-group>
