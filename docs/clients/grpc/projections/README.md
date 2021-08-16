@@ -579,7 +579,7 @@ Sample available soon
 </xode-block>
 </xode-group>
 
-Updating a projection that does not exists results in an error:
+You can only update an existing projection. When you try to update a non-existing projection, you'll get an error:
 
 <xode-group>
 <xode-block title="C#">
