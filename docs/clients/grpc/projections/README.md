@@ -677,8 +677,8 @@ getProjectionResult<T = unknown>(projectionName: string, options?: GetProjection
 | --- | --- |
 | `Name`, `EffectiveName`               | The name of the projection  |
 | `Status`                              | A human readable string of the current statuses of the projection (see below) |
-| `StateReason`                         | A human readable string explaining the reason the of the current projection state |
-| `CheckpointStatus`                    | A human readable string explaining the current operation of the projection checkpoint |
+| `StateReason`                         | A human readable string explaining the reason of the current projection state |
+| `CheckpointStatus`                    | A human readable string explaining the current operation performed on the checkpoint : `requested`, `writing` |
 | `Mode`                                | `Continuous`, `OneTime` , `Transient` |
 | `CoreProcessingTime`                  | The total time, in ms, the projection took to handle events since the last restart |
 | `Progress`                            | The progress, in %, indicates how far this projection has processed event, in case of a restart this could be -1% or some number. It will be updated as soon as a new event is appended and processed |
@@ -694,18 +694,18 @@ getProjectionResult<T = unknown>(projectionName: string, options?: GetProjection
 | `Version`                             | ???  This is used internally, the version this projection is at |
 | `Epoch`                               | ??? This is used internally |
 
-The `Status` string is a combination fo the following values.
+The `Status` string is a combination of the following values.
 The first 3 are the most common one, as the other one are transient values while the projection is initialised or stopped 
 
 | Value| Description |
 | --- | --- |
 | Running | The projection is running and processing events |
-| Stopped | The projection is stopped and no longer processing new events |
-| Faulted | An error occured in the projections, `StateReason` will give the fault details, the projection is not processing events |
+| Stopped | The projection is stopped and is no longer processing new events |
+| Faulted | An error occured in the projection, `StateReason` will give the fault details, the projection is not processing events |
 | Initial | This is the initial state, before the projection is fully initialised |
 | Suspended | The projection is suspended and will not process events, this happens while stopping the projection |
 | LoadStateRequested | The state of the projection is being retrieved, this happens while the projection is starting |
-| StateLoaded | The state if the projection is loaded, this happens while the projection is starting |
+| StateLoaded | The state of the projection is loaded, this happens while the projection is starting |
 | Subscribed | This happens while the projection is starting |
 | FaultedStopping | This happens before the projection is stopped due to an error in the projection |
 | Stopping | The projection is being stopped |
