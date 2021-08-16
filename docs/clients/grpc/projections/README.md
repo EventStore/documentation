@@ -215,6 +215,7 @@ Sample available soon
 ## Enable a projection
 
 Enables an existing projection by name.
+Once enabled, the projection will start to process events even after restarting the server or the projection subsystem. 
 You must have access to a projection to enable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
 
@@ -287,6 +288,7 @@ Sample available soon
 ## Disable a projection 
  
 Disables a projection, this will save the projection checkpoint.
+Once disabled, the projection will not to process events even after restarting the server or the projection subsystem.
 You must have access to a projection to disable it, [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
 
 :::warning 
@@ -613,7 +615,7 @@ Sample available soon
 
 ## List all projections
 
-Returns a list of all projections.
+Returns a list of all projections, user defined & system projections.
 See the [projection details](##projection-details) section for an explanation of the returned values
 
 <xode-group>
