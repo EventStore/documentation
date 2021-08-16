@@ -6,7 +6,7 @@ The various gRPC client APIs includes dedicated clients that allow you to manage
 Currently not all clients fully expose all operations.
 :::
 
-For a detailed explanation of projections, see the [server](/server/v21.2/docs/projections/) documentation.
+For a detailed explanation of projections, see the [server documentation](/server/v21.6/docs/projections/).
 
 The full sample code shown here can be found on the respective [clients repositories](https://github.com/eventStore/?q=client)
 
