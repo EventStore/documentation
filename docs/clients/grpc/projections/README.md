@@ -1,6 +1,6 @@
 ﻿# Projection management
 
-The various gRPC client APIs includes dedicated clients that allow you to manage projections.
+The various gRPC client APIs include dedicated clients that allow you to manage projections.
 
 :::note
 Currently not all clients fully expose all operations.
