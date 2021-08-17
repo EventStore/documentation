@@ -204,7 +204,7 @@ Sample available soon
 ```
 
 </xode-block>
-<xode-block title="JavaScript">
+<xode-block title="TypeScript">
 
 ```
 Sample available soon
