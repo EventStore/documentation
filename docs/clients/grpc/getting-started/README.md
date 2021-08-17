@@ -1,4 +1,4 @@
-# gRPC clients <badge>Preview</badge>
+# gRPC clients
 
 Get started by connecting your application to EventStoreDB. Complete the form below to generate the connection string and examples for different languages and SDKs.
 
