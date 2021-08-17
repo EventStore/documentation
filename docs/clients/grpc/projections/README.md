@@ -819,7 +819,7 @@ Sample available soon
 | `WritePendingEventsBeforeCheckpoint`  | The number of events to be appended to emitted streams before the next checkpoint is written |
 | `WritePendingEventsAfterCheckpoint`   | The number of events to be appended to emitted streams since the last checkpoint |
 | `Version`                             | This is used internally, the version is increased when the projection is edited or reset |
-| `Epoch`                               | ??? This is used internally |
+| `Epoch`                               | This is used internally, the epoch is increased when the projection is reset |
 
 The `Status` string is a combination of the following values.
 The first 3 are the most common one, as the other one are transient values while the projection is initialised or stopped 
