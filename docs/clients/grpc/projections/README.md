@@ -326,7 +326,7 @@ Sample available soon
 </xode-block>
 </xode-group>
 
-Disabling a projection that does not exists results in an error:
+You can only disable an existing projection. When you try to disable a non-existing projection, you'll get an error:
 
 <xode-group>
 <xode-block title="C#">
