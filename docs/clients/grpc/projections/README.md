@@ -816,7 +816,7 @@ Sample available soon
 | `LastCheckpoint`                      | The Position of the last checkpoint of this projection |
 | `EventsProcessedAfterRestart`         | The number of events processed since the last restart of this projection|
 | `BufferedEvents`                      | The number of events in the projection read buffer |
-| `WritePendingEventsBeforeCheckpoint`  | The number of events to be appended to emitted streams before the next checkpoint is written |
+| `WritePendingEventsBeforeCheckpoint`  | The number of events waiting to be appended to emitted streams before the pending checkpoint can be written |
 | `WritePendingEventsAfterCheckpoint`   | The number of events to be appended to emitted streams since the last checkpoint |
 | `Version`                             | This is used internally, the version is increased when the projection is edited or reset |
 | `Epoch`                               | This is used internally, the epoch is increased when the projection is reset |
