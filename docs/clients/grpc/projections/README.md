@@ -439,7 +439,7 @@ Sample available soon
 </xode-block>
 </xode-group>
 
-Trying to abort a projection that does not exists will result in an error:
+You can only abort an existing projection. When you try to abort a non-existing projection, you'll get an error:
 
 <xode-group>
 <xode-block title="C#">
