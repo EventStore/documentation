@@ -818,7 +818,7 @@ Sample available soon
 | `BufferedEvents`                      | The number of events in the projection read buffer |
 | `WritePendingEventsBeforeCheckpoint`  | The number of events to be appended to emitted streams before the next checkpoint is written |
 | `WritePendingEventsAfterCheckpoint`   | The number of events to be appended to emitted streams since the last checkpoint |
-| `Version`                             | ???  This is used internally, the version this projection is at |
+| `Version`                             | This is used internally, the version is increased when the projection is edited or reset |
 | `Epoch`                               | ??? This is used internally |
 
 The `Status` string is a combination of the following values.
