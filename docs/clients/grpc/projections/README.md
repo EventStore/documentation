@@ -216,7 +216,7 @@ Sample available soon
 
 Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem. 
-You must have access to a projection to enable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
+You must have access to a projection to enable it, see the [ACL documentation](/server/v21.6/docs/security/acl.html#stream-acl)
 
 <xode-group>
 <xode-block title="C#">
