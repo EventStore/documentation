@@ -833,7 +833,7 @@ The first 3 are the most common one, as the other one are transient values while
 | Suspended | The projection is suspended and will not process events, this happens while stopping the projection |
 | LoadStateRequested | The state of the projection is being retrieved, this happens while the projection is starting |
 | StateLoaded | The state of the projection is loaded, this happens while the projection is starting |
-| Subscribed | This happens while the projection is starting |
+| Subscribed | The projection has successfully subscribed to its readers, this happens while the projection is starting |
 | FaultedStopping | This happens before the projection is stopped due to an error in the projection |
 | Stopping | The projection is being stopped |
 | CompletingPhase | This happens while the projection is stopping |
