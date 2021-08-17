@@ -809,7 +809,7 @@ Sample available soon
 | `Mode`                                | `Continuous`, `OneTime` , `Transient` |
 | `CoreProcessingTime`                  | The total time, in ms, the projection took to handle events since the last restart |
 | `Progress`                            | The progress, in %, indicates how far this projection has processed event, in case of a restart this could be -1% or some number. It will be updated as soon as a new event is appended and processed |
-| `WritesInProgress`                    | The number of events & metadata currently being appended to emitted streams |
+| `WritesInProgress`                    | The number of write requests to emitted streams currently in progress, these writes can be batches of events |
 | `ReadsInProgress`                     | The number of events currently being read |
 | `PartitionsCached`                    | The number of cached projection partitions |
 | `Position`                            | The Position of the last processed event |
