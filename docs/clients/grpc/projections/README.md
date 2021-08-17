@@ -465,7 +465,7 @@ Sample available soon
 // This is currently not available in the Rust client
 ```
 </xode-block>
-<xode-block title="TypeScrip">
+<xode-block title="TypeScript">
 
 ```
 Sample available soon
