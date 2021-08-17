@@ -60,12 +60,8 @@ $ npm install --save @eventstore/db-client
 </xode-block>
 </xode-group>
 
-::: warning Preview clients
-The following SDKs are currently in preview and can get API changes:
-- NodeJS
-- Java
-- Go
-- Rust
+::: warning
+The Go gRPC Client is currently in preview and can get API breaking changes.
 :::
 
 ## Connection string
