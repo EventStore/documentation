@@ -126,6 +126,15 @@ module.exports = {
                     ]
                 },
                 {
+                    title: "Projections",
+                    collapsable: true,
+                    path:       "/clients/grpc/projections/",
+                    children: [
+                        "/clients/grpc/projections/",
+                        //"/clients/grpc/projections/projections-management.md"
+                    ]
+                },
+                {
                     title:       "Subscribing to streams",
                     collapsable: true,
                     path:        "/clients/grpc/subscribing-to-streams/",
