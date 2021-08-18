@@ -4,11 +4,11 @@ on:
   schedule:
     - cron: "0 0 * * *" #runs at 00:00 UTC everyday
 jobs:
-  scrape:
+  nightly-build:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Netlify Build
         env:
           NETLIFY_HOOK_ID: ${{ secrets.NETLIFY_HOOK_ID }}
         run: |
-          curl -X POST -d {} "https://api.netlify.com/build_hooks/$NETLIFY_HOOK_ID"
+          curl -X POST -d {} "https://api.netlify.com/build_hooks/$NETLIFY_HOOK_ID?trigger_title=triggered+by+GitHub+Action+Nightly+Build"
