@@ -3,7 +3,9 @@ on:
   push:
     branches:
       - master
-  workflow_dispatch:
+  workflow_dispatch:  
+  schedule:
+    - cron: "0 1 * * *" #runs at 01:00 UTC everyday
 jobs:
   scrape:
     runs-on: ubuntu-latest
