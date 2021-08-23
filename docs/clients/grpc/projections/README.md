@@ -84,9 +84,7 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript" code="connectionString">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#createClient
 
 </xode-block>
 <xode-block title="Rust" code="connectionString">
@@ -99,9 +97,8 @@ Sample available soon
 
 <xode-block title="TypeScript" code="connectionString">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#createClient
+
 </xode-block>
 </xode-group>
 
@@ -124,9 +121,8 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#CreateContinuous
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -136,9 +132,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#CreateContinuous
+
 </xode-block>
 </xode-group>
 
@@ -158,9 +153,8 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#CreateContinuous_Conflict
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -170,9 +164,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#CreateContinuous_Conflict
+
 </xode-block>
 </xode-group>
 
@@ -193,9 +186,8 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#RestartSubSystem
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -206,9 +198,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#RestartSubSystem
+
 </xode-block>
 </xode-group>
 
@@ -232,9 +223,8 @@ You must have access to a projection to enable it, see the [ACL documentation](/
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Enable
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -244,9 +234,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Enable
+
 </xode-block>
 </xode-group>
 
@@ -266,9 +255,8 @@ You can only enable an existing projection. When you try to enable a non-existin
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#EnableNotFound
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -278,9 +266,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#EnableNotFound
+
 </xode-block>
 </xode-group>
 
@@ -308,9 +295,8 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Disable
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -320,9 +306,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Disable
+
 </xode-block>
 </xode-group>
 
@@ -342,9 +327,8 @@ You can only disable an existing projection. When you try to disable a non-exist
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#DisableNotFound
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -354,9 +338,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#DisableNotFound
+
 </xode-block>
 </xode-group>
 
@@ -380,9 +363,8 @@ Deletes a projection
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Delete
+
 
 </xode-block>
 <xode-block title="Rust">
@@ -393,9 +375,42 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Delete
+
+</xode-block>
+</xode-group>
+
+You can only delete an existing projection. When you try to delete a non-existing projection, you'll get an error:
+
+<xode-group>
+<xode-block title="C#">
+
+```csharp
+// This is currently not available in the .net client
 ```
-Sample available soon
+</xode-block>
+<xode-block title="Java">
+
+```java
+// This is currently not available in the java client
 ```
+</xode-block>
+<xode-block title="JavaScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#DeleteNotFound
+
+
+</xode-block>
+<xode-block title="Rust">
+
+```Rust
+// This is currently not available in the Rust client
+```
+</xode-block>
+<xode-block title="TypeScript">
+
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#DeleteNotFound
+
 </xode-block>
 </xode-group>
 
@@ -421,9 +436,8 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Abort
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -433,9 +447,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Abort
+
 </xode-block>
 </xode-group>
 
@@ -455,9 +468,8 @@ You can only abort an existing projection. When you try to abort a non-existing 
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Abort_NotFound
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -467,9 +479,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Abort_NotFound
+
 </xode-block>
 </xode-group>
 
@@ -490,9 +501,8 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Reset
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -502,9 +512,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Reset
+
 </xode-block>
 </xode-group>
 
@@ -524,9 +533,8 @@ Resetting a projection that does not exists will result in an error.
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Reset_NotFound
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -536,9 +544,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Reset_NotFound
+
 </xode-block>
 </xode-group>
 
@@ -560,9 +567,8 @@ Updates a projection. The name parameter is the name of the projection to be upd
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Update
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -572,9 +578,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Update
+
 </xode-block>
 </xode-group>
 
@@ -594,9 +599,8 @@ You can only update an existing projection. When you try to update a non-existin
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#Update_NotFound
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -606,9 +610,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#Update_NotFound
+
 </xode-block>
 </xode-group>
 
@@ -631,9 +634,8 @@ See the [projection details](#projection-details) section for an explanation of 
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-// This is currently not available in the JavaScript client
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#ListAll
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -643,9 +645,8 @@ See the [projection details](#projection-details) section for an explanation of 
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-// This is currently not available in the TypeScript client
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#ListAll
+
 </xode-block>
 </xode-group>
 
@@ -668,9 +669,8 @@ See the [projection details](#projection-details) section for an explanation of 
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#ListContinuous
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -680,9 +680,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#ListContinuous
+
 </xode-block>
 </xode-group>
 
@@ -705,9 +704,8 @@ See the [projection details](#projection-details) section for an explanation of 
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#GetStatus
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -717,9 +715,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#GetStatus
+
 </xode-block>
 </xode-group>
 
@@ -742,9 +739,8 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#GetState
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -754,9 +750,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#GetState
+
 </xode-block>
 </xode-group>
 
@@ -778,9 +773,8 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.js#GetResult
+
 </xode-block>
 <xode-block title="Rust">
 
@@ -790,9 +784,8 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript">
 
-```
-Sample available soon
-```
+<<< @/docs/clients/node/generated/2.0.0/samples/projection-management.ts#GetResult
+
 </xode-block>
 </xode-group>
 
