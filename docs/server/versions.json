@@ -17,7 +17,7 @@
         "path": "generated/v20.10/docs"
       },
       {
-        "version": "5.0.10",
+        "version": "5.0.11",
         "path": "generated/v5/docs"
       }
     ]
@@ -28,7 +28,7 @@
     "basePath": "server",
     "versions": [
       {
-        "version": "5.0.10",
+        "version": "5.0.11",
         "path": "generated/v5/docs/http-api"
       }
     ]
