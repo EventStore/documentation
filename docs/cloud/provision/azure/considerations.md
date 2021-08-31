@@ -18,9 +18,7 @@ We're aware that Azure Premium SSD volumes have a strict IOPS limit and this lim
 
 Azure resource provisioning speed will almost always be slower and more highly variable than other providers. Please account for this when interacting with provisioned resources on Azure.
 
-## Performance and reliability
-
-During our tests and usage, AWS and GCP have proved to be more reliable support cloud providers. We have noticed AWS and GCP provide superior network performance and sufficient disk IO performance when compared to Azure, so this should be considered when choosing your cloud support provider. 
+## Available Regions
 
 At the moment, you can deploy EventStoreDB clusters only in regions with three or more availability zones, and many Azure regions do not have the minimum number of availability zones to support the deployment of managed EventStoreDB clusters. In the future, we plan to allow the deployment of single node topologies to all regions. We'll also introduce a new topology that allows cluster deployments to a single availability zone.
 
