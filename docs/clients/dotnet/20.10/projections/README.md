@@ -4,12 +4,25 @@ This page provides an example of using [user-defined projections](/server/genera
 
 ## Adding sample data
 
-Download the following files that contain sample data used throughout this step of the getting started guide.
+[Download](https://github.com/EventStore/documentation/tree/master/docs/clients/dotnet/20.10/sample-code/Seed) the following files that contain sample data used throughout this step of the getting started guide.
 
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/server/generated/v20.10/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+::: details Click here to see the content of the samples
+shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json
+
+<<< @/docs/clients/dotnet/20.10/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json
+
+shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json
+
+<<< @/docs/clients/dotnet/20.10/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json
+
+shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json
+
+<<< @/docs/clients/dotnet/20.10/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json
+
+shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json
+
+<<< @/docs/clients/dotnet/20.10/sample-code/Seed/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json
+:::
 
 Add the sample data to four different streams:
 First, we need a function to read JSON files and construct the list of `EventData` instances:
