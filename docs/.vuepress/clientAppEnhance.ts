@@ -1,5 +1,6 @@
 import { defineClientAppEnhance } from '@vuepress/client';
 import YouTube from "./components/video/YouTube.vue";
+import Deployment from "./components/Deployment.vue";
 import PrimeVue from 'primevue/config';
 import "./styles/prime-theme.css";
 import "primevue/resources/primevue.min.css";
@@ -34,4 +35,5 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 
     // Other custom components
     app.component("YouTube", YouTube);
+    app.component("Deployment", Deployment);
 })
