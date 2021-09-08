@@ -23,6 +23,7 @@
   "scripts": {
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
+    "docs:build-prod": "yarn docs:import",
     "docs:import": "node ./import/import-client-docs.js"
   }
 }
