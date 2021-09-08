@@ -21,9 +21,11 @@
     "primevue": "3.6.0"
   },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
+    "debug": "vuepress dev docs --debug",
+    "docs:dev": "vuepress dev docs --no-cache",
     "docs:build": "vuepress build docs",
-    "docs:build-prod": "yarn docs:import",
-    "docs:import": "node ./import/import-client-docs.js"
+    "docs:build-prod": "yarn docs:import && yarn docs:build",
+    "docs:import": "node ./import/import-client-docs.js",
+    "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
   }
 }
