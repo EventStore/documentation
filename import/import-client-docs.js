@@ -5,7 +5,6 @@ const simpleGit = require('simple-git');
 const git = simpleGit();
 const exec = require('child_process').exec;
 const del = require('del');
-const log = require('../docs/.vuepress/lib/log');
 
 const repos = require('./repos.json');
 
@@ -31,7 +30,7 @@ async function replaceCodePath(mdPath, samplesPath) {
     const originalSamplesPath = '<<<\\ @\\/samples';
     const newSamplesPath = '<<<\\ @\\/' + samplesPath.replace(/\//g, '\\/');
 
-    log.info(`replacing sample code imports...`);
+    console.info(`replacing sample code imports...`);
 
     const replaceCommand = process.platform === 'darwin'
         ? `find ./${mdPath} -name '*.md' -print0 | xargs -0 sed -i '' \'s/${originalSamplesPath}/${newSamplesPath}/g\'`
@@ -44,11 +43,11 @@ async function tryCopy(pathElements, destinationPath) {
     const sourcePath = path.join(...pathElements);
 
     if (!fs.existsSync(sourcePath)) {
-        log.info(`${sourcePath} does not exist, skipping...`);
+        console.info(`${sourcePath} does not exist, skipping...`);
         return false;
     }
-        
-    log.info(`${sourcePath}  exist, copying...`);
+
+    console.info(`${sourcePath}  exist, copying...`);
 
     await fsExtra.copy(sourcePath, destinationPath);
 
@@ -58,14 +57,14 @@ async function tryCopy(pathElements, destinationPath) {
 async function replaceFileExtensions(samplesDir,  from, to) {
     // this is needed because of the VuePress issue: https://github.com/vuejs/vuepress/issues/1189
     const command = "cd " + samplesDir + "; find . -depth -name \"*." + from + "\" -exec sh -c 'mv \"$3\" \"${3%." + from + "}." + to + "\"' sh \"" + from + "\" \"" + to + "\" {} ';'";
-    
+
     await sh(command);
 }
 
 async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, branch, repo) {
-    log.info(`checking out ${branch.name}...`);
+    console.info(`checking out ${branch.name}...`);
     await clientRepo.checkout(branch.name);
-    
+
     const destinationPathWithId = path.join(destinationPath, branch.version);
 
     if (repo.docsRelativePath)
@@ -98,13 +97,13 @@ async function copySamples(repoLocation, destinationPathWithId, relativePath) {
     if (!wereSamplesCopied) {
         return;
     }
-    
+
     await replaceFileExtensions('docs', 'rs', 'rust');
     await replaceCodePath(destinationPathWithId, samplesDestinationPath);
 }
 
 async function postprocess(destinationPathWithId, postprocess) {
-    log.info('postprocessing');
+    console.info('postprocessing');
     for (const rawCommand of postprocess) {
         const command = rawCommand.replace(/<root>/g, destinationPathWithId);
         await sh(command);
@@ -135,13 +134,13 @@ async function main() {
             }
         ];
 
-        log.info(`processing repo ${repo.repo}...`);
+        console.info(`processing repo ${repo.repo}...`);
 
         for (const branch of repo.branches) {
             const version = await copyDocsAndSamples(
                 clientRepo,
                 repoLocation,
-                samplesLocation, 
+                samplesLocation,
                 branch,
                 repo,
             );
@@ -156,7 +155,7 @@ async function main() {
     }
 
     await safeRmdir('temp');
-    log.success('done importing client docs')
+    console.info('done importing client docs')
 }
 
 main().then();

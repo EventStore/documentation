@@ -1,3 +1,7 @@
+---
+title: Operational characteristics
+---
+
 # Operational characteristics of Event Store Cloud
 
 Event Store Cloud is a distributed fault tolerant provisioning system and control plane. It is hosted in Amazon AWS. All data components and processing components are distributed across three availability zones. State is backed up, and the platform can be easily restored to another region in the event of a total region failure.

@@ -1,7 +1,3 @@
----
-terraform_current_version: 1.5.4
-terraform_github_releases: https://github.com/EventStore/terraform-provider-eventstorecloud/releases/download
----
 
 # Terraform provider 
 
@@ -24,7 +20,7 @@ The binaries are available for the following platforms:
 
 Terraform supports third party modules installed via the plugin registry. Add the following to your terraform module configuration:
 
-<<< @/docs/cloud/automation/snippets/providers_eventstore.tf.hcl
+@[code](cloud/automation/snippets/providers_eventstore.tf.hcl
 
 ### Terraform 0.12
 
@@ -40,17 +36,17 @@ You can download the provider using the following commands:
 <xode-group>
 <xode-block title="Linux">
 
-<<< @/docs/cloud/automation/snippets/download_provider_linux.sh
+@[code](cloud/automation/snippets/download_provider_linux.sh
 
 </xode-block>
 <xode-block title="macOS">
 
-<<< @/docs/cloud/automation/snippets/download_provider_macos.sh
+@[code](cloud/automation/snippets/download_provider_macos.sh
 
 </xode-block>
 <xode-block title="Windows">
 
-<<< @/docs/cloud/automation/snippets/download_provider_windows.ps1.powershell
+@[code](cloud/automation/snippets/download_provider_windows.ps1.powershell
 
 </xode-block>
 </xode-group>
@@ -146,7 +142,7 @@ You will need the project ID to provision other resources within the project.
 
 Here is an example of a Terraform script to create a project in Event Store Cloud:
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_project.create.tf.hcl
 
 ### Networks
 
@@ -180,7 +176,7 @@ Smaller networks can hold fewer managed clusters, but may be easier to peer to i
 
 #### Creating a network
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_network.create.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_network.create.tf.hcl
 
 ### Network peerings
 
@@ -254,7 +250,7 @@ For GCP, you need to initiate a peering from your cloud account to Event Store C
 
 Here is an example how to initiate a peering from Event Store Cloud to your own AWS account:
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_peering.create.tf.hcl
 
 ### Managed EventStoreDB
 
@@ -315,17 +311,17 @@ Here are the cloud-specific examples of a Terraform script to create a managed E
 <xode-group>
 <xode-block title="AWS">
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.aws.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_managed_cluster.create.aws.tf.hcl
 
 </xode-block>
 <xode-block title="Azure">
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.az.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_managed_cluster.create.az.tf.hcl
 
 </xode-block>
 <xode-block title="GCP">
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_managed_cluster.create.gcp.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_managed_cluster.create.gcp.tf.hcl
 
 </xode-block>
 </xode-group>
@@ -351,7 +347,7 @@ Use the `eventstorecloud_project` data source to query your Event Store Cloud pr
 
 #### Looking up a project
 
-<<< @/docs/cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
+@[code](cloud/automation/snippets/eventstorecloud_project.lookup.tf.hcl
 
 ::: tip
 The value of `eventstorecloud_project.name` is case-sensitive, so `Production Project` is not the same as `^production project`.
