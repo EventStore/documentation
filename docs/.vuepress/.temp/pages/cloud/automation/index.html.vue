@@ -1,6 +1,0 @@
-<template><h1 id="automation" tabindex="-1"><a class="header-anchor" href="#automation" aria-hidden="true">#</a> Automation</h1>
-<p>In addition to the <a href="https://console.eventstore.cloud/" target="_blank" rel="noopener noreferrer">Cloud console<OutboundLink/></a>, Event Store Cloud provides the API, a <a href="#terraform-provider">Terraform provider</a>, a <a href="%5Bhttps://github.com/EventStore/pulumi-eventstorecloud%5D">Pulumi provider</a>, as well as a <a href="https://github.com/EventStore/esc" target="_blank" rel="noopener noreferrer">CLI tool<OutboundLink/></a> to automate any operation accessible from the console.</p>
-<h2 id="terraform-provider" tabindex="-1"><a class="header-anchor" href="#terraform-provider" aria-hidden="true">#</a> Terraform provider</h2>
-<p>Event Store Cloud provider for Terraform is available in the public <a href="%5Bhttps://registry.terraform.io/providers/EventStore/eventstorecloud/latest%5D">provider registry</a>.</p>
-<p>Provider documentation is available there as well, on the <a href="https://registry.terraform.io/providers/EventStore/eventstorecloud/latest/docs" target="_blank" rel="noopener noreferrer">Documentation tab<OutboundLink/></a>.</p>
-</template>
