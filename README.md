@@ -57,7 +57,7 @@ yarn docs:build
 
 Documentation is using Algolia for indexing and searching through the contents.
 
-To run Algolia search locally, create [.algolia\.env](.algolia/.env) file filled with contents based on the Algolia configuration:
+To run Algolia search locally, create [.algolia/.env](.algolia/.env) file filled with contents based on the Algolia configuration:
 
 ```bash
 ALGOLIA_APPLICATION_ID=

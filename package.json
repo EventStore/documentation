@@ -22,7 +22,7 @@
   },
   "scripts": {
     "debug": "vuepress dev docs --debug",
-    "docs:dev": "vuepress dev docs --no-cache",
+    "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:build-prod": "yarn docs:import && yarn docs:build",
     "docs:import": "node ./import/import-client-docs.js",
