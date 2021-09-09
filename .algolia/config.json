@@ -1,30 +1,30 @@
 {
   "index_name": "scraper-test",
-  "start_urls": ["https://developers.eventstore.com/"],
+  "start_urls": ["https://deploy-preview-435--developers-eventstore.netlify.app"],
   "selectors": {
-    "lvl0": ".sidebar h3.version",
+    "lvl0": ".sidebar h4.version",
     "lvl1": {
-      "selector": ".sidebar-heading.open span",
+      "selector": ".sidebar-heading.active",
       "global": true,
       "default_value": "Documentation"
     },
     "lvl2": {
-      "selector": ".content__default h1",
+      "selector": ".theme-default-content h1",
       "strip_chars": "#"
     },
     "lvl3": {
-      "selector": ".content__default h2",
+      "selector": ".theme-default-content h2",
       "strip_chars": "#"
     },
     "lvl4": {
-      "selector": ".content__default h3",
+      "selector": ".theme-default-content h3",
       "strip_chars": "#"
     },
     "lvl5": {
-      "selector": ".content__default h4",
+      "selector": ".theme-default-content h4",
       "strip_chars": "#"
     },
-    "text": ".content__default p, .content__default li",
+    "text": ".theme-default-content p, .theme-default-content li",
     "lang": {
       "selector": "/html/@lang",
       "type": "xpath",
