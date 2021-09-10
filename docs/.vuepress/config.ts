@@ -7,6 +7,8 @@ import {navbar, sidebar} from "./configs";
 import {resolveMultiSamplesPath} from "./samples";
 import containers from "./lib/containers";
 
+require('dotenv').config({path: path.join(__dirname, '..', '..', '.algolia', '.env')})
+
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig<DefaultThemeOptions>({
     base: "/",
@@ -28,7 +30,12 @@ export default defineUserConfig<DefaultThemeOptions>({
             handleImportPath: s => resolveMultiSamplesPath(s)
         });
     },
-    plugins: [
+    plugins: [,
+        ["@vuepress/docsearch", {
+            apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+            indexName: "scraper-test",// process.env.ALGOLIA_INDEX_NAME,
+            appId: process.env.ALGOLIA_APPLICATION_ID            
+        }],
         containers("tabs", "TabView", type => `${type ? ` type='${type}'` : ""}`),
         containers("tab", "TabPanel", label => `header="${label}"`),
         ["@vuepress/container", {

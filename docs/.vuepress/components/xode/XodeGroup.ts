@@ -2,7 +2,7 @@ import { defineComponent, h, onBeforeUpdate, ref, watch } from 'vue';
 import type { Component, VNode } from 'vue';
 import store from "./store";
 
-declare const __DEV__: boolean;
+declare const __VUEPRESS_DEV__: boolean;
 
 export default defineComponent({
   name: 'CodeGroup',
@@ -14,7 +14,7 @@ export default defineComponent({
     // refs of the tab buttons
     const tabRefs = ref<HTMLButtonElement[]>([])
 
-    if (__DEV__) {
+    if (__VUEPRESS_DEV__) {
       // after removing a code-group-item, we need to clear the ref
       // of the removed item to avoid issues caused by HMR
       onBeforeUpdate(() => {
