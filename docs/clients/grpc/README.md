@@ -42,7 +42,7 @@ implementation 'com.eventstore:db-client-java:0.5'
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 :::
-::: JavaScript
+::: code-group-item JavaScript
 ```:no-line-numbers
 # Yarn
 $ yarn add @eventstore/db-client
