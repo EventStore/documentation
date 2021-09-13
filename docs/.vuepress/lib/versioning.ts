@@ -48,10 +48,7 @@ export class versioning {
                 let path = `${version.basePath}/${v.path}`;
                 const sidebar = require(`../../${path}/sidebar.js`);
                 sidebar.forEach(item => {
-                    if (item.path !== undefined) {
-                        item.path = `/${path}/${item.path}`;
-                    }
-                    item.path = '..' + item.path
+                    item.path = `../${path}/${item.path}`;
                     
                     if (item.path.includes('generated')) {
                         item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
