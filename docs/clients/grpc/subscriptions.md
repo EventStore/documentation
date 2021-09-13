@@ -14,28 +14,23 @@ Check [connecting to EventStoreDB instructions](../getting-started/connecting.md
 
 The simplest stream subscription looks like the following :
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-stream}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-stream}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-stream}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-stream}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-stream}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 The provided handler will be called for every event in the stream.
 
@@ -43,28 +38,23 @@ The provided handler will be called for every event in the stream.
 
 Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event appended after the starting position.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-all}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-all}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-all}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-all}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-all}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Subscribing from a specific position
 
@@ -84,28 +74,23 @@ To subscribe to a stream from a specific position, you need to provide a *stream
 
 The following subscribes to the stream `some-stream` at position `20`, this means that events `21` and onward will be handled:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-stream-from-position}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-stream-from-position}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-stream-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-stream-from-position}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-stream-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 ### Subscribing to $all
 
@@ -115,80 +100,65 @@ The corresponding `$all` subscription will subscribe from the event after the on
 
 Please note that this position will need to be a legitimate position in `$all`.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-all-from-position}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-all-from-position}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-all-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-all-from-position}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-all-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Subscribing to a stream for live updates
 
 You can subscribe to a stream to get live updates by subscribing to the end of the stream:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-stream-live}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-stream-live}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-stream-live}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-stream-live}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-stream-live}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 And the same works with `$all` :
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-all-live}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-all-live}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-all-live}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-all-live}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-all-live}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 This won't read through the history of the stream, but will rather notify the handler when a new event appears in the respective stream.
 
@@ -204,28 +174,23 @@ Link-to events point to events in other streams in EventStoreDB. These are gener
 
 When reading a stream you can specify whether to resolve link-to's or not. By default, link-to events are not resolved. You can change this behaviour by setting the `resolveLinkTos` parameter to `true`:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-stream-resolving-linktos}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-stream-resolving-linktos}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-stream-resolving-linktos}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-stream-resolving-linktos}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-stream-resolving-linktos}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Dropped subscriptions
 
@@ -247,53 +212,43 @@ Bear in mind that a subscription can also drop because it is slow. The server tr
 
 An application, which hosts the subscription, can go offline for a period of time for different reasons. It could be a crash, infrastructure failure, or a new version deployment. As you rarely would want to reprocess all the events again, you'd need to store the current position of the subscription somewhere, and then use it to restore the subscription from the point where it dropped off:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-stream-subscription-dropped}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-stream-subscription-dropped}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-stream-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-stream-subscription-dropped}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-stream-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 When subscribed to `$all` you want to keep the position of the event in the `$all` stream. As mentioned previously, the `$all` stream position consists of two big integers (prepare and commit positions), not one:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{subscribe-to-all-subscription-dropped}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{subscribe-to-all-subscription-dropped}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{subscribe-to-all-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{subscribe-to-all-subscription-dropped}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{subscribe-to-all-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Filter options
 
@@ -301,28 +256,23 @@ Subscriptions to `$all` can include a filter option. A filtered subscription wil
 
 A simple stream prefix filter looks like this:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code(stream-prefix-filtered-subscription)](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code(stream-prefix-filtered-subscription)](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code(stream-prefix-filtered-subscription)](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code(stream-prefix-filtered-subscription)](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code(stream-prefix-filtered-subscription)](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 The filtering API is described more in-depth in the [filtering section](./filtering.md).
 
@@ -332,28 +282,23 @@ The user creating a subscription must have read access to the stream it's subscr
 
 The code below shows how you can provide user credentials for a subscription. When you specify subscription credentials explicitly, it will override the default credentials set for the client. If you don't specify any credentials, the client will use the credentials specified for the client, if you specified those.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{overriding-user-credentials}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{overriding-user-credentials}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{overriding-user-credentials}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{overriding-user-credentials}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 # Server-side filtering
 
@@ -369,28 +314,23 @@ Server-side filtering introduced as a simpler alternative to projections. Before
 
 There are a number of events in EventStoreDB called system events. These are prefixed with a `$` and under most circumstances you won't care about these. They can be filtered out by passing in a `SubscriptionFilterOptions` when subscribing to the `$all` stream.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{exclude-system}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{exclude-system}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{exclude-system}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{exclude-system}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{exclude-system}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 ::: tip
 `$stats` events are no longer stored in EventStoreDB by default so there won't be as many `$` events as before.
@@ -404,28 +344,23 @@ If you only want to subscribe to events of a given type there are two options. Y
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `EventTypeFilter.Prefix`.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{event-type-prefix}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{event-type-prefix}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{event-type-prefix}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{event-type-prefix}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{event-type-prefix}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 This will only subscribe to events with a type that begin with `customer-`.
 
@@ -433,28 +368,23 @@ This will only subscribe to events with a type that begin with `customer-`.
 
 If you want to subscribe to multiple event types then it might be better to provide a regular expression.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{event-type-regex}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{event-type-regex}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{event-type-regex}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{event-type-regex}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{event-type-regex}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 This will subscribe to any event that begins with `user` or `company`.
 
@@ -466,28 +396,23 @@ If you only want to subscribe to streams with a given name there are two options
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `StreamFilter.Prefix`.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{stream-prefix}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{stream-prefix}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{stream-prefix}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{stream-prefix}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{stream-prefix}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 This will only subscribe to streams with a name that begin with `user-`.
 
@@ -495,28 +420,23 @@ This will only subscribe to streams with a name that begin with `user-`.
 
 If you want to subscribe to multiple streams then it might be better to provide a regular expression.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{stream-regex}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{stream-regex}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{stream-regex}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{stream-regex}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{stream-regex}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 This will subscribe to any stream with a name that begins with `account` or `savings`.
 
@@ -528,53 +448,43 @@ In this case you can make use of an additional delegate that will be triggered e
 
 To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` class.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item C#
 @[code{checkpoint}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 @[code{checkpoint}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{checkpoint}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 @[code{checkpoint}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{checkpoint}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::
+::::
 
 This will be called every `n` number of events. If you want to be specific about the number of events threshold you can also pass that as a parameter.
 
-<xode-group>
-<xode-block title="C#">
-
-@[code{with-interval}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
-</xode-block>
-<xode-block title="Java">
-
-@[code{with-interval}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
-</xode-block>
-<xode-block title="JavaScript">
-
-@[code{with-interval}](../node/generated/2.0.0/samples/server-side-filtering.js)
-</xode-block>
-<xode-block title="Rust">
-
-@[code{with-interval}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
-</xode-block>
-<xode-block title="TypeScript">
-
-@[code{with-interval}](../node/generated/2.0.0/samples/server-side-filtering.ts)
-</xode-block>
-</xode-group>
+:::: code-group
+::: code-group-item C#
+@[code{checkpoint-with-interval}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+:::
+::: code-group-item Java
+@[code{checkpoint-with-interval}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+:::
+::: code-group-item JavaScript
+@[code{checkpoint-with-interval}](../node/generated/2.0.0/samples/server-side-filtering.js)
+:::
+::: code-group-item Rust
+@[code{checkpoint-with-interval}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+:::
+::: code-group-item TypeScript
+@[code{checkpoint-with-interval}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+:::
+::::
 
 ::: warning
 This number will be called every `n * 32` events.
