@@ -13,6 +13,7 @@ export const en: ESSidebarConfig = {
         "/clients/grpc/README.md",
         "/clients/grpc/appending-events.md",
         "/clients/grpc/reading-events.md",
+        "/clients/grpc/projections.md",
         "/clients/grpc/subscriptions.md",
         "/clients/grpc/competing-consumers.md",
       ],
