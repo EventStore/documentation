@@ -17,23 +17,23 @@ The simplest stream subscription looks like the following :
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream
+@[code{subscribe-to-stream}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream
+@[code{subscribe-to-stream}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream
+@[code{subscribe-to-stream}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream
+@[code{subscribe-to-stream}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream
+@[code{subscribe-to-stream}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -46,23 +46,23 @@ Subscribing to `$all` is much the same as subscribing to a single stream. The ha
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all
+@[code{subscribe-to-all}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all
+@[code{subscribe-to-all}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all
+@[code{subscribe-to-all}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all
+@[code{subscribe-to-all}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all
+@[code{subscribe-to-all}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -87,23 +87,23 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-from-position
+@[code{subscribe-to-stream-from-position}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-from-position
+@[code{subscribe-to-stream-from-position}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-from-position
+@[code{subscribe-to-stream-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-from-position
+@[code{subscribe-to-stream-from-position}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-from-position
+@[code{subscribe-to-stream-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -118,23 +118,23 @@ Please note that this position will need to be a legitimate position in `$all`.
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all-from-position
+@[code{subscribe-to-all-from-position}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-from-position
+@[code{subscribe-to-all-from-position}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all-from-position
+@[code{subscribe-to-all-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all-from-position
+@[code{subscribe-to-all-from-position}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-from-position
+@[code{subscribe-to-all-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -145,23 +145,23 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-live
+@[code{subscribe-to-stream-live}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-live
+@[code{subscribe-to-stream-live}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-live
+@[code{subscribe-to-stream-live}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-live
+@[code{subscribe-to-stream-live}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-live
+@[code{subscribe-to-stream-live}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -170,23 +170,23 @@ And the same works with `$all` :
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all-live
+@[code{subscribe-to-all-live}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-live
+@[code{subscribe-to-all-live}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all-live
+@[code{subscribe-to-all-live}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all-live
+@[code{subscribe-to-all-live}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-live
+@[code{subscribe-to-all-live}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -207,23 +207,23 @@ When reading a stream you can specify whether to resolve link-to's or not. By de
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-resolving-linktos
+@[code{subscribe-to-stream-resolving-linktos}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-resolving-linktos
+@[code{subscribe-to-stream-resolving-linktos}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-resolving-linktos
+@[code{subscribe-to-stream-resolving-linktos}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-resolving-linktos
+@[code{subscribe-to-stream-resolving-linktos}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-resolving-linktos
+@[code{subscribe-to-stream-resolving-linktos}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -250,23 +250,23 @@ An application, which hosts the subscription, can go offline for a period of tim
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-stream-subscription-dropped
+@[code{subscribe-to-stream-subscription-dropped}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-stream-subscription-dropped
+@[code{subscribe-to-stream-subscription-dropped}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-stream-subscription-dropped
+@[code{subscribe-to-stream-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-stream-subscription-dropped
+@[code{subscribe-to-stream-subscription-dropped}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-stream-subscription-dropped
+@[code{subscribe-to-stream-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -275,23 +275,23 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#subscribe-to-all-subscription-dropped
+@[code{subscribe-to-all-subscription-dropped}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#subscribe-to-all-subscription-dropped
+@[code{subscribe-to-all-subscription-dropped}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#subscribe-to-all-subscription-dropped
+@[code{subscribe-to-all-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#subscribe-to-all-subscription-dropped
+@[code{subscribe-to-all-subscription-dropped}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#subscribe-to-all-subscription-dropped
+@[code{subscribe-to-all-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -304,23 +304,23 @@ A simple stream prefix filter looks like this:
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#stream-prefix-filtered-subscription
+@[code(stream-prefix-filtered-subscription)](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#stream-prefix-filtered-subscription
+@[code(stream-prefix-filtered-subscription)](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#stream-prefix-filtered-subscription
+@[code(stream-prefix-filtered-subscription)](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#stream-prefix-filtered-subscription
+@[code(stream-prefix-filtered-subscription)](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#stream-prefix-filtered-subscription
+@[code(stream-prefix-filtered-subscription)](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -335,23 +335,23 @@ The code below shows how you can provide user credentials for a subscription. Wh
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs#overriding-user-credentials
+@[code{overriding-user-credentials}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java#overriding-user-credentials
+@[code{overriding-user-credentials}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.js#overriding-user-credentials
+@[code{overriding-user-credentials}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/subscribing_to_stream.rust#overriding-user-credentials
+@[code{overriding-user-credentials}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/subscribing-to-streams.ts#overriding-user-credentials
+@[code](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
 </xode-block>
 </xode-group>
 
@@ -372,23 +372,23 @@ There are a number of events in EventStoreDB called system events. These are pre
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#exclude-system
+@[code{exclude-system}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#exclude-system
+@[code{exclude-system}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#exclude-system
+@[code{exclude-system}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#exclude-system
+@[code{exclude-system}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#exclude-system
+@[code{exclude-system}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
@@ -407,23 +407,23 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#event-type-prefix
+@[code{event-type-prefix}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#event-type-prefix
+@[code{event-type-prefix}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#event-type-prefix
+@[code{event-type-prefix}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#event-type-prefix
+@[code{event-type-prefix}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#event-type-prefix
+@[code{event-type-prefix}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
@@ -436,23 +436,23 @@ If you want to subscribe to multiple event types then it might be better to prov
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#event-type-regex
+@[code{event-type-regex}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#event-type-regex
+@[code{event-type-regex}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#event-type-regex
+@[code{event-type-regex}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#event-type-regex
+@[code{event-type-regex}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#event-type-regex
+@[code{event-type-regex}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
@@ -469,23 +469,23 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#stream-prefix
+@[code{stream-prefix}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#stream-prefix
+@[code{stream-prefix}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#stream-prefix
+@[code{stream-prefix}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#stream-prefix
+@[code{stream-prefix}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#stream-prefix
+@[code{stream-prefix}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
@@ -498,23 +498,23 @@ If you want to subscribe to multiple streams then it might be better to provide 
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#stream-regex
+@[code{stream-regex}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#stream-regex
+@[code{stream-regex}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#stream-regex
+@[code{stream-regex}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#stream-regex
+@[code{stream-regex}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#stream-regex
+@[code{stream-regex}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
@@ -531,23 +531,23 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#checkpoint
+@[code{checkpoint}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#checkpoint
+@[code{checkpoint}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#checkpoint
+@[code{checkpoint}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#checkpoint
+@[code{checkpoint}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#checkpoint
+@[code{checkpoint}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
@@ -556,23 +556,23 @@ This will be called every `n` number of events. If you want to be specific about
 <xode-group>
 <xode-block title="C#">
 
-@[code](clients/dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs#checkpoint-with-interval
+@[code{with-interval}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
 </xode-block>
 <xode-block title="Java">
 
-@[code](clients/java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java#checkpoint-with-interval
+@[code{with-interval}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 </xode-block>
 <xode-block title="JavaScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.js#checkpoint-with-interval
+@[code{with-interval}](../node/generated/2.0.0/samples/server-side-filtering.js)
 </xode-block>
 <xode-block title="Rust">
 
-@[code](clients/rust/generated/1.0.0/samples/server_side_filtering.rust#checkpoint-with-interval
+@[code{with-interval}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
 </xode-block>
 <xode-block title="TypeScript">
 
-@[code](clients/node/generated/2.0.0/samples/server-side-filtering.ts#checkpoint-with-interval
+@[code{with-interval}](../node/generated/2.0.0/samples/server-side-filtering.ts)
 </xode-block>
 </xode-group>
 
