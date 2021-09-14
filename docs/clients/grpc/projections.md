@@ -2,7 +2,7 @@
 
 The various gRPC client APIs include dedicated clients that allow you to manage projections.
 
-:::warning
+::: warning
 Currently not all clients fully expose all operations.
 :::
 
@@ -13,15 +13,13 @@ You can find the full sample code from these documentation on the respective [cl
 ## Required packages
 Install the client SDK package to your project.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 ```bash
 dotnet add package EventStore.Client.Grpc.ProjectionManagement --version 21.*
 ```
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```
 # Maven
 <dependency>
@@ -36,9 +34,8 @@ implementation 'com.eventstore:db-client-java:1.0.0'
 # SBT
 libraryDependencies += "com.eventstore" % "db-client-java" % "1.0.0"
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 ```
 # Yarn
 $ yarn add @eventstore/db-client
@@ -46,15 +43,13 @@ $ yarn add @eventstore/db-client
 # NPM
 $ npm install --save @eventstore/db-client
 ```
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```
 No additional configuration is needed having Rust installed. Go check https://rustup.rs.
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 ```
 # Yarn
 $ yarn add @eventstore/db-client
@@ -62,8 +57,8 @@ $ yarn add @eventstore/db-client
 # NPM
 $ npm install --save @eventstore/db-client
 ```
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Creating a client
 
@@ -107,101 +102,76 @@ Sample available soon
 Creates a projection that runs until the last event in the store, and then continues processing new events as they are appended to the store. The query parameter contains the JavaScript you want created as a projection.
 Projections have explicit names, and you can enable or disable them via this name.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{CreateContinuous}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```
 Sample available soon
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{CreateContinuous}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{CreateContinuous}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 Trying to create projections with the same name will result in an error:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{CreateContinuous_Conflict}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```
 Sample available soon
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{CreateContinuous_Conflict}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{CreateContinuous_Conflict}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Restart the subsystem
 Restarts the entire projection subsystem. The user must be in the `$ops` or `$admin` group to perform this operation
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{RestartSubSystem}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client 
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{RestartSubSystem}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```
 Sample available soon
 ```
-
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{RestartSubSystem}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Enable a projection
 
@@ -209,67 +179,51 @@ Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem.
 You must have access to a projection to enable it, see the [ACL documentation](/server/v21.6/docs/security/acl.html#stream-acl)
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Enable}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Enable}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Enable}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 You can only enable an existing projection. When you try to enable a non-existing projection, you'll get an error:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{EnableNotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{EnableNotFound}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{EnableNotFound}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Disable a projection
 
@@ -281,138 +235,105 @@ You must have access to a projection to disable it, see the [ACL documentation](
 The .net clients up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
 :::
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Disable}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Disable}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Disable}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 You can only disable an existing projection. When you try to disable a non-existing projection, you'll get an error:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{DisableNotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{DisableNotFound}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{DisableNotFound}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
-
+:::
+::::
 
 ## Delete a projection
 
 Deletes a projection
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 ```csharp
 // This is currently not available in the .net client
 ```
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Delete}](../node/generated/2.0.0/samples/projection-management.js)
-
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Delete}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 You can only delete an existing projection. When you try to delete a non-existing projection, you'll get an error:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 ```csharp
 // This is currently not available in the .net client
 ```
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{DeleteNotFound}](../node/generated/2.0.0/samples/projection-management.js)
-
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{DeleteNotFound}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Abort a projection
 
@@ -422,372 +343,287 @@ Aborts a projection, this will not save the projection's checkpoint.
 The .net clients up to version 21.2 had an incorrect behavior: they _will_ save the checkpoint.
 :::
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Abort}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Abort}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Abort}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 You can only abort an existing projection. When you try to abort a non-existing projection, you'll get an error:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Abort_NotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Abort_NotFound}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
+:::
+::: code-group-item Rust
 
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Abort_NotFound}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Reset a projection
 Resets a projection. This will re-emit events. Streams that are written to from the projection will also be soft deleted.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Reset}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Reset}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Reset}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 Resetting a projection that does not exists will result in an error.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Reset_NotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Reset_NotFound}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
+:::
+::: code-group-item Rust
 
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Reset_NotFound}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Update a projection
 
 Updates a projection. The name parameter is the name of the projection to be updated. The query parameter contains the new JavaScript.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Update}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Update}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Update}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 You can only update an existing projection. When you try to update a non-existing projection, you'll get an error:
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{Update_NotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{Update_NotFound}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{Update_NotFound}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## List all projections
 
 Returns a list of all projections, user defined & system projections.
 See the [projection details](#projection-details) section for an explanation of the returned values
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{ListAll}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{ListAll}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{ListAll}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## List continuous projections
 
 Returns a list of all continuous projections.
 See the [projection details](#projection-details) section for an explanation of the returned values
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{ListContinuous}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{ListContinuous}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{ListContinuous}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Get Status
 
 Gets the status of a named projection.
 See the [projection details](#projection-details) section for an explanation of the returned values
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{GetStatus}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{GetStatus}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{GetStatus}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Get state
 
 Retrieves the state of a projection.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 ```
 Sample available soon
 ```
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```java
 // This is currently not available in the java client
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{GetState}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{GetState}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Get result
 
 Retrieves the result of the named projection and partition.
 
-<xode-group>
-<xode-block title="C#">
-
+:::: code-group
+::: code-group-item c#
 @[code{GetResult}](../dotnet/generated/main/samples/projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Java">
-
+:::
+::: code-group-item Java
 ```
 Sample available soon
 ```
-</xode-block>
-<xode-block title="JavaScript">
-
+:::
+::: code-group-item JavaScript
 @[code{GetResult}](../node/generated/2.0.0/samples/projection-management.js)
-
-</xode-block>
-<xode-block title="Rust">
-
+:::
+::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-</xode-block>
-<xode-block title="TypeScript">
-
+:::
+::: code-group-item TypeScript
 @[code{GetResult}](../node/generated/2.0.0/samples/projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Projection Details
 
