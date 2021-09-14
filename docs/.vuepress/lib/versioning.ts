@@ -5,6 +5,17 @@ import log from "./log";
 
 const references = require("../versions.json");
 
+function getLastPathFolder(path:string): string | undefined {
+    const lastSeparatorIndex = path.lastIndexOf('/');
+    if(lastSeparatorIndex === -1)
+        return undefined;
+    
+    if(lastSeparatorIndex === path.length-1)
+        path = path.slice(0,-1);
+
+    return path.split('/').pop();
+}
+
 export class versioning {
     versions = [];
 
@@ -45,13 +56,15 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
-                let path = `${version.basePath}/${v.path}`;
+                const path = v.path ? `${version.basePath}/${v.path}` : `${version.basePath}`;
                 const sidebar = require(`../../${path}/sidebar.js`);
                 sidebar.forEach(item => {
-                    item.path = `../${path}/${item.path}`;
+                    item.path = item.path ? `/${path}/${item.path}` : `/${path}/`;
                     
                     if (item.path.includes('generated')) {
-                        item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
+                        item.children = item.children.map(
+                            x => !x.startsWith('../') ? `../${x}` : x
+                        );
                     }
                     
                     item.version = v.version;
@@ -77,7 +90,7 @@ export class versioning {
         const version = this.version(id);
 
         version.versions.forEach(v => {
-            let path = `${version.basePath}/${v.path}`;
+            let path = !!v.path ? `${version.basePath}/${v.path}` : version.basePath;
             let item = {text: v.version, link: `/${path}/${url ? url : v.startPage ? v.startPage : ""}`};
             links.push(item);
         });

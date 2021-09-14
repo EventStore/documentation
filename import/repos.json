@@ -22,7 +22,21 @@
       },
       {
         "version": "v5",
-        "name": "release/oss-v5"
+        "name": "vuepress2/oss-v5"
+      }
+    ]
+  },
+  {
+    "id": "http-api",
+    "group": "http-api",
+    "basePath": "clients/http-api",
+    "docsRelativePath": ["docs", "http-api"],
+    "samplesRelativePath": ["samples", "http-api"],
+    "repo": "https://github.com/EventStore/EventStore.git",
+    "branches": [
+      {
+        "version": "v5",
+        "name": "vuepress2/oss-v5"
       }
     ]
   },

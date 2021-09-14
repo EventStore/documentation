@@ -21,16 +21,5 @@
         "path": "generated/v5/docs"
       }
     ]
-  },
-  {
-    "id": "http-api",
-    "group": "HTTP API",
-    "basePath": "server",
-    "versions": [
-      {
-        "version": "5.0.11",
-        "path": "generated/v5/docs/http-api"
-      }
-    ]
   }
 ]
