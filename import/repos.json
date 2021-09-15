@@ -24,6 +24,9 @@
         "version": "v5",
         "name": "vuepress2/oss-v5"
       }
+    ],
+    "postprocess": [
+      "rm -r ./docs/server/generated/v5/docs/http-api 2&> /dev/null"
     ]
   },
   {
