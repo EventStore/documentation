@@ -26,7 +26,7 @@
       }
     ],
     "postprocess": [
-      "rm -r ./docs/server/generated/v5/docs/http-api 2&> /dev/null"
+      "rm -rf ./docs/server/generated/v5/docs/http-api"
     ]
   },
   {
