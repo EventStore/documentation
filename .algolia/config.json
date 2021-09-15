@@ -1,34 +1,122 @@
 {
   "index_name": "scraper-test",
-  "start_urls": ["https://deploy-preview-435--developers-eventstore.netlify.app"],
+  "start_urls": [
+    {
+      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "variables": {
+        "version": ["v21.10"]
+      },
+      "page_rank": 10
+    },
+    {
+      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "variables": {
+        "version": ["v21.2", "v21.6"]
+      },
+      "page_rank": 8
+    },
+    {
+      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "variables": {
+        "version": ["v5"]
+      },
+      "page_rank": 1
+    },
+    {
+      "url": "http://localhost:8080/clients/grpc/",
+      "selectors_key": "flat",
+      "page_rank": 10
+    },
+    {
+      "url": "http://localhost:8080/clients/http-api/generated/v5/docs/introduction/",
+      "selectors_key": "flat",
+      "page_rank": 6
+    },
+    {
+      "url": "http://localhost:8080/clients/dotnet/5.0/",
+      "selectors_key": "flat",
+      "page_rank": 1
+    },
+    {
+      "url": "http://localhost:8080/clients/dotnet/20.10/",
+      "selectors_key": "flat",
+      "page_rank": 3
+    },
+    {
+      "url": "http://localhost:8080/clients/dotnet/21.2/",
+      "selectors_key": "flat",
+      "page_rank": 6
+    },
+    {
+      "url": "http://localhost:8080/cloud/",
+      "selectors_key": "flat",
+      "page_rank": 10
+    },
+    {
+      "url": "http://localhost:8080/",
+      "page_rank": 5
+    }
+  ],
   "selectors": {
-    "lvl0": ".sidebar h4.version",
-    "lvl1": {
-      "selector": ".sidebar-heading.active",
-      "global": true,
-      "default_value": "Documentation"
-    },
-    "lvl2": {
-      "selector": ".theme-default-content h1",
-      "strip_chars": "#"
-    },
-    "lvl3": {
-      "selector": ".theme-default-content h2",
-      "strip_chars": "#"
-    },
-    "lvl4": {
-      "selector": ".theme-default-content h3",
-      "strip_chars": "#"
-    },
-    "lvl5": {
-      "selector": ".theme-default-content h4",
-      "strip_chars": "#"
-    },
-    "text": ".theme-default-content p, .theme-default-content li",
-    "lang": {
-      "selector": "/html/@lang",
-      "type": "xpath",
-      "global": true
+    "default": {
+      "lvl0": ".sidebar h4.version",
+      "lvl1": {
+        "selector": ".sidebar-heading.active",
+        "global": true,
+        "default_value": "Documentation"
+      },
+      "lvl2": {
+        "selector": ".sidebar-heading.active+ul li a.active",
+        "strip_chars": "#"
+      },
+      "lvl3": {
+        "selector": ".sidebar-heading.active+ul li ul li a.active",
+        "strip_chars": "#"
+      },
+      "lvl4": {
+        "selector": ".theme-default-content h1",
+        "strip_chars": "#"
+      },
+      "lvl5": {
+        "selector": ".theme-default-content h2",
+        "strip_chars": "#"
+      },
+      "text": ".theme-default-content p, .theme-default-content li",
+      "lang": {
+        "selector": "/html/@lang",
+        "type": "xpath",
+        "global": true
+      }
+    },    
+    "flat": {
+      "lvl0": ".sidebar h4.version",
+      "lvl1": {
+        "selector": ".sidebar-heading.active+ul li a.active",
+        "global": true,
+        "default_value": "Documentation"
+      },
+      "lvl2": {
+        "selector": ".sidebar-heading.active+ul li ul li a.active",
+        "strip_chars": "#"
+      },
+      "lvl3": {
+        "selector": ".sidebar-heading.active+ul li ul li ul li a.active",
+        "strip_chars": "#"
+      },
+      "lvl4": {
+        "selector": ".theme-default-content h1",
+        "strip_chars": "#"
+      },
+      "lvl5": {
+        "selector": ".theme-default-content h2",
+        "strip_chars": "#"
+      },
+      "text": ".theme-default-content p, .theme-default-content li",
+      "lang": {
+        "selector": "/html/@lang",
+        "type": "xpath",
+        "global": true
+      }
     }
   },
   "custom_settings": {
