@@ -4,7 +4,7 @@
 
 The first step of dealing with a subscription group is to create one. You will receive an error if you attempt to create a subscription group multiple times. You must have admin permissions to create a persistent subscription group.
 
-@[code{create-persistent-subscription-to-stream}](../dotnet/generated/21.2.0/samples/persistent-subscriptions/Program.cs)
+@[code{create-persistent-subscription-to-stream}](../dotnet/21.2/samples/persistent-subscriptions/Program.cs)
 
 | Parameter | Description |
 |:----------|:------------|
@@ -19,7 +19,7 @@ Once you have created a subscription group, clients can connect to that subscrip
 
 The most important parameter to pass when connecting is the buffer size. This represents how many outstanding messages the server should allow this client. If this number is too small, your subscription will spend much of its time idle as it waits for an acknowledgment to come back from the client. If it's too big, you waste resources and can start causing time out messages depending on the speed of your processing.
 
-@[code{subscribe-to-persistent-subscription-to-stream}](../dotnet/generated/21.2.0/samples/persistent-subscriptions/Program.cs)
+@[code{subscribe-to-persistent-subscription-to-stream}](../dotnet/21.2/samples/persistent-subscriptions/Program.cs)
 
 | Parameter | Description |
 |:----------|:------------|
@@ -38,11 +38,11 @@ The ability to subscribe to $all was introduced in 21.6.0. Persistent Subscripti
 
 You can create a subscription group on $all much the same way you would create a subscription group on a stream:
 
-@[code{create-persistent-subscription-to-all}](../dotnet/generated/21.6.0/samples/persistent-subscriptions/Program.cs)
+@[code{create-persistent-subscription-to-all}](../dotnet/21.6.0/samples/persistent-subscriptions/Program.cs)
 
 And then subscribing to it is done in much the same way:
 
-@[code{subscribe-to-persistent-subscription-to-all}](../dotnet/generated/21.6.0/samples/persistent-subscriptions/Program.cs) -->
+@[code{subscribe-to-persistent-subscription-to-all}](../dotnet/21.6.0/samples/persistent-subscriptions/Program.cs) -->
 
 ## Acknowledgements
 
@@ -50,7 +50,7 @@ Clients must acknowledge (or not acknowledge) messages in the competing consumer
 
 You can choose to not auto-ack messages. This can be useful when you have multi-threaded processing of messages in your subscriber and need to pass control to something else. If you want to manually acknowlegde events, you need to set this option when subscribing and then acknowledge or not acknowledge messages as you handle them.
 
-@[code{subscribe-to-persistent-subscription-with-manual-acks}](../dotnet/generated/21.2.0/samples/persistent-subscriptions/Program.cs)
+@[code{subscribe-to-persistent-subscription-with-manual-acks}](../dotnet/21.2/samples/persistent-subscriptions/Program.cs)
 
 The Nak Actions describe what the server should do with the message:
 
@@ -89,7 +89,7 @@ The main aim of this strategy is to decrease the likelihood of concurrency and o
 
 You can edit the settings of an existing subscription group while it is running, you don't need to delete and recreate it to change settings. When you update the subscription group, it resets itself internally, dropping the connections and having them reconnect. You must have admin permissions to update a persistent subscription group.
 
-@[code{update-persistent-subscription}](../dotnet/generated/21.2.0/samples/persistent-subscriptions/Program.cs)
+@[code{update-persistent-subscription}](../dotnet/21.2/samples/persistent-subscriptions/Program.cs)
 
 | Parameter | Description |
 |:----------|:------------|
@@ -124,7 +124,7 @@ The following table shows the configuration options you can set on a persistent 
 
 Remove a subscription group with the delete operation. Like the creation of groups, you rarely do this in your runtime code and is undertaken by an administrator running a script.
 
-@[code{delete-persistent-subscription}](../dotnet/generated/21.2.0/samples/persistent-subscriptions/Program.cs)
+@[code{delete-persistent-subscription}](../dotnet/21.2/samples/persistent-subscriptions/Program.cs)
 
 | Parameter | Description |
 | :-------- | :---------- |

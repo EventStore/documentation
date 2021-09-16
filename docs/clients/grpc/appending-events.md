@@ -12,19 +12,19 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 
 :::: code-group
 ::: code-group-item C#
-@[code{append-to-stream}](../dotnet/generated/21.2.0/samples/appending-events/Program.cs)
+@[code{append-to-stream}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
 ::: code-group-item Java
-@[code{append-to-stream}](../java/generated/1.0.0/samples/appending_events/AppendingEvents.java)
+@[code{append-to-stream}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{append-to-stream}](../node/generated/2.0.0/samples/appending-events.js)
+@[code{append-to-stream}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-to-stream}](../rust/generated/1.0.0/samples/appending_events.rust)
+@[code{append-to-stream}](../rust/1.0.0/samples/appending_events.rust)
 :::
 ::: code-group-item TypeScript
-@[code{append-to-stream}](../node/generated/2.0.0/samples/appending-events.ts)
+@[code{append-to-stream}](../node/2.0.0/samples/appending-events.ts)
 :::
 ::::
 
@@ -48,19 +48,19 @@ For example, the following code will only append a single event:
 
 :::: code-group
 ::: code-group-item C#
-@[code{append-duplicate-event}](../dotnet/generated/21.2.0/samples/appending-events/Program.cs)
+@[code{append-duplicate-event}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
 ::: code-group-item Java
-@[code{append-duplicate-event}](../java/generated/1.0.0/samples/appending_events/AppendingEvents.java)
+@[code{append-duplicate-event}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{append-duplicate-event}](../node/generated/2.0.0/samples/appending-events.js)
+@[code{append-duplicate-event}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-duplicate-event}](../rust/generated/1.0.0/samples/appending_events.rust)
+@[code{append-duplicate-event}](../rust/1.0.0/samples/appending_events.rust)
 :::
 ::: code-group-item TypeScript
-@[code{append-duplicate-event}](../node/generated/2.0.0/samples/appending-events.ts)
+@[code{append-duplicate-event}](../node/2.0.0/samples/appending-events.ts)
 :::
 ::::
 
@@ -94,19 +94,19 @@ For example if we try and append the same record twice expecting both times that
 
 :::: code-group
 ::: code-group-item C#
-@[code{append-with-no-stream}](../dotnet/generated/21.2.0/samples/appending-events/Program.cs)
+@[code{append-with-no-stream}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
 ::: code-group-item Java
-@[code{append-with-no-stream}](../java/generated/1.0.0/samples/appending_events/AppendingEvents.java)
+@[code{append-with-no-stream}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{append-with-no-stream}](../node/generated/2.0.0/samples/appending-events.js)
+@[code{append-with-no-stream}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-with-no-stream}](../rust/generated/1.0.0/samples/appending_events.rust)
+@[code{append-with-no-stream}](../rust/1.0.0/samples/appending_events.rust)
 :::
 ::: code-group-item TypeScript
-@[code{append-with-no-stream}](../node/generated/2.0.0/samples/appending-events.ts)
+@[code{append-with-no-stream}](../node/2.0.0/samples/appending-events.ts)
 :::
 ::::
 
@@ -119,19 +119,19 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 :::: code-group
 ::: code-group-item C#
-@[code{append-with-concurrency-check}](../dotnet/generated/21.2.0/samples/appending-events/Program.cs)
+@[code{append-with-concurrency-check}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
 ::: code-group-item Java
-@[code{append-with-concurrency-check}](../java/generated/1.0.0/samples/appending_events/AppendingEvents.java)
+@[code{append-with-concurrency-check}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{append-with-concurrency-check}](../node/generated/2.0.0/samples/appending-events.js)
+@[code{append-with-concurrency-check}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-with-concurrency-check}](../rust/generated/1.0.0/samples/appending_events.rust)
+@[code{append-with-concurrency-check}](../rust/1.0.0/samples/appending_events.rust)
 :::
 ::: code-group-item TypeScript
-@[code{append-with-concurrency-check}](../node/generated/2.0.0/samples/appending-events.ts)
+@[code{append-with-concurrency-check}](../node/2.0.0/samples/appending-events.ts)
 :::
 ::::
 
@@ -143,18 +143,18 @@ You can provide user credentials to be used to append the data as follows. This 
 
 :::: code-group
 ::: code-group-item C#
-@[code{overriding-user-credentials}](../dotnet/generated/21.2.0/samples/appending-events/Program.cs)
+@[code{overriding-user-credentials}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
 ::: code-group-item Java
-@[code{overriding-user-credentials}](../java/generated/1.0.0/samples/appending_events/AppendingEvents.java)
+@[code{overriding-user-credentials}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{overriding-user-credentials}](../node/generated/2.0.0/samples/appending-events.js)
+@[code{overriding-user-credentials}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{overriding-user-credentials}](../rust/generated/1.0.0/samples/appending_events.rust)
+@[code{overriding-user-credentials}](../rust/1.0.0/samples/appending_events.rust)
 :::
 ::: code-group-item TypeScript
-@[code{overriding-user-credentials}](../node/generated/2.0.0/samples/appending-events.ts)
+@[code{overriding-user-credentials}](../node/2.0.0/samples/appending-events.ts)
 :::
 ::::

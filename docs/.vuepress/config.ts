@@ -31,8 +31,6 @@ export default defineUserConfig<DefaultThemeOptions>({
         });
     },
     plugins: [
-        path.resolve(__dirname, "./plugins/fix-import"),
-        require("./plugins/fix-import"),
         ["@vuepress/docsearch", {
             apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
             indexName: "scraper-test",// process.env.ALGOLIA_INDEX_NAME,

@@ -1,4 +1,4 @@
 [
   "../../clients/dotnet/versions.json",
-  "../../server/versions.json"
+  "../../server/generated-versions.json"
 ]

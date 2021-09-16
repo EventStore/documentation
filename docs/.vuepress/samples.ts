@@ -25,23 +25,23 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         "@grpc": {
             "cs": {
                 label: "C#",
-                path: "dotnet/generated/21.2.0/samples"
+                path: "dotnet/21.6/samples"
             },
             "java": {
                 label: "Java",
-                path: "java/generated/1.0.0/samples"
+                path: "java/1.0.0/samples"
             },
             "js": {
                 label: "JavaScript",
-                path: "node/generated/2.0.0/samples"
+                path: "node/2.0.0/samples"
             },
             "ts": {
                 label: "TypeScript",
-                path: "node/generated/2.0.0/samples"
+                path: "node/2.0.0/samples"
             },
             "rust": {
                 label: "Rust",
-                path: "rust/generated/1.0.0/samples"
+                path: "rust/1.0.0/samples"
             }
         }
     };

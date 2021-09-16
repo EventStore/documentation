@@ -45,8 +45,9 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
-                let path = `${version.basePath}/${v.path}`;
-                const sidebar = require(`../../${path}/sidebar.js`);
+                const path = `${version.basePath}/${v.path}`;
+                const sidebarPath = `../../${path}/sidebar.js`;
+                const sidebar = require(sidebarPath);
                 sidebar.forEach(item => {
                     item.path = `../${path}/${item.path}`;
 

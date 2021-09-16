@@ -90,23 +90,23 @@ First thing first, we need a client.
 <xode-group>
 <xode-block title="C#" code="connectionString">
 
-@[code{createClient}](../dotnet/generated/21.2.0/samples/quick-start/Program.cs)
+@[code{createClient}](../dotnet/21.2/samples/quick-start/Program.cs)
 </xode-block>
 <xode-block title="Java" code="connectionString">
 
-@[code{createClient}](../java/generated/1.0.0/samples/quick_start/QuickStart.java)
+@[code{createClient}](../java/1.0.0/samples/quick_start/QuickStart.java)
 </xode-block>
 <xode-block title="JavaScript" code="connectionString">
 
-@[code{createClient}](../node/generated/2.0.0/samples/get-started.js)
+@[code{createClient}](../node/2.0.0/samples/get-started.js)
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
-@[code{createClient}](../rust/generated/1.0.0/samples/quickstart.rust)
+@[code{createClient}](../rust/1.0.0/samples/quickstart.rust)
 </xode-block>
 <xode-block title="TypeScript" code="connectionString">
 
-@[code{createClient}](../node/generated/2.0.0/samples/get-started.ts)
+@[code{createClient}](../node/2.0.0/samples/get-started.ts)
 </xode-block>
 </xode-group>
 
@@ -126,19 +126,19 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 :::: code-group
 ::: code-group-item C#
-@[code{createEvent}](../dotnet/generated/21.2.0/samples/quick-start/Program.cs)
+@[code{createEvent}](../dotnet/21.2/samples/quick-start/Program.cs)
 :::
 ::: code-group-item Java
-@[code{createEvent}](../java/generated/1.0.0/samples/quick_start/QuickStart.java)
+@[code{createEvent}](../java/1.0.0/samples/quick_start/QuickStart.java)
 :::
 ::: code-group-item JavaScript
-@[code{createEvent}](../node/generated/2.0.0/samples/get-started.js)
+@[code{createEvent}](../node/2.0.0/samples/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{createEvent}](../rust/generated/1.0.0/samples/quickstart.rust)
+@[code{createEvent}](../rust/1.0.0/samples/quickstart.rust)
 :::
 ::: code-group-item TypeScript
-@[code{createEvent}](../node/generated/2.0.0/samples/get-started.ts)
+@[code{createEvent}](../node/2.0.0/samples/get-started.ts)
 :::
 ::::
 
@@ -150,19 +150,19 @@ In the snippet below, we append the event to the stream `some-stream`.
 
 :::: code-group
 ::: code-group-item C#
-@[code{appendEvents}](../dotnet/generated/21.2.0/samples/quick-start/Program.cs)
+@[code{appendEvents}](../dotnet/21.2/samples/quick-start/Program.cs)
 :::
 ::: code-group-item Java
-@[code{appendEvents}](../java/generated/1.0.0/samples/quick_start/QuickStart.java)
+@[code{appendEvents}](../java/1.0.0/samples/quick_start/QuickStart.java)
 :::
 ::: code-group-item JavaScript
-@[code{appendEvents}](../node/generated/2.0.0/samples/get-started.js)
+@[code{appendEvents}](../node/2.0.0/samples/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{appendEvents}](../rust/generated/1.0.0/samples/quickstart.rust)
+@[code{appendEvents}](../rust/1.0.0/samples/quickstart.rust)
 :::
 ::: code-group-item TypeScript
-@[code{appendEvents}](../node/generated/2.0.0/samples/get-started.ts)
+@[code{appendEvents}](../node/2.0.0/samples/get-started.ts)
 :::
 ::::
 

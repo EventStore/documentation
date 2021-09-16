@@ -51,7 +51,7 @@ async function copyDocsAndSamples(clientRepo, destinationPath, branch, repo) {
     let result = null;
     if (repo.docsRelativePath) {
         await copyDocs(clientRepo, destinationPathWithId, branch.name, repo.docsRelativePath);
-        result = {path: `${branch.version}/docs`, version: branch.version};
+        result = {path: branch.version, version: branch.version};
     }
 
     if (repo.samplesRelativePath)

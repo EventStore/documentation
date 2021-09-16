@@ -1,15 +1,15 @@
 # Projections
 
-This page provides an example of using [user-defined projections](/server/generated/v5/docs/projections/README.md#types-of-projections) in your application.
+This page provides an example of using [user-defined projections](/server/v5/projections/README.md#types-of-projections) in your application.
 
 ## Adding sample data
 
 Download the following files that contain sample data used throughout this step of the getting started guide.
 
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/server/generated/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/server/generated/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/server/generated/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
-- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/server/generated/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](/server/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](/server/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json](/server/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json)
+- [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json](/server/v5/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json)
 
 Add the sample data to four different streams:
 First, we need a function to read JSON files and construct the list of `EventData` instances:
@@ -23,7 +23,7 @@ Then, we can use this function and push events to EventStoreDB:
 ## Creating your first projection
 
 ::: tip Next steps
-Read [this guide](/server/generated/v5/docs/projections/user-defined-projections.md) to find out more about the user defined projection's API.
+Read [this guide](../../../server/v5/projections/user-defined-projections.md) to find out more about the user defined projection's API.
 :::
 
 The projection counts the number of 'XBox One S's that customers added to their shopping carts.
@@ -34,7 +34,7 @@ The second part of a projection is a set of filters. There is a special filter c
 
 Here is the projection code:
 
-@[code](../../../server/generated/v5/samples/http-api/xbox-one-s-counter.js)
+@[code](../../../server/v5/samples/http-api/xbox-one-s-counter.js)
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running.
 
@@ -44,7 +44,7 @@ You can send the projection code as text along the other parameters, using the `
 @[code{CreateUserProjection}](./sample-code/GettingStarted/UserProjections.cs)
 
 ::: tip Next steps
-[Read here](#projections-management) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/server/generated/v5/docs/projections/README.md) for details on projection syntax.
+[Read here](#projections-management) for more information on creating projections with the .NET API and the parameters available, or [our projections section](/server/v5/projections/README.md) for details on projection syntax.
 :::
 
 ## Querying projection state
@@ -61,7 +61,7 @@ You can partition the projection state to only include some events for aggregati
 
 The server then returns the state for the partition:
 
-@[code](../../../server/generated/v5/samples/http-api/projections/read-state-partition.json)
+@[code](../../../server/v5/samples/http-api/projections/read-state-partition.json)
 
 ## Emitting new events
 
@@ -73,7 +73,7 @@ Update the projection to output the state to a stream by calling the `outputStat
 
 Below is the updated projection:
 
-@[code](../../../server/generated/v5/samples/http-api/xbox-one-s-counter-outputState.js)
+@[code](../../../server/v5/samples/http-api/xbox-one-s-counter-outputState.js)
 
 To update the projection, edit the projection definition with the following request:
 
@@ -94,7 +94,7 @@ You can now read the events in the result stream by issuing a read request.
 
 You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream:
 
-@[code{2}](../../../server/generated/v5/samples/http-api/projections/update-projection-options.js)
+@[code{2}](../../../server/v5/samples/http-api/projections/update-projection-options.js)
 
 Then send the update to the projection:
 
@@ -102,7 +102,7 @@ Then send the update to the projection:
 @[code{UpdateProjectionProperties}](./sample-code/GettingStarted/UserProjections.cs)
 
 ::: tip
-You can find all the options available in the [user defined projections guide](/server/generated/v5/docs/projections/user-defined-projections.md).
+You can find all the options available in the [user defined projections guide](../../../server/v5/projections/user-defined-projections.md).
 :::
 
 Now you can read the result as above, but use the new stream name:
@@ -132,7 +132,7 @@ You want to define a projection that produces a count per stream for a category,
 
 Below is the projection:
 
-@[code](../../../server/generated/v5/samples/http-api/projections/shopping-cart-counter.js)
+@[code](../../../server/v5/samples/http-api/projections/shopping-cart-counter.js)
 
 Create the projection with the following request:
 
