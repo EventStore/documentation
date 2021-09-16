@@ -25,7 +25,7 @@ The simplest stream subscription looks like the following :
 @[code{subscribe-to-stream}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-stream}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -38,7 +38,7 @@ The provided handler will be called for every event in the stream.
 
 Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event appended after the starting position.
 
-@[code{subscribe-to-all}](@grpc:subscribing-to-streams/Program.cs;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rust;subscribing-to-streams.ts)
+@[code{subscribe-to-all}](@grpc:subscribing-to-streams/Program.cs;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ## Subscribing from a specific position
 
@@ -69,7 +69,7 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 @[code{subscribe-to-stream-from-position}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-from-position}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-from-position}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-stream-from-position}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -95,7 +95,7 @@ Please note that this position will need to be a legitimate position in `$all`.
 @[code{subscribe-to-all-from-position}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-all-from-position}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-all-from-position}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-all-from-position}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -117,7 +117,7 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 @[code{subscribe-to-stream-live}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-live}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-live}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-stream-live}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -137,7 +137,7 @@ And the same works with `$all` :
 @[code{subscribe-to-all-live}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-all-live}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-all-live}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-all-live}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -169,7 +169,7 @@ When reading a stream you can specify whether to resolve link-to's or not. By de
 @[code{subscribe-to-stream-resolving-linktos}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-resolving-linktos}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-resolving-linktos}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-stream-resolving-linktos}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -207,7 +207,7 @@ An application, which hosts the subscription, can go offline for a period of tim
 @[code{subscribe-to-stream-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-subscription-dropped}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-subscription-dropped}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-stream-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -227,7 +227,7 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 @[code{subscribe-to-all-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-all-subscription-dropped}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-all-subscription-dropped}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code{subscribe-to-all-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -251,7 +251,7 @@ A simple stream prefix filter looks like this:
 @[code(stream-prefix-filtered-subscription)](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code(stream-prefix-filtered-subscription)](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code(stream-prefix-filtered-subscription)](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code(stream-prefix-filtered-subscription)](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -277,7 +277,7 @@ The code below shows how you can provide user credentials for a subscription. Wh
 @[code{overriding-user-credentials}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{overriding-user-credentials}](../rust/1.0.0/samples/subscribing_to_stream.rust)
+@[code{overriding-user-credentials}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
 @[code](../node/2.0.0/samples/subscribing-to-streams.ts)
@@ -309,7 +309,7 @@ There are a number of events in EventStoreDB called system events. These are pre
 @[code{exclude-system}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{exclude-system}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{exclude-system}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{exclude-system}](../node/2.0.0/samples/server-side-filtering.ts)
@@ -339,7 +339,7 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 @[code{event-type-prefix}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{event-type-prefix}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{event-type-prefix}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{event-type-prefix}](../node/2.0.0/samples/server-side-filtering.ts)
@@ -363,7 +363,7 @@ If you want to subscribe to multiple event types then it might be better to prov
 @[code{event-type-regex}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{event-type-regex}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{event-type-regex}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{event-type-regex}](../node/2.0.0/samples/server-side-filtering.ts)
@@ -391,7 +391,7 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 @[code{stream-prefix}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{stream-prefix}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{stream-prefix}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{stream-prefix}](../node/2.0.0/samples/server-side-filtering.ts)
@@ -415,7 +415,7 @@ If you want to subscribe to multiple streams then it might be better to provide 
 @[code{stream-regex}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{stream-regex}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{stream-regex}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{stream-regex}](../node/2.0.0/samples/server-side-filtering.ts)
@@ -443,7 +443,7 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 @[code{checkpoint}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{checkpoint}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{checkpoint}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{checkpoint}](../node/2.0.0/samples/server-side-filtering.ts)
@@ -463,7 +463,7 @@ This will be called every `n` number of events. If you want to be specific about
 @[code{checkpoint-with-interval}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{checkpoint-with-interval}](../rust/1.0.0/samples/server_side_filtering.rust)
+@[code{checkpoint-with-interval}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
 @[code{checkpoint-with-interval}](../node/2.0.0/samples/server-side-filtering.ts)

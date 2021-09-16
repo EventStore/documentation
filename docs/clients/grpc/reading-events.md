@@ -18,11 +18,11 @@ You can read events from individual streams, both all the events, or just a few 
 
 The simplest way to read a stream forwards is to supply a stream name, direction and revision to start from. This can either be a *stream position* `Start` or a *big int* (unsigned 64-bit integer):
 
-@[code{read-from-stream}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rust;@grpc/reading-events.ts)
+@[code{read-from-stream}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
 
 This will return an enumerable that can be iterated on:
 
-@[code{iterate-stream}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rust;@grpc/reading-events.ts)
+@[code{iterate-stream}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
 
 There are a number of additional arguments you can provide when reading a stream, listed below.
 
@@ -53,7 +53,7 @@ The `userCredentials` argument is optional. You can use it to override the defau
 @[code{overriding-user-credentials}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{overriding-user-credentials}](@grpc/reading_events.rust)
+@[code{overriding-user-credentials}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{overriding-user-credentials}](@grpc/reading-events.ts)
@@ -75,7 +75,7 @@ Instead of providing the `StreamPosition` you can also provide a specific stream
 @[code{read-from-stream-position}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-stream-position}](../rust/1.0.0/samples/reading_events.rust)
+@[code{read-from-position}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{read-from-stream-position}](../node/2.0.0/samples/reading-events.ts)
@@ -97,7 +97,7 @@ As well as being able to read a stream forwards you can also go backwards. When 
 @[code{reading-backwards}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{reading-backwards}](../rust/1.0.0/samples/reading_events.rust)
+@[code{reading-backwards}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{reading-backwards}](../node/2.0.0/samples/reading-events.ts)
@@ -127,7 +127,7 @@ For example:
 @[code{checking-for-stream-presence}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{checking-for-stream-presence}](../rust/1.0.0/samples/reading_events.rust)
+@[code{checking-for-stream-presence}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{checking-for-stream-presence}](../node/2.0.0/samples/reading-events.ts)
@@ -153,7 +153,7 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 @[code{read-from-all-stream}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-all-stream}](../rust/1.0.0/samples/reading_events.rust)
+@[code{read-from-all-stream}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{read-from-all-stream}](../node/2.0.0/samples/reading-events.ts)
@@ -162,7 +162,7 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 
 This will return an `AsyncEnumerable` that can be iterated on:
 
-@[code{read-from-all-stream-iterate}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rust;@grpc/reading-events.ts)
+@[code{read-from-all-stream-iterate}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
 
 There are a number of additional arguments you can provide when reading a stream.
 
@@ -185,7 +185,7 @@ When using projections to create new events you can set whether the generated ev
 @[code{read-from-all-stream-resolving-link-Tos}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-all-stream-resolving-link-Tos}](../rust/1.0.0/samples/reading_events.rust)
+@[code{read-from-all-stream-resolving-link-Tos}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{read-from-all-stream-resolving-link-Tos}](../node/2.0.0/samples/reading-events.ts)
@@ -210,7 +210,7 @@ The credentials used to read the data can be supplied. to be used by the subscri
 @[code{read-all-overriding-user-credentials}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-all-overriding-user-credentials}](../rust/1.0.0/samples/reading_events.rust)
+@[code{read-all-overriding-user-credentials}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{read-all-overriding-user-credentials}](../node/2.0.0/samples/reading-events.ts)
@@ -232,7 +232,7 @@ As well as being able to read a stream forwards you can also go backwards. When 
 @[code{read-from-all-stream-backwards}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-all-stream-backwards}](../rust/1.0.0/samples/reading_events.rust)
+@[code{read-from-all-stream-backwards}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{read-from-all-stream-backwards}](../node/2.0.0/samples/reading-events.ts)
@@ -260,7 +260,7 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 @[code{ignore-system-events}](../node/2.0.0/samples/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{ignore-system-events}](../rust/1.0.0/samples/reading_events.rust)
+@[code{ignore-system-events}](../rust/1.0.0/samples/reading_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{ignore-system-events}](../node/2.0.0/samples/reading-events.ts)

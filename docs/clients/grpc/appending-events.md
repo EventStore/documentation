@@ -21,7 +21,7 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 @[code{append-to-stream}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-to-stream}](../rust/1.0.0/samples/appending_events.rust)
+@[code{append-to-stream}](../rust/1.0.0/samples/appending_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{append-to-stream}](../node/2.0.0/samples/appending-events.ts)
@@ -57,7 +57,7 @@ For example, the following code will only append a single event:
 @[code{append-duplicate-event}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-duplicate-event}](../rust/1.0.0/samples/appending_events.rust)
+@[code{append-duplicate-event}](../rust/1.0.0/samples/appending_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{append-duplicate-event}](../node/2.0.0/samples/appending-events.ts)
@@ -103,7 +103,7 @@ For example if we try and append the same record twice expecting both times that
 @[code{append-with-no-stream}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-with-no-stream}](../rust/1.0.0/samples/appending_events.rust)
+@[code{append-with-no-stream}](../rust/1.0.0/samples/appending_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{append-with-no-stream}](../node/2.0.0/samples/appending-events.ts)
@@ -128,7 +128,7 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 @[code{append-with-concurrency-check}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{append-with-concurrency-check}](../rust/1.0.0/samples/appending_events.rust)
+@[code{append-with-concurrency-check}](../rust/1.0.0/samples/appending_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{append-with-concurrency-check}](../node/2.0.0/samples/appending-events.ts)
@@ -152,7 +152,7 @@ You can provide user credentials to be used to append the data as follows. This 
 @[code{overriding-user-credentials}](../node/2.0.0/samples/appending-events.js)
 :::
 ::: code-group-item Rust
-@[code{overriding-user-credentials}](../rust/1.0.0/samples/appending_events.rust)
+@[code{overriding-user-credentials}](../rust/1.0.0/samples/appending_events.rs)
 :::
 ::: code-group-item TypeScript
 @[code{overriding-user-credentials}](../node/2.0.0/samples/appending-events.ts)

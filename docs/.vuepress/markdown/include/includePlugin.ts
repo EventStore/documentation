@@ -1,5 +1,4 @@
 import type {PluginWithOptions} from "markdown-it";
-import type {MarkdownEnv} from "../types";
 import * as path from "path";
 import * as fs from "fs";
 import {IncludePluginOptions} from "./types";

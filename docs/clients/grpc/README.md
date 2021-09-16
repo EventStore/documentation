@@ -1,6 +1,6 @@
 # Getting started
 
-@[code{readStream}](@grpc:quick-start/Program.cs;quick_start/QuickStart.java;get-started.js;quickstart.rust;get-started.ts)
+@[code{readStream}](@grpc:quick-start/Program.cs;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 Get started by connecting your application to EventStoreDB. Complete the form below to generate the connection string and examples for different languages and SDKs.
 
@@ -102,7 +102,7 @@ First thing first, we need a client.
 </xode-block>
 <xode-block title="Rust" code="connectionString">
 
-@[code{createClient}](../rust/1.0.0/samples/quickstart.rust)
+@[code{createClient}](../rust/1.0.0/samples/quickstart.rs)
 </xode-block>
 <xode-block title="TypeScript" code="connectionString">
 
@@ -135,7 +135,7 @@ The code snippet below creates an event object instance, serializes it and puts 
 @[code{createEvent}](../node/2.0.0/samples/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{createEvent}](../rust/1.0.0/samples/quickstart.rust)
+@[code{createEvent}](../rust/1.0.0/samples/quickstart.rs)
 :::
 ::: code-group-item TypeScript
 @[code{createEvent}](../node/2.0.0/samples/get-started.ts)
@@ -159,7 +159,7 @@ In the snippet below, we append the event to the stream `some-stream`.
 @[code{appendEvents}](../node/2.0.0/samples/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{appendEvents}](../rust/1.0.0/samples/quickstart.rust)
+@[code{appendEvents}](../rust/1.0.0/samples/quickstart.rs)
 :::
 ::: code-group-item TypeScript
 @[code{appendEvents}](../node/2.0.0/samples/get-started.ts)
@@ -183,7 +183,7 @@ Finally, we can read events back from the `some-stream` stream.
 @[code{readStream}](@grpc/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{readStream}](@grpc/quickstart.rust)
+@[code{readStream}](@grpc/quickstart.rs)
 :::
 ::: code-group-item TypeScript
 @[code{readStream}](@grpc/get-started.ts)

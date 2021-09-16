@@ -7,6 +7,12 @@ const MIN_LENGTH = 9;
 
 const startSequence = "@[code";
 
+const knownPrismIssues = {
+    "rs": "rust"
+};
+
+const replaceKnownPrismExtensions = (ext: string): string => knownPrismIssues[ext] ?? ext;
+
 // regexp to match the import syntax
 const SYNTAX_RE = /^@\[code(?:{(\d+)?-(\d+)?})?(?:{(.+)?})?(?: ([^\]]+))?]\(([^)]*)\)/;
 
@@ -56,7 +62,7 @@ export const createImportCodeBlockRule = ({
         const token = state.push('import_code', 'code', 0);
 
         // use user specified info, or fallback to file ext
-        token.info = info ?? path.extname(meta.importPath).slice(1);
+        token.info = info ?? replaceKnownPrismExtensions(path.extname(meta.importPath).slice(1));
         token.markup = '```';
         token.map = [startLine, startLine + 1];
         // store token meta to be used in renderer rule

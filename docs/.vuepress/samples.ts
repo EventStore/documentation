@@ -42,6 +42,10 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             "rust": {
                 label: "Rust",
                 path: "rust/1.0.0/samples"
+            },
+            "rs": {
+                label: "Rust",
+                path: "rust/1.0.0/samples"
             }
         }
     };
