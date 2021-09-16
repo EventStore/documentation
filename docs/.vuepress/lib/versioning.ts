@@ -51,7 +51,8 @@ export class versioning {
                 sidebar.forEach(item => {
                     item.path = `../${path}/${item.path}`;
 
-                    if (item.path.includes('generated')) {
+                    // Only legacy sidebars have collapsable
+                    if (item.collapsable !== undefined) {
                         item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
                     }
 
