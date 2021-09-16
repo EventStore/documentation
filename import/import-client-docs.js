@@ -22,7 +22,10 @@ async function sh(cmd) {
 
 async function safeRmdir(path) {
     if (fs.existsSync(path)) {
+        console.log("Removing ", path);
         await del(path);
+    } else {
+        console.warn("Directory doesn't exist, won't remove: ", path);
     }
 }
 
@@ -47,7 +50,7 @@ async function tryCopy(pathElements, destinationPath) {
         return false;
     }
 
-    console.info(`${sourcePath}  exist, copying...`);
+    console.info(`${sourcePath} exist, copying...`);
 
     await fsExtra.copy(sourcePath, destinationPath);
 
@@ -76,7 +79,8 @@ async function copyDocsAndSamples(clientRepo, repoLocation, destinationPath, bra
     if (repo.postprocess)
         await postprocess(destinationPathWithId, repo.postprocess)
 
-    return {path: path.join('generated', branch.version), version: branch.version};
+    // return {path: path.join('generated', branch.version), version: branch.version};
+    return {path: branch.version, version: branch.version};
 }
 
 async function copyDocs(repoLocation, destinationPathWithId, relativePath) {
@@ -84,6 +88,7 @@ async function copyDocs(repoLocation, destinationPathWithId, relativePath) {
 
     const docsDestinationPath = path.join(destinationPathWithId, 'docs');
 
+    console.info("Copying docs to ", docsDestinationPath);
     await tryCopy(pathElements, docsDestinationPath);
 }
 
@@ -92,6 +97,7 @@ async function copySamples(repoLocation, destinationPathWithId, relativePath) {
 
     const samplesDestinationPath = path.join(destinationPathWithId, 'samples');
 
+    console.info("Copying samples to ", samplesDestinationPath);
     const wereSamplesCopied = await tryCopy(pathElements, samplesDestinationPath);
 
     if (!wereSamplesCopied) {
@@ -110,17 +116,17 @@ async function postprocess(destinationPathWithId, postprocess) {
     }
 }
 
-
 async function main() {
     await safeRmdir('temp');
     fs.mkdirSync('temp');
 
     for (const repo of repos) {
         const repoPath = path.join('docs', repo.basePath);
-        const samplesLocation = path.join(repoPath, 'generated');
+        // const samplesLocation = path.join(repoPath, 'generated');
         const repoLocation = path.join('temp', repo.id);
 
-        await safeRmdir(samplesLocation);
+        // await safeRmdir(samplesLocation);
+        console.info("Cloning ", repo.repo);
         await git.clone(repo.repo, repoLocation);
 
         const clientRepo = simpleGit(repoLocation);
@@ -140,7 +146,7 @@ async function main() {
             const version = await copyDocsAndSamples(
                 clientRepo,
                 repoLocation,
-                samplesLocation,
+                repoPath,
                 branch,
                 repo,
             );
@@ -155,7 +161,7 @@ async function main() {
     }
 
     await safeRmdir('temp');
-    console.info('done importing client docs')
+    console.info('done importing docs')
 }
 
 main().then();

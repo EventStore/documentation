@@ -49,11 +49,11 @@ export class versioning {
                 const sidebar = require(`../../${path}/sidebar.js`);
                 sidebar.forEach(item => {
                     item.path = `../${path}/${item.path}`;
-                    
+
                     if (item.path.includes('generated')) {
                         item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
                     }
-                    
+
                     item.version = v.version;
                     item.group = version.group;
                     item.text = item.text || item.title;
@@ -77,8 +77,10 @@ export class versioning {
         const version = this.version(id);
 
         version.versions.forEach(v => {
-            let path = `${version.basePath}/${v.path}`;
-            let item = {text: v.version, link: `/${path}/${url ? url : v.startPage ? v.startPage : ""}`};
+            const path = `${version.basePath}/${v.path}`.replace("generated/", "");
+            const pageUrl = (url ? url : v.startPage ? v.startPage : "");
+            const link = `/${path}/${pageUrl}`.replace("docs/", "");
+            let item = {text: v.version, link: link};
             links.push(item);
         });
 
