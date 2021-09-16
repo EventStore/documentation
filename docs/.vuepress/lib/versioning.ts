@@ -79,9 +79,9 @@ export class versioning {
         const version = this.version(id);
 
         version.versions.forEach(v => {
-            const path = `${version.basePath}/${v.path}`.replace("generated/", "");
+            const path = `${version.basePath}/${v.path}`;
             const pageUrl = (url ? url : v.startPage ? v.startPage : "");
-            const link = `/${path}/${pageUrl}`.replace("docs/", "");
+            const link = `/${path}/${pageUrl}`;
             let item = {text: v.version, link: link};
             links.push(item);
         });
@@ -101,10 +101,6 @@ export class versioning {
         if (typeof ver === 'undefined') {
             log.error('No version number specified! \nPass the version you wish to create as an argument.\nEx: 4.4')
         }
-
-        // if (versions.find(x => x.id === ver !== undefined) {
-        //     this.error(`This version '${ver} already exists! Specify a new version to create that does not already exist.`)
-        // }
 
         log.info(`Generating new version into 'docs/${ver}' ...`)
 
