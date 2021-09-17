@@ -20,13 +20,16 @@ export default {
               val.versions?.map((v) => {
                 return {
                   name: `${val.group} ${v.version}`,
-                  path: `/${val.basePath}/${v.path}`,
+                  path: !!v.path ? `/${val.basePath}/${v.path}` : `/${val.basePath}`,
                 };
               })
             ),
           []
         );
-        const versionInfo = versions.find(v => path.startsWith(v.path));
+
+        const versionInfo = versions
+          .sort((a,b) => b.path.length - a.path.length)
+          .find(v => path.startsWith(v.path));
 
         return versionInfo?.name;
     }

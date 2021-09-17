@@ -1,6 +1,8 @@
 import { defineClientAppEnhance } from '@vuepress/client';
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import YouTube from "./components/video/YouTube.vue";
-import Deployment from "./components/Deployment.vue";
+import Deployment from "./components/esdbConfig/Deployment.vue";
 import PrimeVue from 'primevue/config';
 import "./styles/prime-theme.css";
 import "primevue/resources/primevue.min.css";
@@ -18,6 +20,9 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
         path: "/latest.html",
         redirect: `/${__VERSIONS__.latest}/introduction/`
     });
+
+    // Element plus    
+    app.use(ElementPlus);
 
     // Code block components
     delete app._context.components["CodeGroup"];
