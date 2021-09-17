@@ -30,11 +30,11 @@ export default defineUserConfig<DefaultThemeOptions>({
             handleImportPath: s => resolveMultiSamplesPath(s)
         });
     },
-    plugins: [,
+    plugins: [
         ["@vuepress/docsearch", {
             apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
             indexName: "scraper-test",// process.env.ALGOLIA_INDEX_NAME,
-            appId: process.env.ALGOLIA_APPLICATION_ID            
+            appId: process.env.ALGOLIA_APPLICATION_ID
         }],
         containers("tabs", "TabView", type => `${type ? ` type='${type}'` : ""}`),
         containers("tab", "TabPanel", label => `header="${label}"`),

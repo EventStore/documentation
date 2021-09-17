@@ -16,19 +16,19 @@ The simplest stream subscription looks like the following :
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-stream}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-stream}](../dotnet/21.2/samples/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-stream}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-stream}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-stream}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-stream}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-stream}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-stream}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -38,23 +38,7 @@ The provided handler will be called for every event in the stream.
 
 Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event appended after the starting position.
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-all}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Java
-@[code{subscribe-to-all}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-all}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-all}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-all}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-all}](@grpc:subscribing-to-streams/Program.cs;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ## Subscribing from a specific position
 
@@ -76,19 +60,19 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-stream-from-position}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-stream-from-position}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-stream-from-position}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-stream-from-position}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-stream-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-stream-from-position}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-from-position}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-from-position}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-stream-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-stream-from-position}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -102,19 +86,19 @@ Please note that this position will need to be a legitimate position in `$all`.
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-all-from-position}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-all-from-position}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-all-from-position}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-all-from-position}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-all-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-all-from-position}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-all-from-position}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-all-from-position}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-all-from-position}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-all-from-position}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -124,19 +108,19 @@ You can subscribe to a stream to get live updates by subscribing to the end of t
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-stream-live}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-stream-live}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-stream-live}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-stream-live}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-stream-live}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-stream-live}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-live}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-live}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-stream-live}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-stream-live}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -144,19 +128,19 @@ And the same works with `$all` :
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-all-live}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-all-live}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-all-live}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-all-live}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-all-live}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-all-live}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-all-live}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-all-live}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-all-live}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-all-live}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -176,19 +160,19 @@ When reading a stream you can specify whether to resolve link-to's or not. By de
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-stream-resolving-linktos}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-stream-resolving-linktos}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-stream-resolving-linktos}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-stream-resolving-linktos}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-stream-resolving-linktos}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-resolving-linktos}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-resolving-linktos}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-stream-resolving-linktos}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-stream-resolving-linktos}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -214,19 +198,19 @@ An application, which hosts the subscription, can go offline for a period of tim
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-stream-subscription-dropped}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-stream-subscription-dropped}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-stream-subscription-dropped}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-stream-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-stream-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-stream-subscription-dropped}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-stream-subscription-dropped}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-stream-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-stream-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -234,19 +218,19 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 
 :::: code-group
 ::: code-group-item C#
-@[code{subscribe-to-all-subscription-dropped}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{subscribe-to-all-subscription-dropped}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{subscribe-to-all-subscription-dropped}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{subscribe-to-all-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{subscribe-to-all-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{subscribe-to-all-subscription-dropped}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{subscribe-to-all-subscription-dropped}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code{subscribe-to-all-subscription-dropped}](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code{subscribe-to-all-subscription-dropped}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -258,19 +242,19 @@ A simple stream prefix filter looks like this:
 
 :::: code-group
 ::: code-group-item C#
-@[code(stream-prefix-filtered-subscription)](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code(stream-prefix-filtered-subscription)](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code(stream-prefix-filtered-subscription)](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code(stream-prefix-filtered-subscription)](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code(stream-prefix-filtered-subscription)](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code(stream-prefix-filtered-subscription)](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code(stream-prefix-filtered-subscription)](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code(stream-prefix-filtered-subscription)](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code(stream-prefix-filtered-subscription)](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code(stream-prefix-filtered-subscription)](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -284,19 +268,19 @@ The code below shows how you can provide user credentials for a subscription. Wh
 
 :::: code-group
 ::: code-group-item C#
-@[code{overriding-user-credentials}](../dotnet/generated/21.2.0/samples/subscribing-to-streams/Program.cs)
+@[code{overriding-user-credentials}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code{overriding-user-credentials}](../java/generated/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{overriding-user-credentials}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code{overriding-user-credentials}](../node/generated/2.0.0/samples/subscribing-to-streams.js)
+@[code{overriding-user-credentials}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code{overriding-user-credentials}](../rust/generated/1.0.0/samples/subscribing_to_stream.rust)
+@[code{overriding-user-credentials}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code](../node/generated/2.0.0/samples/subscribing-to-streams.ts)
+@[code](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
@@ -316,19 +300,19 @@ There are a number of events in EventStoreDB called system events. These are pre
 
 :::: code-group
 ::: code-group-item C#
-@[code{exclude-system}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{exclude-system}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{exclude-system}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{exclude-system}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{exclude-system}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{exclude-system}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{exclude-system}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{exclude-system}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{exclude-system}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{exclude-system}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 
@@ -346,19 +330,19 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 :::: code-group
 ::: code-group-item C#
-@[code{event-type-prefix}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{event-type-prefix}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{event-type-prefix}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{event-type-prefix}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{event-type-prefix}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{event-type-prefix}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{event-type-prefix}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{event-type-prefix}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{event-type-prefix}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{event-type-prefix}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 
@@ -370,19 +354,19 @@ If you want to subscribe to multiple event types then it might be better to prov
 
 :::: code-group
 ::: code-group-item C#
-@[code{event-type-regex}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{event-type-regex}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{event-type-regex}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{event-type-regex}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{event-type-regex}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{event-type-regex}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{event-type-regex}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{event-type-regex}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{event-type-regex}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{event-type-regex}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 
@@ -398,19 +382,19 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 :::: code-group
 ::: code-group-item C#
-@[code{stream-prefix}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{stream-prefix}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{stream-prefix}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{stream-prefix}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{stream-prefix}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{stream-prefix}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{stream-prefix}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{stream-prefix}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{stream-prefix}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{stream-prefix}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 
@@ -422,19 +406,19 @@ If you want to subscribe to multiple streams then it might be better to provide 
 
 :::: code-group
 ::: code-group-item C#
-@[code{stream-regex}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{stream-regex}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{stream-regex}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{stream-regex}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{stream-regex}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{stream-regex}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{stream-regex}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{stream-regex}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{stream-regex}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{stream-regex}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 
@@ -450,19 +434,19 @@ To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` 
 
 :::: code-group
 ::: code-group-item C#
-@[code{checkpoint}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{checkpoint}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{checkpoint}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{checkpoint}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{checkpoint}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{checkpoint}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{checkpoint}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{checkpoint}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{checkpoint}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{checkpoint}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 
@@ -470,19 +454,19 @@ This will be called every `n` number of events. If you want to be specific about
 
 :::: code-group
 ::: code-group-item C#
-@[code{checkpoint-with-interval}](../dotnet/generated/21.2.0/samples/server-side-filtering/Program.cs)
+@[code{checkpoint-with-interval}](@grpc/server-side-filtering/Program.cs)
 :::
 ::: code-group-item Java
-@[code{checkpoint-with-interval}](../java/generated/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
+@[code{checkpoint-with-interval}](../java/1.0.0/samples/server_side_filtering/ServerSideFiltering.java)
 :::
 ::: code-group-item JavaScript
-@[code{checkpoint-with-interval}](../node/generated/2.0.0/samples/server-side-filtering.js)
+@[code{checkpoint-with-interval}](../node/2.0.0/samples/server-side-filtering.js)
 :::
 ::: code-group-item Rust
-@[code{checkpoint-with-interval}](../rust/generated/1.0.0/samples/server_side_filtering.rust)
+@[code{checkpoint-with-interval}](../rust/1.0.0/samples/server_side_filtering.rs)
 :::
 ::: code-group-item TypeScript
-@[code{checkpoint-with-interval}](../node/generated/2.0.0/samples/server-side-filtering.ts)
+@[code{checkpoint-with-interval}](../node/2.0.0/samples/server-side-filtering.ts)
 :::
 ::::
 

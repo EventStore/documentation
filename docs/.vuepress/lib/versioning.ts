@@ -5,17 +5,6 @@ import log from "./log";
 
 const references = require("../versions.json");
 
-function getLastPathFolder(path:string): string | undefined {
-    const lastSeparatorIndex = path.lastIndexOf('/');
-    if(lastSeparatorIndex === -1)
-        return undefined;
-    
-    if(lastSeparatorIndex === path.length-1)
-        path = path.slice(0,-1);
-
-    return path.split('/').pop();
-}
-
 export class versioning {
     versions = [];
 
@@ -56,17 +45,17 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
-                const path = v.path ? `${version.basePath}/${v.path}` : `${version.basePath}`;
-                const sidebar = require(`../../${path}/sidebar.js`);
+                const path = `${version.basePath}/${v.path}`;
+                const sidebarPath = `../../${path}/sidebar.js`;
+                const sidebar = require(sidebarPath);
                 sidebar.forEach(item => {
-                    item.path = item.path ? `/${path}/${item.path}` : `/${path}/`;
-                    
-                    if (item.path.includes('generated')) {
-                        item.children = item.children.map(
-                            x => !x.startsWith('../') ? `../${x}` : x
-                        );
+                    item.path = `../${path}/${item.path}`;
+
+                    // Only legacy sidebars have collapsable
+                    if (item.collapsable !== undefined) {
+                        item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
                     }
-                    
+
                     item.version = v.version;
                     item.group = version.group;
                     item.text = item.text || item.title;
@@ -90,8 +79,10 @@ export class versioning {
         const version = this.version(id);
 
         version.versions.forEach(v => {
-            let path = !!v.path ? `${version.basePath}/${v.path}` : version.basePath;
-            let item = {text: v.version, link: `/${path}/${url ? url : v.startPage ? v.startPage : ""}`};
+            const path = `${version.basePath}/${v.path}`;
+            const pageUrl = (url ? url : v.startPage ? v.startPage : "");
+            const link = `/${path}/${pageUrl}`;
+            let item = {text: v.version, link: link};
             links.push(item);
         });
 
@@ -110,10 +101,6 @@ export class versioning {
         if (typeof ver === 'undefined') {
             log.error('No version number specified! \nPass the version you wish to create as an argument.\nEx: 4.4')
         }
-
-        // if (versions.find(x => x.id === ver !== undefined) {
-        //     this.error(`This version '${ver} already exists! Specify a new version to create that does not already exist.`)
-        // }
 
         log.info(`Generating new version into 'docs/${ver}' ...`)
 

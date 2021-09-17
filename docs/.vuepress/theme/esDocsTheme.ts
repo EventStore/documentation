@@ -1,6 +1,6 @@
-import type { Theme } from "@vuepress/core";
-import type { DefaultThemeOptions } from "@vuepress/theme-default";
-import path from "path";
+import type {Theme} from "@vuepress/core";
+import type {DefaultThemeOptions} from "@vuepress/theme-default";
+import {path} from '@vuepress/utils';
 
 export type EsDocsThemeOptions = DefaultThemeOptions;
 

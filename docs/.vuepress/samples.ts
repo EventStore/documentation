@@ -22,27 +22,34 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     if (!includesCat && srcCat === undefined) return def(src);
 
     const cats = {
+        "@httpapi": {
+            path: "http-api/v5/samples"
+        },
         "@grpc": {
             "cs": {
                 label: "C#",
-                path: "dotnet/generated/21.2.0/samples"
+                path: "dotnet/21.6/samples"
             },
             "java": {
                 label: "Java",
-                path: "java/generated/1.0.0/samples"
+                path: "java/1.0.0/samples"
             },
             "js": {
                 label: "JavaScript",
-                path: "node/generated/2.0.0/samples"
+                path: "node/2.0.0/samples"
             },
             "ts": {
                 label: "TypeScript",
-                path: "node/generated/2.0.0/samples"
+                path: "node/2.0.0/samples"
             },
             "rust": {
                 label: "Rust",
-                path: "rust/generated/1.0.0/samples"
-            }
+                path: "rust/1.0.0/samples"
+            },
+            "rs": {
+                label: "Rust",
+                path: "rust/1.0.0/samples"
+            },
         }
     };
 
@@ -53,10 +60,13 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         return def(src);
     }
 
-    const lang = cat[ext];
+    let lang = cat[ext];
     if (lang === undefined) {
-        console.log(`Unknown extension ${ext} in ${cat}`);
-        return def(src);
+        if (cat.path === undefined) {
+            console.log(`Unknown extension ${ext} in ${cat}`);
+            return def(src);
+        }
+        lang = {path: cat.path};
     }
 
     const p = includesCat ? src.replace(pseudo[0], `${base}/${lang.path}`) : `${base}/${lang.path}/${src}`;
