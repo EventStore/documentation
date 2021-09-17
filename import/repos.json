@@ -31,7 +31,7 @@
   },
   {
     "id": "http-api",
-    "group": "http-api",
+    "group": "HTTP API",
     "basePath": "clients/http-api",
     "docsRelativePath": ["docs", "http-api"],
     "samplesRelativePath": ["samples", "http-api"],
@@ -39,7 +39,7 @@
     "branches": [
       {
         "version": "v5",
-        "name": "alexey-codealias"
+        "name": "vuepress2/oss-v5"
       }
     ]
   },
