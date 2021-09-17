@@ -1,10 +1,16 @@
 # Redirects from what the browser requests to what we serve
 /latest.html                       /server/v21.6/docs/introduction/   301!
 
+## Cloud from v1 to v2
+/cloud/intro/:filename.html        /cloud/intro/                      301!
+
+## Database from v1 to v2
 /server/v21.6/docs/*               /server/v21.6/:splat               301!
 /server/v21.2/docs/*               /server/v21.2/:splat               301!
 /server/v20.10/docs/*              /server/v20.10/:splat              301!
 /server/v5/docs/*                  /server/v5/:splat                  301!
+
+## HTTP API from v1 to v2
 /server/v5/docs/http-api/          /clients/http-api/v5/introduction/ 301!
 
 /server/generated/21.2/docs/*      /server/v21.6/:splat               301!
