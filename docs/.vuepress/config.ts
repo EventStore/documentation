@@ -50,7 +50,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         }]
     ],
     themeConfig: {
-        logo: "/es-logo.png",
+        logo: "/eventstore-dev-logo-dark.svg",
         logoDark: "/eventstore-logo-alt.svg",
         docsDir: 'docs',
         editLinks: false,
