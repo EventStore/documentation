@@ -56,7 +56,7 @@ async function copyDocsAndSamples(clientRepo, destinationPath, branch, repo) {
 }
 
 async function copyRepoFiles(repo, baseDest, branch, relativePath, subDest) {
-    const destinationPath = path.join(baseDest, subDest ?? "");
+    const destinationPath = path.join(baseDest, subDest || "");
     await safeRmdir(destinationPath);
 
     const sub      = relativePath.join("/");
