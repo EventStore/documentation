@@ -6,7 +6,7 @@ The various gRPC client APIs include dedicated clients that allow you to manage 
 Currently not all clients fully expose all operations.
 :::
 
-For a detailed explanation of projections, see the [server documentation](/server/v21.6/docs/projections/).
+For a detailed explanation of projections, see the [server documentation](../../server/v21.6/projections/).
 
 You can find the full sample code from these documentation on the respective [clients repositories](https://github.com/eventStore/?q=client)
 
@@ -67,7 +67,7 @@ Projection management operations are exposed through a dedicated client.
 <xode-group>
 <xode-block title="C#" code="connectionString">
 
-@[code{createClient}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{createClient}](../dotnet/21.6/samples/projection-management/Program.cs)
 
 </xode-block>
 <xode-block title="Java" code="connectionString">
@@ -79,7 +79,7 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript" code="connectionString">
 
-@[code{createClient}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{createClient}](../node/2.0.0/samples/projection-management.js)
 
 </xode-block>
 <xode-block title="Rust" code="connectionString">
@@ -92,7 +92,7 @@ Sample available soon
 
 <xode-block title="TypeScript" code="connectionString">
 
-@[code{createClient}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{createClient}](../node/2.0.0/samples/projection-management.ts)
 
 </xode-block>
 </xode-group>
@@ -104,7 +104,7 @@ Projections have explicit names, and you can enable or disable them via this nam
 
 :::: code-group
 ::: code-group-item c#
-@[code{CreateContinuous}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{CreateContinuous}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```
@@ -112,7 +112,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{CreateContinuous}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{CreateContinuous}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -120,7 +120,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{CreateContinuous}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{CreateContinuous}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -128,7 +128,7 @@ Trying to create projections with the same name will result in an error:
 
 :::: code-group
 ::: code-group-item c#
-@[code{CreateContinuous_Conflict}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{CreateContinuous_Conflict}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```
@@ -136,7 +136,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{CreateContinuous_Conflict}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{CreateContinuous_Conflict}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -144,7 +144,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{CreateContinuous_Conflict}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{CreateContinuous_Conflict}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -153,7 +153,7 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 
 :::: code-group
 ::: code-group-item c#
-@[code{RestartSubSystem}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{RestartSubSystem}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -161,7 +161,7 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 ```
 :::
 ::: code-group-item JavaScript
-@[code{RestartSubSystem}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{RestartSubSystem}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```
@@ -169,7 +169,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{RestartSubSystem}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{RestartSubSystem}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -177,11 +177,11 @@ Sample available soon
 
 Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem.
-You must have access to a projection to enable it, see the [ACL documentation](/server/v21.6/docs/security/acl.html#stream-acl)
+You must have access to a projection to enable it, see the [ACL documentation](../../server/v21.6/security/acl.md#stream-acl)
 
 :::: code-group
 ::: code-group-item c#
-@[code{Enable}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Enable}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -189,7 +189,7 @@ You must have access to a projection to enable it, see the [ACL documentation](/
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Enable}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Enable}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -197,7 +197,7 @@ You must have access to a projection to enable it, see the [ACL documentation](/
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Enable}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Enable}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -205,7 +205,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 :::: code-group
 ::: code-group-item c#
-@[code{EnableNotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{EnableNotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -213,7 +213,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 ```
 :::
 ::: code-group-item JavaScript
-@[code{EnableNotFound}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{EnableNotFound}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -221,7 +221,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 ```
 :::
 ::: code-group-item TypeScript
-@[code{EnableNotFound}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{EnableNotFound}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -229,7 +229,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 Disables a projection, this will save the projection checkpoint.
 Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
-You must have access to a projection to disable it, see the [ACL documentation](/server/v21.2/docs/security/acl.html#stream-acl)
+You must have access to a projection to disable it, see the [ACL documentation](../../server/v21.2/security/acl.md#stream-acl)
 
 :::warning
 The .net clients up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
@@ -237,7 +237,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 
 :::: code-group
 ::: code-group-item c#
-@[code{Disable}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Disable}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -245,7 +245,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Disable}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Disable}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -253,7 +253,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Disable}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Disable}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -261,7 +261,7 @@ You can only disable an existing projection. When you try to disable a non-exist
 
 :::: code-group
 ::: code-group-item c#
-@[code{DisableNotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{DisableNotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -269,7 +269,7 @@ You can only disable an existing projection. When you try to disable a non-exist
 ```
 :::
 ::: code-group-item JavaScript
-@[code{DisableNotFound}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{DisableNotFound}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -277,7 +277,7 @@ You can only disable an existing projection. When you try to disable a non-exist
 ```
 :::
 ::: code-group-item TypeScript
-@[code{DisableNotFound}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{DisableNotFound}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -297,7 +297,7 @@ Deletes a projection
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Delete}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Delete}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -305,7 +305,7 @@ Deletes a projection
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Delete}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Delete}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -323,7 +323,7 @@ You can only delete an existing projection. When you try to delete a non-existin
 ```
 :::
 ::: code-group-item JavaScript
-@[code{DeleteNotFound}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{DeleteNotFound}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -331,7 +331,7 @@ You can only delete an existing projection. When you try to delete a non-existin
 ```
 :::
 ::: code-group-item TypeScript
-@[code{DeleteNotFound}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{DeleteNotFound}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -345,7 +345,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 
 :::: code-group
 ::: code-group-item c#
-@[code{Abort}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Abort}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -353,7 +353,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Abort}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Abort}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -361,7 +361,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Abort}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Abort}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -369,7 +369,7 @@ You can only abort an existing projection. When you try to abort a non-existing 
 
 :::: code-group
 ::: code-group-item c#
-@[code{Abort_NotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Abort_NotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -377,7 +377,7 @@ You can only abort an existing projection. When you try to abort a non-existing 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Abort_NotFound}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Abort_NotFound}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 
@@ -386,7 +386,7 @@ You can only abort an existing projection. When you try to abort a non-existing 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Abort_NotFound}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Abort_NotFound}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -395,7 +395,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 
 :::: code-group
 ::: code-group-item c#
-@[code{Reset}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Reset}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -403,7 +403,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Reset}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Reset}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -411,7 +411,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Reset}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Reset}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -419,7 +419,7 @@ Resetting a projection that does not exists will result in an error.
 
 :::: code-group
 ::: code-group-item c#
-@[code{Reset_NotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Reset_NotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -427,7 +427,7 @@ Resetting a projection that does not exists will result in an error.
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Reset_NotFound}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Reset_NotFound}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 
@@ -436,7 +436,7 @@ Resetting a projection that does not exists will result in an error.
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Reset_NotFound}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Reset_NotFound}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -446,7 +446,7 @@ Updates a projection. The name parameter is the name of the projection to be upd
 
 :::: code-group
 ::: code-group-item c#
-@[code{Update}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Update}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -454,7 +454,7 @@ Updates a projection. The name parameter is the name of the projection to be upd
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Update}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Update}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -462,7 +462,7 @@ Updates a projection. The name parameter is the name of the projection to be upd
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Update}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Update}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -470,7 +470,7 @@ You can only update an existing projection. When you try to update a non-existin
 
 :::: code-group
 ::: code-group-item c#
-@[code{Update_NotFound}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{Update_NotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -478,7 +478,7 @@ You can only update an existing projection. When you try to update a non-existin
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Update_NotFound}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{Update_NotFound}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -486,7 +486,7 @@ You can only update an existing projection. When you try to update a non-existin
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Update_NotFound}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{Update_NotFound}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -497,7 +497,7 @@ See the [projection details](#projection-details) section for an explanation of 
 
 :::: code-group
 ::: code-group-item c#
-@[code{ListAll}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{ListAll}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -505,7 +505,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{ListAll}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{ListAll}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -513,7 +513,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{ListAll}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{ListAll}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -524,7 +524,7 @@ See the [projection details](#projection-details) section for an explanation of 
 
 :::: code-group
 ::: code-group-item c#
-@[code{ListContinuous}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{ListContinuous}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -532,7 +532,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{ListContinuous}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{ListContinuous}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -540,7 +540,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{ListContinuous}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{ListContinuous}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -551,7 +551,7 @@ See the [projection details](#projection-details) section for an explanation of 
 
 :::: code-group
 ::: code-group-item c#
-@[code{GetStatus}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{GetStatus}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```java
@@ -559,7 +559,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{GetStatus}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{GetStatus}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -567,7 +567,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{GetStatus}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{GetStatus}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -587,7 +587,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{GetState}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{GetState}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -595,7 +595,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{GetState}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{GetState}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 
@@ -605,7 +605,7 @@ Retrieves the result of the named projection and partition.
 
 :::: code-group
 ::: code-group-item c#
-@[code{GetResult}](../dotnet/generated/main/samples/projection-management/Program.cs)
+@[code{GetResult}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Java
 ```
@@ -613,7 +613,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{GetResult}](../node/generated/2.0.0/samples/projection-management.js)
+@[code{GetResult}](../node/2.0.0/samples/projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -621,7 +621,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{GetResult}](../node/generated/2.0.0/samples/projection-management.ts)
+@[code{GetResult}](../node/2.0.0/samples/projection-management.ts)
 :::
 ::::
 

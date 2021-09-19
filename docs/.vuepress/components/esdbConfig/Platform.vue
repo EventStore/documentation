@@ -1,0 +1,26 @@
+<template>
+  <el-form label-width="240px">
+    <el-divider content-position="right">Platform</el-divider>
+
+    <el-form-item label="Platform:">
+      <el-radio-group v-model="platform">
+        <el-radio-button label="linux">Linux</el-radio-button>
+        <el-radio-button label="windows">Windows</el-radio-button>
+      </el-radio-group>
+    </el-form-item>
+  </el-form>
+</template>
+
+<script>
+import store from "./domain/platform";
+
+export default {
+    name:     "Platform",
+    created: () => {
+      store.created();
+    },
+    computed: {
+        platform: store.extendedProperty("state.platform", "changePlatform")
+    }
+}
+</script>
