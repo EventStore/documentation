@@ -166,7 +166,7 @@ In the snippet below, we append the event to the stream `some-stream`.
 :::
 ::::
 
-Here we are appending events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [appending events documentation](../appending-events/README.md).
+Here we are appending events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [appending events documentation](./appending-events.md).
 
 ### Reading events
 

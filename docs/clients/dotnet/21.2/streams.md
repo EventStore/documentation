@@ -47,11 +47,11 @@ This returns a `RawStreamMetadataResult`. The fields on this result are:
 |:-------|:------------|
 | `string Stream` | The name of the stream |
 | `bool IsStreamDeleted` | True is the stream is deleted, false otherwise. |
-| `long MetastreamVersion` | The version of the meta-stream (see [Expected Version](../appending/optimistic-concurrency-and-idempotence.md)) |
+| `long MetastreamVersion` | The version of the meta-stream (see [Expected Version](./appending.md#optimistic-concurrency)) |
 | `byte[] Metadata` | The raw data of the metadata JSON |
 
 ::: tip
-If you enabled [enabled security](../connecting/README.md), reading metadata may require that you pass credentials. By default, it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.
+If you enabled [enabled security](./connecting.md), reading metadata may require that you pass credentials. By default, it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.
 :::
 
 ## Writing metadata

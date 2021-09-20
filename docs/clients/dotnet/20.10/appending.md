@@ -6,7 +6,7 @@ You can use the client API to append one or more events to a stream atomically. 
 Sending events to a non-existing stream, implicitly creates the stream.
 :::
 
-It is possible to make an optimistic concurrency check during the append by specifying the version at which you expect the stream to be. Identical append operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](optimistic-concurrency-and-idempotence.md).
+It is possible to make an optimistic concurrency check during the append by specifying the version at which you expect the stream to be. Identical append operations are idempotent if the optimistic concurrency check is not disabled. You can find more information on optimistic concurrency and idempotence [here](./appending.md#optimistic-concurrency-and-idempotence).
 
 The writing methods all use a type named `EventData` to represent an event to store (described [below](#eventdata)). The client library doesn't perform any serialization work, so you'd need to serialize both your event and its metadata to byte arrays. It allows you to use any serializer.
 
@@ -36,7 +36,7 @@ Parameters:
 | Parameter | Description |
 | :------------------------------ | :------------- |
 | `string stream` | The name of the stream to which to append. |
-| `long expectedVersion` | The version at which you expect the stream to be in order that an optimistic concurrency check can be performed. This should either be a positive integer, or one of the constants `ExpectedVersion.NoStream`, `ExpectedVersion.EmptyStream`, or to disable the check, `ExpectedVersion.Any`. See [here](optimistic-concurrency-and-idempotence.md) for a broader discussion of this. |
+| `long expectedVersion` | The version at which you expect the stream to be in order that an optimistic concurrency check can be performed. This should either be a positive integer, or one of the constants `ExpectedVersion.NoStream`, `ExpectedVersion.EmptyStream`, or to disable the check, `ExpectedVersion.Any`. See [here](./appending.md#optimistic-concurrency-and-idempotence) for a broader discussion of this. |
 | `IEnumerable<EventData> events` | The events to append. There is also an overload of each method which takes the events as a `params` array. `events`'s length must not be greater than 4095.|
 | `userCredentials` | Specify user on behalf whom write will be executed. |
 

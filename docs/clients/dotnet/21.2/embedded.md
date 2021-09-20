@@ -168,7 +168,7 @@ The following options are available when building an Embedded Node.
 | `NoStatsOnPublicInterface()` | Disables statistics screens on the public (client) interface |
 | `AddInternalHttpPrefix(string prefix)` | Adds a HTTP prefix for the internal HTTP endpoint |
 | `AddExternalHttpPrefix(string prefix)` | Adds a HTTP prefix for the external HTTP endpoint |
-| `DontAddInterfacePrefixes()` | Don't add the interface prefixes (e.g. If the External IP is set to the Loopback address, add <http://localhost:2113/> as a prefix) |
+| `DontAddInterfacePrefixes()` | Don't add the interface prefixes (e.g. If the External IP is set to the Loopback address, add `http://localhost:2113/` as a prefix) |
 | `WithInternalHeartbeatInterval(TimeSpan heartbeatInterval)` | Sets the heartbeat interval for the internal network interface. |
 | `WithExternalHeartbeatInterval(TimeSpan heartbeatInterval)` | Sets the heartbeat interval for the external network interface. |
 | `WithInternalHeartbeatTimeout(TimeSpan heartbeatTimeout)` | Sets the heartbeat timeout for the internal network interface. |

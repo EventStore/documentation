@@ -7,7 +7,7 @@ You provide an event handler and an optional starting point to the subscription.
 If events already exist, the handler will be called for each event one by one until it reaches the end of the stream. From there, the server will notify the handler whenever a new event appears.
 
 :::tip
-Check [connecting to EventStoreDB instructions](../getting-started/connecting.md#required-packages) to learn how to configure and use the client SDK.
+Check [connecting to EventStoreDB instructions](./README.md#required-packages) to learn how to configure and use the client SDK.
 :::
 
 ## Subscribing to a stream
@@ -153,7 +153,7 @@ Keep in mind that when you subscribe to a stream from a certain position, as des
 Link-to events point to events in other streams in EventStoreDB. These are generally created by projections such as the `$by_event_type` projection which links events of the same event type into the same stream. This makes it easier to look up all events of a certain type.
 
 ::: tip
-[Filtered subscriptions](./filtering.md) make it easier and faster to subscribe to all events of a certain type or matching a prefix.
+[Filtered subscriptions](./subscriptions#filtering) make it easier and faster to subscribe to all events of a certain type or matching a prefix.
 :::
 
 When reading a stream you can specify whether to resolve link-to's or not. By default, link-to events are not resolved. You can change this behaviour by setting the `resolveLinkTos` parameter to `true`:
@@ -258,7 +258,7 @@ A simple stream prefix filter looks like this:
 :::
 ::::
 
-The filtering API is described more in-depth in the [filtering section](./filtering.md).
+The filtering API is described more in-depth in the [filtering section](./subscriptions.md#filter-options).
 
 ## User credentials
 
