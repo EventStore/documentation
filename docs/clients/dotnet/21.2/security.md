@@ -4,9 +4,9 @@ EventStoreDB supports basic authentication for HTTP API and TCP calls, and suppo
 
 ## Authentication and authorization
 
-EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](../../../server/v5/http-api/api/README.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
+EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](/clients/http-api/v5/api/README.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
 
-Alternatively you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](../../../server/v5/security/trusted-intermediary.md).
+Alternatively you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](/server/v21.2/security/trusted-intermediary.md).
 
 If you were to use the wrong user or no user when connecting to EventStoreDB, you receive a `401 Unauthorized` response for HTTP API or Exception for native client.
 

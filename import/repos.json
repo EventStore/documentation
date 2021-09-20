@@ -4,7 +4,7 @@
     "group": "Server",
     "basePath": "server",
     "docsRelativePath": ["docs"],
-    "samplesRelativePath": ["samples"],
+    "samplesRelativePath": ["samples", "server"],
     "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
