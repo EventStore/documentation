@@ -242,19 +242,19 @@ A simple stream prefix filter looks like this:
 
 :::: code-group
 ::: code-group-item C#
-@[code(stream-prefix-filtered-subscription)](@grpc/subscribing-to-streams/Program.cs)
+@[code{stream-prefix-filtered-subscription}](@grpc/subscribing-to-streams/Program.cs)
 :::
 ::: code-group-item Java
-@[code(stream-prefix-filtered-subscription)](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
+@[code{stream-prefix-filtered-subscription}](../java/1.0.0/samples/subscribing_to_stream/SubscribingToStream.java)
 :::
 ::: code-group-item JavaScript
-@[code(stream-prefix-filtered-subscription)](../node/2.0.0/samples/subscribing-to-streams.js)
+@[code{stream-prefix-filtered-subscription}](../node/2.0.0/samples/subscribing-to-streams.js)
 :::
 ::: code-group-item Rust
-@[code(stream-prefix-filtered-subscription)](../rust/1.0.0/samples/subscribing_to_stream.rs)
+@[code{stream-prefix-filtered-subscription}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code(stream-prefix-filtered-subscription)](../node/2.0.0/samples/subscribing-to-streams.ts)
+@[code{stream-prefix-filtered-subscription}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 

@@ -56,7 +56,7 @@ If you enabled [enabled security](./connecting.md), reading metadata may require
 
 ## Writing metadata
 
-You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](../appending/optimistic-concurrency-and-idempotence.md) for further details.
+You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](./appending.md#optimistic-concurrency) for further details.
 
 ```csharp
 Task<WriteResult> SetStreamMetadataAsync(
