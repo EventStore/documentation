@@ -2,6 +2,7 @@
 /latest.html                                /server/v21.6/introduction/                301!
 
 ## HTTP API from Vuepress v1 to v2
+/clients/http-api/v5/                       /clients/http-api/v5/introduction/         301!
 /server/v5/docs/http-api/                   /clients/http-api/v5/introduction/         301!
 /server/v5/docs/http-api/:firstpart.html    /clients/http-api/v5/introduction/         301!
 /server/v5/docs/http-api/:firstpart/*       /clients/http-api/v5/:firstpart/:splat     301!
@@ -11,6 +12,7 @@
 /cloud/:firstpart/:secondpart/              /cloud/:firstpart/                         301!
 
 ## Database from Vuepress v1 to v2
+/server/:version/                           /server/:version/introduction/             301!
 /server/:version/docs/*                     /server/:version/:splat                    301!
 /server/v5/server/                          /server/v5/server/                         200!
 /server/v5/server/database.html             /server/v5/server/database.html            200!
