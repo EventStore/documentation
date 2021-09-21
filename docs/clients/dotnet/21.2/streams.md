@@ -47,16 +47,16 @@ This returns a `RawStreamMetadataResult`. The fields on this result are:
 |:-------|:------------|
 | `string Stream` | The name of the stream |
 | `bool IsStreamDeleted` | True is the stream is deleted, false otherwise. |
-| `long MetastreamVersion` | The version of the meta-stream (see [Expected Version](../appending/optimistic-concurrency-and-idempotence.md)) |
+| `long MetastreamVersion` | The version of the meta-stream (see [Expected Version](./appending.md#optimistic-concurrency)) |
 | `byte[] Metadata` | The raw data of the metadata JSON |
 
 ::: tip
-If you enabled [enabled security](../connecting/README.md), reading metadata may require that you pass credentials. By default, it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.
+If you enabled [enabled security](./connecting.md), reading metadata may require that you pass credentials. By default, it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.
 :::
 
 ## Writing metadata
 
-You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](../appending/optimistic-concurrency-and-idempotence.md) for further details.
+You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](./appending.md#optimistic-concurrency) for further details.
 
 ```csharp
 Task<WriteResult> SetStreamMetadataAsync(

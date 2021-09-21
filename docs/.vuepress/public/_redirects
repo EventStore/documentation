@@ -1,33 +1,41 @@
 # Redirects from what the browser requests to what we serve
-/latest.html                                /server/v21.6/introduction/               301!
+/latest.html                                /server/v21.6/introduction/                301!
 
 ## HTTP API from Vuepress v1 to v2
-/server/v5/docs/http-api/                   /clients/http-api/v5/introduction/        301!
-/server/v5/docs/http-api/:firstpart.html    /clients/http-api/v5/introduction/        301!
-/server/v5/docs/http-api/:firstpart/*       /clients/http-api/v5/:firstpart/:splat    301!
+/clients/http-api/v5/                       /clients/http-api/v5/introduction/         301!
+/server/v5/docs/http-api/                   /clients/http-api/v5/introduction/         301!
+/server/v5/docs/http-api/:firstpart.html    /clients/http-api/v5/introduction/         301!
+/server/v5/docs/http-api/:firstpart/*       /clients/http-api/v5/:firstpart/:splat     301!
 
 ## Cloud from Vuepress v1 to v2
-/cloud/:firstpart/:filename.html            /cloud/:firstpart/                        301!
-/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                        301!
+/cloud/:firstpart/:filename.html            /cloud/:firstpart/                         301!
+/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                         301!
 
 ## Database from Vuepress v1 to v2
-/server/:version/docs/*                     /server/:version/:splat                   301!
+/server/:version/                           /server/:version/introduction/             301!
+/server/:version/docs/*                     /server/:version/:splat                    301!
+/server/v5/server/                          /server/v5/server/                         200!
+/server/v5/server/database.html             /server/v5/server/database.html            200!
+/server/v5/server/default-directories.html  /server/v5/server/default-directories.html 200!
+/server/v5/server/threading.html            /server/v5/server/threading.html           200!
+/server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
 ## TCP Clients from Vuepress v1 to v2
-/clients/dotnet/:version/getting-started/*  /clients/dotnet/:version/:splat           301!
-/clients/dotnet/:version/:firstpart.html    /clients/dotnet/:version/:firstpart.html  200
-/clients/dotnet/:version/:firstpart/*       /clients/dotnet/:version/:firstpart.html  301!
+/clients/dotnet/:version/getting-started/*  /clients/dotnet/:version/:splat            301!
+/clients/dotnet/:version/:firstpart.html    /clients/dotnet/:version/:firstpart.html   200
+/clients/dotnet/:version/:firstpart/*       /clients/dotnet/:version/:firstpart.html   301!
 
 ## gRPC Clients from Vuepress v1 to v2
-clients/grpc/subscribing-to-streams/persistent-subscriptions.html    /clients/grpc/competing-consumers.html       301!
+/clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301!
 /clients/grpc/getting-started/*                                      /clients/grpc/                               301!
 /clients/grpc/subscribing-to-streams/*                               /clients/grpc/subscriptions.html             301!
 /clients/grpc/:firstpart.html                                        /clients/grpc/:firstpart.html                200
 /clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301!
 
-/server/generated/21.2/docs/*               /server/v21.6/:splat                      301!
-/server/v20/server/*                        /server/v20.10/:splat                     301!
-/server/v5/server/*                         /server/v5/:splat                         301!
-/server/5.0.8/server/*                      /server/v5/:splat                         301!
+## Older migrations
+/server/generated/21.2/docs/*               /server/v21.6/:splat                       301!
+/server/v20/server/*                        /server/v20.10/:splat                      301!
+/server/v5/server/*                         /server/v5/:splat                          301!
+/server/5.0.8/server/*                      /server/v5/:splat                          301!
 
-/clients/dotnet/5.0/connecting/options.html /clients/dotnet/5.0/connecting.html       301!
+/clients/dotnet/5.0/connecting/options.html /clients/dotnet/5.0/connecting.html        301!

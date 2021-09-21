@@ -4,21 +4,21 @@
     "group": "Server",
     "basePath": "server",
     "docsRelativePath": ["docs"],
-    "samplesRelativePath": ["samples"],
+    "samplesRelativePath": ["samples", "server"],
     "currentBranch": "master",
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
         "version": "v21.6",
-        "name": "release/oss-v21.6"
+        "name": "vuepress2/oss-v21.6"
       },
       {
         "version": "v21.2",
-        "name": "release/oss-v21.2"
+        "name": "vuepress2/oss-21.2"
       },
       {
         "version": "v20.10",
-        "name": "release/oss-v20.10"
+        "name": "vuepress2/oss-v20.10"
       },
       {
         "version": "v5",

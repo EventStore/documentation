@@ -2,21 +2,21 @@
   "index_name": "scraper-test",
   "start_urls": [
     {
-      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "url": "http://localhost:8080/server/(?P<version>.*?)/",
       "variables": {
-        "version": ["v21.10"]
+        "version": ["v20.10"]
       },
       "page_rank": 10
     },
     {
-      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "url": "http://localhost:8080/server/(?P<version>.*?)/",
       "variables": {
         "version": ["v21.2", "v21.6"]
       },
       "page_rank": 8
     },
     {
-      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "url": "http://localhost:8080/server/(?P<version>.*?)/",
       "variables": {
         "version": ["v5"]
       },
@@ -28,7 +28,7 @@
       "page_rank": 10
     },
     {
-      "url": "http://localhost:8080/clients/http-api/generated/v5/docs/introduction/",
+      "url": "http://localhost:8080/clients/http-api/v5/",
       "selectors_key": "flat",
       "page_rank": 6
     },
@@ -51,10 +51,6 @@
       "url": "http://localhost:8080/cloud/",
       "selectors_key": "flat",
       "page_rank": 10
-    },
-    {
-      "url": "http://localhost:8080/",
-      "page_rank": 5
     }
   ],
   "selectors": {
@@ -81,7 +77,7 @@
         "selector": ".theme-default-content h2",
         "strip_chars": "#"
       },
-      "text": ".theme-default-content p, .theme-default-content li",
+      "text": ".theme-default-content p, .theme-default-content li, .theme-default-content td",
       "lang": {
         "selector": "/html/@lang",
         "type": "xpath",
@@ -111,7 +107,7 @@
         "selector": ".theme-default-content h2",
         "strip_chars": "#"
       },
-      "text": ".theme-default-content p, .theme-default-content li",
+      "text": ".theme-default-content p, .theme-default-content li, .theme-default-content td",
       "lang": {
         "selector": "/html/@lang",
         "type": "xpath",

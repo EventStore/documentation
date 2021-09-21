@@ -207,7 +207,7 @@ settingsBuilder.SetDefaultUserCredentials(credentials);
 
 The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](../security/README.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](./security.md).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)
