@@ -1,6 +1,6 @@
 <template>
   Try using the
-  <a href="https://quirky-einstein-c3abba.netlify.app/" target="_blank">
+  <a href="https://configurator.eventstore.com/" target="_blank">
     configuration tool
   </a>
   to generate server config files and certificates.
