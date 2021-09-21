@@ -2,21 +2,21 @@
   "index_name": "scraper-test",
   "start_urls": [
     {
-      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "url": "http://localhost:8080/server/(?P<version>.*?)/introduction",
       "variables": {
-        "version": ["v21.10"]
+        "version": ["v20.10"]
       },
       "page_rank": 10
     },
     {
-      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "url": "http://localhost:8080/server/(?P<version>.*?)/introduction",
       "variables": {
         "version": ["v21.2", "v21.6"]
       },
       "page_rank": 8
     },
     {
-      "url": "http://localhost:8080/server/generated/(?P<version>.*?)/docs/introduction",
+      "url": "http://localhost:8080/server/(?P<version>.*?)/introduction",
       "variables": {
         "version": ["v5"]
       },
@@ -28,7 +28,7 @@
       "page_rank": 10
     },
     {
-      "url": "http://localhost:8080/clients/http-api/generated/v5/docs/introduction/",
+      "url": "http://localhost:8080/clients/http-api/v5/introduction/",
       "selectors_key": "flat",
       "page_rank": 6
     },

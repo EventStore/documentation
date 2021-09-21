@@ -13,6 +13,7 @@
 ## Database from Vuepress v1 to v2
 /server/:version/docs/*                     /server/:version/:splat                    301!
 /server/v5/server/                          /server/v5/server/                         200!
+/server/v5/server/database.html             /server/v5/server/database.html            200!
 /server/v5/server/default-directories.html  /server/v5/server/default-directories.html 200!
 /server/v5/server/threading.html            /server/v5/server/threading.html           200!
 /server/v5/server/caching.html              /server/v5/server/caching.html             200!
