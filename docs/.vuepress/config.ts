@@ -33,7 +33,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     plugins: [
         ["@vuepress/docsearch", {
             apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
-            indexName: "scraper-test",// process.env.ALGOLIA_INDEX_NAME,
+            indexName: process.env.ALGOLIA_INDEX_NAME,
             appId: process.env.ALGOLIA_APPLICATION_ID
         }],
         containers("tabs", "TabView", type => `${type ? ` type='${type}'` : ""}`),
