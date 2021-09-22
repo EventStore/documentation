@@ -339,3 +339,8 @@ generated-versions.json
 *.tfstate
 *.tfstate.backup
 .algolia/.env
+
+# vuepress
+docs/.vuepress/.temp/
+docs/.vuepress/.cache/
+docs/.vuepress/dist/

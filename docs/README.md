@@ -6,7 +6,7 @@ actions:
 - text: Database server →
   link: /latest.html
 - text: gRPC clients →
-  link: /clients/grpc/getting-started/
+  link: /clients/grpc/
 - text: Event Store Cloud →
   link: /cloud/
 features:

@@ -4,9 +4,9 @@
     "group": "Server",
     "basePath": "server",
     "docsRelativePath": ["docs"],
-    "samplesRelativePath": ["samples"],
+    "samplesRelativePath": ["samples", "server"],
     "currentBranch": "master",
-    "repo": "https://github.com/EventStore/EventStore.git",
+    "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
         "version": "v21.6",
@@ -24,6 +24,23 @@
         "version": "v5",
         "name": "release/oss-v5"
       }
+    ],
+    "postprocess": [
+      "rm -rf ./docs/server/v5/http-api"
+    ]
+  },
+  {
+    "id": "http-api",
+    "group": "HTTP API",
+    "basePath": "clients/http-api",
+    "docsRelativePath": ["docs", "http-api"],
+    "samplesRelativePath": ["samples", "http-api"],
+    "repo": "https://github.com/EventStore/EventStore",
+    "branches": [
+      {
+        "version": "v5",
+        "name": "release/oss-v5"
+      }
     ]
   },
   {
@@ -31,14 +48,14 @@
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet.git",
+    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet",
     "branches": [
       {
-        "version": "21.2.0",
+        "version": "21.2",
         "name": "master"
       },
       {
-        "version": "main",
+        "version": "21.6",
         "name": "master"
       }
     ]
@@ -57,7 +74,7 @@
       "dbclient",
       "samples"
     ],
-    "repo": "https://github.com/EventStore/EventStoreDB-Client-Java.git",
+    "repo": "https://github.com/EventStore/EventStoreDB-Client-Java",
     "branches": [
       {
         "version": "1.0.0",
@@ -70,7 +87,7 @@
     "group": "Rust SDK",
     "basePath": "clients/rust",
     "samplesRelativePath": ["examples"],
-    "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust.git",
+    "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust",
     "branches": [
       {
         "version": "1.0.0",
@@ -83,7 +100,7 @@
     "group": "NodeJS SDK",
     "basePath": "clients/node",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/EventStore/EventStore-Client-NodeJS.git",
+    "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
     "postprocess": [
       "yarn babel <root>/samples --presets @babel/preset-typescript --retain-lines --out-dir <root>/samples --extensions .ts",
       "yarn prettier --write <root>/samples/*.js"

@@ -57,7 +57,7 @@ yarn docs:build
 
 Documentation is using Algolia for indexing and searching through the contents.
 
-To run Algolia search locally, create [.algolia\.env](.algolia/.env) file filled with contents based on the Algolia configuration:
+To run Algolia search locally, create [.algolia/.env](.algolia/.env) file filled with contents based on the Algolia configuration:
 
 ```bash
 ALGOLIA_APPLICATION_ID=
@@ -71,7 +71,11 @@ _**Note:** Make sure that you saved it with LF eol characters._
 
 ### Scraping data locally
 
-Go to the [.algolia](.algolia) folder and run the [scrape.sh](.algolia/scrape.sh) script.
+The scraping script uses a Docker, so you need to have Docker installed and running before running it.
+
+Go to the [.algolia](.algolia) folder and run the [scrape.sh](.algolia/scrape.sh) script. 
+
+*Note: On windows we recommend to run the script in [Git Bash](https://gitforwindows.org/).*
 
 ### Adding new programming language snippets
 
