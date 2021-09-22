@@ -31,7 +31,6 @@ export const en: ESSidebarConfig = {
         "/cloud/integrations/README.md",
         "/cloud/automation/README.md",
         "/cloud/faq/README.md",
-        "/cloud/faq/operational-characteristics.md",
       ],
     },
   ],
