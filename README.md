@@ -90,6 +90,7 @@ import "prismjs/components/prism-java";
 #### Windows
 
 1. `EPERM: operation not permitted` during `yarn install` - this error may appear if you've run the `yarn install` from Windows before running it on the WSL2. See troubleshooting [link](https://stackoverflow.com/a/58414196).
+2. If `yarn docs:dev` fails, verify if your path does not contain spaces. We noticed some issues related to that.
 
 #### Ubuntu
 
