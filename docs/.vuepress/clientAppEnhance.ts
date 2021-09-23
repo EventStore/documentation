@@ -1,10 +1,7 @@
 import { defineClientAppEnhance } from '@vuepress/client';
-import ElementPlus from 'element-plus'
-import 'element-plus/dist/index.css'
 import YouTube from "./components/video/YouTube.vue";
 import PrimeVue from 'primevue/config';
 import "./styles/prime-theme.css";
-import "primevue/resources/primevue.min.css";
 import XodeBlock from "./components/xode/XodeBlock.vue";
 import XodeGroup from "./components/xode/XodeGroup";
 import TabView from "primevue/tabview";
@@ -20,9 +17,6 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
         path: "/latest.html",
         redirect: `/${__VERSIONS__.latest}/introduction/`
     });
-
-    // Element plus
-    app.use(ElementPlus);
 
     // Code block components
     delete app._context.components["CodeGroup"];

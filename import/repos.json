@@ -26,7 +26,7 @@
       }
     ],
     "postprocess": [
-      "rm -rf ./docs/server/v5/http-api"
+      "yarn shx rm -rf ./docs/server/v5/http-api"
     ]
   },
   {
