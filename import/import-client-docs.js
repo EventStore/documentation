@@ -25,18 +25,6 @@ async function safeRmdir(path) {
     }
 }
 
-async function replaceCodePath(mdPath, samplesPath) {
-    const originalSamplesPath = '<<<\\ @\\/samples';
-    const newSamplesPath      = '<<<\\ @\\/' + samplesPath.replace(/\//g, '\\/');
-
-    console.info(`Replacing sample code imports...`);
-
-    const replaceCommand = process.platform === 'darwin'
-        ? `find ./${mdPath} -name '*.md' -print0 | xargs -0 sed -i '' \'s/${originalSamplesPath}/${newSamplesPath}/g\'`
-        : `find ./${mdPath} -name '*.md' -exec sed -i \'s/${originalSamplesPath}/${newSamplesPath}/g\' {} \\;`;
-
-    await sh(replaceCommand);
-}
 async function copyDocsAndSamples(clientRepo, destinationPath, branch, repo) {
     const destinationPathWithId = path.join(destinationPath, branch.version);
 
@@ -77,13 +65,7 @@ async function copyDocs(clientRepo, destinationPathWithId, branch, relativePath)
 }
 
 async function copySamples(clientRepo, destinationPathWithId, branch, relativePath) {
-    const result = await copyRepoFiles(clientRepo, destinationPathWithId, branch, relativePath, "samples");
-
-    if (!result.success) {
-        return;
-    }
-
-    await replaceCodePath(destinationPathWithId, result.destination);
+    return await copyRepoFiles(clientRepo, destinationPathWithId, branch, relativePath, "samples");
 }
 
 async function postprocess(destinationPathWithId, postprocess) {

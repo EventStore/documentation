@@ -1,4 +1,3 @@
-@charset "UTF-8";
 * {
     box-sizing: border-box;
 }
@@ -41,7 +40,7 @@
 
 .p-tabview .p-tabview-nav {
     background: transparent;
-    border: 1px solid var(--c-ln-color);
+    border: solid var(--c-text-accent);
     border-width: 0 0 2px 0;
 }
 .p-tabview .p-tabview-nav li {
@@ -58,13 +57,13 @@
     margin: 0 0 -2px 0;
 }
 .p-tabview .p-tabview-nav li:not(.p-highlight):not(.p-disabled):hover .p-tabview-nav-link {
-    border: 1px solid var(--c-text-accent);
+    border: solid var(--c-text-accent);
     border-width: 0 0 2px 0;
     color: var(--c-text-light);
     text-decoration: none;
 }
 .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-    border: 1px solid var(--c-text-accent);
+    border: solid var(--c-text-accent);
     border-width: 0 0 2px 0;
     background: var(--c-bg-lighter);
     color: var(--c-text-accent);

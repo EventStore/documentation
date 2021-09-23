@@ -17,13 +17,10 @@
     "shx": "^0.3.3",
     "stylus": "^0.54.8",
     "typescript": "^4.3.5",
-    "vuepress-vite": "^2.0.0-beta.26",
-    "webpack-shell-plugin": "^0.5.0"
+    "vuepress-vite": "^2.0.0-beta.26"
   },
   "dependencies": {
-    "element-plus": "^1.1.0-beta.12",
-    "mitt": "^3.0.0",
-    "primevue": "3.6.0"
+    "primevue": "^3.7.2"
   },
   "scripts": {
     "debug": "vuepress dev docs --debug",
@@ -31,7 +28,7 @@
     "docs:build": "vuepress build docs && yarn docs:copy-assets",
     "docs:build-prod": "yarn docs:import && yarn docs:build",
     "docs:import": "node ./import/import-client-docs.js",
-    "docs:copy-assets": "shx cp -R docs/clients/http-api/v5/samples/ public/clients/http-api/v5/samples/", 
+    "docs:copy-assets": "shx cp -R docs/clients/http-api/v5/samples/ public/clients/http-api/v5/samples/",
     "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
   }
 }
