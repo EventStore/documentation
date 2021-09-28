@@ -107,6 +107,9 @@ The code snippet below creates an event object instance, serializes it and puts 
 ::: code-group-item C#
 @[code{createEvent}](../dotnet/21.2/samples/quick-start/Program.cs)
 :::
+::: code-group-item Go
+@[code{createEvent}](../go/1.0.0/samples/quickstart.go)
+:::
 ::: code-group-item Java
 @[code{createEvent}](../java/1.0.0/samples/quick_start/QuickStart.java)
 :::
@@ -131,6 +134,9 @@ In the snippet below, we append the event to the stream `some-stream`.
 ::: code-group-item C#
 @[code{appendEvents}](../dotnet/21.2/samples/quick-start/Program.cs)
 :::
+::: code-group-item Go
+@[code{appendEvents}](../go/1.0.0/samples/quickstart.go)
+:::
 ::: code-group-item Java
 @[code{appendEvents}](../java/1.0.0/samples/quick_start/QuickStart.java)
 :::
@@ -154,6 +160,9 @@ Finally, we can read events back from the `some-stream` stream.
 :::: code-group
 ::: code-group-item C#
 @[code{readStream}](@grpc/quick-start/Program.cs)
+:::
+::: code-group-item Go
+@[code{readStream}](../go/1.0.0/samples/quickstart.go)
 :::
 ::: code-group-item Java
 @[code{readStream}](@grpc/quick_start/QuickStart.java)

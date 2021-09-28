@@ -14,6 +14,9 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 ::: code-group-item C#
 @[code{append-to-stream}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{append-to-stream}](../go/1.0.0/samples/appendingEvents.go)
+:::
 ::: code-group-item Java
 @[code{append-to-stream}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
@@ -49,6 +52,9 @@ For example, the following code will only append a single event:
 :::: code-group
 ::: code-group-item C#
 @[code{append-duplicate-event}](../dotnet/21.2/samples/appending-events/Program.cs)
+:::
+::: code-group-item Go
+@[code{append-duplicate-event}](../go/1.0.0/samples/appendingEvents.go)
 :::
 ::: code-group-item Java
 @[code{append-duplicate-event}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
@@ -96,6 +102,9 @@ For example if we try and append the same record twice expecting both times that
 ::: code-group-item C#
 @[code{append-with-no-stream}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{append-with-no-stream}](../go/1.0.0/samples/appendingEvents.go)
+:::
 ::: code-group-item Java
 @[code{append-with-no-stream}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
@@ -121,6 +130,9 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 ::: code-group-item C#
 @[code{append-with-concurrency-check}](../dotnet/21.2/samples/appending-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{append-with-concurrency-check}](../go/1.0.0/samples/appendingEvents.go)
+:::
 ::: code-group-item Java
 @[code{append-with-concurrency-check}](../java/1.0.0/samples/appending_events/AppendingEvents.java)
 :::
@@ -144,6 +156,9 @@ You can provide user credentials to be used to append the data as follows. This 
 :::: code-group
 ::: code-group-item C#
 @[code{overriding-user-credentials}](../dotnet/21.2/samples/appending-events/Program.cs)
+:::
+::: code-group-item Go
+@[code{overriding-user-credentials}](../go/1.0.0/samples/appendingEvents.go)
 :::
 ::: code-group-item Java
 @[code{overriding-user-credentials}](../java/1.0.0/samples/appending_events/AppendingEvents.java)

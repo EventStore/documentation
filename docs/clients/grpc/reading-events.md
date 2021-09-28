@@ -18,11 +18,11 @@ You can read events from individual streams, both all the events, or just a few 
 
 The simplest way to read a stream forwards is to supply a stream name, direction and revision to start from. This can either be a *stream position* `Start` or a *big int* (unsigned 64-bit integer):
 
-@[code{read-from-stream}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
+@[code{read-from-stream}](@grpc/reading-events/Program.cs;@grpc/readingEvents.go;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
 
 This will return an enumerable that can be iterated on:
 
-@[code{iterate-stream}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
+@[code{iterate-stream}](@grpc/reading-events/Program.cs;@grpc/readingEvents.go;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
 
 There are a number of additional arguments you can provide when reading a stream, listed below.
 
@@ -46,6 +46,9 @@ The `userCredentials` argument is optional. You can use it to override the defau
 ::: code-group-item C#
 @[code{overriding-user-credentials}](@grpc/reading-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{overriding-user-credentials}](@grpc/readingEvents.go)
+:::
 ::: code-group-item Java
 @[code{overriding-user-credentials}](@grpc/reading_events/ReadingEvents.java)
 :::
@@ -68,6 +71,9 @@ Instead of providing the `StreamPosition` you can also provide a specific stream
 ::: code-group-item C#
 @[code{read-from-stream-position}](../dotnet/21.2/samples/reading-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{read-from-stream-position}](../go/1.0.0/samples/readingEvents.go)
+:::
 ::: code-group-item Java
 @[code{read-from-stream-position}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
 :::
@@ -89,6 +95,9 @@ As well as being able to read a stream forwards you can also go backwards. When 
 :::: code-group
 ::: code-group-item C#
 @[code{reading-backwards}](../dotnet/21.2/samples/reading-events/Program.cs)
+:::
+::: code-group-item Go
+@[code{reading-backwards}](../go/1.0.0/samples/readingEvents.go)
 :::
 ::: code-group-item Java
 @[code{reading-backwards}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
@@ -120,6 +129,9 @@ For example:
 ::: code-group-item C#
 @[code{checking-for-stream-presence}](../dotnet/21.2/samples/reading-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{checking-for-stream-presence}](../go/1.0.0/samples/readingEvents.go)
+:::
 ::: code-group-item Java
 @[code{checking-for-stream-presence}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
 :::
@@ -145,6 +157,9 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 :::: code-group
 ::: code-group-item C#
 @[code{read-from-all-stream}](../dotnet/21.2/samples/reading-events/Program.cs)
+:::
+::: code-group-item Go
+@[code{read-from-all-stream}](../go/1.0.0/samples/readingEvents.go)
 :::
 ::: code-group-item Java
 @[code{read-from-all-stream}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
@@ -178,6 +193,9 @@ When using projections to create new events you can set whether the generated ev
 ::: code-group-item C#
 @[code{read-from-all-stream-resolving-link-Tos}](../dotnet/21.2/samples/reading-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{read-from-all-stream-resolving-link-Tos}](../go/1.0.0/samples/readingEvents.go)
+:::
 ::: code-group-item Java
 @[code{read-from-all-stream-resolving-link-Tos}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
 :::
@@ -203,6 +221,9 @@ The credentials used to read the data can be supplied. to be used by the subscri
 ::: code-group-item C#
 @[code{read-all-overriding-user-credentials}](../dotnet/21.2/samples/reading-events/Program.cs)
 :::
+::: code-group-item Go
+@[code{read-all-overriding-user-credentials}](../go/1.0.0/samples/readingEvents.go)
+:::
 ::: code-group-item Java
 @[code{read-all-overriding-user-credentials}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
 :::
@@ -224,6 +245,9 @@ As well as being able to read a stream forwards you can also go backwards. When 
 :::: code-group
 ::: code-group-item C#
 @[code{read-from-all-stream-backwards}](../dotnet/21.2/samples/reading-events/Program.cs)
+:::
+::: code-group-item Go
+@[code{read-from-all-stream-backwards}](../go/1.0.0/samples/readingEvents.go)
 :::
 ::: code-group-item Java
 @[code{read-from-all-stream-backwards}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
@@ -252,6 +276,9 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 :::: code-group
 ::: code-group-item C#
 @[code{ignore-system-events}](../dotnet/21.2/samples/reading-events/Program.cs)
+:::
+::: code-group-item Go
+@[code{ignore-system-events}](../go/1.0.0/samples/readingEvents.go)
 :::
 ::: code-group-item Java
 @[code{ignore-system-events}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
