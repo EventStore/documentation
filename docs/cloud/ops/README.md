@@ -15,7 +15,7 @@ This is on offline process and any new events appended to the database between t
 The ability to do an online upgrade of the version of EventStoreDB your cluster is running is part of our future roadmap. Until that point, if you need to upgrade server versions you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. Choosing the new server version. You can then switch your applications over to the new connection string.
 
 ::: warning
-This is on offline process and any new events appended to the database between the backup and restore will be lost. If you want to perform an online upgrade then the [replicator](replicator.eventstore.org) can used to keep two databases in sync. But does have [limitations](https://replicator.eventstore.org/docs/limitations/)
+Using backup-restore for changing the EventStoreDB version should typically be done when all the write loads are turned off. Any new events appended to the database between the backup and restore will be lost. If you want to perform an online resize, then the [replicator](https://replicator.eventstore.org) can be used to keep two databases in sync.  Please ensure you understand the [limitations](https://replicator.eventstore.org/docs/limitations/) of the replication tool.
 :::
 
 ## Expanding disks
