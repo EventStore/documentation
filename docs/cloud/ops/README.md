@@ -4,7 +4,7 @@ title: Operations
 
 ## Resizing cluster nodes
 
-The ability to do an online resizing of cluster nodes is part of our future roadmap. Until that point, if you need to resize the nodes you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. Choosing a larger or smaller node size. You can then switch your applications over to the new connection string.
+The ability to do an online resizing of cluster nodes is part of our future roadmap. Until that point, if you need to resize the nodes, you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. You can choose a larger or smaller node size, as well as a different cluster topology. You can then switch your applications over to the connection string for the new cluster.
 
 ::: warning
 This is on offline process and any new events appended to the database between the backup and restore will be lost. If you want to perform an online resize then the [replicator](replicator.eventstore.org) can used to keep two databases in sync. But does have [limitations](https://replicator.eventstore.org/docs/limitations/)
