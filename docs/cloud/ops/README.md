@@ -12,7 +12,7 @@ Using backup-restore for changing the cluster size should typically be done when
 
 ## Upgrading EventStoreDB version
 
-The ability to do an online upgrade of EventStoreDB version of your cluster is part of our future roadmap. Until that point, if you need to upgrade server versions, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose EventStoreDB version you need. You can then switch your applications over to the new connection string.
+The ability to do an online upgrade of EventStoreDB version of your cluster is part of our future roadmap. Until that point, if you need to upgrade server versions, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
 
 ::: warning
 Using backup-restore for changing the EventStoreDB version should typically be done when all the write loads are turned off. Any new events appended to the database between the backup and restore will be lost. If you want to perform an online resize, then the [replicator](https://replicator.eventstore.org) can be used to keep two databases in sync.  Please ensure you understand the [limitations](https://replicator.eventstore.org/docs/limitations/) of the replication tool.
