@@ -2,6 +2,22 @@
 title: Operations
 ---
 
+## Resizing cluster nodes
+
+The ability to do an online resizing of cluster nodes is part of our future roadmap. Until that point, if you need to resize the nodes you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. Choosing a larger or smaller node size. You can then switch your applications over to the new connection string.
+
+::: warning
+This is on offline process and any new events appended to the database between the backup and restore will be lost. If you want to perform an online resize then the [replicator](replicator.eventstore.org) can used to keep two databases in sync. But does have [limitations](https://replicator.eventstore.org/docs/limitations/)
+:::
+
+## Upgrading EventStoreDB version
+
+The ability to do an online upgrade of the version of EventStoreDB your cluster is running is part of our future roadmap. Until that point, if you need to upgrade server versions you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. Choosing the new server version. You can then switch your applications over to the new connection string.
+
+::: warning
+This is on offline process and any new events appended to the database between the backup and restore will be lost. If you want to perform an online upgrade then the [replicator](replicator.eventstore.org) can used to keep two databases in sync. But does have [limitations](https://replicator.eventstore.org/docs/limitations/)
+:::
+
 ## Expanding disks
 
 Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
