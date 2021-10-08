@@ -47,7 +47,10 @@ export default defineUserConfig<DefaultThemeOptions>({
             type: "card",
             before: _ => `<Card><template #content>`,
             after: _ => `</template></Card>`
-        }]
+        }],
+        ["@vuepress/plugin-google-analytics", {
+            id: process.env.GOOGLE_TAG_ID,
+        }],
     ],
     themeConfig: {
         logo: "/eventstore-dev-logo-dark.svg",
