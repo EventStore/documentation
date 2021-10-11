@@ -41,7 +41,7 @@ The provided handler will be called for every event in the stream.
 
 Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event appended after the starting position.
 
-@[code{subscribe-to-all}](@grpc:subscribing-to-streams/Program.cs;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
+@[code{subscribe-to-all}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ## Subscribing from a specific position
 
