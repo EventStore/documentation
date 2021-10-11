@@ -42,7 +42,13 @@ implementation 'com.eventstore:db-client-java:0.5'
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 :::
-::: code-group-item JavaScript
+
+::: code-group-item Go
+```:no-line-numbers
+go get github.com/EventStore/EventStore-Client-Go
+```
+:::
+::: code-group-item NodeJS
 ```:no-line-numbers
 # Yarn
 $ yarn add @eventstore/db-client
@@ -66,14 +72,6 @@ $ npm install --save @eventstore/db-client
 ```
 :::
 ::::
-
-::: warning Preview clients
-The following SDKs are currently in preview and can get API changes:
-- NodeJS
-- Java
-- Go
-- Rust
-  :::
 
 ### Connection string
 
