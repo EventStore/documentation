@@ -310,7 +310,7 @@ The code below shows how you can provide user credentials for a subscription. Wh
 @[code{overriding-user-credentials}](../rust/1.0.0/samples/subscribing_to_stream.rs)
 :::
 ::: code-group-item TypeScript
-@[code](../node/2.0.0/samples/subscribing-to-streams.ts)
+@[code{overriding-user-credentials}](../node/2.0.0/samples/subscribing-to-streams.ts)
 :::
 ::::
 
