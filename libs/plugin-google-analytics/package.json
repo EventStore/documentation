@@ -1,0 +1,40 @@
+{
+  "name": "@vuepress/plugin-google-analytics",
+  "version": "2.0.0-beta.26",
+  "description": "VuePress plugin - google-analytics",
+  "keywords": [
+    "vuepress-plugin",
+    "vuepress",
+    "plugin",
+    "google",
+    "analytics"
+  ],
+  "homepage": "https://github.com/vuepress",
+  "bugs": {
+    "url": "https://github.com/vuepress/vuepress-next/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuepress/vuepress-next.git"
+  },
+  "license": "MIT",
+  "author": "meteorlxy",
+  "main": "lib/node/index.js",
+  "types": "lib/node/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf lib *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@vuepress/client": "2.0.0-beta.26",
+    "@vuepress/core": "2.0.0-beta.26",
+    "@vuepress/utils": "2.0.0-beta.25"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "6cbf3e07b2871383cebad5180fcbb02d69c79566"
+}

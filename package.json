@@ -8,7 +8,7 @@
     "@babel/core": "^7.14.8",
     "@babel/preset-typescript": "^7.14.5",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.26",
-    "@vuepress/plugin-google-analytics": "^2.0.0-beta.26",
+    "@vuepress/plugin-google-analytics": "file:./libs/plugin-google-analytics",
     "degit": "^2.8.4",
     "del": "^5.1.0",
     "dotenv": "^10.0.0",
