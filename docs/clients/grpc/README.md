@@ -1,8 +1,8 @@
 # Getting started
 
-@[code{readStream}](@grpc:quick-start/Program.cs;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+Get started by connecting your application to EventStoreDB. 
 
-Get started by connecting your application to EventStoreDB. Complete the form below to generate the connection string and examples for different languages and SDKs.
+[comment]: <> (Complete the form below to generate the connection string and examples for different languages and SDKs.)
 
 ## Connection details
 
@@ -87,28 +87,7 @@ You can either put the connection string in the input box below, or use the [con
 
 First thing first, we need a client.
 
-<xode-group>
-<xode-block title="C#" code="connectionString">
-
-@[code{createClient}](../dotnet/21.2/samples/quick-start/Program.cs)
-</xode-block>
-<xode-block title="Java" code="connectionString">
-
-@[code{createClient}](../java/1.0.0/samples/quick_start/QuickStart.java)
-</xode-block>
-<xode-block title="JavaScript" code="connectionString">
-
-@[code{createClient}](../node/2.0.0/samples/get-started.js)
-</xode-block>
-<xode-block title="Rust" code="connectionString">
-
-@[code{createClient}](../rust/1.0.0/samples/quickstart.rs)
-</xode-block>
-<xode-block title="TypeScript" code="connectionString">
-
-@[code{createClient}](../node/2.0.0/samples/get-started.ts)
-</xode-block>
-</xode-group>
+@[code{readStream}](@grpc:quick-start/Program.cs;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 
