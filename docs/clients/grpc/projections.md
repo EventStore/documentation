@@ -20,7 +20,9 @@ dotnet add package EventStore.Client.Grpc.ProjectionManagement --version 21.*
 ```
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```
@@ -73,17 +75,18 @@ Projection management operations are exposed through a dedicated client.
 @[code{createClient}](../dotnet/21.6/samples/projection-management/Program.cs)
 
 </xode-block>
+<xode-block title="Go" code="connectionString">
+
+```
+// This is currently not available in the Go client
+```
+</xode-block>
 <xode-block title="Java" code="connectionString">
 
 ```
 Sample available soon
 ```
 
-</xode-block>
-<xode-block title="Go" code="connectionString">
-```
-// This is currently not available in the Go client
-```
 </xode-block>
 <xode-block title="JavaScript" code="connectionString">
 
@@ -114,7 +117,9 @@ Projections have explicit names, and you can enable or disable them via this nam
 @[code{CreateContinuous}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```
@@ -141,7 +146,9 @@ Trying to create projections with the same name will result in an error:
 @[code{CreateContinuous_Conflict}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```
@@ -169,7 +176,9 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 @[code{RestartSubSystem}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -200,7 +209,9 @@ You must have access to a projection to enable it, see the [ACL documentation](.
 @[code{Enable}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -227,7 +238,9 @@ You can only enable an existing projection. When you try to enable a non-existin
 @[code{EnableNotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -262,7 +275,9 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 @[code{Disable}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -289,7 +304,9 @@ You can only disable an existing projection. When you try to disable a non-exist
 @[code{DisableNotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -320,7 +337,9 @@ Deletes a projection
 ```
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -349,7 +368,9 @@ You can only delete an existing projection. When you try to delete a non-existin
 ```
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -382,7 +403,9 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 @[code{Abort}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -409,7 +432,9 @@ You can only abort an existing projection. When you try to abort a non-existing 
 @[code{Abort_NotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -438,7 +463,9 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 @[code{Reset}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -465,7 +492,9 @@ Resetting a projection that does not exists will result in an error.
 @[code{Reset_NotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -495,7 +524,9 @@ Updates a projection. The name parameter is the name of the projection to be upd
 @[code{Update}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -522,7 +553,9 @@ You can only update an existing projection. When you try to update a non-existin
 @[code{Update_NotFound}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -552,7 +585,9 @@ See the [projection details](#projection-details) section for an explanation of 
 @[code{ListAll}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -582,7 +617,9 @@ See the [projection details](#projection-details) section for an explanation of 
 @[code{ListContinuous}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -612,7 +649,9 @@ See the [projection details](#projection-details) section for an explanation of 
 @[code{GetStatus}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -643,7 +682,9 @@ Sample available soon
 ```
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```java
@@ -672,7 +713,9 @@ Retrieves the result of the named projection and partition.
 @[code{GetResult}](../dotnet/21.6/samples/projection-management/Program.cs)
 :::
 ::: code-group-item Go
+```Go
 // This is currently not available in the Go client
+```
 :::
 ::: code-group-item Java
 ```

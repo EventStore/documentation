@@ -26,6 +26,11 @@ Install the client SDK package to your project.
 $ dotnet add package EventStore.Client.Grpc.Streams --version 21.2
 ```
 :::
+::: code-group-item Go
+```:no-line-numbers
+go get github.com/EventStore/EventStore-Client-Go
+```
+:::
 ::: code-group-item Java
 ```:no-line-numbers
 # Maven
@@ -40,12 +45,6 @@ implementation 'com.eventstore:db-client-java:0.5'
 
 # SBT
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
-```
-:::
-
-::: code-group-item Go
-```:no-line-numbers
-go get github.com/EventStore/EventStore-Client-Go
 ```
 :::
 ::: code-group-item NodeJS
@@ -85,7 +84,7 @@ You can either put the connection string in the input box below, or use the [con
 
 First thing first, we need a client.
 
-@[code{readStream}](@grpc:quick-start/Program.cs;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{readStream}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 

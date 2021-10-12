@@ -175,9 +175,10 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 :::
 ::::
 
-This will return an `AsyncEnumerable` that can be iterated on:
 
-@[code{read-from-all-stream-iterate}](@grpc/reading-events/Program.cs;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
+You can iterate asynchronously through the result:
+
+@[code{read-from-all-stream-iterate}](@grpc/reading-events/Program.cs;readingEvents.go;@grpc/reading_events/ReadingEvents.java;@grpc/reading-events.js;@grpc/reading_events.rs;@grpc/reading-events.ts)
 
 There are a number of additional arguments you can provide when reading a stream.
 
