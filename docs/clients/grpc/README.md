@@ -82,7 +82,7 @@ Each SDK has its own way to configure the client, but it's always possible to us
 
 First thing first, we need a client.
 
-@[code{connectionString}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{createClient}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 
