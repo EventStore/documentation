@@ -74,7 +74,7 @@ $ npm install --save @eventstore/db-client
 
 ### Connection string
 
-Each SDK has its own way to configure the client, but it's always possible to use the connection string. You can use [online configuration tool]([./README.md](https://configurator.eventstore.com/)) to generate the connection string for your EventStoreDB deployment. The connection string generated with this tool should work with each official SDK of EventStoreDB.
+Each SDK has its own way to configure the client, but it's always possible to use the connection string. You can use [online configuration tool](https://configurator.eventstore.com) to generate the connection string for your EventStoreDB deployment. The connection string generated with this tool should work with each official SDK of EventStoreDB.
 
 [comment]: <> (<ConnectionString></ConnectionString>)
 
