@@ -6,6 +6,7 @@
 /server/v5/docs/http-api/                   /clients/http-api/v5/introduction/         301!
 /server/v5/docs/http-api/:firstpart.html    /clients/http-api/v5/introduction/         301!
 /server/v5/docs/http-api/:firstpart/*       /clients/http-api/v5/:firstpart/:splat     301!
+/clients/http-api/v5/:firstpart/:filename.html /clients/http-api/v5/:firstpart/        301!
 
 ## Cloud from Vuepress v1 to v2
 /cloud/:firstpart/:filename.html            /cloud/:firstpart/                         301!
