@@ -74,9 +74,7 @@ $ npm install --save @eventstore/db-client
 
 ### Connection string
 
-Each SDK has its own way to configure the client, but it's always possible to use the connection string. The connection string below is generated according to the configuration you specified above, and it should work with each official SDK of EventStoreDB.
-
-You can either put the connection string in the input box below, or use the [connection details](./README.md) page to generate the connection string from your EventStoreDB deployment.
+Each SDK has its own way to configure the client, but it's always possible to use the connection string. You can use [online configuration tool](https://configurator.eventstore.com) to generate the connection string for your EventStoreDB deployment. The connection string generated with this tool should work with each official SDK of EventStoreDB.
 
 [comment]: <> (<ConnectionString></ConnectionString>)
 
@@ -84,7 +82,7 @@ You can either put the connection string in the input box below, or use the [con
 
 First thing first, we need a client.
 
-@[code{readStream}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{createClient}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 
