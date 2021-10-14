@@ -121,7 +121,7 @@
     "branches": [
       {
         "version": "1.0.0",
-        "name": "api-comformity"
+        "name": "master"
       }
     ]
   }
