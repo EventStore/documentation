@@ -50,6 +50,10 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
                 label: "Rust",
                 path: "rust/1.0.0/samples"
             },
+            "go": {
+                label: "Go",
+                path: "go/1.0.0/samples"
+            },
         }
     };
 

@@ -111,5 +111,18 @@
         "name": "master"
       }
     ]
+  },
+  {
+    "id": "go-client",
+    "group": "Go SDK",
+    "basePath": "clients/go",
+    "samplesRelativePath": ["samples"],
+    "repo": "https://github.com/EventStore/EventStore-Client-Go.git",
+    "branches": [
+      {
+        "version": "1.0.0",
+        "name": "api-comformity"
+      }
+    ]
   }
 ]

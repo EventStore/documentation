@@ -26,6 +26,11 @@ Install the client SDK package to your project.
 $ dotnet add package EventStore.Client.Grpc.Streams --version 21.2
 ```
 :::
+::: code-group-item Go
+```:no-line-numbers
+go get github.com/EventStore/EventStore-Client-Go
+```
+:::
 ::: code-group-item Java
 ```:no-line-numbers
 # Maven
@@ -42,7 +47,7 @@ implementation 'com.eventstore:db-client-java:0.5'
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 :::
-::: code-group-item JavaScript
+::: code-group-item NodeJS
 ```:no-line-numbers
 # Yarn
 $ yarn add @eventstore/db-client
@@ -67,14 +72,6 @@ $ npm install --save @eventstore/db-client
 :::
 ::::
 
-::: warning Preview clients
-The following SDKs are currently in preview and can get API changes:
-- NodeJS
-- Java
-- Go
-- Rust
-  :::
-
 ### Connection string
 
 Each SDK has its own way to configure the client, but it's always possible to use the connection string. The connection string below is generated according to the configuration you specified above, and it should work with each official SDK of EventStoreDB.
@@ -87,7 +84,7 @@ You can either put the connection string in the input box below, or use the [con
 
 First thing first, we need a client.
 
-@[code{readStream}](@grpc:quick-start/Program.cs;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{readStream}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 
@@ -106,6 +103,9 @@ The code snippet below creates an event object instance, serializes it and puts 
 :::: code-group
 ::: code-group-item C#
 @[code{createEvent}](../dotnet/21.2/samples/quick-start/Program.cs)
+:::
+::: code-group-item Go
+@[code{createEvent}](../go/1.0.0/samples/quickstart.go)
 :::
 ::: code-group-item Java
 @[code{createEvent}](../java/1.0.0/samples/quick_start/QuickStart.java)
@@ -131,6 +131,9 @@ In the snippet below, we append the event to the stream `some-stream`.
 ::: code-group-item C#
 @[code{appendEvents}](../dotnet/21.2/samples/quick-start/Program.cs)
 :::
+::: code-group-item Go
+@[code{appendEvents}](../go/1.0.0/samples/quickstart.go)
+:::
 ::: code-group-item Java
 @[code{appendEvents}](../java/1.0.0/samples/quick_start/QuickStart.java)
 :::
@@ -154,6 +157,9 @@ Finally, we can read events back from the `some-stream` stream.
 :::: code-group
 ::: code-group-item C#
 @[code{readStream}](@grpc/quick-start/Program.cs)
+:::
+::: code-group-item Go
+@[code{readStream}](../go/1.0.0/samples/quickstart.go)
 :::
 ::: code-group-item Java
 @[code{readStream}](@grpc/quick_start/QuickStart.java)

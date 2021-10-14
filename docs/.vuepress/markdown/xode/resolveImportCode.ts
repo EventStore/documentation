@@ -14,7 +14,7 @@ function testLine(line, regexp, regionName, end = false) {
 
 function findRegion(lines, regionName) {
     const regionRegexps = [
-        /^\/\/ ?#?((?:end)?region) ([\w*-]+)$/, // javascript, typescript, java
+        /^\/\/ ?#?((?:end)?region) ([\w*-]+)$/, // javascript, typescript, java, go
         /^\/\* ?#((?:end)?region) ([\w*-]+) ?\*\/$/, // css, less, scss
         /^#pragma ((?:end)?region) ([\w*-]+)$/, // C, C++
         /^<!-- #?((?:end)?region) ([\w*-]+) -->$/, // HTML, markdown
