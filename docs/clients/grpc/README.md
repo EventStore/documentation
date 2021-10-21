@@ -14,7 +14,7 @@ Get started by connecting your application to EventStoreDB.
 
 [comment]: <> (- Specify the deployment details manually.)
 
-[comment]: <> (<Connection></Connection>)
+<Connection></Connection>
 
 ## Connecting to EventStoreDB
 

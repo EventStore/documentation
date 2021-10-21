@@ -31,11 +31,11 @@ export default defineUserConfig<DefaultThemeOptions>({
         });
     },
     plugins: [
-        ["@vuepress/docsearch", {
-            apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
-            indexName: process.env.ALGOLIA_INDEX_NAME,
-            appId: process.env.ALGOLIA_APPLICATION_ID
-        }],
+        // ["@vuepress/docsearch", {
+        //     apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+        //     indexName: process.env.ALGOLIA_INDEX_NAME,
+        //     appId: process.env.ALGOLIA_APPLICATION_ID
+        // }],
         containers("tabs", "TabView", type => `${type ? ` type='${type}'` : ""}`),
         containers("tab", "TabPanel", label => `header="${label}"`),
         ["@vuepress/container", {
@@ -65,5 +65,16 @@ export default defineUserConfig<DefaultThemeOptions>({
         navbar: navbar.en,
         sidebar: sidebar.en,
         //     ...versioning.sidebars,
+    },
+    bundlerConfig: {
+        viteOptions: {
+            resolve: {
+                dedupe: ['vue'],
+                alias: {entries: {'vue': path.resolve(__dirname, '../../node_modules/vue')}}
+            },
+        },
+        vuePluginOptions: {
+            isProduction: false
+        }
     }
 });
