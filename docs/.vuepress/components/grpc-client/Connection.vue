@@ -9,7 +9,7 @@
       </div>
       <cloud v-show="showClusterId"></cloud>
       <node-url v-show="showNodeUrl"></node-url>
-      <manual v-show="showManual"></manual>
+<!--      <manual v-show="showManual"></manual>-->
     </div>
   </div>
 </template>
