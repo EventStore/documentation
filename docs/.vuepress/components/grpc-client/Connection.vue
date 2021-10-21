@@ -7,9 +7,9 @@
           <SelectButton id="fetch-from" :options="options" v-model="fetchFrom" optionLabel="name" dataKey="value" />
         </div>
       </div>
-<!--      <cloud v-show="showClusterId"></cloud>-->
-<!--      <node-url v-show="showNodeUrl"></node-url>-->
-<!--      <manual v-show="showManual"></manual>-->
+      <cloud v-show="showClusterId"></cloud>
+      <node-url v-show="showNodeUrl"></node-url>
+      <manual v-show="showManual"></manual>
     </div>
   </div>
 </template>
@@ -17,14 +17,13 @@
 <script lang="ts">
 import {computed, ref} from "vue";
 import SelectButton from "primevue/selectbutton";
-// import Cloud from "./Cloud.vue";
-// import NodeUrl from "./NodeUrl.vue";
-// import Manual from "./Manual.vue";
+import Cloud from "./Cloud.vue";
+import NodeUrl from "./NodeUrl.vue";
+import Manual from "./Manual.vue";
 
 export default {
     name: "Connection",
-    // components: {Manual, SelectButton, Cloud, NodeUrl},
-    components: {SelectButton},
+    components: {Manual, SelectButton, Cloud, NodeUrl},
     setup() {
         const options = ref([
             {name: "Event Store Cloud", value: "cloud"},
@@ -34,14 +33,14 @@ export default {
         const fetchFrom = ref(options.value[0]);
         const showClusterId = computed(() => fetchFrom.value.value === "cloud");
         const showNodeUrl = computed(() => fetchFrom.value.value === "node");
-        // const showManual = computed(() => fetchFrom.value.value === "manual");
+        const showManual = computed(() => fetchFrom.value.value === "manual");
 
         return {
             fetchFrom,
             options,
             showClusterId,
             showNodeUrl,
-            // showManual
+            showManual
         }
     }
 }

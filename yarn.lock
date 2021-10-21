@@ -659,6 +659,20 @@
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.2.11.tgz"
   integrity sha512-ovfXAsSsCvV9JVceWjkqC/7OF5HbgLOtCWjCIosmPGG8lxbPuavhIxRH1dTx4Dg9xLgRTNLvI3pVxG4ItQZekg==
 
+"@vuelidate/core@^2.0.0-alpha.29":
+  version "2.0.0-alpha.29"
+  resolved "https://registry.yarnpkg.com/@vuelidate/core/-/core-2.0.0-alpha.29.tgz#44c6932ec8e27c7c2468621324bdef1bd164be3b"
+  integrity sha512-9LHH7JMO2MLIxMoKKIlS3T8lOxiC5LeDX3Pow9av/vlRanMi/3R7wJFYSwZZB/0XW1a+NNfV/xZdnfGR4TZsJA==
+  dependencies:
+    vue-demi "^0.11.3"
+
+"@vuelidate/validators@^2.0.0-alpha.24":
+  version "2.0.0-alpha.24"
+  resolved "https://registry.yarnpkg.com/@vuelidate/validators/-/validators-2.0.0-alpha.24.tgz#bed71a2eb4eddf522b42fe412922fc4e7fc3212f"
+  integrity sha512-LjZGP2dK9848Xw+KLDb6RlaeN3crIdl+z2TZYyg+BqrJhWAV1ZUnpgzGKf4wefsqF5dQ4bWAZY/xnBKn2naIfg==
+  dependencies:
+    vue-demi "^0.11.3"
+
 "@vuepress/bundler-vite@2.0.0-beta.26":
   version "2.0.0-beta.26"
   resolved "https://registry.yarnpkg.com/@vuepress/bundler-vite/-/bundler-vite-2.0.0-beta.26.tgz"
@@ -4101,7 +4115,7 @@ vite@^2.5.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vue-demi@*:
+vue-demi@*, vue-demi@^0.11.3:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.11.4.tgz"
   integrity sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==
