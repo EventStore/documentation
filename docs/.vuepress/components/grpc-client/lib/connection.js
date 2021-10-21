@@ -4,32 +4,43 @@ import gossip, {DnsGossip} from "./gossip";
 import clientNode from "./clientNode";
 
 export default {
-    state: reactive({
-        cluster: true,
-        cloud: false,
-        secure: true,
-        clusterId: "",
+    state:     reactive({
+        cluster:    true,
+        cloud:      false,
+        secure:     true,
+        clusterId:  "",
         gossipPort: 2113,
-        nodes: [],
+        nodes:      [],
         nodesCount: 0,
-        minNodes: 1,
-        maxNodes: 3,
+        minNodes:   1,
+        maxNodes:   3,
     }),
+    keepAlive: reactive({
+        interval: undefined,
+        timeout:  undefined,
+        enabled:  true,
+        min:      -1,
+        max:      Number.MAX_SAFE_INTEGER
+    }),
+    gossip: reactive({
+        method:     DnsGossip,
+        dnsName:    ""
+    })
 }
 
 export const xxx = {
     state: reactive({
         cluster: true,
-        cloud: false,
-        secure: true,
+        cloud:   false,
+        secure:  true,
         // keepAlive: keepAlive,
         clusterId: "",
         // gossip: gossip,
         gossipPort: 2113,
-        nodes: [],
+        nodes:      [],
         nodesCount: 0,
-        minNodes: 1,
-        maxNodes: 3,
+        minNodes:   1,
+        maxNodes:   3,
     }),
     isDnsGossip() {
         return this.state.gossip.isDnsGossip();
