@@ -2,7 +2,7 @@
   <div class="form card">
     <div class="p-fluid">
       <div class="p-field p-grid">
-        <label for="fetch-from" class="p-col-3">Fetch configuration from:</label>
+        <label for="fetch-from" class="p-col-3 form-label">Fetch configuration from:</label>
         <div class="p-col">
           <SelectButton id="fetch-from" :options="options" v-model="fetchFrom" optionLabel="name" dataKey="value"/>
         </div>

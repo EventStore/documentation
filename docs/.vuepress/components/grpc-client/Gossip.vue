@@ -2,7 +2,7 @@
   <div>
     <divider align="right">Gossip</divider>
     <div class="p-field p-grid">
-      <label for="method" class="p-col-3">Gossip method:</label>
+      <label for="method" class="p-col-3 form-label">Gossip method:</label>
       <div class="p-col">
         <SelectButton id="method" :options="options" v-model="gossipMethod" optionLabel="name" dataKey="value"/>
       </div>
@@ -10,13 +10,13 @@
 
     <div v-if="showGossipDns">
       <div class="p-field p-grid">
-        <label for="gossipDns" class="p-col-3">Cluster DNS name:</label>
+        <label for="gossipDns" class="p-col-3 form-label">Cluster DNS name:</label>
         <div class="p-col">
           <InputText id="gossipDns" v-model="gossip.dnsName" placeholder="Enter the cluster DNS name"/>
         </div>
       </div>
       <div class="p-field p-grid">
-        <label for="gossipPort" class="p-col-3">Cluster HTTP port:</label>
+        <label for="gossipPort" class="p-col-3 form-label">Cluster HTTP port:</label>
         <div class="p-col-2">
           <InputNumber id="gossipPort" v-model="gossipPort" :useGrouping="false"/>
         </div>
@@ -24,7 +24,7 @@
     </div>
     <div v-else>
       <div class="p-field p-grid">
-        <label for="nodesCount" class="p-col-3">Number of cluster nodes:</label>
+        <label for="nodesCount" class="p-col-3 form-label">Number of cluster nodes:</label>
         <div class="p-col-2">
           <InputNumber
                   id="nodesCount"

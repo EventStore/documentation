@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="p-field p-grid">
-      <div class="p-col-3">
+      <div class="p-col-3 form-label">
         Topology:
       </div>
       <div class="p-col">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="p-field p-grid">
-      <div class="p-col-3">
+      <div class="p-col-3 form-label">
         Security:
       </div>
       <div class="p-col">
@@ -32,15 +32,22 @@
     </div>
     <keep-alive-form/>
     <gossip v-if="showGossip"/>
+    <div v-else>
+      <divider align="right">Node</divider>
+      <div>&nbsp;</div>
+      <cluster-node :node="node" :single="true"/>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Divider from "primevue/divider";
 import ToggleButton from "primevue/togglebutton";
 import KeepAliveForm from "./KeepAlive.vue";
 import Gossip from "./Gossip.vue";
 import conn from "./lib/connection";
 import {computed, watch} from "vue";
+import ClusterNode from "./ClusterNode.vue";
 
 const showGossip = computed(() => conn.state.cluster);
 const cluster = computed({
@@ -51,4 +58,5 @@ const secure = computed({
     get: () => conn.state.secure,
     set: v => conn.changeSecurity(v)
 });
+const node = conn.state.nodes[0].state;
 </script>

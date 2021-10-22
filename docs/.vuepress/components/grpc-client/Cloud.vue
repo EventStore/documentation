@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="p-field p-grid">
-      <label for="clusterId" class="p-col-3">Cloud cluster ID:</label>
+      <label for="clusterId" class="p-col-3 form-label">Cloud cluster ID:</label>
       <div class="p-col">
         <InputText id="clusterId" v-model="clusterId" placeholder="Enter the Event Store Cloud cluster ID"/>
       </div>

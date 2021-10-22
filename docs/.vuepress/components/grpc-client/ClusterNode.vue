@@ -1,6 +1,6 @@
 <template>
   <div class="p-fluid p-grid">
-    <div class="p-field p-col-3">
+    <div class="p-field p-col-3 form-label">
       {{ label }}:
     </div>
     <div class="p-field p-col">

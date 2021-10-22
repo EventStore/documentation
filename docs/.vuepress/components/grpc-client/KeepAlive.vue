@@ -1,9 +1,7 @@
 <template>
   <divider align="right">KeepAlive pings</divider>
   <div class="p-field p-grid">
-    <div class="p-col-3">
-      Enable KeepAlive:
-    </div>
+    <div class="p-col-3 form-label">Enable KeepAlive:</div>
     <div class="p-col-2">
       <InputSwitch v-model="enabled"/>
     </div>
@@ -15,7 +13,7 @@
     </div>
   </div>
   <div class="p-field p-grid">
-    <label for="interval" class="p-col-3">KeepAlive interval (ms):</label>
+    <label for="interval" class="p-col-3 form-label">KeepAlive interval (ms):</label>
     <div class="p-col-2">
       <InputNumber
               id="interval"
@@ -30,7 +28,7 @@
     <div class="p-col-6"><small class="p-warning">{{ intervalHelp }}</small></div>
   </div>
   <div class="p-field p-grid">
-    <label for="timeout" class="p-col-3">KeepAlive timeout (ms):</label>
+    <label for="timeout" class="p-col-3 form-label">KeepAlive timeout (ms):</label>
     <div class="p-col-2">
       <InputNumber
               id="timeout"
