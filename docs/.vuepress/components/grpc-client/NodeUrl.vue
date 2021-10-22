@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>&nbsp;</div>
-    <ClusterNode :node="node" :single="true"></ClusterNode>
+    <ClusterNode :node="nodeState" :single="true"></ClusterNode>
     <div class="p-field p-grid">
       <div class="p-col-3">&nbsp;</div>
       <div class="p-col-fixed" style="width: 250px">
@@ -15,25 +15,18 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import Button from "primevue/button";
 import ClusterNode from "./ClusterNode.vue";
-import clientNode from "./lib/clientNode";
 import {computed} from "vue";
+import connection from "./lib/connection";
 
-export default {
-    name:       "NodeUrl",
-    components: {ClusterNode, Button},
-    setup() {
-        const node = clientNode(0);
-        const enableFetch = computed(() => node.canFetch())
-
-        return {
-            node,
-            enableFetch
-        }
-    }
+if (connection.state.nodesCount === 0) {
+    connection.setNodesCount(1);
 }
+const node = connection.state.nodes[0];
+const enableFetch = computed(() => node.canFetch())
+const nodeState = node.state;
 </script>
 
 <style scoped>

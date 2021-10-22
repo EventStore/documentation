@@ -1,7 +1,7 @@
 <template>
   <div class="p-fluid p-grid">
     <div class="p-field p-col-3">
-      {{label}}:
+      {{ label }}:
     </div>
     <div class="p-field p-col">
       <span class="p-float-label">
@@ -18,7 +18,7 @@
         {{ errorMessage(v$.address.required, 'Host address') }}
       </small>
     </div>
-    <div class="p-field p-col">
+    <div class="p-field p-col-2">
       <span class="p-float-label">
         <InputText
                 id="port"
@@ -36,39 +36,29 @@
   </div>
 </template>
 
-<script>
-import {ref} from "vue";
+<script lang="ts" setup>
+import {ref, defineProps} from "vue";
 import InputText from "primevue/inputtext";
 import {integer, required} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
+import {ClusterNodeState} from "./lib/clientNode";
 
-export default {
-    name:       "ClusterNode",
-    components: {InputText},
-    props:      {
-        node:        Object,
-        single:      Boolean,
-        placeholder: String
-    },
-    setup(props) {
-        const errorMessage = (x, name) => x.$message.replace("Value", name);
-        const showError    = (x) => (x.$invalid && submitted.value) || x.$pending.$response;
-
-        const label = `Node ${props.single ? '' : props.node.index} details`;
-
-        const rules     = {
-            port:    {required, integer},
-            address: {required}
-        };
-        const v$        = useVuelidate(rules, props.node.state);
-        const submitted = ref(false);
-        const validate  = () => submitted.value = true;
-
-        return {v$, label, submitted, validate, errorMessage, showError};
-    }
+interface ClusterNodeProps {
+    single: boolean;
+    node: ClusterNodeState;
 }
+
+const props = defineProps<ClusterNodeProps>();
+
+const errorMessage = (x, name) => x.$message.replace("Value", name);
+const showError = (x) => (x.$invalid && submitted.value) || x.$pending.$response;
+
+const label = `Node ${props.single ? '' : props.node.index} details`;
+
+const v$ = useVuelidate({
+    port: {required, integer},
+    address: {required}
+}, props.node);
+const submitted = ref(false);
+const validate = () => submitted.value = true;
 </script>
-
-<style scoped>
-
-</style>

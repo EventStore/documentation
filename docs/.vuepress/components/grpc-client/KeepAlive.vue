@@ -46,50 +46,31 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import connection from "./lib/connection";
-import keepAliveHelp from "./lib/keepAlive";
 import {ref, watch} from "vue";
 import InputText from "primevue/inputtext";
 import InputNumber from "primevue/inputnumber";
 import InputSwitch from "primevue/inputswitch";
 import Divider from "primevue/divider";
+import {minKeepAliveIntervalValueHelp, minKeepAliveTimeoutValueHelp} from "./lib/keepAlive";
 
-export default {
-    name:       "KeepAlive",
-    components: {InputText, InputNumber, InputSwitch, Divider},
-    setup:      function () {
-        const keepAlive    = connection.keepAlive;
-        const enabled      = ref(keepAlive.enabled);
-        const intervalHelp = ref("");
-        const timeoutHelp  = ref("");
+const keepAlive = connection.keepAlive;
+const enabled = ref(keepAlive.enabled);
+const intervalHelp = ref("");
+const timeoutHelp = ref("");
 
-        const setIntervalHelp = (e, v) => intervalHelp.value = keepAliveHelp.minKeepAliveIntervalValueHelp(e, v);
-        const setTimeoutHelp  = (e, v) => timeoutHelp.value = keepAliveHelp.minKeepAliveTimeoutValueHelp(e, v);
+const setIntervalHelp = (e, v) => intervalHelp.value = minKeepAliveIntervalValueHelp(e, v);
+const setTimeoutHelp = (e, v) => timeoutHelp.value = minKeepAliveTimeoutValueHelp(e, v);
 
-        watch(enabled, v => {
-            setIntervalHelp(v, keepAlive.interval);
-            setTimeoutHelp(v, keepAlive.timeout);
-            if (v) return;
-            keepAlive.interval = undefined;
-            keepAlive.timeout  = undefined;
-        })
+watch(enabled, v => {
+    setIntervalHelp(v, keepAlive.interval);
+    setTimeoutHelp(v, keepAlive.timeout);
+    if (v) return;
+    keepAlive.interval = undefined;
+    keepAlive.timeout = undefined;
+})
 
-        const trackInterval = v => setIntervalHelp(enabled.value, v.value);
-        const trackTimeout  = v => setTimeoutHelp(enabled.value, v.value);
-
-        return {
-            enabled,
-            keepAlive,
-            intervalHelp,
-            timeoutHelp,
-            trackInterval,
-            trackTimeout
-        }
-    }
-}
+const trackInterval = v => setIntervalHelp(enabled.value, v.value);
+const trackTimeout = v => setTimeoutHelp(enabled.value, v.value);
 </script>
-
-<style scoped>
-
-</style>

@@ -8,45 +8,28 @@
     </div>
     <div class="p-field p-grid">
       <div class="p-col-3">&nbsp;</div>
-      <div class="p-col smaller">
-        Find your cluster ID in the <a href="https://console.eventstore.cloud" target="_blank">Cloud Console</a>,
-        on the Cluster Details tab.
+      <div class="p-col">
+        <small>
+          Find your cluster ID in the <a href="https://console.eventstore.cloud" target="_blank">Cloud Console</a>,
+          on the Cluster Details tab.
+        </small>
       </div>
     </div>
     <div class="p-field p-grid">
       <div class="p-col-3">&nbsp;</div>
       <div class="p-col-fixed" style="width: 250px">
-        <Button label="Fetch configuration" icon="pi pi-cloud-download" :disabled="!enableFetch" />
+        <Button label="Fetch configuration" icon="pi pi-cloud-download" :disabled="!enableFetch"/>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import {computed, ref} from "vue";
+<script lang="ts" setup>
+import {computed, defineProps, ref} from "vue";
 import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 
-export default {
-    name:       "Cloud",
-    components: {InputText, Button},
-    props:      {
-        clusterId: String
-    },
-    setup(props) {
-        const clusterId   = ref(props.clusterId ?? "");
-        const enableFetch = computed(() => clusterId.value !== "");
-
-        return {
-            clusterId,
-            enableFetch
-        }
-    }
-}
+const props = defineProps<{ clusterId?: string }>();
+const clusterId = ref(props.clusterId ?? "");
+const enableFetch = computed(() => clusterId.value !== "");
 </script>
-
-<style scoped>
-.smaller {
-    font-size: 14px;
-}
-</style>

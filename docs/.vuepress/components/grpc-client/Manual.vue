@@ -6,7 +6,7 @@
       </div>
       <div class="p-col">
         <ToggleButton
-                v-model="connection.cluster"
+                v-model="cluster"
                 onLabel="Multi-node cluster"
                 offLabel="Single-node instance"
                 onIcon="pi pi-tags"
@@ -21,7 +21,7 @@
       </div>
       <div class="p-col">
         <ToggleButton
-                v-model="connection.secure"
+                v-model="secure"
                 onLabel="Secure"
                 offLabel="Insecure"
                 onIcon="pi pi-lock"
@@ -35,33 +35,20 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import ToggleButton from "primevue/togglebutton";
 import KeepAliveForm from "./KeepAlive.vue";
 import Gossip from "./Gossip.vue";
-import connection from "./lib/connection";
+import conn from "./lib/connection";
 import {computed, watch} from "vue";
 
-export default {
-    name:       "Manual",
-    components: {ToggleButton, KeepAliveForm, Gossip},
-    setup() {
-        const conn = connection.state;
-        const keepAlive = connection.keepAlive;
-
-        const showKeepAlive = computed(() => keepAlive.enabled);
-        const showGossip = computed(() => conn.cluster);
-
-        return {
-            connection: conn,
-            keepAlive,
-            showKeepAlive,
-            showGossip
-        };
-    }
-}
+const showGossip = computed(() => conn.state.cluster);
+const cluster = computed({
+    get: () => conn.state.cluster,
+    set: v => conn.changeTopology(v)
+});
+const secure = computed({
+    get: () => conn.state.secure,
+    set: v => conn.changeSecurity(v)
+});
 </script>
-
-<style scoped>
-
-</style>
