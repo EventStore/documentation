@@ -1,7 +1,9 @@
 import {ClusterNode, clusterNode} from "./clientNode";
-import {reactive} from "vue";
+import {reactive, Ref, ref, UnwrapRef} from "vue";
 import {UnwrapNestedRefs} from "@vue/reactivity";
 import {FetchFrom, GossipMethod} from "./enums";
+import {fromCloudClusterId} from "./connectionString";
+import {getKeepAliveQuery} from "./keepAlive";
 
 interface ConnectionState {
     fetchFrom: FetchFrom;
@@ -30,10 +32,15 @@ interface GossipState {
     port: number;
 }
 
+function join(connString: string | undefined, query: string[]): string | undefined {
+    return connString === undefined || query.length === 0 ? connString : `${connString}?${query.join("&")}`;
+}
+
 export interface Connection {
     state: UnwrapNestedRefs<ConnectionState>;
     keepAlive: UnwrapNestedRefs<KeepAliveState>;
     gossip: UnwrapNestedRefs<GossipState>;
+    connectionString: Ref<UnwrapRef<string | undefined>>;
 
     isDnsGossip(): boolean;
 
@@ -50,6 +57,8 @@ export interface Connection {
     changeSecurity(secure: boolean): void;
 
     changeTopology(cluster: boolean): void;
+
+    getCloudConnectionString(): Promise<{success: boolean, err?: string}>;
 }
 
 const connection: Connection = {
@@ -77,6 +86,7 @@ const connection: Connection = {
         dnsName: "",
         port: 2113
     }),
+    connectionString: ref<string | undefined>(""),
     isHosting(fetchFrom: FetchFrom): boolean {
         return this.state.fetchFrom === fetchFrom
     },
@@ -133,6 +143,15 @@ const connection: Connection = {
             }
         }
     },
+    async getCloudConnectionString(): Promise<{ success: boolean, err?: string }> {
+        if (this.state.fetchFrom !== FetchFrom.Cloud) return {success: false};
+        const connString = await fromCloudClusterId(this.state.clusterId);
+        this.connectionString.value = join(connString.result, getKeepAliveQuery(this.keepAlive));
+        return {
+            success: connString.success,
+            err: connString.err
+        };
+    }
 }
 
 connection.changeTopology(true);

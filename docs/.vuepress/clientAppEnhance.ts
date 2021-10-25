@@ -10,6 +10,7 @@ import XodeGroup from "./components/xode/XodeGroup";
 import TabView from "primevue/tabview";
 import TabPanel from "primevue/tabpanel";
 import Card from "primevue/card";
+import ToastService from 'primevue/toastservice';
 import Deployment from "./components/dummy/Deployment.vue";
 import Connection from "./components/grpc-client/Connection.vue";
 
@@ -32,6 +33,7 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
 
     // PrimeVue components
     app.use(PrimeVue);
+    app.use(ToastService);
     app.component("TabView", TabView);
     app.component("TabPanel", TabPanel);
     app.component("Card", Card);

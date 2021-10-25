@@ -30,7 +30,6 @@
         />
       </div>
     </div>
-    <keep-alive-form/>
     <gossip v-if="showGossip"/>
     <div v-else>
       <divider align="right">Node</divider>
@@ -43,7 +42,6 @@
 <script lang="ts" setup>
 import Divider from "primevue/divider";
 import ToggleButton from "primevue/togglebutton";
-import KeepAliveForm from "./KeepAlive.vue";
 import Gossip from "./Gossip.vue";
 import conn from "./lib/connection";
 import {computed, watch} from "vue";

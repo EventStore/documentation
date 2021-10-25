@@ -1,6 +1,6 @@
 import {KeepAliveState} from "./connection";
 
-const format = (name: string, value?: number): string => value !== undefined ? `&${name}=${value}` : "";
+const format = (name: string, value?: number): string => `${name}=${value ?? 10000}`;
 
 const getHelp = (isEnabled: boolean, name: string, value?: number): string =>
     isEnabled && value !== undefined && value !== -1 && value < 10000
@@ -15,8 +15,8 @@ export function minKeepAliveIntervalValueHelp(enabled: boolean, interval?: numbe
     return getHelp(enabled, "keepAliveInterval", interval)
 }
 
-export function getConnectionStringValue(keepAlive: KeepAliveState) {
+export function getKeepAliveQuery(keepAlive: KeepAliveState): string[] {
     return !keepAlive.enabled
-        ? "&keepAliveInterval=-1&keepAliveTimeout=-1"
-        : `${format("keepAliveTimeout", keepAlive.timeout)}${format("keepAliveInterval", keepAlive.interval)}`;
+        ? []
+        : [format("keepAliveTimeout", keepAlive.timeout), format("keepAliveInterval", keepAlive.interval)];
 }

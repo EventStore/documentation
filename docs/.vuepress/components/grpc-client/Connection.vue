@@ -7,21 +7,26 @@
           <SelectButton id="fetch-from" :options="options" v-model="fetchFrom" optionLabel="name" dataKey="value"/>
         </div>
       </div>
-      <cloud :cluster-id="clusterId" v-if="connection.isHosting(FetchFrom.Cloud)"></cloud>
+      <cloud v-if="connection.isHosting(FetchFrom.Cloud)"></cloud>
       <node-url v-else-if="connection.isHosting(FetchFrom.NodeUrl)"></node-url>
       <manual v-else></manual>
+      <keep-alive-form/>
+
+      <ConnectionString/>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import {computed, ref, watch} from "vue";
+import {ref, watch} from "vue";
+import KeepAliveForm from "./KeepAlive.vue";
 import SelectButton from "primevue/selectbutton";
 import Cloud from "./Cloud.vue";
 import NodeUrl from "./NodeUrl.vue";
 import Manual from "./Manual.vue";
 import connection from "./lib/connection";
 import {FetchFrom} from "./lib/enums";
+import ConnectionString from "./ConnectionString.vue";
 
 const options = ref([
     {name: "Event Store Cloud", value: FetchFrom.Cloud},
@@ -30,7 +35,6 @@ const options = ref([
 ]);
 const fetchFrom = ref(options.value[0]);
 watch(fetchFrom, v => connection.changeHosting(v.value));
-const clusterId = undefined;
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,7 @@
     </div>
     <div class="p-col">
       <small>
+        KeepAlive settings are available for server and client versions 20.10+.
         Read more in <a href="/server/v20.10/networking/http.html#keepalive-pings" target="_blank">KeepAlive settings
         docs</a>
       </small>
