@@ -1,5 +1,5 @@
 # Redirects from what the browser requests to what we serve
-/latest.html                                /server/v21.6/introduction/                301!
+/latest.html                                /server/v21.10/introduction/                301!
 
 ## HTTP API from Vuepress v1 to v2
 /clients/http-api/v5/                       /clients/http-api/v5/introduction/         301!
