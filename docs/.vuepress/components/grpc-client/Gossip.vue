@@ -18,7 +18,7 @@
       <div class="p-field p-grid">
         <label for="gossipPort" class="p-col-3 form-label">Cluster HTTP port:</label>
         <div class="p-col-2">
-          <InputNumber id="gossipPort" v-model="gossipPort" :useGrouping="false"/>
+          <InputNumber id="gossipPort" v-model="gossip.port" :useGrouping="false"/>
         </div>
       </div>
     </div>
@@ -66,7 +66,6 @@ const nodesCount = computed({
     get: () => connection.state.nodesCount,
     set: v => connection.setNodesCount(v)
 });
-const gossipPort = connection.state.gossipPort;
 const nodes = connection.state.nodes;
 const minNodes = connection.state.minNodes;
 const maxNodes = connection.state.maxNodes;

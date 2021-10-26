@@ -55,7 +55,7 @@ export async function fromNodeUrl(node: ClusterNode, keepAlive: KeepAlive): Prom
     }
     connection.setGossipMethod(GossipMethod.Seed);
     const calculated = connection.calculateConnectionString();
-    const result = join(calculated.result, [...calculated.query, ...keepAlive.getKeepAliveQuery()])
+    const result = joinUrl(calculated.result, [...calculated.query, ...keepAlive.getKeepAliveQuery()])
     return {
         result,
         success: result !== undefined,
@@ -63,10 +63,10 @@ export async function fromNodeUrl(node: ClusterNode, keepAlive: KeepAlive): Prom
     };
 }
 
-function join(connString: string | undefined, query: string[]): string | undefined {
+export function joinUrl(connString: string | undefined, query: string[]): string | undefined {
     return connString === undefined || query.length === 0 ? connString : `${connString}?${query.join("&")}`;
 }
 
 export function addKeepAlive(connString: ConnectionString, keepAlive: KeepAlive): string {
-    return join(connString.result, keepAlive.getKeepAliveQuery());
+    return joinUrl(connString.result, keepAlive.getKeepAliveQuery());
 }

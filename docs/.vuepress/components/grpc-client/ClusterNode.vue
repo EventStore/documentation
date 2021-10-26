@@ -6,13 +6,13 @@
     <div class="p-field p-col">
       <span class="p-float-label">
         <InputText
-                id="address"
+                :id="`${id}-address`"
                 type="text"
                 v-model="v$.address.$model"
                 :class="{'p-invalid':v$.address.$invalid && submitted}"
                 @blur="validate"
         />
-        <label for="address">Node hostname or IP address</label>
+        <label :for="`${id}-address`">Node hostname or IP address</label>
       </span>
       <small v-show="showError(v$.address)" class="p-error">
         {{ errorMessage(v$.address.required, 'Host address') }}
@@ -21,13 +21,13 @@
     <div class="p-field p-col-2">
       <span class="p-float-label">
         <InputText
-                id="port"
+                :id="`${id}-post`"
                 type="text"
                 v-model="v$.port.$model"
                 :class="{'p-invalid':v$.port.$invalid && submitted}"
                 @blur="validate"
         />
-        <label for="port">HTTP port</label>
+        <label :for="`${id}-post`">HTTP port</label>
       </span>
       <small v-show="showError(v$.port)" class="p-error">
         {{ errorMessage(v$.port.integer, "HTTP port") }}
@@ -53,6 +53,7 @@ const props = defineProps<ClusterNodeProps>();
 const errorMessage = (x, name) => x.$message.replace("Value", name);
 const showError = (x) => (x.$invalid && submitted.value) || x.$pending.$response;
 
+const id = `node-${props.node.index}`;
 const label = `Node ${props.single ? '' : props.node.index} details`;
 
 const v$ = useVuelidate({

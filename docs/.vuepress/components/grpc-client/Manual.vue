@@ -46,6 +46,8 @@ import Gossip from "./Gossip.vue";
 import conn from "./lib/connection";
 import {computed, watch} from "vue";
 import ClusterNode from "./ClusterNode.vue";
+import {connectionString, joinUrl} from "./lib/connectionString";
+import {keepAlive} from "./lib/keepAlive";
 
 const showGossip = computed(() => conn.state.cluster);
 const cluster = computed({
@@ -57,4 +59,14 @@ const secure = computed({
     set: v => conn.changeSecurity(v)
 });
 const node = conn.state.nodes[0].state;
+watch([conn.state, conn.gossip, keepAlive.state], () => {
+    const calculated = conn.calculateConnectionString();
+    if (calculated !== undefined && calculated.result !== undefined) {
+        connectionString.success = true;
+        connectionString.result = joinUrl(calculated.result, [...calculated.query, ...keepAlive.getKeepAliveQuery()]);
+    } else {
+        connectionString.success = false;
+        connectionString.result = "";
+    }
+})
 </script>
