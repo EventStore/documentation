@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import KeepAliveForm from "./KeepAlive.vue";
 import SelectButton from "primevue/selectbutton";
 import Toast from "primevue/toast";
@@ -28,6 +28,8 @@ import NodeUrl from "./NodeUrl.vue";
 import Manual from "./Manual.vue";
 import {FetchFrom} from "./lib/enums";
 import ConnectionString from "./ConnectionString.vue";
+import {connectionString} from "./lib/connectionString";
+import store from "../xode/store";
 
 const options = ref([
     {name: "Event Store Cloud", value: FetchFrom.Cloud},
@@ -35,6 +37,7 @@ const options = ref([
     {name: "Specify manually", value: FetchFrom.Manual},
 ]);
 const fetchFrom = ref(options.value[0]);
+watch(connectionString, () => store.updateConnectionString(connectionString.result));
 </script>
 
 <style lang="scss" scoped>

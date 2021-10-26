@@ -37,7 +37,6 @@ const fetch = async () => {
     } else {
         msg.success("Configuration resolved", "Connection string generated");
     }
-    // error.value = connString.err;
     copyFrom(connString, connectionString);
 }
 </script>
