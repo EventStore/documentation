@@ -9,6 +9,7 @@
                 label="Fetch configuration"
                 icon="pi pi-cloud-download"
                 :disabled="!enableFetch"
+                @click="fetch"
         />
       </div>
     </div>
@@ -19,16 +20,24 @@
 import Button from "primevue/button";
 import ClusterNode from "./ClusterNode.vue";
 import {computed} from "vue";
-import connection from "./lib/connection";
+import {getEmptyNode} from "./lib/clientNode";
+import {connectionString, copyFrom, fromNodeUrl} from "./lib/connectionString";
+import {extendedToast} from "./lib/toastMessage";
+import {useToast} from "primevue/usetoast";
+import {keepAlive} from "./lib/keepAlive";
 
-if (connection.state.nodesCount === 0) {
-    connection.setNodesCount(1);
-}
-const node = connection.state.nodes[0];
+const msg = extendedToast(useToast());
+const node = getEmptyNode();
 const enableFetch = computed(() => node.canFetch())
 const nodeState = node.state;
+const fetch = async () => {
+    const connString = await fromNodeUrl(node, keepAlive);
+    if (!connString.success) {
+        msg.error("Unable to get configuration", connString.err);
+    } else {
+        msg.success("Configuration resolved", "Connection string generated");
+    }
+    // error.value = connString.err;
+    copyFrom(connString, connectionString);
+}
 </script>
-
-<style scoped>
-
-</style>

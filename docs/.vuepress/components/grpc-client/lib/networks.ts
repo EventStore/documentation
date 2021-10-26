@@ -16,7 +16,7 @@ export function isValidAddress(address: string): boolean {
 
 interface GoogleDnsResponse {
     Status: number;
-    Answer: {name: string, data: string}[];
+    Answer: { name: string, data: string }[];
 }
 
 export async function resolveDns(dnsName: string): Promise<string[] | undefined> {
@@ -31,7 +31,9 @@ async function get<T>(url: string, timeout: number): Promise<T | undefined> {
     try {
         const response = await axios.default.get<T>(url,
             {
-                timeout: timeout, withCredentials: false, headers: {"Accept": "application/json"}
+                timeout: timeout,
+                withCredentials: false,
+                headers: {"Accept": "application/json"}
             }
         );
         return response.data;

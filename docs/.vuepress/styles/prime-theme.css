@@ -898,16 +898,16 @@
 }
 
 .p-inputgroup-addon {
-    background: #e9ecef;
-    color: #495057;
-    border-top: 1px solid #ced4da;
-    border-left: 1px solid #ced4da;
-    border-bottom: 1px solid #ced4da;
+    background: var(--c-bg);
+    color: var(--c-text);
+    border-top: 1px solid var(--c-border);
+    border-left: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
     padding: 0.5rem 0.75rem;
     min-width: 2.357rem;
 }
 .p-inputgroup-addon:last-child {
-    border-right: 1px solid #ced4da;
+    border-right: 1px solid var(--c-border);
 }
 
 .p-inputgroup > .p-component,

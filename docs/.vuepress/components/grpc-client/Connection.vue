@@ -1,5 +1,6 @@
 <template>
   <div class="form card">
+    <toast position="bottom-right" group="br"/>
     <div class="p-fluid">
       <div class="p-field p-grid">
         <label for="fetch-from" class="p-col-3 form-label">Fetch configuration from:</label>
@@ -7,8 +8,8 @@
           <SelectButton id="fetch-from" :options="options" v-model="fetchFrom" optionLabel="name" dataKey="value"/>
         </div>
       </div>
-      <cloud v-if="connection.isHosting(FetchFrom.Cloud)"></cloud>
-      <node-url v-else-if="connection.isHosting(FetchFrom.NodeUrl)"></node-url>
+      <cloud v-if="fetchFrom.value === FetchFrom.Cloud"></cloud>
+      <node-url v-else-if="fetchFrom.value === FetchFrom.NodeUrl"></node-url>
       <manual v-else></manual>
       <keep-alive-form/>
 
@@ -18,13 +19,13 @@
 </template>
 
 <script lang="ts" setup>
-import {ref, watch} from "vue";
+import {ref} from "vue";
 import KeepAliveForm from "./KeepAlive.vue";
 import SelectButton from "primevue/selectbutton";
+import Toast from "primevue/toast";
 import Cloud from "./Cloud.vue";
 import NodeUrl from "./NodeUrl.vue";
 import Manual from "./Manual.vue";
-import connection from "./lib/connection";
 import {FetchFrom} from "./lib/enums";
 import ConnectionString from "./ConnectionString.vue";
 
@@ -34,7 +35,6 @@ const options = ref([
     {name: "Specify manually", value: FetchFrom.Manual},
 ]);
 const fetchFrom = ref(options.value[0]);
-watch(fetchFrom, v => connection.changeHosting(v.value));
 </script>
 
 <style lang="scss" scoped>

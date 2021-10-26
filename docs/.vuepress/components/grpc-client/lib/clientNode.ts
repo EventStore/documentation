@@ -15,6 +15,9 @@ export interface ClusterNode {
     setAddress(address: string, port: number);
 }
 
+export function getEmptyNode(): ClusterNode {
+    return clusterNode(0);
+}
 
 export function clusterNode(index: number): ClusterNode {
     return {

@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Toast position="bottom-right" group="br"/>
-    <Toast />
     <div class="p-field p-grid">
       <label for="clusterId" class="p-col-3 form-label">Cloud cluster ID:</label>
       <div class="p-col">
@@ -31,30 +29,25 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, defineProps, ref} from "vue";
+import {computed, ref} from "vue";
 import InputText from "primevue/inputtext";
 import Button from "primevue/button";
-import Toast from "primevue/toast";
-import connection from "./lib/connection";
+import {extendedToast} from "./lib/toastMessage";
 import {useToast} from "primevue/usetoast";
+import {fromCloudClusterId, connectionString, copyFrom} from "./lib/connectionString";
 
-const msg = useToast();
-const showToast = (severity: string, summary: string, detail: string) => {
-    msg.add({severity, summary, detail, group: 'br', life: 3000});
-}
-const clusterId = computed<string>({
-    get: () => connection.state.clusterId,
-    set: v => connection.state.clusterId = v
-});
+const clusterId = ref<string>("");
 const enableFetch = computed(() => clusterId.value !== "");
 const error = ref<string | undefined>(undefined);
+const msg = extendedToast(useToast());
 const fetch = async () => {
-    const connString = await connection.getCloudConnectionString();
+    const connString = await fromCloudClusterId(clusterId.value);
     if (!connString.success) {
-        showToast("error", "Unable to get configuration", connString.err);
+        msg.error("Unable to get configuration", connString.err);
     } else {
-        showToast("success", "Configuration resolved", "Connection string generated for cloud cluster");
+        msg.success("Configuration resolved", "Connection string generated for cloud cluster");
     }
     error.value = connString.err;
+    copyFrom(connString, connectionString);
 }
 </script>
