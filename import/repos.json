@@ -9,6 +9,10 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
+        "version": "v21.10",
+        "name": "release/oss-v21.10"
+      },
+      {
         "version": "v21.6",
         "name": "release/oss-v21.6"
       },
