@@ -29,14 +29,15 @@
 </template>
 
 <script lang="ts" setup>
-import {computed, ref} from "vue";
+import {computed, ref, defineProps} from "vue";
 import InputText from "primevue/inputtext";
 import Button from "primevue/button";
 import {extendedToast} from "./lib/toastMessage";
 import {useToast} from "primevue/usetoast";
 import {fromCloudClusterId, connectionString, copyFrom} from "./lib/connectionString";
 
-const clusterId = ref<string>("");
+const props = defineProps<{clusterId: string}>();
+const clusterId = ref(props.clusterId);
 const enableFetch = computed(() => clusterId.value !== "");
 const error = ref<string | undefined>(undefined);
 const msg = extendedToast(useToast());
@@ -49,5 +50,8 @@ const fetch = async () => {
     }
     error.value = connString.err;
     copyFrom(connString, connectionString);
+}
+if (clusterId.value !== "") {
+    fetch();
 }
 </script>

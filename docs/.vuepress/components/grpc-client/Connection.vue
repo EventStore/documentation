@@ -8,7 +8,7 @@
           <SelectButton id="fetch-from" :options="options" v-model="fetchFrom" optionLabel="name" dataKey="value"/>
         </div>
       </div>
-      <cloud v-if="fetchFrom.value === FetchFrom.Cloud"></cloud>
+      <cloud :cluster-id="clusterId" v-if="fetchFrom.value === FetchFrom.Cloud"></cloud>
       <node-url v-else-if="fetchFrom.value === FetchFrom.NodeUrl"></node-url>
       <manual v-else></manual>
       <keep-alive-form/>
@@ -20,6 +20,7 @@
 
 <script lang="ts" setup>
 import {ref, watch} from "vue";
+import { useRoute } from 'vue-router';
 import KeepAliveForm from "./KeepAlive.vue";
 import SelectButton from "primevue/selectbutton";
 import Toast from "primevue/toast";
@@ -38,6 +39,9 @@ const options = ref([
 ]);
 const fetchFrom = ref(options.value[0]);
 watch(connectionString, () => store.updateConnectionString(connectionString.result));
+
+const route = useRoute();
+const clusterId = route.query.clusterId ?? "";
 </script>
 
 <style lang="scss" scoped>
