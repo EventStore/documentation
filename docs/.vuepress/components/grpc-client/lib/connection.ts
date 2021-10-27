@@ -109,9 +109,9 @@ export const getEmptyConnection = (cluster: boolean): Connection => {
                 }
             },
             calculateConnectionString(): { result?: string, query?: string[] } {
-                if (this.state.nodes.some(x => x.state.address === "")) return {};
-
                 const isDns = this.isDnsGossip();
+                if (!isDns && this.state.nodes.some(x => x.state.address === "")) return {};
+
                 const gossip = isDns
                     ? `${safe(this.gossip.dnsName)}:${this.gossip.port}`
                     : this.state.nodes.map(x => `${safe(x.state.address)}:${x.state.port}`).join(",");

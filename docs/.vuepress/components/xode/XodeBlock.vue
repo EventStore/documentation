@@ -12,19 +12,6 @@
 import {onMounted, watch} from "vue";
 import store from "./store";
 
-function findAndReplace(node, what, replaceTo) {
-    if (replaceTo === "") return;
-    for (const x of node) {
-        if (typeof x.children === "string") {
-            if (x.children.indexOf(what) !== -1) {
-                x.el.innerHTML = x.el.innerHTML.replace(what, replaceTo);
-            }
-        } else if (x.children !== null && x.children.length) {
-            findAndReplace(x.children, what, replaceTo);
-        }
-    }
-}
-
 export default {
     name: 'CodeGroupItem',
     props: {
@@ -39,7 +26,22 @@ export default {
         },
     },
     setup(_, {slots}) {
-        const apply = () => findAndReplace(slots.default(), "{connectionString}", store.state.connectionString);
+        const findAndReplace = (node, key, replaceTo) => {
+            if (replaceTo === "" || key === undefined) return false;
+            for (const x of node) {
+                if (x.children !== undefined && typeof x.children === "string") {
+                    if (x.children.indexOf(key) !== -1) {
+                        x.el.innerHTML = x.children.replace(key, replaceTo);
+                    }
+                } else if (x.children !== null && x.children.length) {
+                    findAndReplace(x.children, key, replaceTo);
+                }
+            }
+        }
+
+        const apply = () => {
+            findAndReplace(slots.default(), "{connectionString}", store.state.connectionString);
+        };
         onMounted(() => apply());
         watch(store.state, () => apply())
     }

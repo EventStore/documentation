@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import * as https from "https";
 
 export function isValidDns(domain: string): boolean {
     const re = /^((?:(?:\w[.\-+]?)*\w)+)((?:(?:\w[.\-+]?){0,62}\w)+)\.(\w{2,6})$/;
@@ -29,16 +28,12 @@ export async function resolveDns(dnsName: string): Promise<string[] | undefined>
 }
 
 async function get<T>(url: string, timeout: number): Promise<T | undefined> {
-    const agent = new https.Agent({
-        rejectUnauthorized: false
-    });
     try {
         const response = await axios.default.get<T>(url,
             {
                 timeout: timeout,
                 withCredentials: false,
                 headers: {"Accept": "application/json"},
-                httpsAgent: agent
             }
         );
         return response.data;

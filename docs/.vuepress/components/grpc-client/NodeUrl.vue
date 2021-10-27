@@ -12,6 +12,11 @@
                 @click="fetch"
         />
       </div>
+      <div class="p-col">
+        <small>
+          Fetching configuration from secure nodes with self-signed or invalid certificates is not supported.
+        </small>
+      </div>
     </div>
   </div>
 </template>
