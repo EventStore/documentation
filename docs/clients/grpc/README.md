@@ -2,19 +2,17 @@
 
 Get started by connecting your application to EventStoreDB. 
 
-[comment]: <> (Complete the form below to generate the connection string and examples for different languages and SDKs.)
+Complete the form below to generate the connection string and examples for different languages and SDKs.
 
-[comment]: <> (## Connection details)
+## Connection details
 
-[comment]: <> (This page can help you to generate the connection string for a single-node or cluster deployment of EventStoreDB. You can use one of the following methods:)
+This page can help you to generate the connection string for a single-node or cluster deployment of EventStoreDB. You can use one of the following methods:
 
-[comment]: <> (- Use the [Event Store Cloud]&#40;https://eventstore.com/cloud&#41; cluster ID.)
+- Use the [Event Store Cloud](https://eventstore.com/cloud) cluster ID.
+- Use the address of any node of a self-hosted cluster or single-node deployment. You need to have access to the node for the discovery feature to work.
+- Specify the deployment details manually.
 
-[comment]: <> (- Use the address of any node of a self-hosted cluster or single-node deployment. You need to have access to the node for the discovery feature to work.)
-
-[comment]: <> (- Specify the deployment details manually.)
-
-[comment]: <> (<Connection></Connection>)
+<Connection></Connection>
 
 ## Connecting to EventStoreDB
 
