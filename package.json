@@ -27,7 +27,7 @@
     "primeflex": "2.0.0",
     "primeicons": "^4.1.0",
     "primevue": "^3.8.1",
-    "vue": "^3.2.11"
+    "vue": "3.2.11"
   },
   "scripts": {
     "debug": "vuepress dev docs --debug",
