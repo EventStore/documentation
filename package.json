@@ -12,6 +12,7 @@
     "degit": "^2.8.4",
     "del": "^5.1.0",
     "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "node-sass": "^6.0.0",
     "prettier": "^2.3.2",
     "sass-loader": "^10",
@@ -21,15 +22,22 @@
     "vuepress-vite": "^2.0.0-beta.26"
   },
   "dependencies": {
-    "primevue": "^3.7.2"
+    "@vuelidate/core": "^2.0.0-alpha.29",
+    "@vuelidate/validators": "^2.0.0-alpha.24",
+    "axios": "^0.23.0",
+    "primeflex": "2.0.0",
+    "primeicons": "^4.1.0",
+    "primevue": "^3.8.1",
+    "vue": "^3.2.11"
   },
   "scripts": {
     "debug": "vuepress dev docs --debug",
     "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
-    "docs:build": "vuepress build docs && yarn docs:copy-assets",
+    "docs:build": "vuepress build docs --clean-cache --clean-temp && yarn docs:copy-assets",
     "docs:build-prod": "yarn docs:import && yarn docs:build",
     "docs:import": "node ./import/import-client-docs.js",
     "docs:copy-assets": "shx cp -R docs/clients/http-api/v5/samples/ public/clients/http-api/v5/samples/",
+    "docs:serve": "node ./serve.js",
     "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
   }
 }
