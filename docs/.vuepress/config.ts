@@ -65,5 +65,16 @@ export default defineUserConfig<DefaultThemeOptions>({
         navbar: navbar.en,
         sidebar: sidebar.en,
         //     ...versioning.sidebars,
+    },
+    bundlerConfig: {
+        viteOptions: {
+            resolve: {
+                dedupe: ['vue'],
+                alias: {entries: {'vue': path.resolve(__dirname, '../../node_modules/vue')}}
+            },
+        },
+        vuePluginOptions: {
+            isProduction: false
+        }
     }
 });
