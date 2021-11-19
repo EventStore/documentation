@@ -32,7 +32,7 @@ We have a [replication tool](../use/migration/replicator.md), which is available
 
 #### Do you have indicative performance benchmarks for the offered cluster sizes?
 
-We published such benchmarks available on the [Cloud instance sizing guide](../provision#cloud-instance-guidance/) page.
+We published such benchmarks available on the [Cloud instance sizing guide](../provision/README.md#cloud-instance-sizing-guide) page.
 
 Please remember, however, that each use case is different, and you might always get better or worse performance, compared with our advertised benchmarking figures. We can help you to analyse your needs and provide more detailed expected performance figures, please get in touch.
 
@@ -104,7 +104,7 @@ Our support response time windows are provided in GMT time zone. We are expandin
 
 Customers do not have direct access to VMs, where the database cluster nodes are running. A lot of management functions are available via the HTTP API, which is available for customers to access and use.
 
-You can also use our cloud automation tools ([Terraform](../automation/#terraform-provider) provider and CLI) to manage your cloud resources.
+You can also use our cloud automation tools ([Terraform](../automation/README.md#terraform-provider) provider and CLI) to manage your cloud resources.
 
 #### If a node goes down in a cluster, how is the cluster recovered and who does it?
 

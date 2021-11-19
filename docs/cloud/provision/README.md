@@ -525,7 +525,9 @@ A wide variety of factors impact total Event throughput on a cluster, including 
 
 We have profiled using single event transactions for the production rated clusters and confirmed they can operate at 20k tx/sec throughput (concurrent read and write) given the correct configuration for concurrent clients, a given disk size, and Working Set. It's possible to increase the throughput by using batched write operations, but the impact of batching heavily depends on the batch size in bytes. Before placing any application into production, it is vital to perform a performance test on the planned instance to assess how these factors apply to your application.
 
-The **Working Set** is the number of streams being read from and written to concurrently. It's essential to recognise that writing one million events into one million streams is a very different scenario than writing one million events into a single stream.
+::: note
+The **Working Set** is the number of streams being read from and written to **concurrently**. It's essential to recognise that writing one million events into one million streams is a very different scenario than writing one million events into a single stream.
+:::
 
 #### Cloud vs self-hosted and development setups
 
