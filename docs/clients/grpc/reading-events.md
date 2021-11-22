@@ -12,7 +12,7 @@ Check [connecting to EventStoreDB instructions](./README.md#required-packages) t
 
 ## Reading from a stream
 
-You can read events from individual streams, both all the events, or just a few events from the stream. You can start reading from any position in the stream, and read events both forwards and backwards. It's only possible to read events from one stream at a time. You ca also read events from the global event log, which spans across streams. Read more about it in the [Read from `$all`](#reading-from-the-all-stream) section below.
+You can read events from individual streams, both all the events, or just a few events from the stream. You can start reading from any position in the stream, and read events both forwards and backwards. It's only possible to read events from one stream at a time. You can also read events from the global event log, which spans across streams. Read more about it in the [Read from `$all`](#reading-from-the-all-stream) section below.
 
 ### Reading forwards
 
