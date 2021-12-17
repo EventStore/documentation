@@ -342,21 +342,28 @@ At the moment, you can deploy EventStoreDB clusters only in regions with three o
 
 Currently, we support following Azure regions:
 - Australia East,
+- Brazil South,
 - Canada Central,
 - Central US,
 - East US,
 - East US 2,
 - France Central,
+- Germany West Central,
 - Japan East,
+- Korea Central,
 - North Europe,
+- Norway East,
+- South Africa North,
+- South Central US,
 - Southeast Asia,
 - UK South,
 - West Europe,
-- West US 2.
+- West US 2,
+- West US 3.
 
 #### Pricing
 
-Prices for computing resources (virtual machines) in Azure are generally higher, compared with AWS and GCP, and this is reflected in the costs for managed EventStoreDB deployments. As EventStoreDB requires at least two CPU cores, and the smallest instance size in Azure is more expensive, the `F1` instance size in Azure is the most expensive of the three cloud providers we offer.  
+Prices for computing resources (virtual machines) in Azure are generally higher, compared with AWS and GCP, and this is reflected in the costs for managed EventStoreDB deployments. As EventStoreDB requires at least two CPU cores, and the smallest instance size in Azure is more expensive, the `F1` instance size in Azure is the most expensive of the three cloud providers we offer.
 
 ## Google Cloud Platform (GCP)
 
