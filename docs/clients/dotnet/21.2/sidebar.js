@@ -2,6 +2,7 @@ module.exports = [
   {
     children: [
       "README.md",
+      "migration-to-gRPC.md",
       "connecting.md",
       "appending.md",
       "reading.md",
