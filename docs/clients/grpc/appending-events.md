@@ -86,7 +86,7 @@ Representation of your event data. It is recommended that you store your events 
 
 ### metadata
 
-It is common to need to store additional information along side your event that is part of the event it's self. This can be correlation Id's, timestamps, access information etc. EventStoreDB allows you to store a separate byte array containing this information to keep it separate.
+It is common to need to store additional information along side your event that is part of the event itself. This can be correlation Id's, timestamps, access information etc. EventStoreDB allows you to store a separate byte array containing this information to keep it separate.
 
 ### isJson
 
