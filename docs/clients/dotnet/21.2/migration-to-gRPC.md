@@ -136,7 +136,7 @@ public class EventStore
 }
 ```
 
-## Update Connection Management
+## Differences in Connection Management
 
 Both TCP and gRPC clients are managing the reconnections. That's the reason why it should be registered as a single instance in the application. 
 
@@ -206,5 +206,59 @@ private EventStoreClient GetEventStoreConnection(string connectionString)
 {
     var settings = EventStoreClientSettings.Create(connectionString);
     return new EventStoreClient(settings);
+}
+```
+
+If you're using Dependency Injection, you can safely register it as Singleton in DI Container, e.g.:
+
+```csharp
+var client = GetEventStoreConnection(Configuration["eventStore:connectionString"])
+services.AddSingleton(client);
+```
+
+### Connection String
+TODO
+
+### Security
+TODO
+
+## Differences in appending events
+
+### Transactions
+
+The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. In the TCP client may perform multiple appends to EventStoreDB as one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. gRPC client still supports appending more than one event to the single stream as an atomic operation. 
+
+A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, e.g.:
+
+```csharp
+public class EventStoreDBUnitOfWork
+{
+    private readonly EventStoreClient eventStore;
+    private readonly List<EventData> uncommittedEvents = new();
+    private readonly string streamName;
+    private readonly StreamRevision expectedStreamRevision;
+
+    private EventStoreDBUnitOfWork(EventStoreClient eventStore, string streamName,
+        StreamRevision expectedStreamRevision)
+    {
+        this.eventStore = eventStore;
+        this.streamName = streamName;
+        this.expectedStreamRevision = expectedStreamRevision;
+    }
+
+    public static EventStoreDBUnitOfWork Begin(EventStoreClient eventStore, string streamName,
+        StreamRevision expectedStreamRevision) =>
+        new(eventStore, streamName, expectedStreamRevision);
+
+    public Task<IWriteResult> Commit(CancellationToken cancellationToken = default)
+        => eventStore.AppendToStreamAsync(
+            streamName,
+            expectedStreamRevision,
+            uncommittedEvents.ToArray(),
+            cancellationToken: cancellationToken
+        );
+
+    public void Append(params EventData[] eventData) =>
+        uncommittedEvents.AddRange(eventData);
 }
 ```
