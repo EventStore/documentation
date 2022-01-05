@@ -222,13 +222,87 @@ TODO
 ### Security
 TODO
 
-## Differences in appending events
+## Appending events
+
+### Event Data
+
+There are minor changes to the `EventData` signature:
+- namespaces was changed from `EventStore.ClientAPI` to `EventStore.Client`
+- Event id requires using the `UUID` class instead of `Guid`. We adopted the [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) standard to provide unified behaviour between the gRPC clients.
+- we are allowed to provide content type. It enables more advanced serialisation scenarios (e.g., using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
+
+For the JSON Event Data, you have to change TCP client logic from:
+
+```csharp{1,7,9}
+public static EventStore.ClientAPI.EventData ToJsonEventData(
+    object @event,
+    string eventType,
+    object? metadata = null
+) =>
+    new EventData(
+        Guid.NewGuid(),
+        eventType,
+        true,
+        Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event)),
+        Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(metadata ?? new { }))
+    );
+```
+
+into:
+
+```csharp{1,7}
+public static EventStore.Client.EventData ToJsonEventData(
+    object @event,
+    string eventType,
+    object? metadata = null
+) =>
+    new EventData(
+        EventStore.Client.Uuid.NewUuid(),
+        eventType,
+        Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event)),
+        Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(metadata ?? new { }))
+    );
+```
+
+For binary event data, you have to switch from:
+
+```csharp{1,7,9}
+public static EventStore.ClientAPI.EventData ToJsonEventData(
+    object @event,
+    string eventType,
+    object? metadata = null
+) =>
+    new EventData(
+        Guid.NewGuid(),
+        eventType,
+        false,
+        SerializeToByteArray(@event),
+        SerializeToByteArray(metadata ?? new { })
+    );
+```
+
+into:
+
+```csharp{1,7,11}
+public static EventStore.Client.EventData ToJsonEventData(
+    object @event,
+    string eventType,
+    object? metadata = null
+) =>
+    new EventData(
+        EventStore.Client.Uuid.NewUuid(),
+        eventType,
+        SerializeToByteArray(@event),
+        SerializeToByteArray(metadata ?? new { }),
+        "application/octet-stream"
+    );
+```
 
 ### Transactions
 
 The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. In the TCP client may perform multiple appends to EventStoreDB as one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. gRPC client still supports appending more than one event to the single stream as an atomic operation. 
 
-A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, e.g.:
+A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, for example:
 
 ```csharp
 public class EventStoreDBUnitOfWork
@@ -262,3 +336,10 @@ public class EventStoreDBUnitOfWork
         uncommittedEvents.AddRange(eventData);
 }
 ```
+## Optimistic concurrency
+
+
+## Reading Events
+
+### Serialisation
+To make the events processing more efficient, the gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array. 
