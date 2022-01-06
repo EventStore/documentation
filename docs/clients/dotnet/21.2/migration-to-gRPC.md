@@ -4,7 +4,9 @@ TCP client is considered legacy. We recommend migrating to the gRPC client. This
 
 ## Update the target Framework
 
-gRPC client doesn't support .NET Standard. If you were using it in the .NET Standard library, you have to update it to one of:
+gRPC client doesn't support .NET Standard. The change comes from using different gRPC implementations for the specific .NET Framework version to tune the performance.
+
+If you were using it in the .NET Standard library, you have to update it to one of:
 - .NET 6 (`net6.0`),
 - .NET 5 (`net5.0`),
 - .NET Core 3.1 (`netcoreapp3.1`),
@@ -39,7 +41,9 @@ You may also consider step by step migration:
 - gradually replacing usages,
 - removing TCP client package reference as the last step.
 
-You may also consider wrapping common logic into extension methods or repository classes. Then you can replace the inner implementations, keeping usages the same, e.g.:
+You may also consider wrapping common logic into extension methods or repository classes. Then you can replace the inner implementations, keeping usages the same. It may be disputable if wrapping the client logic is the best practice, but it can certainly ease the migration effort.
+
+Sample wrapper for the TCP client may look, e.g.:
 
 ```csharp
 public class EventStore
@@ -132,63 +136,71 @@ Both TCP and gRPC clients are managing the reconnections. That's the reason why 
 TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it in asynchronous mode risking deadlocks.
 
 ```csharp
-private IEventStoreConnection GetEventStoreConnection(string connectionString)
+private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
 {
-    var connection = EventStoreConnection.Create(uri);
-    connection.ConnectAsync().Wait();
+    var connection = EventStoreConnection.Create(connectionString);
+    await connection.ConnectAsync();
     return connection;
 }
 ```
 
-As TCP client connection logic is not thread-safe (`ConnectAsync` method), other operations are thread-safe. Because of that you had to maintain reconnection loigc to ensure that you won't have a race condition. You also need to handle `Closed` events to manage reconnection if it is closed. The example code could look like this:
+As TCP client connection logic is not thread-safe (`ConnectAsync` method), other operations are thread-safe. Because of that, you have to ensure that you won't have a race condition. You also should consider handling `Closed` events to manage reconnection if it is closed. 
+
+TCP client supports built-in reconnections; however, you need to be careful about setting the connections options properly. Wrongly defined can cause a flood of reconnections, increasing the chance for failure. For instance, additional retries may worsen if the reason was a high load on the database.
+
+Sample code with reconnections could look like this:
 
 ```csharp
-public class EventStoreDBConnectionProvider
+private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
 {
-    private readonly object reconnectLock = new();
-    private IEventStoreConnection? instance;
-    private string? eventStoreDBUri;
+    var connection = EventStoreConnection.Create(
+        connectionString,
+        ConnectionSettings.Create()
+            .FailOnNoServerResponse()
+            .KeepReconnecting()
+            .SetOperationTimeoutTo(TimeSpan.FromSeconds(5))
+            .LimitAttemptsForOperationTo(7)
+            .LimitRetriesForOperationTo(7)
+    );
+    await connection.ConnectAsync();
+    return connection;
+}
+```
 
-    public IEventStoreConnection Connect(string uri)
+In the gRPC client, the main difference is that there is no constantly open connection, so no reconnections have to be made. You also don't need to call the `ConnectAsync` method. That simplifies the client initialisation and dependency injection. For the TCP client, you either had to inject the `Task<IEventStoreConnection>` and each time await it, e.g.
+
+```csharp
+public class EventStore
+{
+    readonly Task<IEventStoreConnection> connect;
+
+    public EventStore(Task<IEventStoreConnection> connect)
+        => this.connect = connect;
+
+    public async Task AppendEvents(
+        string streamName,
+        long version,
+        params object[] events
+    )
     {
-        if (instance != null && eventStoreDBUri == uri)
-            return instance;
+        var preparedEvents = events
+            .Select(ToEventData)
+            .ToArray();
 
-        instance?.Close();
-
-        return Reconnect(uri);
-    }
-
-    private IEventStoreConnection Reconnect(string uri)
-    {
-        try
-        {
-            Monitor.Enter(reconnectLock);
-
-            var temp = EventStoreConnection.Create(uri);
-
-            Interlocked.Exchange(ref instance, temp);
-            Interlocked.Exchange(ref eventStoreDBUri, uri);
-        }
-        finally
-        {
-            Monitor.Exit(reconnectLock);
-        }
-
-        instance.Closed += (sth, args) =>
-        {
-            Interlocked.Exchange(ref eventStoreDBUri, null);
-            Reconnect(uri);
-        };
-
-        instance.ConnectAsync().Wait();
-
-        return instance;
+        var connection = await connect;
+        
+        return await connection.AppendToStreamAsync(
+            streamName,
+            version,
+            preparedEvents
+        );
     }
 }
 ```
 
-In the gRPC client, you don't need to maintain reconnection yourself. The gRPC client will handle that internally. It's enough to provide such initialisation:
+Or initialise it in the application Startup.
+
+For the gRPC client, we can shorten that to:
 
 ```csharp
 private EventStoreClient GetEventStoreConnection(string connectionString)
@@ -372,3 +384,5 @@ public class EventStoreDBUnitOfWork
 
 ### Serialisation
 The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. 
+
+## Built-in retries
