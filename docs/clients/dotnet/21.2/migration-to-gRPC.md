@@ -55,24 +55,8 @@ public class EventStore
         params object[] events
     )
     {
-        if (events == null || !events.Any()) return Task.CompletedTask;
-
         var preparedEvents = events
-            .Select(
-                @event =>
-                    new EventData(
-                        Guid.NewGuid(),
-                        TypeMapper.GetTypeName(@event.GetType()),
-                        true,
-                        Serialize(@event),
-                        Serialize(
-                            new EventMetadata
-                            {
-                                ClrType = @event.GetType().FullName
-                            }
-                        )
-                    )
-            )
+            .Select(ToEventData)
             .ToArray();
 
         return _connection.AppendToStreamAsync(
@@ -81,8 +65,13 @@ public class EventStore
             preparedEvents
         );
 
-        static byte[] Serialize(object data)
-            => Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data));
+        static EventData ToEventData(object @event) =>
+            new EventData(
+                Guid.NewGuid(),
+                TypeMapper.GetTypeName(@event.GetType()),
+                true,
+                Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(data))
+            );
     }
 
     public Task AppendEvents(
@@ -151,7 +140,7 @@ private IEventStoreConnection GetEventStoreConnection(string connectionString)
 }
 ```
 
-As TCP client is not thread-safe, you had to maintain it and ensure that we don't have a race condition. You also need to handle `Closed` events to manage reconnection if it is closed. The example code could look like this:
+As TCP client connection logic is not thread-safe (`ConnectAsync` method), other operations are thread-safe. Because of that you had to maintain reconnection loigc to ensure that you won't have a race condition. You also need to handle `Closed` events to manage reconnection if it is closed. The example code could look like this:
 
 ```csharp
 public class EventStoreDBConnectionProvider
@@ -199,7 +188,7 @@ public class EventStoreDBConnectionProvider
 }
 ```
 
-In the gRPC client, you don't need to maintain it yourself. The gRPC client will handle that internally. It's enough to provide such initialisation:
+In the gRPC client, you don't need to maintain reconnection yourself. The gRPC client will handle that internally. It's enough to provide such initialisation:
 
 ```csharp
 private EventStoreClient GetEventStoreConnection(string connectionString)
@@ -297,6 +286,47 @@ public static EventStore.Client.EventData ToJsonEventData(
         "application/octet-stream"
     );
 ```
+### Optimistic concurrency
+
+Optimistic concurrency handling rules didn't change between the TCP and the gRPC clients. However, the API semantics did. You always had to provide `long` value as the expected stream version in the TCP client. You could use the value that you got from the last event of the stream or general constant values:
+- `ExpectedVersion.Any` (-2) - Disables the optimistic concurrency check.
+- `ExpectedVersion.NoStream` (-1) - Specifies the expectation that the target stream does not yet exist.
+- `ExpectedVersion.StreamExists` (-4) - Specifies the expectation that the target stream or its metadata stream has been created but does not expect the stream to be at a specific event number.
+
+In the gRPC client, we aligned typing and naming around the optimistic concurrency checks:
+- we found that the `ExpectedVersion` word is not precise. It's not precisely stating what we are versioning and may be confused with the, e.g. event schema version. In the gRPC client, we're using the `ExpectedRevision` term instead.
+- as stream revision cannot be a negative number, the type was changed from `long` to `ulong`,
+- to reduce the chance of accidentally providing the wrong revision value, we created a dedicated type: `StreamState`. It has `Any`, `NoStream`, `StreamsExists` values.
+
+If you had wrapper methods similar to [presented above](#migration-strategies). You'd need to update it to:
+
+```csharp{3-4,12-13,24-25}
+    public Task AppendEvents(
+        string streamName,
+-       long version,
++       ulong version
+        params object[] events
+    )
+    {
+        var preparedEvents = events
+            .Select(ToEventData)
+            .ToArray();
+
+-       return _connection.AppendToStreamAsync(
++       return _client.AppendToStreamAsync(
+            streamName,
+            version,
+            preparedEvents
+        );
+    }
+
+    public Task AppendEvents(
+        string streamName,
+        params object[] events
+    )
+-        => AppendEvents(streamName, ExpectedVersion.Any, events);
++        => AppendEvents(streamName, StreamState.Any, events);
+```
 
 ### Transactions
 
@@ -336,10 +366,9 @@ public class EventStoreDBUnitOfWork
         uncommittedEvents.AddRange(eventData);
 }
 ```
-## Optimistic concurrency
 
 
 ## Reading Events
 
 ### Serialisation
-To make the events processing more efficient, the gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array. 
+The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. 
