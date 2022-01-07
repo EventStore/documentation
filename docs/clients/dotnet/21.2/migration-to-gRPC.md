@@ -1,6 +1,6 @@
 # Migration to gRCP Client
 
-TCP client is considered legacy. We recommend migrating to the gRPC client. This document outlines the needed steps.
+TCP client is considered legacy. We recommend migrating to the gRPC client. This document outlines the needed steps. Check also the [gRPC documentation](/clients/grpc/) for more details on how to use it.
 
 ## Update the target Framework
 
@@ -218,10 +218,12 @@ services.AddSingleton(client);
 ```
 
 ### Connection String
-TODO
+For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. You can use [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment.
 
 ## Security
-TODO
+EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use insecure connection by providing `tls=false` connection string param, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on the insecure connection.
+
+Read more in [database security docs](/server/v21.10/security/).
 
 ## Appending events
 
@@ -515,9 +517,9 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 
 ### Serialisation
 
-The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. To support that you need to slightly modify your deserialisation logic:
+The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. To support that, you need to modify your deserialisation logic slightly:
 
-```csharp{5-6}
+```csharp{4-5}
   object Deserialize(this ResolvedEvent resolvedEvent)
   {
       var dataType = TypeMapper.GetType(resolvedEvent.Event.EventType);
