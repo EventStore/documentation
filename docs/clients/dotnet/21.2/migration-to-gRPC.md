@@ -38,7 +38,7 @@ To use the gRPC client, you need to replace the TPC client package (`EventStore.
 
 You may also consider step by step migration:
 - adding gRPC client and keeping TCP one,
-- gradually replacing usages,
+- gradually replacing usages, e.g. start with events appends and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
 - removing TCP client package reference as the last step.
 
 You may also consider wrapping common logic into extension methods or repository classes. Then you can replace the inner implementations, keeping usages the same. It may be disputable if wrapping the client logic is the best practice, but it can certainly ease the migration effort.
@@ -220,7 +220,7 @@ services.AddSingleton(client);
 ### Connection String
 TODO
 
-### Security
+## Security
 TODO
 
 ## Appending events
@@ -382,7 +382,158 @@ public class EventStoreDBUnitOfWork
 
 ## Reading Events
 
+### Read direction
+
+TCP Client have dedicated methods for reading events in the specific direction: 
+- `ReadStreamEventsForwardAsync`,
+- `ReadStreamEventsBackwardAsync`,
+- `ReadAllEventsForwardAsync`,
+- `ReadStreamEventsBackwardAsync`.
+
+ In the gRPC client, we unified those methods into methods with the direction parameter:
+- `ReadStreamAsync`,
+- `ReadAllAsync`.
+
+To read stream forwards, use:
+
+```csharp
+await using var readResult = client.ReadStreamAsync(
+    Direction.Forwards,
+    streamName,
+    StreamPosition.Start
+);
+```
+
+To read stream backwards, use: 
+
+```csharp
+await using var readResult = client.ReadStreamAsync(
+    Direction.Backwards,
+    streamName,
+    StreamPosition.End
+);
+```
+
+Accordingly, to read the `$all` stream forwards, use:
+
+```csharp
+await using var readResult = client.ReadAllAsync(
+    Direction.Forwards,
+    streamName,
+    Position.Start
+);
+```
+
+and to  the `$all` stream backwards:
+
+```csharp
+await using var readResult = client.ReadAllAsync(
+    Direction.Backwards,
+    streamName,
+    Position.End
+);
+```
+
+### Read positions
+
+Both TCP and gRPC clients allow reading the stream from a specific position (representing the location of the particular event in the stream). We decided to make positions more explicit accordingly to the stream revision changes in [appending new events](#appending-events). 
+
+We expanded a `StreamPosition` class that centralises stream position handling. It still has a `Start` and an `End` constant representing the logical stream's position. However, they return no longer `long` values but `StreamPosition` class instance. We replaced `long` values with `ulong` as stream position is always positive.
+
+`StreamPosition` class has an overloaded operator for `ulong` value assignment. 
+
+```csharp
+StreamPosition streamPosition = 100L;
+```
+
+You can also convert it from the `StreamRevision`:
+
+```csharp
+var streamPosition = StreamPosition.FromStreamRevision(streamRevision);
+```
+
+For reading from `$all`, the TCP Client has already the `Position` class. gRPC client also has it, but using `ulong` instead of `long` for commit and prepare positions.
+
+### Read result
+
+TCP Client requires paging through the results. You must provide the maximum number of events you want to read in the single read call. In the gRPC client, this is optional. By default, it will try to read all events. To make it efficient, read methods return [IAsyncEnumerable](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8). Which means that it won't load the whole stream at once but iterate sequentially, reducing the memory pressure.
+
+Instead of doing paging like that in TCP client:
+
+```csharp
+public async Task<IEnumerable<object>> LoadEvents(string stream)
+{
+    const int pageSize = 4096;
+
+    var start  = 0;
+    var events = new List<object>();
+
+    do
+    {
+        var page = await _connection.ReadStreamEventsForwardAsync(
+            stream, start, pageSize, true
+        );
+
+        if (page.Status == SliceReadStatus.StreamNotFound)
+            throw new ArgumentOutOfRangeException(
+                nameof(stream), $"Stream '{stream}' was not found"
+            );
+
+        events.AddRange(
+            page.Events.Select(Deserialize)
+        );
+        if (page.IsEndOfStream) break;
+
+        start += pageSize;
+    } while (true);
+
+    return events;
+}
+```
+
+You can simplify that in the gRPC client into:
+
+```csharp
+public async Task<IEnumerable<object>> LoadEvents(string stream)
+{
+    await using var readResult = _client.ReadStreamAsync(
+        Direction.Forwards,
+        stream,
+        StreamPosition.Start
+    );
+
+    if(await readResult.ReadState != ReadState.Ok)
+        throw new ArgumentOutOfRangeException(
+            nameof(stream), $"Stream '{stream}' was not found"
+        );
+
+    return await readResult
+        .Select(Deserialize)
+        .ToListAsync();
+}
+```
+
 ### Serialisation
-The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. 
+
+The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. To support that you need to slightly modify your deserialisation logic:
+
+```csharp{5-6}
+  object Deserialize(this ResolvedEvent resolvedEvent)
+  {
+      var dataType = TypeMapper.GetType(resolvedEvent.Event.EventType);
+-     var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data);
++     var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data.Span);
+      var data = JsonConvert.DeserializeObject(jsonData, dataType);
+      return data;
+  }
+```
 
 ## Built-in retries
+
+The gRPC client, contrary to the TCP one, does not have built-in retries for failed operations. It only does retries for the persistent subscriptions. If your codebase depends on them, you should wrap operations with your custom retry policy (e.g. using [Polly](https://github.com/App-vNext/Polly) library).
+
+## Subscriptions
+TODO
+
+## Persistent Subscriptions
+TODO
