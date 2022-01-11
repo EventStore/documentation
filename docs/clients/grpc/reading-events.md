@@ -69,22 +69,22 @@ Instead of providing the `StreamPosition` you can also provide a specific stream
 
 :::: code-group
 ::: code-group-item C#
-@[code{read-from-stream-position}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{read-from-stream-position}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{read-from-stream-position}](../go/1.0.0/samples/readingEvents.go)
+@[code{read-from-stream-position}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{read-from-stream-position}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{read-from-stream-position}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{read-from-stream-position}](../node/2.0.0/samples/reading-events.js)
+@[code{read-from-stream-position}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-position}](../rust/1.0.0/samples/reading_events.rs)
+@[code{read-from-position}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{read-from-stream-position}](../node/2.0.0/samples/reading-events.ts)
+@[code{read-from-stream-position}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -94,22 +94,22 @@ As well as being able to read a stream forwards you can also go backwards. When 
 
 :::: code-group
 ::: code-group-item C#
-@[code{reading-backwards}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{reading-backwards}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{reading-backwards}](../go/1.0.0/samples/readingEvents.go)
+@[code{reading-backwards}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{reading-backwards}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{reading-backwards}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{reading-backwards}](../node/2.0.0/samples/reading-events.js)
+@[code{reading-backwards}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{reading-backwards}](../rust/1.0.0/samples/reading_events.rs)
+@[code{reading-backwards}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{reading-backwards}](../node/2.0.0/samples/reading-events.ts)
+@[code{reading-backwards}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -127,22 +127,22 @@ For example:
 
 :::: code-group
 ::: code-group-item C#
-@[code{checking-for-stream-presence}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{checking-for-stream-presence}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{checking-for-stream-presence}](../go/1.0.0/samples/readingEvents.go)
+@[code{checking-for-stream-presence}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{checking-for-stream-presence}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{checking-for-stream-presence}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{checking-for-stream-presence}](../node/2.0.0/samples/reading-events.js)
+@[code{checking-for-stream-presence}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{checking-for-stream-presence}](../rust/1.0.0/samples/reading_events.rs)
+@[code{checking-for-stream-presence}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{checking-for-stream-presence}](../node/2.0.0/samples/reading-events.ts)
+@[code{checking-for-stream-presence}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -156,22 +156,22 @@ The simplest way to read the `$all` stream forwards is to supply a direction and
 
 :::: code-group
 ::: code-group-item C#
-@[code{read-from-all-stream}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{read-from-all-stream}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{read-from-all-stream}](../go/1.0.0/samples/readingEvents.go)
+@[code{read-from-all-stream}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{read-from-all-stream}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{read-from-all-stream}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{read-from-all-stream}](../node/2.0.0/samples/reading-events.js)
+@[code{read-from-all-stream}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-all-stream}](../rust/1.0.0/samples/reading_events.rs)
+@[code{read-from-all-stream}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{read-from-all-stream}](../node/2.0.0/samples/reading-events.ts)
+@[code{read-from-all-stream}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -192,22 +192,22 @@ When using projections to create new events you can set whether the generated ev
 
 :::: code-group
 ::: code-group-item C#
-@[code{read-from-all-stream-resolving-link-Tos}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{read-from-all-stream-resolving-link-Tos}](../go/1.0.0/samples/readingEvents.go)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{read-from-all-stream-resolving-link-Tos}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{read-from-all-stream-resolving-link-Tos}](../node/2.0.0/samples/reading-events.js)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-all-stream-resolving-link-Tos}](../rust/1.0.0/samples/reading_events.rs)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{read-from-all-stream-resolving-link-Tos}](../node/2.0.0/samples/reading-events.ts)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -220,22 +220,22 @@ The credentials used to read the data can be supplied. to be used by the subscri
 
 :::: code-group
 ::: code-group-item C#
-@[code{read-all-overriding-user-credentials}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{read-all-overriding-user-credentials}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{read-all-overriding-user-credentials}](../go/1.0.0/samples/readingEvents.go)
+@[code{read-all-overriding-user-credentials}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{read-all-overriding-user-credentials}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{read-all-overriding-user-credentials}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{read-all-overriding-user-credentials}](../node/2.0.0/samples/reading-events.js)
+@[code{read-all-overriding-user-credentials}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-all-overriding-user-credentials}](../rust/1.0.0/samples/reading_events.rs)
+@[code{read-all-overriding-user-credentials}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{read-all-overriding-user-credentials}](../node/2.0.0/samples/reading-events.ts)
+@[code{read-all-overriding-user-credentials}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -245,22 +245,22 @@ As well as being able to read a stream forwards you can also go backwards. When 
 
 :::: code-group
 ::: code-group-item C#
-@[code{read-from-all-stream-backwards}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{read-from-all-stream-backwards}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{read-from-all-stream-backwards}](../go/1.0.0/samples/readingEvents.go)
+@[code{read-from-all-stream-backwards}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{read-from-all-stream-backwards}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{read-from-all-stream-backwards}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{read-from-all-stream-backwards}](../node/2.0.0/samples/reading-events.js)
+@[code{read-from-all-stream-backwards}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{read-from-all-stream-backwards}](../rust/1.0.0/samples/reading_events.rs)
+@[code{read-from-all-stream-backwards}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{read-from-all-stream-backwards}](../node/2.0.0/samples/reading-events.ts)
+@[code{read-from-all-stream-backwards}](@grpc/reading-events.ts)
 :::
 ::::
 
@@ -276,21 +276,21 @@ All system events begin with `$` or `$$` and can be easily ignored by checking t
 
 :::: code-group
 ::: code-group-item C#
-@[code{ignore-system-events}](../dotnet/21.2/samples/reading-events/Program.cs)
+@[code{ignore-system-events}](@grpc/reading-events/Program.cs)
 :::
 ::: code-group-item Go
-@[code{ignore-system-events}](../go/1.0.0/samples/readingEvents.go)
+@[code{ignore-system-events}](@grpc/readingEvents.go)
 :::
 ::: code-group-item Java
-@[code{ignore-system-events}](../java/1.0.0/samples/reading_events/ReadingEvents.java)
+@[code{ignore-system-events}](@grpc/reading_events/ReadingEvents.java)
 :::
 ::: code-group-item JavaScript
-@[code{ignore-system-events}](../node/2.0.0/samples/reading-events.js)
+@[code{ignore-system-events}](@grpc/reading-events.js)
 :::
 ::: code-group-item Rust
-@[code{ignore-system-events}](../rust/1.0.0/samples/reading_events.rs)
+@[code{ignore-system-events}](@grpc/reading_events.rs)
 :::
 ::: code-group-item TypeScript
-@[code{ignore-system-events}](../node/2.0.0/samples/reading-events.ts)
+@[code{ignore-system-events}](@grpc/reading-events.ts)
 :::
 ::::

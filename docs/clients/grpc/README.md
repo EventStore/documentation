@@ -102,22 +102,22 @@ The code snippet below creates an event object instance, serializes it and puts 
 
 :::: code-group
 ::: code-group-item C#
-@[code{createEvent}](../dotnet/21.2/samples/quick-start/Program.cs)
+@[code{createEvent}](@grpc/quick-start/Program.cs)
 :::
 ::: code-group-item Go
-@[code{createEvent}](../go/1.0.0/samples/quickstart.go)
+@[code{createEvent}](@grpc/quickstart.go)
 :::
 ::: code-group-item Java
-@[code{createEvent}](../java/1.0.0/samples/quick_start/QuickStart.java)
+@[code{createEvent}](@grpc/quick_start/QuickStart.java)
 :::
 ::: code-group-item JavaScript
-@[code{createEvent}](../node/2.0.0/samples/get-started.js)
+@[code{createEvent}](@grpc/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{createEvent}](../rust/1.0.0/samples/quickstart.rs)
+@[code{createEvent}](@grpc/quickstart.rs)
 :::
 ::: code-group-item TypeScript
-@[code{createEvent}](../node/2.0.0/samples/get-started.ts)
+@[code{createEvent}](@grpc/get-started.ts)
 :::
 ::::
 
@@ -129,22 +129,22 @@ In the snippet below, we append the event to the stream `some-stream`.
 
 :::: code-group
 ::: code-group-item C#
-@[code{appendEvents}](../dotnet/21.2/samples/quick-start/Program.cs)
+@[code{appendEvents}](@grpc/quick-start/Program.cs)
 :::
 ::: code-group-item Go
-@[code{appendEvents}](../go/1.0.0/samples/quickstart.go)
+@[code{appendEvents}](@grpc/quickstart.go)
 :::
 ::: code-group-item Java
-@[code{appendEvents}](../java/1.0.0/samples/quick_start/QuickStart.java)
+@[code{appendEvents}](@grpc/quick_start/QuickStart.java)
 :::
 ::: code-group-item JavaScript
-@[code{appendEvents}](../node/2.0.0/samples/get-started.js)
+@[code{appendEvents}](@grpc/get-started.js)
 :::
 ::: code-group-item Rust
-@[code{appendEvents}](../rust/1.0.0/samples/quickstart.rs)
+@[code{appendEvents}](@grpc/quickstart.rs)
 :::
 ::: code-group-item TypeScript
-@[code{appendEvents}](../node/2.0.0/samples/get-started.ts)
+@[code{appendEvents}](@grpc/get-started.ts)
 :::
 ::::
 
@@ -159,7 +159,7 @@ Finally, we can read events back from the `some-stream` stream.
 @[code{readStream}](@grpc/quick-start/Program.cs)
 :::
 ::: code-group-item Go
-@[code{readStream}](../go/1.0.0/samples/quickstart.go)
+@[code{readStream}](@grpc/quickstart.go)
 :::
 ::: code-group-item Java
 @[code{readStream}](@grpc/quick_start/QuickStart.java)
