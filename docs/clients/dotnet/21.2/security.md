@@ -4,9 +4,9 @@ EventStoreDB supports basic authentication for HTTP API and TCP calls, and suppo
 
 ## Authentication and authorization
 
-EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](/clients/http-api/v5/api/README.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
+EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](@clients/http-api/v5/api/README.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
 
-Alternatively you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](/server/v21.2/security/trusted-intermediary.md).
+Alternatively you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](@server/security/trusted-intermediary.md).
 
 If you were to use the wrong user or no user when connecting to EventStoreDB, you receive a `401 Unauthorized` response for HTTP API or Exception for native client.
 
@@ -16,7 +16,7 @@ Remember to change the default password for default users and disable unused use
 
 ## Secure EventStoreDB node
 
-We recommend you run EventStoreDB over TLS to encrypt the user information. [Read this guide for instructions](../../../server/v5/security/ssl-linux.md). If you are running the clustered version you can also setup TLS for the replication protocol.
+We recommend you run EventStoreDB over TLS to encrypt the user information. [Read this guide for instructions](@server/security/configuration.md). If you are running the clustered version you can also setup TLS for the replication protocol.
 
 ::: tip
 We recommend using the latest TLS version instead of SSL [explanation available here](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0,_2.0,_and_3.0). All references to SSL in documentation or code are there for only historical reasons and will be replaced with TLS in the future.  
@@ -133,7 +133,7 @@ Task ResetPasswordAsync(
 
 Alongside authentication, EventStoreDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
 
-For more information on the structure of Access Control Lists read [Access Control Lists](../../../server/v5/security/acl.md).
+For more information on the structure of Access Control Lists read [Access Control Lists](@server/security/acl.md).
 
 ### ACL example
 

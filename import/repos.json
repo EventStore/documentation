@@ -67,7 +67,7 @@
       }
     ],
     "samplesPostprocess": [
-      "find . -name '*.md' -delete"
+      "cd <root> && find . -name '*.md' -delete"
     ]
   },
   {
@@ -92,7 +92,7 @@
       }
     ],
     "samplesPostprocess": [
-      "find . -name '*.md' -delete"
+      "cd <root> && find . -name '*.md' -delete"
     ]
   },
   {
@@ -108,7 +108,7 @@
       }
     ],
     "samplesPostprocess": [
-      "find . -name '*.md' -delete"
+      "cd <root> && find . -name '*.md' -delete"
     ]
   },
   {
@@ -120,7 +120,7 @@
     "samplesPostprocess": [
       "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
       "yarn prettier --write <root>/*.js",
-      "find . -name '*.md' -delete"
+      "cd <root> && find . -name '*.md' -delete"
     ],
     "branches": [
       {
@@ -142,7 +142,7 @@
       }
     ],
     "samplesPostprocess": [
-      "find . -name '*.md' -delete"
+      "cd <root> && find . -name '*.md' -delete"
     ]
   }
 ]

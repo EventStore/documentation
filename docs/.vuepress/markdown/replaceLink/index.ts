@@ -41,12 +41,13 @@ function replaceCrossLinks(token, env: MdEnv) {
 
     const fileVersion = getVersion(env.filePathRelative) ?? instance.latest.split("/")[1];
 
-    const newRef = fileVersion === undefined ? undefined :
+    const newRef = (fileVersion === undefined ? undefined :
         tryGetNewPath(href, fileVersion)
         ?? tryGetNewPath(href, `v${fileVersion}`)
         ?? tryGetNewPath(href, fileVersion.substring(0, fileVersion.lastIndexOf(".")))
-        ?? tryGetNewPath(href, `v${fileVersion.substring(0, fileVersion.lastIndexOf("."))}`);
-    if (newRef === undefined) {
+        ?? tryGetNewPath(href, `v${fileVersion.substring(0, fileVersion.lastIndexOf("."))}`)) ?? "/" + href.substring(1);
+    if (!checkFile(newRef)) {
+        logger.warn(fileVersion, newRef)
         logger.error(`Unable to resolve placeholder ${href.substring(0, href.indexOf("/"))} in ${href}, file ${env.filePathRelative}`);
         return;
     }

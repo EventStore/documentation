@@ -18,7 +18,7 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 ## Quick start
 
-The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for connecting to a server using [connection string](#connection-string) and [connection settings](#connection-settings), [reading events](./reading/README.md) and [appending to a stream](./appending/README.md)
+The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for connecting to a server using [connection string](#connection-string) and [connection settings](#connection-settings), [reading events](reading.md) and [appending to a stream](appending.md)
 
 :::: code-group
 ::: code-group-item JSON format event
@@ -190,7 +190,7 @@ By default, information about connection, disconnection and errors are logged, h
 
 ### User credentials
 
-EventStoreDB supports [Access Control Lists](./security/acl.md) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+EventStoreDB supports [Access Control Lists](security.md#access-control-lists) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -207,7 +207,7 @@ settingsBuilder.SetDefaultUserCredentials(credentials);
 
 The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](./security.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](security.md).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)
