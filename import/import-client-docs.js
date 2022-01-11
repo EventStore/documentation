@@ -25,20 +25,23 @@ async function safeRmdir(path) {
     }
 }
 
-async function copyDocsAndSamples(clientRepo, destinationPath, branch, repo) {
-    const destinationPathWithId = path.join(destinationPath, branch.version);
+async function copyDocsAndSamples(destinationPath, samplesPath, branch, repo) {
+    const destination = path.join(destinationPath, branch.version);
+    const samplesDest = path.join(samplesPath, repo.basePath, branch.version);
 
     let result = null;
     if (repo.docsRelativePath) {
-        await copyDocs(clientRepo, destinationPathWithId, branch.name, repo.docsRelativePath);
+        await copyDocs(repo.repo, destination, branch.name, repo.docsRelativePath);
         result = {path: branch.version, version: branch.version};
+        if (repo.postprocess)
+            await postprocess(destination, repo.postprocess)
     }
 
-    if (repo.samplesRelativePath)
-        await copySamples(clientRepo, destinationPathWithId, branch.name, repo.samplesRelativePath);
-
-    if (repo.postprocess)
-        await postprocess(destinationPathWithId, repo.postprocess)
+    if (repo.samplesRelativePath) {
+        await copyDocs(repo.repo, samplesDest, branch.name, repo.samplesRelativePath);
+        if (repo.samplesPostprocess)
+            await postprocess(samplesDest, repo.samplesPostprocess)
+    }
 
     return result;
 }
@@ -60,24 +63,21 @@ async function copyRepoFiles(repo, baseDest, branch, relativePath, subDest) {
     };
 }
 
-async function copyDocs(clientRepo, destinationPathWithId, branch, relativePath) {
-    return await copyRepoFiles(clientRepo, destinationPathWithId, branch, relativePath);
+async function copyDocs(clientRepo, destination, branch, relativePath) {
+    return await copyRepoFiles(clientRepo, destination, branch, relativePath);
 }
 
-async function copySamples(clientRepo, destinationPathWithId, branch, relativePath) {
-    return await copyRepoFiles(clientRepo, destinationPathWithId, branch, relativePath, "samples");
-}
-
-async function postprocess(destinationPathWithId, postprocess) {
-    console.info(`Post-processing code in ${destinationPathWithId}`);
+async function postprocess(destination, postprocess) {
+    console.info(`Post-processing code in ${destination}`);
     for (const rawCommand of postprocess) {
-        const command = rawCommand.replace(/<root>/g, destinationPathWithId);
+        const command = rawCommand.replace(/<root>/g, destination);
         await sh(command);
     }
 }
 
 async function processRepo(repo) {
     const repoPath = path.join("docs", repo.basePath);
+    const samplesPath = path.join("docs", "samples");
 
     const definition = [
         {
@@ -91,12 +91,7 @@ async function processRepo(repo) {
     console.info(`Processing ${repo.repo}...`);
 
     for (const branch of repo.branches) {
-        const version = await copyDocsAndSamples(
-            repo.repo,
-            repoPath,
-            branch,
-            repo,
-        );
+        const version = await copyDocsAndSamples(repoPath, samplesPath, branch, repo);
 
         if (version !== null) {
             definition[0].versions.push(version);

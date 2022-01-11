@@ -4,8 +4,10 @@ import {instance as ver} from "./lib/versioning";
 import {path} from '@vuepress/utils';
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
 import {navbar, sidebar} from "./configs";
-import {resolveMultiSamplesPath} from "./samples";
+import {resolveMultiSamplesPath} from "./lib/samples";
 import containers from "./lib/containers";
+import {replaceLinkPlugin} from "./markdown/replaceLink";
+import {linkCheckPlugin} from "./markdown/linkCheck";
 
 require('dotenv').config({path: path.join(__dirname, '..', '..', '.algolia', '.env')})
 
@@ -28,6 +30,11 @@ export default defineUserConfig<DefaultThemeOptions>({
     extendsMarkdown: md => {
         md.use(importCodePlugin, {
             handleImportPath: s => resolveMultiSamplesPath(s)
+        });
+        md.use(linkCheckPlugin);
+        // this is a quick hack, should be fixed properly to remove direct references from here
+        md.use(replaceLinkPlugin, {
+            replaceLink: (link: string, _) => link.replace("@http-api/", "/samples/clients/http-api/v5/")
         });
     },
     plugins: [
@@ -69,8 +76,7 @@ export default defineUserConfig<DefaultThemeOptions>({
     bundlerConfig: {
         viteOptions: {
             resolve: {
-                dedupe: ['vue'],
-                alias: {entries: {'vue': path.resolve(__dirname, '../../node_modules/vue')}}
+                dedupe: ['vue']
             },
         },
         vuePluginOptions: {

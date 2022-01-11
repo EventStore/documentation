@@ -45,6 +45,9 @@
         "version": "v5",
         "name": "release/oss-v5"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn shx rm -rf ./*.md"
     ]
   },
   {
@@ -62,6 +65,9 @@
         "version": "21.6",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "find . -name '*.md' -delete"
     ]
   },
   {
@@ -84,6 +90,9 @@
         "version": "1.0.0",
         "name": "trunk"
       }
+    ],
+    "samplesPostprocess": [
+      "find . -name '*.md' -delete"
     ]
   },
   {
@@ -97,6 +106,9 @@
         "version": "1.0.0",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "find . -name '*.md' -delete"
     ]
   },
   {
@@ -105,9 +117,10 @@
     "basePath": "clients/node",
     "samplesRelativePath": ["samples"],
     "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
-    "postprocess": [
-      "yarn babel <root>/samples --presets @babel/preset-typescript --retain-lines --out-dir <root>/samples --extensions .ts",
-      "yarn prettier --write <root>/samples/*.js"
+    "samplesPostprocess": [
+      "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
+      "yarn prettier --write <root>/*.js",
+      "find . -name '*.md' -delete"
     ],
     "branches": [
       {
@@ -127,6 +140,9 @@
         "version": "1.0.0",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "find . -name '*.md' -delete"
     ]
   }
 ]
