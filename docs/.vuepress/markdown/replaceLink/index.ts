@@ -13,6 +13,10 @@ interface MdEnv {
     filePathRelative: string;
 }
 
+interface resolveFunction {
+    (filename: string): string;
+}
+
 function getVersion(path: string): string | undefined {
     const ref = path.split("#")[0];
     const split = ref.split("/");
@@ -26,31 +30,35 @@ function checkFile(filepath: string): boolean {
     return fs.existsSync(filename);
 }
 
-function tryGetNewPath(href: string, version: string): string | undefined {
+function getNewPath(href: string, version: string): string {
     const placeholderPosition = href.indexOf("/");
     const base = `/${href.substring(1, placeholderPosition)}/${version}`;
     const sub = href.substring(placeholderPosition);
-
-    const result = base + sub;
-    return checkFile(result) ? result : undefined;
+    return base + sub;
 }
 
 function replaceCrossLinks(token, env: MdEnv) {
     const href = token.attrGet("href");
     if (!href.startsWith("@")) return;
 
-    const fileVersion = getVersion(env.filePathRelative) ?? instance.latest.split("/")[1];
+    const fileVersion = (getVersion(env.filePathRelative) ?? instance.latest.split("/")[1]).replace("v", "");
 
-    const newRef = ((fileVersion === undefined ? undefined :
-        tryGetNewPath(href, fileVersion)
-        ?? tryGetNewPath(href, `v${fileVersion}`)
-        ?? tryGetNewPath(href, fileVersion.substring(0, fileVersion.lastIndexOf(".")))
-        ?? tryGetNewPath(href, `v${fileVersion.substring(0, fileVersion.lastIndexOf("."))}`)) ?? "/" + href.substring(1))
-        .replace("//", "/");
+    const attemptResolve: resolveFunction[] = [
+        x => x,
+        x => `v${x}`,
+        x => x.substring(0, x.lastIndexOf(".")),
+        x => `v${x.substring(0, x.lastIndexOf("."))}`
+    ];
+    const candidates = ["/" + href.substring(1)];
+    if (fileVersion !== undefined) {
+        const versioned = attemptResolve.map(x => getNewPath(href, x(fileVersion)));
+        candidates.push(...versioned);
+    }
+    const newRef = candidates.map(x => x.replace("//", "/")).find(x => checkFile(x));
 
-    if (!checkFile(newRef)) {
-        logger.warn(fileVersion, newRef)
+    if (newRef === undefined) {
         logger.error(`Unable to resolve placeholder ${href.substring(0, href.indexOf("/"))} in ${href}, file ${env.filePathRelative}`);
+        logger.error("tried", candidates.join(", "))
         return;
     }
     token.attrSet("href", newRef);
