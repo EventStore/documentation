@@ -1,4 +1,4 @@
-# Migration to gRCP Client
+# Migration to gRPC Client
 
 TCP client is considered legacy. We recommend migrating to the gRPC client. This document outlines the needed steps. Check also the [gRPC documentation](/clients/grpc/) for more details on how to use it.
 
@@ -41,7 +41,7 @@ You may also consider step by step migration:
 - gradually replacing usages, e.g. start with events appends and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
 - removing TCP client package reference as the last step.
 
-You may also consider wrapping common logic into extension methods or repository classes. Then you can replace the inner implementations, keeping usages the same. It may be disputable if wrapping the client logic is the best practice, but it can certainly ease the migration effort.
+You may also consider wrapping common logic into extension methods or repository classes. Adding a temporary wrapping layer lets us centralise and isolate the changes we'll be performing during the migration. Thanks to that, you can replace the inner implementations, keeping usages the same. Read more in Martin Fowler's article [An example of preparatory refactoring](https://martinfowler.com/articles/preparatory-refactoring-example.html).
 
 Sample wrapper for the TCP client may look, e.g.:
 
@@ -133,7 +133,7 @@ public class EventStore
 
 Both TCP and gRPC clients are managing the reconnections. That's the reason why it should be registered as a single instance in the application. 
 
-TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it in asynchronous mode risking deadlocks.
+TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it in the asynchronous way or risk deadlocks.
 
 ```csharp
 private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
@@ -218,7 +218,7 @@ services.AddSingleton(client);
 ```
 
 ### Connection String
-For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. You can use [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment.
+For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. You can use the [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment.
 
 ## Security
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use insecure connection by providing `tls=false` connection string param, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on the insecure connection.
@@ -532,7 +532,65 @@ The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the 
 
 ## Built-in retries
 
-The gRPC client, contrary to the TCP one, does not have built-in retries for failed operations. It only does retries for the persistent subscriptions. If your codebase depends on them, you should wrap operations with your custom retry policy (e.g. using [Polly](https://github.com/App-vNext/Polly) library).
+The gRPC client handles reconnections internally. But contrary to the TCP one, it does not have built-in retries for failed operations. It only does retries for the persistent subscriptions. If your codebase depends on them, you should wrap operations with your custom retry policy (e.g. using [Polly](https://github.com/App-vNext/Polly) library).
+
+If you were using the following configuration:
+
+```csharp
+var settings = ConnectionSettings.Create()
+    .FailOnNoServerResponse()
+    .KeepReconnecting()
+    .SetOperationTimeoutTo(TimeSpan.FromSeconds(5))
+    .LimitRetriesForOperationTo(7);
+
+var connection = 
+    EventStoreConnection.Create(
+        connectionString,
+	settings 
+);
+```
+
+You can replace it with a retry policy using Polly:
+
+```csharp
+public static class RetryScope
+{
+    private static readonly AsyncPolicyWrap RetryPolicy
+        = Policy
+            .Handle<Exception>()
+            .RetryAsync(7)
+            .WrapAsync(Policy.TimeoutAsync(5));
+
+    public static Task ExecuteAsync(
+        this EventStoreClient eventStore,
+        Func<EventStoreClient, CancellationToken, Task> action,
+        CancellationToken cancellationToken
+    ) =>
+        RetryPolicy.ExecuteAsync(ct => action(eventStore, ct), cancellationToken);
+
+    public static Task<TResult> ExecuteAsync<TResult>(
+        this EventStoreClient eventStore,
+        Func<EventStoreClient, CancellationToken, Task<TResult>> action,
+        CancellationToken cancellationToken
+    ) =>
+        RetryPolicy.ExecuteAsync(ct => action(eventStore, ct), cancellationToken);
+}
+```
+
+and use it, e.g. as:
+
+```csharp
+public static Task<IWriteResult> AppendWithRetry(
+        this EventStoreClient eventStore,
+        string streamName,
+        StreamRevision expectedRevision,
+        IEnumerable<EventData> eventData,
+        CancellationToken cancellationToken
+    ) =>
+        eventStore.ExecuteAsync(
+            (es, ct) => es.AppendToStreamAsync(streamName, expectedRevision, eventData, cancellationToken: ct),
+            cancellationToken);
+```
 
 ## Subscriptions
 TODO
