@@ -38,6 +38,12 @@ For each node of a cluster, the memory usage is measured several times a minute.
 
 If this happens consider increasing the size of the instance type for the cluster.
 
+#### Cluster consensus
+
+Every node on a cluster has it's gossip status queried twice each minute. An issue is opened if either the query fails or if the reported gossip state for each node is not identical on a multi-node cluster.
+
+The issue closes when the gossip status again returns expected values.
+
 ### Notifications
 
 Notifications represent noteworthy events which occur within the Event Store Cloud. Below you can find notifications examples.
