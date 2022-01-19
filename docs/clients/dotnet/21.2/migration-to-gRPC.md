@@ -557,7 +557,7 @@ var settings = ConnectionSettings.Create()
     .LimitRetriesForOperationTo(7);
 
 var tcpConnection = EventStoreConnection.Create(
-    connectionString,
+        connectionString,
 	settings 
 );
 ```
@@ -594,8 +594,8 @@ and use it, e.g. as:
 ```csharp
 public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
     this EventStoreClient grpcClient,
-    string streamName,
-    CancellationToken cancellationToken
+        string streamName,
+        CancellationToken cancellationToken
 ) =>
     grpcClient.ExecuteAsync(
         async (es, ct) =>
@@ -615,7 +615,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
             return await readResult
                 .ToListAsync(ct);
         },
-        cancellationToken);
+            cancellationToken);
 ```
 
 ::: warning
@@ -624,6 +624,248 @@ You should be careful in defining the retry policy. Not all operations are idemp
 
 ## Subscriptions
 TODO
+## Catch-up Subscriptions
+
+We unified catch-up subscriptions API in the gRPC client. In TCP client, you have multiple methods for subscribing to EventStoreDB, e.g. `SubscribeToStreamAsync`, `SubscribeToStreamFrom`, `FilteredSubscribeToAllAsync` etc. Now you have two main options:
+- subscribing to a single stream using `SubscribeToStreamAsync`,
+- subscribing to the `$all` stream using `SubscribeToAllAsync`.
+
+Both methods include overloads for specific configurations and optional parameters with sane defaults. The recommendation is to use the default settings and modify them when needed.
+
+### Positions
+
+As for other operations, we aligned subscriptions checkpoints/positions handling. Accordingly, as for [reading](#reading-events) instead of using nullable long value, we introduced classes:
+- `StreamPosition` for a single stream subscription,
+- `Position` for the `$all` stream.
+
+Each subscription method has an overload taking either a specific position or the default one (from the start). For instance, if you were previously using a unified approach:
+
+```csharp
+long? streamPosition = GetLastCheckpoint();
+
+_connection.SubscribeToStreamFrom(
+    streamName,
+    streamPosition,
+    false,
+    EventAppeared,
+    SubscriptionDropped
+);
+```
+
+Now you'd need to call different overloads:
+
+```csharp
+StreamPosition? streamPosition = GetLastCheckpoint();
+
+if (streamPosition.HasValue)
+{
+    await _client.SubscribeToStreamAsync(
+        streamName,
+        streamPosition.Value,
+        EventAppeared,
+        false,
+        SubscriptionDropped
+    );
+}
+
+await _client.SubscribeToStreamAsync(
+    streamName,
+    EventAppeared,
+    false,
+    SubscriptionDropped
+);
+```
+
+Accordingly, you need to perform the same change for subscription to the `$all` stream.
+
+```csharp
+long? position = GetLastCheckpoint();
+
+_connection.SubscribeToAllFrom(
+    position,
+    false,
+    EventAppeared,
+    SubscriptionDropped
+);
+```
+
+Now you'd need to call different overloads:
+
+```csharp
+Position? position = GetLastCheckpoint();
+
+if (streamPosition.HasValue)
+{
+    await _client.SubscribeToAllAsync(
+        position.Value,
+        EventAppeared,
+        false,
+        SubscriptionDropped
+    );
+}
+
+await _client.SubscribeToAllAsync(
+    EventAppeared,
+    false,
+    SubscriptionDropped
+);
+```
+
+### Events filtering
+
+EventStoreDB allows you to filter the events whilst you subscribe to the `$all` stream so that you only receive the events that you care about. TCP client provides that option via `FilteredSubscribeToAll` method. As was mentioned above, this method was unified with `SubscribeToAllAsync`. 
+
+Thus, instead of such call in TCP:
+
+```csharp
+var filter = Filter.ExcludeSystemEvents;
+var filteredSettings = CatchUpSubscriptionFilteredSettings.Default;
+
+_connection.FilteredSubscribeToAllFrom(
+    position,
+    filter,
+    filteredSettings,
+    EventAppeared,
+    LiveProcessingStarted,
+    SubscriptionDropped
+);
+```
+
+You need to use:
+
+```csharp
+var filter = 
+    new SubscriptionFilterOptions (EventTypeFilter.ExcludeSystemEvents())
+
+await _client.SubscribeToAllAsync(
+    position,
+    EventAppeared,
+    false,
+    SubscriptionDropped,
+    filter
+);
+```
+
+`CatchUpSubscriptionFilteredSettings` and `Filter` classes from the TCP client were merged into single `SubscriptionFilterOptions` in gRPC.
+
+Read more in the [gRPC server-side filtering docs](/clients/grpc/subscriptions.md#server-side-filtering).
+
+### Knowing when live processing started
+
+TCP client provides the possibility to provide a handler that will be called when live processing starts:
+
+```csharp{6}
+connection.SubscribeToStreamFrom(
+    streamName,
+    streamPosition,
+    false,
+    EventAppeared,
+    subscription => Console.WriteLine("Processing live"),
+    SubscriptionDropped
+}
+```
+
+gRPC clients do not provide such a feature. However, you can handle that by comparing the current stream (or the `$all` stream) position with the position of the last received event from the subscription. You also need to define threshold as if the system is alive, then new events will constantly appear, and you might not get into the situation where you're fully caught up (especially for the `$all` stream).
+
+You can perform gap measurement in a way as below:
+
+```csharp
+public static class GapMeasurement
+{
+    public static async Task<ulong> GetStreamSubscriptionGap
+    (
+        this EventStoreClient eventStore,
+        string streamName,
+        StreamPosition subscriptionLastPosition,
+        CancellationToken cancellationToken
+    )
+    {
+        var getCurrentLastEvent = await eventStore
+            .ReadStreamAsync(
+                Direction.Backwards,
+                streamName,
+                StreamPosition.End,
+                1,
+                resolveLinkTos: false,
+                cancellationToken: cancellationToken
+            ).LastAsync(cancellationToken);
+
+        var currentLastPosition = getCurrentLastEvent.Event.EventNumber.ToUInt64();
+
+        return subscriptionLastPosition - currentLastPosition;
+    }
+
+    public static async Task<ulong> GetAllStreamSubscriptionGap
+    (
+        this EventStoreClient eventStore,
+        Position subscriptionLastPosition,
+        CancellationToken cancellationToken
+    )
+    {
+        var getCurrentLastEvent = await eventStore
+            .ReadAllAsync(
+                Direction.Backwards,
+                Position.End,
+                1,
+                resolveLinkTos: false,
+                cancellationToken: cancellationToken
+            ).LastAsync(cancellationToken);
+
+        var currentLastPosition = getCurrentLastEvent.Event.Position.CommitPosition;
+
+        return subscriptionLastPosition.CommitPosition - currentLastPosition;
+    }
+}
+```
+
+Having the gap calculated, you can verify if it's below the defined threshold:
+
+```csharp
+private const uint SubscriptionThreshold = 10;
+
+public static async Task<bool> IsLive(Func<Task<ulong>> getSubscriptionGap)
+{
+    var subscriptionGap = await getSubscriptionGap();
+
+    return subscriptionGap < SubscriptionThreshold;
+}
+
+```
+
+You can use such logic in an:
+- event appeared callback,
+- [checkpoint is reached](/clients/grpc/subscriptions.md#checkpointing) if you're using a filtered subscription. 
+
+You may also consider some performance improvements like checking once per a few events or using cache for reads.
+
+### Resolving linked events
+
+[Projections in EventStoreDB](/server/v21.10/projections/) let you append new events or link existing events to streams. Links won't contain the original event data. ESDB can resolve it automatically depending on the value you passed to the operation call.
+
+TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
+
+To do that, you need to pass `true` as `resolveLinkTos` param's value explicitly, e.g. for the regular stream:
+
+```csharp{4}
+await _client.SubscribeToStreamAsync(
+    streamName,
+    EventAppeared,
+    true,
+    SubscriptionDropped
+);
+````
+
+or for the `$all` stream:
+
+```csharp{3}
+await _client.SubscribeToAllAsync(
+    EventAppeared,
+    true,
+    SubscriptionDropped
+);
+```
+
+Read more in the [resolve link-to's gRPC docs](/clients/grpc/subscriptions.md#resolving-link-to-s).
 
 ## Persistent subscriptions
 TODO
