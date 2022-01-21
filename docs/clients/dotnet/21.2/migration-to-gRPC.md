@@ -56,10 +56,10 @@ Sample wrapper for the TCP client may look, e.g.:
 ```csharp
 public class EventStore
 {
-    readonly IEventStoreConnection _connection;
+    readonly IEventStoreConnection tcpConnection;
 
-    public EventStore(IEventStoreConnection connection)
-        => _connection = connection;
+    public EventStore(IEventStoreConnection tcpConnection)
+        => this.tcpConnection = tcpConnection;
 
     public Task AppendEvents(
         string streamName,
@@ -71,7 +71,7 @@ public class EventStore
             .Select(ToEventData)
             .ToArray();
 
-        return _connection.AppendToStreamAsync(
+        return tcpConnection.AppendToStreamAsync(
             streamName,
             version,
             preparedEvents
@@ -101,7 +101,7 @@ public class EventStore
 
         do
         {
-            var page = await _connection.ReadStreamEventsForwardAsync(
+            var page = await tcpConnection.ReadStreamEventsForwardAsync(
                 stream, start, pageSize, true
             );
 
@@ -131,7 +131,7 @@ public class EventStore
 
     public async Task<bool> StreamExists(string stream)
     {
-        var result = await _connection.ReadEventAsync(stream, 1, false);
+        var result = await tcpConnection.ReadEventAsync(stream, 1, false);
         return result.Status != EventReadStatus.NoStream;
     }
 }
@@ -146,9 +146,9 @@ TCP client requires calling the `ConnectAsync` method at least once to initiate 
 ```csharp
 private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
 {
-    var connection = EventStoreConnection.Create(connectionString);
-    await connection.ConnectAsync();
-    return connection;
+    var tcpConnection = EventStoreConnection.Create(connectionString);
+    await tcpConnection.ConnectAsync();
+    return tcpConnection;
 }
 ```
 
@@ -161,7 +161,7 @@ Sample code with reconnections could look like this:
 ```csharp
 private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
 {
-    var connection = EventStoreConnection.Create(
+    var tcpConnection = EventStoreConnection.Create(
         connectionString,
         ConnectionSettings.Create()
             .FailOnNoServerResponse()
@@ -170,8 +170,8 @@ private async Task<IEventStoreConnection> GetEventStoreConnection(string connect
             .LimitAttemptsForOperationTo(7)
             .LimitRetriesForOperationTo(7)
     );
-    await connection.ConnectAsync();
-    return connection;
+    await tcpConnection.ConnectAsync();
+    return tcpConnection;
 }
 ```
 
@@ -195,9 +195,9 @@ public class EventStore
             .Select(ToEventData)
             .ToArray();
 
-        var connection = await connect;
+        var tcpConnection = await connect;
         
-        return await connection.AppendToStreamAsync(
+        return await tcpConnection.AppendToStreamAsync(
             streamName,
             version,
             preparedEvents
@@ -340,8 +340,8 @@ If you had wrapper methods similar to [presented above](#migration-strategies). 
             .Select(ToEventData)
             .ToArray();
 
--       return _connection.AppendToStreamAsync(
-+       return _client.AppendToStreamAsync(
+-       return tcpConnection.AppendToStreamAsync(
++       return grpcClient.AppendToStreamAsync(
             streamName,
             version,
             preparedEvents
@@ -365,25 +365,25 @@ A transaction can be long-lived, and opening it for a stream doesn't lock it. An
 ```csharp
 public class EventStoreDBUnitOfWork
 {
-    private readonly EventStoreClient eventStore;
+    private readonly EventStoreClient grpcClient;
     private readonly List<EventData> uncommittedEvents = new();
     private readonly string streamName;
     private readonly StreamRevision expectedStreamRevision;
 
-    private EventStoreDBUnitOfWork(EventStoreClient eventStore, string streamName,
+    private EventStoreDBUnitOfWork(EventStoreClient grpcClient, string streamName,
         StreamRevision expectedStreamRevision)
     {
-        this.eventStore = eventStore;
+        this.grpcClient = grpcClient;
         this.streamName = streamName;
         this.expectedStreamRevision = expectedStreamRevision;
     }
 
-    public static EventStoreDBUnitOfWork Begin(EventStoreClient eventStore, string streamName,
+    public static EventStoreDBUnitOfWork Begin(EventStoreClient grpcClient, string streamName,
         StreamRevision expectedStreamRevision) =>
-        new(eventStore, streamName, expectedStreamRevision);
+        new(grpcClient, streamName, expectedStreamRevision);
 
     public Task<IWriteResult> Commit(CancellationToken cancellationToken = default)
-        => eventStore.AppendToStreamAsync(
+        => grpcClient.AppendToStreamAsync(
             streamName,
             expectedStreamRevision,
             uncommittedEvents.ToArray(),
@@ -413,7 +413,7 @@ TCP Client have dedicated methods for reading events in the specific direction:
 To read stream forwards, use:
 
 ```csharp
-await using var readResult = client.ReadStreamAsync(
+await using var readResult = grpcClient.ReadStreamAsync(
     Direction.Forwards,
     streamName,
     StreamPosition.Start
@@ -423,7 +423,7 @@ await using var readResult = client.ReadStreamAsync(
 To read stream backwards, use: 
 
 ```csharp
-await using var readResult = client.ReadStreamAsync(
+await using var readResult = grpcClient.ReadStreamAsync(
     Direction.Backwards,
     streamName,
     StreamPosition.End
@@ -433,7 +433,7 @@ await using var readResult = client.ReadStreamAsync(
 Accordingly, to read the `$all` stream forwards, use:
 
 ```csharp
-await using var readResult = client.ReadAllAsync(
+await using var readResult = grpcClient.ReadAllAsync(
     Direction.Forwards,
     streamName,
     Position.Start
@@ -443,7 +443,7 @@ await using var readResult = client.ReadAllAsync(
 and to  the `$all` stream backwards:
 
 ```csharp
-await using var readResult = client.ReadAllAsync(
+await using var readResult = grpcClient.ReadAllAsync(
     Direction.Backwards,
     streamName,
     Position.End
@@ -487,7 +487,7 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 
     do
     {
-        var page = await _connection.ReadStreamEventsForwardAsync(
+        var page = await tcpConnection.ReadStreamEventsForwardAsync(
             stream, readFrom, pageSize, true
         );
 
@@ -512,7 +512,7 @@ You can simplify that in the gRPC client into:
 ```csharp
 public async Task<IEnumerable<object>> LoadEvents(string stream)
 {
-    await using var readResult = _client.ReadStreamAsync(
+    await using var readResult = grpcClient.ReadStreamAsync(
         Direction.Forwards,
         stream,
         StreamPosition.Start
@@ -557,7 +557,7 @@ var settings = ConnectionSettings.Create()
     .SetOperationTimeoutTo(TimeSpan.FromSeconds(5))
     .LimitRetriesForOperationTo(7);
 
-var connection = EventStoreConnection.Create(
+var tcpConnection = EventStoreConnection.Create(
     connectionString,
 	settings 
 );
@@ -575,18 +575,18 @@ public static class RetryScope
             .WrapAsync(Policy.TimeoutAsync(5));
 
     public static Task ExecuteAsync(
-        this EventStoreClient eventStore,
+        this EventStoreClient grpcClient,
         Func<EventStoreClient, CancellationToken, Task> action,
         CancellationToken cancellationToken
     ) =>
-        RetryPolicy.ExecuteAsync(ct => action(eventStore, ct), cancellationToken);
+        RetryPolicy.ExecuteAsync(ct => action(grpcClient, ct), cancellationToken);
 
     public static Task<TResult> ExecuteAsync<TResult>(
-        this EventStoreClient eventStore,
+        this EventStoreClient grpcClient,
         Func<EventStoreClient, CancellationToken, Task<TResult>> action,
         CancellationToken cancellationToken
     ) =>
-        RetryPolicy.ExecuteAsync(ct => action(eventStore, ct), cancellationToken);
+        RetryPolicy.ExecuteAsync(ct => action(grpcClient, ct), cancellationToken);
 }
 ```
 
@@ -594,11 +594,11 @@ and use it, e.g. as:
 
 ```csharp
 public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
-    this EventStoreClient eventStore,
+    this EventStoreClient grpcClient,
     string streamName,
     CancellationToken cancellationToken
 ) =>
-    eventStore.ExecuteAsync(
+    grpcClient.ExecuteAsync(
         async (es, ct) =>
         {
             await using var readResult = es.ReadStreamAsync(
