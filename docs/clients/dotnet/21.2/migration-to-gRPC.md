@@ -1,6 +1,14 @@
 # Migration to gRPC Client
 
-TCP client is considered legacy. We recommend migrating to the gRPC client. This document outlines the needed steps. Check also the [gRPC documentation](/clients/grpc/) for more details on how to use it.
+TCP client is considered legacy. We recommend migrating to the gRPC client. 
+
+We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, back-pressure etc., instead of building the custom implementations. 
+
+As gRPC is a multi-platform and widely adopted standard, it enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJs, Rust.
+
+TCP client will still be getting the necessary bug fixes, but new database features will be only delivered for the gRPC client (e.g. persistent subscription to `$all`).
+
+Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Check also the [gRPC documentation](/clients/grpc/) for more details on how to use it.
 
 ## Update the target Framework
 
@@ -233,6 +241,10 @@ There are minor changes to the `EventData` signature:
 - namespaces was changed from `EventStore.ClientAPI` to `EventStore.Client`
 - Event id requires using the `UUID` class instead of `Guid`. We adopted the [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) standard to provide unified behaviour between the gRPC clients.
 - we are allowed to provide content type. It enables more advanced serialisation scenarios (e.g., using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
+
+::: note
+In the samples below, I'm using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](/clients/grpc/) for samples using `System.Text.Json.
+:::
 
 For the JSON Event Data, you have to change TCP client logic from:
 
