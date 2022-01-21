@@ -226,7 +226,9 @@ services.AddSingleton(client);
 ```
 
 ### Connection string
-For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. You can use the [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment.
+For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by the step migration. 
+
+You can use the [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment. If you connect to your database, it'll automatically grab the config and generate a connection string.
 
 ## Security
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use insecure connection by providing `tls=false` connection string param, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on the insecure connection.
@@ -591,7 +593,7 @@ public static class RetryScope
 and use it, e.g. as:
 
 ```csharp
-public static Task<List<ResolvedEvent>> ReadAllStreamsEventsWithRetry(
+public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
     this EventStoreClient eventStore,
     string streamName,
     CancellationToken cancellationToken
