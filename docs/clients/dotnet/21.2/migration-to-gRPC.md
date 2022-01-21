@@ -591,20 +591,34 @@ public static class RetryScope
 and use it, e.g. as:
 
 ```csharp
-public static Task<IWriteResult> AppendWithRetry(
-        this EventStoreClient eventStore,
-        string streamName,
-        StreamRevision expectedRevision,
-        IEnumerable<EventData> eventData,
-        CancellationToken cancellationToken
-    ) =>
-        eventStore.ExecuteAsync(
-            (es, ct) => es.AppendToStreamAsync(streamName, expectedRevision, eventData, cancellationToken: ct),
-            cancellationToken);
+public static Task<List<ResolvedEvent>> ReadAllStreamsEventsWithRetry(
+    this EventStoreClient eventStore,
+    string streamName,
+    CancellationToken cancellationToken
+) =>
+    eventStore.ExecuteAsync(
+        async (es, ct) =>
+        {
+            await using var readResult = es.ReadStreamAsync(
+                Direction.Forwards,
+                streamName,
+                StreamPosition.Start,
+                cancellationToken: ct
+            );
+
+            if(await readResult.ReadState != ReadState.Ok)
+                throw new ArgumentOutOfRangeException(
+                    nameof(streamName), $"Stream '{streamName}' was not found"
+                );
+
+            return await readResult
+                .ToListAsync(ct);
+        },
+        cancellationToken);
 ```
 
 ::: warning
-You should be careful in defining the retry policy. Not all operations are by default idempotent. E.g. if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g. there is no point in retrying `StreamDeleted` as the stream won't reappear. 
+You should be careful in defining the retry policy. Not all operations are by default idempotent. Reads are, but for instance, if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g. there is no point in retrying `StreamDeleted` as the stream won't reappear. 
 :::
 
 ## Subscriptions
