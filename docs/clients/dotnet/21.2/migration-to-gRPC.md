@@ -1,4 +1,4 @@
-# Migration to gRPC Client
+# Migration to gRPC client
 
 TCP client is considered legacy. We recommend migrating to the gRPC client. 
 
@@ -137,7 +137,7 @@ public class EventStore
 }
 ```
 
-## Differences in Connection Management
+## Differences in connection management
 
 Both TCP and gRPC clients are managing the reconnections. That's the reason why it should be registered as a single instance in the application. 
 
@@ -225,7 +225,7 @@ var client = GetEventStoreConnection(Configuration["eventStore:connectionString"
 services.AddSingleton(client);
 ```
 
-### Connection String
+### Connection string
 For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. You can use the [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment.
 
 ## Security
@@ -479,13 +479,14 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 {
     const int pageSize = 4096;
 
-    var start  = 0;
+    var readFrom  = 0;
     var events = new List<object>();
+    StreamEventsSlice page;
 
     do
     {
         var page = await _connection.ReadStreamEventsForwardAsync(
-            stream, start, pageSize, true
+            stream, readFrom, pageSize, true
         );
 
         if (page.Status == SliceReadStatus.StreamNotFound)
@@ -496,10 +497,9 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
         events.AddRange(
             page.Events.Select(Deserialize)
         );
-        if (page.IsEndOfStream) break;
 
-        start += pageSize;
-    } while (true);
+        readFrom = stream.NextEventNumber;
+    } while (!page.IsEndOfStream);
 
     return events;
 }
@@ -516,7 +516,7 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
         StreamPosition.Start
     );
 
-    if(await readResult.ReadState != ReadState.Ok)
+    if (await readResult.ReadState != ReadState.Ok)
         throw new ArgumentOutOfRangeException(
             nameof(stream), $"Stream '{stream}' was not found"
         );
@@ -529,7 +529,7 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 
 ### Serialisation
 
-The gRPC client uses `ReadOnlyMemory<byte>` instead of `byte` array to make the events processing more efficient. To support that, you need to modify your deserialisation logic slightly:
+The gRPC client uses `ReadOnlyMemory<byte>` instead of byte array to make the events processing more efficient. To support that, you need to modify your deserialisation logic slightly:
 
 ```csharp{4-5}
   object Deserialize(this ResolvedEvent resolvedEvent)
@@ -555,9 +555,8 @@ var settings = ConnectionSettings.Create()
     .SetOperationTimeoutTo(TimeSpan.FromSeconds(5))
     .LimitRetriesForOperationTo(7);
 
-var connection = 
-    EventStoreConnection.Create(
-        connectionString,
+var connection = EventStoreConnection.Create(
+    connectionString,
 	settings 
 );
 ```
@@ -604,8 +603,12 @@ public static Task<IWriteResult> AppendWithRetry(
             cancellationToken);
 ```
 
+::: warning
+You should be careful in defining the retry policy. Not all operations are by default idempotent. E.g. if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g. there is no point in retrying `StreamDeleted` as the stream won't reappear. 
+:::
+
 ## Subscriptions
 TODO
 
-## Persistent Subscriptions
+## Persistent subscriptions
 TODO
