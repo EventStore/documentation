@@ -18,7 +18,7 @@ If you were using it in the .NET Standard library, you have to update it to one 
 - .NET 6 (`net6.0`),
 - .NET 5 (`net5.0`),
 - .NET Core 3.1 (`netcoreapp3.1`),
-- .NETFramework 4.8 (`net48`)
+- .NET Framework 4.8 (`net48`)
 
 We recommend using the latest .NET framework version, so .NET 6.
 
@@ -49,7 +49,7 @@ You may also consider step by step migration:
 - gradually replacing usages, e.g. start with events appends and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
 - removing TCP client package reference as the last step.
 
-You may also consider wrapping common logic into extension methods or repository classes. Adding a temporary wrapping layer lets us centralise and isolate the changes we'll be performing during the migration. Thanks to that, you can replace the inner implementations, keeping usages the same. Read more in Martin Fowler's article [An example of preparatory refactoring](https://martinfowler.com/articles/preparatory-refactoring-example.html).
+You may also consider wrapping common logic into extension methods or repository classes. Adding a temporary wrapping layer lets us centralise and isolate the changes we perform during the migration. Thanks to that, you can replace the inner implementations, keeping usages the same. Read more in Martin Fowler's article [An example of preparatory refactoring](https://martinfowler.com/articles/preparatory-refactoring-example.html).
 
 Sample wrapper for the TCP client may look, e.g.:
 
