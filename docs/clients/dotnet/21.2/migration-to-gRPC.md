@@ -557,7 +557,7 @@ var settings = ConnectionSettings.Create()
     .LimitRetriesForOperationTo(7);
 
 var tcpConnection = EventStoreConnection.Create(
-        connectionString,
+    connectionString,
 	settings 
 );
 ```
@@ -594,8 +594,8 @@ and use it, e.g. as:
 ```csharp
 public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
     this EventStoreClient grpcClient,
-        string streamName,
-        CancellationToken cancellationToken
+    string streamName,
+    CancellationToken cancellationToken
 ) =>
     grpcClient.ExecuteAsync(
         async (es, ct) =>
@@ -615,7 +615,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
             return await readResult
                 .ToListAsync(ct);
         },
-            cancellationToken);
+        cancellationToken);
 ```
 
 ::: warning
@@ -643,7 +643,7 @@ Each subscription method has an overload taking either a specific position or th
 ```csharp
 long? streamPosition = GetLastCheckpoint();
 
-_connection.SubscribeToStreamFrom(
+tcpConnection.SubscribeToStreamFrom(
     streamName,
     streamPosition,
     false,
@@ -659,7 +659,7 @@ StreamPosition? streamPosition = GetLastCheckpoint();
 
 if (streamPosition.HasValue)
 {
-    await _client.SubscribeToStreamAsync(
+    await grpcClient.SubscribeToStreamAsync(
         streamName,
         streamPosition.Value,
         EventAppeared,
@@ -668,7 +668,7 @@ if (streamPosition.HasValue)
     );
 }
 
-await _client.SubscribeToStreamAsync(
+await grpcClient.SubscribeToStreamAsync(
     streamName,
     EventAppeared,
     false,
@@ -681,7 +681,7 @@ Accordingly, you need to perform the same change for subscription to the `$all` 
 ```csharp
 long? position = GetLastCheckpoint();
 
-_connection.SubscribeToAllFrom(
+tcpConnection.SubscribeToAllFrom(
     position,
     false,
     EventAppeared,
@@ -696,7 +696,7 @@ Position? position = GetLastCheckpoint();
 
 if (streamPosition.HasValue)
 {
-    await _client.SubscribeToAllAsync(
+    await grpcClient.SubscribeToAllAsync(
         position.Value,
         EventAppeared,
         false,
@@ -704,7 +704,7 @@ if (streamPosition.HasValue)
     );
 }
 
-await _client.SubscribeToAllAsync(
+await grpcClient.SubscribeToAllAsync(
     EventAppeared,
     false,
     SubscriptionDropped
@@ -721,7 +721,7 @@ Thus, instead of such call in TCP:
 var filter = Filter.ExcludeSystemEvents;
 var filteredSettings = CatchUpSubscriptionFilteredSettings.Default;
 
-_connection.FilteredSubscribeToAllFrom(
+tcpConnection.FilteredSubscribeToAllFrom(
     position,
     filter,
     filteredSettings,
@@ -735,9 +735,9 @@ You need to use:
 
 ```csharp
 var filter = 
-    new SubscriptionFilterOptions (EventTypeFilter.ExcludeSystemEvents())
+    new SubscriptionFilterOptions (EventTypeFilter.ExcludeSystemEvents());
 
-await _client.SubscribeToAllAsync(
+await grpcClient.SubscribeToAllAsync(
     position,
     EventAppeared,
     false,
@@ -755,14 +755,14 @@ Read more in the [gRPC server-side filtering docs](/clients/grpc/subscriptions.m
 TCP client provides the possibility to provide a handler that will be called when live processing starts:
 
 ```csharp{6}
-connection.SubscribeToStreamFrom(
+tcpConnection.SubscribeToStreamFrom(
     streamName,
     streamPosition,
     false,
     EventAppeared,
     subscription => Console.WriteLine("Processing live"),
     SubscriptionDropped
-}
+);
 ```
 
 gRPC clients do not provide such a feature. However, you can handle that by comparing the current stream (or the `$all` stream) position with the position of the last received event from the subscription. You also need to define threshold as if the system is alive, then new events will constantly appear, and you might not get into the situation where you're fully caught up (especially for the `$all` stream).
@@ -774,13 +774,13 @@ public static class GapMeasurement
 {
     public static async Task<ulong> GetStreamSubscriptionGap
     (
-        this EventStoreClient eventStore,
+        this EventStoreClient grpcClient,
         string streamName,
         StreamPosition subscriptionLastPosition,
         CancellationToken cancellationToken
     )
     {
-        var getCurrentLastEvent = await eventStore
+        var getCurrentLastEvent = await grpcClient
             .ReadStreamAsync(
                 Direction.Backwards,
                 streamName,
@@ -797,12 +797,12 @@ public static class GapMeasurement
 
     public static async Task<ulong> GetAllStreamSubscriptionGap
     (
-        this EventStoreClient eventStore,
+        this EventStoreClient grpcClient,
         Position subscriptionLastPosition,
         CancellationToken cancellationToken
     )
     {
-        var getCurrentLastEvent = await eventStore
+        var getCurrentLastEvent = await grpcClient
             .ReadAllAsync(
                 Direction.Backwards,
                 Position.End,
@@ -847,7 +847,7 @@ TCP client by default resolved linked events. gRPC changes that behaviour to onl
 To do that, you need to pass `true` as `resolveLinkTos` param's value explicitly, e.g. for the regular stream:
 
 ```csharp{4}
-await _client.SubscribeToStreamAsync(
+await grpcClient.SubscribeToStreamAsync(
     streamName,
     EventAppeared,
     true,
@@ -858,7 +858,7 @@ await _client.SubscribeToStreamAsync(
 or for the `$all` stream:
 
 ```csharp{3}
-await _client.SubscribeToAllAsync(
+await grpcClient.SubscribeToAllAsync(
     EventAppeared,
     true,
     SubscriptionDropped
