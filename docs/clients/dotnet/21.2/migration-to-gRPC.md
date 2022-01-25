@@ -1,18 +1,18 @@
 # Migration to gRPC client
 
-TCP client is considered legacy. We recommend migrating to the gRPC client. 
+The TCP client is considered legacy. We recommend migrating to the gRPC client. 
 
-We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, back-pressure etc., instead of building the custom implementations. 
+We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, back-pressure,etc., instead of building custom implementations. 
 
-As gRPC is a multi-platform and widely adopted standard, it enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJs, Rust.
+As gRPC is a multi-platform and widely adopted standard, it enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJs, and Rust.
 
-TCP client will still be getting the necessary bug fixes, but new database features will be only delivered for the gRPC client (e.g. persistent subscription to `$all`).
+The TCP client will still be getting necessary bug fixes, but new database features will be only delivered for the gRPC client (e.g., persistent subscription to `$all`).
 
-Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Check also the [gRPC documentation](/clients/grpc/) for more details on how to use it.
+Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Please see the [gRPC documentation](/clients/grpc/) for more details on how to use it.
 
 ## Update the target Framework
 
-gRPC client doesn't support .NET Standard. The change comes from using different gRPC implementations for the specific .NET Framework version to tune the performance.
+The gRPC client doesn't support .NET Standard. The change comes from using different gRPC implementations for the specific .NET Framework version to tune the performance.
 
 If you were using it in the .NET Standard library, you have to update it to one of:
 - .NET 6 (`net6.0`),
@@ -45,13 +45,13 @@ To use the gRPC client, you need to replace the TPC client package (`EventStore.
 ## Migration strategies
 
 You may also consider step by step migration:
-- adding gRPC client and keeping TCP one,
-- gradually replacing usages, e.g. start with events appends and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
-- removing TCP client package reference as the last step.
+- add the gRPC client and keeping the TCP one,
+- gradually replace usages, e.g., start with event append and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
+- remove the TCP client package reference as the last step.
 
 You may also consider wrapping common logic into extension methods or repository classes. Adding a temporary wrapping layer lets us centralise and isolate the changes we perform during the migration. Thanks to that, you can replace the inner implementations, keeping usages the same. Read more in Martin Fowler's article [An example of preparatory refactoring](https://martinfowler.com/articles/preparatory-refactoring-example.html).
 
-Sample wrapper for the TCP client may look, e.g.:
+Sample wrapper for the TCP client:
 
 ```csharp
 public class EventStore
@@ -139,9 +139,9 @@ public class EventStore
 
 ## Differences in connection management
 
-Both TCP and gRPC clients are managing the reconnections. That's the reason why it should be registered as a single instance in the application. 
+Both the TCP and gRPC clients are managing reconnections. That's the reason why it should be registered as a single instance in the application. 
 
-TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it in the asynchronous way or risk deadlocks.
+The TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it asynchronously or risk deadlocks.
 
 ```csharp
 private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
@@ -154,7 +154,7 @@ private async Task<IEventStoreConnection> GetEventStoreConnection(string connect
 
 As TCP client connection logic is not thread-safe (`ConnectAsync` method), other operations are thread-safe. Because of that, you have to ensure that you won't have a race condition. You also should consider handling `Closed` events to manage reconnection if it is closed. 
 
-TCP client supports built-in reconnections; however, you need to be careful about setting the connections options properly. Wrongly defined can cause a flood of reconnections, increasing the chance for failure. For instance, additional retries may worsen if the reason was a high load on the database.
+TCP client supports built-in reconnections; however, you need to be careful about setting the connections options properly. Wrongly defined settings can cause a flood of reconnections, increasing the chance for failure. For instance, additional retries may worsen if the reason was a high load on the database.
 
 Sample code with reconnections could look like this:
 
@@ -226,12 +226,12 @@ services.AddSingleton(client);
 ```
 
 ### Connection string
-For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by the step migration. 
+For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. The TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by the step migration. 
 
 You can use the [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment. If you connect to your database, it'll automatically grab the config and generate a connection string.
 
 ## Security
-EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use insecure connection by providing `tls=false` connection string param, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on the insecure connection.
+EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
 Read more in [database security docs](/server/v21.10/security/).
 
@@ -240,15 +240,15 @@ Read more in [database security docs](/server/v21.10/security/).
 ### Event Data
 
 There are minor changes to the `EventData` signature:
-- namespaces was changed from `EventStore.ClientAPI` to `EventStore.Client`
-- Event id requires using the `UUID` class instead of `Guid`. We adopted the [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) standard to provide unified behaviour between the gRPC clients.
+- The namespace was changed from `EventStore.ClientAPI` to `EventStore.Client`
+- Event id requires using the `Uuid` class instead of `Guid`. We adopted the [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) standard to provide unified behaviour between all gRPC clients.
 - we are allowed to provide content type. It enables more advanced serialisation scenarios (e.g., using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
 
 ::: note
-In the samples below, I'm using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](/clients/grpc/) for samples using `System.Text.Json.
+In the samples below, I'm using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](/clients/grpc/) for samples using `System.Text.Json`.
 :::
 
-For the JSON Event Data, you have to change TCP client logic from:
+For the JSON Event Data, you have to change the TCP client logic from:
 
 ```csharp{1,7,9}
 public static EventStore.ClientAPI.EventData ToJsonEventData(
@@ -265,7 +265,7 @@ public static EventStore.ClientAPI.EventData ToJsonEventData(
     );
 ```
 
-into:
+to:
 
 ```csharp{1,7}
 public static EventStore.Client.EventData ToJsonEventData(
@@ -298,7 +298,7 @@ public static EventStore.ClientAPI.EventData ToJsonEventData(
     );
 ```
 
-into:
+to:
 
 ```csharp{1,7,11}
 public static EventStore.Client.EventData ToJsonEventData(
@@ -358,7 +358,7 @@ If you had wrapper methods similar to [presented above](#migration-strategies). 
 
 ### Transactions
 
-The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. In the TCP client may perform multiple appends to EventStoreDB as one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. gRPC client still supports appending more than one event to the single stream as an atomic operation. 
+The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. The TCP client may perform multiple appends to EventStoreDB as one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. The gRPC client still supports appending more than one event to the single stream as an atomic operation. 
 
 A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, for example:
 
@@ -400,17 +400,17 @@ public class EventStoreDBUnitOfWork
 
 ### Read direction
 
-TCP Client have dedicated methods for reading events in the specific direction: 
+The TCP Client have dedicated methods for reading events in the specific direction: 
 - `ReadStreamEventsForwardAsync`,
 - `ReadStreamEventsBackwardAsync`,
 - `ReadAllEventsForwardAsync`,
 - `ReadStreamEventsBackwardAsync`.
 
- In the gRPC client, we unified those methods into methods with the direction parameter:
+In the gRPC client, we unified those methods into methods with the direction parameter:
 - `ReadStreamAsync`,
 - `ReadAllAsync`.
 
-To read stream forwards, use:
+To read a stream forwards, use:
 
 ```csharp
 await using var readResult = grpcClient.ReadStreamAsync(
@@ -420,7 +420,7 @@ await using var readResult = grpcClient.ReadStreamAsync(
 );
 ```
 
-To read stream backwards, use: 
+To read a stream backwards, use: 
 
 ```csharp
 await using var readResult = grpcClient.ReadStreamAsync(
@@ -440,7 +440,7 @@ await using var readResult = grpcClient.ReadAllAsync(
 );
 ```
 
-and to  the `$all` stream backwards:
+and to read the `$all` stream backwards:
 
 ```csharp
 await using var readResult = grpcClient.ReadAllAsync(
@@ -474,7 +474,7 @@ For reading from `$all`, the TCP Client has already the `Position` class. gRPC c
 
 TCP Client requires paging through the results. You must provide the maximum number of events you want to read in the single read call. In the gRPC client, this is optional. By default, it will try to read all events. To make it efficient, read methods return [IAsyncEnumerable](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8). Which means that it won't load the whole stream at once but iterate sequentially, reducing the memory pressure.
 
-Instead of doing paging like that in TCP client:
+Instead of doing paging like this in TCP client:
 
 ```csharp
 public async Task<IEnumerable<object>> LoadEvents(string stream)
@@ -531,7 +531,7 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 
 ### Serialisation
 
-The gRPC client uses `ReadOnlyMemory<byte>` instead of byte array to make the events processing more efficient. To support that, you need to modify your deserialisation logic slightly:
+The gRPC client uses `ReadOnlyMemory<byte>` instead of byte array to make event processing more efficient. To support that, you will need to modify your deserialisation logic slightly:
 
 ```csharp{4-5}
   object Deserialize(this ResolvedEvent resolvedEvent)
@@ -546,7 +546,7 @@ The gRPC client uses `ReadOnlyMemory<byte>` instead of byte array to make the ev
 
 ## Built-in retries
 
-The gRPC client handles reconnections internally. But contrary to the TCP one, it does not have built-in retries for failed operations. It only does retries for the persistent subscriptions. If your codebase depends on them, you should wrap operations with your custom retry policy (e.g. using [Polly](https://github.com/App-vNext/Polly) library).
+The gRPC client handles reconnections internally. But contrary to the TCP client, it does not have built-in retries for failed operations. It only does retries for the persistent subscriptions. If your codebase depends on them, you should wrap operations with your custom retry policy (e.g. using [Polly](https://github.com/App-vNext/Polly)).
 
 If you were using the following configuration:
 
@@ -620,7 +620,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
 ```
 
 ::: warning
-You should be careful in defining the retry policy. Not all operations are by default idempotent. Reads are, but for instance, if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g. there is no point in retrying `StreamDeleted` as the stream won't reappear. 
+You should be careful in defining the retry policy. Not all operations are idempotent by default. Reads are idempotent, however, if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g., there is no point in retrying `StreamDeleted` as the stream won't reappear. 
 :::
 
 ## Subscriptions
