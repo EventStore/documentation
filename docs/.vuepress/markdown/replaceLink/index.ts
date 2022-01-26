@@ -17,12 +17,6 @@ interface resolveFunction {
     (filename: string): string;
 }
 
-function getVersion(path: string): string | undefined {
-    const ref = path.split("#")[0];
-    const split = ref.split("/");
-    return split.find(x => version.isVersion(x));
-}
-
 function checkFile(filepath: string): boolean {
     const p = filepath.split("#");
     const basePath = path.resolve(__dirname, `../../..`);
@@ -41,7 +35,7 @@ function replaceCrossLinks(token, env: MdEnv) {
     const href = token.attrGet("href");
     if (!href.startsWith("@")) return;
 
-    const fileVersion = (getVersion(env.filePathRelative) ?? instance.latest.split("/")[1]).replace("v", "");
+    const fileVersion = (version.getVersion(env.filePathRelative) ?? instance.latest.split("/")[1]).replace("v", "");
 
     const attemptResolve: resolveFunction[] = [
         x => x,

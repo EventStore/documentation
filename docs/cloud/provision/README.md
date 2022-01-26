@@ -82,8 +82,8 @@ On the first part of the form you need to specify the new cluster name, the clou
 ![AWS cluster first part](./images/aws/aws-new-cluster-1.png)
 :::
 
-::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../server/v20.10/projections/README.md) section of the projections documentation to learn more.
+::: warning Projections impact on performance
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Other instance sizes are production-grade.
@@ -128,12 +128,12 @@ Then, give the new peering a name and select the network created earlier.
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
 
-| Peering form | AWS VPC screen |
-| :----------- | :------------- |
-| Peer AWS Account ID | Owner ID |
-| Peer VPC ID | VPC ID |
-| AWS region | VPC region, cannot be changed |
-| Peer address space | IPv4 CIDR |
+| Peering form        | AWS VPC screen                |
+|:--------------------|:------------------------------|
+| Peer AWS Account ID | Owner ID                      |
+| Peer VPC ID         | VPC ID                        |
+| AWS region          | VPC region, cannot be changed |
+| Peer address space  | IPv4 CIDR                     |
 
 For our example, here is the complete form:
 
@@ -177,7 +177,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Next step
 
-You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use) section to learn more.
+You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
 
 ## Microsoft Azure
 
@@ -239,8 +239,8 @@ On the first part of the form you need to specify the new cluster name, the clou
 ![Azure cluster first part](./images/azure/azure-new-cluster-1.png)
 :::
 
-::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../server/v20.10/projections/README.md#performance-impact) section of the projections documentation to learn more.
+::: warning Projections impact on performance
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Other instance sizes are production-grade.
@@ -279,12 +279,12 @@ You also need to find your tenant ID, which is only visible on the Azure AD [pro
 
 Finally, you'd need to fill out all the fields:
 
-| Peering form | Azure network details |
-| :----------- | :------------- |
-| Peer Tenant ID | Tenant ID from Azure AD |
-| Peer Network ID | Network resource ID (can be found on the network Properties page or in JSON view) |
-| Azure region | Network region, cannot be changed |
-| Peer address space | IPv4 CIDR (address space for the whole network) |
+| Peering form       | Azure network details                                                             |
+|:-------------------|:----------------------------------------------------------------------------------|
+| Peer Tenant ID     | Tenant ID from Azure AD                                                           |
+| Peer Network ID    | Network resource ID (can be found on the network Properties page or in JSON view) |
+| Azure region       | Network region, cannot be changed                                                 |
+| Peer address space | IPv4 CIDR (address space for the whole network)                                   |
 
 For our example, here is the complete form:
 
@@ -292,7 +292,7 @@ For our example, here is the complete form:
 ![Azure peering - complete form](./images/azure/azure-peering-1.png)
 :::
 
-When you click on the `Create peering` button, Event Store Cloud will check if it has permissions to create the peering (see [Azure Considerations](#network-peering-2)). The Cloud console will display a set of pre-populated Azure CLI commands, which you need to execute in order for Event Store Cloud to be able to create the peering.
+When you click on the `Create peering` button, Event Store Cloud will check if it has permissions to create the peering (see [Azure Considerations](#network-peering-in-azure)). The Cloud console will display a set of pre-populated Azure CLI commands, which you need to execute in order for Event Store Cloud to be able to create the peering.
 
 ::: card
 ![Azure peering - sa](./images/azure/azure-peering-2.png)
@@ -314,13 +314,13 @@ Depending on your setup, you might already have a connection available from your
 
 ### Next step
 
-You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use) section to learn more.
+You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
 
 ### Considerations for Microsoft Azure
 
 Due to differences between Microsoft Azure and other cloud providers, the provisioning process in Event Store Cloud is different from AWS and GCP. We've made a list of these differences here in order to help you make an informed decision about Cloud providers.
 
-#### Network peering
+#### Network peering in Azure
 
 When creating a peering link, Azure requires the user to configure a security principal, referencing the application ID of Event Store Cloud, and also configure and apply a role allowing that principal to modify the network resource of the remote network.
 
@@ -421,8 +421,8 @@ On the first part of the form you need to specify the new cluster name, the clou
 ![GCP cluster first part](./images/gcp/gcp-new-cluster-1.png)
 :::
 
-::: warning Projections impact performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](../../server/v20.10/projections/README.md#performance-impact) section of the projections documentation to learn more.
+::: warning Projections impact on performance
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two instance sizes are production-grade.
@@ -463,12 +463,12 @@ The network page provide us enough details to start the peering process. In Even
 
 Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC.
 
-| Peering form | GCP VPC screen |
-| :----------- | :------------- |
+| Peering form        | GCP VPC screen                                       |
+|:--------------------|:-----------------------------------------------------|
 | Peer GCP Project ID | GCP project ID, found in the project selection popup |
-| Peer Network Name | The VPC name |
-| GCP region | VPC subnet region, cannot be changed |
-| Peer address space | VPC subnet address range |
+| Peer Network Name   | The VPC name                                         |
+| GCP region          | VPC subnet region, cannot be changed                 |
+| Peer address space  | VPC subnet address range                             |
 
 For our example, here is the complete form:
 
@@ -487,9 +487,9 @@ The information on the peering details screen provides some essential informatio
 When the peering is initiated, get back to Google Cloud console and navigate to `VPC network peering`. There, click `Create connection` and then `Continue`. Give new peering a name and choose the network on GCP side. Next, fill out the remaining values using the initiated peering details:
 
 | Event Store Cloud | GCP connection peering |
-| :---------------- | :--------------------- |
-| Peer Project ID | Project ID |
-| Peer Network Name | VPC network name |
+|:------------------|:-----------------------|
+| Peer Project ID   | Project ID             |
+| Peer Network Name | VPC network name       |
 
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 
@@ -511,7 +511,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Next step
 
-You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use) section to learn more.
+You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
 
 ## Cloud instance sizing guide
 
@@ -558,12 +558,12 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 
 ### Sizes
 
-| Size | Rating | Working Set (streams) | Disk size (min) | Concurrent clients (max) |
-| :--- | :----- | :---------- | :-------- | :--- |
-| **F1** | Micro | 100k | 50 GB |  |
-| **C4** | Development | 500k | 100 GB |  |
-| **M8** | Development | 1M | 250 GB |  |
-| **M16** | Development / Light Production | 6M | 500 GB | 20 |
-| **M32** | Production | 12M | 1 TB | 250 |
-| **M64** | Production | 30M | 2 TB | 500 |
-| **M128** | Production | 62M | 4 TB | 500 |
+| Size     | Rating                         | Working Set (streams) | Disk size (min) | Concurrent clients (max) |
+|:---------|:-------------------------------|:----------------------|:----------------|:-------------------------|
+| **F1**   | Micro                          | 100k                  | 50 GB           |                          |
+| **C4**   | Development                    | 500k                  | 100 GB          |                          |
+| **M8**   | Development                    | 1M                    | 250 GB          |                          |
+| **M16**  | Development / Light Production | 6M                    | 500 GB          | 20                       |
+| **M32**  | Production                     | 12M                   | 1 TB            | 250                      |
+| **M64**  | Production                     | 30M                   | 2 TB            | 500                      |
+| **M128** | Production                     | 62M                   | 4 TB            | 500                      |

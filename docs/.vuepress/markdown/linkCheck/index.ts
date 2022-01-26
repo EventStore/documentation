@@ -7,6 +7,29 @@ interface MdEnv {
     filePathRelative: string;
 }
 
+function findAnchor(filename: string, anchor: string): boolean {
+    const asAnchor = (header: string) => header
+        .replace(/[^\w\s\-]/gi, "")
+        .trim()
+        .toLowerCase()
+        // @ts-ignore
+        .replaceAll(" ", "-");
+
+    const href = `<a id="${anchor}">`;
+    const lines = fs.readFileSync(filename).toString().split("\n");
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (line.includes(href)) return true;
+
+        if (line.charAt(0) != "#") continue;
+
+        const lineAnchor = asAnchor(line);
+        // logger.tip(lineAnchor)
+        if (lineAnchor === anchor) return true;
+    }
+    return false;
+}
+
 function checkLink(token, attrName: string, env: MdEnv) {
     const href = token.attrGet(attrName);
     if (href.startsWith("http")) return;
@@ -18,6 +41,21 @@ function checkLink(token, attrName: string, env: MdEnv) {
     fs.stat(p, (err, stat) => {
         if (err != null) {
             logger.error(`Broken link in ${env.filePathRelative}\r\nto: ${split[0]}`);
+            return;
+        }
+        let pathToCheck = p;
+        if (stat.isDirectory()) {
+            if (split[0] !== "") {
+                logger.error(`Link to directory in ${env.filePathRelative}\r\nto: ${href}`);
+                return;
+            }
+            pathToCheck = env.filePath;
+        }
+        if (split.length > 1) {
+            const anchorResolved = findAnchor(pathToCheck, split[1]);
+            if (!anchorResolved) {
+                logger.error(`Broken anchor link in ${env.filePathRelative}: ${split[1]} in file ${pathToCheck}`);
+            }
         }
     });
 }

@@ -28,7 +28,7 @@ Check our [Tailscale guide](#connect-with-tailscale) for detailed instructions.
 
 ## Data migration
 
-Currently, the only way to migrate data to the cloud cluster or instance is by using [live migration](./migration/replicator.md). Live migration can only handle small to medium size databases.
+Currently, the only way to migrate data to the cloud cluster or instance is by using [live migration](#migrating-data). Live migration can only handle small to medium size databases.
 
 ## Cluster connection
 

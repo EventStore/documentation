@@ -6,7 +6,7 @@ The various gRPC client APIs include dedicated clients that allow you to manage 
 Currently not all clients fully expose all operations.
 :::
 
-For a detailed explanation of projections, see the [server documentation](@server/projections/README.md).
+For a detailed explanation of projections, see the [server documentation](@server/projections.md).
 
 You can find the full sample code from this documentation page in the respective [clients repositories](https://github.com/eventStore/?q=client).
 
@@ -203,7 +203,7 @@ Sample available soon
 
 Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem.
-You must have access to a projection to enable it, see the [ACL documentation](@server/security/acl.md#stream-acl)
+You must have access to a projection to enable it, see the [ACL documentation](@server/security.md#access-control-lists)
 
 :::: code-group
 ::: code-group-item C#
@@ -265,7 +265,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 Disables a projection, this will save the projection checkpoint.
 Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
-You must have access to a projection to disable it, see the [ACL documentation](@server/security/acl.md#stream-acl)
+You must have access to a projection to disable it, see the [ACL documentation](@server/security.md#access-control-lists)
 
 :::warning
 The .net clients up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  

@@ -1,4 +1,4 @@
-import {path} from '@vuepress/utils';
+import {logger, path} from '@vuepress/utils';
 import {ResolvedImport} from "../markdown/xode/types";
 import version from "./version";
 
@@ -25,6 +25,12 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     if (!includesCat && srcCat === undefined) return def(src);
 
     const cats = {
+        "@samples": {
+            "default": {
+                path: "server",
+                version: "{version}"
+            }
+        },
         "@httpapi": {
             "default": {
                 path: "clients/http-api",
@@ -75,13 +81,13 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     const catName = includesCat ? pseudo[0] : srcCat;
     const cat = cats[catName];
     if (cat === undefined) {
-        console.log(`Unknown placeholder: ${pseudo[0]}`);
+        logger.warn(`Unknown placeholder: ${pseudo[0]}`);
         return def(src);
     }
 
     let lang = cat[ext] ?? cat["default"];
     if (lang === undefined && cat.path === undefined) {
-        console.log(`Unknown extension ${ext} in ${cat}`);
+        logger.warn(`Unknown extension ${ext} in ${cat}`);
         return def(src);
     }
     const samplesVersion = isVersion ? pseudo[1] : lang.version;

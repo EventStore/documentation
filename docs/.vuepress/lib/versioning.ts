@@ -45,11 +45,12 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
-                const path = `${version.basePath}/${v.path}`;
-                const sidebarPath = `../../${path}/sidebar.js`;
+                const p = `${version.basePath}/${v.path}`;
+                const sidebarPath = path.resolve(__dirname, `../../${p}/sidebar.js`);
+                log.info(`Importing sidebar from ${sidebarPath}`);
                 const sidebar = require(sidebarPath);
                 sidebar.forEach(item => {
-                    item.path = `../${path}/${item.path}`;
+                    item.path = `../${p}/${item.path}`;
 
                     // Only legacy sidebars have collapsable
                     if (item.collapsable !== undefined) {
@@ -60,7 +61,7 @@ export class versioning {
                     item.group = version.group;
                     item.text = item.text || item.title;
                 });
-                sidebars[`/${path}/`] = sidebar;
+                sidebars[`/${p}/`] = sidebar;
             });
         })
 

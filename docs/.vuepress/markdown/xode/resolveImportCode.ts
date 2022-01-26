@@ -1,6 +1,7 @@
 import {fs, path, logger} from "@vuepress/utils";
 import type {MarkdownEnv} from "../types";
 import type {ImportCodeTokenMeta} from "./types";
+import version from "../../lib/version";
 
 function testLine(line, regexp, regionName, end = false) {
     const [full, tag, name] = regexp.exec(line.trim()) || [];
@@ -63,6 +64,11 @@ export const resolveImportCode = (
             };
         }
         importFilePath = path.resolve(filePath, '..', importPath);
+    }
+
+    if (importFilePath.includes("{version}")) {
+        const ver = version.getVersion(filePath);
+        importFilePath = importFilePath.replace("{version}", ver);
     }
 
     // check file existence

@@ -5,7 +5,6 @@ terraform_current_version: 1.5.7
 
 In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider](#terraform-provider), a [Pulumi provider][pulumi provider], as well as a [CLI tool][esc cli github] to automate any operation accessible from the console. 
 
-
 ## Terraform provider
 
 Event Store Cloud provider for Terraform is available in the public [provider registry][terraform registry].
@@ -18,14 +17,14 @@ The current version of the provider is: {{ $frontmatter.terraform_current_versio
 
 The binaries are available for the following platforms:
 
-| Processor | Operating system | Filename |
-| :-------- | :--------------- | :------- |
-| x64 | macOS | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip` |
-| x64 | FreeBSD | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip` |
-| x64 | Linux | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip` |
-| x64 | Windows | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip` |
-| arm64 | FreeBSD |`terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip` |
-| arm64 | Linux | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip` |
+| Processor | Operating system | Filename                                                                                            |
+|:----------|:-----------------|:----------------------------------------------------------------------------------------------------|
+| x64       | macOS            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip`  |
+| x64       | FreeBSD          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip` |
+| x64       | Linux            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip`   |
+| x64       | Windows          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip` |
+| arm64     | FreeBSD          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip` |
+| arm64     | Linux            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip`   |
 
 #### Terraform 0.13+
 
@@ -70,10 +69,10 @@ If you prefer to install from source, use the `make install` target in this [rep
 
 The Event Store Cloud provider must be configured with an access token. There are several additional options that may be useful. Provider configuration options are:
 
-| Option            | Environment Variable | Description  |
-| :---------------- | :------------------- | :----------- |
-| `token`           | `ESC_TOKEN`          | *Required*, your access token for Event Store Cloud.   |
-| `organization_id` | `ESC_ORG_ID`         | *Required*, your Event Store Cloud organization ID.  |
+| Option            | Environment Variable | Description                                                                                                         |
+|:------------------|:---------------------|:--------------------------------------------------------------------------------------------------------------------|
+| `token`           | `ESC_TOKEN`          | *Required*, your access token for Event Store Cloud.                                                                |
+| `organization_id` | `ESC_ORG_ID`         | *Required*, your Event Store Cloud organization ID.                                                                 |
 | `url`             | `ESC_URL`            | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud.  |
 | `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI. |
 
@@ -120,11 +119,11 @@ All resources in Event Store Cloud can be provisioned using the Terraform provid
 
 Using the Terraform provider, you can create, manipulate, and delete the following resources in Event Store Cloud:
 
-| Terraform resource | Event Store Cloud resource | 
-| :----------------- | :------------------------- |
-| `eventstorecloud_project` | [Project](#projects) |
-| `eventstorecloud_network` | [Network](#networks) |
-| `eventstorecloud_peering` | [Network peering](#network-peerings) |
+| Terraform resource                | Event Store Cloud resource                                        | 
+|:----------------------------------|:------------------------------------------------------------------|
+| `eventstorecloud_project`         | [Project](#projects)                                              |
+| `eventstorecloud_network`         | [Network](#networks)                                              |
+| `eventstorecloud_peering`         | [Network peering](#network-peerings)                              |
 | `eventstorecloud_managed_cluster` | [Managed EventStoreDB instance or cluster](#managed-eventstoredb) |
 
 #### Projects
@@ -135,17 +134,17 @@ You need a project to provision any other resource.
 
 ##### Arguments
 
-| Name | Type   | Description                          |
-| :--- | :----- | :----------------------------------- |
+| Name   | Type     | Description                          |
+|:-------|:---------|:-------------------------------------|
 | `name` | `string` | *Required*, the name of the project. |
 
 ##### Attributes
 
 The Project Terraform resource will get the following attributes:
 
-| Name | Type   | Description            |
-| :--- | :----- | :--------------------- |
-| `id`   | `string` | Project ID |
+| Name | Type     | Description |
+|:-----|:---------|:------------|
+| `id` | `string` | Project ID  |
 
 You will need the project ID to provision other resources within the project.
 
@@ -161,18 +160,18 @@ Before provisioning a database cluster, you need a network, which the cluster wi
 
 ##### Arguments
 
-| Name              | Type   | Description  |
-| :---------------- | :----- | :----------------- |
-| `name`              | `string` | *Required*, the new network name. |
-| `project_id`        | `string` | *Required*, the project ID of the new network (see [Projects](#projects)) |
-| `resource_provider` | `string` | *Required*, the network cloud provider (`aws` , `gcp` , `azure`). |
+| Name                | Type     | Description                                                                |
+|:--------------------|:---------|:---------------------------------------------------------------------------|
+| `name`              | `string` | *Required*, the new network name.                                          |
+| `project_id`        | `string` | *Required*, the project ID of the new network (see [Projects](#projects))  |
+| `resource_provider` | `string` | *Required*, the network cloud provider (`aws` , `gcp` , `azure`).          |
 | `region`            | `string` | *Required*, the cloud region of the new network (cloud provider-specific). |
-| `cidr_block`        | string | *Required*, the new network IP range. |
+| `cidr_block`        | string   | *Required*, the new network IP range.                                      |
 
 ##### Attributes
 
-| Name | Type   | Description            |
-| :--- | :----- | :--------------------- |
+| Name | Type     | Description    |
+|:-----|:---------|:---------------|
 | `id` | `string` | The project ID |
 
 Region names must be in the format used by the cloud resource provider, for example `us-west-2` for AWS, `East US` for Azure, `us-east1` for GCP.
@@ -207,31 +206,31 @@ The format of the following arguments depends on the cloud provider:
 
 ##### Arguments
 
-| Name | Type   | Description |
-| :--------------------- | :----- | :---------------------- |
-| `name`                   | `string` | *Required*, the new peering name. |
-| `project_id`             | `string` | *Required*, the project ID for the new peering. |
-| `network_id`             | `string` | *Required*, the EventStore Cloud network ID, for which the peering will be created. |
-| `peer_resource_provider` | `string` | *Required*, the cloud resource provider of the given network (`aws` , `gcp` , `azure`). |
-| `peer_network_region`    | `string` | *Required*, the cloud region of your own network, which you are going to peer with. |
-| `peer_account_id`        | `string` | *Required*, your cloud account ID, your cloud network should belong to that account. |
-| `peer_network_id`        | `string` | *Required*, the network ID for your own cloud network. |
+| Name                     | Type     | Description                                                                                             |
+|:-------------------------|:---------|:--------------------------------------------------------------------------------------------------------|
+| `name`                   | `string` | *Required*, the new peering name.                                                                       |
+| `project_id`             | `string` | *Required*, the project ID for the new peering.                                                         |
+| `network_id`             | `string` | *Required*, the EventStore Cloud network ID, for which the peering will be created.                     |
+| `peer_resource_provider` | `string` | *Required*, the cloud resource provider of the given network (`aws` , `gcp` , `azure`).                 |
+| `peer_network_region`    | `string` | *Required*, the cloud region of your own network, which you are going to peer with.                     |
+| `peer_account_id`        | `string` | *Required*, your cloud account ID, your cloud network should belong to that account.                    |
+| `peer_network_id`        | `string` | *Required*, the network ID for your own cloud network.                                                  |
 | `routes`                 | `string` | *Required*, CIDR blocks in your cloud network, which should be routed to the Event Store Cloud network. |
 
 Use the following provider-specific values for the `peer_account_id` argument:
 
 | Cloud | Account ID is |
-| :---- | :------------ |
-| AWS | Account ID |
-| GCP | Project ID |
-| Azure | Tenant ID |
+|:------|:--------------|
+| AWS   | Account ID    |
+| GCP   | Project ID    |
+| Azure | Tenant ID     |
 
 For the `peer_network_id`, use the following cloud network property:
 
-| Cloud | Network ID is |
-| :---- | :------------ |
-| AWS | VPC ID |
-| GCP | VPC name |
+| Cloud | Network ID is               |
+|:------|:----------------------------|
+| AWS   | VPC ID                      |
+| GCP   | VPC name                    |
 | Azure | Virtual network resource ID |
 
 ::: tip
@@ -244,13 +243,13 @@ For the `peer_network_id`, use the following cloud network property:
 
 After completing the operation, the peering Terraform resource will get the following attributes:
 
-| Name | Type   | Description  |
-| :--- | :----- | :-------------------- |
-| `id`   | `string` | The peering ID. |
-| `provider_metadata` | `string` | The peering resource metadata, set by the cloud provider. |
-| `aws_peering_link_id` | `string` | The AWS peering link ID. |
-| `gcp_project_id`      | `string` | GCP project ID. |
-| `gcp_network_name`    | `string` | GCP VPC name. |
+| Name                  | Type     | Description                                                                                      |
+|:----------------------|:---------|:-------------------------------------------------------------------------------------------------|
+| `id`                  | `string` | The peering ID.                                                                                  |
+| `provider_metadata`   | `string` | The peering resource metadata, set by the cloud provider.                                        |
+| `aws_peering_link_id` | `string` | The AWS peering link ID.                                                                         |
+| `gcp_project_id`      | `string` | GCP project ID.                                                                                  |
+| `gcp_network_name`    | `string` | GCP VPC name.                                                                                    |
 | `gcp_network_id`      | `string` | GCP network ID in URL format, which can be passed to `google_compute_network_peering` resources. |
 
 For AWS, you'd need to confirm the peering request, use the `aws_peering_link_id` resource attribute for that purpose.
@@ -269,28 +268,29 @@ Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB 
 
 ##### Arguments
 
-| Name | Type   | Description  |
-| :--- | :----- | :----------- |
-| `name` | `string` | *Required*, the name of the managed. cluster. |
-| `project_id`  | `string` | *Required*, the ID of the project in which the managed cluster should be created. |
-| `network_id` | `string` | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created. |
-| `topology`  | `string` | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. |
-| `instance_type`    | `string` | *Required*, the size of the instances to use in the managed cluster. |
-| `disk_size` | `int`    | *Required*, the size of the data disks in gigabytes. Minimal size is 10Gb. All cluster members will get a disk of the same size. |
-| `disk_type` | `string` | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP). |
-| `server_version`   | `string` | *Required*, `20.6` , `20.10`. |
-| `projection_level` | `string` | *Optional*, default: `off` , the mode in which to enable projections. Valid values are `off` , `system` , `user`. |
+| Name               | Type     | Description                                                                                                                                                      |
+|:-------------------|:---------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`             | `string` | *Required*, the name of the managed. cluster.                                                                                                                    |
+| `project_id`       | `string` | *Required*, the ID of the project in which the managed cluster should be created.                                                                                |
+| `network_id`       | `string` | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created.                                                             |
+| `topology`         | `string` | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. |
+| `instance_type`    | `string` | *Required*, the size of the instances to use in the managed cluster.                                                                                             |
+| `disk_size`        | `int`    | *Required*, the size of the data disks in gigabytes. Minimal size is 10Gb. All cluster members will get a disk of the same size.                                 |
+| `disk_type`        | `string` | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                                 |
+| `server_version`   | `string` | *Required*, `20.6` , `20.10`.                                                                                                                                    |
+| `projection_level` | `string` | *Optional*, default: `off` , the mode in which to enable projections. Valid values are `off` , `system` , `user`.                                                |
 
 Supported instance sizes are:
-| Size | Specification |
-| :--- | :------------ |
-| `F1` | 2 vCPU 1Gb RAM (burstable instance, not suitable for production) |
-| `C4` | 2 vCPU 8Gb RAM |
-| `M8` | 2 vCPU 8Gb RAM (same resources as `C4`, but storage-optimised) |
-| `M16` | 4 vCPU 16Gb RAM |
-| `M32` | 8 vCPU 32Gb RAM |
-| `M64` | 16 vCPU 64Gb RAM |
-| `M128` | 32 vCPU 128Gb RAM |
+
+| Size   | Specification                                                    |
+|:-------|:-----------------------------------------------------------------|
+| `F1`   | 2 vCPU 1Gb RAM (burstable instance, not suitable for production) |
+| `C4`   | 2 vCPU 8Gb RAM                                                   |
+| `M8`   | 2 vCPU 8Gb RAM (same resources as `C4`, but storage-optimised)   |
+| `M16`  | 4 vCPU 16Gb RAM                                                  |
+| `M32`  | 8 vCPU 32Gb RAM                                                  |
+| `M64`  | 16 vCPU 64Gb RAM                                                 |
+| `M128` | 32 vCPU 128Gb RAM                                                |
 
 ::: tip
 The actual implementation of each topology is specific to the resource provider.
@@ -302,13 +302,13 @@ For GCP and AWS clusters you can resize the disks without downtime. In Azure, it
 
 After completing the operation, the EventStoreDB cluster Terraform resource will get the following attributes:
 
-| Name | Type   | Description |
-| :--- | :----- | :---------- |
-| `id`   | `string` | the ID of the cluster. |
-| `dns_name` | `string` | the DNS name at which the cluster can be found. |
-| `resource_provider` | `string` | the resource provider into which the cluster was provisioned. |
-| `region`            | `string` | the region in which the cluster was provisioned. |
-| `gcp_network_name`  | `string` | network name for the peering link in GCP. |
+| Name                | Type     | Description                                                                                     |
+|:--------------------|:---------|:------------------------------------------------------------------------------------------------|
+| `id`                | `string` | the ID of the cluster.                                                                          |
+| `dns_name`          | `string` | the DNS name at which the cluster can be found.                                                 |
+| `resource_provider` | `string` | the resource provider into which the cluster was provisioned.                                   |
+| `region`            | `string` | the region in which the cluster was provisioned.                                                |
+| `gcp_network_name`  | `string` | network name for the peering link in GCP.                                                       |
 | `gcp_network_id`    | `string` | GCP Network ID in URL format which can be passed to `google_compute_network_peering` resources. |
 
 ::: tip
@@ -341,9 +341,9 @@ Here are the cloud-specific examples of a Terraform script to create a managed E
 
 The following data source is available:
 
-| Terraform resource | Event Store Cloud resource |
-| :----------------- | :------------------------- |
-| `eventstorecloud_project` | [Project](#project) |
+| Terraform resource        | Event Store Cloud resource |
+|:--------------------------|:---------------------------|
+| `eventstorecloud_project` | [Project](#project)        |
 
 #### Project
 
@@ -352,7 +352,7 @@ Use the `eventstorecloud_project` data source to query your Event Store Cloud pr
 ##### Arguments
 
 | Name | Type   | Description                          |
-| :--- | :----- | :----------------------------------- |
+|:-----|:-------|:-------------------------------------|
 | name | string | *Required*, the name of the project. |
 | id   | string | *Optional*, the name of the project. |
 
