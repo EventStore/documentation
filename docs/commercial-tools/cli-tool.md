@@ -76,7 +76,7 @@ es-cli [<options>] <command> [<args>]
 ### Options
 
 | Option        | Description                                              |
-| ------------- | -------------------------------------------------------- |
+|---------------|----------------------------------------------------------|
 | `--version`   | Get the version of EventStoreDB CLI                      |
 | `--help`      | Display help                                             |
 | `--output`    | How output should be formatted (`text` or `json`)        |
@@ -88,7 +88,7 @@ es-cli [<options>] <command> [<args>]
 ### Commands summary
 
 | Command                               | Sub commands                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [admin](#admin)                       | [scavenge](#admin-scavenge), [shutdown](#admin-shutdown), [merge_indexes](#admin-merge_indexes), [calculate_stream_size](#admin-calculate_stream_size), [backup](#admin-backup), [restore](#admin-restore), [s3_backup](#admin-s3_backup), [s3_restore](#admin-s3_restore), [azure_backup](#admin-azure_backup), [azure_restore](#admin-azure_restore), [verify_db](#admin-verify_db), [clear_scavenge_streams](#admin-clear_scavenge_streams), [delete_streams](#admin-delete_streams) |
 | [user](#user)                         | [add](#user-add), [change_password](#user-change_password), [delete](#user-delete), [disable](#user-disable), [update](#user-update), [enable](#user-enable), [list](#user-list), [reset_password](#user-reset_password)                                                                                                                                                                                                                                                                |
 | [projections](#projections)           | [delete](#projections-delete), [disable](#projections-disable), [enable](#projections-enable), [list](#projections-list), [new](#projections-new), [result](#projections-result), [state](#projections-state), [status](#projections-status), [restore_checkpoint](#projections-restore_checkpoint), [has_stalled](#projections-has_stalled)                                                                                                                                            |
@@ -104,7 +104,7 @@ es-cli admin [--version] [--help] <command> [<args>]
 ```
 
 | Command                                                 | Description                                                                                |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+|---------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | [azure_backup](#admin-azure_backup)                     | Backs up the EventStoreDB database to the specified container in Azure Blob Storage        |
 | [azure_restore](#admin-azure_restore)                   | Restores an EventStoreDB database from a specified container in Azure Blob Storage         |
 | [backup](#admin-backup)                                 | Backs up the EventStoreDB database to the destination directory                            |
@@ -128,7 +128,7 @@ es-cli admin azure_backup [options]
 Backs up the EventStoreDB database to the specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
-| --------------------- | ----------------------------------------------------------------------------------------- |
+|-----------------------|-------------------------------------------------------------------------------------------|
 | `-databasesource`     | The location of the EventStoreDB database                                                 |
 | `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                    |
 | `-differential`       | Backup only new or changed files                                                          |
@@ -149,7 +149,7 @@ es-cli admin azure_restore [options]
 Restores an EventStoreDB database from a specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
-| --------------------- | ----------------------------------------------------------------------------------------- |
+|-----------------------|-------------------------------------------------------------------------------------------|
 | `-databasesource`     | The location of the EventStoreDB database                                                 |
 | `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                    |
 | `-storageaccountname` | The name of the storage account                                                           |
@@ -168,7 +168,7 @@ es-cli admin backup [options]
 Backs up the EventStoreDB database to the destination directory.
 
 | Option                 | Description                                                                 |
-| ---------------------- | --------------------------------------------------------------------------- |
+|------------------------|-----------------------------------------------------------------------------|
 | `-databasesource`      | The location of the EventStoreDB database                                   |
 | `-databasedestination` | The backup destination                                                      |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
@@ -186,7 +186,7 @@ es-cli admin calculate_stream_size [options]
 Calculates the size on disk of the given stream.
 
 | Option        | Description |
-| ------------- | ----------- |
+|---------------|-------------|
 | `-streamname` | Stream Name |
 
 #### admin clear_scavenge_streams
@@ -202,7 +202,7 @@ es-cli admin delete_streams [options]
 Deletes streams matching the specified regular expression.
 
 | Option         | Description                                                    |
-| -------------- | -------------------------------------------------------------- |
+|----------------|----------------------------------------------------------------|
 | `-pattern`     | Regular expression that the streams must match                 |
 | `-list`        | Only list the streams matching the pattern, do not delete them |
 | `-fromall`     | Force read stream names from $all                              |
@@ -226,7 +226,7 @@ es-cli admin restore [options]
 Restores the EventStoreDB database from the provided location to the destination directory.
 
 | Option                 | Description                                                               |
-| ---------------------- | ------------------------------------------------------------------------- |
+|------------------------|---------------------------------------------------------------------------|
 | `-databasesource`      | The location of the backup to restore                                     |
 | `-databasedestination` | The destination of the restore                                            |
 | `-indexsource`         | The location of the index backup (default: databasesource/index)          |
@@ -242,7 +242,7 @@ es-cli admin s3_backup [options]
 Backs up an EventStoreDB database to the destination S3 bucket.
 
 | Option                 | Description                                                                 |
-| ---------------------- | --------------------------------------------------------------------------- |
+|------------------------|-----------------------------------------------------------------------------|
 | `-databasesource`      | The location of the EventStoreDB database                                   |
 | `-databasedestination` | The backup destination in the s3 bucket                                     |
 | `-s3bucket`            | The name of the S3 bucket                                                   |
@@ -265,7 +265,7 @@ es-cli admin s3_restore [options]
 Restores an EventStoreDB database from an S3 bucket.
 
 | Option                 | Description                                                                       |
-| ---------------------- | --------------------------------------------------------------------------------- |
+|------------------------|-----------------------------------------------------------------------------------|
 | `-databasesource`      | The location in the S3 bucket of the backup to restore                            |
 | `-databasedestination` | The destination of the restore                                                    |
 | `-s3bucket`            | The name of the S3 bucket                                                         |
@@ -294,7 +294,7 @@ es-cli admin verify_db [options]
 Verify the integrity of an EventStoreDB database.
 
 | Option             | Description                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------- |
+|--------------------|-------------------------------------------------------------------------------------|
 | `-databasepath`    | The path to the EventStoreDB database directory on disk                             |
 | `-indexpath`       | The path to the EventStoreDB index directory on disk  (default: databasepath/index) |
 | `-skipdbverify`    | Skip database verification (default: false)                                         |
@@ -309,7 +309,7 @@ es-cli user [--version] [--help] <command> [<args>]
 ```
 
 | Command                                  | Description              |
-| ---------------------------------------- | ------------------------ |
+|------------------------------------------|--------------------------|
 | [add](#user-add)                         | Add a user               |
 | [change_password](#user-change_password) | Change the user password |
 | [delete](#user-delete)                   | Delete a user            |
@@ -328,7 +328,7 @@ es-cli useradd [options]
 Add a user.
 
 | Option          | Description      |
-| --------------- | ---------------- |
+|-----------------|------------------|
 | `-loginname`    | Login Name       |
 | `-password`     | Password         |
 | `-fullname`     | Full Name        |
@@ -344,7 +344,7 @@ es-cli user change_password [options]
 Change the password for the given user.
 
 | Option             | Description                             |
-| ------------------ | --------------------------------------- |
+|--------------------|-----------------------------------------|
 | `-loginname`       | The login name of the user to update    |
 | `-newpassword`     | The new password for the given user     |
 | `-currentpassword` | The current password for the given user |
@@ -358,7 +358,7 @@ es-cli user delete [options]
 Delete a user.
 
 | Option       | Description                          |
-| ------------ | ------------------------------------ |
+|--------------|--------------------------------------|
 | `-loginname` | The login name of the user to delete |
 
 #### user disable
@@ -370,7 +370,7 @@ es-cli user disable [options]
 Disable a user.
 
 | Option       | Description                           |
-| ------------ | ------------------------------------- |
+|--------------|---------------------------------------|
 | `-loginname` | The login name of the user to disable |
 
 #### user update
@@ -382,7 +382,7 @@ es-cli user update [options]
 Update a user.
 
 | Option          | Description      |
-| --------------- | ---------------- |
+|-----------------|------------------|
 | `-loginname`    | Login Name       |
 | `-fullname`     | Full Name        |
 | `-isadmin`      | Is Administrator |
@@ -397,7 +397,7 @@ es-cli user enable [options]
 Enable a user.
 
 | Option       | Description                          |
-| ------------ | ------------------------------------ |
+|--------------|--------------------------------------|
 | `-loginname` | The login name of the user to enable |
 
 #### user list
@@ -417,7 +417,7 @@ es-cli user reset_password [options]
 Reset a user's password.
 
 | Option         | Description                         |
-| -------------- | ----------------------------------- |
+|----------------|-------------------------------------|
 | `-loginname`   | The login name of the user          |
 | `-newpassword` | The new password for the given user |
 
@@ -428,7 +428,7 @@ es-cli projections [--version] [--help] <command> [<args>]
 ```
 
 | Command                                               | Description                                          |
-| ----------------------------------------------------- | ---------------------------------------------------- |
+|-------------------------------------------------------|------------------------------------------------------|
 | [delete](#projections-delete)                         | Delete a projection                                  |
 | [disable](#projections-disable)                       | Disable a projection                                 |
 | [enable](#projections-enable)                         | Enable a projection                                  |
@@ -449,7 +449,7 @@ es-cli projections delete [options]
 Delete a projection.
 
 | Option                    | Description                  |
-| ------------------------- | ---------------------------- |
+|---------------------------|------------------------------|
 | `-name`                   | The projection name          |
 | `-deletestatestream`      | Delete the State Stream      |
 | `-deletecheckpointstream` | Delete the Checkpoint Stream |
@@ -463,7 +463,7 @@ es-cli projections disable [options]
 Disable a projection.
 
 | Option  | Description         |
-| ------- | ------------------- |
+|---------|---------------------|
 | `-name` | The projection name |
 
 #### projections enable
@@ -475,7 +475,7 @@ es-cli projections enable [options]
 Enable a projection.
 
 | Option  | Description         |
-| ------- | ------------------- |
+|---------|---------------------|
 | `-name` | The projection name |
 
 #### projections list
@@ -495,7 +495,7 @@ es-cli projections new [options]
 Create a new projection.
 
 | Option   | Description                                                                        |
-| -------- | ---------------------------------------------------------------------------------- |
+|----------|------------------------------------------------------------------------------------|
 | `-name`  | The projection name                                                                |
 | `-type`  | Type of projection ([o]netime, [c]ontinuous, [t]ransient)                          |
 | `-query` | The projection query (Prefix with @ to load from file. e.g. @projectionquery.json) |
@@ -509,7 +509,7 @@ es-cli projections result [options]
 Get the result of a projection.
 
 | Option       | Description                                      |
-| ------------ | ------------------------------------------------ |
+|--------------|--------------------------------------------------|
 | `-name`      | The projection name                              |
 | `-partition` | The partition of the result you are querying for |
 
@@ -522,7 +522,7 @@ es-cli projections state [options]
 Get the state of a projection.
 
 | Option       | Description                                     |
-| ------------ | ----------------------------------------------- |
+|--------------|-------------------------------------------------|
 | `-name`      | The projection name                             |
 | `-partition` | The partition of the state you are querying for |
 
@@ -535,7 +535,7 @@ es-cli projections status [options]
 Get the status of a projection.
 
 | Option  | Description         |
-| ------- | ------------------- |
+|---------|---------------------|
 | `-name` | The projection name |
 
 #### projections restore_checkpoint
@@ -547,7 +547,7 @@ es-cli projections restore_checkpoint [options]
 Restore a previous checkpoint for a projection.
 
 | Option  | Description         |
-| ------- | ------------------- |
+|---------|---------------------|
 | `-name` | The projection name |
 
 #### projections has_stalled
@@ -559,7 +559,7 @@ es-cli projections has_stalled [options]
 Determines whether a projection has stalled.
 
 | Option  | Description         |
-| ------- | ------------------- |
+|---------|---------------------|
 | `-name` | The projection name |
 
 #### competing
@@ -569,9 +569,9 @@ es-cli competing [--version] [--help] <command> [<args>]
 ```
 
 | Command                     | Description                     |
-| --------------------------- | ------------------------------- |
+|-----------------------------|---------------------------------|
 | [create](#competing-create) | Create a new subscription       |
-| [delete](#competing-delete) | Delete an existing subscription |
+| delete                      | Delete an existing subscription |
 | [list](#competing-list)     | List the subscriptions          |
 | [update](#competing-update) | Update an existing subscription |
 
@@ -584,7 +584,7 @@ es-cli competing list [options]
 List the subscriptions.
 
 | Option               | Description                                      |
-| -------------------- | ------------------------------------------------ |
+|----------------------|--------------------------------------------------|
 | `-streamid`          | The name of the stream to list subscriptions for |
 | `-subscription_name` | The name of the subscription to list             |
 
@@ -597,7 +597,7 @@ es-cli competing create [options]
 Create a new subscription.
 
 | Option               | Description                                                                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+|----------------------|---------------------------------------------------------------------------------------------------------------|
 | `-streamid`          | The stream to subscribe to                                                                                    |
 | `-subscription_name` | The name of the subscription group                                                                            |
 | `-config`            | The settings to create the subscription with (Prefix with @ to load from file. e.g. @subscriptionConfig.json) |
@@ -611,7 +611,7 @@ es-cli competing update [options]
 Update an existing subscription.
 
 | Option               | Description                                                                                                   |
-| -------------------- | ------------------------------------------------------------------------------------------------------------- |
+|----------------------|---------------------------------------------------------------------------------------------------------------|
 | `-streamid`          | The stream to update the subscription on                                                                      |
 | `-subscription_name` | The name of the subscription group to update                                                                  |
 | `-config`            | The settings to update the subscription with (Prefix with @ to load from file. e.g. @subscriptionConfig.json) |
@@ -622,9 +622,9 @@ Update an existing subscription.
 es-cli config_generator [--version] [--help] <command> [<args>]
 ```
 
-| Command                                         | Description                                                                     |
-| ----------------------------------------------- | ------------------------------------------------------------------------------- |
-| [create_config](config_generator-create_config) | Generates config files with recommended settings based on the provided options. |
+| Command                                          | Description                                                                     |
+|--------------------------------------------------|---------------------------------------------------------------------------------|
+| [create_config](#config_generator-create_config) | Generates config files with recommended settings based on the provided options. |
 
 #### config_generator create_config
 
@@ -637,13 +637,13 @@ Generates config files with recommended settings based on the provided options.
 Output options:
 
 | Option    | Description                                                                        |
-| --------- | ---------------------------------------------------------------------------------- |
+|-----------|------------------------------------------------------------------------------------|
 | `-output` | The destination for the generated config files (if nothing, just prints to STDOUT) |
 
 General options:
 
 | Option             | Description                                         |
-| ------------------ | --------------------------------------------------- |
+|--------------------|-----------------------------------------------------|
 | `-db`              | The location of the EventStoreDB database           |
 | `-index`           | The location of the EventStoreDB index              |
 | `-log`             | The location of the EventStoreDB logs               |
@@ -652,7 +652,7 @@ General options:
 Cluster options:
 
 | Option              | Description                                                         |
-| ------------------- | ------------------------------------------------------------------- |
+|---------------------|---------------------------------------------------------------------|
 | `-node_count`       | The number of database nodes in the cluster (default: 1)            |
 | `-gossip_discovery` | How nodes in the cluster will discover each other (gossipseed, dns) |
 | `-dns_name`         | The DNS name to use for gossip discovery                            |
@@ -660,7 +660,7 @@ Cluster options:
 Network options:
 
 | Option          | Description                                                                                                       |
-| --------------- | ----------------------------------------------------------------------------------------------------------------- |
+|-----------------|-------------------------------------------------------------------------------------------------------------------|
 | `-network_type` | The type of network the nodes will be running in (lan, cloud)                                                     |
 | `-internal_ips` | The internal IP addresses of the nodes, separated by a comma (node order should be the same as other ip arguments |
 | `-external_ips` | The external IP addresses of the nodes, separated by a comma (node order should be the same as other ip arguments |

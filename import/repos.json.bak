@@ -10,23 +10,26 @@
     "branches": [
       {
         "version": "v21.10",
-        "name": "docs/latest/consolidate-pages"
+        "name": "release/oss-v21.10"
+      },
+      {
+        "version": "v21.6",
+        "name": "release/oss-v21.6"
       },
       {
         "version": "v21.2",
-        "name": "docs/latest/consolidate-pages"
+        "name": "release/oss-v21.2"
       },
       {
         "version": "v20.10",
-        "name": "docs/v20.10/consolidate-pages"
+        "name": "release/oss-v20.10"
       },
       {
         "version": "v5",
-        "name": "docs/v5/consolidate-pages"
+        "name": "release/oss-v5"
       }
     ],
     "postprocess": [
-      "yarn shx rm -rf <root>/.vuepress",
       "yarn shx rm -rf ./docs/server/v5/http-api"
     ]
   },
@@ -40,7 +43,7 @@
     "branches": [
       {
         "version": "v5",
-        "name": "docs/v5/consolidate-pages"
+        "name": "release/oss-v5"
       }
     ],
     "samplesPostprocess": [

@@ -6,7 +6,7 @@ This plugin allows any LDAP protocol based directory services the ability to act
 The LDAP plugin is included as part of the commercial builds.
 :::
 
-To configure EventStoreDB to use the LDAP authentication plugin, make the following changes to [the configuration file of a database node](/v5/server/cluster-with-manager-nodes.md#configuring-nodes). You can make these changes after installation, but you need to stop the service, change the configuration and restart the service.
+To configure EventStoreDB to use the LDAP authentication plugin, make the following changes to [the configuration file of a database node](/server/v5/configuration.md). You can make these changes after installation, but you need to stop the service, change the configuration and restart the service.
 
 Set the authentication type to `ldaps`, and configure the plugin with an `LdapsAuth` section..
 

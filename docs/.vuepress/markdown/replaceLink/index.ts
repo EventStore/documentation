@@ -39,7 +39,9 @@ function replaceCrossLinks(token, env: MdEnv) {
 
     const attemptResolve: resolveFunction[] = [
         x => x,
+        x => `${x}.0`,
         x => `v${x}`,
+        x => `v${x}.0`,
         x => x.substring(0, x.lastIndexOf(".")),
         x => `v${x.substring(0, x.lastIndexOf("."))}`
     ];
