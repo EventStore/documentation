@@ -17,8 +17,7 @@ The gRPC client doesn't support .NET Standard. The change comes from using diffe
 If you were using it in the .NET Standard library, you have to update it to one of:
 - .NET 6 (`net6.0`),
 - .NET 5 (`net5.0`),
-- .NET Core 3.1 (`netcoreapp3.1`),
-- .NET Framework 4.8 (`net48`)
+- .NET Core 3.1 (`netcoreapp3.1`).
 
 We recommend using the latest .NET framework version, so .NET 6.
 
