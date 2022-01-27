@@ -626,7 +626,7 @@ You should be careful in defining the retry policy. Not all operations are idemp
 TODO
 ## Catch-up Subscriptions
 
-We unified catch-up subscriptions API in the gRPC client. In TCP client, you have multiple methods for subscribing to EventStoreDB, e.g. `SubscribeToStreamAsync`, `SubscribeToStreamFrom`, `FilteredSubscribeToAllAsync` etc. Now you have two main options:
+We unified catch-up subscriptions API in the gRPC client. In the TCP client, you have multiple methods for subscribing to EventStoreDB, e.g., `SubscribeToStreamAsync`, `SubscribeToStreamFrom`, `FilteredSubscribeToAllAsync`, etc. Now you have two main options:
 - subscribing to a single stream using `SubscribeToStreamAsync`,
 - subscribing to the `$all` stream using `SubscribeToAllAsync`.
 
@@ -634,7 +634,7 @@ Both methods include overloads for specific configurations and optional paramete
 
 ### Positions
 
-As for other operations, we aligned subscriptions checkpoints/positions handling. Accordingly, as for [reading](#reading-events) instead of using nullable long value, we introduced classes:
+As with other operations, we aligned the subscription checkpoint/position handling. Accordingly, for [reading](#reading-events), instead of using `Nullable<Int64>`, we introduced the following types:
 - `StreamPosition` for a single stream subscription,
 - `Position` for the `$all` stream.
 
@@ -713,7 +713,7 @@ await grpcClient.SubscribeToAllAsync(
 
 ### Events filtering
 
-EventStoreDB allows you to filter the events whilst you subscribe to the `$all` stream so that you only receive the events that you care about. TCP client provides that option via `FilteredSubscribeToAll` method. As was mentioned above, this method was unified with `SubscribeToAllAsync`. 
+EventStoreDB allows you to filter the events whilst you subscribe to the `$all` stream so that you only receive the events that you care about. The TCP client provides that option via the `FilteredSubscribeToAll` method. As was mentioned above, this method was unified with `SubscribeToAllAsync`. 
 
 Thus, instead of such call in TCP:
 
@@ -746,13 +746,13 @@ await grpcClient.SubscribeToAllAsync(
 );
 ```
 
-`CatchUpSubscriptionFilteredSettings` and `Filter` classes from the TCP client were merged into single `SubscriptionFilterOptions` in gRPC.
+The `CatchUpSubscriptionFilteredSettings` and `Filter` types from the TCP client were unified into single `SubscriptionFilterOptions` in gRPC.
 
 Read more in the [gRPC server-side filtering docs](/clients/grpc/subscriptions.md#server-side-filtering).
 
 ### Knowing when live processing started
 
-TCP client provides the possibility to provide a handler that will be called when live processing starts:
+The TCP client provides the possibility to provide a handler that will be called when live processing starts:
 
 ```csharp{6}
 tcpConnection.SubscribeToStreamFrom(
@@ -765,9 +765,9 @@ tcpConnection.SubscribeToStreamFrom(
 );
 ```
 
-gRPC clients do not provide such a feature. However, you can handle that by comparing the current stream (or the `$all` stream) position with the position of the last received event from the subscription. You also need to define threshold as if the system is alive, then new events will constantly appear, and you might not get into the situation where you're fully caught up (especially for the `$all` stream).
+gRPC clients do not provide such a feature. However, you can handle that by comparing the current stream (or the `$all` stream) position with the position of the last received event from the subscription. You also need to define a threshold. If the system is live, new events will constantly appear, and you might not get fully caught up (especially for the `$all` stream).
 
-You can perform gap measurement in a way as below:
+You can perform gap measurement:
 
 ```csharp
 public static class GapMeasurement
@@ -832,19 +832,19 @@ public static async Task<bool> IsLive(Func<Task<ulong>> getSubscriptionGap)
 
 ```
 
-You can use such logic in an:
-- event appeared callback,
-- [checkpoint is reached](/clients/grpc/subscriptions.md#checkpointing) if you're using a filtered subscription. 
+You can use this logic in:
+- the event appeared callback,
+- the [checkpoint reached callback](/clients/grpc/subscriptions.md#checkpointing) if you're using a filtered subscription. 
 
-You may also consider some performance improvements like checking once per a few events or using cache for reads.
+You may also consider some performance improvements like checking once every few events or using a cache for reads.
 
 ### Resolving linked events
 
 [Projections in EventStoreDB](/server/v21.10/projections/) let you append new events or link existing events to streams. Links won't contain the original event data. ESDB can resolve it automatically depending on the value you passed to the operation call.
 
-TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
+The TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
 
-To do that, you need to pass `true` as `resolveLinkTos` param's value explicitly, e.g. for the regular stream:
+To do that, you need to pass `true` to the `resolveLinkTos` param, e.g., for a regular stream:
 
 ```csharp{4}
 await grpcClient.SubscribeToStreamAsync(
