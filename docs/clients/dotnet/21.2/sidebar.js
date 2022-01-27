@@ -8,7 +8,7 @@ module.exports = [
       "/subscriptions.md",
       "/projections.md",
       "/security.md",
-      "streams.md",
+      "/streams.md",
       "/embedded.md",
     ],
   },
