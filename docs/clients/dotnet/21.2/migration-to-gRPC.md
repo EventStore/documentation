@@ -622,8 +622,6 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
 You should be careful in defining the retry policy. Not all operations are idempotent by default. Reads are idempotent, however, if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g., there is no point in retrying `StreamDeleted` as the stream won't reappear. 
 :::
 
-## Subscriptions
-TODO
 ## Catch-up Subscriptions
 
 We unified catch-up subscriptions API in the gRPC client. In the TCP client, you have multiple methods for subscribing to EventStoreDB, e.g., `SubscribeToStreamAsync`, `SubscribeToStreamFrom`, `FilteredSubscribeToAllAsync`, etc. Now you have two main options:
@@ -667,13 +665,15 @@ if (streamPosition.HasValue)
         SubscriptionDropped
     );
 }
-
-await grpcClient.SubscribeToStreamAsync(
-    streamName,
-    EventAppeared,
-    false,
-    SubscriptionDropped
-);
+else
+{
+    await grpcClient.SubscribeToStreamAsync(
+        streamName,
+        EventAppeared,
+        false,
+        SubscriptionDropped
+    );
+}
 ```
 
 Accordingly, you need to perform the same change for subscription to the `$all` stream.
@@ -703,12 +703,14 @@ if (streamPosition.HasValue)
         SubscriptionDropped
     );
 }
-
-await grpcClient.SubscribeToAllAsync(
-    EventAppeared,
-    false,
-    SubscriptionDropped
-);
+else
+{
+    await grpcClient.SubscribeToAllAsync(
+        EventAppeared,
+        false,
+        SubscriptionDropped
+    );
+}
 ```
 
 ### Events filtering
@@ -813,6 +815,9 @@ public static class GapMeasurement
 
         var currentLastPosition = getCurrentLastEvent.Event.Position.CommitPosition;
 
+        // Warning: the $all stream position is not autoincremented number.
+        // It doesn't represent the event number in the $all stream.
+        // It's a logical position representing the location in the storage.
         return subscriptionLastPosition.CommitPosition - currentLastPosition;
     }
 }
