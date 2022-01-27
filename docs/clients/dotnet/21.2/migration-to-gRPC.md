@@ -4,9 +4,9 @@ The TCP client is considered legacy. We recommend migrating to the gRPC client.
 
 We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, back-pressure,etc., instead of building custom implementations. 
 
-As gRPC is a multi-platform and widely adopted standard, it enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJs, and Rust.
+As gRPC is multi-platform and a widely adopted standard, it has enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJs, and Rust.
 
-The TCP client will still be getting necessary bug fixes, but new database features will be only delivered for the gRPC client (e.g., persistent subscription to `$all`).
+The TCP client will still get necessary bug fixes, but new database features will be only delivered for gRPC clients (e.g., persistent subscription to `$all`).
 
 Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Please see the [gRPC documentation](/clients/grpc/) for more details on how to use it.
 
@@ -33,7 +33,7 @@ We recommend using the latest .NET framework version, so .NET 6.
 
 ## Update package references
 
-To use the gRPC client, you need to replace the TPC client package (`EventStore.Client`) with the gRPC one (`EventStore.Client.Grpc.Streams`). 
+To use the gRPC client, you need to replace the TCP client package (`EventStore.Client`) with the gRPC one (`EventStore.Client.Grpc.Streams`). 
 
 ```xml{2-3}
  <ItemGroup>
@@ -44,7 +44,7 @@ To use the gRPC client, you need to replace the TPC client package (`EventStore.
 
 ## Migration strategies
 
-You may also consider step by step migration:
+You may also consider a step by step migration:
 - add the gRPC client and keeping the TCP one,
 - gradually replace usages, e.g., start with event append and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
 - remove the TCP client package reference as the last step.
@@ -139,7 +139,7 @@ public class EventStore
 
 ## Differences in connection management
 
-Both the TCP and gRPC clients are managing reconnections. That's the reason why it should be registered as a single instance in the application. 
+Both the TCP and gRPC clients manage reconnections. Therefore it should be registered as a single instance in the application. 
 
 The TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it asynchronously or risk deadlocks.
 
@@ -152,9 +152,9 @@ private async Task<IEventStoreConnection> GetEventStoreConnection(string connect
 }
 ```
 
-As TCP client connection logic is not thread-safe (`ConnectAsync` method), other operations are thread-safe. Because of that, you have to ensure that you won't have a race condition. You also should consider handling `Closed` events to manage reconnection if it is closed. 
+The TCP client connection logic is not thread-safe (`ConnectAsync` method), however the other operations are thread-safe. Because of that, you have to ensure that you won't have a race condition. You also should consider handling `Closed` events to manage reconnection if it is closed. 
 
-TCP client supports built-in reconnections; however, you need to be careful about setting the connections options properly. Wrongly defined settings can cause a flood of reconnections, increasing the chance for failure. For instance, additional retries may worsen if the reason was a high load on the database.
+The TCP client supports built-in reconnections; however, you need to be careful about setting the connections options properly. Wrongly defined settings can cause a flood of reconnections, increasing the chance for failure. For instance, additional retries may worsen if the reason was a high load on the database.
 
 Sample code with reconnections could look like this:
 
@@ -358,7 +358,7 @@ If you had wrapper methods similar to [presented above](#migration-strategies). 
 
 ### Transactions
 
-The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. The TCP client may perform multiple appends to EventStoreDB as one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. The gRPC client still supports appending more than one event to the single stream as an atomic operation. 
+The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. The TCP client may perform multiple appends to EventStoreDB in one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. The gRPC client still supports appending more than one event to the single stream as an atomic operation. 
 
 A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, for example:
 
@@ -400,7 +400,7 @@ public class EventStoreDBUnitOfWork
 
 ### Read direction
 
-The TCP Client have dedicated methods for reading events in the specific direction: 
+The TCP Client has dedicated methods for reading events in the specific direction: 
 - `ReadStreamEventsForwardAsync`,
 - `ReadStreamEventsBackwardAsync`,
 - `ReadAllEventsForwardAsync`,
@@ -452,9 +452,9 @@ await using var readResult = grpcClient.ReadAllAsync(
 
 ### Read positions
 
-Both TCP and gRPC clients allow reading the stream from a specific position (representing the location of the particular event in the stream). We decided to make positions more explicit accordingly to the stream revision changes in [appending new events](#appending-events). 
+Both TCP and gRPC clients allow reading the stream from a specific position (representing the location of the particular event in the stream). We decided to make positions more explicit according to the stream revision changes in [appending new events](#appending-events). 
 
-We expanded a `StreamPosition` class that centralises stream position handling. It still has a `Start` and an `End` constant representing the logical stream's position. However, they return no longer `long` values but `StreamPosition` class instance. We replaced `long` values with `ulong` as stream position is always positive.
+We expanded a `StreamPosition` class that centralises stream position handling. It still has a `Start` and an `End` constant representing the logical stream's position. However, they no longer return `long` values but a `StreamPosition` class instance. We replaced `long` values with `ulong` as stream position is always positive.
 
 `StreamPosition` class has an overloaded operator for `ulong` value assignment. 
 
@@ -472,7 +472,7 @@ For reading from `$all`, the TCP Client has already the `Position` class. gRPC c
 
 ### Read result
 
-TCP Client requires paging through the results. You must provide the maximum number of events you want to read in the single read call. In the gRPC client, this is optional. By default, it will try to read all events. To make it efficient, read methods return [IAsyncEnumerable](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8). Which means that it won't load the whole stream at once but iterate sequentially, reducing the memory pressure.
+The TCP Client requires paging through the results. You must provide the maximum number of events you want to read in the single read call. In the gRPC client, this is optional. By default, it will try to read all events. To make it efficient, read methods return [IAsyncEnumerable](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8). Which means that it won't load the whole stream at once but iterate sequentially, reducing the memory pressure.
 
 Instead of doing paging like this in TCP client:
 
@@ -531,7 +531,7 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 
 ### Serialisation
 
-The gRPC client uses `ReadOnlyMemory<byte>` instead of byte array to make event processing more efficient. To support that, you will need to modify your deserialisation logic slightly:
+The gRPC client uses `ReadOnlyMemory<byte>` instead of a byte array to make event processing more efficient. To support that, you will need to modify your deserialisation logic slightly:
 
 ```csharp{4-5}
   object Deserialize(this ResolvedEvent resolvedEvent)
