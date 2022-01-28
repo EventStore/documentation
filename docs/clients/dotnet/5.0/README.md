@@ -2,6 +2,10 @@
 
 This is a quick tour into the basic operations with EventStoreDB using the TCP client. We will look at creating a connection, appending an event and reading an event.
 
+::: warning
+The TCP client is considered legacy. We recommend migrating to [the gRPC client](/clients/grpc/). Check the [migration guide to learn more](migration-to-gRPC.md).
+:::
+
 ## Requirements
 
 These examples have the following requirements:
