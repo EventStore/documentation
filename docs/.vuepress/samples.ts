@@ -32,15 +32,15 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "java": {
                 label: "Java",
-                path: "java/1.0.0/samples"
+                path: "java/2.0.0/samples"
             },
             "js": {
                 label: "JavaScript",
-                path: "node/2.0.0/samples"
+                path: "node/3.0.0/samples"
             },
             "ts": {
                 label: "TypeScript",
-                path: "node/2.0.0/samples"
+                path: "node/3.0.0/samples"
             },
             "rust": {
                 label: "Rust",
@@ -52,7 +52,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "go": {
                 label: "Go",
-                path: "go/1.0.0/samples"
+                path: "go/1.0.2/samples"
             },
         }
     };
