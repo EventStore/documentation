@@ -81,7 +81,7 @@
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java",
     "branches": [
       {
-        "version": "1.0.0",
+        "version": "2.0.0",
         "name": "trunk"
       }
     ]
@@ -111,7 +111,7 @@
     ],
     "branches": [
       {
-        "version": "2.0.0",
+        "version": "3.0.0",
         "name": "master"
       }
     ]
@@ -124,7 +124,7 @@
     "repo": "https://github.com/EventStore/EventStore-Client-Go.git",
     "branches": [
       {
-        "version": "1.0.0",
+        "version": "1.0.2",
         "name": "master"
       }
     ]
