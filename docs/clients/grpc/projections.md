@@ -57,6 +57,8 @@ No additional configuration is needed having Rust installed. Go check https://ru
 :::
 ::: code-group-item TypeScript
 ```
+# TypeScript Declarations are included in the package.
+
 # Yarn
 $ yarn add @eventstore/db-client
 
