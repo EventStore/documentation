@@ -54,7 +54,7 @@ export class versioning {
                     if (item.collapsable !== undefined) {
                         item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
                     }
-                    item.children = item.children.map(x => `/${p}${x}`);
+                    item.children = item.children.map(x => `/${p}/${x}`);
                     item.version = v.version;
                     item.group = version.group;
                     item.text = item.text || item.title;
