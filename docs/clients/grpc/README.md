@@ -51,7 +51,7 @@ implementation 'com.eventstore:db-client-java:0.5'
 libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
 ```
 :::
-::: code-group-item NodeJS
+::: code-group-item JavaScript
 ```:no-line-numbers
 # Yarn
 $ yarn add @eventstore/db-client
@@ -67,6 +67,8 @@ No additional configuration is needed having Rust installed. Go check https://ru
 :::
 ::: code-group-item TypeScript
 ```:no-line-numbers
+# TypeScript Declarations are included in the package.
+
 # Yarn
 $ yarn add @eventstore/db-client
 
