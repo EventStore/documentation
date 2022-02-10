@@ -10,11 +10,7 @@
     "branches": [
       {
         "version": "v21.10",
-        "name": "release/oss-v21.10"
-      },
-      {
-        "version": "v21.2",
-        "name": "release/oss-v21.2"
+        "name": "master"
       },
       {
         "version": "v20.10",
