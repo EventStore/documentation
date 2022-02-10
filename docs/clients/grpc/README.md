@@ -102,26 +102,7 @@ We use JSON for serialization in the documentation examples.
 
 The code snippet below creates an event object instance, serializes it and puts it as payload to the `EventData` structure, which the client is able to write to the database.
 
-:::: code-group
-::: code-group-item C#
-@[code{createEvent}](@grpc/quick-start/Program.cs)
-:::
-::: code-group-item Go
-@[code{createEvent}](@grpc/quickstart.go)
-:::
-::: code-group-item Java
-@[code{createEvent}](@grpc/quick_start/QuickStart.java)
-:::
-::: code-group-item JavaScript
-@[code{createEvent}](@grpc/get-started.js)
-:::
-::: code-group-item Rust
-@[code{createEvent}](@grpc/quickstart.rs)
-:::
-::: code-group-item TypeScript
-@[code{createEvent}](@grpc/get-started.ts)
-:::
-::::
+@[code{createEvent}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 ### Appending events
 
@@ -129,26 +110,7 @@ Each event in the database has its own unique identifier (UUID). The database us
 
 In the snippet below, we append the event to the stream `some-stream`.
 
-:::: code-group
-::: code-group-item C#
-@[code{appendEvents}](@grpc/quick-start/Program.cs)
-:::
-::: code-group-item Go
-@[code{appendEvents}](@grpc/quickstart.go)
-:::
-::: code-group-item Java
-@[code{appendEvents}](@grpc/quick_start/QuickStart.java)
-:::
-::: code-group-item JavaScript
-@[code{appendEvents}](@grpc/get-started.js)
-:::
-::: code-group-item Rust
-@[code{appendEvents}](@grpc/quickstart.rs)
-:::
-::: code-group-item TypeScript
-@[code{appendEvents}](@grpc/get-started.ts)
-:::
-::::
+@[code{appendEvents}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 Here we are appending events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [appending events documentation](./appending-events.md).
 
@@ -156,26 +118,7 @@ Here we are appending events without checking if the stream exists or if the str
 
 Finally, we can read events back from the `some-stream` stream.
 
-:::: code-group
-::: code-group-item C#
-@[code{readStream}](@grpc/quick-start/Program.cs)
-:::
-::: code-group-item Go
-@[code{readStream}](@grpc/quickstart.go)
-:::
-::: code-group-item Java
-@[code{readStream}](@grpc/quick_start/QuickStart.java)
-:::
-::: code-group-item JavaScript
-@[code{readStream}](@grpc/get-started.js)
-:::
-::: code-group-item Rust
-@[code{readStream}](@grpc/quickstart.rs)
-:::
-::: code-group-item TypeScript
-@[code{readStream}](@grpc/get-started.ts)
-:::
-::::
+@[code{readStream}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
 When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized. See more advanced scenarios in [reading events documentation](./reading-events.md).
 

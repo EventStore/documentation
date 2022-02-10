@@ -75,7 +75,7 @@ Projection management operations are exposed through a dedicated client.
 <xode-group>
 <xode-block title="C#" code="connectionString">
 
-@[code{createClient}](@grpc/projection-management/Program.cs)
+@[code{createClient}](@grpc:projection-management/Program.cs)
 
 </xode-block>
 <xode-block title="Go" code="connectionString">
@@ -93,7 +93,7 @@ Sample available soon
 </xode-block>
 <xode-block title="JavaScript" code="connectionString">
 
-@[code{createClient}](@grpc/projection-management.js)
+@[code{createClient}](@grpc:projection-management.js)
 
 </xode-block>
 <xode-block title="Rust" code="connectionString">
@@ -105,7 +105,7 @@ Sample available soon
 </xode-block>
 <xode-block title="TypeScript" code="connectionString">
 
-@[code{createClient}](@grpc/projection-management.ts)
+@[code{createClient}](@grpc:projection-management.ts)
 
 </xode-block>
 </xode-group>
@@ -117,7 +117,7 @@ Projections have explicit names, and you can enable or disable them via this nam
 
 :::: code-group
 ::: code-group-item C#
-@[code{CreateContinuous}](@grpc/projection-management/Program.cs)
+@[code{CreateContinuous}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -130,7 +130,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{CreateContinuous}](@grpc/projection-management.js)
+@[code{CreateContinuous}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -138,7 +138,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{CreateContinuous}](@grpc/projection-management.ts)
+@[code{CreateContinuous}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -146,7 +146,7 @@ Trying to create projections with the same name will result in an error:
 
 :::: code-group
 ::: code-group-item C#
-@[code{CreateContinuous_Conflict}](@grpc/projection-management/Program.cs)
+@[code{CreateContinuous_Conflict}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -159,7 +159,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{CreateContinuous_Conflict}](@grpc/projection-management.js)
+@[code{CreateContinuous_Conflict}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -167,7 +167,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{CreateContinuous_Conflict}](@grpc/projection-management.ts)
+@[code{CreateContinuous_Conflict}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -176,7 +176,7 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 
 :::: code-group
 ::: code-group-item C#
-@[code{RestartSubSystem}](@grpc/projection-management/Program.cs)
+@[code{RestartSubSystem}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -189,7 +189,7 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 ```
 :::
 ::: code-group-item JavaScript
-@[code{RestartSubSystem}](@grpc/projection-management.js)
+@[code{RestartSubSystem}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```
@@ -197,7 +197,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{RestartSubSystem}](@grpc/projection-management.ts)
+@[code{RestartSubSystem}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -209,7 +209,7 @@ You must have access to a projection to enable it, see the [ACL documentation](@
 
 :::: code-group
 ::: code-group-item C#
-@[code{Enable}](@grpc/projection-management/Program.cs)
+@[code{Enable}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -222,7 +222,7 @@ You must have access to a projection to enable it, see the [ACL documentation](@
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Enable}](@grpc/projection-management.js)
+@[code{Enable}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -230,7 +230,7 @@ You must have access to a projection to enable it, see the [ACL documentation](@
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Enable}](@grpc/projection-management.ts)
+@[code{Enable}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -238,7 +238,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 :::: code-group
 ::: code-group-item C#
-@[code{EnableNotFound}](@grpc/projection-management/Program.cs)
+@[code{EnableNotFound}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -251,7 +251,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 ```
 :::
 ::: code-group-item JavaScript
-@[code{EnableNotFound}](@grpc/projection-management.js)
+@[code{EnableNotFound}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -259,7 +259,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 ```
 :::
 ::: code-group-item TypeScript
-@[code{EnableNotFound}](@grpc/projection-management.ts)
+@[code{EnableNotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -275,7 +275,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 
 :::: code-group
 ::: code-group-item C#
-@[code{Disable}](@grpc/projection-management/Program.cs)
+@[code{Disable}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -288,7 +288,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Disable}](@grpc/projection-management.js)
+@[code{Disable}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -296,7 +296,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Disable}](@grpc/projection-management.ts)
+@[code{Disable}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -304,7 +304,7 @@ You can only disable an existing projection. When you try to disable a non-exist
 
 :::: code-group
 ::: code-group-item C#
-@[code{DisableNotFound}](@grpc/projection-management/Program.cs)
+@[code{DisableNotFound}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -317,7 +317,7 @@ You can only disable an existing projection. When you try to disable a non-exist
 ```
 :::
 ::: code-group-item JavaScript
-@[code{DisableNotFound}](@grpc/projection-management.js)
+@[code{DisableNotFound}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -325,7 +325,7 @@ You can only disable an existing projection. When you try to disable a non-exist
 ```
 :::
 ::: code-group-item TypeScript
-@[code{DisableNotFound}](@grpc/projection-management.ts)
+@[code{DisableNotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -350,7 +350,7 @@ Deletes a projection
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Delete}](@grpc/projection-management.js)
+@[code{Delete}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -358,7 +358,7 @@ Deletes a projection
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Delete}](@grpc/projection-management.ts)
+@[code{Delete}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -381,7 +381,7 @@ You can only delete an existing projection. When you try to delete a non-existin
 ```
 :::
 ::: code-group-item JavaScript
-@[code{DeleteNotFound}](@grpc/projection-management.js)
+@[code{DeleteNotFound}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -389,7 +389,7 @@ You can only delete an existing projection. When you try to delete a non-existin
 ```
 :::
 ::: code-group-item TypeScript
-@[code{DeleteNotFound}](@grpc/projection-management.ts)
+@[code{DeleteNotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -403,7 +403,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 
 :::: code-group
 ::: code-group-item C#
-@[code{Abort}](@grpc/projection-management/Program.cs)
+@[code{Abort}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -416,7 +416,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Abort}](@grpc/projection-management.js)
+@[code{Abort}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -424,7 +424,7 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Abort}](@grpc/projection-management.ts)
+@[code{Abort}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -432,7 +432,7 @@ You can only abort an existing projection. When you try to abort a non-existing 
 
 :::: code-group
 ::: code-group-item C#
-@[code{Abort_NotFound}](@grpc/projection-management/Program.cs)
+@[code{Abort_NotFound}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -445,7 +445,7 @@ You can only abort an existing projection. When you try to abort a non-existing 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Abort_NotFound}](@grpc/projection-management.js)
+@[code{Abort_NotFound}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 
@@ -454,7 +454,7 @@ You can only abort an existing projection. When you try to abort a non-existing 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Abort_NotFound}](@grpc/projection-management.ts)
+@[code{Abort_NotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -463,7 +463,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 
 :::: code-group
 ::: code-group-item C#
-@[code{Reset}](@grpc/projection-management/Program.cs)
+@[code{Reset}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -476,7 +476,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Reset}](@grpc/projection-management.js)
+@[code{Reset}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -484,7 +484,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Reset}](@grpc/projection-management.ts)
+@[code{Reset}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -492,7 +492,7 @@ Resetting a projection that does not exist will result in an error.
 
 :::: code-group
 ::: code-group-item C#
-@[code{Reset_NotFound}](@grpc/projection-management/Program.cs)
+@[code{Reset_NotFound}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -505,7 +505,7 @@ Resetting a projection that does not exist will result in an error.
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Reset_NotFound}](@grpc/projection-management.js)
+@[code{Reset_NotFound}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 
@@ -514,7 +514,7 @@ Resetting a projection that does not exist will result in an error.
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Reset_NotFound}](@grpc/projection-management.ts)
+@[code{Reset_NotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -524,7 +524,7 @@ Updates a projection. The name parameter is the name of the projection to be upd
 
 :::: code-group
 ::: code-group-item C#
-@[code{Update}](@grpc/projection-management/Program.cs)
+@[code{Update}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -537,7 +537,7 @@ Updates a projection. The name parameter is the name of the projection to be upd
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Update}](@grpc/projection-management.js)
+@[code{Update}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -545,7 +545,7 @@ Updates a projection. The name parameter is the name of the projection to be upd
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Update}](@grpc/projection-management.ts)
+@[code{Update}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -553,7 +553,7 @@ You can only update an existing projection. When you try to update a non-existin
 
 :::: code-group
 ::: code-group-item C#
-@[code{Update_NotFound}](@grpc/projection-management/Program.cs)
+@[code{Update_NotFound}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -566,7 +566,7 @@ You can only update an existing projection. When you try to update a non-existin
 ```
 :::
 ::: code-group-item JavaScript
-@[code{Update_NotFound}](@grpc/projection-management.js)
+@[code{Update_NotFound}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -574,7 +574,7 @@ You can only update an existing projection. When you try to update a non-existin
 ```
 :::
 ::: code-group-item TypeScript
-@[code{Update_NotFound}](@grpc/projection-management.ts)
+@[code{Update_NotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -585,7 +585,7 @@ See the [projection details](#projection-details) section for an explanation of 
 
 :::: code-group
 ::: code-group-item C#
-@[code{ListAll}](@grpc/projection-management/Program.cs)
+@[code{ListAll}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -598,7 +598,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{ListAll}](@grpc/projection-management.ts)
+@[code{ListAll}](@grpc:projection-management.ts)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -606,7 +606,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{ListAll}](@grpc/projection-management.ts)
+@[code{ListAll}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -617,7 +617,7 @@ See the [projection details](#projection-details) section for an explanation of 
 
 :::: code-group
 ::: code-group-item C#
-@[code{ListContinuous}](@grpc/projection-management/Program.cs)
+@[code{ListContinuous}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -630,7 +630,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{ListContinuous}](@grpc/projection-management.js)
+@[code{ListContinuous}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -638,7 +638,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{ListContinuous}](@grpc/projection-management.ts)
+@[code{ListContinuous}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -649,7 +649,7 @@ See the [projection details](#projection-details) section for an explanation of 
 
 :::: code-group
 ::: code-group-item C#
-@[code{GetStatus}](@grpc/projection-management/Program.cs)
+@[code{GetStatus}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -662,7 +662,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item JavaScript
-@[code{GetStatus}](@grpc/projection-management.js)
+@[code{GetStatus}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -670,7 +670,7 @@ See the [projection details](#projection-details) section for an explanation of 
 ```
 :::
 ::: code-group-item TypeScript
-@[code{GetStatus}](@grpc/projection-management.ts)
+@[code{GetStatus}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -695,7 +695,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{GetState}](@grpc/projection-management.js)
+@[code{GetState}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -703,7 +703,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{GetState}](@grpc/projection-management.ts)
+@[code{GetState}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -713,7 +713,7 @@ Retrieves the result of the named projection and partition.
 
 :::: code-group
 ::: code-group-item C#
-@[code{GetResult}](@grpc/projection-management/Program.cs)
+@[code{GetResult}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
@@ -726,7 +726,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item JavaScript
-@[code{GetResult}](@grpc/projection-management.js)
+@[code{GetResult}](@grpc:projection-management.js)
 :::
 ::: code-group-item Rust
 ```Rust
@@ -734,7 +734,7 @@ Sample available soon
 ```
 :::
 ::: code-group-item TypeScript
-@[code{GetResult}](@grpc/projection-management.ts)
+@[code{GetResult}](@grpc:projection-management.ts)
 :::
 ::::
 

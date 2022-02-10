@@ -14,26 +14,7 @@ Check the [Getting Started](README.md) guide to learn how to configure and use t
 
 The simplest stream subscription looks like the following :
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-stream}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-stream}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-stream}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-stream}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-stream}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-stream}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-stream}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 The provided handler will be called for every event in the stream.
 
@@ -61,26 +42,7 @@ To subscribe to a stream from a specific position, you need to provide a *stream
 
 The following subscribes to the stream `some-stream` at position `20`, this means that events `21` and onward will be handled:
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-stream-from-position}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-stream-from-position}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-stream-from-position}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-stream-from-position}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-stream-from-position}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-stream-from-position}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-stream-from-position}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ### Subscribing to $all
 
@@ -90,74 +52,17 @@ The corresponding `$all` subscription will subscribe from the event after the on
 
 Please note that this position will need to be a legitimate position in `$all`.
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-all-from-position}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-all-from-position}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-all-from-position}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-all-from-position}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-all-from-position}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-all-from-position}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-all-from-position}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ## Subscribing to a stream for live updates
 
 You can subscribe to a stream to get live updates by subscribing to the end of the stream:
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-stream-live}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-stream-live}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-stream-live}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-stream-live}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-stream-live}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-stream-live}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-stream-live}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 And the same works with `$all` :
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-all-live}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-all-live}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-all-live}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-all-live}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-all-live}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-all-live}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-all-live}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 This won't read through the history of the stream, but will rather notify the handler when a new event appears in the respective stream.
 
@@ -173,26 +78,7 @@ Link-to events point to events in other streams in EventStoreDB. These are gener
 
 When reading a stream you can specify whether to resolve link-to's or not. By default, link-to events are not resolved. You can change this behaviour by setting the `resolveLinkTos` parameter to `true`:
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-stream-resolving-linktos}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-stream-resolving-linktos}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ## Dropped subscriptions
 
@@ -214,49 +100,11 @@ Bear in mind that a subscription can also drop because it is slow. The server tr
 
 An application, which hosts the subscription, can go offline for a period of time for different reasons. It could be a crash, infrastructure failure, or a new version deployment. As you rarely would want to reprocess all the events again, you'd need to store the current position of the subscription somewhere, and then use it to restore the subscription from the point where it dropped off:
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-stream-subscription-dropped}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-stream-subscription-dropped}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 When subscribed to `$all` you want to keep the position of the event in the `$all` stream. As mentioned previously, the `$all` stream position consists of two big integers (prepare and commit positions), not one:
 
-:::: code-group
-::: code-group-item C#
-@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{subscribe-to-all-subscription-dropped}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{subscribe-to-all-subscription-dropped}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 ## Filter options
 
@@ -264,26 +112,7 @@ Subscriptions to `$all` can include a filter option. A filtered subscription wil
 
 A simple stream prefix filter looks like this:
 
-:::: code-group
-::: code-group-item C#
-@[code{stream-prefix-filtered-subscription}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{stream-prefix-filtered-subscription}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{stream-prefix-filtered-subscription}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{stream-prefix-filtered-subscription}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{stream-prefix-filtered-subscription}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{stream-prefix-filtered-subscription}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{stream-prefix-filtered-subscription}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 The filtering API is described more in-depth in the [filtering section](subscriptions.md#server-side-filtering).
 
@@ -293,26 +122,7 @@ The user creating a subscription must have read access to the stream it's subscr
 
 The code below shows how you can provide user credentials for a subscription. When you specify subscription credentials explicitly, it will override the default credentials set for the client. If you don't specify any credentials, the client will use the credentials specified for the client, if you specified those.
 
-:::: code-group
-::: code-group-item C#
-@[code{overriding-user-credentials}](@grpc/subscribing-to-streams/Program.cs)
-:::
-::: code-group-item Go
-@[code{overriding-user-credentials}](@grpc/subscribingToStream.go)
-:::
-::: code-group-item Java
-@[code{overriding-user-credentials}](@grpc/subscribing_to_stream/SubscribingToStream.java)
-:::
-::: code-group-item JavaScript
-@[code{overriding-user-credentials}](@grpc/subscribing-to-streams.js)
-:::
-::: code-group-item Rust
-@[code{overriding-user-credentials}](@grpc/subscribing_to_stream.rs)
-:::
-::: code-group-item TypeScript
-@[code{overriding-user-credentials}](@grpc/subscribing-to-streams.ts)
-:::
-::::
+@[code{overriding-user-credentials}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
 # Server-side filtering
 
@@ -328,26 +138,7 @@ Server-side filtering introduced as a simpler alternative to projections. Before
 
 There are a number of events in EventStoreDB called system events. These are prefixed with a `$` and under most circumstances you won't care about these. They can be filtered out by passing in a `SubscriptionFilterOptions` when subscribing to the `$all` stream.
 
-:::: code-group
-::: code-group-item C#
-@[code{exclude-system}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{exclude-system}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{exclude-system}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{exclude-system}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{exclude-system}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{exclude-system}](@grpc/server-side-filtering.ts)
-:::
-::::
+@[code{exclude-system}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 
 ::: tip
 `$stats` events are no longer stored in EventStoreDB by default so there won't be as many `$` events as before.
@@ -361,26 +152,7 @@ If you only want to subscribe to events of a given type there are two options. Y
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `EventTypeFilter.Prefix`.
 
-:::: code-group
-::: code-group-item C#
-@[code{event-type-prefix}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{event-type-prefix}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{event-type-prefix}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{event-type-prefix}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{event-type-prefix}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{event-type-prefix}](@grpc/server-side-filtering.ts)
-:::
-::::
+@[code{event-type-prefix}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 
 This will only subscribe to events with a type that begin with `customer-`.
 
@@ -388,26 +160,7 @@ This will only subscribe to events with a type that begin with `customer-`.
 
 If you want to subscribe to multiple event types then it might be better to provide a regular expression.
 
-:::: code-group
-::: code-group-item C#
-@[code{event-type-regex}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{event-type-regex}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{event-type-regex}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{event-type-regex}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{event-type-regex}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{event-type-regex}](@grpc/server-side-filtering.ts)
-:::
-::::
+@[code{event-type-regex}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 
 This will subscribe to any event that begins with `user` or `company`.
 
@@ -419,26 +172,7 @@ If you only want to subscribe to a stream with a given name there are two option
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `StreamFilter.Prefix`.
 
-:::: code-group
-::: code-group-item C#
-@[code{stream-prefix}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{stream-prefix}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{stream-prefix}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{stream-prefix}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{stream-prefix}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{stream-prefix}](@grpc/server-side-filtering.ts)
-:::
-::::
+@[code{stream-prefix}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 
 This will only subscribe to all streams with a name that begin with `user-`.
 
@@ -446,26 +180,7 @@ This will only subscribe to all streams with a name that begin with `user-`.
 
 If you want to subscribe to multiple streams then it might be better to provide a regular expression.
 
-:::: code-group
-::: code-group-item C#
-@[code{stream-regex}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{stream-regex}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{stream-regex}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{stream-regex}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{stream-regex}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{stream-regex}](@grpc/server-side-filtering.ts)
-:::
-::::
+@[code{stream-regex}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 
 This will subscribe to any stream with a name that begins with `account` or `savings`.
 
@@ -477,50 +192,11 @@ In this case you can make use of an additional delegate that will be triggered e
 
 To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` class.
 
-:::: code-group
-::: code-group-item C#
-@[code{checkpoint}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{checkpoint}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{checkpoint}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{checkpoint}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{checkpoint}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{checkpoint}](@grpc/server-side-filtering.ts)
-:::
-::::
+@[code{checkpoint}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 
 This will be called every `n` number of events. If you want to be specific about the number of events threshold you can also pass that as a parameter.
 
-:::: code-group
-::: code-group-item C#
-@[code{checkpoint-with-interval}](@grpc/server-side-filtering/Program.cs)
-:::
-::: code-group-item Go
-@[code{checkpoint-with-interval}](@grpc/serverSideFiltering.go)
-:::
-::: code-group-item Java
-@[code{checkpoint-with-interval}](@grpc/server_side_filtering/ServerSideFiltering.java)
-:::
-::: code-group-item JavaScript
-@[code{checkpoint-with-interval}](@grpc/server-side-filtering.js)
-:::
-::: code-group-item Rust
-@[code{checkpoint-with-interval}](@grpc/server_side_filtering.rs)
-:::
-::: code-group-item TypeScript
-@[code{checkpoint-with-interval}](@grpc/server-side-filtering.ts)
-:::
-::::
-
+@[code{checkpoint-with-interval}](@grpc:server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering/ServerSideFiltering.java;server-side-filtering.js;server_side_filtering.rs;server-side-filtering.ts)
 ::: warning
 This number will be called every `n * 32` events.
 :::

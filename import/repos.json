@@ -10,19 +10,19 @@
     "branches": [
       {
         "version": "v21.10",
-        "name": "docs/latest/consolidate-pages"
+        "name": "release/oss-v21.10"
       },
       {
         "version": "v21.2",
-        "name": "docs/latest/consolidate-pages"
+        "name": "release/oss-v21.2"
       },
       {
         "version": "v20.10",
-        "name": "docs/v20.10/consolidate-pages"
+        "name": "release/oss-v20.10"
       },
       {
         "version": "v5",
-        "name": "docs/v5/consolidate-pages"
+        "name": "release/oss-v5"
       }
     ],
     "postprocess": [
@@ -40,11 +40,11 @@
     "branches": [
       {
         "version": "v5",
-        "name": "docs/v5/consolidate-pages"
+        "name": "release/oss-v5"
       }
     ],
     "samplesPostprocess": [
-      "yarn shx rm -rf ./*.md"
+      "yarn shx rm -rf ./**/*.md"
     ]
   },
   {
@@ -63,8 +63,8 @@
         "name": "master"
       }
     ],
-    "samplesPostprocess": [
-      "cd <root> && find . -name '*.md' -delete"
+    "samplesPostprocess": [ 
+      "yarn shx rm -rf ./**/*.md"
     ]
   },
   {
@@ -89,7 +89,7 @@
       }
     ],
     "samplesPostprocess": [
-      "cd <root> && find . -name '*.md' -delete"
+      "yarn shx rm -rf ./**/*.md"
     ]
   },
   {
@@ -105,7 +105,7 @@
       }
     ],
     "samplesPostprocess": [
-      "cd <root> && find . -name '*.md' -delete"
+      "yarn shx rm -rf ./**/*.md"
     ]
   },
   {
@@ -114,16 +114,16 @@
     "basePath": "clients/node",
     "samplesRelativePath": ["samples"],
     "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
-    "samplesPostprocess": [
-      "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
-      "yarn prettier --write <root>/*.js",
-      "cd <root> && find . -name '*.md' -delete"
-    ],
     "branches": [
       {
         "version": "3.0.0",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
+      "yarn prettier --write <root>/*.js",
+      "yarn shx rm -rf ./**/*.md"
     ]
   },
   {
@@ -139,7 +139,7 @@
       }
     ],
     "samplesPostprocess": [
-      "cd <root> && find . -name '*.md' -delete"
+      "yarn shx rm -rf ./**/*.md"
     ]
   }
 ]
