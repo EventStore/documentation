@@ -9,11 +9,12 @@ interface MdEnv {
 
 function findAnchor(filename: string, anchor: string): boolean {
     const asAnchor = (header: string) => header
-        .replace(/[^\w\s\-]/gi, "")
+        .replace(/[^\w\s\-']/gi, "")
         .trim()
         .toLowerCase()
         // @ts-ignore
-        .replaceAll(" ", "-");
+        .replaceAll(" ", "-")
+        .replaceAll("'", "-");
 
     const href = `<a id="${anchor}">`;
     const lines = fs.readFileSync(filename).toString().split("\n");
@@ -32,7 +33,7 @@ function findAnchor(filename: string, anchor: string): boolean {
 
 function checkLink(token, attrName: string, env: MdEnv) {
     const href = token.attrGet(attrName);
-    if (href.startsWith("http")) return;
+    if (href.startsWith("http") || href.endsWith(".html")) return;
 
     // check the link
     const split = href.split("#");

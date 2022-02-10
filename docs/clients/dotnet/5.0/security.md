@@ -16,7 +16,7 @@ Remember to change the default password for default users and disable unused use
 
 ## Secure EventStoreDB node
 
-We recommend you run EventStoreDB over TLS to encrypt the user information. [Read this guide for instructions](@server/security.md#setting-up-ssl-on-linux). If you are running the clustered version you can also setup TLS for the replication protocol.
+We recommend you run EventStoreDB over TLS to encrypt the user information. [Read this guide for instructions](@server/security.md). If you are running the clustered version you can also setup TLS for the replication protocol.
 
 ::: tip
 We recommend using the latest TLS version instead of SSL [explanation available here](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0,_2.0,_and_3.0). All references to SSL in documentation or code are there for only historical reasons and will be replaced with TLS in the future.  

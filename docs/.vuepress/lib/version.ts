@@ -1,4 +1,4 @@
-const versionRegex = /(v?)((\d+\.)?(\d+\.)?(\*|\d+))/;
+const versionRegex = /v((\d+\.)?(\d+\.)?(\*|\d+))/;
 const v = {
     isVersion: (v: string) => versionRegex.test(v),
     parseVersion: (v: string) => versionRegex.exec(v),
