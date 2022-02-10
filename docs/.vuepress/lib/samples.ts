@@ -40,31 +40,31 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         "@grpc": {
             "cs": {
                 label: "C#",
-                path: "dotnet/21.6/samples"
+                path: "clients/dotnet/21.6"
             },
             "java": {
                 label: "Java",
-                path: "java/2.0.0/samples"
+                path: "clients/java/2.0.0"
             },
             "js": {
                 label: "JavaScript",
-                path: "node/3.0.0/samples"
+                path: "clients/node/3.0.0"
             },
             "ts": {
                 label: "TypeScript",
-                path: "node/3.0.0/samples"
+                path: "clients/node/3.0.0"
             },
             "rust": {
                 label: "Rust",
-                path: "rust/1.0.0/samples"
+                path: "clients/rust/1.0.0"
             },
             "rs": {
                 label: "Rust",
-                path: "rust/1.0.0/samples"
+                path: "clients/rust/1.0.0"
             },
             "go": {
                 label: "Go",
-                path: "go/1.0.2/samples"
+                path: "clients/go/1.0.2"
             },
         }
     };

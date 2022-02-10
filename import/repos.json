@@ -44,7 +44,7 @@
       }
     ],
     "samplesPostprocess": [
-      "yarn shx rm -rf ./**/*.md"
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -64,7 +64,7 @@
       }
     ],
     "samplesPostprocess": [ 
-      "yarn shx rm -rf ./**/*.md"
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -89,7 +89,7 @@
       }
     ],
     "samplesPostprocess": [
-      "yarn shx rm -rf ./**/*.md"
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -105,7 +105,7 @@
       }
     ],
     "samplesPostprocess": [
-      "yarn shx rm -rf ./**/*.md"
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -123,7 +123,7 @@
     "samplesPostprocess": [
       "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
       "yarn prettier --write <root>/*.js",
-      "yarn shx rm -rf ./**/*.md"
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -139,7 +139,7 @@
       }
     ],
     "samplesPostprocess": [
-      "yarn shx rm -rf ./**/*.md"
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   }
 ]
