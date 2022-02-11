@@ -10,15 +10,7 @@
     "branches": [
       {
         "version": "v21.10",
-        "name": "release/oss-v21.10"
-      },
-      {
-        "version": "v21.6",
-        "name": "release/oss-v21.6"
-      },
-      {
-        "version": "v21.2",
-        "name": "release/oss-v21.2"
+        "name": "master"
       },
       {
         "version": "v20.10",
@@ -30,6 +22,7 @@
       }
     ],
     "postprocess": [
+      "yarn shx rm -rf <root>/.vuepress",
       "yarn shx rm -rf ./docs/server/v5/http-api"
     ]
   },
@@ -45,6 +38,9 @@
         "version": "v5",
         "name": "release/oss-v5"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -62,6 +58,9 @@
         "version": "21.6",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [ 
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -84,6 +83,9 @@
         "version": "2.0.0",
         "name": "trunk"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -97,6 +99,9 @@
         "version": "1.0.0",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -105,15 +110,16 @@
     "basePath": "clients/node",
     "samplesRelativePath": ["samples"],
     "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
-    "postprocess": [
-      "yarn babel <root>/samples --presets @babel/preset-typescript --retain-lines --out-dir <root>/samples --extensions .ts",
-      "yarn prettier --write <root>/samples/*.js"
-    ],
     "branches": [
       {
         "version": "3.0.0",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
+      "yarn prettier --write <root>/*.js",
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -127,6 +133,9 @@
         "version": "1.0.2",
         "name": "master"
       }
+    ],
+    "samplesPostprocess": [
+      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   }
 ]

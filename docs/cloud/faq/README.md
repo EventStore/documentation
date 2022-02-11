@@ -26,7 +26,7 @@ No, you have to resize the disks yourself, read the procedure in the [documentat
 
 #### How can I migrate data from my self-hosted database to Event Store Cloud?
 
-We have a [replication tool](../use/migration/replicator.md), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
+We have a [replication tool](../use/README.md#migrating-data), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
 ## Performance
 
@@ -40,7 +40,7 @@ Please remember, however, that each use case is different, and you might always 
 
 #### Is there any type of alerting functionality for cluster issues?
 
-Yes. Learn more in the [Events Console](../intro#events-and-notifications) documentation section.
+Yes. Learn more in the [Events Console](../intro/README.md#events-and-notifications) documentation section.
 
 #### How do you handle infrastructure related issues, which cause unavailability or degradation of service?
 
@@ -187,7 +187,7 @@ If the cluster DNS name resolves using an external DNS server, but your local DN
 
 ## Operational characteristics of Event Store Cloud
 
-Event Store Cloud is a distributed fault tolerant provisioning system and control plane. It is hosted in Amazon AWS. All data components and processing components are distributed across three availability zones. State is backed up, and the platform can be easily restored to another region in the event of a total region failure.
+Event Store Cloud is a distributed fault-tolerant provisioning system and control plane. It is hosted in Amazon AWS. All data components and processing components are distributed across three availability zones. State is backed up, and the platform can be easily restored to another region in the event of a total region failure.
 
 ## The impact of outages on resources
 
@@ -213,7 +213,7 @@ Cloud Provider outages may affect the availability of resources or the ability t
 
 #### Networks and peerings
 
-While networks and peering links at cloud providers are fault tolerant, occasionally events may occur that will degrade or, for a period of time remove network access to resources.
+While networks and peering links at cloud providers are fault-tolerant, occasionally events may occur that will degrade or, for a period of time remove network access to resources.
 
 #### Clusters
 
@@ -223,4 +223,4 @@ Multi-node, multi-zone topology clusters should sustain a single availability fa
 
 #### Backups
 
-Clusters and single nodes are backed up by volume snapshots at the selected cloud provider. These snapshots are stored within fault tolerant object storage for the provisioned region. It is possible that access to backups may be impacted temporarily. There is also a possibility that scheduled backups will not run for the duration of the outage.
+Clusters and single nodes are backed up by volume snapshots at the selected cloud provider. These snapshots are stored within fault-tolerant object storage for the provisioned region. It is possible that access to backups may be impacted temporarily. There is also a possibility that scheduled backups will not run for the duration of the outage.

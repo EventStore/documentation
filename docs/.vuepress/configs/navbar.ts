@@ -8,14 +8,14 @@ export const en: NavbarConfig = [
     },
     {
         text: "Server",
-        children: ver.linksFor("server", "introduction/")
+        children: ver.linksFor("server")
     },
     {
         text: "Clients & APIs",
         children: [
             {text: "gRPC", link: "/clients/grpc/"},
             {text: "TCP", children: ver.linksFor("dotnet-client")},
-            {text: "HTTP", children: ver.linksFor("http-api", "introduction/")},
+            {text: "HTTP", children: ver.linksFor("http-api")},
         ]
     },
     {text: "Cloud", link: "/cloud/intro/"},

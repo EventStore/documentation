@@ -22,7 +22,7 @@ Using backup-restore for changing the EventStoreDB version should typically be d
 
 Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
 
-See also the cloud [sizing guide](../provision/cloud-instance-guidance#sizes) for general guidance.
+See also the cloud [sizing guide](../provision/README.md#cloud-instance-sizing-guide) for general guidance.
 
 ::: note
 Limitations:

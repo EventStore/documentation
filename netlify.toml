@@ -1,3 +1,5 @@
 [build]
     publish = "public/"
     command = "yarn docs:build-prod"
+[build.environment]
+    NODE_OPTIONS = "--max_old_space_size=4096"

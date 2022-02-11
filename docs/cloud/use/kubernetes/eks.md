@@ -6,7 +6,7 @@ EKS clusters require at least two subnets, which are connected to internet using
 
 Before you provision a cluster in Event Store Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR block.
 
-You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own Azure account in the [provisioning](../../provision/aws) section.
+You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own Azure account in the [provisioning](../../provision/README.md#microsoft-azure) section.
 
 In this example, we'll use the following network configuration:
 
@@ -17,13 +17,13 @@ In this example, we'll use the following network configuration:
 The AWS VPC has a peering connection established with the Event Store Cloud network, as described in the provisioning guide. For the peering link, we used the whole VPC IP range `172.16.0.0/16`:
 
 ::: card
-![ESC peering](./images/eks-1.png)
+![ESC peering](../images/eks-1.png)
 :::
 
 Now we can provision the EKS cluster. In the networking configuration section of the new cluster, we need to choose the VPC, which is peered with Event Store Cloud:
 
 ::: card
-![EKS networking](./images/eks-2.png)
+![EKS networking](../images/eks-2.png)
 :::
 
 After creating the cluster, you need to add the node group, as usual. Each node will get a network interface per subnet of the EKS cluster, so in our case nodes will be attached to two subnets.

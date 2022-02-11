@@ -6,11 +6,12 @@ The various gRPC client APIs include dedicated clients that allow you to manage 
 Currently not all clients fully expose all operations.
 :::
 
-For a detailed explanation of projections, see the [server documentation](../../server/v21.10/projections/).
+For a detailed explanation of projections, see the [server documentation](@server/projections.md).
 
-You can find the full sample code from these documentation on the respective [clients repositories](https://github.com/eventStore/?q=client)
+You can find the full sample code from this documentation page in the respective [clients repositories](https://github.com/eventStore/?q=client).
 
 ## Required packages
+
 Install the client SDK package to your project.
 
 :::: code-group
@@ -204,7 +205,7 @@ Sample available soon
 
 Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem.
-You must have access to a projection to enable it, see the [ACL documentation](../../server/v21.10/security/acl.md#stream-acl)
+You must have access to a projection to enable it, see the [ACL documentation](@server/security.md#access-control-lists)
 
 :::: code-group
 ::: code-group-item C#
@@ -266,7 +267,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 Disables a projection, this will save the projection checkpoint.
 Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
-You must have access to a projection to disable it, see the [ACL documentation](../../server/v21.10/security/acl.md#stream-acl)
+You must have access to a projection to disable it, see the [ACL documentation](@server/security.md#access-control-lists)
 
 :::warning
 The .net clients up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
@@ -487,7 +488,7 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 :::
 ::::
 
-Resetting a projection that does not exists will result in an error.
+Resetting a projection that does not exist will result in an error.
 
 :::: code-group
 ::: code-group-item C#
@@ -741,41 +742,41 @@ Sample available soon
 
 [List all](#list-all-projections), [list continuous](#list-continuous-projections) and [get status](#get-status) all return the details and statistics of projections
 
-| Field | Description |
-| --- | --- |
-| `Name`, `EffectiveName`               | The name of the projection  |
-| `Status`                              | A human readable string of the current statuses of the projection (see below) |
-| `StateReason`                         | A human readable string explaining the reason of the current projection state |
-| `CheckpointStatus`                    | A human readable string explaining the current operation performed on the checkpoint : `requested`, `writing` |
-| `Mode`                                | `Continuous`, `OneTime` , `Transient` |
-| `CoreProcessingTime`                  | The total time, in ms, the projection took to handle events since the last restart |
-| `Progress`                            | The progress, in %, indicates how far this projection has processed event, in case of a restart this could be -1% or some number. It will be updated as soon as a new event is appended and processed |
-| `WritesInProgress`                    | The number of write requests to emitted streams currently in progress, these writes can be batches of events |
-| `ReadsInProgress`                     | The number of read requests currently in progress |
-| `PartitionsCached`                    | The number of cached projection partitions |
-| `Position`                            | The Position of the last processed event |
-| `LastCheckpoint`                      | The Position of the last checkpoint of this projection |
-| `EventsProcessedAfterRestart`         | The number of events processed since the last restart of this projection|
-| `BufferedEvents`                      | The number of events in the projection read buffer |
-| `WritePendingEventsBeforeCheckpoint`  | The number of events waiting to be appended to emitted streams before the pending checkpoint can be written |
-| `WritePendingEventsAfterCheckpoint`   | The number of events to be appended to emitted streams since the last checkpoint |
-| `Version`                             | This is used internally, the version is increased when the projection is edited or reset |
-| `Epoch`                               | This is used internally, the epoch is increased when the projection is reset |
+| Field                                | Description                                                                                                                                                                                           |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `Name`, `EffectiveName`              | The name of the projection                                                                                                                                                                            |
+| `Status`                             | A human readable string of the current statuses of the projection (see below)                                                                                                                         |
+| `StateReason`                        | A human readable string explaining the reason of the current projection state                                                                                                                         |
+| `CheckpointStatus`                   | A human readable string explaining the current operation performed on the checkpoint : `requested`, `writing`                                                                                         |
+| `Mode`                               | `Continuous`, `OneTime` , `Transient`                                                                                                                                                                 |
+| `CoreProcessingTime`                 | The total time, in ms, the projection took to handle events since the last restart                                                                                                                    |
+| `Progress`                           | The progress, in %, indicates how far this projection has processed event, in case of a restart this could be -1% or some number. It will be updated as soon as a new event is appended and processed |
+| `WritesInProgress`                   | The number of write requests to emitted streams currently in progress, these writes can be batches of events                                                                                          |
+| `ReadsInProgress`                    | The number of read requests currently in progress                                                                                                                                                     |
+| `PartitionsCached`                   | The number of cached projection partitions                                                                                                                                                            |
+| `Position`                           | The Position of the last processed event                                                                                                                                                              |
+| `LastCheckpoint`                     | The Position of the last checkpoint of this projection                                                                                                                                                |
+| `EventsProcessedAfterRestart`        | The number of events processed since the last restart of this projection                                                                                                                              |
+| `BufferedEvents`                     | The number of events in the projection read buffer                                                                                                                                                    |
+| `WritePendingEventsBeforeCheckpoint` | The number of events waiting to be appended to emitted streams before the pending checkpoint can be written                                                                                           |
+| `WritePendingEventsAfterCheckpoint`  | The number of events to be appended to emitted streams since the last checkpoint                                                                                                                      |
+| `Version`                            | This is used internally, the version is increased when the projection is edited or reset                                                                                                              |
+| `Epoch`                              | This is used internally, the epoch is increased when the projection is reset                                                                                                                          |
 
 The `Status` string is a combination of the following values.
 The first 3 are the most common one, as the other one are transient values while the projection is initialised or stopped
 
-| Value| Description |
-| --- | --- |
-| Running | The projection is running and processing events |
-| Stopped | The projection is stopped and is no longer processing new events |
-| Faulted | An error occured in the projection, `StateReason` will give the fault details, the projection is not processing events |
-| Initial | This is the initial state, before the projection is fully initialised |
-| Suspended | The projection is suspended and will not process events, this happens while stopping the projection |
-| LoadStateRequested | The state of the projection is being retrieved, this happens while the projection is starting |
-| StateLoaded | The state of the projection is loaded, this happens while the projection is starting |
-| Subscribed | The projection has successfully subscribed to its readers, this happens while the projection is starting |
-| FaultedStopping | This happens before the projection is stopped due to an error in the projection |
-| Stopping | The projection is being stopped |
-| CompletingPhase | This happens while the projection is stopping |
-| PhaseCompleted | This happens while the projection is stopping |
+| Value              | Description                                                                                                            |
+|--------------------|------------------------------------------------------------------------------------------------------------------------|
+| Running            | The projection is running and processing events                                                                        |
+| Stopped            | The projection is stopped and is no longer processing new events                                                       |
+| Faulted            | An error occurred in the projection, `StateReason` will give the fault details, the projection is not processing events |
+| Initial            | This is the initial state, before the projection is fully initialised                                                  |
+| Suspended          | The projection is suspended and will not process events, this happens while stopping the projection                    |
+| LoadStateRequested | The state of the projection is being retrieved, this happens while the projection is starting                          |
+| StateLoaded        | The state of the projection is loaded, this happens while the projection is starting                                   |
+| Subscribed         | The projection has successfully subscribed to its readers, this happens while the projection is starting               |
+| FaultedStopping    | This happens before the projection is stopped due to an error in the projection                                        |
+| Stopping           | The projection is being stopped                                                                                        |
+| CompletingPhase    | This happens while the projection is stopping                                                                          |
+| PhaseCompleted     | This happens while the projection is stopping                                                                          |

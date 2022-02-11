@@ -8,7 +8,7 @@ As gRPC is multi-platform and a widely adopted standard, it has enabled us to pr
 
 The TCP client will still get necessary bug fixes, but new database features will be only delivered for gRPC clients (e.g., persistent subscription to `$all`).
 
-Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Please see the [gRPC documentation](/clients/grpc/) for more details on how to use it.
+Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Please see the [gRPC documentation](@clients/grpc/README.md) for more details on how to use it.
 
 ## Update the target Framework
 
@@ -227,12 +227,12 @@ services.AddSingleton(client);
 ### Connection string
 For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. The TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by the step migration. 
 
-You can use the [online configuration tool](/clients/grpc/#connection-details) to generate the connection string for your EventStoreDB deployment. If you connect to your database, it'll automatically grab the config and generate a connection string.
+You can use the [online configuration tool](@clients/grpc/README.md#connection-details) to generate the connection string for your EventStoreDB deployment. If you connect to your database, it'll automatically grab the config and generate a connection string.
 
 ## Security
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
-Read more in [database security docs](/server/v21.10/security/).
+Read more in [database security docs](@server/security.md).
 
 ## Appending events
 
@@ -244,7 +244,7 @@ There are minor changes to the `EventData` signature:
 - we are allowed to provide content type. It enables more advanced serialisation scenarios (e.g., using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
 
 ::: note
-In the samples below, I'm using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](/clients/grpc/) for samples using `System.Text.Json`.
+In the samples below, I'm using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](@clients/grpc/README.md) for samples using `System.Text.Json`.
 :::
 
 For the JSON Event Data, you have to change the TCP client logic from:
@@ -619,7 +619,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
 ```
 
 ::: warning
-You should be careful in defining the retry policy. Not all operations are idempotent by default. Reads are idempotent, however, if you're not using [optimistic concurrency](/clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g., there is no point in retrying `StreamDeleted` as the stream won't reappear. 
+You should be careful in defining the retry policy. Not all operations are idempotent by default. Reads are idempotent, however, if you're not using [optimistic concurrency](@clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g., there is no point in retrying `StreamDeleted` as the stream won't reappear. 
 :::
 
 ## Catch-up Subscriptions
@@ -750,10 +750,10 @@ await grpcClient.SubscribeToAllAsync(
 
 The `CatchUpSubscriptionFilteredSettings` and `Filter` types from the TCP client were unified into single `SubscriptionFilterOptions` in gRPC.
 
-Read more in the [gRPC server-side filtering docs](/clients/grpc/subscriptions.md#server-side-filtering).
+Read more in the [gRPC server-side filtering docs](@clients/grpc/subscriptions.md#server-side-filtering).
 
 ### Knowing when live processing started
-
+****
 The TCP client provides the possibility to provide a handler that will be called when live processing starts:
 
 ```csharp{6}
@@ -839,13 +839,13 @@ public static async Task<bool> IsLive(Func<Task<ulong>> getSubscriptionGap)
 
 You can use this logic in:
 - the event appeared callback,
-- the [checkpoint reached callback](/clients/grpc/subscriptions.md#checkpointing) if you're using a filtered subscription. 
+- the [checkpoint reached callback](@clients/grpc/subscriptions.md#checkpointing) if you're using a filtered subscription. 
 
 You may also consider some performance improvements like checking once every few events or using a cache for reads.
 
 ### Resolving linked events
 
-[Projections in EventStoreDB](/server/v21.10/projections/) let you append new events or link existing events to streams. Links won't contain the original event data. ESDB can resolve it automatically depending on the value you passed to the operation call.
+[Projections in EventStoreDB](@server/projections.md) let you append new events or link existing events to streams. Links won't contain the original event data. ESDB can resolve it automatically depending on the value you passed to the operation call.
 
 The TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
 
@@ -870,7 +870,7 @@ await grpcClient.SubscribeToAllAsync(
 );
 ```
 
-Read more in the [resolve link-to's gRPC docs](/clients/grpc/subscriptions.md#resolving-link-to-s).
+Read more in the [resolve link-to's gRPC docs](@clients/grpc/subscriptions.md#resolving-link-to-s).
 
 ## Persistent subscriptions
 TODO

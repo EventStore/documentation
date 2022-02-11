@@ -20,7 +20,7 @@ export default defineClientAppEnhance(({ app, router, siteData }) => {
     // Router configuration
     router.addRoute({
         path: "/latest.html",
-        redirect: `/${__VERSIONS__.latest}/introduction/`
+        redirect: `/${__VERSIONS__.latest}/`
     });
 
     // Code block components

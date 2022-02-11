@@ -6,26 +6,26 @@ Before you provision a cluster in Event Store Cloud, you need to have a network,
 
 In order to be able to work with the cluster, you need to establish a connection between the Event Store Cloud network and your own VPC Network in Google Cloud. You do it by provisioning a network peering between those two networks.
 
-You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own GCP project in the [provisioning](../../provision/gcp) section.
+You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own GCP project in the [provisioning](../../provision/README.md#google-cloud-platform-gcp) section.
 
 ## Planning IP ranges
 
 The challenge is to set up IP ranges for both VPCs, the GKE cluster, and the peering in a way that pods running in Kubernetes would be able to reach the EventStoreDB cluster in Event Store Cloud.
 
 ::: card
-![GKE and ESC topology](./images/gke-1.png)
+![GKE and ESC topology](../images/gke-1.png)
 :::
 
 When creating the Standard GKE cluster from GCP Console, the Networking section has the _Advanced networking_ options subsection. There you find the _Pod address range_ setting. It is available for clusters with any type of routing (static routes or VPC-native).
 
 ::: card
-![GKE network settings](./images/gke-2.png)
+![GKE network settings](../images/gke-2.png)
 :::
 
 If the _Pod address range_ option is left blank, the cluster will get a private IP range for the pods. For example, the cluster with static routing got the `10.120.0.0/14` CIDR block for the pods:
 
 ::: card
-![GKE network settings](./images/gke-3.png)
+![GKE network settings](../images/gke-3.png)
 :::
 
 When using VPC-native routing, this new range would be added to the selected VPC network subnet, in addition to the main IP range.
@@ -59,31 +59,31 @@ So, here we see that the subnet uses the larger range, and the GKE pod address r
 When provisioning the GKE cluster, we should specify `172.31.128.0/17` as the pod address range in the cluster networking configuration for a new Standard cluster:
 
 ::: card
-![GKE network settings](./images/gke-5.png)
+![GKE network settings](../images/gke-5.png)
 :::
 
 Similarly, the range can be specified for a new Autopilot cluster:
 
 ::: card
-![GKE network settings](./images/gke-6.png)
+![GKE network settings](../images/gke-6.png)
 :::
 
 When the cluster is deployed, you can see that the range is properly assigned:
 
 ::: card
-![GKE network settings](./images/gke-7.png)
+![GKE network settings](../images/gke-7.png)
 :::
 
 When looking at the `subnet-esc`, we can see those ranges shown in the GCP Console:
 
 ::: card
-![GKE subnet](./images/gke-8.png)
+![GKE subnet](../images/gke-8.png)
 :::
 
 The network peering resource in Event Store Cloud in this case looks like this:
 
 ::: card
-![ESC peering](./images/gke-9.png)
+![ESC peering](../images/gke-9.png)
 :::
 
 When creating a peering, you don't have to specify a particular subnet of the VPC network, which you peer with. There's no check if the given IP range actually exists in the peered network. Therefore, we can specify the range we need, even if it doesn't match with the primary range of any subnet. By using the larger range, which covers both the primary and secondary ranges, we made the EventStoreDB cluster available for pods in the GKE cluster.
@@ -111,5 +111,5 @@ Finally, we can deploy applications to the GKE cluster, which can connect to the
 The overall network topology would look like this, when we complement the initial diagram with IP addresses and network masks:
 
 ::: card
-![ESC GKE topology](./images/gke-10.png)
+![ESC GKE topology](../images/gke-10.png)
 :::

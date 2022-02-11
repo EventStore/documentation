@@ -16,11 +16,11 @@ Task<StreamMetadataResult> GetStreamMetadataAsync(
 
 This returns a `StreamMetadataResult`. The fields on this result are:
 
-| Member | Description |
-|:-------|:------------|
-| `string Stream` | The name of the stream |
-| `bool IsStreamDeleted` | `true` is the stream is deleted, `false` otherwise. |
-| `long MetastreamVersion` | The version of the metastream format |
+| Member                    | Description                                              |
+|:--------------------------|:---------------------------------------------------------|
+| `string Stream`           | The name of the stream                                   |
+| `bool IsStreamDeleted`    | `true` is the stream is deleted, `false` otherwise.      |
+| `long MetastreamVersion`  | The version of the metastream format                     |
 | `StreamMetadata Metadata` | A `StreamMetadata` object representing the metadata JSON |
 
 You can then access the `StreamMetadata` via the `StreamMetadata` object. It contains typed fields for well known stream metadata entries.
@@ -43,20 +43,20 @@ Task<RawStreamMetadataResult> GetStreamMetadataAsRawBytesAsync(
 
 This returns a `RawStreamMetadataResult`. The fields on this result are:
 
-| Member | Description |
-|:-------|:------------|
-| `string Stream` | The name of the stream |
-| `bool IsStreamDeleted` | True is the stream is deleted, false otherwise. |
-| `long MetastreamVersion` | The version of the meta-stream (see [Expected Version](./appending.md#optimistic-concurrency)) |
-| `byte[] Metadata` | The raw data of the metadata JSON |
+| Member                   | Description                                                                                  |
+|:-------------------------|:---------------------------------------------------------------------------------------------|
+| `string Stream`          | The name of the stream                                                                       |
+| `bool IsStreamDeleted`   | True is the stream is deleted, false otherwise.                                              |
+| `long MetastreamVersion` | The version of the meta-stream (see [Expected Version](appending.md#optimistic-concurrency)) |
+| `byte[] Metadata`        | The raw data of the metadata JSON                                                            |
 
 ::: tip
-If you enabled [enabled security](./connecting.md), reading metadata may require that you pass credentials. By default, it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.
+If you enabled [security](connecting.md#security), reading metadata may require that you pass credentials. By default, it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.
 :::
 
 ## Writing metadata
 
-You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](./appending.md#optimistic-concurrency) for further details.
+You can write metadata in both a typed and a raw mechanism. When writing it is generally easier to use the typed mechanism. Both writing mechanisms support an `expectedVersion` which works the same as on any stream and you can use to control concurrency, read [Expected Version](appending.md#optimistic-concurrency) for further details.
 
 ```csharp
 Task<WriteResult> SetStreamMetadataAsync(
@@ -93,7 +93,7 @@ Task<WriteResult> SetStreamMetadataAsync(
 );
 ```
 
-This method will put the data that is in metadata as the stream metadata. Metadata in this case can be anything in a vector of bytes. The server only understands JSON. Read [Access Control Lists](./security.md#access-control-lists) for more information on the format in JSON for access control lists.
+This method will put the data that is in metadata as the stream metadata. Metadata in this case can be anything in a vector of bytes. The server only understands JSON. Read [Access Control Lists](security.md#access-control-lists) for more information on the format in JSON for access control lists.
 
 ::: tip
 Writing metadata may require that you pass credentials if you have security enabled by default it is only allowed for admins though you can change this via default ACLs. If you do not pass credentials, and they are required you will receive an `AccessedDeniedException`.

@@ -12,7 +12,7 @@ Not using Event Store Cloud and want to learn more? Find more information and si
 
 As a customer of Event Store Cloud you get access to the [Cloud console](https://console.eventstore.cloud), where you can provision and manage EventStoreDB clusters, back and up restore your data, establish the connection between Event Store Cloud networks and your own cloud infrastructure.
 
-The Cloud console uses the [API](../automation/#api), which is also available for customers. Using the API, you can execute any operation available in the console, programmatically. We also offer the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud) and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
+Event Store Cloud operations can be automated using the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud) and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
 
 The roadmap can be found [here](https://www.eventstore.com/event-store-cloud).
 
@@ -98,9 +98,9 @@ Within the project context you can manage project clusters, backups, networks, e
 
 By reaching this point, you are now ready to start provisioning cloud resources with Event Store Cloud. Follow one of the available guidelines for your cloud provider:
 
-- [Amazon Web Services (AWS)](../provision/#aws)
-- [Google Cloud Platform (GCP)](../provision/#gcp)
-- [Microsoft Azure](../provision/#azure)
+- [Amazon Web Services (AWS)](../provision/README.md#amazon-web-services-aws)
+- [Google Cloud Platform (GCP)](../provision/README.md#google-cloud-platform-gcp)
+- [Microsoft Azure](../provision/README.md#microsoft-azure)
 
 ### Events and notifications
 

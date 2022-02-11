@@ -45,22 +45,21 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
-                const path = `${version.basePath}/${v.path}`;
-                const sidebarPath = `../../${path}/sidebar.js`;
-                const sidebar = require(sidebarPath);
+                const p = `${version.basePath}/${v.path}`;
+                const sidebarPath = path.resolve(__dirname, `../../${p}`);
+                const sidebarJs = path.join(sidebarPath, "sidebar.js");
+                log.info(`Importing sidebar from ${sidebarJs}`);
+                const sidebar = require(sidebarJs);
                 sidebar.forEach(item => {
-                    item.path = `../${path}/${item.path}`;
-
-                    // Only legacy sidebars have collapsable
                     if (item.collapsable !== undefined) {
                         item.children = item.children.map(x => !x.startsWith('../') ? '../' + x : x);
                     }
-
+                    item.children = item.children.map(x => `/${p}/${x}`);
                     item.version = v.version;
                     item.group = version.group;
                     item.text = item.text || item.title;
                 });
-                sidebars[`/${path}/`] = sidebar;
+                sidebars[`/${p}/`] = sidebar;
             });
         })
 

@@ -7,8 +7,7 @@ export type ESSidebarConfig = SidebarConfig | Record<string, ESSidebarItem[]>
 export const en: ESSidebarConfig = {
   "/clients/grpc/": [
     {
-      text: "",
-      header: "gRPC clients",
+      text: "gRPC clients",
       children: [
         "/clients/grpc/README.md",
         "/clients/grpc/appending-events.md",
@@ -21,8 +20,7 @@ export const en: ESSidebarConfig = {
   ],
   "/cloud/": [
     {
-      text: "",
-      header: "Event Store Cloud",
+      text: "Event Store Cloud",
       children: [
         "/cloud/intro/README.md",
         "/cloud/provision/README.md",

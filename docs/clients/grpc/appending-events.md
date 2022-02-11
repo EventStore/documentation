@@ -3,7 +3,7 @@
 When you start working with EventStoreDB, the database is empty. So, the first meaningful operation in this case would be to add one or more events to the database using one of the available client SDKs.
 
 ::: tip
-Check [connecting to EventStoreDB instructions](./README.md#required-packages) to learn how to configure and use the client SDK.
+Check the [Getting Started](README.md) guide to learn how to configure and use the client SDK.
 :::
 
 ## Append your first event
@@ -33,7 +33,7 @@ For example, the following code will only append a single event:
 @[code{append-duplicate-event}](@grpc:appending-events/Program.cs;appendingEvents.go;appending_events/AppendingEvents.java;appending-events.js;appending_events.rs;appending-events.ts)
 
 ::: card
-![Duplicate Event](./images/dupicate-event.png)
+![Duplicate Event](./images/duplicate-event.png)
 :::
 
 ### type
