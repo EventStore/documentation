@@ -120,15 +120,9 @@ Please ensure to learn about the SLA levels provided by Event Store Cloud in our
 
 The Cloud Console access audit log is in our roadmap, we will present the details of the schedule on the public [roadmap](https://www.eventstore.com/event-store-cloud) page.
 
-#### Does Event Store have a security policy?
-
-Event Store Ltd has a security policy. Our system security hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
-
-If you have specific questions please [contact us](https://www.eventstore.com/contact)
-
 #### Has the system been independently audited?
 
-Our system security hasn't been independently audited yet. We plan to achieve [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) by the second half of 2021.
+Event Store Ltd is very security conscious. Our Cloud offering has been independently audited and we achieved SOC 2 Type 1 and ISO 27001 certification in January 2021.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact)
 
