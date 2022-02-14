@@ -122,7 +122,7 @@ The Cloud Console access audit log is in our roadmap, we will present the detail
 
 #### Has the system been independently audited?
 
-Event Store Ltd is very security conscious. Our Cloud offering has been independently audited and we achieved SOC 2 Type 1 and ISO 27001 certification in January 2021.
+Event Store Ltd is aware of the security importance. We're treating it is as a high priority. Our Cloud offering has been independently audited, and we achieved [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certification in January 2022.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact)
 
