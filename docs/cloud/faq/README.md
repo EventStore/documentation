@@ -122,13 +122,13 @@ The Cloud Console access audit log is in our roadmap, we will present the detail
 
 #### Does Event Store have a security policy?
 
-Event Store Ltd has a security policy. Our system security hasn't been independently audited yet. We plan to achieve SOC 2 and ISO 27001 by second half 2021.
+Event Store Ltd has security policies in place.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact)
 
 #### Has the system been independently audited?
 
-Our system security hasn't been independently audited yet. We plan to achieve [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) by the second half of 2021.
+Event Store Ltd is aware of the security importance. We're treating it is as a high priority. Our Cloud offering has been independently audited, and we achieved [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certification in January 2022.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact)
 
