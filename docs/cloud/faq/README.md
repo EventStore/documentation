@@ -122,7 +122,7 @@ The Cloud Console access audit log is in our roadmap, we will present the detail
 
 #### Does Event Store have a security policy?
 
-Event Store Ltd has a security policies in place.
+Event Store Ltd has security policies in place.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact)
 
