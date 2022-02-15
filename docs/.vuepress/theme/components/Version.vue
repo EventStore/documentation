@@ -14,24 +14,19 @@ export default {
     },
     version() {
         const path = this.$page.path;
-        const versions = __VERSIONS__.all.reduce(
-          (acc, val) =>
-            acc.concat(
-              val.versions?.map((v) => {
-                return {
-                  name: `${val.group} ${v.version}`,
-                  path: !!v.path ? `/${val.basePath}/${v.path}` : `/${val.basePath}`,
-                };
-              })
-            ),
-          []
-        );
 
-        const versionInfo = versions
-          .sort((a,b) => b.path.length - a.path.length)
+        const sidebar = this.$theme.sidebar;
+
+        var versionInfo = Object.keys(sidebar)
+          .map(key => { 
+            return { 
+              path: key, 
+              name: sidebar[key].map(v => [v.group, v.version].filter(Boolean).join(" "))[0] 
+            }; 
+          })
           .find(v => path.startsWith(v.path));
 
-        return versionInfo?.name;
+        return versionInfo?.name ?? "";
     }
   }
 }

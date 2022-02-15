@@ -1,13 +1,13 @@
 import type { SidebarConfig, SidebarItem } from "@vuepress/theme-default";
 import { instance as ver } from "../lib/versioning";
 
-export type ESSidebarItem = SidebarItem & { header: string};
-export type ESSidebarConfig = SidebarConfig | Record<string, ESSidebarItem[]>
+export type GroupItem = { group: string, children: string[] };
+export type ESSidebarConfig = Record<string, GroupItem[]> | SidebarConfig | Record<string, SidebarItem[]>
 
 export const en: ESSidebarConfig = {
   "/clients/grpc/": [
     {
-      text: "gRPC clients",
+      group: "gRPC clients",
       children: [
         "/clients/grpc/README.md",
         "/clients/grpc/appending-events.md",
@@ -20,7 +20,7 @@ export const en: ESSidebarConfig = {
   ],
   "/cloud/": [
     {
-      text: "Event Store Cloud",
+      group: "Event Store Cloud",
       children: [
         "/cloud/intro/README.md",
         "/cloud/provision/README.md",

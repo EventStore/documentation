@@ -19,7 +19,7 @@ interface resolveFunction {
 
 function checkFile(filepath: string): boolean {
     const p = filepath.split("#");
-    const basePath = path.resolve(__dirname, `../../..`);
+    const basePath = path.resolve(__dirname, '../../..');
     const filename = basePath + p[0];
     return fs.existsSync(filename);
 }
