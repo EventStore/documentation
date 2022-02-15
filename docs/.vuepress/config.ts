@@ -8,11 +8,14 @@ import {resolveMultiSamplesPath} from "./lib/samples";
 import containers from "./lib/containers";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {linkCheckPlugin} from "./markdown/linkCheck";
+import {ESSidebarConfig} from "./configs/sidebar";
 
 require('dotenv').config({path: path.join(__dirname, '..', '..', '.algolia', '.env')})
 
+type ESThemeOptions = DefaultThemeOptions | {sidebar: ESSidebarConfig };
+
 // noinspection JSUnusedGlobalSymbols
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig<ESThemeOptions>({
     base: "/",
     dest: "public",
     title: "EventStoreDB Documentation",
