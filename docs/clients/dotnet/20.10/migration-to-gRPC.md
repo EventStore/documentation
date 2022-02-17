@@ -10,6 +10,10 @@ The TCP client will still get necessary bug fixes, but new database features wil
 
 Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Please see the [gRPC documentation](@clients/grpc/README.md) for more details on how to use it.
 
+See also the webinar that shows step by step on practical example the whole migration process:
+
+<YouTube id="-4_KTfVkjlQ"></YouTube>
+
 ## Update the target Framework
 
 The gRPC client doesn't support .NET Standard. The change comes from using different gRPC implementations for the specific .NET Framework version to tune the performance.
