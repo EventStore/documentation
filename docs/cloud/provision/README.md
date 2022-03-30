@@ -337,7 +337,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at April 2022 these are the available regions: 
+As at April 2022 these are the available regions:
 
 | Code               | Name                 |
 |:-------------------|:---------------------|
@@ -622,3 +622,9 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 | **M32**  | Production                     | 12M                   | 1 TB            | 250                      |
 | **M64**  | Production                     | 30M                   | 2 TB            | 500                      |
 | **M128** | Production                     | 62M                   | 4 TB            | 500                      |
+
+### Disk Types
+
+#### GP3 Disk Kind
+
+[GP3](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type) disk kind provides better base IOPS (3000 IOPS base compared to 3*`disk size` in GP2 with burst balance), IOPS and Throughput do not depend on disk size.
