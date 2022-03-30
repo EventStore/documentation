@@ -284,7 +284,7 @@ Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB 
 
 Supported instance sizes are:
 
-| Size   | Specification                                                              |
+| Size   | Specification                                                    |
 |:-------|:-----------------------------------------------------------------|
 | `F1`   | 2 vCPU 1Gb RAM (burstable instance, not suitable for production) |
 | `C4`   | 2 vCPU 8Gb RAM                                                   |

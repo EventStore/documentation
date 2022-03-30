@@ -38,7 +38,7 @@ To expand disks in the console, navigate to the clusters view and click on the _
 ![cluster list](./images/disk_expand_list.png)
 :::
 
-On the detail page specify the new disk size and click on _Expand cluster disk_.
+On the detail page specify the new disk size (disk iops and throughput for AWS GP3 disk type) and click on _Expand cluster disk_.
 
 ::: card
 ![cluster_expand_detail](./images/disk_expand_detail.png)
@@ -59,7 +59,7 @@ $ esc mesdb clusters expand \
 
 The Event Store Cloud runs scheduled jobs on the user's behalf. All of these jobs consist of a human-readable description and a schedule.
 
-Currently, the following jobs are supported: 
+Currently, the following jobs are supported:
 * [Scheduled backups](#scheduled-backups)
 
 ### Job Schedules
@@ -70,17 +70,17 @@ The supported subset is:
 
 * for the first field, minute:
     * a wildcard `*`
-    * a number between `0` and `59` (inclusive). 
+    * a number between `0` and `59` (inclusive).
     * a rate, written as a wildcard divided by a number. E.g:  `*/15`
 * For the second field, hour:
     * a wildcard `*`
     * a number must be between `0` and `23` (inclusive)
     * a rate, written as a wildcard divided by a number. E.g:  `*/1`
-* for the third field, day of month: 
+* for the third field, day of month:
     * a wildcard `*`
-* for the fourth field, month: 
+* for the fourth field, month:
     * a wildcard `*`
-* for the fifth field, day of the week: 
+* for the fifth field, day of the week:
     * a wildcard `*`
     * a number between `0` and `7` (inclusive), Sunday to Saturday
 
@@ -89,9 +89,9 @@ The supported subset is:
  │ ┌─────────── Hour: wildcard, number (0 - 23), rate
  │ │ ┌───────── Day of the month: wildcard
  │ │ │ ┌─────── Month: wildcard
- │ │ │ │ ┌───── Day of the week: wildcard, number (0 - 7) 
+ │ │ │ │ ┌───── Day of the week: wildcard, number (0 - 7)
  │ │ │ │ │
- * * * * * 
+ * * * * *
 ```
 
 ::: note
@@ -100,7 +100,7 @@ Scheduled backups have a minimum frequency of 60 minutes. Currently, it is not p
 
 #### Examples:
 
-`0 */1 * * *` runs a job once an hour, at minute 00. 
+`0 */1 * * *` runs a job once an hour, at minute 00.
 
 `0 12 * * 1` runs a job at 12:00 PM on Monday.
 
@@ -150,7 +150,7 @@ To create a backup, use the `backups create` command:
 ``` bash
 $ esc mesdb backups create --description "on demand backup" \
     --source-cluster-id c1eut65o0aeu6ojco7a0 \
-    --project-id btfjev2rh41scaatc1k0 
+    --project-id btfjev2rh41scaatc1k0
 
 BackupId("c1ev3l5o0aeu6ojco7b0")
 ```
@@ -160,14 +160,14 @@ To see the status of the backup use the `backups get` command:
 ``` bash
 $ esc mesdb backups get --project-id btfjev2rh41scaatc1k0 \
     --id c1ev3l5o0aeu6ojco7b0
-    
-Backup { id: BackupId("c1ev3l5o0aeu6ojco7b0"), 
-project_id: ProjectId("btfjev2rh41scaatc1k0"), 
-source_cluster_id: ClusterId("c1eut65o0aeu6ojco7a0"), 
-source_cluster_description: "Demo-Backup", 
-description: "on demand backup", size_gb: 8, 
-provider: Aws, region: "eu-central-1", 
-status: "available", created: "2021-03-26T14:38:12Z", 
+
+Backup { id: BackupId("c1ev3l5o0aeu6ojco7b0"),
+project_id: ProjectId("btfjev2rh41scaatc1k0"),
+source_cluster_id: ClusterId("c1eut65o0aeu6ojco7a0"),
+source_cluster_description: "Demo-Backup",
+description: "on demand backup", size_gb: 8,
+provider: Aws, region: "eu-central-1",
+status: "available", created: "2021-03-26T14:38:12Z",
 linked_resource: None }
 ```
 

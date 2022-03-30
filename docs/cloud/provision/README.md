@@ -96,7 +96,11 @@ At this moment, it is not possible to change the cluster node instance size. You
 ![AWS cluster second part](./images/aws/aws-new-cluster-2.png)
 :::
 
-Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size, IOPS and throughput. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+
+::: card
+![AWS cluster third part](./images/aws/aws-new-cluster-3.png)
+:::
 
 Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
@@ -625,6 +629,6 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 
 ### Disk Types
 
-#### GP3 Disk Kind
+#### GP3
 
 [GP3](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type) disk kind provides better base IOPS (3000 IOPS base compared to 3*`disk size` in GP2 with burst balance), IOPS and Throughput do not depend on disk size.
