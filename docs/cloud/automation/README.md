@@ -277,7 +277,7 @@ Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB 
 | `instance_type`    | `string` | *Required*, the size of the instances to use in the managed cluster.                                                                                             |
 | `disk_size`        | `int`    | *Required*, the size of the data disks in gigabytes. Minimal size is 10Gb. All cluster members will get a disk of the same size.                                 |
 | `disk_type`        | `string` | *Required*, `GP2`, `GP3` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                                 |
-| `disk_iops`        | `int`    | *Optional*, the number of IOPS for data disk. Required if disk_type is `GP3`. |
+| `disk_iops`        | `int`    | *Optional*, the number of IOPS for data disk. *Required* if disk_type is `GP3`. |
 | `disk_throughput`  | `int`    | *Optional*, throughput in MB/s for data disk. *Required* if disk_type is `GP3`. |
 | `server_version`   | `string` | *Required*, `20.6`, `20.10`, `21.6`, `21.10`.                                                                                                                                    |
 | `projection_level` | `string` | *Optional*, default: `off` , the mode in which to enable projections. Valid values are `off` , `system` , `user`.                                                |
