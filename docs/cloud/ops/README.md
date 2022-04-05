@@ -38,7 +38,7 @@ To expand disks in the console, navigate to the clusters view and click on the _
 ![cluster list](./images/disk_expand_list.png)
 :::
 
-On the detail page specify the new disk size (disk iops and throughput for AWS GP3 disk type) and click on _Expand cluster disk_.
+On the detail page specify the new disk size (as well disk iops and throughput when using the AWS GP3 disk type) and click on _Expand cluster disk_.
 
 ::: card
 ![cluster_expand_detail](./images/disk_expand_detail.png)
