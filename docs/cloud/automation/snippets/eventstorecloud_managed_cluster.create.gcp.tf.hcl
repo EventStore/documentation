@@ -18,6 +18,6 @@ resource "eventstorecloud_managed_cluster" "production" {
   instance_type    = "F1"
   disk_size        = 10
   disk_type        = "ssd"
-  server_version   = "20.10"
+  server_version   = "21.10"
   projection_level = "user"
 }
