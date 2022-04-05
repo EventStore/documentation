@@ -20,6 +20,6 @@ resource "eventstorecloud_managed_cluster" "production" {
   disk_type        = "gp3"
   disk_iops        = 3000
   disk_throughput  = 125
-  server_version   = "20.10"
+  server_version   = "21.10"
   projection_level = "user"
 }
