@@ -98,6 +98,10 @@ At this moment, it is not possible to change the cluster node instance size. You
 
 Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size, IOPS and throughput. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
+::: note
+Cloud console allows to create only GP3 clusters, but it's still possible to create a cluster with deprecated GP2 storage type for backward compatibility with terraform provider and Event Store Cloud CLI.
+:::
+
 ::: card
 ![AWS cluster third part](./images/aws/aws-new-cluster-3.png)
 :::

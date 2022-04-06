@@ -20,7 +20,7 @@ You will be able to do an online instance resize, but it won't be auto-scaling. 
 
 #### Are there plans to support automatic disk resize?
 
-Disks can be expanded on-demand in AWS and GCP, for Azure read the procedure in the [documentation](../ops/README.md#expanding-disks).
+Disks can be expanded on-demand in AWS and GCP. For Azure read the procedure in the [documentation](../ops/README.md#expanding-disks). Cloud providers set certain limitations on how often you can perform the disk resize operation, please follow your provider guidelines.
 
 ## Migrating to Cloud
 
