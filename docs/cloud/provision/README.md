@@ -175,6 +175,29 @@ If you are using one or more subnets associated to this VPC, make sure you updat
 
 Depending on your setup, you might already have a connection available from your local machine to the AWS VPC using a site-to-site VPN. If not, ask your AWS administrator about the connection details, which could be a Virtual Private Gateway or Client VPN Endpoint.
 
+### Available regions
+
+As at April 2022 these are the available regions:
+
+| Code           | Name                      |
+|:---------------|:--------------------------|
+| ap-northeast-1 | Asia Pacific (Tokyo)      |
+| ap-northeast-2 | Asia Pacific (Seoul)      |
+| ap-south-1     | Asia Pacific (Mumbai)     |
+| ap-southeast-1 | Asia Pacific (Singapore)  |
+| ap-southeast-2 | Asia Pacific (Sydney)     |
+| ca-central-1   | Canada (Central)          |
+| eu-central-1   | Europe (Frankfurt)        |
+| eu-north-1     | Europe (Stockholm)        |
+| eu-west-1      | Europe (Ireland)          |
+| eu-west-2      | Europe (London)           |
+| eu-west-3      | Europe (Paris)            |
+| sa-east-1      | South America (São Paulo) |
+| us-east-1      | US East (N. Virginia)     |
+| us-east-2      | US East (Ohio)            |
+| us-west-1      | US West (N. California)   |
+| us-west-2      | US West (Oregon)          |
+
 ### Next step
 
 You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
@@ -312,6 +335,32 @@ At this moment, you should be able to connect to the EventStoreDB cluster in the
 
 Depending on your setup, you might already have a connection available from your local machine to the Azure network using a site-to-site or point-to-site VPN. If not, ask your Azure administrator about the connection details.
 
+### Available regions
+
+As at April 2022 these are the available regions: 
+
+| Code               | Name                 |
+|:-------------------|:---------------------|
+| australiaeast      | Australia East       |
+| brazilsouth        | Brazil South         |
+| canadacentral      | Canada Central       |
+| centralus          | Central US           |
+| eastus             | East US              |
+| eastus2            | East US 2            |
+| francecentral      | France Central       |
+| germanywestcentral | Germany West Central |
+| japaneast          | Japan East           |
+| koreacentral       | Korea Central        |
+| northeurope        | North Europe         |
+| norwayeast         | Norway East          |
+| southafricanorth   | South Africa North   |
+| southcentralus     | South Central US     |
+| southeastasia      | Southeast Asia       |
+| uksouth            | UK South             |
+| westeurope         | West Europe          |
+| westus2            | West US 2            |
+| westus3            | West US 3            |
+
 ### Next step
 
 You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
@@ -335,31 +384,6 @@ We're aware that Azure Premium SSD volumes have a strict IOPS limit and this lim
 #### Resource provisioning
 
 Azure resource provisioning speed will almost always be slower and more highly variable than other providers. Please account for this when interacting with provisioned resources on Azure.
-
-#### Available regions
-
-At the moment, you can deploy EventStoreDB clusters only in regions with three or more availability zones, and many Azure regions do not have the minimum number of availability zones to support the deployment of managed EventStoreDB clusters. In the future, we plan to allow the deployment of single node topologies to all regions. We'll also introduce a new topology that allows cluster deployments to a single availability zone.
-
-Currently, we support following Azure regions:
-- Australia East,
-- Brazil South,
-- Canada Central,
-- Central US,
-- East US,
-- East US 2,
-- France Central,
-- Germany West Central,
-- Japan East,
-- Korea Central,
-- North Europe,
-- Norway East,
-- South Africa North,
-- South Central US,
-- Southeast Asia,
-- UK South,
-- West Europe,
-- West US 2,
-- West US 3.
 
 #### Pricing
 
@@ -509,6 +533,37 @@ At this moment, you should be able to connect to the EventStoreDB cluster in the
 
 Depending on your setup, you might already have a connection available from your local machine to the GCP VPC using a site-to-site VPN. If not, ask your operations about the connection details.
 
+### Available regions
+
+As at April 2022 these are the available regions:
+
+| Code                    | Name                               |
+|:------------------------|:-----------------------------------|
+| asia-east1              | Changhua County, Taiwan            |
+| asia-east2              | Hong Kong                          |
+| asia-northeast1         | Tokyo, Japan                       |
+| asia-northeast2         | Osaka, Japan                       |
+| asia-northeast3         | Seoul, South Korea                 |
+| asia-south1             | Mumbai, India                      |
+| asia-southeast1         | Jurong West, Singapore             |
+| asia-southeast2         | Jakarta, Indonesia                 |
+| australia-southeast1    | Sydney, Australia                  |
+| europe-north1           | Hamina, Finland                    |
+| europe-west1            | St. Ghislain, Belgium              |
+| europe-west2            | London, England, UK                |
+| europe-west3            | Frankfurt, Germany                 |
+| europe-west4            | Eemshaven, Netherlands             |
+| europe-west6            | Zürich, Switzerland                |
+| northamerica-northeast1 | Montréal, Québec, Canada           |
+| southamerica-east1      | Osasco (São Paulo), Brazil         |
+| us-central1             | Council Bluffs, Iowa, USA          |
+| us-east1                | Moncks Corner, South Carolina, USA |
+| us-east4                | Ashburn, Northern Virginia, USA    |
+| us-west1                | The Dalles,Oregon, USA             |
+| us-west2                | Los Angeles, California, USA       |
+| us-west3                | Salt Lake City, Utah , USA         |
+| us-west4                | Las Vegas, Nevada, USA             |
+
 ### Next step
 
 You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
@@ -567,3 +622,12 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 | **M32**  | Production                     | 12M                   | 1 TB            | 250                      |
 | **M64**  | Production                     | 30M                   | 2 TB            | 500                      |
 | **M128** | Production                     | 62M                   | 4 TB            | 500                      |
+
+## Available Regions 
+
+This is the list of availble regions as at April 2022 
+
+### Amazon Web Services (AWS)
+
+
+## Microsoft Azure
