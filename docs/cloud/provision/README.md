@@ -622,12 +622,3 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 | **M32**  | Production                     | 12M                   | 1 TB            | 250                      |
 | **M64**  | Production                     | 30M                   | 2 TB            | 500                      |
 | **M128** | Production                     | 62M                   | 4 TB            | 500                      |
-
-## Available Regions 
-
-This is the list of availble regions as at April 2022 
-
-### Amazon Web Services (AWS)
-
-
-## Microsoft Azure
