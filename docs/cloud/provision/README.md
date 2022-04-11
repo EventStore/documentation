@@ -635,4 +635,4 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 
 #### GP3
 
-[GP3](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type) disk kind provides better base IOPS (3000 IOPS base compared to 3*`disk size` in GP2 with burst balance), IOPS and Throughput do not depend on disk size.
+[GP3](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type) disk kind provides better base IOPS than GP2 and decouples IOPS and throughput from disk size.
