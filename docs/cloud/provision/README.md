@@ -633,6 +633,6 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 
 ### Disk Types
 
-#### GP3
+#### GP2 to GP3 Migration
 
-[GP3](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#gp3-ebs-volume-type) disk kind provides better base IOPS than GP2 and decouples IOPS and throughput from disk size.
+GP3 disk type provides better base performance for disks smaller 1TB, GP2 provides minimum 100 IOPS with [burst balance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#EBSVolumeTypes_gp2), IOPS and throughput depends on a disk size. GP3 gives 3000 IOPS / 125MB/s throughput by default and provides an ability to configure it. There is no downtime or performance degradation during the migration.
