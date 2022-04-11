@@ -337,7 +337,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at April 2022 these are the available regions: 
+As at April 2022 these are the available regions:
 
 | Code               | Name                 |
 |:-------------------|:---------------------|
@@ -356,6 +356,7 @@ As at April 2022 these are the available regions:
 | southafricanorth   | South Africa North   |
 | southcentralus     | South Central US     |
 | southeastasia      | Southeast Asia       |
+| swedencentral      | Central Sweden       |
 | uksouth            | UK South             |
 | westeurope         | West Europe          |
 | westus2            | West US 2            |
