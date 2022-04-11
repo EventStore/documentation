@@ -20,7 +20,7 @@ You will be able to do an online instance resize, but it won't be auto-scaling. 
 
 #### Are there plans to support automatic disk resize?
 
-No, you have to resize the disks yourself, read the procedure in the [documentation](../ops/README.md#expanding-disks). Cloud providers set certain limitations on how often you can perform the disk resize operation, please follow your provider guidelines.
+No, you have to resize the disks yourself. Disks can be expanded on-demand in AWS and GCP. For Azure read the procedure in the [documentation](../ops/README.md#expanding-disks). Because cloud providers limit how often disk resize operations can be performed the EventStore Cloud may enforce a waiting period on recently resized clusters before they can get resized again.
 
 ## Migrating to Cloud
 
@@ -207,7 +207,7 @@ The following is a brief description of what can be expected given an outage of 
 
 Performance may be degraded or inaccessible.
 
-#### Web console 
+#### Web console
 
 Performance may be degraded or inaccessible.
 
