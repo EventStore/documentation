@@ -1,9 +1,9 @@
 ---
-terraform_current_version: 1.5.7
+terraform_current_version: 1.5.12
 ---
 # Automations
 
-In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider](#terraform-provider), a [Pulumi provider][pulumi provider], as well as a [CLI tool][esc cli github] to automate any operation accessible from the console. 
+In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider](#terraform-provider), a [Pulumi provider][pulumi provider], as well as a [CLI tool][esc cli github] to automate any operation accessible from the console.
 
 ## Terraform provider
 
@@ -61,7 +61,7 @@ You can download the provider using the following commands:
 </xode-block>
 </xode-group>
 
-#### Building from source 
+#### Building from source
 
 If you prefer to install from source, use the `make install` target in this [repository][terraform github]. You will need a Go 1.13+ development environment.
 
@@ -84,7 +84,7 @@ Use the following command to get the access token using `esc-cli`:
 
 ``` bash
 $ esc access tokens create --email <email>
- 
+
 Password:
 Token created for audience https://api.eventstore.cloud
 FDGco0u_1Ypw9WVVIfAHtIJh0ioUI_XbMhxMlEpiCUlHR
@@ -119,7 +119,7 @@ All resources in Event Store Cloud can be provisioned using the Terraform provid
 
 Using the Terraform provider, you can create, manipulate, and delete the following resources in Event Store Cloud:
 
-| Terraform resource                | Event Store Cloud resource                                        | 
+| Terraform resource                | Event Store Cloud resource                                        |
 |:----------------------------------|:------------------------------------------------------------------|
 | `eventstorecloud_project`         | [Project](#projects)                                              |
 | `eventstorecloud_network`         | [Network](#networks)                                              |
@@ -164,9 +164,9 @@ Before provisioning a database cluster, you need a network, which the cluster wi
 |:--------------------|:---------|:---------------------------------------------------------------------------|
 | `name`              | `string` | *Required*, the new network name.                                          |
 | `project_id`        | `string` | *Required*, the project ID of the new network (see [Projects](#projects))  |
-| `resource_provider` | `string` | *Required*, the network cloud provider (`aws` , `gcp` , `azure`).          |
+| `resource_provider` | `string` | *Required*, the network cloud provider (`aws`, `gcp`, `azure`).            |
 | `region`            | `string` | *Required*, the cloud region of the new network (cloud provider-specific). |
-| `cidr_block`        | string   | *Required*, the new network IP range.                                      |
+| `cidr_block`        | `string` | *Required*, the new network IP range.                                      |
 
 ##### Attributes
 
@@ -176,7 +176,7 @@ Before provisioning a database cluster, you need a network, which the cluster wi
 
 Region names must be in the format used by the cloud resource provider, for example `us-west-2` for AWS, `East US` for Azure, `us-east1` for GCP.
 
-**Note** For the IP range, the maximum prefix length is `/9` and  the minimum is `/24`. However, cloud providers have their own limitations on the network ranges they support. Learn more in your cloud provider documentation:  
+**Note** For the IP range, the maximum prefix length is `/9` and  the minimum is `/24`. However, cloud providers have their own limitations on the network ranges they support. Learn more in your cloud provider documentation:
 
 * AWS [VPC Addressing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html)
 * Azure [Virtual Network FAQ](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-faq#what-address-ranges-can-i-use-in-my-vnets)
@@ -200,7 +200,7 @@ At the moment, you can only peer the networks, which are in the same cloud regio
 The format of the following arguments depends on the cloud provider:
 
 * `peer_account_id`
-* `peer_network_region`  
+* `peer_network_region`
 * `peer_network_id`
 :::
 
@@ -211,7 +211,7 @@ The format of the following arguments depends on the cloud provider:
 | `name`                   | `string` | *Required*, the new peering name.                                                                       |
 | `project_id`             | `string` | *Required*, the project ID for the new peering.                                                         |
 | `network_id`             | `string` | *Required*, the EventStore Cloud network ID, for which the peering will be created.                     |
-| `peer_resource_provider` | `string` | *Required*, the cloud resource provider of the given network (`aws` , `gcp` , `azure`).                 |
+| `peer_resource_provider` | `string` | *Required*, the cloud resource provider of the given network (`aws`, `gcp`, `azure`).                   |
 | `peer_network_region`    | `string` | *Required*, the cloud region of your own network, which you are going to peer with.                     |
 | `peer_account_id`        | `string` | *Required*, your cloud account ID, your cloud network should belong to that account.                    |
 | `peer_network_id`        | `string` | *Required*, the network ID for your own cloud network.                                                  |
@@ -276,8 +276,10 @@ Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB 
 | `topology`         | `string` | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. |
 | `instance_type`    | `string` | *Required*, the size of the instances to use in the managed cluster.                                                                                             |
 | `disk_size`        | `int`    | *Required*, the size of the data disks in gigabytes. Minimal size is 10Gb. All cluster members will get a disk of the same size.                                 |
-| `disk_type`        | `string` | *Required*, `GP2` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                                 |
-| `server_version`   | `string` | *Required*, `20.6` , `20.10`.                                                                                                                                    |
+| `disk_type`        | `string` | *Required*, `GP2`, `GP3` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                                 |
+| `disk_iops`        | `int`    | *Optional*, the number of IOPS for data disk. *Required* if disk_type is `GP3`. |
+| `disk_throughput`  | `int`    | *Optional*, throughput in MB/s for data disk. *Required* if disk_type is `GP3`. |
+| `server_version`   | `string` | *Required*, `20.6`, `20.10`, `21.6`, `21.10`.                                                                                                                                    |
 | `projection_level` | `string` | *Optional*, default: `off` , the mode in which to enable projections. Valid values are `off` , `system` , `user`.                                                |
 
 Supported instance sizes are:
@@ -296,7 +298,7 @@ Supported instance sizes are:
 The actual implementation of each topology is specific to the resource provider.
 
 For GCP and AWS clusters you can resize the disks without downtime. In Azure, it is currently not supported, please plan the disk size according to your projected database size.
-::: 
+:::
 
 ##### Attributes
 
@@ -372,7 +374,7 @@ You need to add the access token to your environment variables or the provider c
 
 **Error `... Forbidden: Access to the requested method for the requested resources was denied`**
 
-Make sure you used the correct organisation ID. Use [these guidelines](#provider-configuration) to get the correct value. 
+Make sure you used the correct organisation ID. Use [these guidelines](#provider-configuration) to get the correct value.
 
 **Error `Your query returned no results. Please change your search criteria and try again.`**
 

@@ -96,7 +96,15 @@ At this moment, it is not possible to change the cluster node instance size. You
 ![AWS cluster second part](./images/aws/aws-new-cluster-2.png)
 :::
 
-Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size, IOPS and throughput. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+
+::: note
+The cloud console only allows for the creation of GP3 clusters, but for backwards compatibility purposes it's still possible to create a cluster with GP2 storage using tools such as the terraform provider or Event Store Cloud CLI.
+:::
+
+::: card
+![AWS cluster third part](./images/aws/aws-new-cluster-3.png)
+:::
 
 Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
@@ -337,7 +345,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at April 2022 these are the available regions: 
+As at April 2022 these are the available regions:
 
 | Code               | Name                 |
 |:-------------------|:---------------------|
@@ -622,3 +630,9 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 | **M32**  | Production                     | 12M                   | 1 TB            | 250                      |
 | **M64**  | Production                     | 30M                   | 2 TB            | 500                      |
 | **M128** | Production                     | 62M                   | 4 TB            | 500                      |
+
+### Disk Types
+
+#### GP2 to GP3 Migration
+
+GP3 disk type provides better base performance for disks smaller 1TB, GP2 provides minimum 100 IOPS with [burst balance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#EBSVolumeTypes_gp2), IOPS and throughput depends on a disk size. GP3 gives 3000 IOPS / 125MB/s throughput by default and provides an ability to configure it. There is no downtime or performance degradation during the migration.
