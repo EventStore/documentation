@@ -20,7 +20,7 @@ You will be able to do an online instance resize, but it won't be auto-scaling. 
 
 #### Are there plans to support automatic disk resize?
 
-No, you have to resize the disks yourself, read the procedure in the [documentation](../ops/README.md#expanding-disks). Cloud providers set certain limitations on how often you can perform the disk resize operation, please follow your provider guidelines.
+No, you have to resize the disks yourself. Disks can be expanded on-demand in AWS and GCP. For Azure read the procedure in the [documentation](../ops/README.md#expanding-disks). Because cloud providers limit how often disk resize operations can be performed the EventStore Cloud may enforce a waiting period on recently resized clusters before they can get resized again.
 
 ## Migrating to Cloud
 
@@ -62,7 +62,15 @@ We have no plans to expose clusters via a public IP address. We will be providin
 
 #### Why can't I resize disks in Azure after provisioning the cluster?
 
-The disk resize operation in Azure requires us to shot down the cluster node. It works differently in GCP and AWS, that's why we are providing this options for GCP and AWS, but not for Azure. We have plans to implement this feature, but there's no ETA at the moment. Due to Azure limitations, disk resize for single-node instances would always involve some downtime.
+The disk resize operation in Azure requires us to shut down the cluster node. It works differently in GCP and AWS, that's why we are providing this options for GCP and AWS, but not for Azure. We have plans to implement this feature, but there's no ETA at the moment. Due to Azure limitations, disk resize for single-node instances would always involve some downtime.
+
+#### What regions do you support on Aws, Gcp and Azure?
+
+The list of supported regions is in the provisioning [documentation](../provision/#event-store-cloud-provisioning).
+
+At the moment, you can deploy EventStoreDB clusters only in regions with three or more availability zones. Each region also need to support a set of services necessary for the provisioning and monitoring of the clusters.
+
+If you think a region should be available [contact us](https://www.eventstore.com/contact).
 
 ## Managed EventStoreDB
 
@@ -199,7 +207,7 @@ The following is a brief description of what can be expected given an outage of 
 
 Performance may be degraded or inaccessible.
 
-#### Web console 
+#### Web console
 
 Performance may be degraded or inaccessible.
 
