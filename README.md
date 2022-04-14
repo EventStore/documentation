@@ -31,7 +31,8 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 
 1. Clone the repo
 2. Run `yarn install`
-3. Run `yarn docs:dev`
+3. Run `yarn docs:import`
+4. Run `yarn docs:dev`
 
 ### Running production build
 
