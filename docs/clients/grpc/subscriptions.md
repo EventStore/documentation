@@ -1,4 +1,4 @@
-# Subscription basics
+# Catch-up subscriptions
 
 Subscriptions allow you to subscribe to a stream and receive notifications about new events added to the stream.
 
@@ -10,7 +10,11 @@ If events already exist, the handler will be called for each event one by one un
 Check the [Getting Started](README.md) guide to learn how to configure and use the client SDK.
 :::
 
-## Subscribing to a stream
+## Subscribing from the start
+
+When you need to process all the events in the store, including historical events, you'd need to subscribe from the beginning. You can either subscribe to receive events from a single stream, or subscribe to `$all` if you need to process all events in the database.
+
+### Subscribing to a stream
 
 The simplest stream subscription looks like the following :
 
@@ -18,7 +22,9 @@ The simplest stream subscription looks like the following :
 
 The provided handler will be called for every event in the stream.
 
-## Subscribing to `$all`
+When you subscribe to a stream with link events, for example the `$ce` category stream, you need to set `resolveLinkTos` to `true`. Read more about it [below](#resolving-link-to-s).
+
+### Subscribing to `$all`
 
 Subscribing to `$all` is much the same as subscribing to a single stream. The handler will be called for every event appended after the starting position.
 
@@ -106,16 +112,6 @@ When subscribed to `$all` you want to keep the position of the event in the `$al
 
 @[code{subscribe-to-all-subscription-dropped}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
-## Filter options
-
-Subscriptions to `$all` can include a filter option. A filtered subscription will only invoke the event handler if the event matches the provided filter.
-
-A simple stream prefix filter looks like this:
-
-@[code{stream-prefix-filtered-subscription}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
-
-The filtering API is described more in-depth in the [filtering section](subscriptions.md#server-side-filtering).
-
 ## User credentials
 
 The user creating a subscription must have read access to the stream it's subscribing to, and only admin users may subscribe to `$all` or create filtered subscriptions.
@@ -124,7 +120,7 @@ The code below shows how you can provide user credentials for a subscription. Wh
 
 @[code{overriding-user-credentials}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
 
-# Server-side filtering
+## Server-side filtering
 
 EventStoreDB allows you to filter the events whilst you subscribe to the `$all` stream so that you only receive the events that you care about.
 
@@ -134,7 +130,13 @@ You can filter by event type or stream name using either a regular expression or
 Server-side filtering introduced as a simpler alternative to projections. Before creating a projection to get the events you care about you should first consider filtering.
 :::
 
-## Filtering out system events
+A simple stream prefix filter looks like this:
+
+@[code{stream-prefix-filtered-subscription}](@grpc:subscribing-to-streams/Program.cs;subscribingToStream.go;subscribing_to_stream/SubscribingToStream.java;subscribing-to-streams.js;subscribing_to_stream.rs;subscribing-to-streams.ts)
+
+The filtering API is described more in-depth in the [filtering section](subscriptions.md#server-side-filtering).
+
+### Filtering out system events
 
 There are a number of events in EventStoreDB called system events. These are prefixed with a `$` and under most circumstances you won't care about these. They can be filtered out by passing in a `SubscriptionFilterOptions` when subscribing to the `$all` stream.
 
@@ -144,11 +146,11 @@ There are a number of events in EventStoreDB called system events. These are pre
 `$stats` events are no longer stored in EventStoreDB by default so there won't be as many `$` events as before.
 :::
 
-## Filtering by event type
+### Filtering by event type
 
 If you only want to subscribe to events of a given type there are two options. You can either use a regular expression or a prefix.
 
-### Filtering by prefix
+#### Filtering by prefix
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `EventTypeFilter.Prefix`.
 
@@ -156,7 +158,7 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 This will only subscribe to events with a type that begin with `customer-`.
 
-### Filtering by regular expression
+#### Filtering by regular expression
 
 If you want to subscribe to multiple event types then it might be better to provide a regular expression.
 
@@ -164,11 +166,11 @@ If you want to subscribe to multiple event types then it might be better to prov
 
 This will subscribe to any event that begins with `user` or `company`.
 
-## Filtering by stream name
+### Filtering by stream name
 
 If you only want to subscribe to a stream with a given name there are two options. You can either use a regular expression or a prefix.
 
-### Filtering by prefix
+#### Filtering by prefix
 
 If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the subscription with an `StreamFilter.Prefix`.
 
@@ -176,7 +178,7 @@ If you want to filter by prefix pass in a `SubscriptionFilterOptions` to the sub
 
 This will only subscribe to all streams with a name that begin with `user-`.
 
-### Filtering by regular expression
+#### Filtering by regular expression
 
 If you want to subscribe to multiple streams then it might be better to provide a regular expression.
 
