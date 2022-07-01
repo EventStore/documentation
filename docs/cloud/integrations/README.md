@@ -199,7 +199,7 @@ Give the policy some appropriate name, and click on "Create policy".
 
 #### Testing the integration
 
-The EventStore Cloud backend may take up to 10 minutes to install new log integrations. 
+Log integration with EventStore Cloud will take a few minutes to be fully active
 
 If you're making sure the integration is set up correctly it's a good idea to write a few test events to the cluster. Clusters which are seeing no activity (such as dev or test clusters) will sometimes emit no logs at all.
 
