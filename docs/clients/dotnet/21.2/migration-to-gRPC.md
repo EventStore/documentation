@@ -407,7 +407,7 @@ The TCP Client has dedicated methods for reading events in the specific directio
 - `ReadStreamEventsForwardAsync`,
 - `ReadStreamEventsBackwardAsync`,
 - `ReadAllEventsForwardAsync`,
-- `ReadStreamEventsBackwardAsync`.
+- `ReadAllEventsBackwardAsync`.
 
 In the gRPC client, we unified those methods into methods with the direction parameter:
 - `ReadStreamAsync`,
