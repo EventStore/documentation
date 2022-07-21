@@ -345,7 +345,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at April 2022 these are the available regions. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
+As at July 2022 these are the available regions. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
 
 | Code               | Name                 |
 |:-------------------|:---------------------|
