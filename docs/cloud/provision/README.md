@@ -353,6 +353,7 @@ As at July 2022 these are the available regions. See this [FAQ](../faq/README.md
 | brazilsouth        | Brazil South         |
 | canadacentral      | Canada Central       |
 | centralus          | Central US           |
+| eastasia           | Esat Asia            |
 | eastus             | East US              |
 | eastus2            | East US 2            |
 | francecentral      | France Central       |
