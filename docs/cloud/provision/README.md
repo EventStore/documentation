@@ -365,6 +365,7 @@ As at April 2022 these are the available regions. See this [FAQ](../faq/README.m
 | southcentralus     | South Central US     |
 | southeastasia      | Southeast Asia       |
 | swedencentral      | Central Sweden       |
+| switzerlandnorth   | Switzerland North    |
 | uksouth            | UK South             |
 | westeurope         | West Europe          |
 | westus2            | West US 2            |
