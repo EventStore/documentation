@@ -18,6 +18,10 @@ This page can help you to generate the connection string for a single-node or cl
 
 For your application to start communicating with EventStoreDB, you need to instantiate the client, and configure it accordingly. Below, you will find instructions for supported SDKs.
 
+::: tip Insecure Clusters
+All our GRPC clients are secure by default, and must be configured to connect to an insecure server via [a connection string](#connection-string), or the client's configuration.
+:::
+
 ### Required packages
 
 Install the client SDK package to your project.
