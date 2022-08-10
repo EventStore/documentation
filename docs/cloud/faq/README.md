@@ -12,7 +12,7 @@ The Event Store Cloud roadmap is available on [our website](https://www.eventsto
 
 #### Is it possible to change the cluster instance size or topology?
 
-We don't have this feature available yet. However, you can always do it using backup and restore.
+We don't have this feature available yet. However, you can always do it using [backup and restore](../ops/README.md#resizing-cluster-nodes).
 
 #### Are there plans to support automatic resize of cluster nodes?
 
@@ -64,7 +64,9 @@ We have no plans to expose clusters via a public IP address. We will be providin
 
 The disk resize operation in Azure requires us to shut down the cluster node. It works differently in GCP and AWS, that's why we are providing this options for GCP and AWS, but not for Azure. We have plans to implement this feature, but there's no ETA at the moment. Due to Azure limitations, disk resize for single-node instances would always involve some downtime.
 
-### What regions do you support on Aws, Gcp and Azure?
+### Supported regions
+
+### What regions do you support on AWS, GCP and Azure?
 
 The list of supported regions is in the provisioning [documentation](../provision/README.md#event-store-cloud-provisioning).
 

@@ -17,13 +17,10 @@ Find the detailed guideline for your cloud provider:
 - [Google Cloud Platform (GCP)](#google-cloud-platform-gcp)
 - [Microsoft Azure](#microsoft-azure)
 
-
 This is how networking will look like when all provisioning steps are performed:
 
 ::: card
-
 ![ES_Cloud_Networking](./images/es-cloud-networking.svg)
-
 :::
 
 ## Amazon Web Services (AWS)
@@ -31,11 +28,11 @@ This is how networking will look like when all provisioning steps are performed:
 For AWS customers, Event Store Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
 
 Pre-requisites:
-- You have an organisation registered in Cloud console
+- You have an organization registered in Cloud console
 - You can log in to the Cloud console as admin
-- Your organisation has at least one project
+- Your organization has at least one project
 - You are the admin of the project
-- You have access to create AWS resources in the AWS account of your organisation
+- You have access to create AWS resources in the AWS account of your organization
 
 The provisioning process consists of three steps:
 1. Create a network in Event Store Cloud
@@ -99,7 +96,7 @@ At this moment, it is not possible to change the cluster node instance size. You
 Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size, IOPS and throughput. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
 ::: note
-The cloud console only allows for the creation of GP3 clusters, but for backwards compatibility purposes it's still possible to create a cluster with GP2 storage using tools such as the terraform provider or Event Store Cloud CLI.
+The cloud console only allows for the creation of GP3 clusters, but for backwards compatibility purposes it is still possible to create a cluster with GP2 storage using tools such as the Terraform provider or Event Store Cloud CLI.
 :::
 
 ::: card
@@ -110,7 +107,7 @@ Finally, choose the network provisioned previously from the list. All cluster no
 
 You will get the monthly price for the selected cluster size down below in the form.
 
-Finally, when you click on `Create cluster`, the provisioning process starts and you will get a new cluster available after a few minutes.
+Finally, when you click on `Create cluster`, the provisioning process starts, and you will get a new cluster available after a few minutes.
 
 ### Network peering
 
@@ -136,12 +133,14 @@ Then, give the new peering a name and select the network created earlier.
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
 
-| Peering form        | AWS VPC screen                |
-|:--------------------|:------------------------------|
-| Peer AWS Account ID | Owner ID                      |
-| Peer VPC ID         | VPC ID                        |
-| AWS region          | VPC region, cannot be changed |
-| Peer address space  | IPv4 CIDR                     |
+| Peering form        | AWS terminology                            |
+|:--------------------|:-------------------------------------------|
+| Peer AWS Account ID | Owner ID                                   |
+| Peer VPC ID         | VPC ID                                     |
+| AWS region          | VPC region, cannot be changed              |
+| Peer routes         | One or more IP ranges for the selected VPC |
+
+You can specify more than one route if you, for example, want to peer a VPC with multiple subnets. However, the routed IP ranges must belong to subnets in the same region as the Event Store Cloud network.
 
 For our example, here is the complete form:
 
@@ -219,11 +218,11 @@ Microsoft Azure has a few differences that you need to consider when using Event
 :::
 
 Pre-requisites:
-- You have an organisation registered in Cloud console
+- You have an organization registered in Cloud console
 - You can log in to the Cloud console as admin
-- Your organisation has at least one project
+- Your organization has at least one project
 - You are the admin of the project
-- You have access to create Azure resources in the Azure account of your organisation
+- You have access to create Azure resources in the Azure account of your organization
 
 The provisioning process consists of three steps:
 1. Create a network in Event Store Cloud
@@ -274,19 +273,19 @@ On the first part of the form you need to specify the new cluster name, the clou
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Other instance sizes are production-grade.
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided instance size guidelines to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
 :::
 
+Further, you need to specify the deployment topology (single node or a three-node HA cluster), and the storage capacity. One disk kind is available at the moment (Premium SSD LRS). **As we currently do not support online disk resize for Azure, you need to ensure that the disk size you choose will support your estimated data volume**.
+
+Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
+
 ::: card
 ![Azure cluster second part](./images/azure/azure-new-cluster-2.png)
 :::
-
-Further, you need to specify the storage capacity. One disk kind is available at the moment (Premium SSD LRS). **As we currently do not support online disk resize for Azure, you need to ensure that the disk size you choose will support your estimated data volume**.
-
-Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
 You will get the monthly price for the selected cluster size down below in the form.
 
@@ -310,12 +309,12 @@ You also need to find your tenant ID, which is only visible on the Azure AD [pro
 
 Finally, you'd need to fill out all the fields:
 
-| Peering form       | Azure network details                                                             |
-|:-------------------|:----------------------------------------------------------------------------------|
-| Peer Tenant ID     | Tenant ID from Azure AD                                                           |
-| Peer Network ID    | Network resource ID (can be found on the network Properties page or in JSON view) |
-| Azure region       | Network region, cannot be changed                                                 |
-| Peer address space | IPv4 CIDR (address space for the whole network)                                   |
+| Peering form    | Azure network details                                                             |
+|:----------------|:----------------------------------------------------------------------------------|
+| Peer Tenant ID  | Tenant ID from Azure AD                                                           |
+| Peer Network ID | Network resource ID (can be found on the network Properties page or in JSON view) |
+| Azure region    | Network region, cannot be changed                                                 |
+| Peer routes     | One or more IP ranges for the selected VPC                                        |
 
 For our example, here is the complete form:
 
@@ -327,6 +326,10 @@ When you click on the `Create peering` button, Event Store Cloud will check if i
 
 ::: card
 ![Azure peering - sa](./images/azure/azure-peering-2.png)
+:::
+
+::: tip Service principal
+Event Store Cloud uses one service principal. It means that once you created it, the principal will be used for all the peerings you create. Therefore, you only need to execute the command `az ad sp create` once.
 :::
 
 After completing all those commands, click on the `Create peering` button. You'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`. If the status doesn't change after 10 minutes, delete the peering and try again, ensuring the details were entered correctly. Mismatching network region and address range are the most common reasons for the peering to not being provisioned properly.
@@ -403,11 +406,11 @@ Prices for computing resources (virtual machines) in Azure are generally higher,
 For Google Cloud customers, Event Store Cloud allows provisioning an EventStoreDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
 
 Pre-requisites:
-- You have an organisation registered in Cloud console
+- You have an organization registered in Cloud console
 - You can log in to the Cloud console as admin
-- Your organisation has at least one project
+- Your organization has at least one project
 - You are the admin of the project
-- You have access to create Google Cloud resources in the GCP project of your organisation
+- You have access to create Google Cloud resources in the GCP project of your organization
 
 The provisioning process consists of three steps:
 1. Create a network in Event Store Cloud
@@ -458,23 +461,23 @@ On the first part of the form you need to specify the new cluster name, the clou
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Two instance sizes are production-grade.
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided instance size guidelines to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
-:::
-
-::: card
-![GCP cluster second part](./images/gcp/gcp-new-cluster-2.png)
 :::
 
 Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
 Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
+::: card
+![GCP cluster second part](./images/gcp/gcp-new-cluster-2.png)
+:::
+
 You will get the monthly price for the selected cluster size down below in the form.
 
-Finally, when you click on `Create cluster`, the provisioning process starts and you will get a new cluster available after a few minutes.
+Finally, when you click on `Create cluster`, the provisioning process starts, and you will get a new cluster available after a few minutes.
 
 ### Network peering
 
@@ -494,19 +497,23 @@ Notice that the VPC has one subnet in the same region as the Event Store Cloud n
 
 The network page provide us enough details to start the peering process. In Event Store Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
 
-Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC.
+Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC. As you are peering with the whole VPC, you can specify multiple IP ranges for different subnets, or multiple IP ranges for the same subnet (GKE aliases, for example) as separate peer routes. However, the routed IP ranges must belong to subnets in the same region as the Event Store Cloud network.
 
 | Peering form        | GCP VPC screen                                       |
 |:--------------------|:-----------------------------------------------------|
 | Peer GCP Project ID | GCP project ID, found in the project selection popup |
 | Peer Network Name   | The VPC name                                         |
 | GCP region          | VPC subnet region, cannot be changed                 |
-| Peer address space  | VPC subnet address range                             |
+| Peer routes         | One or more VPC subnet address ranges                |
 
 For our example, here is the complete form:
 
 ::: card
 ![GCP peering - complete form](./images/gcp/gcp-peering-1.png)
+:::
+
+::: note
+Multiple peer routes are useful in case you want to peer with a subnet that has multiple IP ranges (aliases). A typical example would be aif you have a VPC-native GKE cluster, and you need pods in that cluster to work with Event Store Cloud. Then, you need to add the pod IP range to the peer route in addition to the subnet's primary IP range.
 :::
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`.
@@ -544,7 +551,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at April 2022 these are the available regions. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
+As at June 2022 these are the available regions. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
 
 | Code                    | Name                               |
 |:------------------------|:-----------------------------------|
