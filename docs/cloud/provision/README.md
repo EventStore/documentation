@@ -73,7 +73,7 @@ Within the project scope you can view EventStoreDB clusters for the project if y
 
 When you click on the button, you get to the cluster creation form.
 
-On the first part of the form you need to specify the new cluster name, the cloud provider (AWS) and the EventStoreDB version (currently it's only 20.6). Further, you need to choose the deployment size (single instance or three-node cluster) and whether to start server-side projections by default.
+On the first part of the form you need to specify the new cluster name, the cloud provider (AWS) and the EventStoreDB version. Further, you need to choose whether to start server-side projections by default.
 
 ::: card
 ![AWS cluster first part](./images/aws/aws-new-cluster-1.png)
@@ -83,14 +83,10 @@ On the first part of the form you need to specify the new cluster name, the clou
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-The lower section of the form allows choosing the instance size for cluster nodes. Currently, only three instance sizes are available. The `F1` size is the lower-edge, aiming mainly to support testing scenarios and experiments due to its low price. Other instance sizes are production-grade.
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided instance size guidelines to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
-:::
-
-::: card
-![AWS cluster second part](./images/aws/aws-new-cluster-2.png)
 :::
 
 Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size, IOPS and throughput. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
@@ -100,10 +96,10 @@ The cloud console only allows for the creation of GP3 clusters, but for backward
 :::
 
 ::: card
-![AWS cluster third part](./images/aws/aws-new-cluster-3.png)
+![AWS cluster third part](./images/aws/aws-new-cluster-2.png)
 :::
 
-Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
+Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
 You will get the monthly price for the selected cluster size down below in the form.
 
@@ -141,8 +137,6 @@ Then, you'd need to fill out the remaining fields, using the information from AW
 | Peer routes         | One or more IP ranges for the selected VPC |
 
 You can specify more than one route if you, for example, want to peer a VPC with multiple subnets. However, the routed IP ranges must belong to subnets in the same region as the Event Store Cloud network.
-
-For our example, here is the complete form:
 
 ::: card
 ![AWS peering - complete form](./images/aws/aws-peering-2.png)
@@ -263,7 +257,7 @@ Within the project scope you can view EventStoreDB clusters for the project if y
 
 When you click on the button, you get to the cluster creation form.
 
-On the first part of the form you need to specify the new cluster name, the cloud provider (Azure) and the EventStoreDB version (currently it's only 20.6). Further, you need to choose the deployment size (single instance or three-node cluster) and whether to start server-side projections by default.
+On the first part of the form you need to specify the new cluster name, the cloud provider (Azure) and the EventStoreDB version. Further, you need to choose whether to start server-side projections by default.
 
 ::: card
 ![Azure cluster first part](./images/azure/azure-new-cluster-1.png)
@@ -281,7 +275,7 @@ At this moment, it is not possible to change the cluster node instance size. You
 
 Further, you need to specify the deployment topology (single node or a three-node HA cluster), and the storage capacity. One disk kind is available at the moment (Premium SSD LRS). **As we currently do not support online disk resize for Azure, you need to ensure that the disk size you choose will support your estimated data volume**.
 
-Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
+Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
 ::: card
 ![Azure cluster second part](./images/azure/azure-new-cluster-2.png)
@@ -451,7 +445,7 @@ Within the project scope you can view EventStoreDB clusters for the project if y
 
 When you click on the button, you get to the cluster creation form.
 
-On the first part of the form you need to specify the new cluster name, the cloud provider (GCP) and the EventStoreDB version (currently it's only 20.6). Further, you need to choose the deployment size (single instance or three-node cluster) and whether to start server-side projections by default.
+On the first part of the form you need to specify the new cluster name, the cloud provider (GCP) and the EventStoreDB version. Further, you need to choose whether to start server-side projections by default.
 
 ::: card
 ![GCP cluster first part](./images/gcp/gcp-new-cluster-1.png)
@@ -469,7 +463,7 @@ At this moment, it is not possible to change the cluster node instance size. You
 
 Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
-Finally, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
+Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
 ::: card
 ![GCP cluster second part](./images/gcp/gcp-new-cluster-2.png)
