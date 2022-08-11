@@ -17,6 +17,10 @@
         "name": "release/oss-v20.10"
       },
       {
+        "version": "v22.6",
+        "name": "release/oss-v22.6"
+      },
+      {
         "version": "v5",
         "name": "release/oss-v5"
       }
