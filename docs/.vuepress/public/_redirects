@@ -8,8 +8,9 @@
 /clients/http-api/v5/:firstpart/:filename.html /clients/http-api/v5/:firstpart/        301!
 
 ## Cloud from Vuepress v1 to v2
-/cloud/:firstpart/:filename.html            /cloud/:firstpart/                         301!
-/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                         301!
+/cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide 301!
+/cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301!
+/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301!
 
 ## Database from Vuepress v1 to v2
 /server/:version/introduction/              /server/:version/                          301!
