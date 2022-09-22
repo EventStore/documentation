@@ -48,6 +48,25 @@ Every node on a cluster has it's gossip status queried twice each minute. An iss
 
 The issue closes when the gossip status again returns expected values.
 
+### Elections
+
+For a cluster, an issue is opened if there is more than one leader change per hour. The issue closes only if there is no more
+than one leader change in the hour following the first detection.
+
+### Leader Mismatches
+
+For a cluster, an issue is opened if the cluster disagrees on which node is the current leader in a three minutes time window.
+The issue closes if the cluster agrees on which node is the leader one minute after the first detection.
+
+### Out of Syncs
+
+For a cluster, an issue is opened if at least one follower node hasn't caught up with the leader node progression from two seconds ago, over a three minutes time window. The issue closes if all the followers are keeping up with the leader node progression over a three minutes time window, after the first detection.
+
+### Unreachable Nodes
+
+For each node of the cluster, if one node is not reachable from another one over a three minutes time window. The issue closes
+if all nodes are reachables after a three minutes time window, after the first detection.
+
 ### Notifications
 
 Notifications represent noteworthy events which occur within the Event Store Cloud. Below you can find notifications examples.
