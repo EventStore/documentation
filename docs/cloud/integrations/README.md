@@ -53,7 +53,7 @@ The issue closes when the gossip status again returns expected values.
 For a cluster, an issue is opened if there is more than one leader change per hour. The issue closes only if there is no more
 than one leader change in the hour following the first detection.
 
-### Leader Mismatches
+### Leader mismatches
 
 For a cluster, an issue is opened if the cluster disagrees on which node is the current leader in a three minute time window.
 The issue closes if the cluster agrees on which node is the leader one minute after the first detection.
