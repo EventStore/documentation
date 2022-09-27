@@ -48,7 +48,7 @@ Every node on a cluster has it's gossip status queried twice each minute. An iss
 
 The issue closes when the gossip status again returns expected values.
 
-### Elections
+### Frequent elections
 
 For a cluster, an issue is opened if there is more than one leader change per hour. The issue closes only if there is no more
 than one leader change in the hour following the first detection.
