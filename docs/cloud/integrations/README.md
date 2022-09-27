@@ -58,7 +58,7 @@ than one leader change in the hour following the first detection.
 For a cluster, an issue is opened if the cluster disagrees on which node is the current leader in a three minute time window.
 The issue closes if the cluster agrees on which node is the leader one minute after the first detection.
 
-### Out of Syncs
+### Node out of syncs
 
 For a cluster, an issue is opened if at least one follower node hasn't caught up with the leader node progression from two seconds ago, over a three minute time window. The issue closes if all the followers are keeping up with the leader node progression over a three minute time window, after the first detection.
 
