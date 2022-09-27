@@ -60,11 +60,11 @@ The issue closes if the cluster agrees on which node is the leader one minute af
 
 ### Out of Syncs
 
-For a cluster, an issue is opened if at least one follower node hasn't caught up with the leader node progression from two seconds ago, over a three minutes time window. The issue closes if all the followers are keeping up with the leader node progression over a three minutes time window, after the first detection.
+For a cluster, an issue is opened if at least one follower node hasn't caught up with the leader node progression from two seconds ago, over a three minute time window. The issue closes if all the followers are keeping up with the leader node progression over a three minute time window, after the first detection.
 
 ### Unreachable Nodes
 
-For each node of the cluster, if one node is not reachable from another one over a three minutes time window. The issue closes
+For each node of the cluster, if one node is not reachable from another one over a three minute time window. The issue closes
 if all nodes are reachables after a three minutes time window, after the first detection.
 
 ### Notifications
