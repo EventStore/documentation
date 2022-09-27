@@ -55,7 +55,7 @@ than one leader change in the hour following the first detection.
 
 ### Leader Mismatches
 
-For a cluster, an issue is opened if the cluster disagrees on which node is the current leader in a three minutes time window.
+For a cluster, an issue is opened if the cluster disagrees on which node is the current leader in a three minute time window.
 The issue closes if the cluster agrees on which node is the leader one minute after the first detection.
 
 ### Out of Syncs
