@@ -12,6 +12,11 @@
 /cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301!
 /cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301!
 
+## Cloud docs links
+/cloud/provision/aws/peering                /cloud/provision/#network-peering   301!
+/cloud/provision/azure/peering              /cloud/provision/#network-peering-1 301!
+/cloud/provision/gcp/peering                /cloud/provision/#network-peering-2 301!
+
 ## Database from Vuepress v1 to v2
 /server/:version/introduction/              /server/:version/                          301!
 /server/:version/docs/*                     /server/:version/:splat                    301!
