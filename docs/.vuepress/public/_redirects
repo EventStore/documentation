@@ -12,10 +12,21 @@
 /cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301!
 /cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301!
 
-## Cloud docs links
-/cloud/provision/aws/peering                /cloud/provision/#network-peering   301!
-/cloud/provision/azure/peering              /cloud/provision/#network-peering-1 301!
-/cloud/provision/gcp/peering                /cloud/provision/#network-peering-2 301!
+## Cloud docs deep links
+/cloud/provision/aws/network                /cloud/provision/#create-a-network            301!
+/cloud/provision/aws/cluster                /cloud/provision/#deploy-a-managed-instance   301!
+/cloud/provision/aws/peering                /cloud/provision/#network-peering             301!
+/cloud/provision/aws/regions                /cloud/provision/#available-regions           301!
+
+/cloud/provision/azure/network              /cloud/provision/#create-a-network-1          301!
+/cloud/provision/azure/cluster              /cloud/provision/#deploy-a-managed-instance-1 301!
+/cloud/provision/azure/peering              /cloud/provision/#network-peering-1           301!
+/cloud/provision/azure/regions              /cloud/provision/#available-regions-1         301!
+
+/cloud/provision/gcp/network                /cloud/provision/#create-a-network-2          301!
+/cloud/provision/gcp/cluster                /cloud/provision/#deploy-a-managed-instance-2 301!
+/cloud/provision/gcp/peering                /cloud/provision/#network-peering-2           301!
+/cloud/provision/gcp/regions                /cloud/provision/#available-regions-2         301!
 
 ## Database from Vuepress v1 to v2
 /server/:version/introduction/              /server/:version/                          301!
