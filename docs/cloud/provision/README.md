@@ -508,8 +508,10 @@ For our example, here is the complete form:
 ![GCP peering - complete form](./images/gcp/gcp-peering-1.png)
 :::
 
-::: note
+::: notes
 Multiple peer routes are useful in case you want to peer with a subnet that has multiple IP ranges (aliases). A typical example would be aif you have a VPC-native GKE cluster, and you need pods in that cluster to work with Event Store Cloud. Then, you need to add the pod IP range to the peer route in addition to the subnet's primary IP range.
+
+After a peering is created, the peer routes cannot be changed. If there is a need to modify them, the peering should be deleted and created again with the updated set of peer routes. This is true even in the cases, where a cloud provider supports dynamic route updates, e.g. in GCP. The reason is that the EventStore automation creates firewall rules for the peer routes at the moment the peering is created. The firewall rules are not updated dynamically to prevent security breaches.
 :::
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`.
