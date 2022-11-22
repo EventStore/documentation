@@ -31,7 +31,7 @@ export default {
             for (const x of node) {
                 if (x.children !== undefined && typeof x.children === "string") {
                     if (x.children.indexOf(key) !== -1) {
-                        if (x.el !== undefined) {
+                        if (x.el !== null) {
                             x.el.innerHTML = x.children.replace(key, replaceTo);
                         } else {
                             console.log(`x.el is undefined`);
