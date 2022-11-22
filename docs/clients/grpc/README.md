@@ -6,7 +6,7 @@ Complete the form below to generate the connection string and examples for diffe
 
 ## Connection details
 
-This page can help you to generate the connection string for a single-node or cluster deployment of EventStoreDB. You can use one of the following methods:
+The form below can help you to generate the connection string for a single-node or cluster deployment of EventStoreDB. You can use one of the following methods:
 
 - Use the [Event Store Cloud](https://eventstore.com/cloud) cluster ID.
 - Use the address of any node of a self-hosted cluster or single-node deployment. You need to have access to the node for the discovery feature to work.
@@ -82,9 +82,7 @@ $ npm install --save @eventstore/db-client
 
 ### Connection string
 
-Each SDK has its own way to configure the client, but it's always possible to use the connection string. You can use [online configuration tool](https://configurator.eventstore.com) to generate the connection string for your EventStoreDB deployment. The connection string generated with this tool should work with each official SDK of EventStoreDB.
-
-[comment]: <> (<ConnectionString></ConnectionString>)
+Each SDK has its own way to configure the client, but it's always possible to use the connection string. You can use the connection string generator above on this page to generate the connection string for your EventStoreDB deployment. The connection string generated with this tool should work with each official SDK of EventStoreDB.
 
 ### Creating a client
 
