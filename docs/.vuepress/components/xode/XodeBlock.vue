@@ -31,7 +31,12 @@ export default {
             for (const x of node) {
                 if (x.children !== undefined && typeof x.children === "string") {
                     if (x.children.indexOf(key) !== -1) {
-                        x.el.innerHTML = x.children.replace(key, replaceTo);
+                        if (x.el !== null) {
+                            x.el.innerHTML = x.children.replace(key, replaceTo);
+                        } else {
+                            console.log(`x.el is undefined`);
+                            console.log(JSON.stringify(x));
+                        }
                     }
                 } else if (x.children !== null && x.children.length) {
                     findAndReplace(x.children, key, replaceTo);
