@@ -34,7 +34,7 @@ $ dotnet add package EventStore.Client.Grpc.Streams --version 21.2
 :::
 ::: code-group-item Go
 ```:no-line-numbers
-go get github.com/EventStore/EventStore-Client-Go
+go get github.com/EventStore/EventStore-Client-Go/v3/esdb
 ```
 :::
 ::: code-group-item Java
