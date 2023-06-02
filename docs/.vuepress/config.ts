@@ -89,5 +89,14 @@ export default defineUserConfig<ESThemeOptions>({
         vuePluginOptions: {
             isProduction: false
         }
-    }
+    },
+    head: [
+        ['script', {
+          src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
+          'data-website-id': '9ff147dd-2c68-495d-9859-de159901d8c5',
+          'data-project-name': 'Event Store',
+          'data-project-color': '#1976d2',
+          'data-project-logo': 'https://6850195.fs1.hubspotusercontent-na1.net/hubfs/6850195/Brand/ouroboros.png'
+        }]
+    ]
 });
