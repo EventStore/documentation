@@ -23,3 +23,7 @@
 .sidebar .sidebar-items {
   padding-top: 0;
 }
+
+body:has(#kapa-widget-container) .back-to-top {
+  bottom: 7.5rem!important;
+}
