@@ -95,7 +95,7 @@ ConnectTo=tcp://admin:changeit@localhost:1113; HeartBeatTimeout=500
 Sets the connection string to connect to `localhost` on the default port and sets the heartbeat timeout to 500ms.
 
 ```
-Connect To = tcp://admin:changeit@localhost:1113; HeartBeat Timeout = 500
+Connect To = tcp://admin:changeit@localhost:1113; HeartBeatTimeout=500
 ```
 
 Using spaces:
@@ -285,7 +285,7 @@ var connection = EventStoreConnection.Create(settings);
 
 ### Compatibility Mode
 
-Enables the client to connect to either server configuration without needing to change the client's connection settings. Read more in [Compatibility Mode documentation](#compatibility-mode).
+Enables the client to connect to either server configuration without needing to change the client's connection settings.
 
 | Builder Method | Description |
 |:---------------|:------------|

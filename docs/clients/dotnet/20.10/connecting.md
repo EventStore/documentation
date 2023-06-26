@@ -95,7 +95,7 @@ ConnectTo=tcp://admin:changeit@localhost:1113; HeartBeatTimeout=500
 Sets the connection string to connect to `localhost` on the default port and sets the heartbeat timeout to 500ms.
 
 ```
-Connect To = tcp://admin:changeit@localhost:1113; HeartBeat Timeout = 500
+Connect To = tcp://admin:changeit@localhost:1113; HeartBeatTimeout=500
 ```
 
 Using spaces:
