@@ -9,10 +9,6 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
-        "version": "nightly",
-        "name": "master"
-      },
-      {
         "version": "v22.10",
         "name": "release/oss-v22.10"
       },
@@ -31,6 +27,10 @@
       {
         "version": "v5",
         "name": "release/oss-v5"
+      },
+      {
+        "version": "nightly",
+        "name": "master"
       }
     ],
     "postprocess": [
