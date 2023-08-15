@@ -326,3 +326,50 @@ The output will be similar to:
     }
 }
 ```
+
+## Protecting the cluster from removal
+
+Cluster can be protected from accidental removal using the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc).
+
+This feature will require an extra step to unprotect the cluster before it will be possible to remove it.
+
+### Using the Cloud Console
+
+To protect a cluster, navigate to the clusters view and click on the _Protect Cluster_ icon.
+
+::: card
+![cluster list](./images/enable_protection1.png)
+:::
+
+On the detail page click on _Enable Protection_ button.
+
+::: card
+![enable protection](./images/enable_protection2.png)
+:::
+
+Protected cluster does not have a _Delete Cluster_ active action.
+
+::: card
+![delete inactive](./images/protected_cluster.png)
+:::
+
+To unprotect a cluster, navigate to clusters action and click on the _Unprotect Cluster_ icon.
+
+::: card
+![disable protection](./images/disable_protection.png)
+:::
+
+### Using the command line
+
+You can also protect a cluster using the [Event Store Cloud CLI](https://github.com/EventStore/esc).
+
+To protect a cluster, you need to update a value of `protected` parameter to `true`.
+```bash
+esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected true
+```
+
+To unprotect a cluster, you need to update it to `false`.
+
+```bash
+esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected false
+```
