@@ -1,4 +1,4 @@
-# EventStoreDB documentation
+# EventStoreDB documentation 2
 
 EventStoreDB is the open-source, functional database with Complex Event Processing in Javascript.
 
