@@ -6,11 +6,11 @@ Complete the form below to generate the connection string and examples for diffe
 
 ## Connection details
 
-The form below can help you to generate the connection string for a single-node or cluster deployment of EventStoreDB. You can use one of the following methods:
+Generate a connection string for a single-node or cluster deployment of EventStoreDB. Use one of the following:
 
-- Use the [Event Store Cloud](https://eventstore.com/cloud) cluster ID.
-- Use the address of any node of a self-hosted cluster or single-node deployment. You need to have access to the node for the discovery feature to work.
-- Specify the deployment details manually.
+- [Event Store Cloud](https://eventstore.com/cloud) cluster ID.
+- Address of any node of a self-hosted cluster or single-node deployment. You need to have access to the node for the discovery feature to work.
+- Enter deployment details manually.
 
 <Connection></Connection>
 
@@ -19,7 +19,7 @@ The form below can help you to generate the connection string for a single-node 
 For your application to start communicating with EventStoreDB, you need to instantiate the client, and configure it accordingly. Below, you will find instructions for supported SDKs.
 
 ::: tip Insecure Clusters
-All our GRPC clients are secure by default, and must be configured to connect to an insecure server via [a connection string](#connection-string), or the client's configuration.
+All clients are secure by default, and must be configured to connect to an insecure server via [a connection string](#connection-string), or the client's configuration.
 :::
 
 ### Required packages
@@ -86,7 +86,7 @@ Each SDK has its own way to configure the client, but it's always possible to us
 
 ### Creating a client
 
-First thing first, we need a client.
+First things first, we need a client.
 
 @[code{createClient}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
 
