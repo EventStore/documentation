@@ -4,41 +4,9 @@
   "main": "index.js",
   "author": "Event Store Ltd",
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.12",
-    "@babel/preset-typescript": "^7.16.7",
-    "@vuepress/plugin-docsearch": "^2.0.0-beta.35",
-    "@vuepress/plugin-google-analytics": "file:./libs/plugin-google-analytics",
-    "degit": "2.8.4",
-    "del": "5.1.0",
-    "dotenv": "10.0.0",
-    "node-sass": "^7.0.1",
-    "prettier": "2.3.2",
-    "sass-loader": "^12.4.0",
-    "shx": "0.3.3",
-    "stylus": "^0.56.0",
-    "typescript": "4.3.5",
-    "vuepress-vite": "^2.0.0-beta.35"
-  },
-  "dependencies": {
-    "@rollup/plugin-alias": "^3.1.9",
-    "@vuelidate/core": "2.0.0-alpha.29",
-    "@vuelidate/validators": "2.0.0-alpha.24",
-    "axios": "0.23.0",
-    "express": "4.17.3",
-    "primeflex": "2.0.0",
-    "primeicons": "4.1.0",
-    "primevue": "3.8.1",
-    "vue": "3.2.29"
-  },
-  "scripts": {
-    "debug": "vuepress dev docs --debug",
-    "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
-    "docs:build": "vuepress build docs && yarn docs:copy-assets",
-    "docs:build-prod": "yarn docs:import && yarn docs:build",
-    "docs:import": "node ./import/import-client-docs.js",
-    "docs:copy-assets": "shx mkdir -p public/clients/http-api/v5/samples && shx cp -R docs/samples/clients/http-api/v5/ public/clients/http-api/v5/samples/",
-    "docs:serve": "node ./serve.js",
-    "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
+    "@vuepress/client": "2.0.0-beta.67",
+    "vue": "^3.3.4",
+    "vuepress": "2.0.0-beta.67",
+    "vuepress-theme-hope": "2.0.0-beta.237"
   }
 }
