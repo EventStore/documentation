@@ -3,10 +3,30 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Event Store Ltd",
+  "type": "module",
   "devDependencies": {
     "@vuepress/client": "2.0.0-beta.67",
     "vue": "^3.3.4",
     "vuepress": "2.0.0-beta.67",
     "vuepress-theme-hope": "2.0.0-beta.237"
+  },
+  "scripts": {
+    "debug": "vuepress dev docs --debug",
+    "docs:dev": "vuepress dev docs --clean-cache --clean-temp",
+    "docs:build": "vuepress build docs && yarn docs:copy-assets",
+    "docs:build-prod": "yarn docs:import && yarn docs:build",
+    "docs:import": "node ./import/import-client-docs.js",
+    "docs:copy-assets": "shx mkdir -p public/clients/http-api/v5/samples && shx cp -R docs/samples/clients/http-api/v5/ public/clients/http-api/v5/samples/",
+    "docs:serve": "node ./serve.js",
+    "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
+    "@babel/preset-typescript": "^7.23.0",
+    "degit": "^2.8.4",
+    "del": "^7.1.0",
+    "prettier": "^3.0.3",
+    "shx": "^0.3.4"
   }
 }
