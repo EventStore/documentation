@@ -1,10 +1,10 @@
-const fs        = require("fs");
-const path      = require("path");
-const exec      = require("child_process").exec;
-const del       = require("del");
-const degit     = require("degit");
+import fs from "fs";
+import path from "path";
+import {exec} from "child_process";
+import {deleteAsync} from "del";
+import degit from "degit";
 
-const repos = require('./repos.json');
+import {default as repos} from "./repos.json" assert { type: "json" };
 
 async function sh(cmd) {
     return new Promise(function (resolve, reject) {
@@ -21,7 +21,7 @@ async function sh(cmd) {
 async function safeRmdir(path) {
     if (fs.existsSync(path)) {
         console.log("Removing", path);
-        await del(path);
+        await deleteAsync(path);
     }
 }
 
