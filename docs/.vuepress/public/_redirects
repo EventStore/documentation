@@ -54,6 +54,7 @@
 /server/v20/server/*                        /server/v20.10/:splat                      301!
 /server/v5/server/*                         /server/v5/:splat                          301!
 /server/5.0.8/server/*                      /server/v5/:splat                          301!
+/server/v20.10/*                            /server/v21.10/:splat                      301!
 /server/v21.2/*                             /server/v21.10/:splat                      301!
 /server/v21.6/*                             /server/v21.10/:splat                      301!
 /server/v22.6/*                             /server/v22.10/:splat                      301!
