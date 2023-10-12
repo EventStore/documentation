@@ -58,4 +58,3 @@ highlights:
   
 copyright: false
 footer: Event Store Limited Copyright © 2023
----

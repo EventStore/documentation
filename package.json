@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Event Store Ltd",
+  "type": "module",
   "devDependencies": {
     "dotenv": "10.0.0",
     "node-sass": "^7.0.1",
