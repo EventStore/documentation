@@ -49,13 +49,24 @@
 /clients/grpc/:firstpart.html                                        /clients/grpc/:firstpart.html                200
 /clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301!
 
-## Older migrations
-/server/generated/21.2/docs/*               /server/v21.6/:splat                       301!
-/server/v20/server/*                        /server/v20.10/:splat                      301!
-/server/v5/server/*                         /server/v5/:splat                          301!
-/server/5.0.8/server/*                      /server/v5/:splat                          301!
 
+## Server version 22
+/server/v22.6/*                             /server/v22.10/:splat                      301!
+
+## Server version 21
+/server/generated/21.2/docs/*               /server/v21.10/:splat                      301!
 /server/v21.2/*                             /server/v21.10/:splat                      301!
 /server/v21.6/*                             /server/v21.10/:splat                      301!
-/server/v22.6/*                             /server/v22.10/:splat                      301!
+
+## Server version 20
+/server/v20/server/*                        /server/v20.10/:splat                      301!
+
+## Server version 5
+/server/v5/server/*                         /server/v5/:splat                          301!
+/server/v5.0/server/*                       /server/v5/:splat                          301!
+/server/5.0.8/server/*                      /server/v5/:splat                          301!
+/server/5.0.9/server/*                      /server/v5/:splat                          301!
 /clients/dotnet/5.0/connecting/options.html /clients/dotnet/5.0/connecting.html        301!
+
+
+
