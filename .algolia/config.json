@@ -4,16 +4,30 @@
     {
       "url": "http://localhost:8080/server/(?P<version>.*?)/",
       "variables": {
-        "version": ["v21.10"]
+        "version": ["v23.6"]
       },
       "page_rank": 10
     },
     {
       "url": "http://localhost:8080/server/(?P<version>.*?)/",
       "variables": {
+        "version": ["v22.10"]
+      },
+      "page_rank": 7
+    },
+    {
+      "url": "http://localhost:8080/server/(?P<version>.*?)/",
+      "variables": {
+        "version": ["v21.10"]
+      },
+      "page_rank": 5
+    },
+    {
+      "url": "http://localhost:8080/server/(?P<version>.*?)/",
+      "variables": {
         "version": ["v20.10"]
       },
-      "page_rank": 6
+      "page_rank": 3
     },
     {
       "url": "http://localhost:8080/server/(?P<version>.*?)/",
