@@ -3,30 +3,40 @@ import navbar from "./navbar.js";
 import sidebar from "./sidebar.js";
 
 export default hopeTheme({
-  hostname: "https://vuepress-theme-hope-docs-demo.netlify.app",
+  hostname: "https://www.developers.eventstore.com",
 
   author: {
     name: "Mr.Hope",
     url: "https://mister-hope.com",
   },
 
-  iconAssets: "fontawesome-with-brands",
+  iconAssets: "fontawesome",
 
-  logo: "/logo.svg",
+  logo: "/eventstore-inverse.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "EventStore/documentation",
 
-  docsDir: "src",
+  docsDir: "docs",
+
+  darkmode: "disable",
 
   // navbar
   navbar,
 
+  navbarLayout:{
+    start:["Brand"],
+    center: ["Links"],
+    end: ["Search"]
+  },
+
+  navbarAutoHide: "always",
+
   // sidebar
   sidebar,
 
-  footer: "Default footer",
+  // footer: "Default footer",
 
-  displayFooter: true,
+  displayFooter: false,
 
   encrypt: {
     config: {
@@ -58,13 +68,10 @@ export default hopeTheme({
       echarts: true,
       figure: true,
       flowchart: true,
-      gfm: true,
       imgLazyload: true,
       imgSize: true,
       include: true,
-      katex: true,
       mark: true,
-      mermaid: true,
       playground: {
         presets: ["ts", "vue"],
       },
@@ -82,12 +89,12 @@ export default hopeTheme({
           },
         },
       ],
-      sub: true,
       sup: true,
       tabs: true,
       vPre: true,
-      vuePlayground: true,
     },
+
+    copyCode: {},
 
     // uncomment these if you want a pwa
     // pwa: {

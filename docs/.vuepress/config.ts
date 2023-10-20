@@ -3,10 +3,10 @@ import theme from "./theme.js";
 
 export default defineUserConfig({
   base: "/",
-
+  dest: "public",
   lang: "en-US",
-  title: "Docs Demo",
-  description: "A docs demo for vuepress-theme-hope",
+  // title: "Event Store",
+  // description: "The stream database built for Event Sourcing",
 
   theme,
 
