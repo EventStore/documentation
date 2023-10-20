@@ -53,45 +53,65 @@
 ## Server version 22
 /server/v22.6/*                             /server/v22.10/:splat                      301!
 
-/server/v22.6/server/introduction/                               /server/v22.10/#introduction   301!
+/server/v22.6/server/introduction                                  /server/v22.10/#introduction   301!
 /server/v22.6/server/streams/metadata-and-reserved-names.html     /server/v22.10/streams.html#metadata-and-reserved-names   301!
-/server/v22.6/server/threading.html                                  /server/v22.10/server-settings.html#threading   301!
+/server/v22.6/server/threading.html                               /server/v22.10/server-settings.html#threading   301!
 
 ## Server version 21
 /server/generated/21.2/docs/*               /server/v21.10/:splat                      301!
+/server/generated/v21.6/docs/*              /server/v21.10/:splat                      301!
 /server/v21.2/*                             /server/v21.10/:splat                      301!
 /server/v21.6/*                             /server/v21.10/:splat                      301!
 
-/server/v21.10/indexes/configuration.html                        /server/v21.10/indexes.html#configuration-options   301!
+/server/generated/v21.2/docs/security/authentication.html         /server/v21.10/security.html#authentication   301!
+/server/generated/v21.2/docs/operations/scavenge.html             /server/v21.10/operations.html#scavenging-events   301!
+/server/generated/v21.2/docs/operations/database-backup.html      /server/v21.10/operations.html#backup-and-restore   301!
+/server/generated/v21.2/docs/networking/nat.html                  /server/v21.10/networking.html#network-address-translation 301!
+/server/generated/v21.2/docs/networking/tcp.html                  /server/v21.10/networking.html#tcp-configuration
+/server/generated/v21.2/docs/operations                           /server/v21.10/operations.html   301!
+/server/generated/v21.2/docs/installation                         /server/v21.10/installation.html   301!
+/server/generated/v21.2/docs/security/acl.html                    /server/v21.10/security.html#access-control-lists   301!
+/server/generated/v21.2/configuration.html                        /server/v21.10/configuration.html   301!
+/server/generated/v21.2/docs/clustering                           /server/v21.10/cluster.html   301!
+/server/generated/v21.6/docs/projections                          /server/v21.10/projections.html   301!   
+/server/generated/v21.6/docs/installation                         /server/v21.10/installation.html   301!
+/server/generated/v21.6/docs/security/acl.html                    /server/v21.10/security.html#access-control-lists   301!
+/server/generated/v21.6/docs/clustering                           /server/v21.10/cluster.html   301!
+/server/generated/v21.6/docs/indexes                              /server/v21.10/indexes.html   301!
+/server/generated/v21.6/docs/configuration                        /server/v21.10/configuration.html   301!
+/server/generated/v21.6/docs/persistent-subscriptions             /server/v21.10/persistent-subscriptions.html   301!
+/server/generated/v21.6/docs/networking/tcp.html                  /server/v21.10/networking.html#tcp-configuration   301!
+/server/v21.10/indexes/configuration.html                         /server/v21.10/indexes.html#configuration-options   301!
 /server/v21.10/projections/system-projections.html                /server/v21.10/projections.html   301!
 /server/v21.10/projections/configuration.html                     /server/v21.10/projections.html#configuring-projections   301!
-/server/v21.10/indexes/tuning.html                               /server/v21.10/indexes.html#tuning-indexes   301!
-/server/v21.10/networking/heartbeat.html                         /server/v21.10/networking.html#heartbeat-timeouts   301!
+/server/v21.10/indexes/tuning.html                                /server/v21.10/indexes.html#tuning-indexes   301!
+/server/v21.10/networking/heartbeat.html                          /server/v21.10/networking.html#heartbeat-timeouts   301!
+/server/v20.10/networking/tcp.html                                /server/v20.10/networking.html#tcp-configuration   301!
 /server/v21.10/networking/endpoints.html                          /server/v21.10/networking.html#exposing-endpoints   301!
-/server/v21.10/installation/compatibility.html                   /server/v21.10/installation.html#compatibility-notes   301!
-/server/v21.10/security/authentication.html                      /server/v21.10/security.html  301!
+/server/v21.10/installation/compatibility.html                    /server/v21.10/installation.html#compatibility-notes   301!
 /server/v21.10/clustering/node-roles.html                         /server/v21.10/cluster.html#node-roles   301!
 /server/v21.10/clustering/using-ip-addresses.html                 /server/v21.10/cluster.html#cluster-with-gossip-seeds   301!
-/server/v21.10/diagnostics/logging.html                            /server/v21.10/diagnostics.html#logging   301!
-/server/v21.10/security/authentication.html                      /server/v21.10/security.html#authentication   301!
-/server/v21.10/networking/tcp-configuration.html                 /server/v21.10/networking.html#tcp-configuration   301!
-/server/v21.10/projections/user-defined-projections.html           /server/v21.10/projections.html#user-defined-projections   301!
+/server/v21.10/diagnostics/logging.html                           /server/v21.10/diagnostics.html#logging   301!
+/server/v21.10/networking/tcp-configuration.html                  /server/v21.10/networking.html#tcp-configuration   301!
+/server/v21.10/projections/user-defined-projections.html          /server/v21.10/projections.html#user-defined-projections   301!
 /server/v21.10/clustering/acknowledgements.html                   /server/v21.10/cluster.html   301!
+/server/v21.10/security/acl.html                                  /server/v21.10/security.html#access-control-lists   301!
 /server/v21.10/security/trusted-intermediary.html                 /server/v21.10/security.html#trusted-intermediary   301!
-/server/v21.10/indexes/advanced.html                             /server/v21.10/indexes.html   301!
+/server/v21.10/indexes/advanced.html                              /server/v21.10/indexes.html   301!
 /server/v21.10/diagnostics/vector.html                            /server/v21.10/diagnostics.html#vector   301!
 /server/v21.10/introduction/clients.html                          /server/v21.10/#protocols-clients-and-sdks   301!
-/server/v21.10/persistent-subscriptions.html                       /server/v21.10/persistent-subscriptions.html   301!
-/server/v21.10/security/configuration.html                         /server/v21.10/security.html   301!
+/server/v21.10/security/configuration.html                        /server/v21.10/security.html   301!
 /server/v21.10/networking/nat-and-port-forward.html               /server/v21.10/networking.html#nat-and-port-forward   301!
-/server/v21.10/security/authentication.html                      /server/v21.10/security.html#authentication   301!
-/server/v21.10/configuration.html                                   /server/v21.10/configuration.html   301!
-/server/v21.10/indexes/configuration.html                        /server/v21.10/indexes.html#configuration-options   301!
+/server/v21.10/security/authentication.html                       /server/v21.10/security.html#authentication   301!
+/server/v21.10/indexes/configuration.html                         /server/v21.10/indexes.html#configuration-options   301!
 /server/v21.10/projections/debugging.html                         /server/v21.10/projections.html#debugging   301!
 /server/v21.10/clustering/using-ip-addresses.html                 /server/v21.10/cluster.html#cluster-with-gossip-seeds   301!
-/server/v21.10/operations/database-backup.html                   /server/v21.10/operations.html#backup-and-restore   301!
+/server/v21.10/operations/database-backup.html                    /server/v21.10/operations.html#backup-and-restore   301!
 /server/v21.10/installation/linux.html                            /server/v21.10/installation.html#linux   301!
-/server/v21.10/cluster.html                                       /server/v21.10/cluster.html   301!
+/server/v21.10/operations/scavenge-options.html                   /server/v21.10/operations.html#scavenging-online   301!
+/server/v21.10/clustering/using-dns.html                          /server/v21.10/cluster.html#cluster-with-dns   301!
+
+
 
 
 
@@ -99,27 +119,44 @@
 
 ## Server version 20
 /server/v20/server/*                        /server/v20.10/:splat                      301!
+/server/20.6/server/*                       /sever/v20.10/:splat                       301!
+/server/generated/v20.10/docs/*             /server/v20.10/:splat                      301!
 
-/server/v20.6/server/introduction                               /server/v20.10   301!
-/server/v20.10/indexes/configuration.html                        /server/v20.10/indexes.html#configuration-options   301!
-/server/v20.10/installation/windows.html                         /server/v20.10/installation.html#windows   301!
-/server/v20.10/installation/docker.html                          /server/v20.10/installation.html#docker   301!
+
+/clients/dotnet/generated/v20.6.0                                 /clients/dotnet/20.10   301!
+/server/v20.6/server/introduction                                 /server/v20.10   301!
+/server/20.6/server/streams/metadata-and-reserved-names.html      /server/v20.10/streams.html#metadata-and-reserved-names   301!
+/server/20.6/server/projections/user-defined-projections.html     /server/v21.10/projections.html#user-defined-projections  301!
+/server/20.6/server/security/configuration.html                   /server/v20.10/security.html   301!
+/server/20.6/server/installation/docker.html                      /server/v20.10/installation.html#docker   301!
+/server/generated/v20.10/docs/introduction                        /server/v20.10/#introduction   301!
+/server/v20.10/networking/http.html                               /server/v20.10/networking.html#network-configuration   301!
+/server/v20.10/indexes/configuration.html                         /server/v20.10/indexes.html#configuration-options   301!
+/server/v20.10/installation/windows.html                          /server/v20.10/installation.html#windows   301!
+/server/v20.10/installation/docker.html                           /server/v20.10/installation.html#docker   301!
 /server/v20.10/installation/linux.html                            /server/v20.10/installation.html#linux   301!
 /server/v20.10/streams/metadata-and-reserved-names.html           /server/v20.10/streams.html#metadata-and-reserved-names   301!
-/server/v20.10/networking/endpoints.html                         /server/v20.10/networking.html#exposing-endpoints   301!
-/server/v20.10/clustering                                       /server/v20.10/cluster.html   301!
-/server/v20.10/clustering/using-dns.html                         /server/v20.10/cluster.html#cluster-with-dns   301!
-/server/v20.10/clustering/gossip.html                            /server/v20.10/cluster.html#cluster-with-gossip-seeds   301!
-/server/v20.10/diagnostics/stats.html                            /server/v20.10/diagnostics.html#statistics   301!
+/server/v20.10/networking/endpoints.html                          /server/v20.10/networking.html#exposing-endpoints   301!
+/server/v20.10/clustering                                         /server/v20.10/cluster.html   301!
+/server/generated/v20.10/docs/diagnostics                         /server/v20.10/diagnostics.html   301!
+/server/v20.10/clustering/using-dns.html                          /server/v20.10/cluster.html#cluster-with-dns   301!
+/server/v20.10/clustering/gossip.html                             /server/v20.10/cluster.html#cluster-with-gossip-seeds   301!
+/server/v20.10/diagnostics/stats.html                             /server/v20.10/diagnostics.html#statistics   301!
 /server/v20.10/security/trusted-intermediary.html                 /server/v20.10/security.html#trusted-intermediary  301!
-/server/v20.10/security/configuration.html                         /server/v20.10/security.html   301!
-/server/v20.10/indexes/advanced.html                             /server/v20.10/indexes.html   301!
+/server/v20.10/security/configuration.html                        /server/v20.10/security.html   301!
+/server/generated/v20.10/docs/security/acl.html                   /server/v20.10/security.html#access-control-lists   301!
+/server/v20.10/indexes/advanced.html                              /server/v20.10/indexes.html   301!
 /server/v20.10/installation/kubernetes-aks.html                   /server/v20.10/installation.html   301!
-/server/v20.10/diagnostics/logging.html                            /server/v20.10/diagnostics.html   301!
-/server/v20.10/operations/scavenge-options.html                   /server/v20.10/operations.html#scavenging-events   301!
-/server/v20.10/projections/projections-config.html                 /server/v20.10/projections.html#configuring-projections   301!
-/server/v20.10/diagnostics/prometheus.html                         /server/v20.10/diagnostics.html#prometheus   301!
-
+/server/v20.10/diagnostics/logging.html                           /server/v20.10/diagnostics.html   301!
+/server/v20.10/operations/scavenge-options.html                   /server/v20.10/operations.html#scavenging-options   301!
+/server/v20.10/projections/projections-config.html                /server/v20.10/projections.html#configuring-projections   301!
+/server/generated/v20.10/docs/projections                         /server/v20.10/projections.html   301!
+/server/generated/v20.10/docs/clustering                          /server/v20.10/cluster.html#highly-available-cluster   301!
+/server/v20.10/diagnostics/prometheus.html                        /server/v20.10/diagnostics.html#prometheus   301!
+/server/v20.10/diagnostics/vector.html                            /server/v20.10/diagnostics.html#vector   301!
+/server/v20.10/security/authentication.html                       /server/v20.10/security.html#authentication   301!
+/server/v20.10/streams/deleting-streams-and-events.html           /server/v20.10/streams.html#deleting-streams-and-events   301!
+/server/generated/v20.10/docs/security/users-and-access-control-lists.html        /server/v20.10/security.html   301!
 
 
 ## Server version 5
@@ -127,26 +164,85 @@
 /server/v5.0/server/*                       /server/v5/:splat                          301!
 /server/5.0.8/server/*                      /server/v5/:splat                          301!
 /server/5.0.9/server/*                      /server/v5/:splat                          301!
-/clients/dotnet/5.0/connecting/options.html /clients/dotnet/5.0                        301!
+/server/generated/v5/docs/*                 /server/v5/:splat                          301!
 
+
+/server/5.0.8/http-api/writing-events.html                        /clients/http-api/v5/#writing-metadata  301!
+/server/5.0.8/http-api/stream-metadata.html                       /clients/http-api/v5/#stream-metadata   301!
+/server/5.0.9/http-api                                            /clients/http-api/v5   301!
+/server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
+/server/v5/installation/configuration.html                        /server/v5/configuration.html#options-and-configuration   301!
 /server/v5/server/default-directories.html                        /server/v5/server-settings.html#default-directories   301!
-/server/v5/server/database.html                                     /server/v5/server-settings.html#database-settings   301!
-/server/v5/server/introduction/                                   /server/v5/#introduction   301!
-/server/v5/introduction/clients.html                             /server/v5/#protocols-clients-and-sdks   301!
-/server/v5/server/projections/                                    /server/v5/projections.html   301!
-/server/v5/security/acl.html                                     /server/v5/security.html#access-control-lists   301!
-/server/v5/security/authentication.html                            /server/v5/security.html   301!
-/server/v5/security/configuration.html                            /server/v5/security.html   301!
-/server/v5/networking/                                           /server/v5/networking.html   301!
-/server/v5/networking/nat.html                                   /server/v5/networking.html#nat-and-port-forward   301!
-/server/v5/http-api/                                             /clients/http-api/v5/persistent.html   301!
-/server/v5/http-api/persistent/security.html                     /clients/http-api/v5/persistent.html   301!
-/server/v5/http-api/writing-events.html                          /clients/http-api/v5/#reading-streams-and-events   301!
+/server/v5/server/database.html                                   /server/v5/server-settings.html#database-settings     301!
+/server/v5/operations/database-backup.html                        /server/v5/operations.html#database-backup-and-restore   301!
+/server/generated/v5/docs/introduction/clients.html               /server/v5/#protocols-clients-and-sdks   301!
+/server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
+/server/generated/v5/docs/security/acl.html                       /server/v5/security.html#access-control-lists   301!
+/server/v5/security/acl.html                                      /server/v5/security.html#access-control-lists   301!
+/server/v5/security/authentication.html                           /server/v5/security.html   301!
+/server/generated/v5/docs/server/security/configuration.html      /server/v5/security.html   301!
+/server/generated/v5/docs/server/security                         /server/v5/security.html   301!
+/server/v5/networking/nat.html                                    /server/v5/networking.html#nat-and-port-forward   301!
+/server/v5/networking/heartbeat.html                              /server/v5/networking.html#heartbeat-timeouts   301!
+/server/v5/server/threading.html                                  /server/v5/server-settings.html#threading   301!
+/server/v5/http-api                                               /clients/http-api/v5/persistent.html   301!
+/server/v5/http-api/persistent/security.html                      /clients/http-api/v5/persistent.html   301!
+/server/v5/http-api/writing-events.html                           /clients/http-api/v5/#writing-metadata  301!
 /server/v5/http-api/reading-subscribing-events.html               /clients/http-api/v5/#reading-an-event-from-a-stream   301!
 /server/v5/projections/configuration.html                         /server/v5/projections.html#configuring-projections   301!
-/server/v5/projections/debugging.html                            /server/v5/projections.html#debugging   301!
+/docs/server/v5/server/projections                                /server/v5/projections.html   301!
+/server/v5/projections/projections-config.html                    /server/v5/projections.html#configuring-projections   301!
+/server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
+/server/v5/indexes/configuration.html                             /server/v5/indexes.html#configuration-options   301!
 /server/v5/projections/system-projections.html                    /server/v5/projections.html#system-projections   301!
-/server/v5/diagnostics/datadog.html                              /server/v5/diagnostics.html#datadog   301!
-/server/v5/diagnostics/prometheus.html                             /server/v5/diagnostics.html#prometheus   301!
+/server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
+/server/v5/diagnostics/prometheus.html                            /server/v5/diagnostics.html#prometheus   301!
+server/v5/diagnostics/histograms.html                             /server/v5/diagnostics.html#histograms   301! 
+/server/v5/security/trusted-intermediary.html                     /server/v5/security.html#trusted-intermediary   301!
+/v5/server/access-control-lists                                   /server/v5/security.html#access-control-lists   301!
+/server/generated/v5/docs/clustering                              /server/v5/cluster.html   301!
+/server/v5/clustering/node-roles.html                             /server/v5/cluster.html#cluster-node-roles      301!
+/server/generated/v5/docs/networking                              /server/v5/networking.html   301!
+/server/v5/clustering/using-ip-addresses.html                     /server/v5/cluster.html#cluster-with-dns   301!
+/server/5.0/projections/user-defined-projections.html             /server/v5/projections.html#user-defined-projections   301!
+/server/generated/v5/docs/server/networking/external.html         /server/v5/networking.html#external-interface   301!
+/server/generated/v5/docs/http-api/optional-http-headers          /clients/http-api/v5/optional-http-headers.html 301!
+/server/v5/streams/deleting-streams-and-events.html               /server/v5/streams.html#deleting-streams-and-events   301!
+/server/generated/v5/http-api/deleting-a-stream.html              /server/v5/streams.html#deleting-streams-and-events   301!
+/server/v5/streams/metadata-and-reserved-names.html               /server/v5/streams.html#metadata-and-reserved-names   301!
+/server/generated/v5/docs/installation/kubernetes-aks.html        /server/v5/installation.html   301! 
+/server/generated/v5/docs/installation/kubernetes-gke.html        /server/v5/installation.html   301!
+/server/generated/v5/docs/server/diagnostics                      /server/v5/diagnostics.html#diagnostics   301!
+/server/generated/v5/docs/installation/linux.html                 /server/v5/installation.html#linux   301!
+/server/generated/v5/docs/server/networking/internal.html         /server/v5/networking.html#internal-interface   301!
+/server/generated/v5/docs/projections/debugging.html              /server/v5/projections.html#debugging   301!
+/server/generated/v5/docs/server/projections                      /server/v5/projections.html#introduction-to-projections   301!
+/server/generated/v5/docs/server/clustering                       /server/v5/cluster.html#introduction   301!
+/server/generated/v5/docs/installation/configuration.html         /server/v5/configuration.html#options-and-configuration   301!
+/server/v5/installation/docker.html                               /server/v5/installation.html#docker   301!
+/server/v5/diagnostics/logging.html                               /server/v5/diagnostics.html#logging   301!
+/server/v5/operations/scavenge.html                               /server/v5/operations.html#scavenging-events   301!
+/server/v5/installation/windows.html                              /server/v5/installation.html#windows   301!
+/server/generated/v5/docs/server/indexes                          /server/v5/indexes.html#indexing   301!
+/server/generated/v5/docs/projections/system-projections.html     /server/v5/projections.html#system-projections   301!
+/server/v5/samples/http-api/event.json                            /clients/http-api/v5/api.html   301!
+/server/generated/v5/docs/http-api/stream-metadata.html           /server/v5/streams.html#stream-metadata   301!
+/server/generated/v5/http-api/persistent-subscriptions.html       /clients/http-api/v5/persistent.html   301!
 
+/clients/http-api/generated/v5/docs/api                            /clients/http-api/v5/api.html   301!
+/clients/http-api/v5/introduction                                  /clients/http-api/v5   301!
 
+/clients/http-api/generated/v5/docs/optional-http-headers                           /clients/http-api/v5/optional-http-headers.html 301!
+/clients/http-api/generated/v5/docs/introduction/deleting-a-stream.html             /clients/http-api/v5/#deleting-a-stream   301!        
+/server/generated/v5/docs/http-api/optimistic-concurrency-and-idempotence.html      /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
+/clients/http-api/generated/v5/docs/optional-http-headers/expected-version.html     /clients/http-api/v5/optional-http-headers.html#expected-version   301!
+/clients/http-api/generated/v5/docs/optional-http-headers/requires-master.html      /clients/http-api/v5/optional-http-headers.html#requires-master   301!
+/clients/http-api/generated/v5/docs/optional-http-headers/resolve-linkto.html       /clients/http-api/v5/optional-http-headers.html#resolve-linkto   301!
+/clients/http-api/generated/v5/docs/introduction/reading-streams.html               /clients/http-api/v5/#reading-streams-and-events   301!
+/clients/http-api/generated/v5/docs/introduction/optimistic-concurrency-and-idempotence.html   /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
+
+# Other redirects 
+/cloud/quick-start.html                                             /cloud/intro   301!
+/clients                                                            /clients/grpc   301!
+
+                                                                                                  
