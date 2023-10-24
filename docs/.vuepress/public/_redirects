@@ -34,7 +34,7 @@
 /server/v5/server/                          /server/v5/server/                         200!
 /server/v5/server/database.html             /server/v5/server/database.html            200!
 /server/v5/server/default-directories.html  /server/v5/server/default-directories.html 200!
-/server/v5/server/threading.html            /server/v5/server/threading.html           200!
+/server/v5/server/threading.html            /server/v5/server-settings.html#threading  200!
 /server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
 ## TCP Clients from Vuepress v1 to v2
@@ -63,6 +63,7 @@
 /server/v21.2/*                             /server/v21.10/:splat                      301!
 /server/v21.6/*                             /server/v21.10/:splat                      301!
 
+/server/generated/v21.2/docs/introduction                         /server/v21.10   301!
 /server/generated/v21.2/docs/security/authentication.html         /server/v21.10/security.html#authentication   301!
 /server/generated/v21.2/docs/operations/scavenge.html             /server/v21.10/operations.html#scavenging-events   301!
 /server/generated/v21.2/docs/operations/database-backup.html      /server/v21.10/operations.html#backup-and-restore   301!
@@ -70,6 +71,7 @@
 /server/generated/v21.2/docs/networking/tcp.html                  /server/v21.10/networking.html#tcp-configuration
 /server/generated/v21.2/docs/operations                           /server/v21.10/operations.html   301!
 /server/generated/v21.2/docs/installation                         /server/v21.10/installation.html   301!
+/server/generated/v21.2/docs/configuration                        /server/v21.10/configuration.html
 /server/generated/v21.2/docs/security/acl.html                    /server/v21.10/security.html#access-control-lists   301!
 /server/generated/v21.2/configuration.html                        /server/v21.10/configuration.html   301!
 /server/generated/v21.2/docs/clustering                           /server/v21.10/cluster.html   301!
@@ -86,7 +88,6 @@
 /server/v21.10/projections/configuration.html                     /server/v21.10/projections.html#configuring-projections   301!
 /server/v21.10/indexes/tuning.html                                /server/v21.10/indexes.html#tuning-indexes   301!
 /server/v21.10/networking/heartbeat.html                          /server/v21.10/networking.html#heartbeat-timeouts   301!
-/server/v20.10/networking/tcp.html                                /server/v20.10/networking.html#tcp-configuration   301!
 /server/v21.10/networking/endpoints.html                          /server/v21.10/networking.html#exposing-endpoints   301!
 /server/v21.10/installation/compatibility.html                    /server/v21.10/installation.html#compatibility-notes   301!
 /server/v21.10/clustering/node-roles.html                         /server/v21.10/cluster.html#node-roles   301!
@@ -123,13 +124,14 @@
 /server/generated/v20.10/docs/*             /server/v20.10/:splat                      301!
 
 
-/clients/dotnet/generated/v20.6.0                                 /clients/dotnet/20.10   301!
+/clients/dotnet/generated/v20.6.0                                 /clients/dotnet/20.10/#quick-tour   301!
 /server/v20.6/server/introduction                                 /server/v20.10   301!
 /server/20.6/server/streams/metadata-and-reserved-names.html      /server/v20.10/streams.html#metadata-and-reserved-names   301!
 /server/20.6/server/projections/user-defined-projections.html     /server/v21.10/projections.html#user-defined-projections  301!
 /server/20.6/server/security/configuration.html                   /server/v20.10/security.html   301!
 /server/20.6/server/installation/docker.html                      /server/v20.10/installation.html#docker   301!
 /server/generated/v20.10/docs/introduction                        /server/v20.10/#introduction   301!
+/server/v20.10/networking/tcp.html                                /server/v20.10/networking.html#tcp-configuration   301!
 /server/v20.10/networking/http.html                               /server/v20.10/networking.html#network-configuration   301!
 /server/v20.10/indexes/configuration.html                         /server/v20.10/indexes.html#configuration-options   301!
 /server/v20.10/installation/windows.html                          /server/v20.10/installation.html#windows   301!
@@ -170,10 +172,12 @@
 /server/5.0.8/http-api/writing-events.html                        /clients/http-api/v5/#writing-metadata  301!
 /server/5.0.8/http-api/stream-metadata.html                       /clients/http-api/v5/#stream-metadata   301!
 /server/5.0.9/http-api                                            /clients/http-api/v5   301!
+/server/v5/introduction/clients.html                              /server/v5/#protocols-clients-and-sdks   301!
 /server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
 /server/v5/installation/configuration.html                        /server/v5/configuration.html#options-and-configuration   301!
-/server/v5/server/default-directories.html                        /server/v5/server-settings.html#default-directories   301!
-/server/v5/server/database.html                                   /server/v5/server-settings.html#database-settings     301!
+/server/v5/installation/kubernetes-aks.html                       /server/v5/networking.html#communication-with-clients   301!
+/server/v5/server/default-directories.html                        /server/v5/server-settings.html   301!
+/server/v5/server/database.html                                   /server/v5/server-settings.html   301!
 /server/v5/operations/database-backup.html                        /server/v5/operations.html#database-backup-and-restore   301!
 /server/generated/v5/docs/introduction/clients.html               /server/v5/#protocols-clients-and-sdks   301!
 /server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
@@ -201,6 +205,7 @@ server/v5/diagnostics/histograms.html                             /server/v5/dia
 /server/v5/security/trusted-intermediary.html                     /server/v5/security.html#trusted-intermediary   301!
 /v5/server/access-control-lists                                   /server/v5/security.html#access-control-lists   301!
 /server/generated/v5/docs/clustering                              /server/v5/cluster.html   301!
+/server/v5/clustering                                             /server/v5/cluster.html   301!
 /server/v5/clustering/node-roles.html                             /server/v5/cluster.html#cluster-node-roles      301!
 /server/generated/v5/docs/networking                              /server/v5/networking.html   301!
 /server/v5/clustering/using-ip-addresses.html                     /server/v5/cluster.html#cluster-with-dns   301!
@@ -228,6 +233,7 @@ server/v5/diagnostics/histograms.html                             /server/v5/dia
 /server/v5/samples/http-api/event.json                            /clients/http-api/v5/api.html   301!
 /server/generated/v5/docs/http-api/stream-metadata.html           /server/v5/streams.html#stream-metadata   301!
 /server/generated/v5/http-api/persistent-subscriptions.html       /clients/http-api/v5/persistent.html   301!
+/server/generated/v5/http-api/reading-subscribing-events.html     /clients/http-api/v5/#reading-an-event-from-a-stream   301!   
 
 /clients/http-api/generated/v5/docs/api                            /clients/http-api/v5/api.html   301!
 /clients/http-api/v5/introduction                                  /clients/http-api/v5   301!
