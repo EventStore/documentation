@@ -27,17 +27,16 @@
     changeFreq = "monthly"
 
     # priority for version paths 
-    priority = {
-        "/": 1.0,  # Home page highest priority
-        "/cloud/intro": 0.9, # Cloud page high priority 
-        "server/v23.6": 0.9,  # Version 23.6 page high priority
-        "server/v22.10": 0.8, # Version 22.10 page priority 
-        "server/v21.10": 0.8, # Version 21.10 page priority 
-        "server/v20.10": 0.8, # Version 20.10 page priority 
-        "server/v5": 0.3 # Version 5 low priority 
+    priority = [
+        "/" = 1.0,             # Home page highest priority
+        "/cloud/intro" = 0.9,  # Cloud page high priority
+        "server/v23.6" = 0.9,  # Version 23.6 page high priority
+        "server/v22.10" = 0.8, # Version 22.10 page priority
+        "server/v21.10" = 0.8, # Version 21.10 page priority
+        "server/v20.10" = 0.8, # Version 20.10 page priority
+        "server/v5" = 0.3      # Version 5 low priority 
         # to be continued 
-     }
-
+     ]
 
     # options we have for URLs 
     prettyURLs = true
