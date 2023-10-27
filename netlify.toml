@@ -10,7 +10,7 @@
   package = "@netlify/plugin-sitemap"
 
   [plugins.inputs]
-
+    filePath = "docs/sitemap.xml"
     buildDir = "public/"
 
     # With configurator.eventstore.com and developers.eventstore.com (and any other subdomains) 
