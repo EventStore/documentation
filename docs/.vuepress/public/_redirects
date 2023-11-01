@@ -32,12 +32,11 @@
 /server/:version/introduction/              /server/:version/                          301!
 /server/:version/docs/*                     /server/:version/:splat                    301!
 /server/v5/server/                          /server/v5/server/                         200!
-/server/v5/server/database.html             /server/v5/server/database.html            200!
-/server/v5/server/default-directories.html  /server/v5/server/default-directories.html 200!
 /server/v5/server/threading.html            /server/v5/server-settings.html#threading  200!
 /server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
 ## TCP Clients from Vuepress v1 to v2
+/clients/dotnet/generated/v20.6.0           /clients/dotnet/20.10                      301!
 /clients/dotnet/:version/getting-started/*  /clients/dotnet/:version/:splat            301!
 /clients/dotnet/:version/:firstpart.html    /clients/dotnet/:version/:firstpart.html   200
 /clients/dotnet/:version/:firstpart/*       /clients/dotnet/:version/:firstpart.html   301!
@@ -124,7 +123,6 @@
 /server/generated/v20.10/docs/*             /server/v20.10/:splat                      301!
 
 
-/clients/dotnet/generated/v20.6.0                                 /clients/dotnet/20.10/#quick-tour   301!
 /server/v20.6/server/introduction                                 /server/v20.10   301!
 /server/20.6/server/streams/metadata-and-reserved-names.html      /server/v20.10/streams.html#metadata-and-reserved-names   301!
 /server/20.6/server/projections/user-defined-projections.html     /server/v21.10/projections.html#user-defined-projections  301!
@@ -176,8 +174,10 @@
 /server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
 /server/v5/installation/configuration.html                        /server/v5/configuration.html#options-and-configuration   301!
 /server/v5/installation/kubernetes-aks.html                       /server/v5/networking.html#communication-with-clients   301!
-/server/v5/server/default-directories.html                        /server/v5/server-settings.html   301!
-/server/v5/server/database.html                                   /server/v5/server-settings.html   301!
+/server/v5/server/default-directories.html                        /server/v5/server-settings.html#default-directories   301!
+/server/v5/default-directories.html                               /server/v5/server-settings.html#default-directories   301!
+/server/v5/server/database.html                                   /server/v5/server-settings.html#database-settings   301!
+/server/v5/database.html                                          /server/v5/server-settings.html#database-settings   301!
 /server/v5/operations/database-backup.html                        /server/v5/operations.html#database-backup-and-restore   301!
 /server/generated/v5/docs/introduction/clients.html               /server/v5/#protocols-clients-and-sdks   301!
 /server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
@@ -245,7 +245,15 @@ server/v5/diagnostics/histograms.html                             /server/v5/dia
 /clients/http-api/generated/v5/docs/optional-http-headers/requires-master.html      /clients/http-api/v5/optional-http-headers.html#requires-master   301!
 /clients/http-api/generated/v5/docs/optional-http-headers/resolve-linkto.html       /clients/http-api/v5/optional-http-headers.html#resolve-linkto   301!
 /clients/http-api/generated/v5/docs/introduction/reading-streams.html               /clients/http-api/v5/#reading-streams-and-events   301!
-/clients/http-api/generated/v5/docs/introduction/optimistic-concurrency-and-idempotence.html   /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
+/clients/http-api/generated/v5/docs/introduction/optimistic-concurrency-and-idempotence.html      /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
+/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
+/clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+/clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
+/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
+/samples/clients/http-api/v5/event.json                                                           /clients/http-api/v5/samples/v5/event.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+
 
 # Other redirects 
 /cloud/quick-start.html                                             /cloud/intro   301!
