@@ -36,6 +36,7 @@
 /server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
 ## TCP Clients from Vuepress v1 to v2
+/clients/dotnet/generated/v20.6.0           /clients/dotnet/20.10                      301!
 /clients/dotnet/:version/getting-started/*  /clients/dotnet/:version/:splat            301!
 /clients/dotnet/:version/:firstpart.html    /clients/dotnet/:version/:firstpart.html   200
 /clients/dotnet/:version/:firstpart/*       /clients/dotnet/:version/:firstpart.html   301!
@@ -122,7 +123,6 @@
 /server/generated/v20.10/docs/*             /server/v20.10/:splat                      301!
 
 
-/clients/dotnet/generated/v20.6.0                                 /clients/dotnet/20.10  301!
 /server/v20.6/server/introduction                                 /server/v20.10   301!
 /server/20.6/server/streams/metadata-and-reserved-names.html      /server/v20.10/streams.html#metadata-and-reserved-names   301!
 /server/20.6/server/projections/user-defined-projections.html     /server/v21.10/projections.html#user-defined-projections  301!
@@ -175,7 +175,9 @@
 /server/v5/installation/configuration.html                        /server/v5/configuration.html#options-and-configuration   301!
 /server/v5/installation/kubernetes-aks.html                       /server/v5/networking.html#communication-with-clients   301!
 /server/v5/server/default-directories.html                        /server/v5/server-settings.html#default-directories   301!
+/server/v5/default-directories.html                               /server/v5/server-settings.html#default-directories   301!
 /server/v5/server/database.html                                   /server/v5/server-settings.html#database-settings   301!
+/server/v5/database.html                                          /server/v5/server-settings.html#database-settings   301!
 /server/v5/operations/database-backup.html                        /server/v5/operations.html#database-backup-and-restore   301!
 /server/generated/v5/docs/introduction/clients.html               /server/v5/#protocols-clients-and-sdks   301!
 /server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
