@@ -4,21 +4,14 @@ import {instance as ver} from "../lib/versioning";
 export const en: NavbarConfig = [
     {
         text: "Getting started",
-        link: "/latest.html"
+        link: "/getting-started.html"
     },
     {
         text: "Server",
         children: ver.linksFor("server")
     },
-    {
-        text: "Clients & APIs",
-        children: [
-            {text: "gRPC", link: "/clients/grpc/"},
-            {text: "TCP", children: ver.linksFor("dotnet-client")},
-            {text: "HTTP", children: ver.linksFor("http-api")},
-        ]
-    },
-    {text: "Cloud", link: "/cloud/intro/"},
+    { text: "Clients", link: "/clients/grpc/README.md" },
+    { text: "Cloud", link: "/cloud/intro/" },
     {
         text: "Need help?",
         children: [
@@ -27,7 +20,5 @@ export const en: NavbarConfig = [
             {text: "Webinars", link: "https://eventstore.com/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
         ]
-    },
-    // {text: 'Resources', link: '/resources/'},
-    // {text: "Profile", link: "/profile/"}
+    }
 ];

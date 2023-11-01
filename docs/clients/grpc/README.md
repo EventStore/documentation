@@ -1,6 +1,6 @@
-# Getting started
+# Start Developing Your Application
 
-Get started by connecting your application to EventStoreDB. 
+First connect your application to EventStoreDB. 
 
 Complete the form below to generate the connection string and examples for different languages and SDKs.
 
@@ -43,14 +43,11 @@ go get github.com/EventStore/EventStore-Client-Go/v3/esdb
 <dependency>
   <groupId>com.eventstore</groupId>
   <artifactId>db-client-java</artifactId>
-  <version>0.5</version>
+  <version>5.1.0</version>
 </dependency>
 
 # Gradle
-implementation 'com.eventstore:db-client-java:0.5'
-
-# SBT
-libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
+implementation 'com.eventstore:db-client-java:5.1.0'
 ```
 :::
 ::: code-group-item JavaScript
@@ -64,7 +61,7 @@ $ npm install --save @eventstore/db-client
 :::
 ::: code-group-item Rust
 ```:no-line-numbers
-No additional configuration is needed having Rust installed. Go check https://rustup.rs.
+No additional configuration needed for Rust, see https://rustup.rs.
 ```
 :::
 ::: code-group-item TypeScript
