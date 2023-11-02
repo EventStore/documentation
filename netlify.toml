@@ -4,29 +4,5 @@
 [build.environment]
     NODE_OPTIONS = "--max_old_space_size=4096"
 
-# Below is the configuration for the Netlify sitemap plugin:
 
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-
-  [plugins.inputs]
-    buildDir = "public/"
-    filePath = "docs/sitemap.xml"
-
-    # With configurator.eventstore.com and developers.eventstore.com (and any other subdomains) 
-    # We may need to create a environment variable to generate a sitemap just for developers.eventstore.com
-
-    baseUrl = "https://developers.eventstore.com"
-
-    # Exluding files from sitemap 
-    exclude = [
-        # if we want to exclude something 
-    ]
-
-    # page update frequency
-    changeFreq = "monthly"
-
-    # options we have for URLs 
-    prettyURLs = true
-    trailingSlash = true
 
