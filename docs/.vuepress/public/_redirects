@@ -252,8 +252,10 @@ server/v5/diagnostics/histograms.html                             /server/v5/dia
 /clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
 /docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
 /samples/clients/http-api/v5/event.json                                                           /clients/http-api/v5/samples/v5/event.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json   301!
 /samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
-
 
 # Other redirects 
 /cloud/quick-start.html                                             /cloud/intro   301!
