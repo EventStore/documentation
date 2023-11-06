@@ -1,0 +1,17 @@
+User-agent: *
+
+Disallow: /.algolia/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /import/
+Disallow: /libs/plugin-google-analytics/
+Disallow: /.gitattributes
+Disallow: /.gitignore
+Disallow: /.node-version
+Disallow: /codeql-analysis.yml
+Disallow: /netlify.toml 
+Disallow: /package.json 
+Disallow: /serve.js
+Disallow: /yarn.lock
+
+Sitemap: https://developers.eventstore.com/sitemap.xml
