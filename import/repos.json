@@ -100,7 +100,7 @@
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java",
     "branches": [
       {
-        "version": "5.1.1",
+        "version": "5.2.0",
         "name": "trunk"
       }
     ],
