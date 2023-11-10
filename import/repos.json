@@ -71,8 +71,12 @@
         "name": "master"
       },
       {
-        "version": "21.6",
+        "version": "22.0",
         "name": "master"
+      },
+      {
+        "version": "23.1",
+        "name":"master"
       }
     ],
     "samplesPostprocess": [ 
@@ -96,7 +100,7 @@
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java",
     "branches": [
       {
-        "version": "2.0.0",
+        "version": "5.1.1",
         "name": "trunk"
       }
     ],
@@ -112,7 +116,7 @@
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust",
     "branches": [
       {
-        "version": "1.0.0",
+        "version": "2.3.0",
         "name": "master"
       }
     ],
@@ -128,7 +132,7 @@
     "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
     "branches": [
       {
-        "version": "3.0.0",
+        "version": "6.0.0",
         "name": "master"
       }
     ],
@@ -146,8 +150,24 @@
     "repo": "https://github.com/EventStore/EventStore-Client-Go.git",
     "branches": [
       {
-        "version": "1.0.2",
+        "version": "3.2.0",
         "name": "master"
+      }
+    ],
+    "samplesPostprocess": [
+      "yarn shx rm -rf ./docs/samples/**/*.md"
+    ]
+  },
+  {
+    "id": "python-client",
+    "group": "Python SDK",
+    "basePath": "clients/python",
+    "samplesRelativePath": ["samples"],
+    "repo": "https://github.com/pyeventsourcing/esdbclient",
+    "branches": [
+      {
+        "version": "1.0.0",
+        "name": "1.0"
       }
     ],
     "samplesPostprocess": [
