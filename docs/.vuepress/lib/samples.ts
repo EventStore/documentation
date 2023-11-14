@@ -37,15 +37,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
                 version: "v5"
             }
         },
-        "@grpc": {
-            "cs": {
-                label: "C#",
-                path: "clients/dotnet/23.1"
-            },
-            "java": {
-                label: "Java",
-                path: "clients/java/5.2.0"
-            },
+        "@grpc": {          
             "js": {
                 label: "JavaScript",
                 path: "clients/node/6.0.0"
@@ -54,17 +46,25 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
                 label: "TypeScript",
                 path: "clients/node/6.0.0"
             },
-            "rust": {
-                label: "Rust",
-                path: "clients/rust/2.3.0"
+            "cs": {
+                label: "C#",
+                path: "clients/dotnet/23.1"
+            },
+            "go": {
+                label: "Go",
+                path: "clients/go/3.2.0"
             },
             "rs": {
                 label: "Rust",
                 path: "clients/rust/2.3.0"
             },
-            "go": {
-                label: "Go",
-                path: "clients/go/3.2.0"
+            "py": {
+                label: "Python",
+                path: "clients/python/1.0.2"
+            },
+            "java": {
+                label: "Java",
+                path: "clients/java/5.2.0"
             },
         }
     };
@@ -72,6 +72,9 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     const isVersion = pseudo.length > 1 && version.isVersion(pseudo[1]);
 
     const catName = includesCat ? pseudo[0] : srcCat;
+
+    //logger.info(`catName ${catName} - includesCat ${includesCat} - pseudo[0] ${pseudo[0]} - srCat ${srcCat}`); //
+
     const cat = cats[catName];
     if (cat === undefined) {
         logger.warn(`Unknown placeholder: ${pseudo[0]}`);
@@ -83,9 +86,10 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         logger.warn(`Unknown extension ${ext} in ${cat}`);
         return def(src);
     }
+
     const samplesVersion = isVersion ? pseudo[1] : lang.version;
     const langPath = samplesVersion !== undefined ? `${lang.path}/${samplesVersion}` : lang.path;
-    const toReplace = isVersion ? `${pseudo[0]}/${pseudo[1]}` : `${pseudo[0]}`;
+    const toReplace = isVersion ? `${pseudo[0]}/${pseudo[1]}` : `${pseudo[0]}`;    
 
     const p = includesCat ? src.replace(toReplace, `${base}/${langPath}`) : `${base}/${langPath}/${src}`;
 

@@ -25,10 +25,6 @@
         "name": "release/oss-v21.10"
       },
       {
-        "version": "v20.10",
-        "name": "release/oss-v20.10"
-      },
-      {
         "version": "v5",
         "name": "release/oss-v5"
       },
@@ -147,7 +143,7 @@
     "group": "Go SDK",
     "basePath": "clients/go",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/EventStore/EventStore-Client-Go.git",
+    "repo": "https://github.com/EventStore/EventStore-Client-Go",
     "branches": [
       {
         "version": "3.2.0",
@@ -166,7 +162,7 @@
     "repo": "https://github.com/pyeventsourcing/esdbclient",
     "branches": [
       {
-        "version": "1.0.0",
+        "version": "1.0.2",
         "name": "1.0"
       }
     ],

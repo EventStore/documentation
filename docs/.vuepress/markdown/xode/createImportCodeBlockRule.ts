@@ -17,8 +17,8 @@ const replaceKnownPrismExtensions = (ext: string): string => knownPrismIssues[ex
 const SYNTAX_RE = /^@\[code(?:{(\d+)?-(\d+)?})?(?:{(.+)?})?(?: ([^\]]+))?]\(([^)]*)\)/;
 
 export const createImportCodeBlockRule = ({
-                                              handleImportPath = (str) => [{ importPath: str }],
-                                          }: ExtendedCodeImportPluginOptions): RuleBlock => (
+  handleImportPath = (str) => [{ importPath: str }],
+}: ExtendedCodeImportPluginOptions): RuleBlock => (
     state,
     startLine,
     endLine,
