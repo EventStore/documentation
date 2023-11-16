@@ -1,6 +1,6 @@
 # Working with EventStoreDB
 
-### Learn about key event sourcing concepts, get started on your application, find tutorials and reference material.
+Learn about key event sourcing concepts, get started on your application, find tutorials and reference material.
 
 [[toc]]
 
