@@ -80,6 +80,7 @@ export const resolveImportCode = (
         };
     }
 
+    // logger.info(`About to read import path: ${importFilePath}`); // CD
     // read file content
     const fileContent = fs.readFileSync(importFilePath).toString();
 
@@ -90,7 +91,7 @@ export const resolveImportCode = (
         return l.map((v, i) => v.substr(spaces));
     }
 
-    const allLines = fileContent.split('\n');
+    const allLines = (fileContent != null) ? fileContent.split('\n') : null;
     if (region) {
         const reg = findRegion(allLines, region);
         if (reg) {

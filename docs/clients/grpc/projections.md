@@ -15,30 +15,9 @@ You can find the full sample code from this documentation page in the respective
 Install the client SDK package to your project.
 
 :::: code-group
-::: code-group-item C#
-```bash
-dotnet add package EventStore.Client.Grpc.ProjectionManagement --version 21.*
-```
-:::
-::: code-group-item Go
-```Go
-// This is currently not available in the Go client
-```
-:::
-::: code-group-item Java
-```
-# Maven
-<dependency>
-  <groupId>com.eventstore</groupId>
-  <artifactId>db-client-java</artifactId>
-  <version>1.0.0</version>
-</dependency>
-
-# Gradle
-implementation 'com.eventstore:db-client-java:1.0.0'
-
-# SBT
-libraryDependencies += "com.eventstore" % "db-client-java" % "1.0.0"
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
 ```
 :::
 ::: code-group-item JavaScript
@@ -48,11 +27,6 @@ $ yarn add @eventstore/db-client
 
 # NPM
 $ npm install --save @eventstore/db-client
-```
-:::
-::: code-group-item Rust
-```
-No additional configuration is needed having Rust installed. Go check https://rustup.rs.
 ```
 :::
 ::: code-group-item TypeScript
@@ -66,49 +40,69 @@ $ yarn add @eventstore/db-client
 $ npm install --save @eventstore/db-client
 ```
 :::
+::: code-group-item Java
+```
+# Maven
+<dependency>
+  <groupId>com.eventstore</groupId>
+  <artifactId>db-client-java</artifactId>
+  <version>5.2.0</version>
+</dependency>
+
+# Gradle
+implementation 'com.eventstore:db-client-java:5.2.0'
+```
+:::
+::: code-group-item C#
+```bash
+dotnet add package EventStore.Client.Grpc.ProjectionManagement --version 23.*
+```
+:::
+::: code-group-item Go
+```Go
+// This is currently not available in the Go client
+```
+:::
+::: code-group-item Rust
+```
+No additional configuration is needed having Rust installed. Go check https://rustup.rs.
+```
+:::
 ::::
 
 ## Creating a client
 
 Projection management operations are exposed through a dedicated client.
 
-<xode-group>
-<xode-block title="C#" code="connectionString">
-
+:::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{createClient}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{createClient}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{createClient}](@grpc:projection_management/ProjectionManagement.java)
+:::
+::: code-group-item C#
 @[code{createClient}](@grpc:projection-management/Program.cs)
-
-</xode-block>
-<xode-block title="Go" code="connectionString">
-
+:::
+::: code-group-item Go" code="connectionString
 ```
 // This is currently not available in the Go client
 ```
-</xode-block>
-<xode-block title="Java" code="connectionString">
-
+:::
+::: code-group-item Rust
 ```
-Sample available soon
+// This is currently not available in the Rust client
 ```
-
-</xode-block>
-<xode-block title="JavaScript" code="connectionString">
-
-@[code{createClient}](@grpc:projection-management.js)
-
-</xode-block>
-<xode-block title="Rust" code="connectionString">
-
-```
-Sample available soon
-```
-
-</xode-block>
-<xode-block title="TypeScript" code="connectionString">
-
-@[code{createClient}](@grpc:projection-management.ts)
-
-</xode-block>
-</xode-group>
+:::
+::::
 
 ## Create a projection
 
@@ -116,6 +110,20 @@ Creates a projection that runs until the last event in the store, and then conti
 Projections have explicit names, and you can enable or disable them via this name.
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{CreateContinuous}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{CreateContinuous}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{CreateContinuous}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{CreateContinuous}](@grpc:projection-management/Program.cs)
 :::
@@ -124,27 +132,30 @@ Projections have explicit names, and you can enable or disable them via this nam
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```
-Sample available soon
-```
-:::
-::: code-group-item JavaScript
-@[code{CreateContinuous}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{CreateContinuous}](@grpc:projection-management.ts)
 :::
 ::::
 
 Trying to create projections with the same name will result in an error:
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{CreateContinuous_Conflict}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{CreateContinuous_Conflict}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{CreateContinuous_Conflict}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{CreateContinuous_Conflict}](@grpc:projection-management/Program.cs)
 :::
@@ -153,21 +164,10 @@ Trying to create projections with the same name will result in an error:
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```
-Sample available soon
-```
-:::
-::: code-group-item JavaScript
-@[code{CreateContinuous_Conflict}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{CreateContinuous_Conflict}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -175,6 +175,20 @@ Sample available soon
 Restarts the entire projection subsystem. The user must be in the `$ops` or `$admin` group to perform this operation
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{RestartSubSystem}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{RestartSubSystem}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{RestartSubSystem}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{RestartSubSystem}](@grpc:projection-management/Program.cs)
 :::
@@ -183,21 +197,10 @@ Restarts the entire projection subsystem. The user must be in the `$ops` or `$ad
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client 
-```
-:::
-::: code-group-item JavaScript
-@[code{RestartSubSystem}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
+```Rust
+// This is currently not available in the Rust client
 ```
-Sample available soon
-```
-:::
-::: code-group-item TypeScript
-@[code{RestartSubSystem}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -208,6 +211,20 @@ Once enabled, the projection will start to process events even after restarting 
 You must have access to a projection to enable it, see the [ACL documentation](@server/security.md#access-control-lists)
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Enable}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Enable}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Enable}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Enable}](@grpc:projection-management/Program.cs)
 :::
@@ -216,27 +233,31 @@ You must have access to a projection to enable it, see the [ACL documentation](@
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Enable}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
 :::
-::: code-group-item TypeScript
-@[code{Enable}](@grpc:projection-management.ts)
-:::
+
 ::::
 
 You can only enable an existing projection. When you try to enable a non-existing projection, you'll get an error:
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{EnableNotFound}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{EnableNotFound}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{EnableNotFound}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{EnableNotFound}](@grpc:projection-management/Program.cs)
 :::
@@ -245,21 +266,10 @@ You can only enable an existing projection. When you try to enable a non-existin
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{EnableNotFound}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{EnableNotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -267,13 +277,24 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 Disables a projection, this will save the projection checkpoint.
 Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
-You must have access to a projection to disable it, see the [ACL documentation](@server/security.md#access-control-lists)
+You must have access to a projection to disable it, see the [ACL documentation](@server/security.md#access-control-lists).
 
-:::warning
-The .net clients up to version 21.2 had an incorrect behavior: they _will not_ save the checkpoint  
-:::
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Disable}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Disable}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Disable}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Disable}](@grpc:projection-management/Program.cs)
 :::
@@ -282,27 +303,30 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will not_ s
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Disable}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Disable}](@grpc:projection-management.ts)
 :::
 ::::
 
 You can only disable an existing projection. When you try to disable a non-existing projection, you'll get an error:
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{DisableNotFound}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{DisableNotFound}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{DisableNotFound}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{DisableNotFound}](@grpc:projection-management/Program.cs)
 :::
@@ -311,21 +335,10 @@ You can only disable an existing projection. When you try to disable a non-exist
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{DisableNotFound}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{DisableNotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -334,40 +347,55 @@ You can only disable an existing projection. When you try to disable a non-exist
 Deletes a projection
 
 :::: code-group
-::: code-group-item C#
-```csharp
-// This is currently not available in the .net client
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
 ```
+:::
+::: code-group-item JavaScript
+@[code{Delete}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Delete}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Delete}](@grpc:projection_management/ProjectionManagement.java)
+:::
+::: code-group-item C#
+@[code{Delete}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Delete}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Delete}](@grpc:projection-management.ts)
 :::
 ::::
 
 You can only delete an existing projection. When you try to delete a non-existing projection, you'll get an error:
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{DeleteNotFound}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{DeleteNotFound}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{DeleteNotFound}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 ```csharp
-// This is currently not available in the .net client
+// This is currently not available in the .Net client
 ```
 :::
 ::: code-group-item Go
@@ -375,33 +403,33 @@ You can only delete an existing projection. When you try to delete a non-existin
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{DeleteNotFound}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
 :::
-::: code-group-item TypeScript
-@[code{DeleteNotFound}](@grpc:projection-management.ts)
-:::
+
 ::::
 
 ## Abort a projection
 
 Aborts a projection, this will not save the projection's checkpoint.
 
-:::warning
-The .net clients up to version 21.2 had an incorrect behavior: they _will_ save the checkpoint.
-:::
-
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Abort}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Abort}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Abort}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Abort}](@grpc:projection-management/Program.cs)
 :::
@@ -410,27 +438,30 @@ The .net clients up to version 21.2 had an incorrect behavior: they _will_ save 
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Abort}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Abort}](@grpc:projection-management.ts)
 :::
 ::::
 
 You can only abort an existing projection. When you try to abort a non-existing projection, you'll get an error:
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Abort_NotFound}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Abort_NotFound}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Abort_NotFound}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Abort_NotFound}](@grpc:projection-management/Program.cs)
 :::
@@ -439,22 +470,11 @@ You can only abort an existing projection. When you try to abort a non-existing 
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Abort_NotFound}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Abort_NotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -462,6 +482,20 @@ You can only abort an existing projection. When you try to abort a non-existing 
 Resets a projection. This will re-emit events. Streams that are written to from the projection will also be soft deleted.
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Reset}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Reset}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Reset}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Reset}](@grpc:projection-management/Program.cs)
 :::
@@ -470,27 +504,30 @@ Resets a projection. This will re-emit events. Streams that are written to from 
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Reset}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Reset}](@grpc:projection-management.ts)
 :::
 ::::
 
 Resetting a projection that does not exist will result in an error.
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Reset_NotFound}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Reset_NotFound}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Reset_NotFound}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Reset_NotFound}](@grpc:projection-management/Program.cs)
 :::
@@ -499,22 +536,11 @@ Resetting a projection that does not exist will result in an error.
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Reset_NotFound}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Reset_NotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -523,6 +549,20 @@ Resetting a projection that does not exist will result in an error.
 Updates a projection. The name parameter is the name of the projection to be updated. The query parameter contains the new JavaScript.
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Update}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Update}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Update}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Update}](@grpc:projection-management/Program.cs)
 :::
@@ -531,27 +571,30 @@ Updates a projection. The name parameter is the name of the projection to be upd
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Update}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Update}](@grpc:projection-management.ts)
 :::
 ::::
 
 You can only update an existing projection. When you try to update a non-existing projection, you'll get an error:
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{Update_NotFound}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{Update_NotFound}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{Update_NotFound}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{Update_NotFound}](@grpc:projection-management/Program.cs)
 :::
@@ -560,21 +603,10 @@ You can only update an existing projection. When you try to update a non-existin
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{Update_NotFound}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{Update_NotFound}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -584,6 +616,20 @@ Returns a list of all projections, user defined & system projections.
 See the [projection details](#projection-details) section for an explanation of the returned values
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{ListAll}](@grpc:projection-management.ts)
+:::
+::: code-group-item TypeScript
+@[code{ListAll}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{ListAll}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{ListAll}](@grpc:projection-management/Program.cs)
 :::
@@ -592,21 +638,10 @@ See the [projection details](#projection-details) section for an explanation of 
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{ListAll}](@grpc:projection-management.ts)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{ListAll}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -616,6 +651,20 @@ Returns a list of all continuous projections.
 See the [projection details](#projection-details) section for an explanation of the returned values
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{ListContinuous}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{ListContinuous}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{ListContinuous}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{ListContinuous}](@grpc:projection-management/Program.cs)
 :::
@@ -624,21 +673,10 @@ See the [projection details](#projection-details) section for an explanation of 
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{ListContinuous}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{ListContinuous}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -648,6 +686,20 @@ Gets the status of a named projection.
 See the [projection details](#projection-details) section for an explanation of the returned values
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{GetStatus}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{GetStatus}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{GetResult}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{GetStatus}](@grpc:projection-management/Program.cs)
 :::
@@ -656,21 +708,10 @@ See the [projection details](#projection-details) section for an explanation of 
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{GetStatus}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{GetStatus}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -679,31 +720,32 @@ See the [projection details](#projection-details) section for an explanation of 
 Retrieves the state of a projection.
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{GetState}](@grpc:projection-management.js)
+:::
+::: code-group-item TypeScript
+@[code{GetState}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{GetResult}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
-```
-Sample available soon
-```
+@[code{GetState}](@grpc:projection-management/Program.cs)
 :::
 ::: code-group-item Go
 ```Go
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```java
-// This is currently not available in the java client
-```
-:::
-::: code-group-item JavaScript
-@[code{GetState}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{GetState}](@grpc:projection-management.ts)
 :::
 ::::
 
@@ -712,6 +754,21 @@ Sample available soon
 Retrieves the result of the named projection and partition.
 
 :::: code-group
+::: code-group-item Python
+```Python
+# This is currently not available in the Python client
+```
+:::
+::: code-group-item JavaScript
+@[code{GetResult}](@grpc:projection-management.js)
+:::
+:::
+::: code-group-item TypeScript
+@[code{GetResult}](@grpc:projection-management.ts)
+:::
+::: code-group-item Java
+@[code{GetResult}](@grpc:projection_management/ProjectionManagement.java)
+:::
 ::: code-group-item C#
 @[code{GetResult}](@grpc:projection-management/Program.cs)
 :::
@@ -720,21 +777,10 @@ Retrieves the result of the named projection and partition.
 // This is currently not available in the Go client
 ```
 :::
-::: code-group-item Java
-```
-Sample available soon
-```
-:::
-::: code-group-item JavaScript
-@[code{GetResult}](@grpc:projection-management.js)
-:::
 ::: code-group-item Rust
 ```Rust
 // This is currently not available in the Rust client
 ```
-:::
-::: code-group-item TypeScript
-@[code{GetResult}](@grpc:projection-management.ts)
 :::
 ::::
 

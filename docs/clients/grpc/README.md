@@ -27,30 +27,13 @@ All our GRPC clients are secure by default, and must be configured to connect to
 Install the client SDK package to your project.
 
 :::: code-group
-::: code-group-item C#
+::: code-group-item Python
 ```:no-line-numbers
-$ dotnet add package EventStore.Client.Grpc.Streams --version 21.2
-```
-:::
-::: code-group-item Go
-```:no-line-numbers
-go get github.com/EventStore/EventStore-Client-Go/v3/esdb
-```
-:::
-::: code-group-item Java
-```:no-line-numbers
-# Maven
-<dependency>
-  <groupId>com.eventstore</groupId>
-  <artifactId>db-client-java</artifactId>
-  <version>0.5</version>
-</dependency>
+# From Pypi
+$ pip install esdbclient
 
-# Gradle
-implementation 'com.eventstore:db-client-java:0.5'
-
-# SBT
-libraryDependencies += "com.eventstore" % "db-client-java" % "0.6"
+# With Poetry
+$ poetry add esdbclient
 ```
 :::
 ::: code-group-item JavaScript
@@ -60,11 +43,6 @@ $ yarn add @eventstore/db-client
 
 # NPM
 $ npm install --save @eventstore/db-client
-```
-:::
-::: code-group-item Rust
-```:no-line-numbers
-No additional configuration is needed having Rust installed. Go check https://rustup.rs.
 ```
 :::
 ::: code-group-item TypeScript
@@ -78,6 +56,34 @@ $ yarn add @eventstore/db-client
 $ npm install --save @eventstore/db-client
 ```
 :::
+::: code-group-item Java
+```:no-line-numbers
+# Maven
+<dependency>
+  <groupId>com.eventstore</groupId>
+  <artifactId>db-client-java</artifactId>
+  <version>5.2.0</version>
+</dependency>
+
+# Gradle
+implementation 'com.eventstore:db-client-java:5.2.0'
+```
+:::
+::: code-group-item C#
+```:no-line-numbers
+$ dotnet add package EventStore.Client.Grpc.Streams --version 23.1.0
+```
+:::
+::: code-group-item Go
+```:no-line-numbers
+go get github.com/EventStore/EventStore-Client-Go/v3.2.0/esdb
+```
+:::
+::: code-group-item Rust
+```:no-line-numbers
+No additional configuration is needed having Rust installed. Go check https://rustup.rs.
+```
+:::
 ::::
 
 ### Connection string
@@ -86,9 +92,9 @@ Each SDK has its own way to configure the client, but it's always possible to us
 
 ### Creating a client
 
-First thing first, we need a client.
+First, let's create a client that's connected to the database.
 
-@[code{createClient}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{createClient}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 
@@ -104,7 +110,7 @@ We use JSON for serialization in the documentation examples.
 
 The code snippet below creates an event object instance, serializes it and puts it as payload to the `EventData` structure, which the client is able to write to the database.
 
-@[code{createEvent}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{createEvent}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
 ### Appending events
 
@@ -112,7 +118,7 @@ Each event in the database has its own unique identifier (UUID). The database us
 
 In the snippet below, we append the event to the stream `some-stream`.
 
-@[code{appendEvents}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{appendEvents}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
 Here we are appending events without checking if the stream exists or if the stream version matches the expected event version. See more advanced scenarios in [appending events documentation](./appending-events.md).
 
@@ -120,7 +126,7 @@ Here we are appending events without checking if the stream exists or if the str
 
 Finally, we can read events back from the `some-stream` stream.
 
-@[code{readStream}](@grpc:quick-start/Program.cs;quickstart.go;quick_start/QuickStart.java;get-started.js;quickstart.rs;get-started.ts)
+@[code{readStream}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
 When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized. See more advanced scenarios in [reading events documentation](./reading-events.md).
 

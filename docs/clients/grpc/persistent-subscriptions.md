@@ -16,7 +16,7 @@ The first step of dealing with a persistent subscription is to create a subscrip
 
 The following sample shows how to create a subscription group for a persistent subscription where you want to receive events from a specific stream. It could be a normal stream, or a stream of links (like `$ce` category stream).
 
-@[code{create-persistent-subscription-to-stream}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{create-persistent-subscription-to-stream}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 | Parameter     | Description                                         |
 |:--------------|:----------------------------------------------------|
@@ -31,7 +31,7 @@ The ability to subscribe to `$all` was introduced in EventStoreDB **21.10**. Per
 
 You can create a subscription group on $all much the same way you would create a subscription group on a stream:
 
-@[code{create-persistent-subscription-to-all}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{create-persistent-subscription-to-all}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 ## Connecting a consumer
 
@@ -43,7 +43,7 @@ The most important parameter to pass when connecting is the buffer size. This re
 
 The code below shows how to connect to an existing subscription group for a specific stream:
 
-@[code{subscribe-to-persistent-subscription-to-stream}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{subscribe-to-persistent-subscription-to-stream}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 | Parameter             | Description                                                                                  |
 |:----------------------|:---------------------------------------------------------------------------------------------|
@@ -63,7 +63,7 @@ The `autoAck` parameter will be deprecated in the next client release. You'll ne
 
 The code below shows how to connect to an existing subscription group for `$all`:
 
-@[code{subscribe-to-persistent-subscription-to-all}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{subscribe-to-persistent-subscription-to-all}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 The `SubscribeToAllAsync` method is identical to the `SubscribeToStreamAsync` method, except that you don't need to specify a stream name.
 
@@ -73,7 +73,7 @@ Clients must acknowledge (or not acknowledge) messages in the competing consumer
 
 If processing is successful, you must send an Ack (acknowledge) to the server to let it know that the message has been handled. If processing fails for some reason, then you can Nack (not acknowledge) the message and tell the server how to handle the failure.
 
-@[code{subscribe-to-persistent-subscription-with-manual-acks}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{subscribe-to-persistent-subscription-with-manual-acks}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 The _Nack event action_ describes what the server should do with the message:
 
@@ -112,7 +112,7 @@ The main aim of this strategy is to decrease the likelihood of concurrency and o
 
 You can edit the settings of an existing subscription group while it is running, you don't need to delete and recreate it to change settings. When you update the subscription group, it resets itself internally, dropping the connections and having them reconnect. You must have admin permissions to update a persistent subscription group.
 
-@[code{update-persistent-subscription}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{update-persistent-subscription}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 | Parameter     | Description                                         |
 |:--------------|:----------------------------------------------------|
@@ -147,7 +147,7 @@ The following table shows the configuration options you can set on a persistent 
 
 Remove a subscription group with the delete operation. Like the creation of groups, you rarely do this in your runtime code and is undertaken by an administrator running a script.
 
-@[code{delete-persistent-subscription}](@grpc:persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions.js;persistent_subscriptions.rs;persistent-subscriptions.ts)
+@[code{delete-persistent-subscription}](@grpc:persistent_subscriptions.py;persistent-subscriptions.js;persistent-subscriptions.ts;persistent_subscriptions/PersistentSubscriptions.java;persistent-subscriptions/Program.cs;persistentSubscriptions.go;persistent_subscriptions.rs)
 
 | Parameter     | Description                                    |
 |:--------------|:-----------------------------------------------|

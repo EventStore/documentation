@@ -10,7 +10,7 @@ Check the [Getting Started](README.md) guide to learn how to configure and use t
 
 The simplest way to append an event to EventStoreDB is to create an `EventData` object and call `AppendToStream` method.
 
-@[code{append-to-stream}](@grpc:appending-events/Program.cs;appendingEvents.go;appending_events/AppendingEvents.java;appending-events.js;appending_events.rs;appending-events.ts)
+@[code{append-to-stream}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
 As you can see, `AppendToStream` takes a collection of `EventData`, which makes possible saving more than one event in a single batch.
  
@@ -30,7 +30,7 @@ This takes the format of a `Uuid` and is used to uniquely identify the event you
 
 For example, the following code will only append a single event:
 
-@[code{append-duplicate-event}](@grpc:appending-events/Program.cs;appendingEvents.go;appending_events/AppendingEvents.java;appending-events.js;appending_events.rs;appending-events.ts)
+@[code{append-duplicate-event}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
 ::: card
 ![Duplicate Event](./images/duplicate-event.png)
@@ -60,7 +60,7 @@ When appending events to a stream you can supply a *stream state* or *stream rev
 
 For example if we try and append the same record twice expecting both times that the stream doesn't exist we will get an exception on the second:
 
-@[code{append-with-no-stream}](@grpc:appending-events/Program.cs;appendingEvents.go;appending_events/AppendingEvents.java;appending-events.js;appending_events.rs;appending-events.ts)
+@[code{append-with-no-stream}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
 There are three available stream states: 
 - `Any`
@@ -69,7 +69,7 @@ There are three available stream states:
 
 This check can be used to implement optimistic concurrency. When you retrieve a stream from EventStoreDB, you take note of the current version number, then when you save it back you can determine if somebody else has modified the record in the meantime.
 
-@[code{append-with-concurrency-check}](@grpc:appending-events/Program.cs;appendingEvents.go;appending_events/AppendingEvents.java;appending-events.js;appending_events.rs;appending-events.ts)
+@[code{append-with-concurrency-check}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
 <!-- ## Options TODO -->
 
@@ -77,5 +77,5 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 You can provide user credentials to be used to append the data as follows. This will override the default credentials set on the connection.
 
-@[code{overriding-user-credentials}](@grpc:appending-events/Program.cs;appendingEvents.go;appending_events/AppendingEvents.java;appending-events.js;appending_events.rs;appending-events.ts)
+@[code{overriding-user-credentials}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
