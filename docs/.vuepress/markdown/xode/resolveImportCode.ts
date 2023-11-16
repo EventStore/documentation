@@ -53,13 +53,6 @@ export const resolveImportCode = (
 } => {
     let importFilePath = importPath;
 
-    if (importFilePath === null || importFilePath === '') {
-        return {
-            importFilePath: null,
-            importCode: 'Error when resolving path',
-        };
-    }
-
     if (!path.isAbsolute(importPath)) {
         // if the importPath is relative path, we need to resolve it
         // according to the markdown filePath
