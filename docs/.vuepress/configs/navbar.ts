@@ -4,7 +4,7 @@ import {instance as ver} from "../lib/versioning";
 export const en: NavbarConfig = [
     {
         text: "Getting started",
-        link: "/latest.html"
+        link: "/getting-started.html"
     },
     {
         text: "Server",
