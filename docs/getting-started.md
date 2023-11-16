@@ -2,6 +2,8 @@
 
 ### Learn about key event sourcing concepts, get started on your application, find tutorials and reference material.
 
+[[toc]]
+
 ## Get started developing your application
 - [Get sample code in your preferred language](/clients/grpc/index.html)
 
