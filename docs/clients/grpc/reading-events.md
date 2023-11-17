@@ -94,8 +94,11 @@ Passing in the max count allows you to limit the number of events that returned.
 
 When using projections to create new events you can set whether the generated events are pointers to existing events. Setting this value to true will tell EventStoreDB to return the event as well as the event linking to it.
 
+:::warning
+This is not available in the Python client version 1.x.
+:::
 
-@[code{read-from-all-stream-resolving-link-Tos}](@grpc:reading_events.py;reading-events.js;reading-events.ts;reading_events/ReadingEvents.java;reading-events/Program.cs;readingEvents.go;reading_events.rs)
+@[code{read-from-all-stream-resolving-link-Tos}](@grpc:reading-events.js;reading-events.ts;reading_events/ReadingEvents.java;reading-events/Program.cs;readingEvents.go;reading_events.rs)
 
 #### configureOperationOptions
 
