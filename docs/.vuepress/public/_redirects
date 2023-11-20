@@ -1,6 +1,7 @@
 # Redirects from what the browser requests to what we serve
-/latest.html                                /server/v23.10/                            301!
+/latest.html                           /server/v23.10/                            301!
 /latest                                /server/v23.10/                            301!
+/server/latest/*                       /server/v23.10/                            301!
 
 ## HTTP API from Vuepress v1 to v2
 /server/v5/docs/http-api/                   /clients/http-api/v5/                      301!
@@ -111,11 +112,6 @@
 /server/v21.10/installation/linux.html                            /server/v21.10/installation.html#linux   301!
 /server/v21.10/operations/scavenge-options.html                   /server/v21.10/operations.html#scavenging-online   301!
 /server/v21.10/clustering/using-dns.html                          /server/v21.10/cluster.html#cluster-with-dns   301!
-
-
-
-
-
 
 
 ## Server version 20

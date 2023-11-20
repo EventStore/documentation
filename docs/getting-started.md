@@ -6,31 +6,31 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ## Run EventStoreDB
 ### Installation
-- [Installation Guide](/server/v23.10/installation.html)
-- [Linux](/server/v23.10/installation.html#linux)
-- [Docker](/server/v23.10/installation.html#docker)
+- [Installation Guide](/server/latest/installation.html)
+- [Linux](/server/latest/installation.html#linux)
+- [Docker](/server/latest/installation.html#docker)
 - For the impatient: 
 `docker run --name esdb-node -it -p 2113:2113 -p 1113:1113 \
     eventstore/eventstore:latest --insecure --run-projections=All \
     --enable-external-tcp --enable-atom-pub-over-http`
-- [Windows](/server/v23.10/installation.html#windows)
+- [Windows](/server/latest/installation.html#windows)
 - [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
 - Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/readme.html)
 
 ### Configuration
-- [Configuration guide](/server/v23.10/configuration.html)
+- [Configuration guide](/server/latest/configuration.html)
 
 ### Operations
-- [Updgrade](/server/v23.10/upgrade-guide.html)
-- [Maintenance](/server/v23.10/operations.html#maintenance)
-- [Diagnostics](/server/v23.10/diagnostics.html)
-- [Metrics](/server/v23.10/metrics.html)
+- [Updgrade](/server/latest/upgrade-guide.html)
+- [Maintenance](/server/latest/operations.html#maintenance)
+- [Diagnostics](/server/latest/diagnostics.html)
+- [Metrics](/server/latest/metrics.html)
 
 ### Features
-- [Event streams](/server/v23.10/streams.html)
-- [Indexes](/server/v23.10/indexes.html)
-- [Subscriptions](/server/v23.10/persistent-subscriptions.html)
-- [Projections](/server/v23.10/projections.html)
+- [Event streams](/server/latest/streams.html)
+- [Indexes](/server/latest/indexes.html)
+- [Subscriptions](/server/latest/persistent-subscriptions.html)
+- [Projections](/server/latest/projections.html)
 
 ## Start developing your application
 - Set up [a client to connect](/clients/grpc/#connecting-to-eventstoredb) to EventStoreDB
