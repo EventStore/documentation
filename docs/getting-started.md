@@ -6,38 +6,38 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ## Run EventStoreDB
 ### Installation
-- [Installation Guide](https://developers.eventstore.com/server/latest/installation.html)
-- [Linux](https://developers.eventstore.com/server/latest/installation.html#linux)
-- [Docker](https://developers.eventstore.com/server/latest/installation.html#docker)
+- [Installation Guide](/server/v23.10/installation.html)
+- [Linux](/server/v23.10/installation.html#linux)
+- [Docker](/server/v23.10/installation.html#docker)
 - For the impatient: 
 `docker run --name esdb-node -it -p 2113:2113 -p 1113:1113 \
     eventstore/eventstore:latest --insecure --run-projections=All \
     --enable-external-tcp --enable-atom-pub-over-http`
-- [Windows](https://developers.eventstore.com/server/latest/installation.html#windows)
+- [Windows](/server/v23.10/installation.html#windows)
 - [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/readme.html) and contact us
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/readme.html)
 
 ### Configuration
-- [Configuration guide](https://developers.eventstore.com/server/latest/configuration.html)
+- [Configuration guide](/server/v23.10/configuration.html)
 
 ### Operations
-- [Updgrade](https://developers.eventstore.com/server/latest/upgrade-guide.html)
-- [Maintenance](https://developers.eventstore.com/server/latest/operations.html#maintenance)
-- [Diagnostics](https://developers.eventstore.com/server/latest/diagnostics.html)
-- [Metrics](https://developers.eventstore.com/server/latest/metrics.html)
+- [Updgrade](/server/v23.10/upgrade-guide.html)
+- [Maintenance](/server/v23.10/operations.html#maintenance)
+- [Diagnostics](/server/v23.10/diagnostics.html)
+- [Metrics](/server/v23.10/metrics.html)
 
 ### Features
-- [Event streams](https://developers.eventstore.com/server/latest/streams.html)
-- [Indexes](https://developers.eventstore.com/server/latest/indexes.html)
-- [Subscriptions](https://developers.eventstore.com/server/latest/persistent-subscriptions.html)
-- [Projections](https://developers.eventstore.com/server/latest/projections.html)
+- [Event streams](/server/v23.10/streams.html)
+- [Indexes](/server/v23.10/indexes.html)
+- [Subscriptions](/server/v23.10/persistent-subscriptions.html)
+- [Projections](/server/v23.10/projections.html)
 
 ## Start developing your application
-- Set up [a client to connect](https://developers.eventstore.com/clients/grpc/#connecting-to-eventstoredb) to EventStoreDB
-- [Appending events](https://developers.eventstore.com/clients/grpc/appending-events.html)
-- [Reading events](https://developers.eventstore.com/clients/grpc/reading-events.html)
-- [Catch-up subscriptions](https://developers.eventstore.com/clients/grpc/subscriptions.html)
-- [Persistent subscriptions](https://developers.eventstore.com/clients/grpc/persistent-subscriptions.html)
+- Set up [a client to connect](/clients/grpc/#connecting-to-eventstoredb) to EventStoreDB
+- [Appending events](/clients/grpc/appending-events.html)
+- [Reading events](/clients/grpc/reading-events.html)
+- [Catch-up subscriptions](/clients/grpc/subscriptions.html)
+- [Persistent subscriptions](/clients/grpc/persistent-subscriptions.html)
 - [Projection management]()
 - [Get sample code in your preferred language](/clients/grpc/index.html)
 - Check out [full code examples](https://github.com/EventStore/samples)
