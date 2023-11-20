@@ -10,7 +10,7 @@ Learn about key event sourcing concepts, get started on your application, find t
 - [Linux](/server/v23.10/installation.html#linux)
 - [Docker](/server/v23.10/installation.html#docker)
 - For the impatient: 
-`docker run --name esdb--single-node -it -p 2113:2113 -p 1113:1113 \
+`docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 \
     eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http`
 - [Windows](/server/v23.10/installation.html#windows)
 - [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
