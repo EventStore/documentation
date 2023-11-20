@@ -15,7 +15,7 @@ Learn about key event sourcing concepts, get started on your application, find t
     --enable-external-tcp --enable-atom-pub-over-http`
 - [Windows](/server/v23.10/installation.html#windows)
 - [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/readme.html) and contact us
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/readme.html)
 
 ### Configuration
 - [Configuration guide](/server/v23.10/configuration.html)
