@@ -15,7 +15,7 @@ Learn about key event sourcing concepts, get started on your application, find t
     --enable-external-tcp --enable-atom-pub-over-http`
 - [Windows](/server/v23.10/installation.html#windows)
 - [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/readme.html)
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/) 
 
 ### Configuration
 - [Configuration guide](/server/v23.10/configuration.html)
@@ -38,8 +38,8 @@ Learn about key event sourcing concepts, get started on your application, find t
 - [Reading events](/clients/grpc/reading-events.html)
 - [Catch-up subscriptions](/clients/grpc/subscriptions.html)
 - [Persistent subscriptions](/clients/grpc/persistent-subscriptions.html)
-- [Projection management]()
-- [Get sample code in your preferred language](/clients/grpc/index.html)
+- [Projection management](clients/grpc/projections.html)
+- [Get sample code in your preferred language](/clients/grpc/#creating-a-client)
 - Check out [full code examples](https://github.com/EventStore/samples)
 
 
@@ -56,7 +56,11 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 [Why Event Sourcing? Part 1 - Growing Costs of Complex Data](https://www.eventstore.com/blog/why-event-sourcing-part-1-growing-costs-of-complex-data)
 
+[Why Event Sourcing? Part 2 - The Unique Feature of Event Sourcing](https://www.eventstore.com/blog/why-event-sourcing-part-2-the-unique-feature-of-event-sourcing)
+
 [Turning the database inside out with Event Store - Event Store Blog](https://www.eventstore.com/blog/turning-the-database-inside-out)
+
+[Relational vs state transition databases: how they compare](https://www.eventstore.com/blog/relational-vs-event-based-state-transition-databases)
 
 [State Transition: Uncovering a New Data Model](https://www.eventstore.com/blog/state-transition-new-data-model)
 
