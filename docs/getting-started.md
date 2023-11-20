@@ -20,7 +20,7 @@ Learn about key event sourcing concepts, get started on your application, find t
 - [Configuration guide](/server/v23.10/configuration.html)
 
 ### Operations
-- [Updgrade](/server/v23.10/upgrade-guide.html)
+- [Upgrade](/server/v23.10/upgrade-guide.html)
 - [Maintenance](/server/v23.10/operations.html#maintenance)
 - [Diagnostics](/server/v23.10/diagnostics.html)
 - [Metrics](/server/v23.10/metrics.html)
