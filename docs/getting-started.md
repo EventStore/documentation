@@ -9,11 +9,7 @@ Learn about key event sourcing concepts, get started on your application, find t
 - [Installation Guide](/server/v23.10/installation.html)
 - [Linux](/server/v23.10/installation.html#linux)
 - [Docker](/server/v23.10/installation.html#docker)
-- For the impatient: 
-```
-docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 \
-    eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http
-````
+-- Single Node: `docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http`
 - [Windows](/server/v23.10/installation.html#windows)
 - [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
 - Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/) 
@@ -93,7 +89,7 @@ docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 \
 
 [NHS Wales app: EventStoreDB as “the backbone of a patient-held record”](https://www.eventstore.com/blog/eventstoredb-nhs-wales-app)
 
-## Design (Beginner)
+## Design – Beginner
 
 [What's the difference between a command and an event?](https://www.eventstore.com/blog/whats-the-difference-between-a-command-and-an-event)
 
@@ -107,7 +103,7 @@ docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 \
 
 [A recipe for gradually migrating from CRUD to Event Sourcing](https://www.eventstore.com/blog/a-recipe-for-gradually-migrating-from-crud-to-event-sourcing)
 
-## Design (Intermediate)
+## Design – Intermediate
 
 [Live projections for read models with Event Sourcing and CQRS](https://www.eventstore.com/blog/live-projections-for-read-models-with-event-sourcing-and-cqrs)
 
@@ -125,7 +121,7 @@ docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 \
 
 [How to get the current entity state from events?](https://www.eventstore.com/blog/how-to-get-the-current-entity-state-from-events)
 
-## Design (Advanced)
+## Design – Advanced
 
 [Counterexamples regarding consistency in event sourced solutions (Part 1)](https://www.eventstore.com/blog/counterexamples-regarding-consistency-in-event-sourced-solutions-part-1)
 
