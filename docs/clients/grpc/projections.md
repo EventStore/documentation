@@ -16,8 +16,12 @@ Install the client SDK package to your project.
 
 :::: code-group
 ::: code-group-item Python
-```Python
-# This is currently not available in the Python client
+```
+# From Pypi
+$ pip install esdbclient
+
+# With Poetry
+$ poetry add esdbclient
 ```
 :::
 ::: code-group-item JavaScript
@@ -76,9 +80,7 @@ Projection management operations are exposed through a dedicated client.
 
 :::: code-group
 ::: code-group-item Python
-```Python
-# This is currently not available in the Python client
-```
+@[code{createClient}](@grpc:quickstart.py)
 :::
 ::: code-group-item JavaScript
 @[code{createClient}](@grpc:projection-management.js)

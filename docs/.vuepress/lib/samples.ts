@@ -60,7 +60,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "py": {
                 label: "Python",
-                path: "clients/python/1.0.2"
+                path: "clients/python/1.0.7"
             },
             "java": {
                 label: "Java",
