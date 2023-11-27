@@ -49,7 +49,7 @@ A sidecar approach serves as an auxiliary source of truth alongside existing sys
 ## Conclusion
 Each project type offers distinct benefits and challenges. Choosing the right approach depends on the specific needs and constraints of your organization. You can check out our illustration of project types here:
 
-![Project types graphic](docs/images/projecttypes.png "Project types")
+![Project types graphic](/images/projecttypes.png "Project types")
 
 
 See how EventStoreDB can be used in different industries by checking out [our use cases here.](https://www.eventstore.com/use-cases)
