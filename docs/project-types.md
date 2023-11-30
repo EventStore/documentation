@@ -12,7 +12,7 @@ Greenfield projects involve starting from scratch, ideal for implementing modern
 
 - **Designed events**: Events are specifically designed for the domain, ensuring data relevance and quality.
 - **Data continuity**: Regular updates maintain the relevancy and quality of the data over time.
-- **Modern relevance**: This aligns with current trends in software architecture, like microservices and data meshes.
+- **Modern relevance**: The project is designed using current trends in software architecture, like microservices and data meshes.
 
 
 ## 2. Brownfield Legacy Migration
