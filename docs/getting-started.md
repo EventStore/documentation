@@ -130,6 +130,6 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ## Release Schedule for EventStoreDB
 
-This is the release schedule for **EventStoreDB**:
+This is the release schedule for EventStoreDB:
 
 ![Release schedule graph](docs/images/release-schedule.png)
