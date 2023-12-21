@@ -102,15 +102,32 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 - [Google Cloud Platform (GCP)](../provision/README.md#google-cloud-platform-gcp)
 - [Microsoft Azure](../provision/README.md#microsoft-azure)
 
-### Multi-factor authentication (MFA)
+### Multi-factor Authentication (MFA)
 
-#### Enabling Multi-factor authentication
+Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is ready, as the process involves generating and entering authenticator codes.
 
-##### Console
+#### User MFA
 
-##### esc
+To enable Multi-factor Authentication (MFA) within the user interface, navigate to the `Preferences` section and click on the `Enable MFA`` button. 
 
+::: card
+![Preferences - MFA](./images/mfa-preferences.png)
+:::
 
+You will be logged out as part of the MFA enrollment process. Follow the guided prompts to complete the MFA enrollment process. 
+
+::: card
+![MFA Setup Process](./images/mfa-setup-process.png)
+:::
+
+#### Re-generating tokens from `esc` with MFA
+Once MFA is enabled, tokens generated with the CLI are invalidated. To regain access, generate new tokens using the following command :
+
+```bash 
+$ esc access tokens create
+```
+
+You will be prompted for you password as well as an authenticator code as part of the process.
 
 ### Events and notifications
 
