@@ -129,6 +129,9 @@ $ esc access tokens create
 
 You will be prompted for you password as well as an authenticator code as part of the process.
 
+Alternatively, if you choose to get a token through the  Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
+
+
 ### Events and notifications
 
 On the Event Console, you will find messages about issues with your provisioned resources in the `Issues` section, and errors that happened during provisioning in the `Notifications` section.
