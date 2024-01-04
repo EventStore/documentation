@@ -104,7 +104,7 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 
 ### Multi-factor Authentication (MFA)
 
-Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is ready, as the process involves generating and entering authenticator codes.
+Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is prepared, as the process involves generating and entering authenticator codes.
 
 #### User MFA
 
@@ -114,7 +114,7 @@ To enable Multi-factor Authentication (MFA) within the user interface, navigate 
 ![Preferences - MFA](./images/mfa-preferences.png)
 :::
 
-You will be logged out as part of the MFA enrollment process. Follow the guided prompts to complete the MFA enrollment process. 
+You will be logged out as part of the MFA enrollment process. Follow the guided prompts to complete the enrollment. 
 
 ::: card
 ![MFA Setup Process](./images/mfa-setup-process.png)
@@ -127,9 +127,9 @@ Once MFA is enabled, tokens generated with the CLI are invalidated. To regain ac
 $ esc access tokens create
 ```
 
-You will be prompted for you password as well as an authenticator code as part of the process.
+You will be prompted for you password and an authenticator code as part of the process.
 
-Alternatively, if you choose to get a token through the  Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
+Alternatively, if you prefer to obtain a token through the  Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
 
 
 ### Events and notifications
