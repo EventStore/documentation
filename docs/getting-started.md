@@ -11,8 +11,8 @@ Learn about key event sourcing concepts, get started on your application, find t
 - [Docker](/server/v23.10/installation.html#docker)
   - Single Node: `docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http`
 - [Windows](/server/v23.10/installation.html#windows)
-- [Windows how to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide)
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/) 
+- See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
 - [Configuration guide](/server/v23.10/configuration.html)
@@ -50,6 +50,10 @@ Learn about key event sourcing concepts, get started on your application, find t
 [Event Driven Architecture](https://www.eventstore.com/event-driven-architecture)
 
 [CQRS](https://www.eventstore.com/cqrs-pattern)
+
+[How to implement a basic application with CQRS and Event Sourcing [Video]](https://www.youtube.com/watch?v=Hq6zO-A0hMI)
+
+[A practical guide to implementing CQRS with C# & NET5 [Video]](https://www.youtube.com/watch?v=eOPlg-eB4As)
 
 [Why Event Sourcing? Part 1 - Growing Costs of Complex Data](https://www.eventstore.com/blog/why-event-sourcing-part-1-growing-costs-of-complex-data)
 
@@ -102,6 +106,8 @@ Learn about key event sourcing concepts, get started on your application, find t
 [Building a scalable and reliable event-driven architecture with EventStoreDB and Kafka](https://www.eventstore.com/blog/eventstoredb-kafka)
 
 [A recipe for gradually migrating from CRUD to Event Sourcing](https://www.eventstore.com/blog/a-recipe-for-gradually-migrating-from-crud-to-event-sourcing)
+
+[Practical advice on building event-sourced applications [Video]](https://www.youtube.com/watch?v=VeZZ2UZMDYo)
 
 ## Design – Intermediate
 
