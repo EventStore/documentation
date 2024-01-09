@@ -108,7 +108,7 @@ Our MFA solution currently integrates exclusively with authenticator apps, offer
 
 #### User MFA
 
-To enable Multi-factor Authentication (MFA) within the user interface, navigate to the `Preferences` section and click on the `Enable MFA`` button. 
+To enable Multi-factor Authentication (MFA) within the user interface, navigate to the `Preferences` section and click on the `Enable MFA` button. 
 
 ::: card
 ![Preferences - MFA](./images/mfa-preferences.png)
