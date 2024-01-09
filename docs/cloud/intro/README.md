@@ -127,7 +127,7 @@ Once MFA is enabled, tokens generated with the CLI are invalidated. To regain ac
 $ esc access tokens create
 ```
 
-You will be prompted for you password and an authenticator code as part of the process.
+You will be prompted for your password and an authenticator code as part of the process.
 
 Alternatively, if you prefer to obtain a token through the  Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
 
