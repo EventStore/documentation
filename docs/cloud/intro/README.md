@@ -104,7 +104,7 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 
 ### Multi-factor Authentication (MFA)
 
-Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is prepared, as the process involves generating and entering authenticator codes.
+Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is ready to use, as the process involves generating and entering authenticator codes.
 
 #### User MFA
 
