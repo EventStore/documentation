@@ -127,8 +127,16 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 [How to get the current entity state from events?](https://www.eventstore.com/blog/how-to-get-the-current-entity-state-from-events)
 
+
 ## Design – Advanced
 
 [Counterexamples regarding consistency in event sourced solutions (Part 1)](https://www.eventstore.com/blog/counterexamples-regarding-consistency-in-event-sourced-solutions-part-1)
 
 [When to go from collaborative modelling to coding? Part 1](https://www.eventstore.com/blog/when-to-go-from-collaborative-modelling-to-coding-part-1)
+
+
+## Release Schedule for EventStoreDB
+
+This is the release schedule for EventStoreDB:
+
+![Release schedule graph](docs/release-graph.png)
