@@ -121,7 +121,7 @@ You will be logged out as part of the MFA enrollment process. Follow the guided 
 :::
 
 #### Re-generating tokens from `esc` with MFA
-Once MFA is enabled, tokens generated with the `esc` command-line tool are invalidated. To regain access, generate new tokens using the following command :
+Once MFA is enabled, tokens generated with the `esc` command-line tool are invalidated. To regain access, generate new tokens using the following command:
 
 ```bash 
 esc access tokens create
