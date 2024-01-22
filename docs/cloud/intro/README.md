@@ -102,6 +102,36 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 - [Google Cloud Platform (GCP)](../provision/README.md#google-cloud-platform-gcp)
 - [Microsoft Azure](../provision/README.md#microsoft-azure)
 
+### Multi-factor Authentication (MFA)
+
+Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is ready to use, as the process involves generating and entering authenticator codes.
+
+#### User MFA
+
+To enable Multi-factor Authentication (MFA) within the user interface, navigate to the `Preferences` section and click on the `Enable MFA` button. 
+
+::: card
+![Preferences - MFA](./images/mfa-preferences.png)
+:::
+
+You will be logged out as part of the MFA enrollment process. Follow the guided prompts to complete the enrollment. 
+
+::: card
+![MFA Setup Process](./images/mfa-setup-process.png)
+:::
+
+#### Re-generating tokens from `esc` with MFA
+Once MFA is enabled, tokens generated with the `esc` command-line tool are invalidated. To regain access, generate new tokens using the following command:
+
+```bash 
+esc access tokens create
+```
+
+You will be prompted for your password and an authenticator code as part of the process.
+
+Alternatively, if you prefer to obtain a token through the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
+
+
 ### Events and notifications
 
 On the Event Console, you will find messages about issues with your provisioned resources in the `Issues` section, and errors that happened during provisioning in the `Notifications` section.
