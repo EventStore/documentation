@@ -142,6 +142,34 @@ For example, if the network peering failed, you can discover potential causes of
 ![Notifications](./images/event-console.png)
 :::
 
+## Audit Log API
+The Audit Log API displays the activities performed in an organization in the form of a series of events. It provides access to an audit trail of changes either done by the current user or for an entire organization.
+
+Audit logs for an organization is accessible only by organization admins. On the other hand, any user can view the changes that he/she made in the cloud.
+
+### Get audit logs for the current user
+
+Usage: `esc audit user get`
+
+Optional Parameters:
+* `-o, --org-id`: The ID of the organization for which to retrieve audit logs.
+* `-a, --after`: Only get logs after this timestamp.
+* `-b, --before`: Only get logs before this timestamp.
+* `-l, --limit`: The maximum number of records to retrieve.
+
+### Get audit logs for an entire organization
+
+Usage: `esc audit organization get -o {orgId}`
+
+Required Parameters:
+* `-o, --org-id`: The ID of the organization for which to retrieve audit logs.
+
+Optional Parameters:
+* `-a, --after`: Only get logs after this timestamp.
+* `-b, --before`: Only get logs before this timestamp.
+* `-l, --limit`: The maximum number of records to retrieve.
+
+
 ## Operational status
 
 You can check and subscribe to the current status of the Event Store Cloud Console at [status.eventstore.cloud](https://status.eventstore.cloud) or by using our [twitter account](https://twitter.com/esc_status).
