@@ -145,7 +145,7 @@ For example, if the network peering failed, you can discover potential causes of
 ## Audit Log API
 The Audit Log API displays the activities performed in an organization in the form of a series of events. It provides access to an audit trail of changes either done by the current user or for an entire organization.
 
-Audit logs for an organization is accessible to organization admins only. On the other hand, any user can view the changes that he/she made in the cloud.
+Audit logs for an organization are accessible to organization admins only. On the other hand, any user can view the changes that he/she made in the cloud.
 
 ### Get audit logs for the current user
 
