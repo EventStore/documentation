@@ -532,6 +532,10 @@ When the peering is initiated, get back to Google Cloud console and navigate to 
 | Peer Project ID   | Project ID             |
 | Peer Network Name | VPC network name       |
 
+Your Event Store Cloud Peered Project ID should be formatted as tenant-{organization id}. 
+The Peer Network Name should be the Network ID of your VPC Network on Event Store Cloud.
+View the screenshot below for more information.
+
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 
 Here is how our example GCP peering form would look like:
