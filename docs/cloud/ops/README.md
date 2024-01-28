@@ -27,7 +27,6 @@ See also the cloud [sizing guide](../provision/README.md#cloud-instance-sizing-g
 ::: note
 Limitations:
 * on AWS expanding disks is subject to a rate limit, see [here](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVolume.html) for more information.
-* on Azure, it is currently not possible to expand disks. To increase disk size you need to perform a backup and restore or replicate to a cluster with larger disks.
 :::
 
 ### Using the Cloud Console
