@@ -20,7 +20,7 @@ You will be able to do an online instance resize, but it won't be auto-scaling. 
 
 #### Are there plans to support automatic disk resize?
 
-No, you have to resize the disks yourself. Disks can be expanded on-demand in AWS and GCP. For Azure read the procedure in the [documentation](../ops/README.md#expanding-disks). Because cloud providers limit how often disk resize operations can be performed the EventStore Cloud may enforce a waiting period on recently resized clusters before they can get resized again.
+Currently, you have to resize the disks yourself. Disks can be expanded on-demand without downtime. Because cloud providers limit how often disk resize operations can be performed the Event Store Cloud may enforce a waiting period on recently resized clusters before they can get resized again.
 
 ## Migrating to Cloud
 
@@ -58,11 +58,7 @@ Customer data is only stored on Premium SSD block device targets. We do not util
 
 #### We use AKS, to simplify setup can you expose the cluster to the public internet?
 
-We have no plans to expose clusters via a public IP address. We will be providing guidelines on how to connect AKS clusters to Event Store Cloud.
-
-#### Why can't I resize disks in Azure after provisioning the cluster?
-
-The disk resize operation in Azure requires us to shut down the cluster node. It works differently in GCP and AWS, that's why we are providing this options for GCP and AWS, but not for Azure. We have plans to implement this feature, but there's no ETA at the moment. Due to Azure limitations, disk resize for single-node instances would always involve some downtime.
+We have no immediate plans to expose clusters via a public IP address. We provided [guidelines](../use/kubernetes/aks.md) on how to connect AKS clusters to Event Store Cloud.
 
 ### Supported regions
 
