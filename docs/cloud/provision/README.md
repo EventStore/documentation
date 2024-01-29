@@ -273,7 +273,7 @@ The next section of the form allows choosing the instance size for cluster nodes
 At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
 :::
 
-Further, you need to specify the deployment topology (single node or a three-node HA cluster), and the storage capacity. One disk kind is available at the moment (Premium SSD LRS). **As we currently do not support online disk resize for Azure, you need to ensure that the disk size you choose will support your estimated data volume**.
+Further, you need to specify the deployment topology (single node or a three-node HA cluster), and the storage capacity. One disk kind is available at the moment (Premium SSD LRS).
 
 Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
@@ -531,6 +531,10 @@ When the peering is initiated, get back to Google Cloud console and navigate to 
 |:------------------|:-----------------------|
 | Peer Project ID   | Project ID             |
 | Peer Network Name | VPC network name       |
+
+Your Event Store Cloud Peered Project ID should be formatted as tenant-{organization id}. 
+The Peer Network Name should be the Network ID of your VPC Network on Event Store Cloud.
+View the screenshot below for more information.
 
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 

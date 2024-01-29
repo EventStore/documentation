@@ -102,6 +102,36 @@ By reaching this point, you are now ready to start provisioning cloud resources 
 - [Google Cloud Platform (GCP)](../provision/README.md#google-cloud-platform-gcp)
 - [Microsoft Azure](../provision/README.md#microsoft-azure)
 
+### Multi-factor Authentication (MFA)
+
+Our MFA solution currently integrates exclusively with authenticator apps, offering a convenient and secure method for users to verify their identities.  When setting up MFA, ensure your device is ready to use, as the process involves generating and entering authenticator codes.
+
+#### User MFA
+
+To enable Multi-factor Authentication (MFA) within the user interface, navigate to the `Preferences` section and click on the `Enable MFA` button. 
+
+::: card
+![Preferences - MFA](./images/mfa-preferences.png)
+:::
+
+You will be logged out as part of the MFA enrollment process. Follow the guided prompts to complete the enrollment. 
+
+::: card
+![MFA Setup Process](./images/mfa-setup-process.png)
+:::
+
+#### Re-generating tokens from `esc` with MFA
+Once MFA is enabled, tokens generated with the `esc` command-line tool are invalidated. To regain access, generate new tokens using the following command:
+
+```bash 
+esc access tokens create
+```
+
+You will be prompted for your password and an authenticator code as part of the process.
+
+Alternatively, if you prefer to obtain a token through the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
+
+
 ### Events and notifications
 
 On the Event Console, you will find messages about issues with your provisioned resources in the `Issues` section, and errors that happened during provisioning in the `Notifications` section.
@@ -111,6 +141,34 @@ For example, if the network peering failed, you can discover potential causes of
 ::: card
 ![Notifications](./images/event-console.png)
 :::
+
+## Audit Log API
+The Audit Log API displays the activities performed in an organization in the form of a series of events. It provides access to an audit trail of changes either done by the current user or for an entire organization.
+
+Audit logs for an organization are accessible to organization admins only. On the other hand, any user can view the changes that he/she made in the cloud.
+
+### Get audit logs for the current user
+
+Usage: `esc audit user get`
+
+Optional Parameters:
+* `-o, --org-id`: The ID of the organization for which to retrieve audit logs.
+* `-a, --after`: Only get logs after this timestamp.
+* `-b, --before`: Only get logs before this timestamp.
+* `-l, --limit`: The maximum number of records to retrieve.
+
+### Get audit logs for an entire organization
+
+Usage: `esc audit organization get -o {orgId}`
+
+Required Parameters:
+* `-o, --org-id`: The ID of the organization for which to retrieve audit logs.
+
+Optional Parameters:
+* `-a, --after`: Only get logs after this timestamp.
+* `-b, --before`: Only get logs before this timestamp.
+* `-l, --limit`: The maximum number of records to retrieve.
+
 
 ## Operational status
 
