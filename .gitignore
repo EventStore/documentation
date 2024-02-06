@@ -339,6 +339,7 @@ generated-versions.json
 *.tfstate
 *.tfstate.backup
 .algolia/.env
+swagger.yaml
 
 # vuepress
 docs/.vuepress/.temp/
