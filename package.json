@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Event Store Ltd",
+  "resolutions": {
+    "vite": "2.8.6"
+  },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.12",
