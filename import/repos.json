@@ -29,6 +29,27 @@
     ]
   },
   {
+    "id": "http-api",
+    "group": "HTTP API",
+    "basePath": "clients/http-api",
+    "samplesRelativePath": ["samples", "http-api"],
+    "repo": "https://github.com/EventStore/EventStore",
+    "branches": [
+      {
+        "version": "v23.10",
+        "name": "release/oss-v23.10"
+      },
+      {
+        "version": "v22.10",
+        "name": "release/oss-v22.10"
+      },
+      {
+        "version": "v5",
+        "name": "release/oss-v5"
+      }
+    ]
+  },
+  {
     "id": "dotnet-client",
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
