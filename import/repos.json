@@ -13,36 +13,25 @@
         "name": "release/oss-v23.10"
       },
       {
-        "version": "v23.6",
-        "name": "release/oss-v23.6"
-      },
-      {
         "version": "v22.10",
         "name": "release/oss-v22.10"
       },
       {
-        "version": "v21.10",
-        "name": "release/oss-v21.10"
-      },
-      {
         "version": "v5",
         "name": "release/oss-v5"
-      },
-      {
-        "version": "nightly",
-        "name": "master"
       }
     ],
     "postprocess": [
       "yarn shx rm -rf <root>/.vuepress",
-      "yarn shx rm -rf ./docs/server/v5/http-api"
+      "yarn shx rm -rf ./docs/server/v5/http-api",
+      "yarn shx rm -rf ./docs/server/v22.10/http-api",
+      "yarn shx rm -rf ./docs/server/v23.10/http-api"
     ]
   },
   {
     "id": "http-api",
     "group": "HTTP API",
     "basePath": "clients/http-api",
-    "docsRelativePath": ["docs", "http-api"],
     "samplesRelativePath": ["samples", "http-api"],
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
@@ -51,24 +40,13 @@
         "name": "release/oss-v23.10"
       },
       {
-        "version": "v23.6",
-        "name": "release/oss-v23.6"
-      },
-      {
         "version": "v22.10",
         "name": "release/oss-v22.10"
-      },
-      {
-        "version": "v21.10",
-        "name": "release/oss-v21.10"
       },
       {
         "version": "v5",
         "name": "release/oss-v5"
       }
-    ],
-    "samplesPostprocess": [
-      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -90,9 +68,6 @@
         "version": "23.1",
         "name":"master"
       }
-    ],
-    "samplesPostprocess": [ 
-      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -112,12 +87,9 @@
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Java",
     "branches": [
       {
-        "version": "5.2.0",
+        "version": "5.3.0",
         "name": "trunk"
       }
-    ],
-    "samplesPostprocess": [
-      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -131,9 +103,6 @@
         "version": "2.3.0",
         "name": "master"
       }
-    ],
-    "samplesPostprocess": [
-      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -144,14 +113,13 @@
     "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
     "branches": [
       {
-        "version": "6.0.0",
+        "version": "6.1.0",
         "name": "master"
       }
     ],
     "samplesPostprocess": [
       "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
-      "yarn prettier --write <root>/*.js",
-      "yarn shx rm -rf ./docs/samples/**/*.md"
+      "yarn prettier --write <root>/*.js"
     ]
   },
   {
@@ -162,12 +130,9 @@
     "repo": "https://github.com/EventStore/EventStore-Client-Go",
     "branches": [
       {
-        "version": "3.2.0",
+        "version": "3.3.0",
         "name": "master"
       }
-    ],
-    "samplesPostprocess": [
-      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   },
   {
@@ -178,12 +143,9 @@
     "repo": "https://github.com/pyeventsourcing/esdbclient",
     "branches": [
       {
-        "version": "1.0.7",
+        "version": "1.0.17",
         "name": "1.0"
       }
-    ],
-    "samplesPostprocess": [
-      "yarn shx rm -rf ./docs/samples/**/*.md"
     ]
   }
 ]
