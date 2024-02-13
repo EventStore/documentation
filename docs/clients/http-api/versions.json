@@ -1,0 +1,21 @@
+[
+ {
+  "id": "http-api",
+  "basePath": "clients/http-api",
+  "group": "HTTP API",
+  "versions": [
+   {
+    "path": "v23.10",
+    "version": "v23.10"
+   },
+   {
+    "path": "v22.10",
+    "version": "v22.10"
+   },
+   {
+    "path": "v5",
+    "version": "v5"
+   }
+  ]
+ }
+]

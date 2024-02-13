@@ -40,11 +40,11 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         "@grpc": {          
             "js": {
                 label: "JavaScript",
-                path: "clients/node/6.0.0"
+                path: "clients/node/6.1.0"
             },
             "ts": {
                 label: "TypeScript",
-                path: "clients/node/6.0.0"
+                path: "clients/node/6.1.0"
             },
             "cs": {
                 label: "C#",
@@ -52,7 +52,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "go": {
                 label: "Go",
-                path: "clients/go/3.2.0"
+                path: "clients/go/3.3.0"
             },
             "rs": {
                 label: "Rust",
@@ -60,11 +60,11 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "py": {
                 label: "Python",
-                path: "clients/python/1.0.7"
+                path: "clients/python/1.0.17"
             },
             "java": {
                 label: "Java",
-                path: "clients/java/5.2.0"
+                path: "clients/java/5.3.0"
             },
         }
     };
