@@ -7,10 +7,10 @@ EventStoreDB is a powerful database for building event-sourced systems. Understa
 Brownfield legacy migration projects involve the process of upgrading, modernizing, or completely overhauling existing legacy systems with event-sourced architectures.
 
 
-![Brownfield legacy migration graphic](docs/images/brownfield-project-type.png)
+![Brownfield legacy migration graphic](/brownfield-project-type.png)
 
 
-## **Characteristics**
+### **Characteristics**
 
 - **Incremental migration:** One of the hallmarks of a brownfield project is the need for an incremental approach. Rather than a complete overhaul, which can be risky and disruptive, the migration is often done in stages (starting small and scaling over time). This allows for a gradual transition from the old system to the new, minimizing disruption to ongoing operations. 
 
@@ -24,10 +24,10 @@ Brownfield legacy migration projects involve the process of upgrading, modernizi
 ## 2. Greenfield projects
 Greenfield projects involve projects that start from scratch, without any existing constraints from prior work. It’s ideal for implementing modern, event-driven architectures from the ground up. 
 
-![Greenfield project type graphic](docs/images/greenfield-project-type.png)
+![Greenfield project type graphic](/greenfield-project-type.png)
 
 
-## **Characteristics**
+### **Characteristics**
 
 - **Fresh start:** Unlike brownfield projects, which involve modifying or upgrading existing systems, greenfield projects start with a clean slate. This allows the freedom to design and implement the most suitable technologies and architectures for the project without being limited by legacy systems. 
 
@@ -46,10 +46,10 @@ Greenfield projects involve projects that start from scratch, without any existi
 ## 3. Brownfield Sidecar Source of Truth
 Sidecar approaches refer to a strategy of integrating a new system (in this case, an event store) alongside existing legacy systems. This approach is designed to enhance or augment the existing infrastructure without disruption. 
 
-![Brownfield sidecar project type graphic](docs/images/brownfield-sidecar-project-type.png)
+![Brownfield sidecar project type graphic](/brownfield-sidecar-project-type.png)
 
 
-## **Characteristics**
+### **Characteristics**
 
 - **Parallel operation with legacy systems:** The sidecar operates alongside existing legacy systems without replacing them, enhancing and extending their capabilities. It synchronizes with these systems to ensure processed data is consistent and current, adding new functions and improvements in a non-intrusive manner to minimize disruptions.  
 
