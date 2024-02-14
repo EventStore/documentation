@@ -4,19 +4,89 @@ title: Operations
 
 ## Resizing cluster nodes
 
-The ability to do an online resizing of cluster nodes is part of our future roadmap. Until that point, if you need to resize the nodes, you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. You can choose a larger or smaller node size, as well as a different cluster topology. You can then switch your applications over to the connection string for the new cluster.
+Clusters can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc).
 
-::: warning
-Using backup-restore for changing the cluster size should typically be done when all the write loads are turned off. Any new events appended to the database between the backup and restore will be lost. If you want to perform an online resize, then the [replicator](https://replicator.eventstore.org) can be used to keep two databases in sync.  Please ensure you understand the [limitations](https://replicator.eventstore.org/docs/limitations/) of the replication tool.
+You can choose a larger or smaller node size, as well as a different cluster topology. See also the cloud [sizing guide](../provision/README.md#cloud-instance-sizing-guide) for general guidance.
+
+### Using the Cloud Console
+
+To resize a cluster in the console, navigate to the clusters view and select _Resize Cluster_.
+
+::: card
+![cluster list](./images/Resize01DropDown.png)
 :::
+
+On the detail page specify the new cluster size and click on _Resize Cluster_.
+
+::: card
+![cluster_expand_detail](./images/Resize02Selection.png)
+:::
+
+You will get a prompt that this operation will require downtime. Click on _Start Operation_ to proceed.
+
+::: card
+![cluster_expand_detail](./images/Resize03DowntimeModalDialog.png)
+:::
+
+This will take you back to the cluster view where you will see that the resize is in progress.
+
+::: card
+![cluster_expand_detail](./images/Resize04Progress.png)
+:::
+
+Once the resize operation has completed the new cluster size will show in the cluster view.
+
+::: card
+![cluster_expand_detail](./images/Resize05Complete.png)
+:::
+
+### Using the command line
+TODO
 
 ## Upgrading EventStoreDB version
 
-The ability to do an online upgrade of EventStoreDB version of your cluster is part of our future roadmap. Until that point, if you need to upgrade server versions, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
+Clusters can be upgraded to a later version on-demand through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc).
 
-::: warning
-Using backup-restore for changing the EventStoreDB version should typically be done when all the write loads are turned off. Any new events appended to the database between the backup and restore will be lost. If you want to perform an online resize, then the [replicator](https://replicator.eventstore.org) can be used to keep two databases in sync.  Please ensure you understand the [limitations](https://replicator.eventstore.org/docs/limitations/) of the replication tool.
+::: note
+Limitations:
+* At this time clusters can only updated to a minor version. Upgrading to a major version is part of a future release. Until that point, if you need to upgrade to a major servier version, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose the EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
 :::
+
+### Using the Cloud Console
+
+To upgrade a cluster in the console, navigate to the clusters view and select _Upgrade Cluster_.
+
+::: card
+![cluster list](./images/upgrade01ClusterDropDown.png)
+:::
+
+On the detail page specify the new cluster version and click on _Upgrade Cluster_.
+
+::: card
+![cluster_expand_detail](./images/upgrade02ClusterSelection.png)
+:::
+
+You will get a prompt that this operation will require downtime. Click on _Start Operation_ to proceed.
+
+::: card
+![cluster_expand_detail](./images/upgrade03DowntimeModalDialog.png)
+:::
+
+This will take you back to the cluster view where you will see that the upgrade is in progress.
+
+::: card
+![cluster_expand_detail](./images/upgrade04Progress.png)
+:::
+
+Once the upgrade operation has completed the new cluster version will show in the cluster view.
+
+::: card
+![cluster_expand_detail](./images/upgrade05Complete.png)
+:::
+
+### Using the command line
+TODO
+
 
 ## Expanding disks
 
