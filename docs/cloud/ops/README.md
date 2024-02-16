@@ -41,7 +41,16 @@ Once the resize operation has completed the new cluster size will show in the cl
 :::
 
 ### Using the command line
-TODO
+
+To resize a cluster with the command line, use the `clusters resize` command, where `--target_size` is the target instance size. For example, the size may be one of: F1, C4, M8, M16, M32, M64, M128.
+
+```bash
+esc mesdb clusters resize \
+    --target_size C4 \
+    --id cn7dd2do0aekgb8nbf20 \
+    --project-id cn62uolo0aegb5icm0bg \
+    --org-id 9bsv0s4qu99g029v5560
+```
 
 ## Upgrading EventStoreDB version
 
@@ -49,7 +58,7 @@ Clusters can be upgraded to a later version on-demand through the [Cloud Console
 
 ::: note
 Limitations:
-* At this time clusters can only updated to a minor version. Upgrading to a major version is part of a future release. Until that point, if you need to upgrade to a major servier version, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose the EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
+* At this time clusters can only be updated to a minor version. Upgrading to a major version is part of a future release. Until that point, if you need to upgrade to a major servier version, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose the EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
 :::
 
 ### Using the Cloud Console
@@ -85,7 +94,16 @@ Once the upgrade operation has completed the new cluster version will show in th
 :::
 
 ### Using the command line
-TODO
+
+To upgrade a cluster with the command line, use the `clusters upgrade` command, where `--target_tag` is the version you want to upgrade to. This must include the full version e.g. 23.10.0.
+
+```bash
+esc mesdb clusters upgrade \
+    --target_tag 23.10.0 \
+    --id cn7dd2do0aekgb8nbf20 \
+    --project-id cn62uolo0aegb5icm0bg \
+    --org-id 9bsv0s4qu99g029v5560
+```
 
 
 ## Expanding disks
