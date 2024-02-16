@@ -46,7 +46,7 @@ To resize a cluster with the command line, use the `clusters resize` command, wh
 
 ```bash
 esc mesdb clusters resize \
-    --target_size C4 \
+    --target-size C4 \
     --id cn7dd2do0aekgb8nbf20 \
     --project-id cn62uolo0aegb5icm0bg \
     --org-id 9bsv0s4qu99g029v5560
@@ -99,7 +99,7 @@ To upgrade a cluster with the command line, use the `clusters upgrade` command, 
 
 ```bash
 esc mesdb clusters upgrade \
-    --target_tag 23.10.0 \
+    --target-tag 23.10.0 \
     --id cn7dd2do0aekgb8nbf20 \
     --project-id cn62uolo0aegb5icm0bg \
     --org-id 9bsv0s4qu99g029v5560
