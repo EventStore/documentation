@@ -58,7 +58,7 @@ Clusters can be upgraded to a later version on-demand through the [Cloud Console
 
 ::: note
 Limitations:
-* At this time clusters can only be updated to a minor version. Upgrading to a major version is part of a future release. Until that point, if you need to upgrade to a major servier version, you should perform a [backup](#manual-backup), and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose the EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
+* At this time, clusters can only be updated to a minor version of the current version. Upgrading to a major version is part of a future release. Until that point, if you need to upgrade to a major server version, you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose the EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
 :::
 
 ### Using the Cloud Console
