@@ -87,7 +87,7 @@ This will take you back to the cluster view where you will see that the upgrade 
 ![cluster_expand_detail](./images/upgrade04Progress.png)
 :::
 
-Once the upgrade operation has completed the new cluster version will show in the cluster view.
+Once the upgrade operation is complete, the new cluster version will show in the cluster view.
 
 ::: card
 ![cluster_expand_detail](./images/upgrade05Complete.png)
