@@ -42,7 +42,7 @@ Once the resize operation is complete, the new cluster size will show in the clu
 
 ### Using the command line
 
-To resize a cluster with the command line, use the `clusters resize` command, where `--target_size` is the target instance size. For example, the size may be one of: F1, C4, M8, M16, M32, M64, M128.
+To resize a cluster with the command line, use the `clusters resize` command, where `--target_size` is the target instance size. Possible values are: F1, C4, M8, M16, M32, M64, M128.
 
 ```bash
 esc mesdb clusters resize \
