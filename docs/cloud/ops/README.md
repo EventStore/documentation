@@ -69,7 +69,7 @@ To upgrade a cluster in the console, navigate to the clusters view and select _U
 ![cluster list](./images/upgrade01ClusterDropDown.png)
 :::
 
-On the detail page specify the new cluster version and click on _Upgrade Cluster_.
+On the detail page, specify the new cluster version and click on _Upgrade Cluster_.
 
 ::: card
 ![cluster_expand_detail](./images/upgrade02ClusterSelection.png)
