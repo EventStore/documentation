@@ -34,7 +34,7 @@ This will take you back to the cluster view where you will see that the resize i
 ![cluster_expand_detail](./images/Resize04Progress.png)
 :::
 
-Once the resize operation has completed the new cluster size will show in the cluster view.
+Once the resize operation is complete, the new cluster size will show in the cluster view.
 
 ::: card
 ![cluster_expand_detail](./images/Resize05Complete.png)
