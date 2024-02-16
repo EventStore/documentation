@@ -16,7 +16,7 @@ To resize a cluster in the console, navigate to the clusters view and select _Re
 ![cluster list](./images/Resize01DropDown.png)
 :::
 
-On the detail page specify the new cluster size and click on _Resize Cluster_.
+On the detail page, specify the new cluster size and click on _Resize Cluster_.
 
 ::: card
 ![cluster_expand_detail](./images/Resize02Selection.png)
