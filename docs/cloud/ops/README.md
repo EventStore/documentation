@@ -22,13 +22,9 @@ On the detail page, specify the new cluster size and click on _Resize Cluster_.
 ![cluster_expand_detail](./images/Resize02Selection.png)
 :::
 
-You will get a prompt that this operation will require downtime. Click on _Start Operation_ to proceed.
+Depending on your configuration, there may be downtime: resizing a single node esdb instance will require downtime; a 3 nodes cluster upgrade uses a rolling upgrade so that there is zero downtime.
 
-::: card
-![cluster_expand_detail](./images/Resize03DowntimeModalDialog.png)
-:::
-
-This will take you back to the cluster view where you will see that the resize is in progress.
+In the cluster view, you will see that the resize is in progress.
 
 ::: card
 ![cluster_expand_detail](./images/Resize04Progress.png)
@@ -75,10 +71,10 @@ On the detail page, specify the new cluster version and click on _Upgrade Cluste
 ![cluster_expand_detail](./images/upgrade02ClusterSelection.png)
 :::
 
-Depending on your configuration there may be downtime: upgrading a single node esdb instance will require downtime; a 3 nodes cluster upgrade uses a rolling upgrade for zero downtime. Click on _Start Operation_ to proceed.
+Depending on your configuration, there may be downtime: upgrading a single node esdb instance will require downtime; a 3 nodes cluster upgrade uses a rolling upgrade so that there is zero downtime.
 
 
-This will take you back to the cluster view where you will see that the upgrade is in progress.
+In the cluster view, you will see that the upgrade is in progress.
 
 ::: card
 ![cluster_expand_detail](./images/upgrade04Progress.png)
