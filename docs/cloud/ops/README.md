@@ -22,7 +22,7 @@ On the detail page, specify the new cluster size and click on _Resize Cluster_.
 ![cluster_expand_detail](./images/Resize02Selection.png)
 :::
 
-Depending on your configuration, there may be downtime: resizing a single node esdb instance will require downtime; a 3 nodes cluster upgrade uses a rolling upgrade so that there is zero downtime.
+Depending on your configuration, there may be downtime: resizing a single node esdb instance will require downtime; a 3 nodes cluster resize uses a rolling upgrade so that there is zero downtime.
 
 In the cluster view, you will see that the resize is in progress.
 
