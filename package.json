@@ -27,7 +27,7 @@
     "@rollup/plugin-alias": "^3.1.9",
     "@vuelidate/core": "2.0.0-alpha.29",
     "@vuelidate/validators": "2.0.0-alpha.24",
-    "axios": "0.23.0",
+    "axios": "0.28.0",
     "express": "4.17.3",
     "primeflex": "2.0.0",
     "primeicons": "4.1.0",
