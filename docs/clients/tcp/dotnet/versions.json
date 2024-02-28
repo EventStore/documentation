@@ -2,7 +2,7 @@
   {
     "id": "dotnet-client",
     "group": "TCP SDK",
-    "basePath": "clients/dotnet",
+    "basePath": "clients/tcp/dotnet",
     "versions": [
       {
         "version": "5.0.11 (.NET)",

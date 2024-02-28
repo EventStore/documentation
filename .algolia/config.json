@@ -52,15 +52,15 @@
       "page_rank": 6
     },
     {
-      "url": "http://localhost:8080/clients/dotnet/5.0/",
+      "url": "http://localhost:8080/clients/tcp/dotnet/5.0/",
       "page_rank": 1
     },
     {
-      "url": "http://localhost:8080/clients/dotnet/20.10/",
+      "url": "http://localhost:8080/clients/tcp/dotnet/20.10/",
       "page_rank": 3
     },
     {
-      "url": "http://localhost:8080/clients/dotnet/21.2/",
+      "url": "http://localhost:8080/clients/tcp/dotnet/21.2/",
       "page_rank": 5
     },
     {

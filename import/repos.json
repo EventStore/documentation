@@ -52,7 +52,7 @@
   {
     "id": "dotnet-client",
     "group": ".NET SDK",
-    "basePath": "clients/dotnet",
+    "basePath": "clients/tcp/dotnet",
     "samplesRelativePath": ["samples"],
     "repo": "https://github.com/EventStore/EventStore-Client-Dotnet",
     "branches": [
