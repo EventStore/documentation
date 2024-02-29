@@ -9,11 +9,6 @@ The Connectors Preview is included in commercial versions of EventStoreDB.
 
 Welcome to the Connectors Preview program!
 
-::: card
-![Connectors Overview](./images/system-context.png)
-:::
-
-
 ## Preview Program Goals
 
 The connectors preview will collect your input and feedback to:
@@ -37,6 +32,10 @@ Head to the [quick start guide](quickstart.md) to set up and run connectors.
 ## [Sinks](sinks.md)
 
 ## [Technical Details](technical.md)
+
+::: card
+![Connectors Overview](./images/system-context.png)
+:::
 
 
 
