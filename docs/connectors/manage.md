@@ -1,4 +1,9 @@
+# Managing Connectors
+
+::: note
 The management API is idempotent.
+:::
+
 
 # Create
 

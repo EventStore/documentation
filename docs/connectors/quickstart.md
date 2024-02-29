@@ -1,23 +1,18 @@
 # Install Connectors
 
 The Connectors functionality is added to EventStoreDB or to the sidecar
-via a plugin. In both cases it is the same plugin.
+via a plugin. In either case, it is the same plugin and it is pre-installed in the commercial edition. 
 
-For the preview and likely for the initial release a package of
-EventStoreDB will be created with the plugin pre-installed.
+# 1. Set up a an external system
 
-# Set up a an external system
-
-One easy way to do this is to create a `public bin` by visiting
-<https://public.requestbin.com/r> this is only suitable for test data.
-It will present you with a unique endpoint such as
+For example, create a `public bin` by visiting
+<https://public.requestbin.com/r>. This is only suitable for test data.
+It will present you with a unique endpoint such as:
 <https://enkb1keveb5r.x.pipedream.net>
 
-# Set up a connector to connect to your new endpoint.
+# 2. Set up a connector to connect to your new endpoint.
 
-Download and install the connectors package and run event store.
-
-Use curl or similar to issue the following `POST`. This will create a
+Use curl or a similar utility to issue a `POST` request as follows. This will create a
 connector called `my-connector`, configure it to send events to our
 external system, and enable the connector.
 
@@ -38,12 +33,17 @@ curl.exe -i                           `
 - Pass admin credentials
 
 - The sink URL is where the sink will POST to. Adjust it to be your own
-  URL created in the previous step.
+  URL created in the first step.
 
-# Create an event in the EventStoreDB UI
+# 3. Create an event in the EventStoreDB UI
 
-![](connectors:create-event.png)
+::: card
+![Create Event](./images/create-event.png)
+:::
 
-# See the event appear in your browser
+# 4. See the event appear in your browser
 
-![](connectors:receive-event.png)
+
+::: card
+![View Received Event](./images/receive-event.png)
+:::

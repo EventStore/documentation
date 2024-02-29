@@ -1,6 +1,6 @@
 
 
-::: tip
+::: note
 Sink configuration will likely change in future versions.
 :::
 
