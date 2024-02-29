@@ -101,7 +101,7 @@ Connectors are EventSourced
 The checkpoints are stored in a stream per connector
 
 ::: card
-![Connector Checkpoint](./images/cconnector-checkpoint-stream.png)
+![Connector Checkpoint](./images/connector-checkpoint-stream.png)
 :::
 
 
