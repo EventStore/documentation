@@ -1,14 +1,13 @@
 
 # Connectors Preview Introduction
 
+Welcome to the Connectors Preview program!
+
 ::: note
 The Connectors Preview is included in commercial versions of EventStoreDB.
 :::
 
-Welcome to the Connectors Preview program!
-
-Connectors make it easy to feed data from EventStoreDB into other
-systems.
+Connectors make it easy to feed data from EventStoreDB into other systems.
 
 Each connector runs on the server-side (in process or out of process)
 and uses a catch-up subscription to receive events, filter or transform
@@ -16,6 +15,13 @@ them, and push them to an external system via a sink.
 
 ::: card
 ![Connectors Anatomy](./images/connector-anatomy.png)
+:::
+
+This reduces the amount of work needed to process data from EventStoreDB instances and makes it easily to handle several data integration patterns.
+Users can now create data pipelines to implement complex use cases.
+
+::: card
+![Connectors Overview](./images/system-context.png)
 :::
 
 
@@ -31,13 +37,12 @@ In this preview, there are two sinks:
 Currently a pain point that users experience is that, on one hand
 they have a convenient EventStoreDB cloud service, on the other hand
 they have a convenient downstream database or processing engine cloud
-service. In the middle, however, they need to host and maintain their own
+service but there's nothing in between. As a result, users need to host and maintain their own
 solution in their own infrastructure for subscribing to EventStoreDB and
-sending the events to the downstream service. This solution in the middle often has to be highly
-available and needs to manage its own checkpoints: this quickly becomes
-cumbersome.
+sending the events to a downstream service. This solution in the middle often has to be highly
+available and needs to manage its own checkpoints: this quickly becomes difficult.
 
-EventStore Connectors remove the need for users to develop and host and maintain such a solution.
+EventStore Connectors remove the need for users to develop, host and maintain such a solution.
 
 ::: card
 ![Connectors Motivation](./images/motivation.png)
@@ -71,9 +76,7 @@ Find out how to [manage](manage.md) connectors.
 Find out more [details](technical.md) about connectors
 
 
-::: card
-![Connectors Overview](./images/system-context.png)
-:::
+
 
 
 
