@@ -1,11 +1,9 @@
 
-# Connectors Preview Introduction
+# Connectors Preview
 
 ::: note
 The Connectors Preview is included in commercial versions of EventStoreDB.
 :::
-
-## Introduction
 
 Welcome to the Connectors Preview program!
 
@@ -23,15 +21,20 @@ The connectors preview will collect your input and feedback to:
 
 
 ## Quick start
-The Connectors Preview comes pre-installed in the commercial edition and there is no need to install it. 
+The Connectors Preview comes pre-installed in the commercial edition. 
 Head to the [quick start guide](quickstart.md) to set up and run connectors.
 
 
-## [Managing Connectors](manage.md)
+## Sinks
+[Set up and run](sinks.md) an HTTP sink or a console sink.
 
-## [Sinks](sinks.md)
+## Managing Connectors
+Find out how to [manage](manage.md) connectors.
 
-## [Technical Details](technical.md)
+
+## Technical Details
+Find out more [details](technical.md) about connectors
+
 
 ::: card
 ![Connectors Overview](./images/system-context.png)
