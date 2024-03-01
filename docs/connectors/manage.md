@@ -5,7 +5,7 @@ The management API is idempotent.
 :::
 
 
-# Create
+## Create
 
 Create a connector by sending a `POST` to `connectors/<connector-name>`.
 
@@ -51,7 +51,7 @@ curl.exe -i                           `
   in the cluster. Otherwise they activate on the followers. Either way,
   they are shared out between the nodes of the type that they are activated on.
 
-# Enable
+## Enable
 
 Enable a connector by sending a `POST` to
 `connectors/<connector-name>/enable`.
@@ -63,7 +63,7 @@ curl.exe -i           `
   https://localhost:2113/connectors/my-connector/enable
 ```
 
-# Disable
+## Disable
 
 Disable a connector by sending a `POST` to
 `connectors/<connector-name>/disable`.
@@ -77,7 +77,7 @@ curl.exe -i           `
   https://localhost:2113/connectors/my-connector/disable
 ```
 
-# Reset
+## Reset
 
 Reset a connector’s checkpoint by sending a `POST` to
 `connectors/<connector-name>/reset`.
@@ -112,7 +112,7 @@ curl.exe -i                           `
   https://localhost:2113/connectors/my-connector/reset
 ```
 
-# Delete
+## Delete
 
 Delete a connector by sending a `DELETE` to
 `connectors/<connector-name>`.
