@@ -27,29 +27,16 @@ curl.exe -i                           `
   https://localhost:2113/connectors/my-connector
 ```
 
-- The `Sink` URL is where the sink will POST to.
-
-- `Filter` is a JSON Path filter.
-
-- `Affinity` is the node type that the connector would like to run on.
-  It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`.
-
-- `CheckpointInterval` is how frequently to store the checkpoint, and is currently measured in events.
-
-- Set `Enable` to `false` to create a connector without enabling it.
-
-- `Leader` These connectors activate only on the leader.
-
-- `Follower`
-
-  These connectors activate only on follower nodes. They are shared out evenly
-  among whichever follower nodes are currently up in the cluster.
-
-- `ReadOnlyReplica`
-
-  These connectors activate on the `ReadOnlyReplica` types of nodes, if there are any currently up
-  in the cluster. Otherwise they activate on the followers. Either way,
-  they are shared out between the nodes of the type that they are activated on.
+| Parameter             | Description                                                                        |
+| :-------------------- | :--------------------------------------------------------------------------------- |
+| `Sink`                | The URL where the sink will POST to.                                               |
+| `Filter`              | The JSON Path filter.                                                              |
+| `Affinity`            | The node type that the connector would like to run on. It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`. |
+| `CheckpointInterval`  | How frequently to store the checkpoint, this is currently measured in events.      |
+| `Enable`              | Set to `false` to create a connector without enabling it.                          |
+| `Leader`              | The connector will activate only on the leader.                                    |
+| `Follower`            | The connector will activate only on follower nodes. They are shared out evenly. among whichever follower nodes are currently up in the cluster. |
+| `ReadOnlyReplica`     | These connectors activate on the `ReadOnlyReplica` types of nodes, if there are any currently up in the cluster. Otherwise they activate on the followers. Either way, they are shared out between the nodes of the type that they are activated on. |
 
 ## Enable
 
