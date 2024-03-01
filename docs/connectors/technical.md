@@ -1,6 +1,7 @@
 # Connectors Technical Details
 
-# Delivery Guarantees
+
+## Delivery Guarantees
 
 Events are delivered *at least once* to the sink. They are delivered *in
 order* meaning that event `x` is not delivered until all the events
@@ -10,7 +11,8 @@ Often, the system that is receiving the events will want to keep track
 of the address of the last event that it has received so that it can
 easily spot and discard duplicate deliveries.
 
-# Checkpointing
+
+## Checkpointing
 
 Connectors periodically (according to their configuration) store the
 position of the last event that they have successfully processed. Then
@@ -18,7 +20,8 @@ if the connector host is restarted, the connectors can continue from
 close to where they got up to. The checkpoints are stored in
 EventStoreDB.
 
-# Internal/External hosting
+
+## Internal/External hosting
 
 Connectors can run internally (i.e. in-process) in the EventStoreDB
 nodes, or they can run externally in a side-car process that
@@ -42,7 +45,8 @@ For multi-node deployments, each node would have its own side-car.
 
 The connectors are agnostic to the way that they are being hosted.
 
-# Management and Activation
+
+## Management and Activation
 
 Users *manage* connectors by sending HTTP requests to the connectors
 host (server or the side-car, according to the deployment). Connectors
@@ -53,7 +57,8 @@ appropriate hosts. In multi-node deployments, the system will share the
 connectors among the nodes according to the available nodes and the
 `Affinity` of the connectors.
 
-# Connector Persistence
+
+## Connector Persistence
 
 Connectors are EventSourced.
 
