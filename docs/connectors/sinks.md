@@ -1,11 +1,11 @@
-
+# Sinks
 
 ::: note
 Sink configuration will likely change in future versions.
 :::
 
 
-# Console Sink 
+## Console Sink 
 
 The console sink just writes to the console of whichever host the connector is running in.
 
@@ -17,7 +17,7 @@ Here is sample JSON to create a Console Sink connector:
     }
 ```
 
-# HTTP Sink <span id="http_sink"></span>
+## HTTP Sink
 
 The HTTP Sink posts events to specified endpoints and delivers event metadata as HTTP headers.
 

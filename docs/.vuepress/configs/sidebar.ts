@@ -10,8 +10,8 @@ export const en: ESSidebarConfig = {
       group: "Connectors",
       children: [
         "/connectors/README.md",
-        "/connectors/manage.md",
         "/connectors/quickstart.md",
+        "/connectors/manage.md",
         "/connectors/sinks.md",
         "/connectors/technical.md",
       ],
