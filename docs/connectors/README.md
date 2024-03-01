@@ -51,7 +51,7 @@ EventStore Connectors remove the need for users to develop, host and maintain su
 
 ## Preview Program Goals
 
-We will collect your input and feedback during this connectors preview program to:
+We will collect your input and feedback during the connectors preview program to:
 
 * Validate the approach.
 
