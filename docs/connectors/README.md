@@ -29,7 +29,7 @@ In this preview, there are two sinks:
 - [Console Sink](./sinks.md#console_sink) for experimentation
 
 - [HTTP Sink](./sinks.md#http_sink) for POSTing to an HTTP endpoint of
-  an external system.
+  an external system
 
 
 ## Motivation
