@@ -65,14 +65,14 @@ communicates with an EventStoreDB via gRPC.
 ![Internal Hosting](./images/internal-hosting.png)
 :::
 
-It is expected that in the short term the internal hosting model shown
-above will be more popular because it requires less infrastructure
+It is expected that, in the short term, the internal hosting, model shown
+above, will be more popular because it requires less infrastructure.
 
 ::: card
 ![External Hosting](./images/external-hosting.png)
 :::
 
-In the long term the external hosting model may be more popular because
+In the long term the external hosting model will most likely be more popular because
 of the isolation it provides.
 
 For multi-node deployments each node would have its own side car.
@@ -92,13 +92,13 @@ connectors out among the nodes according to the available nodes and the
 
 # Connector Persistence
 
-Connectors are EventSourced
+Connectors are EventSourced.
 
 ::: card
 ![Connector Stream](./images/connector-stream.png)
 :::
 
-The checkpoints are stored in a stream per connector
+The checkpoints are stored in a stream per connector.
 
 ::: card
 ![Connector Checkpoint](./images/connector-checkpoint-stream.png)
