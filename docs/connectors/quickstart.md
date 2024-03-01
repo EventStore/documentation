@@ -1,6 +1,6 @@
 # Install Connectors
 
-The Connectors functionality is added to EventStoreDB or to the sidecar
+The Connectors functionality is added to EventStoreDB or to a side-car
 via a plugin. In either case, it is the same plugin and it is pre-installed in the commercial edition. 
 
 # 1. Set up a an external system

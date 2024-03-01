@@ -35,17 +35,17 @@ above, will be more popular because it requires less infrastructure.
 ![External Hosting](./images/external-hosting.png)
 :::
 
-In the long term the external hosting model will most likely be more popular because
+In the long term, the external hosting model will, most likely, be more popular because
 of the isolation it provides.
 
-For multi-node deployments each node would have its own side car.
+For multi-node deployments, each node would have its own side car.
 
 The connectors are agnostic to the way that they are being hosted.
 
 # Management and Activation
 
 Users *manage* connectors by sending HTTP requests to the connectors
-host (server or the side car, according to the deployment). Connectors
+host (server or the side-car, according to the deployment). Connectors
 can be created, enabled, disabled, reset, and deleted.
 
 The system will *activate* (that is, run) the enabled connectors on the
