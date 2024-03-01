@@ -41,7 +41,7 @@ curl.exe -i                           `
 ![Create Event](./images/create-event.png)
 :::
 
-# 4. View the event appear in your browser
+# 4. View the event in your browser
 
 
 ::: card

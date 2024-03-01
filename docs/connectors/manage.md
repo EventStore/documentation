@@ -27,21 +27,18 @@ curl.exe -i                           `
   https://localhost:2113/connectors/my-connector
 ```
 
-- The sink URL is where the sink will POST to.
+- The `Sink` URL is where the sink will POST to.
 
-- Filter is a JSON Path filter.
+- `Filter` is a JSON Path filter.
 
-- Affinity is the node state that the connector would like to run on.
+- `Affinity` is the node type that the connector would like to run on.
   It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`.
 
 - `CheckpointInterval` is how frequently to store the checkpoint, and is currently measured in events.
 
-- Set `Enable` to false to create a connector without enabling it.
+- Set `Enable` to `false` to create a connector without enabling it.
 
-
-- `Leader`
-
-  These connectors activate only on the leader.
+- `Leader` These connectors activate only on the leader.
 
 - `Follower`
 
