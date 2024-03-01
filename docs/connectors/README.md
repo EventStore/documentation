@@ -1,5 +1,5 @@
 
-**Connectors Preview**
+# Connectors Preview Introduction
 
 ::: note
 The Connectors Preview is included in commercial versions of EventStoreDB.
