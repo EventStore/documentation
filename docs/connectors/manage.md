@@ -1,4 +1,4 @@
-# Managing Connectors
+# Manage Connectors
 
 ::: note
 The management API is idempotent.
@@ -32,29 +32,27 @@ curl.exe -i                           `
 - Filter is a JSON Path filter.
 
 - Affinity is the node state that the connector would like to run on.
-  It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`
+  It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`.
 
-- CheckpointInterval is how frequently to store the checkpoint,
-  currently measured in events.
+- `CheckpointInterval` is how frequently to store the checkpoint, and is currently measured in events.
 
 - Set `Enable` to false to create a connector without enabling it.
 
 
-- Leader
+- `Leader`
 
   These connectors activate only on the leader.
 
-- Follower
+- `Follower`
 
   These connectors activate only on follower nodes. They are shared out evenly
   among whichever follower nodes are currently up in the cluster.
 
-- ReadOnlyReplica
+- `ReadOnlyReplica`
 
-  These connectors activate on the ReadOnlyReplicas if there are any currently up
+  These connectors activate on the `ReadOnlyReplica` types of nodes, if there are any currently up
   in the cluster. Otherwise they activate on the followers. Either way,
-  they are shared out between the nodes of the type that they are
-  activated on.
+  they are shared out between the nodes of the type that they are activated on.
 
 # Enable
 

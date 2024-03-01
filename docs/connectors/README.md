@@ -40,7 +40,7 @@ they have a convenient downstream database or processing engine cloud
 service but there's nothing in between. As a result, users need to host and maintain their own
 solution in their own infrastructure for subscribing to EventStoreDB and
 sending the events to a downstream service. This solution in the middle often has to be highly
-available and needs to manage its own checkpoints: this quickly becomes difficult.
+available and needs to manage its own checkpoints: this quickly becomes cumbersome.
 
 EventStore Connectors remove the need for users to develop, host and maintain such a solution.
 

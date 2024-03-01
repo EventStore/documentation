@@ -38,7 +38,7 @@ above, will be more popular because it requires less infrastructure.
 In the long term, the external hosting model will, most likely, be more popular because
 of the isolation it provides.
 
-For multi-node deployments, each node would have its own side car.
+For multi-node deployments, each node would have its own side-car.
 
 The connectors are agnostic to the way that they are being hosted.
 
@@ -49,8 +49,8 @@ host (server or the side-car, according to the deployment). Connectors
 can be created, enabled, disabled, reset, and deleted.
 
 The system will *activate* (that is, run) the enabled connectors on the
-appropriate hosts. In multi-node deployments the system will share the
-connectors out among the nodes according to the available nodes and the
+appropriate hosts. In multi-node deployments, the system will share the
+connectors among the nodes according to the available nodes and the
 `Affinity` of the connectors.
 
 # Connector Persistence
