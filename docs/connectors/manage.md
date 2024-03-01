@@ -7,7 +7,7 @@ The management API is idempotent.
 
 # Create
 
-Create a connector by sending a `POST` to `connectors/<connector-name>`
+Create a connector by sending a `POST` to `connectors/<connector-name>`.
 
 ``` powershell
 $JSON = @'
@@ -27,40 +27,39 @@ curl.exe -i                           `
   https://localhost:2113/connectors/my-connector
 ```
 
-- The sink URL is where the sink will POST to
+- The sink URL is where the sink will POST to.
 
-- Filter is a JSON Path filter
+- Filter is a JSON Path filter.
 
 - Affinity is the node state that the connector would like to run on.
-  Can be `Leader`, `Follower` or `ReadOnlyReplica`. Default: `Leader`
+  It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`
 
 - CheckpointInterval is how frequently to store the checkpoint,
   currently measured in events.
 
-- Set `` Enable` `` to false to create a connector without enabling it.
+- Set `Enable` to false to create a connector without enabling it.
 
-<!-- -->
 
 - Leader
 
-  These activate only on the leader.
+  These connectors activate only on the leader.
 
 - Follower
 
-  These activate only on follower nodes. They are shared out evenly
+  These connectors activate only on follower nodes. They are shared out evenly
   among whichever follower nodes are currently up in the cluster.
 
 - ReadOnlyReplica
 
-  These activate on the ReadOnlyReplicas if there are any currently up
-  in the cluster. Otherwise they activate on the followers. Either way
+  These connectors activate on the ReadOnlyReplicas if there are any currently up
+  in the cluster. Otherwise they activate on the followers. Either way,
   they are shared out between the nodes of the type that they are
   activated on.
 
 # Enable
 
 Enable a connector by sending a `POST` to
-`connectors/<connector-name>/enable`
+`connectors/<connector-name>/enable`.
 
 ``` powershell
 curl.exe -i           `
@@ -86,7 +85,7 @@ curl.exe -i           `
 # Reset
 
 Reset a connector’s checkpoint by sending a `POST` to
-`connectors/<connector-name>/reset`
+`connectors/<connector-name>/reset`.
 
 With an empty payload the connector will be reset to the beginning.
 
@@ -99,7 +98,7 @@ curl.exe -i                           `
 ```
 
 `CommitPosition` and `PreparePosition` can be specified to reset a
-connector to particular position. This position is treated as the new
+connector to a particular position. This position is treated as the new
 checkpoint i.e. the position of a successfully processed event. The
 connector will resume processing starting with the event *after* this.
 
@@ -121,7 +120,7 @@ curl.exe -i                           `
 # Delete
 
 Delete a connector by sending a `DELETE` to
-`connectors/<connector-name>`
+`connectors/<connector-name>`.
 
 ``` powershell
 curl.exe -i           `
