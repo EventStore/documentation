@@ -1,4 +1,4 @@
-# Technical Overview Of Connectors
+# Connectors Technical Details
 
 Connectors make it easy to feed data from EventStoreDB into other
 systems.
