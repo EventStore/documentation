@@ -34,8 +34,8 @@ In this preview, there are two sinks:
 
 ## Motivation
 
-Currently a pain point that users experience is that, on one hand
-they have a convenient EventStoreDB cloud service, on the other hand
+Currently a pain point that users experience is that, on one hand,
+they have a convenient EventStoreDB cloud service, on the other hand,
 they have a convenient downstream database or processing engine cloud
 service but there's nothing in between. As a result, users need to host and maintain their own
 solution in their own infrastructure for subscribing to EventStoreDB and
@@ -51,7 +51,7 @@ EventStore Connectors remove the need for users to develop, host and maintain su
 
 ## Preview Program Goals
 
-The connectors preview will collect your input and feedback to:
+We will collect your input and feedback during this connectors preview program to:
 
 * Validate the approach.
 
