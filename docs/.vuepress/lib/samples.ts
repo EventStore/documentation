@@ -56,7 +56,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "rs": {
                 label: "Rust",
-                path: "clients/rust/2.3.0"
+                path: "clients/rust/3.0.0"
             },
             "py": {
                 label: "Python",
@@ -64,7 +64,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "java": {
                 label: "Java",
-                path: "clients/java/5.3.0"
+                path: "clients/java/5.3.1"
             },
         }
     };
