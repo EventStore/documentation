@@ -19,10 +19,6 @@ them, and push them to an external system via a [sink](https://en.wikipedia.org/
 
 This reduces the amount of work needed to process data from EventStoreDB instances and makes it easy to create data pipelines to implement complex use cases.
 
-::: card
-![Connectors Overview](./images/system-context.png)
-:::
-
 
 In this preview, there are two sinks:
 

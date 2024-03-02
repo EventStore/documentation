@@ -1,6 +1,14 @@
 # Set up Connectors
 
 Connectors are pre-installed in the commercial edition. You manage connectors by creating and enabling them, refer to [manage connectors](./manage.md) for more details.
+
+Here is an overview of how connectors wok.
+
+::: card
+![Connectors Overview](./images/system-context.png)
+:::
+
+
 Let's create a connector and send events to it.
 
 ## 1. Set up a an external system
