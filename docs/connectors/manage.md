@@ -36,7 +36,7 @@ curl.exe -i                           `
 | `Enable`              | Set to `false` to create a connector without enabling it.                          |
 | `Leader`              | The connector will activate only on the leader.                                    |
 | `Follower`            | The connector will activate only on follower nodes. They are shared out evenly, among whichever follower nodes are currently up in the cluster. |
-| `ReadOnlyReplica`     | These connectors activate on the `ReadOnlyReplica` types of nodes, if there are any currently up in the cluster. Otherwise they activate on the followers. Either way, they are shared out between the nodes of the type that they are activated on. |
+| `ReadOnlyReplica`     | These connectors activate on `ReadOnlyReplica` types of nodes, if there are any currently up in the cluster. Otherwise they activate on the followers. Either way, they are shared out between the nodes of the type that they are activated on. |
 
 ## Enable
 
