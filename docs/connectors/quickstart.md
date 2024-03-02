@@ -1,6 +1,6 @@
 # Quick start
 
-The Connectors functionality is added to EventStoreDB via a plugin, and it is pre-installed in the commercial edition. The first version of EventStoreDB to support Connectors is **v24.2**.
+The Connectors plugin is pre-installed in the commercial edition. The first version of EventStoreDB to support Connectors is **v24.2**.
 
 ## Enable the plugin
 
@@ -8,6 +8,7 @@ Refer to the general [plugins configuration](/docs/server/v24.2/configuration.md
 
 Sample JSON configuration:
 
+Let's create a connector and send events to it.
 ```json
 {
   "EventStore": {
@@ -21,6 +22,8 @@ Sample JSON configuration:
 ```
 
 Alternatively, set the environment variable `EVENTSTORE__PLUGINS__CONNECTORS__ENABLED` to `true`.
+
+Let's create a connector and send events to it.
 
 ## Set up an external system
 
