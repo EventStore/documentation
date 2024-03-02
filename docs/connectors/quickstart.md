@@ -1,6 +1,6 @@
 # Set up Connectors
 
-Connectors are pre-installed in the commercial edition. You manage connectors by creating and enabling them, refer to [manage coonectors](./manage.md) for more details.
+Connectors are pre-installed in the commercial edition. You manage connectors by creating and enabling them, refer to [manage connectors](./manage.md) for more details.
 Let's create a connector and send events to it.
 
 ## 1. Set up a an external system
@@ -41,7 +41,7 @@ curl.exe -i                           `
 ![Create Event](./images/create-event.png)
 :::
 
-## 4. View the event in your web browser
+## 4. View the event in a web browser
 
 
 ::: card
