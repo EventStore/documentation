@@ -2,7 +2,7 @@
 
 Connectors are pre-installed in the commercial edition. You [manage connectors](./manage.md) by creating and enabling them.
 
-Here is an overview of how connectors wok.
+Here is an overview of how connectors work.
 
 ::: card
 ![Connectors Overview](./images/system-context.png)
