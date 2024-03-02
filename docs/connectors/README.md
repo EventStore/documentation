@@ -22,8 +22,8 @@ This reduces the amount of work needed to process data from EventStoreDB instanc
 
 In this preview, there are two sinks:
 
-- [Console Sink](./sinks.md#console_sink) for experimentation
-- [HTTP Sink](./sinks.md#http_sink) for sending events to an HTTP endpoint
+- [Console Sink](./sinks.md#console-sink) for experimentation
+- [HTTP Sink](./sinks.md#http-sink) for sending events to an HTTP endpoint
 
 ## Motivation
 

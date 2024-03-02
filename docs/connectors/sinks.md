@@ -6,7 +6,7 @@ Sinks are Connector targets. They are the final destination for events from Even
 Sink configuration will likely change in future versions.
 :::
 
-## Console Sink 
+## Console Sink
 
 The console sink just writes to the console of whichever host the connector is running in.
 
