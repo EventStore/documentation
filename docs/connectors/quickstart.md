@@ -1,22 +1,40 @@
-# Install Connectors
+# Quick start
 
-The Connectors functionality is added to EventStoreDB or to a side-car
-via a plugin. In either case, it is the same plugin and it is pre-installed in the commercial edition. 
+The Connectors functionality is added to EventStoreDB via a plugin, and it is pre-installed in the commercial edition. The first version of EventStoreDB to support Connectors is **v24.2**.
 
-## 1. Set up a an external system
+## Enable the plugin
 
-For example, create a `public bin` by visiting
-<https://public.requestbin.com/r>. This is only suitable for test data.
-It will present you with a unique endpoint such as:
-<https://enkb1keveb5r.x.pipedream.net>
+Refer to the general [plugins configuration](/docs/server/v24.2/configuration.md#plugins-configuration) guide to see how to configure plugins with JSON files and environment variables.
 
-## 2. Set up a connector to connect to your new endpoint.
+Sample JSON configuration:
 
-Use curl or a similar utility to issue a `POST` request as follows. This will create a
-connector called `my-connector`, configure it to send events to our
-external system, and enable the connector.
+```json
+{
+  "EventStore": {
+    "Plugins": {
+      "Connectors": {
+        "Enabled": true
+      }
+    }
+  }
+}
+```
 
-``` powershell
+Alternatively, set the environment variable `EVENTSTORE__PLUGINS__CONNECTORS__ENABLED` to `true`.
+
+## Set up an external system
+
+For example, create a `public bin` by visiting [Requestbin](https://public.requestbin.com/r). This is only suitable for test data. It will present you with a unique endpoint such as: `https://enkb1keveb5r.x.pipedream.net`.
+
+When you create a public request bin, it will start waiting for requests. You can then use the bin URL as the sink endpoint for the connector.
+
+## Create a connector instance
+
+Use `curl` or a similar utility to issue a `POST` request as follows. This will create a connector instance called `my-connector`, configure it to send events to our external system, and enable the connector instance.
+
+:::: code-group
+::: code-group-item Powershell
+```powershell
 $JSON = @'
 {
   "Sink": "https://enkb1keveb5r.x.pipedream.net"
@@ -29,21 +47,41 @@ curl.exe -i                           `
   -d $JSON                            `
   https://localhost:2113/connectors/my-connector
 ```
+:::
+::: code-group-item Bash
+```bash
+export json="{
+  \"Sink\": \"https://enkb1keveb5r.x.pipedream.net\"
+}"
 
-- Pass admin credentials
+curl -i \
+  -H "Content-Type: application/json" \
+  -u "admin:changeit" \
+  -d $json \
+  https://localhost:2113/connectors/my-connector
+```
+:::
+::::
 
-- The sink URL is where the sink will POST to. Adjust it to be your own
-  URL created in the first step.
+- Ensure you pass the correct credentials for the `-u` flag. Only administrators can create connectors.
+- The sink URL is where the sink will POST to. Adjust it to be your own URL created in the first step.
+- Ensure to use the correct URL for your EventStoreDB instance or cluster.
 
-## 3. Create an event in the EventStoreDB UI
+## Append an event
+
+Visit the EventStoreDB web UI and append an event to a stream via the Stream Browser. You will find the `Add Event` button in the top right corner of the Stream Browser.
+Appending a new event will trigger the connector to send the event to the sink.
 
 ::: card
 ![Create Event](./images/create-event.png)
 :::
 
-## 4. View the event in your web browser
+## Check the event was received
 
+Visit the public bin webpage and check that the event was received.
 
 ::: card
 ![View Received Event](./images/receive-event.png)
 :::
+
+Congratulations! You have successfully set up and used the Connectors functionality in EventStoreDB.

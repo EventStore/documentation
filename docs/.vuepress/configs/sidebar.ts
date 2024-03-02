@@ -13,7 +13,7 @@ export const en: ESSidebarConfig = {
         "/connectors/quickstart.md",
         "/connectors/manage.md",
         "/connectors/sinks.md",
-        "/connectors/technical.md",
+        "/connectors/details.md",
       ],
     },
   ],
