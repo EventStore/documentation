@@ -1,6 +1,6 @@
 # Set up Connectors
 
-Connectors are pre-installed in the commercial edition. You manage connectors by creating and enabling them, refer to [manage connectors](./manage.md) for more details.
+Connectors are pre-installed in the commercial edition. You [manage connectors](./manage.md) by creating and enabling them.
 
 Here is an overview of how connectors wok.
 
