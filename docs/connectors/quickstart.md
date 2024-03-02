@@ -1,7 +1,7 @@
-# Install Connectors
+# Set up Connectors
 
-The Connectors functionality is added to EventStoreDB or to a side-car
-via a plugin. In either case, it is the same plugin and it is pre-installed in the commercial edition. 
+Connectors are pre-installed in the commercial edition. You manage connectors by creating and enabling them, refer to [manage coonectors](./manage.md) for more details.
+Let's create a connector and send events to it.
 
 ## 1. Set up a an external system
 
