@@ -57,7 +57,7 @@
     "repo": "https://github.com/EventStore/EventStore-Client-Dotnet",
     "branches": [
       {
-        "version": "23.1",
+        "version": "23.2.0",
         "name":"master"
       }
     ]
@@ -92,7 +92,7 @@
     "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust",
     "branches": [
       {
-        "version": "2.3.0",
+        "version": "3.0.0",
         "name": "master"
       }
     ]
