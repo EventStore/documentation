@@ -40,8 +40,8 @@ To use the gRPC client, you need to replace the TCP client package (`EventStore.
 
 ```xml{2-3}
  <ItemGroup>
--  <PackageReference Include="EventStore.Client" Version="21.2.1" />
-+  <PackageReference Include="EventStore.Client.Grpc.Streams" Version="21.2.0" />
+-  <PackageReference Include="EventStore.Client" Version="22.0.0" />
++  <PackageReference Include="EventStore.Client.Grpc.Streams" Version="23.2.0" />
  </ItemGroup>
 ```
 
