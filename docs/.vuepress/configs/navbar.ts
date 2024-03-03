@@ -15,7 +15,7 @@ export const en: NavbarConfig = [
         children: [
             {text: "Clients", link: "/clients/grpc/"},
             {text: "HTTP API", children: ver.linksFor("http-api")},
-            {text: "Deprecated Clients", link: "/clients/tcp/" },
+            {text: "Deprecated Clients", link: "/clients/tcp/"},
         ]
     },
     {text: "Cloud", link: "/cloud/intro/"},

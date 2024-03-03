@@ -56,7 +56,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "rs": {
                 label: "Rust",
-                path: "clients/rust/2.3.0"
+                path: "clients/rust/3.0.0"
             },
             "py": {
                 label: "Python",

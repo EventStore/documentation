@@ -1,21 +1,11 @@
 [
   {
     "id": "dotnet-client",
-    "group": "TCP SDK",
+    "group": ".NET TCP SDK",
     "basePath": "clients/tcp/dotnet",
     "versions": [
       {
-        "version": "5.0.11 (.NET)",
-        "path": "5.0",
-        "startPage": ""
-      },
-      {
-        "version": "20.10.0 (.NET)",
-        "path": "20.10",
-        "startPage": ""
-      },
-      {
-        "version": "21.2.0 (.NET)",
+        "version": "",
         "path": "21.2",
         "startPage": ""
       }
