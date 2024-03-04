@@ -11,7 +11,7 @@ The Administration UI includes a _Competing Consumers_ section where you are abl
 Before interacting with a subscription group, you need to create one. This requires [admin permissions](security.md). You will get an error if you try to create a subscription group more than once.
 
 ::: warning 
-Persistent subscriptions to `$all` are not supported over the HTTP API. If you want to create persistent subscriptions to `$all`, use the [appropriate client method](../../grpc/persistent-subscriptions.md#subscribing-to-all). 
+Persistent subscriptions to `$all` are not supported over the HTTP API. If you want to create persistent subscriptions to `$all`, use the [appropriate client method](@clients/grpc/persistent-subscriptions.md#subscribing-to-all). 
 :::
 
 <!-- TODO: File inclusion for the below? -->

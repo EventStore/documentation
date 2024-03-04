@@ -5,6 +5,10 @@
   "group": "HTTP API",
   "versions": [
    {
+    "path": "v24.2",
+    "version": "v24.2"
+   },
+   {
     "path": "v23.10",
     "version": "v23.10"
    },

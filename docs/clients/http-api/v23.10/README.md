@@ -6,7 +6,7 @@ EventStoreDB provides a native interface of AtomPub over HTTP. AtomPub is a REST
 
 ### Compatibility with AtomPub
 
-EventStoreDB v5 is fully compatible with the [1.0 version of the Atom Protocol](https://datatracker.ietf.org/doc/html/rfc4287). EventStoreDB adds extensions to the protocol, such as headers for control and custom `rel` links.
+EventStoreDB is fully compatible with the [1.0 version of the Atom Protocol](https://datatracker.ietf.org/doc/html/rfc4287). EventStoreDB adds extensions to the protocol, such as headers for control and custom `rel` links.
 
 ::: warning
 The latest versions of EventStoreDB (v20+) have the AtomPub protocol disabled by default. We do not advise creating new applications using AtomPub as we plan to deprecate it. Please explore our new gRPC protocol available in v20. It provides more reliable real-time event streaming with wide range of platforms and language supported.
