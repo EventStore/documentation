@@ -3,11 +3,98 @@
 /latest                                /server/v24.2/                            301!
 # /server/latest/*                       /server/v24.2/:splat                      301!
 
-## HTTP API from Vuepress v1 to v2
+# ########################################################################################################################
+# Clients 
+# ########################################################################################################################
+
+# ##################################################
+## /clients
+/clients                                                            /clients/grpc   301!
+
+# ##################################################
+## TCP Clients from Vuepress v1 to v2
+/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301!
+/clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
+/clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301!
+## more TCP Clients redirects
+/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301!
+/clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301!
+/clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301!
+/clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301!
+
+/clients/dotnet/*                           /clients/tcp/dotnet/:splat                     301!
+
+# /clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301!
+
+# /clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301!
+# /clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301!
+
+
+# ##################################################
+## gRPC Clients from Vuepress v1 to v2
+/clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301!
+/clients/grpc/getting-started/*                                      /clients/grpc/                               301!
+/clients/grpc/subscribing-to-streams/*                               /clients/grpc/subscriptions.html             301!
+/clients/grpc/:firstpart.html                                        /clients/grpc/:firstpart.html                200
+/clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301!
+
+## redirect for internet search on "esdb .net client
+/clients/dotnet/5.0/connecting.html   /clients/grpc/#connecting-to-eventstoredb    301!
+
+
+# ##################################################
+# HTTP API from Vuepress v1 to v2
 /server/v5/docs/http-api/                   /clients/http-api/v5/                      301!
 /server/v5/docs/http-api/:firstpart.html    /clients/http-api/v5/                      301!
 /server/v5/docs/http-api/:firstpart/*       /clients/http-api/v5/:firstpart/:splat     301!
 /clients/http-api/v5/:firstpart/:filename.html /clients/http-api/v5/:firstpart/        301!
+
+/clients/http-api/generated/v5/docs/api                            /clients/http-api/v5/api.html   301!
+/clients/http-api/v5/introduction                                  /clients/http-api/v5   301!
+
+/clients/http-api/generated/v5/docs/optional-http-headers                           /clients/http-api/v5/optional-http-headers.html 301!
+/clients/http-api/generated/v5/docs/introduction/deleting-a-stream.html             /clients/http-api/v5/#deleting-a-stream   301!        
+/server/generated/v5/docs/http-api/optimistic-concurrency-and-idempotence.html      /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
+/clients/http-api/generated/v5/docs/optional-http-headers/expected-version.html     /clients/http-api/v5/optional-http-headers.html#expected-version   301!
+/clients/http-api/generated/v5/docs/optional-http-headers/requires-master.html      /clients/http-api/v5/optional-http-headers.html#requires-master   301!
+/clients/http-api/generated/v5/docs/optional-http-headers/resolve-linkto.html       /clients/http-api/v5/optional-http-headers.html#resolve-linkto   301!
+/clients/http-api/generated/v5/docs/introduction/reading-streams.html               /clients/http-api/v5/#reading-streams-and-events   301!
+/clients/http-api/generated/v5/docs/introduction/optimistic-concurrency-and-idempotence.html      /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
+
+# ##################################################
+## Redirects from server v5 to client http-api v5
+/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
+/clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+/clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
+/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
+/samples/clients/http-api/v5/event.json                                                           /clients/http-api/v5/samples/v5/event.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/
+shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+
+/server/generated/v5/http-api/persistent-subscriptions.html       /clients/http-api/v5/persistent.html   301!
+/server/generated/v5/http-api/reading-subscribing-events.html     /clients/http-api/v5/#reading-an-event-from-a-stream   301! 
+/server/v5/samples/http-api/event.json                            /clients/http-api/v5/api.html   301!
+
+/server/v5/http-api                                               /clients/http-api/v5/persistent.html   301!
+/server/v5/http-api/persistent/security.html                      /clients/http-api/v5/persistent.html   301!
+/server/v5/http-api/writing-events.html                           /clients/http-api/v5/#writing-metadata  301!
+/server/v5/http-api/reading-subscribing-events.html               /clients/http-api/v5/#reading-an-event-from-a-stream   301!
+/server/generated/v5/docs/http-api/optional-http-headers          /clients/http-api/v5/optional-http-headers.html 301!
+
+/server/5.0.8/http-api/writing-events.html                        /clients/http-api/v5/#writing-metadata  301!
+/server/5.0.8/http-api/stream-metadata.html                       /clients/http-api/v5/#stream-metadata   301!
+/server/5.0.9/http-api                                            /clients/http-api/v5   301!
+
+# ########################################################################################################################
+# Cloud 
+# ########################################################################################################################
+
+/cloud/quick-start.html                                             /cloud/intro   301!
 
 ## Cloud from Vuepress v1 to v2
 /cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide 301!
@@ -30,34 +117,22 @@
 /cloud/provision/gcp/peering                /cloud/provision/#network-peering-2           301!
 /cloud/provision/gcp/regions                /cloud/provision/#available-regions-2         301!
 
+
+# ########################################################################################################################
+# Db Server 
+# ########################################################################################################################
+
 ## Database from Vuepress v1 to v2
 /server/:version/introduction/              /server/:version/                          301!
 /server/:version/docs/*                     /server/:version/:splat                    301!
-/server/v5/server/                          /server/v5/server/                         200!
-/server/v5/server/threading.html            /server/v5/server-settings.html#threading  200!
-/server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
-## TCP Clients from Vuepress v1 to v2
-/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                      301!
-/clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301!
-/clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
-/clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301!
-## more TCP Clients redirects
-/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                      301!
-/clients/dotnet/5.0/                        /clients/tcp/dotnet/21.2                      301!
-/clients/dotnet/21.2/                       /clients/tcp/dotnet/21.2                      301!
-/clients/dotnet/20.10/                      /clients/tcp/dotnet/21.2                      301!
 
-## gRPC Clients from Vuepress v1 to v2
-/clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301!
-/clients/grpc/getting-started/*                                      /clients/grpc/                               301!
-/clients/grpc/subscribing-to-streams/*                               /clients/grpc/subscriptions.html             301!
-/clients/grpc/:firstpart.html                                        /clients/grpc/:firstpart.html                200
-/clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301!
-
+# ########################################################################################################################
 ## Server version 23
 /server/v23.6/*                             /server/v23.10/:splat                      301!
 
+
+# ########################################################################################################################
 ## Server version 22
 /server/v22.6/*                             /server/v22.10/:splat                      301!
 
@@ -65,6 +140,8 @@
 /server/v22.6/server/streams/metadata-and-reserved-names.html     /server/v22.10/streams.html#metadata-and-reserved-names   301!
 /server/v22.6/server/threading.html                               /server/v22.10/server-settings.html#threading   301!
 
+
+# ########################################################################################################################
 ## Server version 21
 /server/generated/21.2/docs/*               /server/v21.10/:splat                      301!
 /server/generated/v21.6/docs/*              /server/v21.10/:splat                      301!
@@ -121,11 +198,11 @@
 /server/v21.10/clustering/using-dns.html                          /server/v21.10/cluster.html#cluster-with-dns   301!
 
 
+# ########################################################################################################################
 ## Server version 20
 /server/v20/server/*                        /server/v20.10/:splat                      301!
 /server/20.6/server/*                       /sever/v20.10/:splat                       301!
 /server/generated/v20.10/docs/*             /server/v20.10/:splat                      301!
-
 
 /server/v20.6/server/introduction                                 /server/v20.10   301!
 /server/20.6/server/streams/metadata-and-reserved-names.html      /server/v20.10/streams.html#metadata-and-reserved-names   301!
@@ -163,6 +240,7 @@
 /server/generated/v20.10/docs/security/users-and-access-control-lists.html        /server/v20.10/security.html   301!
 
 
+# ########################################################################################################################
 ## Server version 5
 /server/v5/server/*                         /server/v5/:splat                          301!
 /server/v5.0/server/*                       /server/v5/:splat                          301!
@@ -170,10 +248,6 @@
 /server/5.0.9/server/*                      /server/v5/:splat                          301!
 /server/generated/v5/docs/*                 /server/v5/:splat                          301!
 
-
-/server/5.0.8/http-api/writing-events.html                        /clients/http-api/v5/#writing-metadata  301!
-/server/5.0.8/http-api/stream-metadata.html                       /clients/http-api/v5/#stream-metadata   301!
-/server/5.0.9/http-api                                            /clients/http-api/v5   301!
 /server/v5/introduction/clients.html                              /server/v5/#protocols-clients-and-sdks   301!
 /server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
 /server/v5/installation/configuration.html                        /server/v5/configuration.html#options-and-configuration   301!
@@ -193,10 +267,6 @@
 /server/v5/networking/nat.html                                    /server/v5/networking.html#nat-and-port-forward   301!
 /server/v5/networking/heartbeat.html                              /server/v5/networking.html#heartbeat-timeouts   301!
 /server/v5/server/threading.html                                  /server/v5/server-settings.html#threading   301!
-/server/v5/http-api                                               /clients/http-api/v5/persistent.html   301!
-/server/v5/http-api/persistent/security.html                      /clients/http-api/v5/persistent.html   301!
-/server/v5/http-api/writing-events.html                           /clients/http-api/v5/#writing-metadata  301!
-/server/v5/http-api/reading-subscribing-events.html               /clients/http-api/v5/#reading-an-event-from-a-stream   301!
 /server/v5/projections/configuration.html                         /server/v5/projections.html#configuring-projections   301!
 /docs/server/v5/server/projections                                /server/v5/projections.html   301!
 /server/v5/projections/projections-config.html                    /server/v5/projections.html#configuring-projections   301!
@@ -215,7 +285,6 @@ server/v5/diagnostics/histograms.html                             /server/v5/dia
 /server/v5/clustering/using-ip-addresses.html                     /server/v5/cluster.html#cluster-with-dns   301!
 /server/5.0/projections/user-defined-projections.html             /server/v5/projections.html#user-defined-projections   301!
 /server/generated/v5/docs/server/networking/external.html         /server/v5/networking.html#external-interface   301!
-/server/generated/v5/docs/http-api/optional-http-headers          /clients/http-api/v5/optional-http-headers.html 301!
 /server/v5/streams/deleting-streams-and-events.html               /server/v5/streams.html#deleting-streams-and-events   301!
 /server/generated/v5/http-api/deleting-a-stream.html              /server/v5/streams.html#deleting-streams-and-events   301!
 /server/v5/streams/metadata-and-reserved-names.html               /server/v5/streams.html#metadata-and-reserved-names   301!
@@ -234,35 +303,13 @@ server/v5/diagnostics/histograms.html                             /server/v5/dia
 /server/v5/installation/windows.html                              /server/v5/installation.html#windows   301!
 /server/generated/v5/docs/server/indexes                          /server/v5/indexes.html#indexing   301!
 /server/generated/v5/docs/projections/system-projections.html     /server/v5/projections.html#system-projections   301!
-/server/v5/samples/http-api/event.json                            /clients/http-api/v5/api.html   301!
 /server/generated/v5/docs/http-api/stream-metadata.html           /server/v5/streams.html#stream-metadata   301!
-/server/generated/v5/http-api/persistent-subscriptions.html       /clients/http-api/v5/persistent.html   301!
-/server/generated/v5/http-api/reading-subscribing-events.html     /clients/http-api/v5/#reading-an-event-from-a-stream   301!   
 
-/clients/http-api/generated/v5/docs/api                            /clients/http-api/v5/api.html   301!
-/clients/http-api/v5/introduction                                  /clients/http-api/v5   301!
+/server/v5/server/                          /server/v5/server/                         200!
+/server/v5/server/threading.html            /server/v5/server-settings.html#threading  200!
+/server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
-/clients/http-api/generated/v5/docs/optional-http-headers                           /clients/http-api/v5/optional-http-headers.html 301!
-/clients/http-api/generated/v5/docs/introduction/deleting-a-stream.html             /clients/http-api/v5/#deleting-a-stream   301!        
-/server/generated/v5/docs/http-api/optimistic-concurrency-and-idempotence.html      /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
-/clients/http-api/generated/v5/docs/optional-http-headers/expected-version.html     /clients/http-api/v5/optional-http-headers.html#expected-version   301!
-/clients/http-api/generated/v5/docs/optional-http-headers/requires-master.html      /clients/http-api/v5/optional-http-headers.html#requires-master   301!
-/clients/http-api/generated/v5/docs/optional-http-headers/resolve-linkto.html       /clients/http-api/v5/optional-http-headers.html#resolve-linkto   301!
-/clients/http-api/generated/v5/docs/introduction/reading-streams.html               /clients/http-api/v5/#reading-streams-and-events   301!
-/clients/http-api/generated/v5/docs/introduction/optimistic-concurrency-and-idempotence.html      /clients/http-api/v5/#optimistic-concurrency-and-idempotence   301!
-/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
-/clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
-/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
-/clients/http-api/v5/samples/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
-/docs/server/v5/http-api/sample-code/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json  /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
-/samples/clients/http-api/v5/event.json                                                           /clients/http-api/v5/samples/v5/event.json   301!
-/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
-/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
-/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json   301!
-/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
 
-# Other redirects 
-/cloud/quick-start.html                                             /cloud/intro   301!
-/clients                                                            /clients/grpc   301!
+
 
                                                                                                   
