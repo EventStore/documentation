@@ -10,13 +10,13 @@ export const en: NavbarConfig = [
         text: "Server",
         children: ver.linksFor("server")
     },
-    {text: "Connectors", link: "/connectors/"},    
+    {text: "Connectors", link: "/connectors/"},
     {
         text: "Clients & APIs",
         children: [
-            {text: "Clients", link: "/clients/grpc/"},
+            {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/"}]},
             {text: "HTTP API", children: ver.linksFor("http-api")},
-            {text: "Deprecated Clients", link: "/clients/tcp/"},
+            {text: "Deprecated", children: [{text: "Legacy .NET client", link: "/clients/tcp/"}]},
         ]
     },
     {text: "Cloud", link: "/cloud/intro/"},

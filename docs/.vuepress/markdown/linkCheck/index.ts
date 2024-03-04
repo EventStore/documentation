@@ -34,7 +34,11 @@ function findAnchor(filename: string, anchor: string): boolean {
 function checkLink(token, attrName: string, env: MdEnv) {
     const href = token.attrGet(attrName);
     if (href.startsWith("http") || href.endsWith(".html")) return;
+    ensureLocalLink(href, env, true);
+}
 
+export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: boolean) {
+    if (ignorePlaceholders && href.startsWith("@")) return;
     // check the link
     const split = href.split("#");
     const currentPath = href[0] == "/" ? path.resolve(__dirname, "../../..") : path.dirname(env.filePath);

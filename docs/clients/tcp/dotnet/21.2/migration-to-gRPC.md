@@ -4,7 +4,7 @@ The TCP client is considered legacy. We recommend migrating to the gRPC client.
 
 We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, back-pressure,etc., instead of building custom implementations. 
 
-As gRPC is multi-platform and a widely adopted standard, it has enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJs, and Rust.
+As gRPC is multi-platform and a widely adopted standard, it has enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJS, and Rust.
 
 The TCP client will still get necessary bug fixes, but new database features will be only delivered for gRPC clients (e.g., persistent subscription to `$all`).
 
@@ -236,7 +236,7 @@ You can use the [online configuration tool](@clients/grpc/README.md#connection-d
 ## Security
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
-Read more in [database security docs](@server/security.md).
+Read more in [database security docs](../../../../server/v23.10/security.md).
 
 ## Appending events
 
@@ -849,7 +849,7 @@ You may also consider some performance improvements like checking once every few
 
 ### Resolving linked events
 
-[Projections in EventStoreDB](@server/projections.md) let you append new events or link existing events to streams. Links won't contain the original event data. ESDB can resolve it automatically depending on the value you passed to the operation call.
+[Projections in EventStoreDB](../../../../server/v24.2/projections.md) let you append new events or link existing events to streams. Links won't contain the original event data. EventStoreDB can resolve it automatically depending on the value you passed to the operation call.
 
 The TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
 
