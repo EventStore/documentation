@@ -7,22 +7,30 @@
 # Clients 
 # ########################################################################################################################
 
+## redirect for internet search on "esdb .net client
+/clients/dotnet/5.0/connecting.html   /clients/grpc/#connecting-to-eventstoredb    301!
+
 # ##################################################
-## TCP Clients from Vuepress v1 to v2
-/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                      301!
-/clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301!
-/clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
-/clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301!
+## TCP Clients
+
+/clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301!
+/clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301!
+/clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301!
+
 ## more TCP Clients redirects
 /samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301!
 /clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301!
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301!
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301!
 
-## /clients/dotnet/*                           /clients/tcp/dotnet/:splat                     301!
-# /clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301!
-# /clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301!
-# /clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301!
+## /clients/dotnet/*                           /clients/tcp/dotnet/:splat                  301!
+
+## TCP Clients from Vuepress v1 to v2
+/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                       301!
+
+/clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301!
+/clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
+/clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301!
 
 
 # ##################################################
@@ -32,10 +40,6 @@
 /clients/grpc/subscribing-to-streams/*                               /clients/grpc/subscriptions.html             301!
 /clients/grpc/:firstpart.html                                        /clients/grpc/:firstpart.html                200
 /clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301!
-
-## redirect for internet search on "esdb .net client
-/clients/dotnet/5.0/connecting.html   /clients/grpc/#connecting-to-eventstoredb    301!
-
 
 # ##################################################
 # HTTP API from Vuepress v1 to v2
@@ -83,13 +87,13 @@
 /server/5.0.8/http-api/stream-metadata.html                       /clients/http-api/v5/#stream-metadata   301!
 /server/5.0.9/http-api                                            /clients/http-api/v5   301!
 
-
-
 # ##################################################
 # General clients redirect 
-# This rule should be last in clients list otherwise it takes precedence
+# This rule should be last in this clients list otherwise it takes precedence.
 # ##################################################
 /clients                                                            /clients/grpc   301!
+
+
 
 # ########################################################################################################################
 # Cloud 
