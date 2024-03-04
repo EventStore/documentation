@@ -33,7 +33,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         },
         "@httpapi": {
             "default": {
-                path: "clients/http-api",
+                path: "/http-api",
                 version: "{version}"
             }
         },
