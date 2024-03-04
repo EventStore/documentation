@@ -38,10 +38,15 @@
 /server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
 ## TCP Clients from Vuepress v1 to v2
-/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/20.10                      301!
+/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                      301!
 /clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301!
 /clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
 /clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301!
+## more TCP Clients redirects
+/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/5.0/                        /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/21.2/                       /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/20.10/                      /clients/tcp/dotnet/21.2                      301!
 
 ## gRPC Clients from Vuepress v1 to v2
 /clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301!
