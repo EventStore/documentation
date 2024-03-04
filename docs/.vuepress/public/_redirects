@@ -23,7 +23,7 @@
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301!
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301!
 
-/clients/dotnet/*                           /clients/tcp/dotnet/:splat                     301!
+## /clients/dotnet/*                           /clients/tcp/dotnet/:splat                     301!
 
 # /clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301!
 
