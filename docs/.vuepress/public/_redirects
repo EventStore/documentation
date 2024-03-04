@@ -1,4 +1,12 @@
-# Redirects from what the browser requests to what we serve
+# ########################################################################################################################
+# List of redirect rules in Netlify
+# Refer to https://docs.netlify.com/routing/redirects/redirect-options/
+# ########################################################################################################################
+
+# ########################################################################################################################
+# General redirects 
+# Basic format is: from what the browser requests to what we serve
+# 
 /latest.html                           /server/v24.2/                            301!
 /latest                                /server/v24.2/                            301!
 # /server/latest/*                       /server/v24.2/:splat                      301!
