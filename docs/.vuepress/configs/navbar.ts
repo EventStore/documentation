@@ -14,9 +14,9 @@ export const en: NavbarConfig = [
     {
         text: "Clients & APIs",
         children: [
-            {text: "gRPC", link: "/clients/grpc/"},
-            {text: "TCP", children: ver.linksFor("dotnet-client")},
-            {text: "HTTP", children: ver.linksFor("http-api")},
+            {text: "Clients", link: "/clients/grpc/"},
+            {text: "HTTP API", children: ver.linksFor("http-api")},
+            {text: "Deprecated Clients", link: "/clients/tcp/"},
         ]
     },
     {text: "Cloud", link: "/cloud/intro/"},

@@ -4,7 +4,7 @@ This page provides an example of using [user-defined projections](@server/projec
 
 ## Adding sample data
 
-[Download](https://github.com/EventStore/documentation/tree/master/docs/clients/dotnet/5.0/sample-code/Seed) the following files that contain sample data used throughout this step of the getting started guide.
+[Download](https://github.com/EventStore/documentation/tree/master/docs/clients/tcp/dotnet/5.0/sample-code/Seed) the following files that contain sample data used throughout this step of the getting started guide.
 
 - [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](@httpapi/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
 - [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](@httpapi/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)

@@ -1,0 +1,14 @@
+[
+  {
+    "id": "dotnet-client",
+    "group": ".NET TCP SDK",
+    "basePath": "clients/tcp/dotnet",
+    "versions": [
+      {
+        "version": "",
+        "path": "21.2",
+        "startPage": ""
+      }
+    ]
+  }
+]

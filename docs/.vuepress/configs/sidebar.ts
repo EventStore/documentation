@@ -19,7 +19,7 @@ export const en: ESSidebarConfig = {
   ],
   "/clients/grpc/": [
     {
-      group: "gRPC clients",
+      group: "Clients",
       children: [
         "/clients/grpc/README.md",
         "/clients/grpc/appending-events.md",

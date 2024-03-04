@@ -66,15 +66,7 @@
     "repo": "https://github.com/EventStore/EventStore-Client-Dotnet",
     "branches": [
       {
-        "version": "21.2",
-        "name": "master"
-      },
-      {
-        "version": "22.0",
-        "name": "master"
-      },
-      {
-        "version": "23.1",
+        "version": "23.2.0",
         "name":"master"
       }
     ]
