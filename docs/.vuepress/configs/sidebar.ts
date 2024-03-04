@@ -5,6 +5,18 @@ export type GroupItem = { group: string, children: string[] };
 export type ESSidebarConfig = Record<string, GroupItem[]> | SidebarConfig | Record<string, SidebarItem[]>
 
 export const en: ESSidebarConfig = {
+  "/connectors/": [
+    {
+      group: "Connectors",
+      children: [
+        "/connectors/README.md",
+        "/connectors/quickstart.md",
+        "/connectors/manage.md",
+        "/connectors/sinks.md",
+        "/connectors/details.md",
+      ],
+    },
+  ],
   "/clients/grpc/": [
     {
       group: "Clients",

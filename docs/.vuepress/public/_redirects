@@ -1,7 +1,7 @@
 # Redirects from what the browser requests to what we serve
-/latest.html                           /server/v23.10/                            301!
-/latest                                /server/v23.10/                            301!
-# /server/latest/*                       /server/v23.10/:splat                      301!
+/latest.html                           /server/v24.2/                            301!
+/latest                                /server/v24.2/                            301!
+# /server/latest/*                       /server/v24.2/:splat                      301!
 
 ## HTTP API from Vuepress v1 to v2
 /server/v5/docs/http-api/                   /clients/http-api/v5/                      301!
@@ -38,10 +38,15 @@
 /server/v5/server/caching.html              /server/v5/server/caching.html             200!
 
 ## TCP Clients from Vuepress v1 to v2
-/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/20.10                      301!
+/clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                      301!
 /clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301!
 /clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
 /clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301!
+## more TCP Clients redirects
+/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/5.0/                        /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/21.2/                       /clients/tcp/dotnet/21.2                      301!
+/clients/dotnet/20.10/                      /clients/tcp/dotnet/21.2                      301!
 
 ## gRPC Clients from Vuepress v1 to v2
 /clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301!

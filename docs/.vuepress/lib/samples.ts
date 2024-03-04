@@ -34,7 +34,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         "@httpapi": {
             "default": {
                 path: "clients/http-api",
-                version: "v5"
+                version: "{version}"
             }
         },
         "@grpc": {          
@@ -64,7 +64,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "java": {
                 label: "Java",
-                path: "clients/java/5.3.0"
+                path: "clients/java/5.3.1"
             },
         }
     };
@@ -73,7 +73,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
 
     const catName = includesCat ? pseudo[0] : srcCat;
 
-    //logger.info(`catName ${catName} - includesCat ${includesCat} - pseudo[0] ${pseudo[0]} - srCat ${srcCat}`); //
+    // logger.info(`catName ${catName} - includesCat ${includesCat} - pseudo[0] ${pseudo[0]} - srCat ${srcCat}`); //
 
     const cat = cats[catName];
     if (cat === undefined) {

@@ -6,42 +6,40 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ## Run EventStoreDB
 ### Installation
-- [Installation Guide](./server/v23.10/installation.html)
-- [Linux](./server/v23.10/installation.html#linux)
-- [Docker](./server/v23.10/installation.html#docker)
+- [Installation Guide](./server/v24.2/installation.md)
+- [Linux](./server/v24.2/installation.md#linux)
+- [Docker](./server/v24.2/installation.md#docker)
   - Single Node: `docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http`
-- [Windows](./server/v23.10/installation.html#windows)
+- [Windows](./server/v24.2/installation.md#windows)
 - See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/docs/cloud/intro/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
-- [Configuration guide](./server/v23.10/configuration.html)
+- [Configuration guide](./server/v24.2/configuration.md)
 
 ### Operations
-- [Upgrade](../server/v23.10/upgrade-guide.html)
-- [Maintenance](./server/v23.10/operations.html#maintenance)
-- [Diagnostics](./server/v23.10/diagnostics.html)
-- [Metrics](./server/v23.10/metrics.html)
+- [Upgrade](./server/v24.2/upgrade-guide.md)
+- [Maintenance](./server/v24.2/operations.md#maintenance)
+- [Diagnostics](./server/v24.2/diagnostics.md)
+- [Metrics](./server/v24.2/metrics.md)
 
 ### Features
-- [Event streams](./server/v23.10/streams.html)
-- [Indexes](./server/v23.10/indexes.html)
-- [Subscriptions](./server/v23.10/persistent-subscriptions.html)
-- [Projections](./server/v23.10/projections.html)
+- [Event streams](./server/v24.2/streams.md)
+- [Indexes](./server/v24.2/indexes.md)
+- [Subscriptions](./server/v24.2/persistent-subscriptions.md)
+- [Projections](./server/v24.2/projections.md)
 
 ## Start developing your application
-- Set up [a client to connect](./clients/grpc/#connecting-to-eventstoredb) to EventStoreDB
-- [Appending events](./clients/grpc/appending-events.html)
-- [Reading events](./clients/grpc/reading-events.html)
-- [Catch-up subscriptions](./clients/grpc/subscriptions.html)
-- [Persistent subscriptions](./clients/grpc/persistent-subscriptions.html)
-- [Projection management](clients/grpc/projections.html)
-- [Get sample code in your preferred language](./clients/grpc/#creating-a-client)
+- Set up [a client to connect](./clients/grpc/README.md#connecting-to-eventstoredb) to EventStoreDB
+- [Appending events](./clients/grpc/appending-events.md)
+- [Reading events](./clients/grpc/reading-events.md)
+- [Catch-up subscriptions](./clients/grpc/subscriptions.md)
+- [Persistent subscriptions](./clients/grpc/persistent-subscriptions.md)
+- [Projection management](clients/grpc/projections.md)
+- [Get sample code in your preferred language](./clients/grpc/README.md#creating-a-client)
 - Check out [full code examples](https://github.com/EventStore/samples)
 
-
 ## [FAQs](https://www.eventstore.com/faq)
-
 
 ## Event Sourcing: What Is it and Why Use it?
 
@@ -115,7 +113,7 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 [Keep your streams short! Temporal modeling for fast reads and optimal data retention](https://www.eventstore.com/blog/keep-your-streams-short-temporal-modelling-for-fast-reads-and-optimal-data-retention)
 
-[4 Strategies for future events with Event Sourcing](https://www.eventstore.com/blog/4-strategies-for-future-events-with-event-sourcing)
+[Strategies for future events with Event Sourcing](https://www.eventstore.com/blog/4-strategies-for-future-events-with-event-sourcing)
 
 [EventStorming Modelling Patterns: Going Beyond the Superficial - Event Store Blog](https://www.eventstore.com/blog/event-storming-going-beyond-the-superficial)
 
@@ -128,12 +126,11 @@ Learn about key event sourcing concepts, get started on your application, find t
 [How to get the current entity state from events?](https://www.eventstore.com/blog/how-to-get-the-current-entity-state-from-events)
 
 
-## Design – Advanced
+## Design – Advanced
 
 [Counterexamples regarding consistency in event sourced solutions (Part 1)](https://www.eventstore.com/blog/counterexamples-regarding-consistency-in-event-sourced-solutions-part-1)
 
 [When to go from collaborative modelling to coding? Part 1](https://www.eventstore.com/blog/when-to-go-from-collaborative-modelling-to-coding-part-1)
-
 
 ## Release Schedule for EventStoreDB
 

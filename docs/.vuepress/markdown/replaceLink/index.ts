@@ -2,6 +2,7 @@ import {PluginWithOptions} from "markdown-it";
 import {fs, logger, path} from "@vuepress/utils";
 import version from "../../lib/version";
 import {instance} from "../../lib/versioning";
+import {ensureLocalLink} from "../linkCheck";
 
 export interface ReplaceLinkPluginOptions {
     replaceLink?: (link: string, env: any) => string;
@@ -58,6 +59,7 @@ function replaceCrossLinks(token, env: MdEnv) {
         return;
     }
     token.attrSet("href", newRef);
+    logger.info(`Resolved ${href} to ${newRef}`);
 }
 
 export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (md, opts) => {
@@ -78,8 +80,14 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                     const type = token.type;
                     switch (type) {
                         case "link_open":
+                            const href = token.attrGet("href");
                             replaceAttr(token, "href")
                             replaceCrossLinks(token, state.env);
+                            if (href.startsWith("@")) {
+                                const replaced = token.attrGet("href");
+                                logger.info(`Replaced ${href} with ${replaced}`);
+                                ensureLocalLink(replaced, state.env, false);
+                            }
                             break;
                         case "image":
                             replaceAttr(token, "src")

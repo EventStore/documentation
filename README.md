@@ -12,7 +12,7 @@ We're open for any contribution. If you noticed some inconsistency, missing piec
 
 ## Samples
 
-GRPC Clients:
+EventStoreDB clients:
 - C# - [see more](https://github.com/EventStore/EventStore-Client-Dotnet/tree/master/samples)
 - NodeJS - [see more](https://github.com/EventStore/EventStore-Client-NodeJS/tree/master/samples)
 - Java - [see more](https://github.com/EventStore/EventStoreDB-Client-Java/tree/trunk/db-client-java/src/test/java/com/eventstore/dbclient/samples)

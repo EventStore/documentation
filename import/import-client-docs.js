@@ -1,8 +1,8 @@
-const fs        = require("fs");
-const path      = require("path");
-const exec      = require("child_process").exec;
-const del       = require("del");
-const degit     = require("degit");
+const fs = require("fs");
+const path = require("path");
+const exec = require("child_process").exec;
+const del = require("del");
+const degit = require("degit");
 
 const repos = require('./repos.json');
 
@@ -50,7 +50,7 @@ async function copyRepoFiles(repo, baseDest, branch, relativePath, subDest) {
     const destinationPath = path.join(baseDest, subDest || "");
     await safeRmdir(destinationPath);
 
-    const sub      = relativePath.join("/");
+    const sub = relativePath.join("/");
     const repoPath = `${repo}/${sub}#${branch}`;
 
     console.info(`Fetching ${sub} from ${repo} branch ${branch} to ${destinationPath}`);
@@ -58,7 +58,7 @@ async function copyRepoFiles(repo, baseDest, branch, relativePath, subDest) {
     fs.writeFileSync(path.join(destinationPath, ".gitignore"), "*");
 
     return {
-        success:     true,
+        success: true,
         destination: destinationPath
     };
 }
@@ -81,9 +81,9 @@ async function processRepo(repo) {
 
     const definition = [
         {
-            id:       repo.id,
+            id: repo.id,
             basePath: repo.basePath,
-            group:    repo.group,
+            group: repo.group,
             versions: []
         }
     ];

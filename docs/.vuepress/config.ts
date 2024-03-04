@@ -34,15 +34,15 @@ export default defineUserConfig<ESThemeOptions>({
         md.use(importCodePlugin, {
             handleImportPath: s => resolveMultiSamplesPath(s)
         });
-        md.use(linkCheckPlugin);
         // this is a quick hack, should be fixed properly to remove direct references from here
         md.use(replaceLinkPlugin, {
             replaceLink: (link: string, _) => link
-                .replace("@clients/http-api/", "/clients/http-api/v5/")
-                .replace("@clients/httpapi/", "/clients/http-api/v5/")
                 .replace("@clients/grpc/", "/clients/grpc/")
-                .replace("@httpapi/", "/samples/clients/http-api/v5/")
+                .replace("@client/dotnet/5.0/", "/clients/tcp/dotnet/21.2/")
+                .replace("@clients/http-api/", "/clients/http-api/")
+                .replace("@httpapi/", "/clients/http-api/")
         });
+        md.use(linkCheckPlugin);
     },
     plugins: [
         ["@vuepress/docsearch", {
