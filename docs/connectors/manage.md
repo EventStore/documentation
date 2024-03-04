@@ -85,7 +85,7 @@ curl.exe -i -u "admin:changeit" https://localhost:2113/connectors/list
 :::
 ::: code-group-item Bash
 ```bash
-curl -i -u "admin:changeit" https://localhost:2113/connectors/list"
+curl -i -u "admin:changeit" https://localhost:2113/connectors/list
 ```
 :::
 ::::
