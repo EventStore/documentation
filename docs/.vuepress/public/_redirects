@@ -73,8 +73,7 @@
 /samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json   301!
 /samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json   301!
 /samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1166.json   301!
-/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/
-shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
+/samples/clients/http-api/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json          /clients/http-api/v5/samples/v5/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1167.json   301!
 
 /server/generated/v5/http-api/persistent-subscriptions.html       /clients/http-api/v5/persistent.html   301!
 /server/generated/v5/http-api/reading-subscribing-events.html     /clients/http-api/v5/#reading-an-event-from-a-stream   301! 
