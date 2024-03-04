@@ -113,7 +113,7 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 [Keep your streams short! Temporal modeling for fast reads and optimal data retention](https://www.eventstore.com/blog/keep-your-streams-short-temporal-modelling-for-fast-reads-and-optimal-data-retention)
 
-[4 Strategies for future events with Event Sourcing](https://www.eventstore.com/blog/4-strategies-for-future-events-with-event-sourcing)
+[Strategies for future events with Event Sourcing](https://www.eventstore.com/blog/4-strategies-for-future-events-with-event-sourcing)
 
 [EventStorming Modelling Patterns: Going Beyond the Superficial - Event Store Blog](https://www.eventstore.com/blog/event-storming-going-beyond-the-superficial)
 
