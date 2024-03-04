@@ -52,7 +52,7 @@
 /clients/dotnet/20.10/*                      /clients/tcp/dotnet/21.2/:splat               301!
 
 # /clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301!
-/clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301!
+# /clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301!
 
 
 ## gRPC Clients from Vuepress v1 to v2
