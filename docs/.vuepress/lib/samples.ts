@@ -48,7 +48,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "cs": {
                 label: "C#",
-                path: "clients/dotnet/23.1"
+                path: "clients/dotnet/23.2.0"
             },
             "go": {
                 label: "Go",
@@ -56,7 +56,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "rs": {
                 label: "Rust",
-                path: "clients/rust/2.3.0"
+                path: "clients/rust/3.0.0"
             },
             "py": {
                 label: "Python",
