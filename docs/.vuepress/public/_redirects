@@ -3,6 +3,9 @@
 /latest                                /server/v24.2/                            301!
 # /server/latest/*                       /server/v24.2/:splat                      301!
 
+# do redirect for internet search on "esdb .net client
+/clients/dotnet/5.0/connecting.html   /clients/grpc/#connecting-to-eventstoredb    301!
+
 ## HTTP API from Vuepress v1 to v2
 /server/v5/docs/http-api/                   /clients/http-api/v5/                      301!
 /server/v5/docs/http-api/:firstpart.html    /clients/http-api/v5/                      301!
