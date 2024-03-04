@@ -6,28 +6,28 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ## Run EventStoreDB
 ### Installation
-- [Installation Guide](./server/v23.10/installation.html)
-- [Linux](./server/v23.10/installation.html#linux)
-- [Docker](./server/v23.10/installation.html#docker)
+- [Installation Guide](./server/v24.2/installation.html)
+- [Linux](./server/v24.2/installation.html#linux)
+- [Docker](./server/v24.2/installation.html#docker)
   - Single Node: `docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http`
-- [Windows](./server/v23.10/installation.html#windows)
+- [Windows](./server/v24.2/installation.html#windows)
 - See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
 - Want to run Event Store in the Cloud? Head to the [Cloud introduction](/cloud/intro/) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
-- [Configuration guide](./server/v23.10/configuration.html)
+- [Configuration guide](./server/v24.2/configuration.html)
 
 ### Operations
-- [Upgrade](../server/v23.10/upgrade-guide.html)
-- [Maintenance](./server/v23.10/operations.html#maintenance)
-- [Diagnostics](./server/v23.10/diagnostics.html)
-- [Metrics](./server/v23.10/metrics.html)
+- [Upgrade](../server/v24.2/upgrade-guide.html)
+- [Maintenance](./server/v24.2/operations.html#maintenance)
+- [Diagnostics](./server/v24.2/diagnostics.html)
+- [Metrics](./server/v24.2/metrics.html)
 
 ### Features
-- [Event streams](./server/v23.10/streams.html)
-- [Indexes](./server/v23.10/indexes.html)
-- [Subscriptions](./server/v23.10/persistent-subscriptions.html)
-- [Projections](./server/v23.10/projections.html)
+- [Event streams](./server/v24.2/streams.html)
+- [Indexes](./server/v24.2/indexes.html)
+- [Subscriptions](./server/v24.2/persistent-subscriptions.html)
+- [Projections](./server/v24.2/projections.html)
 
 ## Start developing your application
 - Set up [a client to connect](./clients/grpc/#connecting-to-eventstoredb) to EventStoreDB
