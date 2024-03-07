@@ -13,35 +13,14 @@
       "variables": {
         "version": ["v23.10"]
       },
-      "page_rank": 8
-    },
-    {
-      "url": "http://localhost:8080/server/(?P<version>.*?)/",
-      "variables": {
-        "version": ["v23.6"]
-      },
-      "page_rank": 8
+      "page_rank": 9
     },
     {
       "url": "http://localhost:8080/server/(?P<version>.*?)/",
       "variables": {
         "version": ["v22.10"]
       },
-      "page_rank": 7
-    },
-    {
-      "url": "http://localhost:8080/server/(?P<version>.*?)/",
-      "variables": {
-        "version": ["v21.10"]
-      },
-      "page_rank": 5
-    },
-    {
-      "url": "http://localhost:8080/server/(?P<version>.*?)/",
-      "variables": {
-        "version": ["v20.10"]
-      },
-      "page_rank": 3
+      "page_rank": 8
     },
     {
       "url": "http://localhost:8080/server/(?P<version>.*?)/",
@@ -55,20 +34,12 @@
       "page_rank": 10
     },
     {
-      "url": "http://localhost:8080/clients/http-api/v5/",
+      "url": "http://localhost:8080/clients/http-api/v24.2/",
       "page_rank": 6
     },
     {
-      "url": "http://localhost:8080/clients/tcp/dotnet/5.0/",
-      "page_rank": 1
-    },
-    {
-      "url": "http://localhost:8080/clients/tcp/dotnet/20.10/",
-      "page_rank": 1
-    },
-    {
       "url": "http://localhost:8080/clients/tcp/dotnet/21.2/",
-      "page_rank": 1
+      "page_rank": 3
     },
     {
       "url": "http://localhost:8080/cloud/",
