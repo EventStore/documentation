@@ -28,7 +28,7 @@
     "@vuelidate/core": "2.0.0-alpha.29",
     "@vuelidate/validators": "2.0.0-alpha.29",
     "axios": "^1.6.7",
-    "express": "4.17.3",
+    "express": "4.19.2",
     "primeflex": "2.0.0",
     "primeicons": "4.1.0",
     "primevue": "3.8.1",
