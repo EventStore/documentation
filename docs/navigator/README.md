@@ -3,11 +3,11 @@
 title: "Introduction"
 ---
 
-# Navigator: A New UI For EventStoreDB <Badge text="Preview" type="warning" vertical="middle"/>
+# Navigator <Badge text="Preview" type="warning" vertical="middle"/>
 
-We're working on a new user interface for EventStoreDB and we invite you to try the preview.
+The aim of Navigator is to enable you to work with business events that are immutably stored and streamed in EventStoreDB, the event-native database.
 
-At this stage we're mainly looking for feedback on the new stream browser, along with your thoughts on upcoming features and general suggestions for the app.
+In this early release we're mainly looking for feedback on the new stream browser, along with your thoughts on upcoming features and general suggestions for the app.
 
 As the app is still in preview, expect some rough edges and for things to change as we progress into the final stages.
 
