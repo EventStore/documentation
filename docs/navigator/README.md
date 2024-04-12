@@ -11,15 +11,6 @@ At this stage we're mainly looking for feedback on the new stream browser, along
 
 As the app is still in preview, expect some rough edges and for things to change as we progress into the final stages.
 
-The Navigator features:
-- An easy way to connect to EventStoreDB instances
-- A comprehensive dashboard that provides
-    - Cluster details and status which you can capture in snapshots
-    - Replications
-    - Queue details
-- A stream browser that allows you to work and inspect streams and metadata
-
-
 The following packages are available for download.  
 
 
@@ -37,9 +28,15 @@ The following packages are available for download.
 
 ## Features in the preview
 
-In the Administration section you can use, under operations you can:
-1. Merge indexes
-2. Restart persistent subscriptions
+- An easy way to connect to EventStoreDB instances
+- A comprehensive dashboard that provides:
+    - Cluster details and status which you can capture in snapshots
+    - Replications
+    - Queue details
+- A stream browser that allows you to work and inspect streams and metadata
+- An Administration panel that enables you to:
+    - Merge indexes
+    - Restart persistent subscriptions
 
 ## General feedback
 
