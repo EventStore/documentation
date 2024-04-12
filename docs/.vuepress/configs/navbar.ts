@@ -10,6 +10,7 @@ export const en: NavbarConfig = [
         text: "Server",
         children: ver.linksFor("server")
     },
+    {text: "Navigator", link: "/navigator/"},    
     {text: "Connectors", link: "/connectors/"},
     {
         text: "Clients & APIs",
