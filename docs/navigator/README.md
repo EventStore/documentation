@@ -28,6 +28,7 @@ The following packages are available for download.
 
 ## Features in the preview
 
+The Navigator features:
 - An easy way to connect to EventStoreDB instances
 - A comprehensive dashboard that provides:
     - Cluster details and status which you can capture in snapshots
