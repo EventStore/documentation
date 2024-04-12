@@ -14,9 +14,9 @@ As the app is still in preview, expect some rough edges and for things to change
 The Navigator features:
 - An easy way to connect to EventStoreDB instances
 - A comprehensive dashboard that provides
- - Cluster details and status which you can capture in snapshots
- - Replications
- - Queue details
+    - Cluster details and status which you can capture in snapshots
+    - Replications
+    - Queue details
 - A stream browser that allows you to work and inspect streams and metadata
 
 
