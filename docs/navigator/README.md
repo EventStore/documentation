@@ -70,7 +70,7 @@ Upcoming features are:
 Select the customize icon in the top right corner of Navigator to select a theme: either a sun for light themes or a moon crescent for dark themes.
 
 ::: card
-![UI Themes](./themes.png)
+![UI Themes](./theme.png)
 :::
 
 
