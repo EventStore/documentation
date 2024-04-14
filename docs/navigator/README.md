@@ -5,9 +5,9 @@ title: "Introduction"
 
 # Navigator <Badge text="Preview" type="warning" vertical="middle"/>
 
-The aim of Navigator is to enable you to work with business events that are immutably stored and streamed in EventStoreDB, the event-native database.
+Navigator enables you to work with business events that are immutably stored and streamed in EventStoreDB, the event-native database.
 
-In this early release we're mainly looking for feedback on the new stream browser, along with your thoughts on upcoming features and general suggestions for the app.
+In this early release, we're mainly looking for feedback on the new stream browser, along with your thoughts on upcoming features and general suggestions for the app.
 
 As the app is still in preview, expect some rough edges and for things to change as we progress into the final stages.
 
@@ -48,7 +48,6 @@ To provide feedback on the app with any thoughts on its development, simply sele
 :::
 
 
-
 ### Vote on new features
 
 To help us shape the roadmap for the app, you can vote on upcoming features.
@@ -65,6 +64,13 @@ Upcoming features are:
 
 ::: card
 ![Vote On Feature](./images/vote_on_feature.png)
+:::
+
+## Customize Navigator look and feel by theme
+Select the customize icon in the top right corner of Navigator to select a theme: either a sun for light themes or a moon crescent for dark themes.
+
+::: card
+![UI Themes](./themes.png)
 :::
 
 

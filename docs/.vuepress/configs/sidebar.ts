@@ -10,6 +10,8 @@ export const en: ESSidebarConfig = {
       group: "Navigator",
       children: [
         "/navigator/README.md",
+        "/navigator/connect.md",
+        "/navigator/stream-browser.md",
       ],
     },
   ],
