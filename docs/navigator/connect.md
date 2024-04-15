@@ -1,17 +1,17 @@
 
 # Connect to an ESDB instance
 
-When you first start Navigator either connect to a new ESDB instance or reconnect to an instance you already set up.
+When you first start Navigator either connect to a new ESDB instance or reconnect to an instance you've already set up.
 
 
 ## New connection
 
-For a new connection, simply enter the endpoint of the ESDB instance e.g. `localhost:2113` for a local single node insecure instance.
+To create a new connection, simply enter the endpoint of the ESDB instance e.g. `localhost:2113` for a local single node insecure instance.
 
 The format for a connection endpoint is: `{host}:{port}`. 
 
 Navigator performs TLS auto discovery.
-If using TLS, specify `https` in the endpoint address: `http(s)://{host}:{port}`.
+If using TLS, specify `https` in the endpoint address: `https://{host}:{port}`.
 Navigator ignores all options except TLS i.e. `https` when specifying an endpoint.
 
 

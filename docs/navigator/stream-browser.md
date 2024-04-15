@@ -2,10 +2,24 @@
 
 Select `Stream Browser` to work with streams.
 
+::: card
+![Stream browser menu](./images/stream1.png)
+:::
 
-## Working with a strean
+In the stream browser, you can specify a stream to work by entering its name or select any stream e.g. a system stream or a recently changed stream.
 
-1. Go to stream
+::: card
+![Stream browser menu](./images/stream2.png)
+:::
+
+## Select a stream
+
+Under `Streams` enter a stream name then select `Go to stream`. This will take you to the stream details.
+
+::: card
+![Stream browser menu](./images/stream3.png)
+:::
+
    - input your stream name to go to stream
 2. System stream
 3. Recetly viewed streams
@@ -26,7 +40,7 @@ Select `Stream Browser` to work with streams.
    - 6e. Append event
 
 
-
+## Working with a stream
 1. Stream name
 2. Show / hide stream metadata
   2a. Go to metadata stream
