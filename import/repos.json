@@ -111,11 +111,16 @@
     "id": "node-client",
     "group": "NodeJS SDK",
     "basePath": "clients/node",
-    "samplesRelativePath": ["samples"],
+    "samplesRelativePath": [
+      "packages",
+      "test",
+      "src",
+      "samples"
+    ],
     "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
     "branches": [
       {
-        "version": "6.1.0",
+        "version": "6.2.1",
         "name": "master"
       }
     ],

@@ -40,11 +40,11 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
         "@grpc": {          
             "js": {
                 label: "JavaScript",
-                path: "clients/node/6.1.0"
+                path: "clients/node/6.2.1"
             },
             "ts": {
                 label: "TypeScript",
-                path: "clients/node/6.1.0"
+                path: "clients/node/6.2.1"
             },
             "cs": {
                 label: "C#",
