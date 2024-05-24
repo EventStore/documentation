@@ -27,6 +27,8 @@ export const en: ESSidebarConfig = {
         "/clients/grpc/subscriptions.md",
         "/clients/grpc/persistent-subscriptions.md",
         "/clients/grpc/projections.md",
+        "/clients/grpc/authentication.md",
+        "/clients/grpc/observability.md",
       ],
     },
   ],
