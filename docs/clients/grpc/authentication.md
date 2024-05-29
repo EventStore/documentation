@@ -6,13 +6,14 @@ X.509 certificates are digital certificates that use the X.509 public key infras
 
 ### Prerequisites
 
-1. EventStoreDB 24.2.0 or later.
+1. EventStoreDB 24.2.0 or later with commercial license.
 2. A valid x.509 certificate, which can be created using version `1.3` or higher of our [gencert tool](https://github.com/EventStore/es-gencert-cli).
-3. [Enable User Certificates plugin on the server](https://developers.eventstore.com/server/v24.2/configuration.html#plugins-configuration)
+3. The server must run in secure mode. See [Security Options](../../server/v24.2/security.md#security-options) for more information.
+4. [Enable User Certificates plugin on the server](../../server/v24.2/configuration.md#plugins-configuration)
 
 #### Generate User Certificates
 
-The following command uses the [gencert tool](https://github.com/EventStore/es-gencert-cli) to generate a user certificate for the user `admin` with a validity of `10` days:
+The following command uses the [gencert tool](https://github.com/EventStore/es-gencert-cli) to generate a user certificate for the user `admin` that will expire in 10 days:
 
 :::: tabs
 ::: tab Linux and macOS
@@ -36,8 +37,8 @@ The following command uses the [gencert tool](https://github.com/EventStore/es-g
 To connect to EventStoreDB using the x.509 certificate, you need to provide the
 certificate and the private key to the client. If both username/password and
 certificate authentication data are supplied, the client prioritizes user
-credentials for authentication. The client will throw an error if it receives only one component of the
-certificate files (either the certificate or the key), rather than both.
+credentials for authentication. The client will throw an error if the
+certificate and the key are not both provided.
 
 ::: note
 Please note that currently, password-protected private key files are not supported.
