@@ -7,8 +7,8 @@
     "vite": "2.8.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.12",
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.8",
     "@babel/preset-typescript": "^7.16.7",
     "@vuepress/plugin-docsearch": "^2.0.0-beta.35",
     "@vuepress/plugin-google-analytics": "file:./libs/plugin-google-analytics",
@@ -25,10 +25,10 @@
   },
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.9",
-    "@vuelidate/core": "2.0.0-alpha.29",
-    "@vuelidate/validators": "2.0.0-alpha.29",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "axios": "^1.6.7",
-    "express": "4.17.3",
+    "express": "^4.19.2",
     "primeflex": "2.0.0",
     "primeicons": "4.1.0",
     "primevue": "3.8.1",
