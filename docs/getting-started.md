@@ -5,29 +5,30 @@ Learn about key event sourcing concepts, get started on your application, find t
 [[toc]]
 
 ## Run EventStoreDB
+
 ### Installation
-- [Installation Guide](./server/v24.2/installation.md)
-- [Linux](./server/v24.2/installation.md#linux)
-- [Docker](./server/v24.2/installation.md#docker)
-  - Single Node: `docker run --name esdb-single-node -it -p 2113:2113 -p 1113:1113 eventstore/eventstore:latest --insecure --run-projections=All --enable-atom-pub-over-http`
-- [Windows](./server/v24.2/installation.md#windows)
+
+- [Installation Guide](@server/installation.md)
+  - [Linux](@server/installation.md#linux)
+  - [Docker](@server/installation.md#docker)
+  - [Windows](@server/installation.md#windows)
 - See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](/docs/cloud/intro/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/intro/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
-- [Configuration guide](./server/v24.2/configuration.md)
+- [Configuration guide](@server/configuration.md)
 
 ### Operations
-- [Upgrade](./server/v24.2/upgrade-guide.md)
-- [Maintenance](./server/v24.2/operations.md#maintenance)
-- [Diagnostics](./server/v24.2/diagnostics.md)
-- [Metrics](./server/v24.2/metrics.md)
+- [Upgrade](@server/upgrade-guide.md)
+- [Maintenance](@server/operations.md#maintenance)
+- [Diagnostics](@server/diagnostics.md)
+- [Metrics](@server/metrics.md)
 
 ### Features
-- [Event streams](./server/v24.2/streams.md)
-- [Indexes](./server/v24.2/indexes.md)
-- [Subscriptions](./server/v24.2/persistent-subscriptions.md)
-- [Projections](./server/v24.2/projections.md)
+- [Event streams](@server/streams.md)
+- [Indexes](@server/indexes.md)
+- [Subscriptions](@server/persistent-subscriptions.md)
+- [Projections](@server/projections.md)
 
 ## Start developing your application
 - Set up [a client to connect](./clients/grpc/README.md#connecting-to-eventstoredb) to EventStoreDB
