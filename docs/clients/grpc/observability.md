@@ -135,8 +135,7 @@ being performed but will generally include the same information.
 
 You can set up various exporters to send traces to different destinations.
 Additionally, you have the option to export these traces to a collector of your
-choice, such as [Jaeger](https://www.jaegertracing.io/) or
-[Seq](https://datalust.co/seq).
+choice, such as [Jaeger](https://www.jaegertracing.io/) or [Seq](https://datalust.co/seq).
 
 For instance, if you choose to use Jaeger as your backend of choice, you can
 view your traces in the Jaeger UI, which provides a powerful interface for

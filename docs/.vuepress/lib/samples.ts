@@ -48,7 +48,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "cs": {
                 label: "C#",
-                path: "clients/dotnet/23.2.0"
+                path: "clients/dotnet/23.3.3"
             },
             "go": {
                 label: "Go",
