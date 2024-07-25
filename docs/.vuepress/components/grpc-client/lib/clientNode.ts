@@ -1,5 +1,5 @@
 import {reactive} from "vue";
-import {UnwrapNestedRefs} from "@vue/reactivity";
+import type {UnwrapNestedRefs} from "@vue/reactivity";
 
 export interface ClusterNodeState {
     index: number;
@@ -12,7 +12,7 @@ export interface ClusterNode {
 
     canFetch(): boolean;
 
-    setAddress(address: string, port: number);
+    setAddress(address: string, port: number): void;
 }
 
 export function getEmptyNode(): ClusterNode {

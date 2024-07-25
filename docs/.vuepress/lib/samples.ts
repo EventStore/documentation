@@ -1,5 +1,5 @@
-import {logger, path} from '@vuepress/utils';
-import {ResolvedImport} from "../markdown/xode/types";
+import {logger, path} from 'vuepress/utils';
+import {type ResolvedImport} from "../markdown/xode/types";
 import version from "./version";
 
 const base = "../../samples";
@@ -15,16 +15,16 @@ export function resolveMultiSamplesPath(src: string): ResolvedImport[] {
 }
 
 export function resolveSamplesPath(src: string, srcCat: string | undefined) {
-    const def = s => {
+    const def = (s: string) => {
         return {label: "", path: s}
     };
 
-    const ext = src.split('.').pop();
+    const ext = src.split('.').pop()!;
     const pseudo = src.split('/');
     const includesCat = pseudo[0].startsWith('@');
     if (!includesCat && srcCat === undefined) return def(src);
 
-    const cats = {
+    const cats: Record<string, Record<string, {path: string, version?: string, label?: string}>> = {
         "@samples": {
             "default": {
                 path: "server",
@@ -70,11 +70,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     };
 
     const isVersion = pseudo.length > 1 && version.isVersion(pseudo[1]);
-
-    const catName = includesCat ? pseudo[0] : srcCat;
-
-    // logger.info(`catName ${catName} - includesCat ${includesCat} - pseudo[0] ${pseudo[0]} - srCat ${srcCat}`); //
-
+    const catName: string = includesCat ? pseudo[0] : srcCat!;
     const cat = cats[catName];
     if (cat === undefined) {
         logger.warn(`Unknown placeholder: ${pseudo[0]}`);

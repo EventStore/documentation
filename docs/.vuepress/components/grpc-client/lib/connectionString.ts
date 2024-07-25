@@ -3,9 +3,9 @@ import {getClusterConfig} from "./clusterInfo";
 import {getEmptyConnection} from "./connection";
 import {GossipMethod} from "./enums";
 import {reactive} from "vue";
-import {UnwrapNestedRefs} from "@vue/reactivity";
-import {KeepAlive} from "./keepAlive";
-import {ClusterNode} from "./clientNode";
+import {type UnwrapNestedRefs} from "@vue/reactivity";
+import {type KeepAlive} from "./keepAlive";
+import {type ClusterNode} from "./clientNode";
 
 export interface ConnectionString {
     result?: string;
@@ -41,21 +41,21 @@ export async function fromNodeUrl(node: ClusterNode, keepAlive: KeepAlive): Prom
         return {success: false, err: "Unable to reach the specified node"};
     }
     const hasGossip = es.gossip !== undefined;
-    const clusterMembersCount = !hasGossip ? 1 : es.gossip.members.length;
+    const clusterMembersCount = !hasGossip ? 1 : es.gossip!.members.length;
     const cluster = clusterMembersCount > 1;
     const connection = getEmptyConnection(cluster);
-    connection.changeSecurity(es.info.authentication.type !== "insecure");
+    connection.changeSecurity(es.info!.authentication.type !== "insecure");
     connection.setNodesCount(clusterMembersCount);
     if (hasGossip) {
         for (let i = 0; i < clusterMembersCount; i++) {
-            connection.setNodeAddress(i, es.gossip.members[i].httpEndPointIp, es.gossip.members[i].httpEndPointPort);
+            connection.setNodeAddress(i, es.gossip!.members[i].httpEndPointIp, es.gossip!.members[i].httpEndPointPort);
         }
     } else {
         connection.setNodeAddress(0, node.state.address, node.state.port);
     }
     connection.setGossipMethod(GossipMethod.Seed);
     const calculated = connection.calculateConnectionString();
-    const result = joinUrl(calculated.result, [...calculated.query, ...keepAlive.getKeepAliveQuery()])
+    const result = joinUrl(calculated.result, [...calculated.query!, ...keepAlive.getKeepAliveQuery()])
     return {
         result,
         success: result !== undefined,
@@ -67,6 +67,6 @@ export function joinUrl(connString: string | undefined, query: string[]): string
     return connString === undefined || query.length === 0 ? connString : `${connString}?${query.join("&")}`;
 }
 
-export function addKeepAlive(connString: ConnectionString, keepAlive: KeepAlive): string {
+export function addKeepAlive(connString: ConnectionString, keepAlive: KeepAlive): string | undefined {
     return joinUrl(connString.result, keepAlive.getKeepAliveQuery());
 }

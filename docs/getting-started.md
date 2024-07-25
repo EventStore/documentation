@@ -137,4 +137,4 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 This is the release schedule for EventStoreDB:
 
-![Release schedule graph](/release-graph.png)
+![Release schedule graph](./images/release-graph.png)

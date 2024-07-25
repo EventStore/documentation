@@ -1,7 +1,7 @@
-import type {NavbarConfig} from "@vuepress/theme-default";
 import {instance as ver} from "../lib/versioning";
+import type {NavbarOptions} from "@vuepress/theme-default";
 
-export const en: NavbarConfig = [
+export const en: NavbarOptions = [
     {
         text: "Getting started",
         link: "/getting-started.html"

@@ -97,6 +97,6 @@ import "prismjs/components/prism-java";
 
 1. `ERROR: There are no scenarios; must have at least one.` while running `yarn` commands. Ubuntu has preinstalled `cmdtest` package that registers conflicting `yarn`. You might need to uninstall it and then configure yarn again. See troubleshooting [link](https://github.com/yarnpkg/yarn/issues/2821#issuecomment-284181365)
 
-#### Error: Cannot find module '../../server/generated/v21.2/docs/sidebar.js'
+#### Error: Cannot find module '../../server/generated/v21.2/docs/sidebar.json'
 
 run `yarn predocs:build`

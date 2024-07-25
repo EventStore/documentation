@@ -1,5 +1,5 @@
 import {reactive} from "vue";
-import {UnwrapNestedRefs} from "@vue/reactivity";
+import type {UnwrapNestedRefs} from "@vue/reactivity";
 
 export interface KeepAliveState {
     interval?: number;

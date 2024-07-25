@@ -1,5 +1,6 @@
-import {PluginSimple} from "markdown-it";
-import {fs, logger, path} from "@vuepress/utils";
+import {type PluginSimple} from "markdown-it";
+import {fs, logger, path} from "vuepress/utils";
+import type {MdToken} from "../types";
 
 interface MdEnv {
     base: string;
@@ -16,6 +17,8 @@ function findAnchor(filename: string, anchor: string): boolean {
         .replaceAll(" ", "-")
         .replaceAll("'", "-");
 
+    // const enableLogs = filename.endsWith("v24.6/operations.md");
+
     const href = `<a id="${anchor}">`;
     const lines = fs.readFileSync(filename).toString().split("\n");
     for (let i = 0; i < lines.length; i++) {
@@ -25,15 +28,16 @@ function findAnchor(filename: string, anchor: string): boolean {
         if (line.charAt(0) != "#") continue;
 
         const lineAnchor = asAnchor(line);
-        // logger.tip(lineAnchor)
-        if (lineAnchor === anchor) return true;
+        // if (enableLogs) logger.tip(lineAnchor)
+        if (lineAnchor === anchor || lineAnchor.replace("--", "-") === anchor) return true;
     }
     return false;
 }
 
-function checkLink(token, attrName: string, env: MdEnv) {
+function checkLink(token: MdToken, attrName: string, env: MdEnv) {
     const href = token.attrGet(attrName);
-    if (href.startsWith("http") || href.endsWith(".html")) return;
+    if (href === null) return;
+    if (href.startsWith("http") || href.endsWith(".html") || env.filePathRelative.startsWith("samples")) return;
     ensureLocalLink(href, env, true);
 }
 
@@ -45,13 +49,15 @@ export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: bo
     const p = path.join(currentPath, split[0]);
     fs.stat(p, (err, stat) => {
         if (err != null) {
-            logger.error(`Broken link in ${env.filePathRelative}\r\nto: ${split[0]}`);
+            if (!href.startsWith("http")) {
+                logger.error(`Broken link in ${env.filePathRelative}\r\nto: ${split[0]}`);
+            }
             return;
         }
         let pathToCheck = p;
         if (stat.isDirectory()) {
             if (split[0] !== "") {
-                logger.error(`Link to directory in ${env.filePathRelative}\r\nto: ${href}`);
+                logger.warn(`Maybe broken link to directory in ${env.filePathRelative}\r\nto: ${href}`);
                 return;
             }
             pathToCheck = env.filePath;

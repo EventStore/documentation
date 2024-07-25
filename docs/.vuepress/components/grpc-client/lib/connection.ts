@@ -1,6 +1,6 @@
-import {ClusterNode, clusterNode} from "./clientNode";
+import {type ClusterNode, clusterNode} from "./clientNode";
 import {reactive} from "vue";
-import {UnwrapNestedRefs} from "@vue/reactivity";
+import type {UnwrapNestedRefs} from "@vue/reactivity";
 import {GossipMethod} from "./enums";
 
 interface ConnectionState {
@@ -30,7 +30,7 @@ export interface Connection {
 
     setNodesCount(count: number): void;
 
-    setNodeAddress(index: number, address: string, port: number);
+    setNodeAddress(index: number, address: string, port: number): void;
 
     populateNodes(): void;
 
@@ -41,7 +41,7 @@ export interface Connection {
     calculateConnectionString(): { result?: string, query?: string[] };
 }
 
-function safe(v) {
+function safe(v: string | undefined) {
     return v !== undefined && v !== "" ? v : "[not provided]";
 }
 

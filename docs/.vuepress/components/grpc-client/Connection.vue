@@ -38,7 +38,7 @@ const options = ref([
     {name: "Specify manually", value: FetchFrom.Manual},
 ]);
 const fetchFrom = ref(options.value[0]);
-watch(connectionString, () => store.updateConnectionString(connectionString.result));
+watch(connectionString, () => store.updateConnectionString(connectionString.result!));
 
 const route = useRoute();
 const clusterId = route.query.clusterId ?? "";

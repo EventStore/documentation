@@ -41,7 +41,7 @@ import {ref, defineProps} from "vue";
 import InputText from "primevue/inputtext";
 import {integer, required} from "@vuelidate/validators";
 import {useVuelidate} from "@vuelidate/core";
-import {ClusterNodeState} from "./lib/clientNode";
+import {type ClusterNodeState} from "./lib/clientNode";
 
 interface ClusterNodeProps {
     single: boolean;
