@@ -186,9 +186,7 @@ Give the policy some appropriate name, and click on "Create policy".
 2. Once viewing a project, you should see `Integrations` under the heading `Project` in the sidebar to the left. Click it.
 3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Logs. Next select the Sink `AwsCloudWatchLogs` as in the screen below.
 
-::: card
 ![Set your Amazon CloudWatch logs settings](./images/awsCloudWatchLogs-form.png)
-:::
 
 4. Under `Configuration`, by `Group Name` enter the name of the CloudWatch group you created earlier (for example, `EventStoreLogs-Production`).
 5. Under `Configuration`, by `Aws Region` enter the AWS region of the CloudWatch group you created earlier.
@@ -281,9 +279,7 @@ Give the policy some appropriate name, and click on "Create policy".
 2. Once viewing a project, you should see `Integrations` under the heading `Project` in the sidebar to the left. Click it.
 3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Logs. Next select the Sink `AwsCloudWatchMetric` as in the screen below.
 
-::: card
 ![Configure your Amazon CloudWatch metrics settings](./images/awsCloudWatchMetrics-form.png)
-:::
 
 1. Under `Configuration`, by `Namespace` enter the namespace you decided on earlier (for example, `EventStoreLogs-Production`).
 2. Under `Configuration`, by `Aws Region` enter the AWS region that matches the clusters you'll be pulling from.
@@ -326,18 +322,14 @@ Before adding a Slack integration, you need to create a Slack App and obtain a t
 2. Once viewing a project, you should see `Integrations` under the heading `Project` in the sidebar to the left. Click it.
 3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Issues or Notifications. Then select the Sink `Slack` as in the screen below.
 
-::: card
 ![Set your OpsGenie API Key](./images/slack-form.png)
-:::
 
 4. Under `Configuration`, next to `Channel ID`, enter the channel you want the slack bot to communicate with (this must be the same as the place you invited the bot earlier). Remember to start the channel ID with a hash sign if appropriate.
 5. In the box next to `Token` enter the OAuth token you copied from Slack's website.
 6. Finally, click "Create Integration."
 7. Now back at the "Integrations" page, click on the row with recently created integration. In the bottom pane you should see a button marked `Test integration` as in the screen below. Click it.
 
-::: card
 ![Set your OpsGenie API Key](./images/slack-details.png)
-:::
 
 8. If your Slack App was created correctly you should see a test message in the channel you selected.
 9. If you get an error message double check that you copied the OAuth token and Channel ID into the integration correctly. You may also wish to review the previous step to ensure you gave the app appropriate permissions. You can edit the integration by clicking on the pencil icon in its row.
@@ -389,16 +381,12 @@ Follow these steps to generate an API key for the team, which should be alerted 
 3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Issues or Notifications.
 4. Select the OpsGenie sink and put the API Key as in the screen below:
 
-::: card
 ![Set your OpsGenie API Key](./images/opsgenie-apikey-form.png)
-:::
 
 and click on the `Create integration` button.
 
 If all the details were entered correctly, the new integration should be set up. See the example on the screen below.
 
-::: card
 ![OpsGenie details](./images/opsgenie-details.png)
-:::
 
 [OpsGenie]: https://www.atlassian.com/software/opsgenie

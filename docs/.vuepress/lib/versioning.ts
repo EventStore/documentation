@@ -84,10 +84,14 @@ export class versioning {
             version.versions.forEach(v => {
                 const p = `${version.basePath}/${v.path}`;
                 const sidebarPath = path.resolve(__dirname, `../../${p}`);
-                const sidebarJs = path.join(sidebarPath, "sidebar.js");
+                const sidebarBase = path.join(sidebarPath, "sidebar");
+                const sidebarJs = `${sidebarBase}.js`;
+                const sidebarCjs = `${sidebarBase}.cjs`;
+                fs.copyFileSync(sidebarJs, sidebarCjs);
                 log.info(`Importing sidebar from ${sidebarJs}`);
-                const sidebar: ImportedSidebarArrayOptions = require(sidebarJs);
+                const sidebar: ImportedSidebarArrayOptions = require(sidebarCjs);
                 sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
+                fs.rmSync(sidebarCjs);
             });
         })
 

@@ -75,16 +75,12 @@ curl -i \
 Visit the EventStoreDB web UI and append an event to a stream via the Stream Browser. You will find the `Add Event` button in the top right corner of the Stream Browser.
 Appending a new event will trigger the connector to send the event to the sink.
 
-::: card
 ![Create Event](./images/create-event.png)
-:::
 
 ## Check the event was received
 
 Visit the public bin webpage and check that the event was received.
 
-::: card
 ![View Received Event](./images/receive-event.png)
-:::
 
 Congratulations! You have successfully set up and used the Connectors functionality in EventStoreDB.

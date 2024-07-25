@@ -38,15 +38,11 @@ Cloud clusters use SSL certificates signed by the trusted public certificate aut
 
 After you provision the cloud cluster, you can find connection details for the cluster in the Cloud console.
 
-::: card 
 ![Cluster details](./images/cloud-cluster-details.png)
-:::
 
-In the cluster details you can find URIs for the EventStoreDB Admin UI and HTTP API, TCP client and gRPC client.
+In the cluster details, you can find URIs for the EventStoreDB Admin UI and HTTP API, TCP client and gRPC client.
 
-The DNS name of the cluster resolves to IP addresses of all the cluster nodes or to the IP address of a single instance, depending on the deployment topology. When connecting to a multi-node cluster, you'd need to use the seed-based gossip with all the cluster nodes when using 20.6. 
-
-For 20.6+ gRPC clients, we advise to use the [gRPC connection generator](https://developers.eventstore.com/clients/grpc/getting-started/) page in the documentation where you can use your cloud cluster ID to get a properly composed connection string.
+The DNS name of the cluster resolves to IP addresses of all the cluster nodes or to the IP address of a single instance, depending on the deployment topology. 
 
 Each cluster node has its own DNS name, which can be used for accessing individual nodes for node-specific operations like stats collection or scavenging.
 
@@ -84,9 +80,7 @@ For existing VMs, you can enable IP forwarding too.
 :::: code-group-item AWS
 Select the EC2 instance in the list of instances and in the `Actions` menu choose `Networking` and then `Change source/destination check`. Ensure that the `Stop` checkbox is _enabled_:
 
-::: card
 ![AWS enable ip forward](./images/aws-ip-forward.png)
-:::
 
 ::::
 :::: code-group-item GCP
@@ -94,9 +88,8 @@ On GCP you can enable IP Forward only when creating the VM instance.
 
 On the new VM instance page and scroll down to the `Management, security, disks, networking, sole tenancy` section, expand it, find the `Network interfaces` section and click on the pen icon. There, set the `IP forwarding` to `On`:
 
-::: card
 ![GCP enable ip forward](./images/gcp-ip-forward.png)
-:::
+
 ::::
 :::::
 
@@ -112,21 +105,20 @@ When the initial steps are completed, you should be able to ping the cloud VM us
 
 Next, visit the Event Store Cloud console and open the peering page. There you will find the peering you created when following the provisioning guidelines. Write down the details from the `Local Address` and `Remote Address` fields.
 
-For this example we will use the following peering details:
-::: card
+For this example, we will use the following peering details:
+
 ![Peering page example](./images/peering-example.png)
-:::
 
 With all the necessary details collected, follow these steps on the cloud VM instance:
 
 _Enable IP forwarding on the machine:_
-```bash
+```bash:no-line-numbers
 echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p /etc/sysctl.conf
 ```
 
 _Restart Tailscale client with subnet routing:_
-```bash
+```bash:no-line-numbers
 sudo tailscale up --advertise-routes=10.164.0.0/20,172.22.101.0/24 --accept-routes
 ```
 
@@ -138,15 +130,7 @@ Now, visit the Event Store Cloud console, switch to the Clusters page and choose
 
 This is how the network looks like when using Tailscale:
 
-::: card
-
 ![ES_Cloud_Networking_tailsacle](./images/es-cloud-networking-tailscale.svg)
-
-:::
-
-### Future plans
-
-Soon, we want to add out-of-the-box Tailscale network peering, which will create a nano-VM inside Event Store Cloud and set up routing to your Tailscale account automatically.
 
 ## Migrating data
 
@@ -162,11 +146,11 @@ Consider the following limitations of live migration to understand if it will wo
 
 If the target database must get events in exactly the same order as they are in the source database, it's impossible to use concurrent writers. Therefore, the speed of replication will be limited by how much time it takes to append one event to the cloud cluster. For example, if it takes 5 ms to append one event, replicating one million events will take about an hour.
 
-In case your system only requires events to be ordered within a stream, and you have a lot of streams, it is possible to use concurrent writers. As those writers get events partitioned by stream name, the events order in each stream will be kept, but the global order will not. The advantage of using concurrent partitioned writes is performance increase. For example, six writers on a C4-sized instance would give you over 1000 events per second replication speed. In that case, in one hour you can replicate four millions events, not one.
+In case your system only requires events to be ordered within a stream, and you have a lot of streams; it is possible to use concurrent writers. As those writers get events partitioned by stream name, the events order in each stream will be kept, but the global order will not. The advantage of using concurrent partitioned writes is performance increase. For example, six writers on a C4-sized instance would give you over 1000 events per second replication speed. In that case, in one hour you can replicate four million events, not one.
 
 #### Write load on the source
 
-If the source cluster keep getting new events appended to its database, ensure that the number of events appended to the source database is significantly less than the number of replicated events for a given time period. The goal there is to ensure that the replication process will ever finish. For example, when you see one million new events written to the source cluster per hour, and you observe one million events being replicated per hour, the replication will never finish.
+If the source cluster keeps getting new events appended to its database, ensure that the number of events appended to the source database is significantly less than the number of replicated events for a given time period. The goal there is to ensure that the replication process will ever finish. For example, when you see one million new events written to the source cluster per hour, and you observe one million events being replicated per hour, the replication will never finish.
 
 #### System metadata
 
@@ -176,7 +160,7 @@ When reading events from EventStoreDB, you get several system metadata propertie
 - Created date (timestamp when the event was appended to the log)
 - Commit position (physical event position in the global log)
 
-The event number in the target database will start from zero, although it could be any number in the source database, if the stream was ever truncated or deleted.
+The event number in the target database will start from zero, although it could be any number in the source database if the stream was ever truncated or deleted.
 
 As all the events written to the target database will be "new", the _Created date_ timestamp will be set to the moment when the event was replicated.
 
@@ -262,7 +246,7 @@ Below, you can find instructions for connecting workloads running cloud-managed 
 
 ### AWS Elastic Kubernetes Services
 
-On this page, you find instructions how to set up an AWS Elastic Kubernetes Services (EKS) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, AWS and networking in Kubernetes, as well as in AWS cloud platform.
+In this section, you find instructions on how to set up an AWS Elastic Kubernetes Services (EKS) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, AWS and networking in Kubernetes, as well as in AWS cloud platform.
 
 EKS clusters require at least two subnets, which are connected to internet using an Internet Gateway. Both subnets must have the auto-assign public IP setting enabled, otherwise the node group won't get properly provisioned.
 
@@ -278,21 +262,17 @@ In this example, we'll use the following network configuration:
 
 The AWS VPC has a peering connection established with the Event Store Cloud network, as described in the provisioning guide. For the peering link, we used the whole VPC IP range `172.16.0.0/16`:
 
-::: card
 ![ESC peering](./images/eks-1.png)
-:::
 
 Now we can provision the EKS cluster. In the networking configuration section of the new cluster, we need to choose the VPC, which is peered with Event Store Cloud:
 
-::: card
 ![EKS networking](./images/eks-2.png)
-:::
 
 After creating the cluster, you need to add the node group, as usual. Each node will get a network interface per subnet of the EKS cluster, so in our case nodes will be attached to two subnets.
 
 When all the deployments are completed, and you added the EKS cluster to your local config, you can try deploying an ephemeral workload using the `busybox` container image, so you can test the connectivity:
 
-```bash
+```bash:no-line-numbers
 $ kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh
 ```
 
@@ -323,7 +303,7 @@ At this moment, any workload deployed to the EKS cluster should be able to conne
 
 ### Google Kubernetes Engine
 
-On this page, you find instructions how to set up a Google Kubernetes Engine (GKE) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, GKE and networking in Kubernetes as well as in Google Cloud Platform (GCP).
+In this section, you find instructions on how to set up a Google Kubernetes Engine (GKE) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, GKE and networking in Kubernetes as well as in Google Cloud Platform (GCP).
 
 Before you provision a cluster in Event Store Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR.
 
@@ -335,21 +315,15 @@ You can find more information about the steps needed for provisioning Event Stor
 
 The challenge is to set up IP ranges for both VPCs, the GKE cluster, and the peering in a way that pods running in Kubernetes would be able to reach the EventStoreDB cluster in Event Store Cloud.
 
-::: card
 ![GKE and ESC topology](./images/gke-1.png)
-:::
 
 When creating the Standard GKE cluster from GCP Console, the Networking section has the _Advanced networking_ options subsection. There you find the _Pod address range_ setting. It is available for clusters with any type of routing (static routes or VPC-native).
 
-::: card
 ![GKE network settings](./images/gke-2.png)
-:::
 
 If the _Pod address range_ option is left blank, the cluster will get a private IP range for the pods. For example, the cluster with static routing got the `10.120.0.0/14` CIDR block for the pods:
 
-::: card
 ![GKE network settings](./images/gke-3.png)
-:::
 
 When using VPC-native routing, this new range would be added to the selected VPC network subnet, in addition to the main IP range.
 
@@ -381,33 +355,23 @@ So, here we see that the subnet uses the larger range, and the GKE pod address r
 
 When provisioning the GKE cluster, we should specify `172.31.128.0/17` as the pod address range in the cluster networking configuration for a new Standard cluster:
 
-::: card
 ![GKE network settings](./images/gke-5.png)
-:::
 
 Similarly, the range can be specified for a new Autopilot cluster:
 
-::: card
 ![GKE network settings](./images/gke-6.png)
-:::
 
 When the cluster is deployed, you can see that the range is properly assigned:
 
-::: card
 ![GKE network settings](./images/gke-7.png)
-:::
 
 When looking at the `subnet-esc`, we can see those ranges shown in the GCP Console:
 
-::: card
 ![GKE subnet](./images/gke-8.png)
-:::
 
 The network peering resource in Event Store Cloud in this case looks like this:
 
-::: card
 ![ESC peering](./images/gke-9.png)
-:::
 
 When creating a peering, you don't have to specify a particular subnet of the VPC network, which you peer with. There's no check if the given IP range actually exists in the peered network. Therefore, we can specify the range we need, even if it doesn't match with the primary range of any subnet. By using the larger range, which covers both the primary and secondary ranges, we made the EventStoreDB cluster available for pods in the GKE cluster.
 
@@ -415,7 +379,7 @@ When creating a peering, you don't have to specify a particular subnet of the VP
 
 To confirm that everything works as expected, you can deploy an ephemeral `busybox` container to the Kubernetes cluster and try reaching out to the EventStoreDB cloud cluster:
 
-```bash
+```bash:no-line-numbers
 $ kubectl run -i --tty --rm debug --image=busybox --restart=Never -- sh
 ```
 
@@ -433,13 +397,11 @@ Finally, we can deploy applications to the GKE cluster, which can connect to the
 
 The overall network topology would look like this, when we complement the initial diagram with IP addresses and network masks:
 
-::: card
 ![ESC GKE topology](./images/gke-10.png)
-:::
 
 ### Azure Kubernetes Services
 
-On this page, you find instructions how to set up an Azure Kubernetes Services (AKS) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, Azure and networking in Kubernetes as well as in Azure Cloud platform.
+In this section, you find instructions on how to set up an Azure Kubernetes Services (AKS) cluster, so it can connect to an EventStoreDB cluster in Event Store Cloud. As a prerequisite, you have experience with Kubernetes, Azure and networking in Kubernetes as well as in Azure Cloud platform.
 
 Before you provision a cluster in Event Store Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR block.
 
@@ -455,21 +417,15 @@ When using the Azure CNI network configuration, you need an existing VNet, or yo
 
 In this example, we'll create the VNet before creating an AKS cluster. The VNet will get the `172.16.0.0/15` IP range, and the `default` subnet will get the `172.16.0.0/16` IP range, so you have enough IP space for other purposes.
 
-::: card
 ![Create a VNet](./images/aks-1.png)
-:::
 
 To be able to work with the cluster, you need to establish a connection between the Event Store Cloud network and your own Virtual Network in Azure. You do it by provisioning a network peering between those two networks as described in the provisioning guide. When creating the peering link, specify the VNet IP range as the remote address.
 
-::: card
 ![Peering](./images/aks-2.png)
-:::
 
 Next, when creating the AKS cluster, choose the previously created VNet and the subnet:
 
-::: card
 ![AKS networking](./images/aks-3.png)
-:::
 
 With Azure CNI, each pod will get an IP address directly from the VNet subnet range, so all the pods will be able to reach the Event Store Cloud resources using the peering link.
 
@@ -479,27 +435,19 @@ When the AKS cluster is provisioned, you can deploy a workload, and it will be a
 
 When creating an AKS cluster with kubenet network configuration, a new VNet will be created in a separate resource group. It is the same resource group where the Kubernetes node pool instances are provisioned. There are no network settings, which you need to change when creating the cluster, except choosing the kubenet configuration.
 
-::: card
 ![AKS with kubenet](./images/aks-5.png)
-:::
 
 After all the resources are deployed, you will find a new resource group in the resource groups list. Such a resource group has a name, which starts with `MC`, for example `MC_aks-setup-docs_esc-demo_westeurope`. Uou can then open the new resource group and find the VNet there:
 
-::: card
 ![Resource group](./images/aks-4.png)
-:::
 
 Open the VNet to find its IP range:
 
-::: card
 ![Default VNet](./images/aks-6.png)
-:::
 
 Use this address space to create a new peering link from Event Store Cloud to the AKS VNet.  When the peering is provisioned, it will look like this:
 
-::: card
 ![Peering](./images/aks-7.png)
-:::
 
 When the peering becomes active, you can deploy a workload to the AKS cluster, and it should be able to reach a managed EventStoreDB instance via the peering link.
 

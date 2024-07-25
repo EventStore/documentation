@@ -32,9 +32,7 @@ For example, the following code will only append a single event:
 
 @[code{append-duplicate-event}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
-::: card
 ![Duplicate Event](./images/duplicate-event.png)
-:::
 
 ### type
 

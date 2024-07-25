@@ -12,9 +12,7 @@ Connectors periodically store the position of the last event that they have succ
 
 The checkpoints are stored in a stream per connector.
 
-::: card
 ![Connector Checkpoint](./images/connector-checkpoint-stream.png)
-:::
 
 ## High availability
 

@@ -26,9 +26,7 @@ EventStoreDB offers a single sign-on (SSO) for our customers. Using a single acc
 
 To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/)  where you'll see the login screen. There you get an option to sign up:
 
-::: card 
 ![Sign up screen](./images/discuss-signup.png)
-:::
 
 ::: tip
 If you already have an account at our community forum (Discuss), you can use it to log in to Event Store Cloud.
@@ -38,7 +36,7 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 
 ### Login to Cloud console
 
-With the new account you can login to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
+With the new account, you can log in to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
 
 ::: warning Gated provisioning
 You won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
@@ -46,9 +44,7 @@ You won't be able to create new cloud resources like networks and clusters. Clic
 
 In the console, you first get to the list of organisations that you have access to.
 
-::: card 
 ![Cloud organisations](./images/cloud-console-orgs.png)
-:::
 
 You start with an empty list, so you'll need to add an organisation.
 
@@ -62,9 +58,7 @@ With your account, you might have more than one organisation. Each organisation 
 
 When you click on an organisation in the list, you get to the projects screen, where you can see all the projects for the selected organisation.
 
-::: card 
 ![Projects within the organisation](./images/cloud-org-projects.png)
-:::
 
 Within the scope of the organisation, you also have the list of users and roles, billing information, alerts, and so on.
 
@@ -88,13 +82,11 @@ An organisation can have multiple projects. Projects serve as a logical grouping
 
 To create a new project, click on the `New project` button. Then, enter the project name and add administrators from the list of organisation users. Each project also gets its own `Project admins` group and all the users, which you add as administrators when creating the new project will become members of this group.
 
-When you click on a project in the projects list, you get to the project context screen.
+When you click on a project in the project list, you get to the project context screen.
 
-::: card 
 ![Project context](./images/cloud-project-screen.png)
-:::
 
-Within the project context you can manage project clusters, backups, networks, etc.
+Within the project context, you can manage project clusters, backups, networks, etc.
 
 By reaching this point, you are now ready to start provisioning cloud resources with Event Store Cloud. Follow one of the available guidelines for your cloud provider:
 
@@ -110,20 +102,17 @@ Our MFA solution currently integrates exclusively with authenticator apps, offer
 
 To enable Multi-factor Authentication (MFA) within the user interface, navigate to the `Preferences` section and click on the `Enable MFA` button. 
 
-::: card
 ![Preferences - MFA](./images/mfa-preferences.png)
-:::
 
 You will be logged out as part of the MFA enrollment process. Follow the guided prompts to complete the enrollment. 
 
-::: card
 ![MFA Setup Process](./images/mfa-setup-process.png)
-:::
 
 #### Re-generating tokens from `esc` with MFA
+
 Once MFA is enabled, tokens generated with the `esc` command-line tool are invalidated. To regain access, generate new tokens using the following command:
 
-```bash 
+```bash:no-line-numbers
 esc access tokens create
 ```
 
@@ -131,16 +120,13 @@ You will be prompted for your password and an authenticator code as part of the 
 
 Alternatively, if you prefer to obtain a token through the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page and click on the `Request refresh token` button.
 
-
 ### Events and notifications
 
 On the Event Console, you will find messages about issues with your provisioned resources in the `Issues` section, and errors that happened during provisioning in the `Notifications` section.
 
 For example, if the network peering failed, you can discover potential causes of the failure in the `Notifications` section of the Event Console:
 
-::: card
 ![Notifications](./images/event-console.png)
-:::
 
 ## Audit Log API
 The Audit Log API displays the activities performed in an organization in the form of a series of events. It provides access to an audit trail of changes either done by the current user or for an entire organization.
@@ -169,12 +155,11 @@ Optional Parameters:
 * `-b, --before`: Only get logs before this timestamp.
 * `-l, --limit`: The maximum number of records to retrieve.
 
-
 ## Operational status
 
-You can check and subscribe to the current status of the Event Store Cloud Console at [status.eventstore.cloud](https://status.eventstore.cloud) or by using our [twitter account](https://twitter.com/esc_status).
+You can check and subscribe to the current status of the Event Store Cloud Console at [status.eventstore.cloud](https://status.eventstore.cloud) or by using our [X account](https://twitter.com/esc_status).
 
-Should there be any outage of the console it will be shown and updated here.
+Should there be any outage of the console, it will be shown and updated here.
 
 
 

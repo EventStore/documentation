@@ -4,7 +4,6 @@ import {path} from '@vuepress/utils';
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
 import {navbar, sidebar} from "./configs";
 import {resolveMultiSamplesPath} from "./lib/samples";
-import containers from "./lib/containers";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {linkCheckPlugin} from "./markdown/linkCheck";
 import {docsearchPlugin} from '@vuepress/plugin-docsearch';
@@ -15,6 +14,7 @@ import dotenv from 'dotenv';
 import {defaultTheme} from '@vuepress/theme-default';
 import {containerPlugin} from "@vuepress/plugin-container";
 import vueDevTools from 'vite-plugin-vue-devtools'
+import {markdownImagePlugin} from "@vuepress/plugin-markdown-image";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
 
@@ -27,7 +27,6 @@ export default defineUserConfig({
     bundler: viteBundler({viteOptions: {plugins: [vueDevTools(),],}}),
     title: "EventStoreDB Documentation",
     description: "The stream database built for Event Sourcing",
-    // theme: defaultTheme,
     define: {
         __VERSIONS__: {
             latest: ver.latest,
@@ -37,7 +36,9 @@ export default defineUserConfig({
     },
     markdown: {importCode: false},
     extendsMarkdown: md => {
-        // this is a quick hack, should be fixed properly to remove direct references from here
+        md.use(importCodePlugin, {
+            handleImportPath: s => resolveMultiSamplesPath(s)
+        });
         md.use(replaceLinkPlugin, {
             replaceLink: (link: string, _) => link
                 .replace("@clients/grpc/", "/clients/grpc/")
@@ -46,9 +47,6 @@ export default defineUserConfig({
                 .replace("@clients/httpapi/", "/http-api/{version}/")
                 .replace("@httpapi/data/", projectionSamplesPath)
                 .replace("@httpapi/", "/http-api/{version}/")
-        });
-        md.use(importCodePlugin, {
-            handleImportPath: s => resolveMultiSamplesPath(s)
         });
         md.use(linkCheckPlugin);
     },
@@ -59,17 +57,16 @@ export default defineUserConfig({
                 indexName: process.env.ALGOLIA_INDEX_NAME,
                 appId: process.env.ALGOLIA_APPLICATION_ID
             }),
-        containers("tabs", "Tabs", type => `${type ? ` type='${type}'` : ""}`),
-        containers("tab", "Tab", label => `header="${label}"`),
         containerPlugin( {
             type: "note",
             before: title => `<div class="custom-container note"><p class="custom-container-title">${title === "" ? "NOTE" : title}</p>`,
             after: _ => `</div>`
         }),
-        containerPlugin ({
-            type: "card",
-            before: _ => `<Card><template #content>`,
-            after: _ => `</template></Card>`
+        markdownImagePlugin({
+            figure: true,
+            lazyload: true,
+            mark: true,
+            size: true,
         }),
         // googleAnalyticsPlugin({id: process.env.GOOGLE_TAG_ID}),
     ],
@@ -85,7 +82,6 @@ export default defineUserConfig({
         lastUpdated: true,
         navbar: navbar.en,
         sidebar: sidebar.en,
-        //     ...versioning.sidebars,
     }),
     head: [
         ['script', {
