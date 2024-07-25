@@ -57,7 +57,7 @@
     "dev": "vuepress dev docs --clean-cache --clean-temp",
     "build": "vuepress build docs",
     "build-prod": "pnpm run import && pnpm build",
-    "import": "node ./import/import-client-docs.js",
+    "import": "node ./import/import-client-docs.cjs",
     "serve": "node ./serve.js",
     "swagger": "swagger-markdown -i docs/server/5.0/http-api/swagger.yaml"
   },
