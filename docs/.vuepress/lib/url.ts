@@ -1,4 +1,4 @@
-export function getUrlParamValue(name) {
+export function getUrlParamValue(name: string) {
     if (typeof window === "undefined") {
         return null;
     }

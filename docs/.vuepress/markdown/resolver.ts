@@ -1,5 +1,6 @@
-import {fs, logger, path} from "vuepress/utils";
+import {logger, path} from "vuepress/utils";
 import version from "../lib/version";
+import {instance} from "../lib/versioning";
 
 export const resolveVersionedPath = (importPath: string, filePath: string | null | undefined) => {
     let importFilePath = importPath;
@@ -19,7 +20,7 @@ export const resolveVersionedPath = (importPath: string, filePath: string | null
     }
 
     if (importFilePath.includes("{version}")) {
-        const ver = version.getVersion(filePath!);
+        const ver = version.getVersion(filePath!) ?? instance.latestSemver;
         if (ver) {
             importFilePath = importFilePath.replace("{version}", ver);
         }

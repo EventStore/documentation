@@ -1,4 +1,3 @@
-import * as fse from "fs-extra";
 import * as fs from "fs";
 import {path} from 'vuepress/utils';
 import log from "./log";
@@ -62,6 +61,14 @@ export class versioning {
         });
     }
 
+    get latestSemver(): string {
+        const serverDocs = this.versions.find(v => v.id === "server");
+        if (!serverDocs) {
+            throw new Error("Server docs not found");
+        }
+        return serverDocs.versions[0].path;
+    }
+
     // latest stable release
     get latest(): string {
         const serverDocs = this.versions.find(v => v.id === "server");
@@ -119,44 +126,6 @@ export class versioning {
         });
 
         return links;
-    }
-
-    // Generate a new version
-    generate(id: string, ver: string) {
-        ver = ver || process.argv[1];
-        console.log('\n')
-
-        if (!fs.existsSync(`${path}/.vuepress/versions.json`)) {
-            log.error('File .vuepress/versions.json not found')
-        }
-
-        if (typeof ver === 'undefined') {
-            log.error('No version number specified! \nPass the version you wish to create as an argument.\nEx: 4.4')
-        }
-
-        log.info(`Generating new version into 'docs/${ver}' ...`)
-
-        try {
-            fse.copySync(`${path}/master`, `${path}/${ver}`)
-
-            // remove 'master' from the top of list
-            this.versions.shift()
-            // add new generated version on top of list
-            // versions.unshift(version)
-            // add 'master' again on top of list
-            // versions.unshift('master')
-
-            // write to versions.json
-
-            fs.writeFileSync(
-                `${path}/.vuepress/versions.json`,
-                `${JSON.stringify(this.versions, null, 2)}\n`,
-            );
-
-            // this.success(`Version '${version}' created!`)
-        } catch (e) {
-            log.error(e)
-        }
     }
 }
 

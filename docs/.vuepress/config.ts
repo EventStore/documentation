@@ -3,7 +3,7 @@ import {instance as ver} from "./lib/versioning";
 import {path} from '@vuepress/utils';
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
 import {navbar, sidebar} from "./configs";
-import {resolveMultiSamplesPath} from "./lib/samples";
+import {projectionSamplesPath, resolveMultiSamplesPath} from "./lib/samples";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {linkCheckPlugin} from "./markdown/linkCheck";
 import {docsearchPlugin} from '@vuepress/plugin-docsearch';
@@ -17,8 +17,6 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import {markdownImagePlugin} from "@vuepress/plugin-markdown-image";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
-
-const projectionSamplesPath = "https://raw.githubusercontent.com/EventStore/EventStore/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/";
 
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig({
