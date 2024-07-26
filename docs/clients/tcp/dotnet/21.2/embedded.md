@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Embedded client
 
 ## EmbeddedVNodeBuilder

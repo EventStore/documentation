@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Security
 
 EventStoreDB supports basic authentication for HTTP API and TCP calls, and supports access control lists (ACL) for streams.
@@ -6,9 +10,9 @@ EventStoreDB supports basic authentication for HTTP API and TCP calls, and suppo
 
 EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](@clients/http-api/api.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
 
-Alternatively you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](@server/security.md#trusted-intermediary).
+Alternatively, you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](@server/security.md#trusted-intermediary).
 
-If you were to use the wrong user or no user when connecting to EventStoreDB, you receive a `401 Unauthorized` response for HTTP API or Exception for native client.
+If you were to use the wrong user or no user when connecting to EventStoreDB, you receive a `401 Unauthorized` response for HTTP API or Exception for the native client.
 
 ::: tip
 Remember to change the default password for default users and disable unused users after the cluster setup is complete.

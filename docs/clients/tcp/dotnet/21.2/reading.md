@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Reading events
 
 You can use the client API to read events from a stream starting from either end of the stream. There is a method for each direction and one for reading a single event.

@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Projections
 
 This page provides an example of using [user-defined projections](../../../../server/v23.10/projections.md#types-of-projections) in your application.

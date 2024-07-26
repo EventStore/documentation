@@ -11,6 +11,8 @@
     "@babel/preset-typescript": "^7.24.7",
     "@types/fs-extra": "^11.0.4",
     "@types/markdown-it": "^14.1.1",
+    "@vuepress/plugin-seo": "2.0.0-rc.40",
+    "@vuepress/plugin-sitemap": "2.0.0-rc.40",
     "degit": "2.8.4",
     "del": "5.1.0",
     "dotenv": "10.0.0",
@@ -20,12 +22,12 @@
     "fs-extra": "^11.2.0",
     "markdown-it": "^14.1.0",
     "prettier": "2.3.2",
+    "sass": "^1.77.8",
     "shx": "0.3.3",
     "stylus": "^0.56.0",
     "tsconfig-vuepress": "^4.5.0",
     "typescript": "^5.5.3",
-    "vite-plugin-vue-devtools": "^7.3.6",
-    "sass": "^1.77.8"
+    "vite-plugin-vue-devtools": "^7.3.6"
   },
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.9",

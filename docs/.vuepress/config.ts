@@ -15,8 +15,12 @@ import {defaultTheme} from '@vuepress/theme-default';
 import {containerPlugin} from "@vuepress/plugin-container";
 import vueDevTools from 'vite-plugin-vue-devtools'
 import {markdownImagePlugin} from "@vuepress/plugin-markdown-image";
+import {sitemapPlugin} from "@vuepress/plugin-sitemap";
+import {fs} from "vuepress/utils";
+import {seoPlugin} from "@vuepress/plugin-seo";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
+const hostname = "developers.eventstore.com";
 
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig({
@@ -66,6 +70,15 @@ export default defineUserConfig({
             mark: true,
             size: true,
         }),
+        sitemapPlugin({
+            hostname: hostname,
+            devServer: process.env.NODE_ENV === 'development',
+            modifyTimeGetter: (page, app) =>
+                fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
+        }),
+        seoPlugin({
+            hostname: hostname
+        })
         // googleAnalyticsPlugin({id: process.env.GOOGLE_TAG_ID}),
     ],
     theme: defaultTheme({

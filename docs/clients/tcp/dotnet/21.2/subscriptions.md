@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Subscribe to changes
 
 A common operation is to subscribe to a stream and receive notifications for changes. As new events arrive, you continue following them.
