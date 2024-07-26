@@ -58,7 +58,7 @@ Customer data is only stored on Premium SSD block device targets. We do not util
 
 #### We use AKS, to simplify setup can you expose the cluster to the public internet?
 
-We have no immediate plans to expose clusters via a public IP address. We provided [guidelines](../use/kubernetes/aks.md) on how to connect AKS clusters to Event Store Cloud.
+We have no immediate plans to expose clusters via a public IP address. We provided [guidelines](../use/README.md#azure-kubernetes-services) on how to connect AKS clusters to Event Store Cloud.
 
 ### Supported regions
 

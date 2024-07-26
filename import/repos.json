@@ -30,12 +30,12 @@
       }
     ],
     "postprocess": [
-      "yarn shx rm -rf <root>/.vuepress",
-      "yarn shx rm -rf ./docs/server/v5/http-api",
-      "yarn shx rm -rf ./docs/server/v22.10/http-api",
-      "yarn shx rm -rf ./docs/server/v23.10/http-api",
-      "yarn shx rm -rf ./docs/server/v24.2/http-api",
-      "yarn shx rm -rf ./docs/server/v24.6/http-api"
+      "pnpm shx rm -rf <root>/.vuepress",
+      "pnpm shx rm -rf ./docs/server/v5/http-api",
+      "pnpm shx rm -rf ./docs/server/v22.10/http-api",
+      "pnpm shx rm -rf ./docs/server/v23.10/http-api",
+      "pnpm shx rm -rf ./docs/server/v24.2/http-api",
+      "pnpm shx rm -rf ./docs/server/v24.6/http-api"
     ]
   },
   {
@@ -134,8 +134,8 @@
       }
     ],
     "samplesPostprocess": [
-      "yarn babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
-      "yarn prettier --write <root>/*.js"
+      "pnpm babel <root> --presets @babel/preset-typescript --retain-lines --out-dir <root> --extensions .ts",
+      "pnpm prettier --write <root>/*.js"
     ]
   },
   {

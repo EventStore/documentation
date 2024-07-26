@@ -1,12 +1,10 @@
-import type { SidebarConfig, SidebarItem } from "@vuepress/theme-default";
 import { instance as ver } from "../lib/versioning";
+import type {EsSidebarOptions} from "../lib/types";
 
-export type GroupItem = { group: string, children: string[] };
-export type ESSidebarConfig = Record<string, GroupItem[]> | SidebarConfig | Record<string, SidebarItem[]>
-
-export const en: ESSidebarConfig = {
+export const en: EsSidebarOptions = {
   "/connectors/": [
     {
+      text: "",
       group: "Connectors",
       children: [
         "/connectors/README.md",
@@ -19,6 +17,7 @@ export const en: ESSidebarConfig = {
   ],
   "/clients/grpc/": [
     {
+      text: "",
       group: "Clients",
       children: [
         "/clients/grpc/README.md",
@@ -34,6 +33,7 @@ export const en: ESSidebarConfig = {
   ],
   "/cloud/": [
     {
+      text: "",
       group: "Event Store Cloud",
       children: [
         "/cloud/intro/README.md",

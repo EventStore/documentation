@@ -12,29 +12,21 @@ You can choose a larger or smaller node size. See also the cloud [sizing guide](
 
 To resize a cluster in the console, navigate to the clusters view and select _Resize Cluster_.
 
-::: card
 ![cluster list](./images/Resize01DropDown.png)
-:::
 
 On the detail page, specify the new cluster size and click on _Resize Cluster_.
 
-::: card
 ![cluster_expand_detail](./images/Resize02Selection.png)
-:::
 
 Depending on your configuration, downtime may vary. Resizing a single-node ESDB instance requires downtime, while resizing a 3-node cluster uses a rolling upgrade, ensuring zero downtime.
 
 In the cluster view, you can see that the resize is in progress.
 
-::: card
 ![cluster_expand_detail](./images/Resize04Progress.png)
-:::
 
 Once the resize operation is complete, the new cluster size will show in the cluster view.
 
-::: card
 ![cluster_expand_detail](./images/Resize05Complete.png)
-:::
 
 ### Using the command line
 
@@ -61,35 +53,25 @@ Limitations:
 
 To upgrade a cluster in the console, navigate to the clusters view and select _Upgrade Cluster_.
 
-::: card
 ![cluster list](./images/upgrade01ClusterDropDown.png)
-:::
 
 On the detail page, specify the new cluster version and click on _Upgrade Cluster_.
 
-::: card
 ![cluster_expand_detail](./images/upgrade02ClusterSelection.png)
-:::
-
 
 Depending on your configuration, downtime may vary. Upgrading a single-node ESDB instance requires downtime, while upgrading a 3-node cluster uses a rolling upgrade, ensuring zero downtime.
 
-
 In the cluster view, you can see that the upgrade is in progress.
 
-::: card
 ![cluster_expand_detail](./images/upgrade04Progress.png)
-:::
 
 Once the upgrade operation is complete, the new cluster version will show in the cluster view.
 
-::: card
 ![cluster_expand_detail](./images/upgrade05Complete.png)
-:::
 
 ### Using the command line
 
-To upgrade a cluster with the command line, use the `clusters upgrade` command, where `--target_tag` is the version you want to upgrade to. This must include the full version e.g. 23.10.0.
+To upgrade a cluster with the command line, use the `clusters upgrade` command, where `--target_tag` is the version you want to upgrade to. This must include the full version, e.g. 23.10.0.
 
 ```bash
 esc mesdb clusters upgrade \
@@ -98,7 +80,6 @@ esc mesdb clusters upgrade \
     --project-id cn62uolo0aegb5icm0bg \
     --org-id 9bsv0s4qu99g029v5560
 ```
-
 
 ## Expanding disks
 
@@ -115,19 +96,15 @@ Limitations:
 
 To expand disks in the console, navigate to the clusters view and click on the _Expand Disks_ icon.
 
-::: card
 ![cluster list](./images/disk_expand_list.png)
-:::
 
-On the detail page specify the new disk size (as well as the disk iops and throughput when using the AWS GP3 disk type) and click on _Expand cluster disk_.
+On the detail page, specify the new disk size (as well as the disk IOPS and throughput when using the AWS GP3 disk type) and click on _Expand cluster disk_.
 
-::: card
 ![cluster_expand_detail](./images/disk_expand_detail.png)
-:::
 
 ### Using the command line
 
-To expand disks with  the command line, use the `clusters expand` command, where `--id` is the cluster id.
+To expand disks with the command line, use the `clusters expand` command, where `--id` is the cluster id.
 
 ```bash
 $ esc mesdb clusters expand \
@@ -195,20 +172,18 @@ Manually created backups appear in the console alongside backups created by sche
 
 To see the status of the backup, navigate to the `Backups` section of the console. There you can see all backups created manually or by a scheduled job.
 
-::: card
 ![one off backup](./images/one_off_backup.png)
-:::
 
 You can customise the backup label using a combination of free-text and predefined variables:
-- **index** - the auto-incremented value with the number of backups. You can format it as:
+- **index—**: the auto-incremented value with the number of backups. You can format it as:
   - decimal: `index:decimal` (*default*),
   - hexadecimal: `index:hex`.
-- **cluster** - value from the cluster information:
+- **cluster**: value from the cluster information:
   - description: `cluster:description` (*default*),
   - id: `cluster:id`,
   - cloud provider: `cluster:provider`
-- **datetime** - timestamp of when backup was made. You can format it as:
-  - UTC time - `datetime:utc` (*default*),
+- **datetime**: timestamp of when backup was made. You can format it as:
+  - UTC time: `datetime:utc` (*default*),
   - [RFC 822](https://www.w3.org/Protocols/rfc822/#z28): `datetime:rfc822`,
   - [Unix](https://en.wikipedia.org/wiki/Unix_time): `datetime:unix`,
   - [JSON](https://en.m.wikipedia.org/wiki/ISO_8601): `datetime:json`,
@@ -218,9 +193,7 @@ You can customise the backup label using a combination of free-text and predefin
 
 To create a backup in the console, navigate to the clusters view and click on the _Create backup_ icon. In the popup, click the `Create one-off backup` button.
 
-::: card
 ![take backup](./images/take_backup.png)
-:::
 
 ### Using the command line
 
@@ -228,7 +201,7 @@ You can also take a backup of your cluster using the [Event Store Cloud CLI](htt
 
 To create a backup, use the `backups create` command:
 
-``` bash
+```bash
 $ esc mesdb backups create --description "on demand backup" \
     --source-cluster-id c1eut65o0aeu6ojco7a0 \
     --project-id btfjev2rh41scaatc1k0
@@ -238,7 +211,7 @@ BackupId("c1ev3l5o0aeu6ojco7b0")
 
 To see the status of the backup use the `backups get` command:
 
-``` bash
+```bash
 $ esc mesdb backups get --project-id btfjev2rh41scaatc1k0 \
     --id c1ev3l5o0aeu6ojco7b0
 
@@ -268,27 +241,19 @@ For example, you could create one scheduled backup that executes every hour, alo
 
 To create a scheduled backup in the console, navigate to the clusters view and click on the _create backup_ icon and then on `Create backup schedule`.
 
-::: card
 ![take backup](./images/take_backup.png)
-:::
 
 Choose a description, the frequency as well as the number of backups to keep before pruning. Finally, click the `Create backup schedule` button.
 
-::: card
 ![take scheduled backup](./images/take_scheduled_backup.png)
-:::
 
 Backups created this way appear in the console alongside backups created manually. All backups created by the same job will be grouped together in one row, which can be expanded by clicking the down arrow icon on the right side of the row.
 
-::: card
 ![list of scheduled backup](./images/one_off_restore_scheduled.png)
-:::
 
 To see the status on the scheduled backup jobs, navigate to the `Jobs` section of the console.
 
-::: card
 ![backup jobs](./images/jobs_scheduled_backup.png)
-:::
 
 There you can see all backups created by a job, as well as their history, which operations have failed (if any).
 
@@ -302,7 +267,7 @@ A scheduled backup can be created using the Event Store Cloud CLI by using the `
 
 The following call will create a new scheduled backup of the cluster with ID `c196ogto0aeqohe3ommq`:
 
-``` bash
+```bash
 $ esc orchestrate jobs create \
     --description 'My Hourly Backup' \
     --schedule '0 */1 * * *' scheduled-backup \
@@ -315,13 +280,13 @@ For details on the scheduled field, see [Job Schedules](./README.md).
 
 To list current jobs, run:
 
-``` bash
+```bash:no-line-numbers
 $ esc orchestrate jobs list
 ```
 
 To view the history of a job, run:
 
-``` bash
+```bash:no-line-numbers
 $ esc orchestrate history list --job-id <job-id>
 ```
 
@@ -340,15 +305,11 @@ Do make sure that the disk size of the target cluster is large enough.
 
 To restore a backup, navigate to the `Backups` section fo the [Cloud Console](https://console.eventstore.cloud/) and click on the `Restore` icon of the backup you want to restore.
 
-::: card
 ![one off restore backup](./images/one_off_restore_scheduled.png)
-:::
 
 Backups are restored as new clusters. You will be then redirected to the usual provisioning page, where you can choose your cluster parameters. Note that you are not limited to restoring the backup to exactly the same cluster as the cluster for which the backup was taken. You can change the cluster topology, the database software version, and the instance size. You cannot restore between different cloud providers though.
 
-::: card
 ![one off restore cluster backup](./images/one_off_restore_cluster.png)
-:::
 
 ### Using the command line
 
@@ -356,7 +317,7 @@ You can also restore a backup using the [Event Store Cloud CLI](https://github.c
 
 Example: restoring the backup with ID `c10dvoarh41lb9otkdrg` to an F1 single node instance.
 
-``` bash
+```bash
 $ esc mesdb clusters create \
     --description "restore" \
     --source-backup-id c10dvoarh41lb9otkdrg \
@@ -368,20 +329,20 @@ $ esc mesdb clusters create \
 
 The output will display the new cluster ID:
 
-``` bash
+```bash:no-line-numbers
 ClusterId("c1mnqjdo0aembuk4ljo0")
 ```
 
 You can then get the new cluster status with the following command:
 
-``` bash
+```bash
 $ esc mesdb clusters get --id c1mnqjdo0aembuk4ljo0 \
     --project-id c10d0h2rh41lba1v92k0 --json
 ```
 
 The output will be similar to:
 
-``` json
+```json
 {
     "id": "c1mnqjdo0aembuk4ljo0",
     "organizationId": "bt77lfqrh41scaatc180",
@@ -418,39 +379,32 @@ This feature will require an extra step to unprotect the cluster before it will 
 
 To protect a cluster, navigate to the clusters view and click on the _Protect Cluster_ icon.
 
-::: card
 ![cluster list](./images/enable_protection1.png)
-:::
 
 On the detail page click on _Enable Protection_ button.
 
-::: card
 ![enable protection](./images/enable_protection2.png)
-:::
 
 Protected cluster does not have a _Delete Cluster_ active action.
 
-::: card
 ![delete inactive](./images/protected_cluster.png)
-:::
 
-To unprotect a cluster, navigate to clusters action and click on the _Unprotect Cluster_ icon.
+To unprotect a cluster, navigate to Clusters action and click on the _Unprotect Cluster_ icon.
 
-::: card
 ![disable protection](./images/disable_protection.png)
-:::
 
 ### Using the command line
 
 You can also protect a cluster using the [Event Store Cloud CLI](https://github.com/EventStore/esc).
 
-To protect a cluster, you need to update a value of `protected` parameter to `true`.
-```bash
+To protect a cluster, you need to update a value of `protected` parameter to `true`:
+
+```bash:no-line-numbers
 esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected true
 ```
 
-To unprotect a cluster, you need to update it to `false`.
+To unprotect a cluster, you need to update it to `false`:
 
-```bash
+```bash:no-line-numbers
 esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected false
 ```

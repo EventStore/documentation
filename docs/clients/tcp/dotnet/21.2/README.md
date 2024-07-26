@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Quick tour
 
 This is a quick tour into the basic operations with EventStoreDB using the TCP client. We will look at creating a connection, appending an event and reading an event.

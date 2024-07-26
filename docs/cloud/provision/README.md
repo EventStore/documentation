@@ -19,9 +19,7 @@ Find the detailed guideline for your cloud provider:
 
 This is how networking will look like when all provisioning steps are performed:
 
-::: card
 ![ES_Cloud_Networking](./images/es-cloud-networking.svg)
-:::
 
 ## Amazon Web Services (AWS)
 
@@ -49,9 +47,7 @@ Make sure to fill out the required information:
 - Region - choose the AWS region
 - CIDR block - the new network address range
 
-::: card
 ![Create AWS network](./images/aws/aws-create-network.png)
-:::
 
 In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Event Store Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
 
@@ -59,9 +55,7 @@ The network address range should not overlap with the address range of other net
 
 After specifying all the details, click on the `Create network` button. You will be brought back to the networks list where the new network will appear as being provisioned. The provisioning process in AWS might take up to five minutes. You'd need to click on the refresh button from time to time as the view won't update automatically.
 
-::: card
 ![AWS active network](./images/aws/aws-network-active.png)
-:::
 
 By clicking on the network in the list you can inspect the details like its name, status, region and address range.
 
@@ -75,9 +69,7 @@ When you click on the button, you get to the cluster creation form.
 
 On the first part of the form you need to specify the new cluster name, the cloud provider (AWS) and the EventStoreDB version. Further, you need to choose whether to start server-side projections by default.
 
-::: card
 ![AWS cluster first part](./images/aws/aws-new-cluster-1.png)
-:::
 
 ::: warning Projections impact on performance
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
@@ -95,9 +87,7 @@ Further, you need to specify the storage capacity. One disk kind is available at
 The cloud console only allows for the creation of GP3 clusters, but for backwards compatibility purposes it is still possible to create a cluster with GP2 storage using tools such as the Terraform provider or Event Store Cloud CLI.
 :::
 
-::: card
 ![AWS cluster third part](./images/aws/aws-new-cluster-2.png)
-:::
 
 Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
@@ -115,17 +105,13 @@ Currently, you can peer one Event Store Cloud network with only one AWS VPC on y
 
 For this example, we'll use a VPC in AWS in the same region (`eu-central-1`).
 
-::: card
 ![AWS VPC details](./images/aws/aws-vpc.png)
-:::
 
 The network page provide us enough details to start the peering process. In Event Store Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
 
 Then, give the new peering a name and select the network created earlier.
 
-::: card
 ![AWS peering - first](./images/aws/aws-peering-1.png)
-:::
 
 Then, you'd need to fill out the remaining fields, using the information from AWS VPC screen.
 
@@ -138,17 +124,13 @@ Then, you'd need to fill out the remaining fields, using the information from AW
 
 You can specify more than one route if you, for example, want to peer a VPC with multiple subnets. However, the routed IP ranges must belong to subnets in the same region as the Event Store Cloud network.
 
-::: card
 ![AWS peering - complete form](./images/aws/aws-peering-2.png)
-:::
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`. If the status doesn't change after 10 minutes, delete the peering and try again, ensuring the details were entered correctly. Mismatching network region and address range are most common reasons for the peering to not being provisioned properly.
 
 When the peering is initiated, get back to AWS console and navigate to `Virtual Private Cloud` - `Peering Connections list`. There, you will see the incoming peering request.
 
-::: card
 ![Incoming peering request](./images/aws/aws-peering-3.png)
-:::
 
 Select the pending peering and click on `Actions` - `Accept request`. Validate the request details and ensure that all the details match the peering, which you can see in Event Store Cloud console. If everything is correct, click on the `Yes, Accept` button. After you get a confirmation, you will see the peering in AWS console to become `Active`. Now, you can get back to Event Store Cloud console, refresh the peering list to ensure that the pending record also changed its status to `Active`.
 
@@ -156,15 +138,11 @@ Now, although both networks are now connected, AWS doesn't create proper routes 
 
 Click on `Edit routes` and then `Add route`. In the `Destination`, enter the CIDR of the Event Store Cloud network. For the `Target`, choose the `Peering Connection` option.
 
-::: card
 ![AWS route](./images/aws/aws-network-route.png)
-:::
 
 The list of available peering connections will pop up. Select the recently created peering from the list and click on `Save routes`. The route table would then look like shown on the screenshot below.
 
-::: card
 ![AWS route complete](./images/aws/aws-network-route-done.png)
-:::
 
 ::: tip Peering issues
 You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the [Event Console](../intro/README.md#events-and-notifications) in Event Store Cloud.
@@ -233,9 +211,7 @@ Make sure to fill out the required information:
 - Region - choose the Azure region
 - CIDR block - the new network address range
 
-::: card
 ![Create Azure network](./images/azure/azure-create-network.png)
-:::
 
 In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Event Store Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
 
@@ -243,9 +219,7 @@ The network address range should not overlap with the address range of other net
 
 After specifying all the details, click on the `Create network` button. You will be brought back to the networks list where the new network will appear as being provisioned. The provisioning process in Azure might take several minutes. You'd need to click on the refresh button from time to time as the view won't update automatically.
 
-::: card
 ![Azure active network](./images/azure/azure-network-active.png)
-:::
 
 By clicking on the network in the list you can inspect the details like its name, status, region and address range.
 
@@ -259,9 +233,7 @@ When you click on the button, you get to the cluster creation form.
 
 On the first part of the form you need to specify the new cluster name, the cloud provider (Azure) and the EventStoreDB version. Further, you need to choose whether to start server-side projections by default.
 
-::: card
 ![Azure cluster first part](./images/azure/azure-new-cluster-1.png)
-:::
 
 ::: warning Projections impact on performance
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
@@ -277,9 +249,7 @@ Further, you need to specify the deployment topology (single node or a three-nod
 
 Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
-::: card
 ![Azure cluster second part](./images/azure/azure-new-cluster-2.png)
-:::
 
 You will get the monthly price for the selected cluster size down below in the form.
 
@@ -312,15 +282,11 @@ Finally, you'd need to fill out all the fields:
 
 For our example, here is the complete form:
 
-::: card
 ![Azure peering - complete form](./images/azure/azure-peering-1.png)
-:::
 
 When you click on the `Create peering` button, Event Store Cloud will check if it has permissions to create the peering (see [Azure Considerations](#network-peering-in-azure)). The Cloud console will display a set of pre-populated Azure CLI commands, which you need to execute in order for Event Store Cloud to be able to create the peering.
 
-::: card
 ![Azure peering - sa](./images/azure/azure-peering-2.png)
-:::
 
 ::: tip Service principal
 Event Store Cloud uses one service principal. It means that once you created it, the principal will be used for all the peerings you create. Therefore, you only need to execute the command `az ad sp create` once.
@@ -342,7 +308,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at July 2022 these are the available regions. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
+Cloud regions available in Event Store Cloud are listed below. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
 
 | Code               | Name                 |
 |:-------------------|:---------------------|
@@ -371,7 +337,7 @@ As at July 2022 these are the available regions. See this [FAQ](../faq/README.md
 
 ### Next step
 
-You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
+You are now ready to start using the new EventStoreDB cluster in the cloud. Follow the [Using the cloud cluster](../use/README.md) section to learn more.
 
 ### Considerations for Microsoft Azure
 
@@ -411,19 +377,15 @@ Make sure to fill out the required information:
 - Region - choose the GCP region
 - CIDR block - the new network address range
 
-::: card
 ![Create GCP network](./images/gcp/gcp-create-network.png)
-:::
 
-In order to establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Event Store Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
+To establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Event Store Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
 
 The network address range should not overlap with the address range of other networks in the same region and with your own GCP network, which you will be peering with. As any other cloud network, the CIDR block needs to be within the range specified by RFC1918.
 
 After specifying all the details, click on the `Create network` button. You will be brought back to the networks list where the new network will appear as being provisioned. The provisioning process in GCP might take a little while. You'd need to click on the refresh button from time to time as the view won't update automatically.
 
-::: card
 ![GCP active network](./images/gcp/gcp-network-active.png)
-:::
 
 By clicking on the network in the list you can inspect the details like its name, status, region and address range.
 
@@ -437,9 +399,7 @@ When you click on the button, you get to the cluster creation form.
 
 On the first part of the form you need to specify the new cluster name, the cloud provider (GCP) and the EventStoreDB version. Further, you need to choose whether to start server-side projections by default.
 
-::: card
 ![GCP cluster first part](./images/gcp/gcp-new-cluster-1.png)
-:::
 
 ::: warning Projections impact on performance
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
@@ -455,9 +415,7 @@ Further, you need to specify the storage capacity. One disk kind is available at
 
 Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
 
-::: card
 ![GCP cluster second part](./images/gcp/gcp-new-cluster-2.png)
-:::
 
 You will get the monthly price for the selected cluster size down below in the form.
 
@@ -473,9 +431,7 @@ Currently, you can peer one Event Store Cloud network with only one GCP network 
 
 For this example, we'll use a VPC network in GCP in the same region (`europe-west-4`).
 
-::: card
 ![GCP VPC details](./images/gcp/gpc-vpc-details.png)
-:::
 
 Notice that the VPC has one subnet in the same region as the Event Store Cloud network provisioned earlier.
 
@@ -492,9 +448,7 @@ Then, give the new peering a name and select the network created earlier. You'd 
 
 For our example, here is the complete form:
 
-::: card
 ![GCP peering - complete form](./images/gcp/gcp-peering-1.png)
-:::
 
 ::: note
 Multiple peer routes are useful in case you want to peer with a subnet that has multiple IP ranges (aliases). A typical example would be aif you have a VPC-native GKE cluster, and you need pods in that cluster to work with Event Store Cloud. Then, you need to add the pod IP range to the peer route in addition to the subnet's primary IP range.
@@ -507,9 +461,7 @@ After you create a peering, you can't change the peer routes. If you would need 
 
 When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`.
 
-::: card
 ![GCP peering - pending](./images/gcp/gcp-peering-2.png)
-:::
 
 The information on the peering details screen provides some essential information to complete the peering process from GCP side.
 
@@ -526,11 +478,9 @@ View the screenshot below for more information.
 
 **Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
 
-Here is how our example GCP peering form would look like:
+Here is what our example GCP peering form would look like:
 
-::: card
 ![Incoming peering request](./images/gcp/gcp-peering-3.png)
-:::
 
 Click the `Create` button and when in the `VPC network peering` list, click `Refresh` until the peering status changes to `Active`. The peering status in Event Store Cloud console should also change to `Active`.
 
@@ -544,7 +494,7 @@ Depending on your setup, you might already have a connection available from your
 
 ### Available regions
 
-As at June 2022 these are the available regions. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
+Supported GCP regions are listed below. See this [FAQ](../faq/README.md#what-regions-do-you-support-on-aws-gcp-and-azure) if the region of your choice is missing.
 
 | Code                    | Name                               |
 |:------------------------|:-----------------------------------|
@@ -575,7 +525,7 @@ As at June 2022 these are the available regions. See this [FAQ](../faq/README.md
 
 ### Next step
 
-You are now ready to start using the new EventStoreDB cluster in the cloud. Follow to the [Using the cloud cluster](../use/README.md) section to learn more.
+You are now ready to start using the new EventStoreDB cluster in the cloud. Follow the [Using the cloud cluster](../use/README.md) section to learn more.
 
 ## Cloud instance sizing guide
 
@@ -584,7 +534,7 @@ Use this guide to assess the needs of your application performance, compared wit
 ### Instance performance
 
 Performance of the managed EventStoreDB cluster in ES Cloud depends primarily on the instance size for cluster members. In addition, the disk size could affect the instance IOPS limit when it comes to reading and writing events to the database.
-We rate instances based on the desired usage. Our current rating include:
+We rate instances based on the desired usage. Our current ratings include:
 
 * Micro
 * Development
@@ -602,7 +552,7 @@ The **Working Set** is the number of streams being read from and written to **co
 
 #### Cloud vs self-hosted and development setups
 
-When load testing an application against Event Store Cloud EventStoreDB clusters, performance may differ from a self-hosted solution when utilizing a similar instance size.
+When load-testing an application against Event Store Cloud EventStoreDB clusters, performance may differ from a self-hosted solution when utilizing a similar instance size.
 
 Event Store Cloud utilizes [ZFS](https://en.wikipedia.org/wiki/ZFS) to ensure filesystem integrity/safety as well as block level compression, to ensure the minimization of IOPs and a lower storage cost for data hosted.
 
@@ -612,12 +562,12 @@ EventStoreDB requires CPU cycles to maintain indexes, and for other maintenance 
 
 #### Micro (F1) instance sizes
 
-F1 instance size is designed for a low-cost development environment. We recommend using it for the experiments like Proof of Concept or extremely low workload like 10-100 events a day per database (cluster). F1 instances are using a burstable CPU class to enable this goal across all supported public clouds.
+F1 instance size is designed for a low-cost development environment. We recommend using it for the experiments like Proof of Concept or extremely low workload like 10–100 events a day per database (cluster). F1 instances are using a burstable CPU class to enable this goal across all supported public clouds.
 
-Due to the burstable CPU class, CPU shares are limited, this results in the following implications:
-- If CPU shares are not available and allocations are increasing this may result in client timeouts to the cluster or an out of memory condition.
-- CPU shares are required to maintain the cluster state topology via constant gossip message propagation. It means that the cluster needs CPU shares to maintain cluster state even when it's is not under load.
-- If a continuous load is applied it may be possible to exhaust the allowed CPU shares per time cycle, resulting in client timeouts or out of memory conditions.
+Due to the burstable CPU class, CPU shares are limited; this results in the following implications:
+- If CPU shares are not available and allocations are increasing, this may result in client timeouts to the cluster or an out of memory condition.
+- CPU shares are required to maintain the cluster state topology via constant gossip message propagation. It means that the cluster needs CPU shares to maintain cluster state even when it's been not under load.
+- If a continuous load is applied, it may be possible to exhaust the allowed CPU shares per time cycle, resulting in client timeouts or out of memory conditions.
 - When ESC exited Preview and went into GA we increased the size of the backing instance type as the original F1 instance size was too small to provide enough memory and CPU shares to maintain cluster state adequately even at extremely low volumes. A backup and restore is required to move to the new backing size.
 
 ### Sizes
@@ -636,4 +586,4 @@ Due to the burstable CPU class, CPU shares are limited, this results in the foll
 
 #### GP2 to GP3 Migration
 
-GP3 disk type provides better base performance for disks smaller 1TB, GP2 provides minimum 100 IOPS with [burst balance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#EBSVolumeTypes_gp2), IOPS and throughput depends on a disk size. GP3 gives 3000 IOPS / 125MB/s throughput by default and provides an ability to configure it. There is no downtime or performance degradation during the migration.
+GP3 disk type provides better base performance for disks smaller 1TB, GP2 provides a minimum of 100 IOPS with [burst balance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#EBSVolumeTypes_gp2), IOPS and throughput depend on the disk size. GP3 gives 3000 IOPS / 125MB/s throughput by default and provides an ability to configure it. There is no downtime or performance degradation during the migration.

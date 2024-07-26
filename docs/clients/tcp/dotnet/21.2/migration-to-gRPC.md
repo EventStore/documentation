@@ -1,8 +1,14 @@
+---
+sitemap:
+  - priority: 0.4
+  - changefreq: monthly
+---
+
 # Migration to gRPC client
 
 The TCP client is considered legacy. We recommend migrating to the gRPC client. 
 
-We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, back-pressure,etc., instead of building custom implementations. 
+We decided to use gRPC as our communication protocol, as it enabled us to standardise client communication. Thanks to that, we benefit from the built-in gRPC functionalities like streaming, backpressure, etc., instead of building custom implementations. 
 
 As gRPC is multi-platform and a widely adopted standard, it has enabled us to provide a unified approach and deliver clients for other dev environments like Go, JVM, NodeJS, and Rust.
 
@@ -10,55 +16,55 @@ The TCP client will still get necessary bug fixes, but new database features wil
 
 Having all of that, we encourage you to migrate to the gRPC client. This document outlines the needed steps. Please see the [gRPC documentation](@clients/grpc/README.md) for more details on how to use it.
 
-See also the webinar that shows step by step on practical example the whole migration process:
+See also the webinar that shows step by step on practical example of the whole migration process:
 
-<YouTube id="-4_KTfVkjlQ"></YouTube>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-4_KTfVkjlQ?si=7gT6rVTjMxpl4DCe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Update the target Framework
+## Update the target .NET framework
 
 The gRPC client doesn't support .NET Standard. The change comes from using different gRPC implementations for the specific .NET Framework version to tune the performance.
 
-If you were using it in the .NET Standard library, you have to update it to one of:
-- .NET 6 (`net6.0`),
-- .NET 5 (`net5.0`),
-- .NET Core 3.1 (`netcoreapp3.1`).
-
-We recommend using the latest .NET framework version, so .NET 6.
+If you were using it in the .NET Standard library, you have to update it to the latest .NET.
 
 ```xml{3-4}
  <Project Sdk="Microsoft.NET.Sdk">
    <PropertyGroup>
 -    <TargetFramework>netstandard2.0</TargetFramework>
-+    <TargetFramework>net6.0</TargetFramework>
++    <TargetFramework>net8.0</TargetFramework>
    </PropertyGroup>
  </Project>
 ```
+
+If you use .NET Framework, you'll have to make sure that your application is targeting .NET Framework 4.8 or later. EventStoreDB only supports gRPC calls with HTTP/2, and it is only possible to use HTTP/2 on Windows 11 and Windows Server 2019 when building applications using .NET Framework. This limitation doesn't apply to .NET Core 3+ and .NET 5+. Check the compatibility note in [.NET documentation](https://learn.microsoft.com/en-us/aspnet/core/grpc/supported-platforms?view=aspnetcore-8.0#net-grpc-client-requirements).
 
 ## Update package references
 
 To use the gRPC client, you need to replace the TCP client package (`EventStore.Client`) with the gRPC one (`EventStore.Client.Grpc.Streams`). 
 
 ```xml{2-3}
- <ItemGroup>
+<ItemGroup>
 -  <PackageReference Include="EventStore.Client" Version="22.0.0" />
 +  <PackageReference Include="EventStore.Client.Grpc.Streams" Version="23.2.0" />
- </ItemGroup>
+</ItemGroup>
 ```
+
+::: tip
+Use the latest version of `EventStore.Client.Grpc.Streams` to access the latest server features and SDK improvements.
+:::
 
 ## Migration strategies
 
 You may also consider a step by step migration:
-- add the gRPC client and keeping the TCP one,
-- gradually replace usages, e.g., start with event append and reads, keeping subscriptions on TCP client. Once that's settled, move the subscriptions code into gRPC.
-- remove the TCP client package reference as the last step.
+- Add the gRPC client and keep the TCP one
+- Gradually replace client usages. For example, start with append and read operations, keeping subscriptions on the TCP client. Once that's settled, move the subscriptions code to the gRPC client.
+- Remove the TCP client package reference as the last step.
 
 You may also consider wrapping common logic into extension methods or repository classes. Adding a temporary wrapping layer lets us centralise and isolate the changes we perform during the migration. Thanks to that, you can replace the inner implementations, keeping usages the same. Read more in Martin Fowler's article [An example of preparatory refactoring](https://martinfowler.com/articles/preparatory-refactoring-example.html).
 
 Sample wrapper for the TCP client:
 
 ```csharp
-public class EventStore
-{
+public class EventStore {
     readonly IEventStoreConnection tcpConnection;
 
     public EventStore(IEventStoreConnection tcpConnection)
@@ -68,8 +74,7 @@ public class EventStore
         string streamName,
         long version,
         params object[] events
-    )
-    {
+    ) {
         var preparedEvents = events
             .Select(ToEventData)
             .ToArray();
@@ -92,11 +97,9 @@ public class EventStore
     public Task AppendEvents(
         string streamName,
         params object[] events
-    )
-        => AppendEvents(streamName, ExpectedVersion.Any, events);
+    ) => AppendEvents(streamName, ExpectedVersion.Any, events);
 
-    public async Task<IEnumerable<object>> LoadEvents(string stream)
-    {
+    public async Task<IEnumerable<object>> LoadEvents(string stream) {
         const int pageSize = 4096;
 
         var start  = 0;
@@ -113,9 +116,7 @@ public class EventStore
                     nameof(stream), $"Stream '{stream}' was not found"
                 );
 
-            events.AddRange(
-                page.Events.Select(Deserialize)
-            );
+            events.AddRange(page.Events.Select(Deserialize));
             if (page.IsEndOfStream) break;
 
             start += pageSize;
@@ -123,8 +124,7 @@ public class EventStore
 
         return events;
 
-        static object Deserialize(this ResolvedEvent resolvedEvent)
-        {
+        static object Deserialize(this ResolvedEvent resolvedEvent) {
             var dataType = TypeMapper.GetType(resolvedEvent.Event.EventType);
             var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data);
             var data = JsonConvert.DeserializeObject(jsonData, dataType);
@@ -132,8 +132,7 @@ public class EventStore
         }
     }
 
-    public async Task<bool> StreamExists(string stream)
-    {
+    public async Task<bool> StreamExists(string stream) {
         var result = await tcpConnection.ReadEventAsync(stream, 1, false);
         return result.Status != EventReadStatus.NoStream;
     }
@@ -142,13 +141,12 @@ public class EventStore
 
 ## Differences in connection management
 
-Both the TCP and gRPC clients manage reconnections. Therefore it should be registered as a single instance in the application. 
+Both the TCP and gRPC clients manage reconnections. Therefore, it should be registered as a single instance in the application. 
 
-The TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set up connection, as you either had to call it asynchronously or risk deadlocks.
+The TCP client requires calling the `ConnectAsync` method at least once to initiate the connection. That wasn't ideal if you wanted to inject an already set-up connection, as you either had to call it asynchronously or risk deadlocks.
 
 ```csharp
-private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
-{
+private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString) {
     var tcpConnection = EventStoreConnection.Create(connectionString);
     await tcpConnection.ConnectAsync();
     return tcpConnection;
@@ -162,8 +160,7 @@ The TCP client supports built-in reconnections; however, you need to be careful 
 Sample code with reconnections could look like this:
 
 ```csharp
-private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString)
-{
+private async Task<IEventStoreConnection> GetEventStoreConnection(string connectionString) {
     var tcpConnection = EventStoreConnection.Create(
         connectionString,
         ConnectionSettings.Create()
@@ -181,8 +178,7 @@ private async Task<IEventStoreConnection> GetEventStoreConnection(string connect
 In the gRPC client, the main difference is that there is no constantly open connection, so no reconnections have to be made. You also don't need to call the `ConnectAsync` method. That simplifies the client initialisation and dependency injection. For the TCP client, you either had to inject the `Task<IEventStoreConnection>` and each time await it, e.g.
 
 ```csharp
-public class EventStore
-{
+public class EventStore {
     readonly Task<IEventStoreConnection> connect;
 
     public EventStore(Task<IEventStoreConnection> connect)
@@ -192,8 +188,7 @@ public class EventStore
         string streamName,
         long version,
         params object[] events
-    )
-    {
+    ) {
         var preparedEvents = events
             .Select(ToEventData)
             .ToArray();
@@ -214,8 +209,7 @@ Or initialise it in the application Startup.
 For the gRPC client, we can shorten that to:
 
 ```csharp
-private EventStoreClient GetEventStoreConnection(string connectionString)
-{
+private EventStoreClient GetEventStoreConnection(string connectionString) {
     var settings = EventStoreClientSettings.Create(connectionString);
     return new EventStoreClient(settings);
 }
@@ -229,11 +223,13 @@ services.AddSingleton(client);
 ```
 
 ### Connection string
-For the gRPC client, we recommend switching from the settings object to using a connection string. All of the settings are exposed through it. The TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by the step migration. 
 
-You can use the [online configuration tool](@clients/grpc/README.md#connection-details) to generate the connection string for your EventStoreDB deployment. If you connect to your database, it'll automatically grab the config and generate a connection string.
+For the gRPC client, we recommend switching from the settings object to using a connection string. All the settings are exposed through it. The TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by step migration. 
+
+Read more [here](@clients/grpc/README.md#connection-string) about the connection string format.
 
 ## Security
+
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
 Read more in [database security docs](../../../../server/v23.10/security.md).
@@ -245,10 +241,14 @@ Read more in [database security docs](../../../../server/v23.10/security.md).
 There are minor changes to the `EventData` signature:
 - The namespace was changed from `EventStore.ClientAPI` to `EventStore.Client`
 - Event id requires using the `Uuid` class instead of `Guid`. We adopted the [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) standard to provide unified behaviour between all gRPC clients.
-- we are allowed to provide content type. It enables more advanced serialisation scenarios (e.g., using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
+- We have allowed providing a content type. It _potentially_ enables more advanced serialisation scenarios (for example, using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
+
+::: warning
+As per now, EventStoreDB only supports `application/json` and `application/octet-stream` content types. This limitation will be removed in the future.
+:::
 
 ::: note
-In the samples below, I'm using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](@clients/grpc/README.md) for samples using `System.Text.Json`.
+In the samples below, we are using [Json.NET](https://www.newtonsoft.com/json), as it was commonly used to serialise JSON event data in TCP clients. You may consider [migrating to System.Text.Json](https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to) as this may improve performance and remove package dependency. However, keep in mind that it doesn't have a full feature parity. If you use some more complex features, they may not work the same way. Check the [gRPC client documentation](@clients/grpc/README.md) for samples using `System.Text.Json`.
 :::
 
 For the JSON Event Data, you have to change the TCP client logic from:
@@ -337,8 +337,7 @@ If you had wrapper methods similar to [presented above](#migration-strategies). 
 -       long version,
 +       ulong version
         params object[] events
-    )
-    {
+    ) {
         var preparedEvents = events
             .Select(ToEventData)
             .ToArray();
@@ -366,16 +365,14 @@ The most significant breaking change in the gRPC client is that it **does not su
 A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, for example:
 
 ```csharp
-public class EventStoreDBUnitOfWork
-{
+public class EventStoreDBUnitOfWork {
     private readonly EventStoreClient grpcClient;
     private readonly List<EventData> uncommittedEvents = new();
     private readonly string streamName;
     private readonly StreamRevision expectedStreamRevision;
 
     private EventStoreDBUnitOfWork(EventStoreClient grpcClient, string streamName,
-        StreamRevision expectedStreamRevision)
-    {
+        StreamRevision expectedStreamRevision) {
         this.grpcClient = grpcClient;
         this.streamName = streamName;
         this.expectedStreamRevision = expectedStreamRevision;
@@ -397,7 +394,6 @@ public class EventStoreDBUnitOfWork
         uncommittedEvents.AddRange(eventData);
 }
 ```
-
 
 ## Reading Events
 
@@ -477,19 +473,17 @@ For reading from `$all`, the TCP Client has already the `Position` class. gRPC c
 
 The TCP Client requires paging through the results. You must provide the maximum number of events you want to read in the single read call. In the gRPC client, this is optional. By default, it will try to read all events. To make it efficient, read methods return [IAsyncEnumerable](https://docs.microsoft.com/en-us/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8). Which means that it won't load the whole stream at once but iterate sequentially, reducing the memory pressure.
 
-Instead of doing paging like this in TCP client:
+Instead of doing paging like this in the TCP client:
 
 ```csharp
-public async Task<IEnumerable<object>> LoadEvents(string stream)
-{
+public async Task<IEnumerable<object>> LoadEvents(string stream) {
     const int pageSize = 4096;
 
     var readFrom  = 0;
     var events = new List<object>();
     StreamEventsSlice page;
 
-    do
-    {
+    do {
         var page = await tcpConnection.ReadStreamEventsForwardAsync(
             stream, readFrom, pageSize, true
         );
@@ -513,8 +507,7 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 You can simplify that in the gRPC client into:
 
 ```csharp
-public async Task<IEnumerable<object>> LoadEvents(string stream)
-{
+public async Task<IEnumerable<object>> LoadEvents(string stream) {
     await using var readResult = grpcClient.ReadStreamAsync(
         Direction.Forwards,
         stream,
@@ -532,19 +525,22 @@ public async Task<IEnumerable<object>> LoadEvents(string stream)
 }
 ```
 
+::: tip
+Reading events from a stream asynchronously as shown above is still limited in time by the specified deadline. The default deadline is 10 seconds, so for very long streams you'd either need to increase the deadline, or resort to paging.
+:::
+
 ### Serialisation
 
 The gRPC client uses `ReadOnlyMemory<byte>` instead of a byte array to make event processing more efficient. To support that, you will need to modify your deserialisation logic slightly:
 
 ```csharp{4-5}
-  object Deserialize(this ResolvedEvent resolvedEvent)
-  {
-      var dataType = TypeMapper.GetType(resolvedEvent.Event.EventType);
--     var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data);
-+     var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data.Span);
-      var data = JsonConvert.DeserializeObject(jsonData, dataType);
-      return data;
-  }
+object Deserialize(this ResolvedEvent resolvedEvent) {
+    var dataType = TypeMapper.GetType(resolvedEvent.Event.EventType);
+-   var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data);
++   var jsonData = Encoding.UTF8.GetString(resolvedEvent.Event.Data.Span);
+    var data = JsonConvert.DeserializeObject(jsonData, dataType);
+    return data;
+}
 ```
 
 ## Built-in retries
@@ -569,8 +565,7 @@ var tcpConnection = EventStoreConnection.Create(
 You can replace it with a retry policy using Polly:
 
 ```csharp
-public static class RetryScope
-{
+public static class RetryScope {
     private static readonly AsyncPolicyWrap RetryPolicy
         = Policy
             .Handle<Exception>()
@@ -602,8 +597,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
     CancellationToken cancellationToken
 ) =>
     grpcClient.ExecuteAsync(
-        async (es, ct) =>
-        {
+        async (es, ct) => {
             await using var readResult = es.ReadStreamAsync(
                 Direction.Forwards,
                 streamName,
@@ -611,7 +605,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
                 cancellationToken: ct
             );
 
-            if(await readResult.ReadState != ReadState.Ok)
+            if (await readResult.ReadState != ReadState.Ok)
                 throw new ArgumentOutOfRangeException(
                     nameof(streamName), $"Stream '{streamName}' was not found"
                 );
@@ -623,7 +617,7 @@ public static Task<List<ResolvedEvent>> ReadStreamWithRetryAsync(
 ```
 
 ::: warning
-You should be careful in defining the retry policy. Not all operations are idempotent by default. Reads are idempotent, however, if you're not using [optimistic concurrency](@clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g., there is no point in retrying `StreamDeleted` as the stream won't reappear. 
+You should be careful in defining the retry policy. Not all operations are idempotent by default. Reads are idempotent, however, if you're not using [optimistic concurrency](@clients/grpc/appending-events.md#handling-concurrency) or do not provide the same event id for appends, it may result in duplicates. You need to decide which exceptions you'd like to retry, e.g. there is no point in retrying `StreamDeleted` as the stream won't reappear. 
 :::
 
 ## Catch-up Subscriptions
@@ -632,7 +626,7 @@ We unified catch-up subscriptions API in the gRPC client. In the TCP client, you
 - subscribing to a single stream using `SubscribeToStreamAsync`,
 - subscribing to the `$all` stream using `SubscribeToAllAsync`.
 
-Both methods include overloads for specific configurations and optional parameters with sane defaults. The recommendation is to use the default settings and modify them when needed.
+Both methods include overloads for specific configurations and optional parameters with adequate defaults. The recommendation is to use the default settings and modify them when needed.
 
 ### Positions
 
@@ -643,12 +637,12 @@ As with other operations, we aligned the subscription checkpoint/position handli
 Each subscription method has an overload taking either a specific position or the default one (from the start). For instance, if you were previously using a unified approach:
 
 ```csharp
-long? streamPosition = GetLastCheckpoint();
+long? checkpoint = GetLastCheckpoint();
 
 tcpConnection.SubscribeToStreamFrom(
     streamName,
-    streamPosition,
-    false,
+    checkpoint,
+    true,
     EventAppeared,
     SubscriptionDropped
 );
@@ -657,27 +651,18 @@ tcpConnection.SubscribeToStreamFrom(
 Now you'd need to call different overloads:
 
 ```csharp
-StreamPosition? streamPosition = GetLastCheckpoint();
+long? checkpoint = GetLastCheckpoint();
+var startFrom = checkpoint == null 
+    ? FromStream.Start 
+    : FromStream.After(StreamPosition.FromInt64((long)checkpoint));
 
-if (streamPosition.HasValue)
-{
-    await grpcClient.SubscribeToStreamAsync(
-        streamName,
-        streamPosition.Value,
-        EventAppeared,
-        false,
-        SubscriptionDropped
-    );
-}
-else
-{
-    await grpcClient.SubscribeToStreamAsync(
-        streamName,
-        EventAppeared,
-        false,
-        SubscriptionDropped
-    );
-}
+await grpcClient.SubscribeToStreamAsync(
+    streamName,
+    startFrom,
+    EventAppeared,
+    true,
+    SubscriptionDropped
+);
 ```
 
 Accordingly, you need to perform the same change for subscription to the `$all` stream.
@@ -696,25 +681,17 @@ tcpConnection.SubscribeToAllFrom(
 Now you'd need to call different overloads:
 
 ```csharp
-Position? position = GetLastCheckpoint();
+long? checkpoint = GetLastCheckpoint();
+var startFrom = checkpoint == null 
+    ? FromAll.Start 
+    : FromAll.After(new Position(checkpoint.Value, checkpoint.Value));
 
-if (streamPosition.HasValue)
-{
-    await grpcClient.SubscribeToAllAsync(
-        position.Value,
-        EventAppeared,
-        false,
-        SubscriptionDropped
-    );
-}
-else
-{
-    await grpcClient.SubscribeToAllAsync(
-        EventAppeared,
-        false,
-        SubscriptionDropped
-    );
-}
+await grpcClient.SubscribeToAllAsync(
+    startFrom,
+    EventAppeared,
+    false,
+    SubscriptionDropped
+);
 ```
 
 ### Events filtering
@@ -740,8 +717,7 @@ tcpConnection.FilteredSubscribeToAllFrom(
 You need to use:
 
 ```csharp
-var filter = 
-    new SubscriptionFilterOptions (EventTypeFilter.ExcludeSystemEvents());
+var filter = new SubscriptionFilterOptions (EventTypeFilter.ExcludeSystemEvents());
 
 await grpcClient.SubscribeToAllAsync(
     position,
@@ -771,81 +747,29 @@ tcpConnection.SubscribeToStreamFrom(
 );
 ```
 
-gRPC clients do not provide such a feature. However, you can handle that by comparing the current stream (or the `$all` stream) position with the position of the last received event from the subscription. You also need to define a threshold. If the system is live, new events will constantly appear, and you might not get fully caught up (especially for the `$all` stream).
+The new client supports reporting when the subscription switches between catching up and live modes using the new subscription APIs that uses `IAsyncAnumerable`. Read more about the new API in the [client documentation](../../../grpc/subscriptions.md).
 
-You can perform gap measurement:
+Here's an example of how to react to subscription mode changes:
 
 ```csharp
-public static class GapMeasurement
-{
-    public static async Task<ulong> GetStreamSubscriptionGap
-    (
-        this EventStoreClient grpcClient,
-        string streamName,
-        StreamPosition subscriptionLastPosition,
-        CancellationToken cancellationToken
-    )
-    {
-        var getCurrentLastEvent = await grpcClient
-            .ReadStreamAsync(
-                Direction.Backwards,
-                streamName,
-                StreamPosition.End,
-                1,
-                resolveLinkTos: false,
-                cancellationToken: cancellationToken
-            ).LastAsync(cancellationToken);
-
-        var currentLastPosition = getCurrentLastEvent.Event.EventNumber.ToUInt64();
-
-        return subscriptionLastPosition - currentLastPosition;
-    }
-
-    public static async Task<ulong> GetAllStreamSubscriptionGap
-    (
-        this EventStoreClient grpcClient,
-        Position subscriptionLastPosition,
-        CancellationToken cancellationToken
-    )
-    {
-        var getCurrentLastEvent = await grpcClient
-            .ReadAllAsync(
-                Direction.Backwards,
-                Position.End,
-                1,
-                resolveLinkTos: false,
-                cancellationToken: cancellationToken
-            ).LastAsync(cancellationToken);
-
-        var currentLastPosition = getCurrentLastEvent.Event.Position.CommitPosition;
-
-        // Warning: the $all stream position is not autoincremented number.
-        // It doesn't represent the event number in the $all stream.
-        // It's a logical position representing the location in the storage.
-        return subscriptionLastPosition.CommitPosition - currentLastPosition;
+await using var subscription = client.SubscribeToStream(
+    streamName,
+    FromStream.Start,
+    cancellationToken: ct);
+await foreach (var message in subscription.Messages.WithCancellation(ct)) {
+    switch (message) {
+        case StreamMessage.Event(var evnt):
+            await HandleEvent(evnt);
+            break;
+        case StreamMessage.CaughtUp:
+            Console.WriteLine("Processing events live");
+            break;
+        case StreamMessage.FellBehind:
+            Console.WriteLine("Catching up");
+            break;
     }
 }
 ```
-
-Having the gap calculated, you can verify if it's below the defined threshold:
-
-```csharp
-private const uint SubscriptionThreshold = 10;
-
-public static async Task<bool> IsLive(Func<Task<ulong>> getSubscriptionGap)
-{
-    var subscriptionGap = await getSubscriptionGap();
-
-    return subscriptionGap < SubscriptionThreshold;
-}
-
-```
-
-You can use this logic in:
-- the event appeared callback,
-- the [checkpoint reached callback](@clients/grpc/subscriptions.md#checkpointing) if you're using a filtered subscription. 
-
-You may also consider some performance improvements like checking once every few events or using a cache for reads.
 
 ### Resolving linked events
 
@@ -876,5 +800,5 @@ await grpcClient.SubscribeToAllAsync(
 
 Read more in the [resolve link-to's gRPC docs](@clients/grpc/subscriptions.md#resolving-link-to-s).
 
-## Persistent subscriptions
-TODO
+[//]: # (## Persistent subscriptions)
+[//]: # (TODO)

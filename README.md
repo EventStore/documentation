@@ -1,14 +1,16 @@
 # EventStoreDB documentation
 
-EventStoreDB is the open-source, functional database with Complex Event Processing in Javascript.
+EventStoreDB is an open-source, functional database with Complex Event Processing in JavaScript.
 
-This repository contains documentation for both server and client SDK.
+This repository maintains documentation for EventStoreDB (imported from the server repository on build) and client SDKs.
 
 ## Contributing
 
 Feel free to [create a GitHub](https://github.com/EventStore/documentation/issues/new) issue if you have any questions or request for more explanation or samples.
 
-We're open for any contribution. If you noticed some inconsistency, missing piece, or you'd like to extend existing docs - we'll be happy to [get your Pull Request](https://github.com/EventStore/documentation/compare).
+We're open to any contribution. If you noticed some inconsistency, missing piece, or you'd like to extend existing docs - we'll be happy to [get your Pull Request](https://github.com/EventStore/documentation/compare).
+
+Note that EventStoreDB documentation is located in the [server repository](https://github.com/EventStore/EventStore). Open issues and PRs for server documentation in there.
 
 ## Samples
 
@@ -24,34 +26,34 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 
 ### Prerequisites
 
-1. `NodeJS` installed (see [installation guide](https://nodejs.org/en/download//)).
-2. `Yarn` installed (see [installation guide](https://classic.yarnpkg.com/en/docs/install/)).
+1. `NodeJS` installed (see [the installation guide](https://nodejs.org/en/download//)).
+2. `pnpm` installed (see [an installation guide](https://pnpm.io/installation)).
 
 ### Running docs locally
 
 1. Clone the repo
-2. Run `yarn install`
-3. Run `yarn docs:import`
-4. Run `yarn docs:dev`
+2. Run `pnpm i`
+3. Run `pnpm run import`
+4. Run `pnpm dev`
 
 ### Running production build
 
 To run the production build that will import documentation from database and client repositories run:
 
 ```bash
-yarn docs:build-prod
+pnpm run build-prod
 ```
 
 To import documentation from external repositories:
 
 ```bash
-yarn docs:import
+pnpm run import
 ```
 
 To build documentation without importing documentation:
 
 ```bash
-yarn docs:build
+pnpm build
 ```
 
 ### Algolia Search
@@ -76,27 +78,11 @@ The scraping script uses a Docker, so you need to have Docker installed and runn
 
 Go to the [.algolia](.algolia) folder and run the [scrape.sh](.algolia/scrape.sh) script. 
 
-*Note: On windows we recommend to run the script in [Git Bash](https://gitforwindows.org/).*
-
-### Adding new programming language snippets
-
-To add new language snippet it's needed to add import of [Prism.JS](https://prismjs.com/) plugin to [VuePress plugins config](docs/.vuepress/enhanceApp.js), e.g.:
-
-```javascript
-import "prismjs/components/prism-java";
-```
+*Note: On windows we recommend running the script in [Git Bash](https://gitforwindows.org/).*
 
 ### Troubleshooting
 
 #### Windows
 
-1. `EPERM: operation not permitted` during `yarn install` - this error may appear if you've run the `yarn install` from Windows before running it on the WSL2. See troubleshooting [link](https://stackoverflow.com/a/58414196).
-2. If `yarn docs:dev` fails, verify if your path does not contain spaces. We noticed some issues related to that.
-
-#### Ubuntu
-
-1. `ERROR: There are no scenarios; must have at least one.` while running `yarn` commands. Ubuntu has preinstalled `cmdtest` package that registers conflicting `yarn`. You might need to uninstall it and then configure yarn again. See troubleshooting [link](https://github.com/yarnpkg/yarn/issues/2821#issuecomment-284181365)
-
-#### Error: Cannot find module '../../server/generated/v21.2/docs/sidebar.js'
-
-run `yarn predocs:build`
+1. `EPERM: operation not permitted` during `pnpm i` - this error may appear if you've run the `pnpm i` from Windows before running it on the WSL2. See troubleshooting [link](https://stackoverflow.com/a/58414196).
+2. If `pnpm dev` fails, verify if your path does not contain spaces. We noticed some issues related to that.

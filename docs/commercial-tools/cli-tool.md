@@ -1,28 +1,20 @@
-# Node administration CLI
+# Node administration CLI tool <Badge type="warning" vertical="middle" text="Commercial"/>
 
 This CLI tool is a command line interface for administering EventStoreDB nodes. It allows you to run tasks similar to those available in the web admin interface and SDKs, including administrating users, projections and configuration.
 
 ## Download
 
-<!-- TODO: Refactor to VuePress -->
-
-<p class="call-to-action">
-<a href="/downloads/es_cli.windows.1.7.0.zip" class="btn btn--primary">EventStoreDB CLI 1.7.0 for Windows</a>
-<a href="/downloads/es_cli.osx.1.7.0.tar.gz" class="btn btn--primary">EventStoreDB CLI 1.7.0 for macOS</a>
-<a href="/downloads/es_cli.linux.1.7.0.tar.gz" class="btn btn--primary">EventStoreDB CLI 1.7.0 for Linux</a>
-</p>
-
-<!-- TODO: packages? -->
+Visit our [customer portal](https://developers.eventstore.org) to download the tool for Linux, Windows, and macOS.
 
 ## Usage
 
-```shell
+```shell:no-line-numbers
 es-cli [options] <command> <sub-command> [args]
 ```
 
 Where `<command>` is equal to the section, and `<sub-command>` the operation. For example, to shutdown a node:
 
-```shell
+```shell:no-line-numbers
 es-cli admin shutdown
 ```
 
@@ -30,7 +22,7 @@ es-cli admin shutdown
 
 Using the CLI tool requires specifying an EventStoreDB node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
 
-```bash
+```bash:no-line-numbers
 es-cli --serverurl="http://localhost:2113" --username=admin --password=changeit
 ```
 
@@ -38,17 +30,17 @@ es-cli --serverurl="http://localhost:2113" --username=admin --password=changeit
 
 You can also create a file with configuration values at the correct file path for your operating system.
 
-:::: tabs
-::: tab Windows
+:::: code-group
+::: code-group-item Windows
 
-```powershell
+```powershell:no-line-numbers
 %AppData%/eventstore.rc
 ```
 
 :::
-::: tab Linux and macOS
+::: code-group-item Linux and macOS
 
-```shell
+```shell:no-line-numbers
 ~/.eventstorerc
 ```
 
@@ -69,7 +61,7 @@ verbose=true # Or false
 
 Usage:
 
-```shell
+```shell:no-line-numbers
 es-cli [<options>] <command> [<args>]
 ```
 
@@ -99,7 +91,7 @@ es-cli [<options>] <command> [<args>]
 
 #### admin
 
-```shell
+```shell:no-line-numbers
 es-cli admin [--version] [--help] <command> [<args>]
 ```
 
@@ -121,7 +113,7 @@ es-cli admin [--version] [--help] <command> [<args>]
 
 #### admin azure_backup
 
-```shell
+```shell:no-line-numbers
 es-cli admin azure_backup [options]
 ```
 
@@ -142,7 +134,7 @@ Backs up the EventStoreDB database to the specified container in Azure Blob Stor
 
 #### admin azure_restore
 
-```shell
+```shell:no-line-numbers
 es-cli admin azure_restore [options]
 ```
 
@@ -161,7 +153,7 @@ Restores an EventStoreDB database from a specified container in Azure Blob Stora
 
 #### admin backup
 
-```shell
+```shell:no-line-numbers
 es-cli admin backup [options]
 ```
 
@@ -179,7 +171,7 @@ Backs up the EventStoreDB database to the destination directory.
 
 #### admin calculate_stream_size
 
-```shell
+```shell:no-line-numbers
 es-cli admin calculate_stream_size [options]
 ```
 
@@ -195,7 +187,7 @@ no options
 
 #### admin delete_streams
 
-```shell
+```shell:no-line-numbers
 es-cli admin delete_streams [options]
 ```
 
@@ -219,7 +211,7 @@ No options.
 
 #### admin restore
 
-```shell
+```shell:no-line-numbers
 es-cli admin restore [options]
 ```
 
@@ -235,7 +227,7 @@ Restores the EventStoreDB database from the provided location to the destination
 
 #### admin s3_backup
 
-```shell
+```shell:no-line-numbers
 es-cli admin s3_backup [options]
 ```
 
@@ -258,7 +250,7 @@ Backs up an EventStoreDB database to the destination S3 bucket.
 
 #### admin s3_restore
 
-```shell
+```shell:no-line-numbers
 es-cli admin s3_restore [options]
 ```
 
@@ -287,7 +279,7 @@ No options.
 
 #### admin verify_db
 
-```shell
+```shell:no-line-numbers
 es-cli admin verify_db [options]
 ```
 
@@ -304,7 +296,7 @@ An output file called 'verify_db.error.log' will be written to the current worki
 
 #### user
 
-```shell
+```shell:no-line-numbers
 es-cli user [--version] [--help] <command> [<args>]
 ```
 
@@ -321,7 +313,7 @@ es-cli user [--version] [--help] <command> [<args>]
 
 #### user add
 
-```shell
+```shell:no-line-numbers
 es-cli useradd [options]
 ```
 
@@ -337,7 +329,7 @@ Add a user.
 
 #### user change_password
 
-```shell
+```shell:no-line-numbers
 es-cli user change_password [options]
 ```
 
@@ -351,7 +343,7 @@ Change the password for the given user.
 
 #### user delete
 
-```shell
+```shell:no-line-numbers
 es-cli user delete [options]
 ```
 
@@ -363,7 +355,7 @@ Delete a user.
 
 #### user disable
 
-```shell
+```shell:no-line-numbers
 es-cli user disable [options]
 ```
 
@@ -375,7 +367,7 @@ Disable a user.
 
 #### user update
 
-```shell
+```shell:no-line-numbers
 es-cli user update [options]
 ```
 
@@ -390,7 +382,7 @@ Update a user.
 
 #### user enable
 
-```shell
+```shell:no-line-numbers
 es-cli user enable [options]
 ```
 
@@ -402,7 +394,7 @@ Enable a user.
 
 #### user list
 
-```shell
+```shell:no-line-numbers
 es-cli user list [options]
 ```
 
@@ -410,7 +402,7 @@ List all users.
 
 #### user reset_password
 
-```shell
+```shell:no-line-numbers
 es-cli user reset_password [options]
 ```
 
@@ -423,7 +415,7 @@ Reset a user's password.
 
 #### projections
 
-```shell
+```shell:no-line-numbers
 es-cli projections [--version] [--help] <command> [<args>]
 ```
 
@@ -442,7 +434,7 @@ es-cli projections [--version] [--help] <command> [<args>]
 
 #### projections delete
 
-```shell
+```shell:no-line-numbers
 es-cli projections delete [options]
 ```
 
@@ -456,7 +448,7 @@ Delete a projection.
 
 #### projections disable
 
-```shell
+```shell:no-line-numbers
 es-cli projections disable [options]
 ```
 
@@ -468,7 +460,7 @@ Disable a projection.
 
 #### projections enable
 
-```shell
+```shell:no-line-numbers
 es-cli projections enable [options]
 ```
 
@@ -480,7 +472,7 @@ Enable a projection.
 
 #### projections list
 
-```shell
+```shell:no-line-numbers
 es-cli projections list [options]
 ```
 
@@ -488,7 +480,7 @@ List all the projections.
 
 #### projections new
 
-```shell
+```shell:no-line-numbers
 es-cli projections new [options]
 ```
 
@@ -502,7 +494,7 @@ Create a new projection.
 
 #### projections result
 
-```shell
+```shell:no-line-numbers
 es-cli projections result [options]
 ```
 
@@ -515,7 +507,7 @@ Get the result of a projection.
 
 #### projections state
 
-```shell
+```shell:no-line-numbers
 es-cli projections state [options]
 ```
 
@@ -528,7 +520,7 @@ Get the state of a projection.
 
 #### projections status
 
-```shell
+```shell:no-line-numbers
 es-cli projections status [options]
 ```
 
@@ -540,7 +532,7 @@ Get the status of a projection.
 
 #### projections restore_checkpoint
 
-```shell
+```shell:no-line-numbers
 es-cli projections restore_checkpoint [options]
 ```
 
@@ -552,7 +544,7 @@ Restore a previous checkpoint for a projection.
 
 #### projections has_stalled
 
-```shell
+```shell:no-line-numbers
 es-cli projections has_stalled [options]
 ```
 
@@ -564,7 +556,7 @@ Determines whether a projection has stalled.
 
 #### competing
 
-```shell
+```shell:no-line-numbers
 es-cli competing [--version] [--help] <command> [<args>]
 ```
 
@@ -577,7 +569,7 @@ es-cli competing [--version] [--help] <command> [<args>]
 
 #### competing list
 
-```shell
+```shell:no-line-numbers
 es-cli competing list [options]
 ```
 
@@ -590,7 +582,7 @@ List the subscriptions.
 
 #### competing create
 
-```shell
+```shell:no-line-numbers
 es-cli competing create [options]
 ```
 
@@ -604,7 +596,7 @@ Create a new subscription.
 
 #### competing update
 
-```shell
+```shell:no-line-numbers
 es-cli competing update [options]
 ```
 
@@ -618,7 +610,7 @@ Update an existing subscription.
 
 #### config_generator
 
-```shell
+```shell:no-line-numbers
 es-cli config_generator [--version] [--help] <command> [<args>]
 ```
 
@@ -628,7 +620,7 @@ es-cli config_generator [--version] [--help] <command> [<args>]
 
 #### config_generator create_config
 
-```shell
+```shell:no-line-numbers
 es-cli config_generator createconfig [options]
 ```
 

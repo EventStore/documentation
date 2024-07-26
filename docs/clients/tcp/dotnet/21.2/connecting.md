@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Connecting to EventStoreDB
 
 Describe connecting to the single node and to the cluster.

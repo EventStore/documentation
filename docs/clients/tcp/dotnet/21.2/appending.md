@@ -1,3 +1,7 @@
+---
+sitemap.priority: 0.005
+---
+
 # Appending events
 
 You can use the client API to append one or more events to a stream atomically. You do this by appending the events to the stream in one operation, or by using transactions.

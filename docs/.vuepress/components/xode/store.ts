@@ -14,11 +14,11 @@ export default {
         connectionString: "",
         codeLanguage: getSelectedCodeLanguage()
     }),
-    changeLanguage(language) {
+    changeLanguage(language: string) {
         this.state.codeLanguage = language;
         setStorageValue(prefix, langStorageName, language);
     },
-    updateConnectionString(conn) {
+    updateConnectionString(conn: string) {
         this.state.connectionString = conn;
     }
 }

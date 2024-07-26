@@ -1,9 +1,9 @@
-import {fs, path, logger} from "@vuepress/utils";
+import {fs} from "vuepress/utils";
 import type {MarkdownEnv} from "../types";
 import type {ImportCodeTokenMeta} from "./types";
-import version from "../../lib/version";
+import {resolveVersionedPath} from "../resolver";
 
-function testLine(line, regexp, regionName, end = false) {
+function testLine(line: string, regexp: RegExp, regionName: string, end = false) {
     const [full, tag, name] = regexp.exec(line.trim()) || [];
     return (
         full
@@ -13,7 +13,8 @@ function testLine(line, regexp, regionName, end = false) {
     );
 }
 
-function findRegion(lines, regionName) {
+function findRegion(lines: string[] | null, regionName: string) {
+    if (lines === null) return undefined;
     const regionRegexps = [
         /^\/\/ ?#?((?:end)?region) ([\w*-]+)$/, // javascript, typescript, java, go
         /^\/\* ?#((?:end)?region) ([\w*-]+) ?\*\/$/, // css, less, scss
@@ -21,7 +22,7 @@ function findRegion(lines, regionName) {
         /^<!-- #?((?:end)?region) ([\w*-]+) -->$/, // HTML, markdown
         /^#(End Region) ([\w*-]+)$/, // Visual Basic
         /^::#(endregion) ([\w*-]+)$/, // Bat
-        /^# ?((?:end)?region) ([\w*-]+)$/ // C#, PHP, Powershell, Python, perl & misc
+        /^# ?((?:end)?region) ([\w*-]+)$/ // C#, PHP, PowerShell, Python, perl & misc
     ];
 
     let regexp = null;
@@ -51,36 +52,11 @@ export const resolveImportCode = (
     importFilePath: string | null
     importCode: string
 } => {
-    let importFilePath = importPath;
-
-    if (!path.isAbsolute(importPath)) {
-        // if the importPath is relative path, we need to resolve it
-        // according to the markdown filePath
-        if (!filePath) {
-            logger.error(`Unable to resolve code path: ${filePath}`);
-            return {
-                importFilePath: null,
-                importCode: 'Error when resolving path',
-            };
-        }
-        importFilePath = path.resolve(filePath, '..', importPath);
+    const {importFilePath, error} = resolveVersionedPath(importPath, filePath);
+    if (importFilePath === null || error !== null){
+        return {importFilePath, importCode: error!};
     }
 
-    if (importFilePath.includes("{version}")) {
-        const ver = version.getVersion(filePath);
-        importFilePath = importFilePath.replace("{version}", ver);
-    }
-
-    // check file existence
-    if (!fs.existsSync(importFilePath)) {
-        logger.error(`Code file can't be found: ${importFilePath}`);
-        return {
-            importFilePath,
-            importCode: 'File not found!',
-        };
-    }
-
-    // logger.info(`About to read import path: ${importFilePath}`); // CD
     // read file content
     const fileContent = fs.readFileSync(importFilePath).toString();
 
@@ -88,10 +64,11 @@ export const resolveImportCode = (
         if (l.length === 0) return l;
         const spaces = l[0].length - l[0].trimStart().length;
         if (spaces === 0) return l;
-        return l.map((v, i) => v.substr(spaces));
+        return l.map(v => v.substr(spaces));
     }
 
     const allLines = (fileContent != null) ? fileContent.split('\n') : null;
+    if (!allLines) return {importFilePath, importCode: "Code is empty"};
     if (region) {
         const reg = findRegion(allLines, region);
         if (reg) {

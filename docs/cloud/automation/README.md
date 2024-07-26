@@ -92,9 +92,7 @@ FDGco0u_1Ypw9WVVIfAHtIJh0ioUI_XbMhxMlEpiCUlHR
 
 If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page, then click on "Request refresh token" button.
 
-::: card
 ![token in cloud console](./images/token_console.png)
-:::
 
 #### Obtaining the organisation ID
 
@@ -109,9 +107,7 @@ Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Event Store Ltd"
 
 In the Cloud Console, open the [organisations page][cloud console organizations]. Then, select the organisation from the list and go to its settings. There, you can copy the organisation ID:
 
-::: card
 ![organisation id in the cloud console](./images/org_id.png)
-:::
 
 ### Resources
 

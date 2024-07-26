@@ -1,17 +1,13 @@
-import {PluginWithOptions} from "markdown-it";
-import {fs, logger, path} from "@vuepress/utils";
+import {type PluginWithOptions} from "markdown-it";
+import {fs, logger, path} from "vuepress/utils";
 import version from "../../lib/version";
 import {instance} from "../../lib/versioning";
 import {ensureLocalLink} from "../linkCheck";
+import type {MdEnv, MdToken} from "../types";
+import {resolveVersionedPath} from "../resolver";
 
 export interface ReplaceLinkPluginOptions {
     replaceLink?: (link: string, env: any) => string;
-}
-
-interface MdEnv {
-    base: string;
-    filePath: string;
-    filePathRelative: string;
 }
 
 interface resolveFunction {
@@ -32,8 +28,10 @@ function getNewPath(href: string, version: string): string {
     return base + sub;
 }
 
-function replaceCrossLinks(token, env: MdEnv) {
+function replaceCrossLinks(token: MdToken, env: MdEnv) {
     const href = token.attrGet("href");
+    if (href === null) return;
+
     if (!href.startsWith("@")) return;
 
     const fileVersion = (version.getVersion(env.filePathRelative) ?? instance.latest.split("/")[1]).replace("v", "");
@@ -67,9 +65,23 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
         "inline",
         "replace-link",
         (state) => {
-            if (opts?.replaceLink === undefined) return false;
+            if (opts?.replaceLink === undefined) return;
 
-            const replaceAttr = (token, attrName) => token.attrSet(attrName, opts.replaceLink(token.attrGet(attrName), state.env));
+            const replaceAttr = (token: MdToken, attrName: string) => {
+                const link = token.attrGet(attrName)!;
+                let replacement = opts.replaceLink!(link, state.env);
+                if (replacement === link) return;
+                if (replacement.indexOf("{version}") !== -1){
+                    const r = resolveVersionedPath(replacement, state.env.filePath)
+                    if (r.error !== null) {
+                        logger.error(`Unable to resolve version for ${replacement} in ${state.env.filePathRelative}: ${r.error}`);
+                    } else {
+                        replacement = r.importFilePath!;
+                    }
+                }
+                token.attrSet(attrName, replacement);
+                logger.info(`Replaced ${link} with ${replacement}`);
+            };
 
             state.tokens.forEach((blockToken) => {
                 if (!(blockToken.type === "inline" && blockToken.children)) {
@@ -81,11 +93,11 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                     switch (type) {
                         case "link_open":
                             const href = token.attrGet("href");
+                            if (href === null) return;
                             replaceAttr(token, "href")
                             replaceCrossLinks(token, state.env);
                             if (href.startsWith("@")) {
-                                const replaced = token.attrGet("href");
-                                logger.info(`Replaced ${href} with ${replaced}`);
+                                const replaced = token.attrGet("href")!;
                                 ensureLocalLink(replaced, state.env, false);
                             }
                             break;
@@ -94,7 +106,7 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                             break;
                     }
                 })
-            })
+            });
         }
     )
 }
