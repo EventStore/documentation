@@ -2,8 +2,6 @@
 
 Get started by connecting your application to EventStoreDB. 
 
-Complete the form below to generate the connection string and examples for different languages and SDKs.
-
 ## Connecting to EventStoreDB
 
 For your application to start communicating with EventStoreDB, you need to instantiate the client, and configure it accordingly. Below, you will find instructions for supported SDKs.
