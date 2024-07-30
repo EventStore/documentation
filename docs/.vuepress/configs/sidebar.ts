@@ -1,5 +1,5 @@
 import { instance as ver } from "../lib/versioning";
-import type {EsSidebarOptions} from "../lib/types";
+import type { EsSidebarOptions } from "../lib/types";
 
 export const en: EsSidebarOptions = {
   "/connectors/": [
@@ -7,11 +7,39 @@ export const en: EsSidebarOptions = {
       text: "",
       group: "Connectors",
       children: [
-        "/connectors/README.md",
-        "/connectors/quickstart.md",
-        "/connectors/manage.md",
-        "/connectors/sinks.md",
-        "/connectors/details.md",
+        "README.md",
+        "quickstart.md",
+        "details.md",
+        "sinks.md",
+        "settings.md",
+        "manage.md"
+      ]
+    }
+  ],
+  "/connectors/sinks/logger": [
+    {
+      text: "",
+      group: "Logger Sink",
+      children: [
+        "/connectors/sinks/logger.md",
+      ],
+    },
+  ],
+  "/connectors/sinks/kafka": [
+    {
+      text: "",
+      group: "Kafka Sink",
+      children: [
+        "/connectors/sinks/kafka.md",
+      ],
+    },
+  ],
+  "/connectors/sinks/http": [
+    {
+      text: "",
+      group: "Http Sink",
+      children: [
+        "/connectors/sinks/http.md",
       ],
     },
   ],
@@ -27,7 +55,7 @@ export const en: EsSidebarOptions = {
         "/clients/grpc/persistent-subscriptions.md",
         "/clients/grpc/projections.md",
         "/clients/grpc/authentication.md",
-        "/clients/grpc/observability.md",
+        "/clients/grpc/observability.md"
       ],
     },
   ],

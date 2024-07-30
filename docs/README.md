@@ -5,6 +5,8 @@ tagline: The stream database built for Event Sourcing
 actions:
 - text: Database server →
   link: /latest.html
+- text: Connectors →
+  link: /connectors/
 - text: Clients →
   link: /clients/grpc/
 - text: Event Store Cloud →

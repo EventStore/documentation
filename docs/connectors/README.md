@@ -2,12 +2,12 @@
 title: "Introduction"
 ---
 
-# Connectors Preview Introduction <Badge text="Commercial" type="warning" vertical="middle"/>
+# Connectors Preview Introduction <Badge text="alpha" type="warning" vertical="middle"/>
 
 Welcome to the Connectors Early Preview program!
 
 ::: note
-The Connector plugin is pre-installed in commercial versions of EventStoreDB but not enabled by default. 
+The Connector plugin is pre-installed in commercial versions of EventStoreDB and is enabled by default.
 :::
 
 Connectors make it easy to integrate EventStoreDB data into other systems.
@@ -18,10 +18,11 @@ Each connector runs on the server-side and uses a catch-up subscription to recei
 
 This reduces the amount of work needed to process data from EventStoreDB instances and makes it easy to create data pipelines to implement complex use cases.
 
-In this preview, there are two sinks:
+In this preview, there are three sinks:
 
-- [Console Sink](./sinks.md#console-sink) for experimentation
-- [HTTP Sink](./sinks.md#http-sink) for sending events to an HTTP endpoint
+- [Logger Sink](./sinks/logger.md) for experimentation
+- [HTTP Sink](./sinks/http.md) for sending events to an HTTP endpoint
+- [Kafka Sink](./sinks/kafka.md) for sending events to a Kafka topic
 
 ## Motivation
 
@@ -54,13 +55,10 @@ We will collect your input and feedback during the connectors preview program to
 
 ## Further plans
 
-Although the Connectors plugin is only available in commercial packages, we will open up the preview program to a wider audience in the coming months.
+Although the Connectors plugin will be available to everyone running on the
+leader node, some sinks, such as the Kafka one, will be made commercial. We will open
+up the preview program to a wider audience in the coming months.
 
 Further, we plan to:
 * Add more sinks
 * Allow concurrent processing of events
-
-
-
-
-
