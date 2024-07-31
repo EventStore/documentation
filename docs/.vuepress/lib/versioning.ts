@@ -27,10 +27,12 @@ const createSidebarItem = (item: EsSidebarGroupOptions, path: string, version: s
     if (item.collapsible !== undefined) {
         ch = ch.map(x => !x.startsWith('../') ? '../' + x : x);
     }
+    const childPath = item.prefix ? `/${path}${item.prefix}` : xp;
     const children = ch.map(x => x.split(xp).join(""));
     return {
         ...item,
-        children: children.map(x => `/${path}/${x}`),
+        children: children.map(x => `${childPath}${x}`),
+        prefix: undefined,
         group,
         version,
         text: item.text || item.title || ""
@@ -102,6 +104,7 @@ export class versioning {
             });
         })
 
+        console.log(JSON.stringify(sidebars, null, 2));
         return sidebars;
     }
 

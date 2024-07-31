@@ -5,6 +5,8 @@ export interface EsSidebarGroupOptions extends NavItemOptions{
     collapsible?: boolean;
     title?: string;
     version?: string;
+    prefix?: string;
+    link?: string;
     children: EsSidebarItemOptions[] | string[];
 }
 
