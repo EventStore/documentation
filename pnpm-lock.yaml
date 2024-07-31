@@ -27,8 +27,8 @@ importers:
         specifier: ^2.0.0-rc.28
         version: 2.0.0-rc.28(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
       '@vuepress/plugin-docsearch':
-        specifier: 2.0.0-rc.37
-        version: 2.0.0-rc.37(@algolia/client-search@4.24.0)(search-insights@2.15.0)(typescript@5.5.3)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
+        specifier: 2.0.0-rc.40
+        version: 2.0.0-rc.40(@algolia/client-search@4.24.0)(search-insights@2.15.0)(typescript@5.5.3)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
       '@vuepress/plugin-google-analytics':
         specifier: 2.0.0-rc.37
         version: 2.0.0-rc.37(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
@@ -831,14 +831,14 @@ packages:
     resolution: {integrity: sha512-xm8XrMKz0IlUdocVbYJe0Z9xEgidU7msskG8BbhnTPK/HZ2z/7FP7ykqPgrUH+C+r414mNfNWam1f2vqOjqjYQ==}
     engines: {node: '>=6.9.0'}
 
-  '@docsearch/css@3.6.0':
-    resolution: {integrity: sha512-+sbxb71sWre+PwDK7X2T8+bhS6clcVMLwBPznX45Qu6opJcgRjAp7gYSDzVFp187J+feSj5dNBN1mJoi6ckkUQ==}
+  '@docsearch/css@3.6.1':
+    resolution: {integrity: sha512-VtVb5DS+0hRIprU2CO6ZQjK2Zg4QU5HrDM1+ix6rT0umsYvFvatMAnf97NHZlVWDaaLlx7GRfR/7FikANiM2Fg==}
 
-  '@docsearch/js@3.6.0':
-    resolution: {integrity: sha512-QujhqINEElrkIfKwyyyTfbsfMAYCkylInLYMRqHy7PHc8xTBQCow73tlo/Kc7oIwBrCLf0P3YhjlOeV4v8hevQ==}
+  '@docsearch/js@3.6.1':
+    resolution: {integrity: sha512-erI3RRZurDr1xES5hvYJ3Imp7jtrXj6f1xYIzDzxiS7nNBufYWPbJwrmMqWC5g9y165PmxEmN9pklGCdLi0Iqg==}
 
-  '@docsearch/react@3.6.0':
-    resolution: {integrity: sha512-HUFut4ztcVNmqy9gp/wxNbC7pTOHhgVVkHVGCACTuLhUKUhKAF9KYHJtMiLUJxEqiFLQiuri1fWF8zqwM/cu1w==}
+  '@docsearch/react@3.6.1':
+    resolution: {integrity: sha512-qXZkEPvybVhSXj0K7U3bXc233tk5e8PfhoZ6MhPOiik/qUQxYC+Dn9DnoS7CxHQQhHfCvTiN0eY9M12oRghEXw==}
     peerDependencies:
       '@types/react': '>= 16.8.0 < 19.0.0'
       react: '>= 16.8.0 < 19.0.0'
@@ -1709,8 +1709,8 @@ packages:
     peerDependencies:
       vuepress: 2.0.0-rc.14
 
-  '@vuepress/plugin-docsearch@2.0.0-rc.37':
-    resolution: {integrity: sha512-i2K6jbwgjJhO85ig9lpBcC9dUCi0MdCDFOu0lOVAMsMMNFuToVPHM2Fe+GU1qtJk7IEDmtzmCa1A9+4+D7WX1w==}
+  '@vuepress/plugin-docsearch@2.0.0-rc.40':
+    resolution: {integrity: sha512-k3sfer1Vm+bxx0DZv3mWXMNmhDB/LfFOiApM2/T6sChvlScWvlHscydUtp48dmkF4qJV+bieQw0FDzO6oEHeXA==}
     peerDependencies:
       vuepress: 2.0.0-rc.14
 
@@ -5217,11 +5217,11 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@docsearch/css@3.6.0': {}
+  '@docsearch/css@3.6.1': {}
 
-  '@docsearch/js@3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)':
+  '@docsearch/js@3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)':
     dependencies:
-      '@docsearch/react': 3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)
+      '@docsearch/react': 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)
       preact: 10.6.5
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -5230,11 +5230,11 @@ snapshots:
       - react-dom
       - search-insights
 
-  '@docsearch/react@3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)':
+  '@docsearch/react@3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)':
     dependencies:
       '@algolia/autocomplete-core': 1.9.3(@algolia/client-search@4.24.0)(algoliasearch@4.24.0)(search-insights@2.15.0)
       '@algolia/autocomplete-preset-algolia': 1.9.3(@algolia/client-search@4.24.0)(algoliasearch@4.24.0)
-      '@docsearch/css': 3.6.0
+      '@docsearch/css': 3.6.1
       algoliasearch: 4.24.0
     optionalDependencies:
       search-insights: 2.15.0
@@ -6137,15 +6137,15 @@ snapshots:
       - '@vue/composition-api'
       - typescript
 
-  '@vuepress/plugin-docsearch@2.0.0-rc.37(@algolia/client-search@4.24.0)(search-insights@2.15.0)(typescript@5.5.3)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))':
+  '@vuepress/plugin-docsearch@2.0.0-rc.40(@algolia/client-search@4.24.0)(search-insights@2.15.0)(typescript@5.5.3)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))':
     dependencies:
-      '@docsearch/css': 3.6.0
-      '@docsearch/js': 3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)
-      '@docsearch/react': 3.6.0(@algolia/client-search@4.24.0)(search-insights@2.15.0)
-      '@vuepress/helper': 2.0.0-rc.37(typescript@5.5.3)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
-      '@vueuse/core': 10.11.0(vue@3.4.31(typescript@5.5.3))
+      '@docsearch/css': 3.6.1
+      '@docsearch/js': 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)
+      '@docsearch/react': 3.6.1(@algolia/client-search@4.24.0)(search-insights@2.15.0)
+      '@vuepress/helper': 2.0.0-rc.40(typescript@5.5.3)(vuepress@2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
+      '@vueuse/core': 10.11.0(vue@3.4.34(typescript@5.5.3))
       ts-debounce: 4.0.0
-      vue: 3.4.31(typescript@5.5.3)
+      vue: 3.4.34(typescript@5.5.3)
       vuepress: 2.0.0-rc.14(@vuepress/bundler-vite@2.0.0-rc.14(sass@1.77.8)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3))
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -6328,11 +6328,28 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
+  '@vueuse/core@10.11.0(vue@3.4.34(typescript@5.5.3))':
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 10.11.0
+      '@vueuse/shared': 10.11.0(vue@3.4.34(typescript@5.5.3))
+      vue-demi: 0.14.8(vue@3.4.34(typescript@5.5.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
   '@vueuse/metadata@10.11.0': {}
 
   '@vueuse/shared@10.11.0(vue@3.4.31(typescript@5.5.3))':
     dependencies:
       vue-demi: 0.14.8(vue@3.4.31(typescript@5.5.3))
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
+  '@vueuse/shared@10.11.0(vue@3.4.34(typescript@5.5.3))':
+    dependencies:
+      vue-demi: 0.14.8(vue@3.4.34(typescript@5.5.3))
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -9009,6 +9026,10 @@ snapshots:
   vue-demi@0.14.8(vue@3.4.31(typescript@5.5.3)):
     dependencies:
       vue: 3.4.31(typescript@5.5.3)
+
+  vue-demi@0.14.8(vue@3.4.34(typescript@5.5.3)):
+    dependencies:
+      vue: 3.4.34(typescript@5.5.3)
 
   vue-eslint-parser@9.4.3(eslint@8.57.0):
     dependencies:
