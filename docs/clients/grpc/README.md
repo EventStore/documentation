@@ -114,7 +114,7 @@ When connecting to an insecure instance, specify `tls=false` parameter. For exam
 
 ### Creating a client
 
-First, let's create a client and get it connected to the database.
+First, create a client and get it connected to the database.
 
 @[code{createClient}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
