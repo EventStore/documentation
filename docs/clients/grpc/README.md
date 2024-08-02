@@ -4,10 +4,10 @@ Get started by connecting your application to EventStoreDB.
 
 ## Connecting to EventStoreDB
 
-For your application to start communicating with EventStoreDB, you need to instantiate the client, and configure it accordingly. Below, you will find instructions for supported SDKs.
+For your application to start communicating with EventStoreDB, you need to instantiate the client and configure it accordingly. Below are instructions for supported SDKs.
 
 ::: tip Insecure Clusters
-All our GRPC clients are secure by default, and must be configured to connect to an insecure server via [a connection string](#connection-string), or the client's configuration.
+All our GRPC clients are secure by default and must be configured to connect to an insecure server via [a connection string](#connection-string) or the client's configuration.
 :::
 
 ### Required packages
@@ -76,7 +76,7 @@ No additional configuration is needed having Rust installed. Go check https://ru
 
 ### Connection string
 
-Each SDK has its own way to configure the client, but it's always possible to use the connection string. 
+Each SDK has its own way of configuring the client, but the connection string can always be used. 
 The EventStoreDB connection string supports two schemas: `esdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `esdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
 Since version 22.10, ESDB supports gossip on single-node deployments, so `esdb+discover://` schema can be used for connecting to any topology.
 
@@ -110,7 +110,7 @@ There are a number of query parameters that can be used in the connection string
 | `userCertFile`        | String, file path                                 | None     | User certificate file for X.509 authentication.                                                                                                |
 | `userKeyFile`         | String, file path                                 | None     | Key file for the user certificate used for X.509 authentication.                                                                               |
 
-When connecting to an insecure instance, specify `tls=false` parameter. For example, for a node running locally use `esdb://localhost:2113?tls=false`. Note that username and passwords aren't provided there because insecure deployments don't support authentication and authorisation.
+When connecting to an insecure instance, specify `tls=false` parameter. For example, for a node running locally use `esdb://localhost:2113?tls=false`. Note that usernames and passwords aren't provided there because insecure deployments don't support authentication and authorisation.
 
 ### Creating a client
 
@@ -122,15 +122,15 @@ The client instance can be used as a singleton across the whole application. It 
 
 ### Creating an event
 
-You can write anything to EventStoreDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object and it's up to you to choose the serialization method.
+You can write anything to EventStoreDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object, and it's up to you to choose the serialization method.
 
 ::: tip Server-side projections
-User-defined server-side projections require events to be serialized to JSON format.
+User-defined server-side projections require events to be serialized in JSON format.
 
 We use JSON for serialization in the documentation examples.
 :::
 
-The code snippet below creates an event object instance, serializes it and puts it as payload to the `EventData` structure, which the client is able to write to the database.
+The code snippet below creates an event object instance, serializes it, and adds it as a payload to the `EventData` structure, which the client can then write to the database.
 
 @[code{createEvent}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
