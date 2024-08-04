@@ -26,7 +26,7 @@ EventStoreDB offers a single sign-on (SSO) for our customers. Using a single acc
 
 To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/)  where you'll see the login screen. There you get an option to sign up:
 
-![Sign up screen](./images/discuss-signup.png)
+![Sign up screen](./images/updated-signup.png)
 
 ::: tip
 If you already have an account at our community forum (Discuss), you can use it to log in to Event Store Cloud.
@@ -38,23 +38,41 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 
 With the new account, you can log in to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
 
-::: warning Gated provisioning
-You won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
-:::
+After logging in, you will be asked to fill out a short survey that helps EventStore understand your primary goal of using our product.
 
-In the console, you first get to the list of organisations that you have access to.
+![Survey screen](./images/survey.png)
 
-![Cloud organisations](./images/cloud-console-orgs.png)
 
-You start with an empty list, so you'll need to add an organisation.
 
-::: tip
-The Cloud console has the concept of Context. You'd normally be in the organisation context or in the project context.
-:::
+### Billing
+Billing settings are configured at the organisation level and apply to all projects within that organization.  For example, if you have several customers and want to have a separate EventStoreDB cluster for each customer and also be able to bill the customer for the cloud resources, you can separate each customer into its own organisation.
 
 ### Organisations
 
-With your account, you might have more than one organisation. Each organisation has its own billing account and therefore is invoiced separately for all the resources within the organisation. For example, if you have several customers and want to have a separate EventStoreDB cluster for each customer and also be able to bill the customer for the cloud resources, you can separate each customer into its own organisation.
+#### Creating an Organisation
+
+The only thing an organisation requires is a name and your preferred cloud provider. 
+
+![Create new organisation](./images/new-org.png)
+
+
+After creating the organisation, you will be taken to a page to add your billing details. 
+
+![Add Billing details](./images/billing-details.png)
+
+Once you have submitted your billing details, you will be redirected to a page that will ask you to provide a payment method.
+
+![Add Payment method](./images/payment-method.png)
+
+We utilize [Stripe](https://www.stripe.com) as our billing provider and do not store payment method details. All payment methods are securely stored in Stripe. We initially charge $0.50 to authorize the payment method. You will receive a refund of the $0.50 once the payment method has been authorized. The refund can take up to 7 days to show on your bank statement. 
+
+Once the payment method has been added, you will be redirected to your organizations overview page and the provisioning process will start. The provisioning process sets up all necessary cloud resources required to fully manage EventStore databases. This initial process can take up to 5 minutes.
+
+
+::: warning Skipping Billing
+You can choose to skip providing your billing details here, but doing so will mean that you will not be able to provision any resources unil you do.
+:::
+
 
 When you click on an organisation in the list, you get to the projects screen, where you can see all the projects for the selected organisation.
 
