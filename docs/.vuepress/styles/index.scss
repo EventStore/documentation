@@ -1,29 +1,32 @@
-:root {
-  --content-width: 940px;
-}
-
-.custom-container.note {
-  border-color: var(--nprogress-color);
-  background-color: var(--c-tip-bg);
-  color: var(--c-tip-text);
-  padding: 0.1rem 1.5rem;
-  border-left-width: 0.5rem;
-  border-left-style: solid;
-  margin: 1rem 0;
-}
-
-.custom-container-title {
-  color: var(--c-tip-title);
-}
-
 .vp-site-name {
   display: none;
 }
 
-.sidebar .sidebar-items {
-  padding-top: 0;
+body {
+  font-size: 15px;
 }
 
 body:has(#kapa-widget-container) .vp-back-to-top-button {
   bottom: 7.5rem!important;
+}
+
+@font-face {
+  font-family: "Museo Sans";
+  src: url("../public/fonts/MuseoSans_100.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Museo Sans";
+  src: url("../public/fonts/MuseoSans_300.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Museo Sans";
+  src: url("../public/fonts/MuseoSans_500.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
 }

@@ -1,12 +1,12 @@
 ---
-title: "Introduction"
+title: "Connectors Preview"
 ---
 
 # Connectors Preview Introduction <Badge text="Commercial" type="warning" vertical="middle"/>
 
 Welcome to the Connectors Early Preview program!
 
-::: note
+::: important
 The Connector plugin is pre-installed in commercial versions of EventStoreDB but not enabled by default. 
 :::
 

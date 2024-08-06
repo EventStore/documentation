@@ -1,3 +1,7 @@
+---
+headerDepth: 3
+---
+
 # Getting started
 
 Get started by connecting your application to EventStoreDB. 

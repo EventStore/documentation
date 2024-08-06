@@ -17,21 +17,20 @@ X.509 certificates are digital certificates that use the X.509 public key infras
 
 The following command uses the [gencert tool](https://github.com/EventStore/es-gencert-cli) to generate a user certificate for the user `admin` that will expire in 10 days:
 
-:::: code-group
-::: code-group-item shell
+::: code-tabs
+@tab bash
 
 ```shell:no-line-numbers
 ./es-gencert-cli create-user -username admin -days 10 -ca-certificate ./es-ca/ca.crt -ca-key ./es-ca/ca.key
 ```
 
-:::
-::: code-group-item PowerShell
+@tab PowerShell
 
 ```powershell:no-line-numbers
 .\es-gencert-cli.exe create-user -username admin -days 10 -ca-certificate ./es-ca/ca.crt -ca-key ./es-ca/ca.key
 ```
 
-::::
+:::
 
 ### Connect to EventStoreDB using an x.509 certificate
 
