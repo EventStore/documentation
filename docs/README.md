@@ -7,6 +7,8 @@ actions:
   link: /latest.html
 - text: Clients →
   link: /clients/grpc/
+- text: Connectors →
+  link: /connectors/
 - text: Event Store Cloud →
   link: /cloud/
 features:

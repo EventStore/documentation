@@ -4,38 +4,185 @@
 The Connector management API is idempotent.
 :::
 
-## Create
+## List
 
-Create a connector by sending a `POST` request to `connectors/<connector-name>`.
+List all connectors by sending a `POST` request to `/connectors/list`.
 
 :::: code-group
 ::: code-group-item Powershell
-```powershell
-$JSON = @'
-{
-  "Sink": "https://enkb1keveb5r.x.pipedream.net"
-}
-'@ -replace '"', '\"'
 
-curl.exe -i                           `
+```powershell
+$JSON = @"
+{
+  "state": [],
+  "instanceType": [],
+  "connectorId": []
+}
+"@
+
+curl.exe -X POST `
   -H "Content-Type: application/json" `
-  -u "admin:changeit"                 `
-  -d $JSON                            `
-  https://localhost:2113/connectors/my-connector
+  -d $JSON `
+  http://localhost:2113/connectors/list
 ```
+
 :::
 ::: code-group-item Bash
-```bash
-export json="{
-  \"Sink\": \"https://enkb1keveb5r.x.pipedream.net\"
-}"
 
-curl -i \
+```bash
+JSON='{
+  "state": [],
+  "instanceType": [],
+  "connectorId": []
+}'
+
+curl -X POST \
   -H "Content-Type: application/json" \
-  -u "admin:changeit" \
-  -d $json \
-  https://localhost:2113/connectors/my-connector
+  -d "$JSON" \
+  http://localhost:2113/connectors/list
 ```
+
+:::
+::::
+
+You can also paginate the results by specifying the `pageSize` and `page` parameters.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "state": [],
+  "instanceType": [],
+  "connectorId": [],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/list
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "state": [],
+  "instanceType": [],
+  "connectorId": [],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/list
+```
+
+:::
+::::
+
+You can filter the results by specifying the `state`, `instanceType`, and `connectorId` parameters.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "state": ["CONNECTOR_STATE_STOPPED", "CONNECTOR_STATE_RUNNING"],
+  "instanceType": ["EventStore.Connectors.Testing.LoggerSink"],
+  "connectorId": ["demo-logger-sink"],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/list
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "state": ["CONNECTOR_STATE_STOPPED", "CONNECTOR_STATE_RUNNING"],
+  "instanceType": ["EventStore.Connectors.Testing.LoggerSink"],
+  "connectorId": ["demo-logger-sink"],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/list
+```
+
+:::
+::::
+
+## Create
+
+Create a connector by sending a `POST` request to `connectors/create`.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "Name": "HttpSink",
+  "Settings": {
+    "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+    "Url": "https://enkb1keveb5r.x.pipedream.net"
+  }
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/create
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "Name": "HttpSink",
+  "Settings": {
+    "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+    "Url": "https://enkb1keveb5r.x.pipedream.net"
+  }
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/create
+```
+
 :::
 ::::
 
@@ -43,37 +190,77 @@ curl -i \
 Replace `https://enkb1keveb5r.x.pipedream.net` with your own sink URL.
 :::
 
-| Parameter            | Description                                                                                                                                                                                                                                          |
-|:---------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Sink`               | The URL where the sink will POST to.                                                                                                                                                                                                                 |
-| `Filter`             | The JSONPath filter.                                                                                                                                                                                                                                 |
-| `Affinity`           | The node type that the connector would like to run on. It can be `Leader`, `Follower` or `ReadOnlyReplica`. The default is `Leader`.                                                                                                                 |
-| `CheckpointInterval` | How frequently to store the checkpoint, this is currently measured in events.                                                                                                                                                                        |
-| `Enable`             | Set to `false` to create a connector without enabling it.                                                                                                                                                                                            |
-#### Filter examples
+| Parameter                                 | Description                                                                                                                                                                  |
+| :---------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Url`                                     | The URL where the sink will POST to.                                                                                                                                         |
+| `Method`                                  | The HTTP method to use for the request. The default value is `POST`                                                                                                          |
+| `Resilience:Enabled`                      | Enables or disables the retry mechanism. Default is `true`.                                                                                                                  |
+| `Resilience:RetryOnHttpCodes`             | Specifies the HTTP status codes that trigger a retry. Supports specific codes (e.g., `404`, `500`) and ranges (e.g., `5xx`). By default, retries on any non-2xx status code. |
+| `Resilience:MaxRetries`                   | The maximum number of retry attempts. A value of `-1` indicates unlimited retries.                                                                                           |
+| `Resilience:FirstDelayBound:UpperLimitMs` | The maximum delay in milliseconds between retries for the first retry delay bound.                                                                                           |
+| `Resilience:FirstDelayBound:DelayMs`      | The initial delay in milliseconds between retries for the first retry delay bound.                                                                                           |
 
-Filtering is done using [JSONPath](https://goessner.net/articles/JsonPath/). The filter is used to select events from the stream. If the filter is not provided, all events will be selected.
+#### Filter Options
 
-The following objects are accessible to the filter:
-* System metadata via `$`, for example `$.eventType` or `$.stream`
-* Event data via `$.data`, for example `$.data.name` or `$.data.age`
-* Event metadata via `$.metadata`, for example `$.metadata.user` or `$.metadata.correlationId`
+The filter types available include Stream Filters, Event Type Filters, and
+JsonPath Filters. Stream Filters can select events based on stream IDs, either
+by specifying a prefix or using regular expressions. Similarly, Event Type
+Filters allow selection based on event types, also using prefixes or regular
+expressions. Additionally, JsonPath Filters provide a way to filter events using
+[JsonPath](https://goessner.net/articles/JsonPath/) expressions applied to the
+event content.
 
-The following are examples of filters:
-```json
-{
-  "Sink": "console://", 
-  "Filter": "$[?($.eventType=='someEventType')]"
-}
-```
-```json
-{
-  "Sink": "console://", 
-  "Filter": "$[?($.data.testField=='testValue')]" 
-}
-```
+**Example Filters:**
 
-## List
+1. **Stream ID Prefix Filter**
+
+   ```json
+   {
+     "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+     "Name": "StreamIdPrefixFilter",
+     "Settings": {
+       "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+       "Subscription:ConsumeFilter:Scope": "Stream",
+       "Subscription:ConsumeFilter:Expression": "prefix_"
+     }
+   }
+   ```
+
+2. **Event Type Regex Filter**
+
+   ```json
+   {
+     "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+     "Name": "EventTypeRegexFilter",
+     "Settings": {
+       "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+       "Subscription:ConsumeFilter:Scope": "Record",
+       "Subscription:ConsumeFilter:Expression": "^eventType.*"
+     }
+   }
+   ```
+
+3. **JsonPath Filter**
+   ```json
+   {
+     "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+     "Name": "JsonPathFilter",
+     "Settings": {
+       "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+       "Url": "https://example-url.com",
+       "Subscription:ConsumeFilter:Scope": "Record",
+       "Subscription:ConsumeFilter:Expression": "$[?($.data.testField=='testValue')]"
+     }
+   }
+   ```
+
+| Parameter     | Description                                              |
+| :------------ | :------------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be created.    |
+| `Name`        | The name of the connector.                               |
+| `Settings`    | A JSON object containing the settings for the connector. |
+
+<!-- ## List
 
 List all connectors by sending a `GET` request to `connectors/list`.
 
@@ -88,126 +275,284 @@ curl.exe -i -u "admin:changeit" https://localhost:2113/connectors/list
 curl -i -u "admin:changeit" https://localhost:2113/connectors/list
 ```
 :::
-::::
+:::: -->
 
-## Enable
+## Start
 
-Enable a connector by sending a `POST` request to `connectors/<connector-name>/enable`.
-
-:::: code-group
-::: code-group-item Powershell
-``` powershell
-curl.exe -i -u "admin:changeit" -X POST `
-    https://localhost:2113/connectors/my-connector/enable
-```
-:::
-::: code-group-item Bash
-``` bash
-curl -i -u "admin:changeit" -X POST \
-    https://localhost:2113/connectors/my-connector/enable
-```
-:::
-::::
-
-## Disable
-
-Disable a connector by sending a `POST` request to `connectors/<connector-name>/disable`. The system will not activate disabled connectors.
+Start a connector by sending a `POST` request to `connectors/start`.
 
 :::: code-group
 ::: code-group-item Powershell
-``` powershell
+
+```powershell
 curl.exe -i -u "admin:changeit" -X POST `
-    https://localhost:2113/connectors/my-connector/disable
+    -H "Content-Type: application/json" `
+    -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' `
+    https://localhost:2113/connectors/start
 ```
+
 :::
 ::: code-group-item Bash
-``` bash
+
+```bash
 curl -i -u "admin:changeit" -X POST \
-    https://localhost:2113/connectors/my-connector/disable
+    -H "Content-Type: application/json" \
+    -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' \
+    https://localhost:2113/connectors/start
 ```
+
 :::
 ::::
+
+| Parameter     | Description                                           |
+| :------------ | :---------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be started. |
+
+## Stop
+
+Disable a connector by sending a `POST` request to `/connectors/stop`. The system will not activate disabled connectors.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+curl.exe -i -u "admin:changeit" -X POST `
+    -H "Content-Type: application/json" `
+    -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' `
+    https://localhost:2113/connectors/stop
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+curl -i -u "admin:changeit" -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' \
+    https://localhost:2113/connectors/stop
+```
+
+:::
+::::
+
+| Parameter     | Description                                           |
+| :------------ | :---------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be stopped. |
 
 ## Reset
 
-Reset a connector's checkpoint by sending a `POST` request to `connectors/<connector-name>/reset`.
+Reset a connector's checkpoint by sending a `POST` request to `/connectors/reset`.
 
 With an empty payload the connector will be reset to the beginning.
 
 :::: code-group
 ::: code-group-item Powershell
-``` powershell
-curl.exe -i                           `
-  -H "Content-Type: application/json" `
-  -u "admin:changeit"                 `
-  -d "{}"                             `
-  https://localhost:2113/connectors/my-connector/reset
+
+```powershell
+curl.exe -i -u "admin:changeit" -X POST `
+    -H "Content-Type: application/json" `
+    -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' `
+    https://localhost:2113/connectors/reset
 ```
+
 :::
 ::: code-group-item Bash
-``` bash
-curl -i \
-  -H "Content-Type: application/json" \
-  -u "admin:changeit" \
-  -d "{}" \
-  https://localhost:2113/connectors/my-connector/reset
+
+```bash
+curl -i -u "admin:changeit" -X POST \
+    -H "Content-Type: application/json" \
+    -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' \
+    https://localhost:2113/connectors/reset
 ```
+
 :::
 ::::
 
-`CommitPosition` and `PreparePosition` can be specified to reset a
-connector to a particular position. This position is treated as the new
-checkpoint i.e. the position of a successfully processed event. The
-connector will resume processing starting with the event *after* this.
+When the `ResetConnector` command is issued, the connector will be stopped if it is
+running and will be reset to the specified `LogPosition` if provided. If no
+`LogPosition` is provided, the connector will reset to the beginning.
 
 :::: code-group
 ::: code-group-item Powershell
-``` powershell
-$JSON = @'
-{
-  "CommitPosition": 0,
-  "PreparePosition": 0
-}
-'@ -replace '"', '\"'
 
-curl.exe -i                           `
+```powershell
+$JSON = @"
+{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "LogPosition": 123456789
+}
+"@
+
+curl.exe -X POST `
   -H "Content-Type: application/json" `
-  -u "admin:changeit"                 `
-  -d $JSON                            `
-  https://localhost:2113/connectors/my-connector/reset
+  -u admin:changeit `
+  -d $JSON `
+  https://localhost:2113/connectors/reset
 ```
+
 :::
 ::: code-group-item Bash
-``` bash
-export json="{
-  \"CommitPosition\": 0,
-  \"PreparePosition\": 0
-}"
 
-curl -i \
+```bash
+JSON='{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "LogPosition": 123456789
+}'
+
+curl -X POST \
   -H "Content-Type: application/json" \
-  -u "admin:changeit" \
-  -d $json \
-  https://localhost:2113/connectors/my-connector/reset
+  -u admin:changeit \
+  -d "$JSON" \
+  https://localhost:2113/connectors/reset
 ```
+
 :::
 ::::
+
+| Parameter     | Description                                            |
+| :------------ | :----------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be reset.    |
+| `LogPosition` | The log position to reset the connector to (optional). |
 
 ## Delete
 
-Delete a connector by sending a `DELETE` request to `connectors/<connector-name>`.
+Delete a connector by sending a `DELETE` request to `/connectors`.
 
 :::: code-group
 ::: code-group-item Powershell
-``` powershell
-curl.exe -i -u "admin:changeit" -X DELETE `
-  https://localhost:2113/connectors/my-connector
+
+```powershell
+$JSON = @"
+{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -u admin:changeit `
+  -d $JSON `
+  https://localhost:2113/connectors/delete
 ```
+
 :::
 ::: code-group-item Bash
-``` bash
-curl -i -u "admin:changeit" -X DELETE \
-    https://localhost:2113/connectors/my-connector
+
+```bash
+JSON='{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -u admin:changeit \
+  -d "$JSON" \
+  https://localhost:2113/connectors/delete
 ```
+
 :::
 ::::
+
+| Parameter     | Description                                           |
+| :------------ | :---------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be deleted. |
+
+## Rename
+
+To rename a connector, send a `POST` request to `/connectors/rename`.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "Name": "NewConnectorName"
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/rename
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "Name": "NewConnectorName"
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/rename
+```
+
+:::
+::::
+
+| Parameter     | Description                                           |
+| :------------ | :---------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be renamed. |
+| `Name`        | The new name for the connector.                       |
+
+## Reconfigure
+
+Reconfigure an existing connector by sending a `POST` request to `/connectors/reconfigure`.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "Settings": {
+    "Url": "https://new-endpoint.example.com",
+    "Method": "PUT"
+  }
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -u admin:changeit `
+  -d $JSON `
+  https://localhost:2113/connectors/reconfigure
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567",
+  "Settings": {
+    "Url": "https://new-endpoint.example.com",
+    "Method": "PUT"
+  }
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -u admin:changeit \
+  -d "$JSON" \
+  https://localhost:2113/connectors/reconfigure
+```
+
+:::
+::::
+
+| Parameter     | Description                                                  |
+| :------------ | :----------------------------------------------------------- |
+| `ConnectorId` | The unique identifier of the connector to be reconfigured.   |
+| `Settings`    | A JSON object containing the new settings for the connector. |
+
+::: note
+The connector must be stopped before reconfiguring. If the connector is running, the reconfigure operation will fail.
+:::
