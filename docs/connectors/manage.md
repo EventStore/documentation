@@ -4,6 +4,141 @@
 The Connector management API is idempotent.
 :::
 
+## List
+
+List all connectors by sending a `POST` request to `/connectors/list`.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "state": [],
+  "instanceType": [],
+  "connectorId": []
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/list
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "state": [],
+  "instanceType": [],
+  "connectorId": []
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/list
+```
+
+:::
+::::
+
+You can also paginate the results by specifying the `pageSize` and `page` parameters.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "state": [],
+  "instanceType": [],
+  "connectorId": [],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/list
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "state": [],
+  "instanceType": [],
+  "connectorId": [],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/list
+```
+
+:::
+::::
+
+You can filter the results by specifying the `state`, `instanceType`, and `connectorId` parameters.
+
+:::: code-group
+::: code-group-item Powershell
+
+```powershell
+$JSON = @"
+{
+  "state": ["CONNECTOR_STATE_STOPPED", "CONNECTOR_STATE_RUNNING"],
+  "instanceType": ["EventStore.Connectors.Testing.LoggerSink"],
+  "connectorId": ["demo-logger-sink"],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}
+"@
+
+curl.exe -X POST `
+  -H "Content-Type: application/json" `
+  -d $JSON `
+  http://localhost:2113/connectors/list
+```
+
+:::
+::: code-group-item Bash
+
+```bash
+JSON='{
+  "state": ["CONNECTOR_STATE_STOPPED", "CONNECTOR_STATE_RUNNING"],
+  "instanceType": ["EventStore.Connectors.Testing.LoggerSink"],
+  "connectorId": ["demo-logger-sink"],
+  "paging": {
+      "page": 1,
+      "pageSize": 100
+  }
+}'
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d "$JSON" \
+  http://localhost:2113/connectors/list
+```
+
+:::
+::::
+
 ## Create
 
 Create a connector by sending a `POST` request to `connectors/create`.
@@ -26,7 +161,7 @@ $JSON = @"
 curl.exe -X POST `
   -H "Content-Type: application/json" `
   -d $JSON `
-  http://localhost:2113/v1/connectors/create
+  http://localhost:2113/connectors/create
 ```
 
 :::
@@ -45,7 +180,7 @@ JSON='{
 curl -X POST \
   -H "Content-Type: application/json" \
   -d "$JSON" \
-  http://localhost:2113/v1/connectors/create
+  http://localhost:2113/connectors/create
 ```
 
 :::
@@ -153,7 +288,7 @@ Start a connector by sending a `POST` request to `connectors/start`.
 curl.exe -i -u "admin:changeit" -X POST `
     -H "Content-Type: application/json" `
     -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' `
-    https://localhost:2113/v1/connectors/start
+    https://localhost:2113/connectors/start
 ```
 
 :::
@@ -163,7 +298,7 @@ curl.exe -i -u "admin:changeit" -X POST `
 curl -i -u "admin:changeit" -X POST \
     -H "Content-Type: application/json" \
     -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' \
-    https://localhost:2113/v1/connectors/start
+    https://localhost:2113/connectors/start
 ```
 
 :::
@@ -184,7 +319,7 @@ Disable a connector by sending a `POST` request to `/connectors/stop`. The syste
 curl.exe -i -u "admin:changeit" -X POST `
     -H "Content-Type: application/json" `
     -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' `
-    https://localhost:2113/v1/connectors/stop
+    https://localhost:2113/connectors/stop
 ```
 
 :::
@@ -194,7 +329,7 @@ curl.exe -i -u "admin:changeit" -X POST `
 curl -i -u "admin:changeit" -X POST \
     -H "Content-Type: application/json" \
     -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' \
-    https://localhost:2113/v1/connectors/stop
+    https://localhost:2113/connectors/stop
 ```
 
 :::
@@ -217,7 +352,7 @@ With an empty payload the connector will be reset to the beginning.
 curl.exe -i -u "admin:changeit" -X POST `
     -H "Content-Type: application/json" `
     -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' `
-    https://localhost:2113/v1/connectors/reset
+    https://localhost:2113/connectors/reset
 ```
 
 :::
@@ -227,7 +362,7 @@ curl.exe -i -u "admin:changeit" -X POST `
 curl -i -u "admin:changeit" -X POST \
     -H "Content-Type: application/json" \
     -d '{"ConnectorId": "bcaa3afd-5031-4efb-8ab0-3815a8f03567"}' \
-    https://localhost:2113/v1/connectors/reset
+    https://localhost:2113/connectors/reset
 ```
 
 :::
@@ -252,7 +387,7 @@ curl.exe -X POST `
   -H "Content-Type: application/json" `
   -u admin:changeit `
   -d $JSON `
-  https://localhost:2113/v1/connectors/reset
+  https://localhost:2113/connectors/reset
 ```
 
 :::
@@ -268,7 +403,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -u admin:changeit \
   -d "$JSON" \
-  https://localhost:2113/v1/connectors/reset
+  https://localhost:2113/connectors/reset
 ```
 
 :::
@@ -297,7 +432,7 @@ curl.exe -X POST `
   -H "Content-Type: application/json" `
   -u admin:changeit `
   -d $JSON `
-  https://localhost:2113/v1/connectors/delete
+  https://localhost:2113/connectors/delete
 ```
 
 :::
@@ -312,7 +447,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -u admin:changeit \
   -d "$JSON" \
-  https://localhost:2113/v1/connectors/delete
+  https://localhost:2113/connectors/delete
 ```
 
 :::
@@ -340,7 +475,7 @@ $JSON = @"
 curl.exe -X POST `
   -H "Content-Type: application/json" `
   -d $JSON `
-  http://localhost:2113/v1/connectors/rename
+  http://localhost:2113/connectors/rename
 ```
 
 :::
@@ -355,7 +490,7 @@ JSON='{
 curl -X POST \
   -H "Content-Type: application/json" \
   -d "$JSON" \
-  http://localhost:2113/v1/connectors/rename
+  http://localhost:2113/connectors/rename
 ```
 
 :::
@@ -388,7 +523,7 @@ curl.exe -X POST `
   -H "Content-Type: application/json" `
   -u admin:changeit `
   -d $JSON `
-  https://localhost:2113/v1/connectors/reconfigure
+  https://localhost:2113/connectors/reconfigure
 ```
 
 :::
@@ -407,7 +542,7 @@ curl -X POST \
   -H "Content-Type: application/json" \
   -u admin:changeit \
   -d "$JSON" \
-  https://localhost:2113/v1/connectors/reconfigure
+  https://localhost:2113/connectors/reconfigure
 ```
 
 :::
