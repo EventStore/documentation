@@ -6,7 +6,7 @@ The Connector management API is idempotent.
 
 ## Create
 
-Create a connector by sending a `POST` request to `<version>/connectors/create`.
+Create a connector by sending a `POST` request to `connectors/create`.
 
 :::: code-group
 ::: code-group-item Powershell
@@ -144,7 +144,7 @@ curl -i -u "admin:changeit" https://localhost:2113/connectors/list
 
 ## Start
 
-Start a connector by sending a `POST` request to `<version>/connectors/start`.
+Start a connector by sending a `POST` request to `connectors/start`.
 
 :::: code-group
 ::: code-group-item Powershell
@@ -175,7 +175,7 @@ curl -i -u "admin:changeit" -X POST \
 
 ## Stop
 
-Disable a connector by sending a `POST` request to `<version>/connectors/stop`. The system will not activate disabled connectors.
+Disable a connector by sending a `POST` request to `/connectors/stop`. The system will not activate disabled connectors.
 
 :::: code-group
 ::: code-group-item Powershell
@@ -206,7 +206,7 @@ curl -i -u "admin:changeit" -X POST \
 
 ## Reset
 
-Reset a connector's checkpoint by sending a `POST` request to `<version>/connectors/reset`.
+Reset a connector's checkpoint by sending a `POST` request to `/connectors/reset`.
 
 With an empty payload the connector will be reset to the beginning.
 
@@ -281,7 +281,7 @@ curl -X POST \
 
 ## Delete
 
-Delete a connector by sending a `DELETE` request to `<version>/connectors`.
+Delete a connector by sending a `DELETE` request to `/connectors`.
 
 :::: code-group
 ::: code-group-item Powershell
@@ -324,7 +324,7 @@ curl -X POST \
 
 ## Rename
 
-To rename a connector, send a `POST` request to `<version>/connectors/rename`.
+To rename a connector, send a `POST` request to `/connectors/rename`.
 
 :::: code-group
 ::: code-group-item Powershell
@@ -368,7 +368,7 @@ curl -X POST \
 
 ## Reconfigure
 
-Reconfigure an existing connector by sending a `POST` request to `<version>/connectors/reconfigure`.
+Reconfigure an existing connector by sending a `POST` request to `/connectors/reconfigure`.
 
 :::: code-group
 ::: code-group-item Powershell
