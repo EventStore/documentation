@@ -12,6 +12,6 @@ features:
 - title: Multi-cloud
   details: Provision fully-managed EventStoreDB clusters in Amazon Web Services, Google Cloud Platform and Microsoft Azure.
 - title: Automation
-  details: Event Store Cloud provides a first class API for automation. A Terraform provider is currently provided, and Pulumi provider is on the way.
+  details: Event Store Cloud provides the API, a Terraform provider, a Pulumi provider, and a CLI tool to automate any operation accessible from the console.
 footer: Copyright © 2020 EventStoreDB Limited
 ---
