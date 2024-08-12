@@ -33,21 +33,7 @@ export const en: EsSidebarOptions = {
   //     ],
   //   },
   // ],
-  "/cloud/": [
-    {
-      text: "",
-      group: "Event Store Cloud",
-      children: [
-        "/cloud/intro/README.md",
-        "/cloud/provision/README.md",
-        "/cloud/use/README.md",
-        "/cloud/ops/README.md",
-        "/cloud/integrations/README.md",
-        "/cloud/automation/README.md",
-        "/cloud/faq/README.md",
-      ],
-    },
-  ],
+  "/cloud/": "structure",
   // ...ver.getSidebars(),
   "/server/v24.6/": "structure",
   "/server/v24.2/": "structure",

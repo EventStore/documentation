@@ -19,7 +19,7 @@ export const en: NavbarOptions = [
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
     },
-    {text: "Cloud", link: "/cloud/intro/"},
+    {text: "Cloud", link: "/cloud/"},
     {
         text: "Need help?",
         children: [

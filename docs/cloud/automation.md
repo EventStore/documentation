@@ -30,7 +30,7 @@ The binaries are available for the following platforms:
 
 Terraform supports third party modules installed via the plugin registry. Add the following to your terraform module configuration:
 
-@[code](./snippets/providers_eventstore.tf.hcl)
+@[code](./snippets/automation/providers_eventstore.tf.hcl)
 
 #### Terraform 0.12
 
@@ -43,23 +43,21 @@ Alternatively, the binary can be placed alongside the main `terraform` binary.
 
 You can download the provider using the following commands:
 
-<xode-group>
-<xode-block title="Linux">
+::: code-tabs
 
-@[code](./snippets/download_provider_linux.sh)
+@tab Linux
 
-</xode-block>
-<xode-block title="macOS">
+>>> ./snippets/automation/download_provider_linux.sh
 
-@[code](./snippets/download_provider_macos.sh)
+@tab macOS
 
-</xode-block>
-<xode-block title="Windows">
+>>> ./snippets/automation/download_provider_macos.sh
 
-@[code](./snippets/download_provider_windows.ps1.powershell)
+@tab Windows
 
-</xode-block>
-</xode-group>
+>>> ./snippets/automation/download_provider_windows.ps1.powershell
+
+:::
 
 #### Building from source
 
@@ -92,7 +90,7 @@ FDGco0u_1Ypw9WVVIfAHtIJh0ioUI_XbMhxMlEpiCUlHR
 
 If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page, then click on "Request refresh token" button.
 
-![token in cloud console](./images/token_console.png)
+![token in cloud console](./images/automation/token_console.png)
 
 #### Obtaining the organisation ID
 
@@ -107,7 +105,7 @@ Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Event Store Ltd"
 
 In the Cloud Console, open the [organisations page][cloud console organizations]. Then, select the organisation from the list and go to its settings. There, you can copy the organisation ID:
 
-![organisation id in the cloud console](./images/org_id.png)
+![organisation id in the cloud console](./images/automation/org_id.png)
 
 ### Resources
 
@@ -148,7 +146,7 @@ You will need the project ID to provision other resources within the project.
 
 Here is an example of a Terraform script to create a project in Event Store Cloud:
 
-@[code](./snippets/eventstorecloud_project.create.tf.hcl)
+>>> ./snippets/automation/eventstorecloud_project.create.tf.hcl
 
 #### Networks
 
@@ -182,7 +180,7 @@ Smaller networks can hold fewer managed clusters, but may be easier to peer to i
 
 ##### Creating a network
 
-@[code](./snippets/eventstorecloud_network.create.tf.hcl)
+>>> ./snippets/automation/eventstorecloud_network.create.tf.hcl)
 
 #### Network peerings
 
@@ -256,7 +254,7 @@ For GCP, you need to initiate a peering from your cloud account to Event Store C
 
 Here is an example how to initiate a peering from Event Store Cloud to your own AWS account:
 
-@[code](./snippets/eventstorecloud_peering.create.tf.hcl)
+>>> ./snippets/automation/eventstorecloud_peering.create.tf.hcl
 
 #### Managed EventStoreDB
 
@@ -272,10 +270,10 @@ Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB 
 | `topology`         | `string` | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. |
 | `instance_type`    | `string` | *Required*, the size of the instances to use in the managed cluster.                                                                                             |
 | `disk_size`        | `int`    | *Required*, the size of the data disks in gigabytes. Minimal size is 10Gb. All cluster members will get a disk of the same size.                                 |
-| `disk_type`        | `string` | *Required*, `GP2`, `GP3` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                                 |
-| `disk_iops`        | `int`    | *Optional*, the number of IOPS for data disk. *Required* if disk_type is `GP3`. |
-| `disk_throughput`  | `int`    | *Optional*, throughput in MB/s for data disk. *Required* if disk_type is `GP3`. |
-| `server_version`   | `string` | *Required*, `20.6`, `20.10`, `21.6`, `21.10`.                                                                                                                                    |
+| `disk_type`        | `string` | *Required*, `GP2`, `GP3` (AWS), `premium-ssd-lrs` (Azure), `ssd` (GCP).                                                                                          |
+| `disk_iops`        | `int`    | *Optional*, the number of IOPS for data disk. *Required* if disk_type is `GP3`.                                                                                  |
+| `disk_throughput`  | `int`    | *Optional*, throughput in MB/s for data disk. *Required* if disk_type is `GP3`.                                                                                  |
+| `server_version`   | `string` | *Required*, `20.6`, `20.10`, `21.6`, `21.10`.                                                                                                                    |
 | `projection_level` | `string` | *Optional*, default: `off` , the mode in which to enable projections. Valid values are `off` , `system` , `user`.                                                |
 
 Supported instance sizes are:
@@ -317,23 +315,21 @@ Attribute values for `region` and `resource_provider` are controlled by the netw
 
 Here are the cloud-specific examples of a Terraform script to create a managed EventStoreDB cluster:
 
-<xode-group>
-<xode-block title="AWS">
+::: code-tabs
 
-@[code](./snippets/eventstorecloud_managed_cluster.create.aws.tf.hcl)
+@tab AWS
 
-</xode-block>
-<xode-block title="Azure">
+>>> ./snippets/automation/eventstorecloud_managed_cluster.create.aws.tf.hcl
 
-@[code](./snippets/eventstorecloud_managed_cluster.create.az.tf.hcl)
+@tab Azure
 
-</xode-block>
-<xode-block title="GCP">
+>>> ./snippets/automation/eventstorecloud_managed_cluster.create.az.tf.hcl
 
-@[code](./snippets/eventstorecloud_managed_cluster.create.gcp.tf.hcl)
+@tab GCP
 
-</xode-block>
-</xode-group>
+>>> ./snippets/automation/eventstorecloud_managed_cluster.create.gcp.tf.hcl
+
+:::
 
 ### Data sources
 
@@ -356,7 +352,7 @@ Use the `eventstorecloud_project` data source to query your Event Store Cloud pr
 
 ##### Looking up a project
 
-@[code](./snippets/eventstorecloud_project.lookup.tf.hcl)
+>>> ./snippets/automation/eventstorecloud_project.lookup.tf.hcl
 
 ::: tip
 The value of `eventstorecloud_project.name` is case-sensitive, so `Production Project` is not the same as `^production project`.
