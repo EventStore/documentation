@@ -12,6 +12,7 @@ export const en: EsSidebarOptions = {
         "/connectors/manage.md",
         "/connectors/sinks.md",
         "/connectors/details.md",
+        "/connectors/settings.md",
       ],
     },
   ],
