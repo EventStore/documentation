@@ -1,6 +1,6 @@
 # Logger Sink Connector
 
-The logger sink logs a message about the connector and record details and can be used for testing purposes.
+<!-- The logger sink logs a message about the connector and record details and can be used for testing purposes.
 
 ## Quickstart
 
@@ -47,8 +47,8 @@ curl -X POST \
 ```
 
 :::
-::::
+:::: -->
 
-**Result**
+<!-- **Result** -->
 
-![Logger sink output](../images/logger-sink-outputs.png)
+<!-- ![Logger sink output](../images/logger-sink-outputs.png) -->

@@ -1,6 +1,6 @@
 # Kafka Sink Connector
 
-The Kafka Sink Connector writes events to a Kafka topic. It can extract the
+<!-- The Kafka Sink Connector writes events to a Kafka topic. It can extract the
 partition key from the record based on specific sources such as the stream ID,
 headers, or record key and also supports basic authentication and resilience
 features to handle transient errors.
@@ -172,4 +172,4 @@ The Kafka Sink Connector can be configured with the following options:
 | `Authentication:Password`           | **Type**: string<br><br>**Description:** Password for authentication.                                                                                                                                                                                         | No       |
 
 For Kafka client enum types, please refer to the
-official [Kafka .NET client documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-dotnet/_site/api/Confluent.Kafka.html).
+official [Kafka .NET client documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-dotnet/_site/api/Confluent.Kafka.html). -->
