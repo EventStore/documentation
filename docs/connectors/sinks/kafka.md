@@ -1,6 +1,6 @@
 # Kafka Sink Connector
 
-<!-- The Kafka Sink Connector writes events to a Kafka topic. It can extract the
+The Kafka Sink Connector writes events to a Kafka topic. It can extract the
 partition key from the record based on specific sources such as the stream ID,
 headers, or record key and also supports basic authentication and resilience
 features to handle transient errors.
@@ -150,7 +150,7 @@ the [Common Settings](../settings.md) page.
 
 The Kafka Sink Connector can be configured with the following options:
 
-| Option                              | Description                                                                                                                                                                                                                                                   | Required |
+<!-- | Option                              | Description                                                                                                                                                                                                                                                   | Required |
 |-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 | `Topic`                             | **Type**: string<br><br>**Description:** The Kafka topic to produce records to.                                                                                                                                                                               | Yes      |
 | `WaitForBrokerAck`                  | **Type**: boolean<br><br>**Description:** Whether the producer waits for broker acknowledgment before considering the send operation complete.<br><br>**Default**: true                                                                                       | No       |
@@ -169,7 +169,7 @@ The Kafka Sink Connector can be configured with the following options:
 | `Resilience:MessageSendMaxRetries`  | **Type**: int<br><br>**Description:** Maximum retry attempts for sending messages.<br><br>**Default**: `2147483647`                                                                                                                                           | No       |
 | `Authentication:SecurityProtocol`   | **Type**: [SecurityProtocol](https://docs.confluent.io/platform/current/clients/confluent-kafka-dotnet/_site/api/Confluent.Kafka.SecurityProtocol.html)<br><br>**Description:** Protocol used for Kafka broker communication.<br><br>**Default**: `Plaintext` | No       | `Authentication:SaslMechanism`      | **Type**: [SaslMechanism](https://docs.confluent.io/platform/current/clients/confluent-kafka-dotnet/_site/api/Confluent.Kafka.SaslMechanism.html)<br><br>**Description:** SASL mechanism for authentication.<br><br>**Default**: `Plain`                      |          |
 | `Authentication:Username`           | **Type**: string<br><br>**Description:** Username for authentication.                                                                                                                                                                                         | No       |
-| `Authentication:Password`           | **Type**: string<br><br>**Description:** Password for authentication.                                                                                                                                                                                         | No       |
+| `Authentication:Password`           | **Type**: string<br><br>**Description:** Password for authentication.                                                                                                                                                                                         | No       | -->
 
 For Kafka client enum types, please refer to the
-official [Kafka .NET client documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-dotnet/_site/api/Confluent.Kafka.html). -->
+official [Kafka .NET client documentation](https://docs.confluent.io/platform/current/clients/confluent-kafka-dotnet/_site/api/Confluent.Kafka.html).

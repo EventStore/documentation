@@ -38,7 +38,7 @@ status codes (e.g., 404, 408, 5xx). By default, it retries on any non-2xx status
   "Resilience:MaxRetries": -1,
   "Resilience:TransientErrorDelay": "00:00:05",
   "Resilience:ReconnectBackoffMaxMs": 20000,
-  "Resilience:RetryOnHttpCodes": "101" // defaults to retry on any non-2xx status code
+  "Resilience:RetryOnHttpCodes": "101" 
 }
 ```
 
