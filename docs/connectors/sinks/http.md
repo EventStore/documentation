@@ -1,6 +1,6 @@
 # HTTP Sink Connector
 
-<!-- The HTTP Sink connector allows for integration between EventStoreDB and external
+The HTTP Sink connector allows for integration between EventStoreDB and external
 APIs over HTTP or HTTPS. This connector consumes events from an EventStoreDB
 stream and converts each event's data into JSON format before sending it in the
 request body to a specified Url. Events are sent individually as they are
@@ -118,4 +118,4 @@ The HTTP Sink Connector can be configured with the following options:
 | `Resilience:RetryOnHttpCodes`   | **Type**: string<br><br>**Description:** HTTP status codes to retry on (e.g., 404, 408, 5xx).<br><br>**Default**: `""` (retry on any non-2xx status code) | No       |
 | `Resilience:FirstDelayBound`    | **Type**: HttpSinkBackoffDelayBound<br><br>**Description:** Delay bound for the first backoff attempt.<br><br>**Default**: `(60000, 5000)`                | No       |
 | `Resilience:SecondDelayBound`   | **Type**: HttpSinkBackoffDelayBound<br><br>**Description:** Delay bound for the second backoff attempt.<br><br>**Default**: `(3600000, 600000)`           | No       |
-| `Resilience:ThirdDelayBound`    | **Type**: HttpSinkBackoffDelayBound<br><br>**Description:** Delay bound for the third backoff attempt.<br><br>**Default**: `(3600001, 3600000)`           | No       | -->
+| `Resilience:ThirdDelayBound`    | **Type**: HttpSinkBackoffDelayBound<br><br>**Description:** Delay bound for the third backoff attempt.<br><br>**Default**: `(3600001, 3600000)`           | No       |
