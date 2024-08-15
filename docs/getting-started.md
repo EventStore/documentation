@@ -8,12 +8,12 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ### Installation
 
-- [Installation Guide](@server/installation.md)
-  - [Linux](@server/installation.md#linux)
-  - [Docker](@server/installation.md#docker)
-  - [Windows](@server/installation.md#windows)
+- [Installation Guide](@server/quick-start/installation.md)
+  - [Linux](@server/quick-start/installation.md#linux)
+  - [Docker](@server/quick-start/installation.md#docker)
+  - [Windows](@server/quick-start/installation.md#windows)
 - See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/intro/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
 - [Configuration guide](@server/configuration.md)
@@ -21,8 +21,8 @@ Learn about key event sourcing concepts, get started on your application, find t
 ### Operations
 - [Upgrade](@server/upgrade-guide.md)
 - [Maintenance](@server/operations.md#maintenance)
-- [Diagnostics](@server/diagnostics.md)
-- [Metrics](@server/metrics.md)
+- [Diagnostics](@server/diagnostics/README.md)
+- [Metrics](@server/diagnostics/metrics.md)
 
 ### Features
 - [Event streams](@server/streams.md)

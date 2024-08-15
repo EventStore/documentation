@@ -47,7 +47,8 @@
     "sass-loader": "^15.0.0",
     "vue": "^3.4.30",
     "vue-router": "^4.4.0",
-    "vuepress": "2.0.0-rc.14"
+    "vuepress": "2.0.0-rc.14",
+    "iconify-icon": "^2.1.0"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
