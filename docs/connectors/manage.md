@@ -56,11 +56,11 @@ event to the stream `some-stream`, the connector will consume the event and log
 it to the console. Find out more about subscription filters in the
 [Subscription Configuration](./settings.md#subscription-configuration) section.
 
-::: tip
 
-- **Built-in Sinks**: For a list of available connectors and their respective configuration options, refer to the [Built-in Sinks](./sinks.md) section.
-- **Settings**: For a comprehensive list of available configuration options for sink connectors, please refer to the [Settings](./settings.md) section.
-  :::
+For a list of available connectors and their respective configuration options,
+refer to the [Built-in Sinks](./sinks.md) section. For a comprehensive list of
+available configuration options for sink connectors, please refer to the
+[Settings](./settings.md) section.
 
 ## List
 
@@ -103,10 +103,8 @@ curl -X GET \
 :::
 ::::
 
-**Example response**
-
 <details>
-  <summary>Click to expand</summary>
+  <summary>Example response</summary>
 
 ```json
 {
@@ -278,22 +276,18 @@ curl -X GET http://localhost:2113/connectors/demo-logger-sink/settings
 :::
 ::::
 
-**Example response**
-
 <details>
-  <summary>Click to expand</summary>
+  <summary>Example response</summary>
 
 ```json
 {
   "settings": {
     "InstanceTypeName": "EventStore.Connectors.Testing.LoggerSink",
-    "Subscription:Filter:Scope": "Record",
-    "Subscription:Filter:Expression": "^\\$.*",
-    "Subscription:InitialPosition": "Earliest",
-    "AutoCommit:RecordsThreshold": "100",
-    "AutoCommit:Interval": "5000"
+    "Subscription:Filter:Scope": "Stream",
+    "Subscription:Filter:Expression": "some-stream",
+    "Subscription:InitialPosition": "Earliest"
   },
-  "settingsUpdateTime": "2024-08-14T12:41:53.267673600Z"
+  "settingsUpdateTime": "2024-08-14T18:12:16.500822500Z"
 }
 ```
 
