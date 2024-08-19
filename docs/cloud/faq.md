@@ -2,17 +2,11 @@
 title: Cloud FAQ
 ---
 
-## Roadmap
-
-#### Where can I find the Cloud Roadmap?
-
-The Event Store Cloud roadmap is available on [our website](https://www.eventstore.com/event-store-cloud), scroll down to see the roadmap.
-
 ## Cluster provisioning
 
 #### Is it possible to change the cluster instance size or topology?
 
-We don't have this feature available yet. However, you can always do it using [backup and restore](../ops/README.md#resizing-cluster-nodes).
+We don't have this feature available yet. However, you can always do it using [backup and restore](ops/README.md#resizing-cluster-nodes).
 
 #### Are there plans to support automatic resize of cluster nodes?
 
@@ -26,13 +20,13 @@ Currently, you have to resize the disks yourself. Disks can be expanded on-deman
 
 #### How can I migrate data from my self-hosted database to Event Store Cloud?
 
-We have a [replication tool](../use/README.md#migrating-data), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
+We have a [replication tool](use/migration.md), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
 ## Performance
 
 #### Do you have indicative performance benchmarks for the offered cluster sizes?
 
-We published such benchmarks available on the [Cloud instance sizing guide](../provision/README.md#cloud-instance-sizing-guide) page.
+We published such benchmarks available on the [Cloud instance sizing guide](provision/sizing.md) page.
 
 Please remember, however, that each use case is different, and you might always get better or worse performance, compared with our advertised benchmarking figures. We can help you to analyse your needs and provide more detailed expected performance figures, please get in touch.
 
@@ -40,7 +34,7 @@ Please remember, however, that each use case is different, and you might always 
 
 #### Is there any type of alerting functionality for cluster issues?
 
-Yes. Learn more in the [Events Console](../intro/README.md#events-and-notifications) documentation section.
+Yes. Learn more in the [Events Console](./README.md#events-and-notifications) documentation section.
 
 #### How do you handle infrastructure related issues, which cause unavailability or degradation of service?
 
@@ -58,15 +52,15 @@ Customer data is only stored on Premium SSD block device targets. We do not util
 
 #### We use AKS, to simplify setup can you expose the cluster to the public internet?
 
-We have no immediate plans to expose clusters via a public IP address. We provided [guidelines](../use/README.md#azure-kubernetes-services) on how to connect AKS clusters to Event Store Cloud.
+We have plans to expose clusters via a public IP address, but it's not available yet. We provided [guidelines](use/kubernetes.md) on how to connect AKS clusters to Event Store Cloud.
 
 ### Supported regions
 
 ### What regions do you support on AWS, GCP and Azure?
 
-The list of supported regions is in the provisioning [documentation](../provision/README.md#event-store-cloud-provisioning).
-
 At the moment, you can deploy EventStoreDB clusters only in regions with three or more availability zones. Each region also need to support a set of services necessary for the provisioning and monitoring of the clusters.
+
+You can see the list of supported regions when you create a new cluster in the Cloud Console.
 
 If you think a region should be available [contact us](https://www.eventstore.com/contact).
 
@@ -84,7 +78,7 @@ Yes, we are actively working on it.
 
 #### Can I automate backups?
 
-The scheduled backup feature has been released in March 2021. Read more in [cloud backup documentation](../ops/README.md#scheduled-backups).
+The scheduled backup feature has been released in March 2021. Read more in [cloud backup documentation](ops/README.md#scheduled-backups).
 
 #### Can I download a backup to store it locally?
 
@@ -110,7 +104,7 @@ Our support response time windows are provided in GMT time zone. We are expandin
 
 Customers do not have direct access to VMs, where the database cluster nodes are running. A lot of management functions are available via the HTTP API, which is available for customers to access and use.
 
-You can also use our cloud automation tools ([Terraform](../automation/automation#terraform-provider) provider and CLI) to manage your cloud resources.
+You can also use our cloud automation tools ([Terraform](automation/terraform.md) provider and CLI) to manage your cloud resources.
 
 #### If a node goes down in a cluster, how is the cluster recovered and who does it?
 
@@ -124,7 +118,7 @@ Please ensure to learn about the SLA levels provided by Event Store Cloud in our
 
 #### How can I to get an audit log of access to the console?
 
-The Cloud Console access audit log is in our roadmap, we will present the details of the schedule on the public [roadmap](https://www.eventstore.com/event-store-cloud) page.
+The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](README.md#audit-log-api) using the `esc` command line tool.
 
 #### Does Event Store have a security policy?
 

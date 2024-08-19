@@ -17,6 +17,29 @@ highlights:
     highlights:
     - title: Run <code>docker run eventstore/eventstore:latest --dev</code> to start EventStoreDB in developers mode.
 
+  - header: Deploy in your environment
+    description: Deploy EventStoreDB in your environment using our binaries, Docker Compose, or Kubernetes Operator.
+    features:
+      - title: Linux
+        icon: devicon:linux
+        details: Use Event Store package feeds for Ubuntu, Debian, CentOS, and Red Hat Enterprise Linux.
+        link: /server/v24.6/quick-start/installation.html#install-from-packagecloud
+
+      - title: Windows
+        icon: devicon:windows8
+        details: Download the Windows binaries or use Chocolatey to install EventStoreDB.
+        link: /server/v24.6/quick-start/installation.html#windows
+
+      - title: Docker
+        icon: devicon:docker
+        details: Use Docker Compose to pull images from Docker Hub and run EventStoreDB in containers.
+        link: /server/v24.6/quick-start/installation.html#use-docker-compose
+
+      - title: Kubernetes
+        icon: devicon:kubernetes
+        details: Deploy EventStoreDB in Kubernetes using the EventStoreDB Operator.
+        link: ./guide/markdown/stylize/hint.html
+
   - header: Develop in your language
     description: Use one of our client libraries to start building your application.
     features:

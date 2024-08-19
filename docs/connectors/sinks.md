@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Built-in sinks
 
 Sinks are Connector targets. They are the final destination for events from EventStoreDB point of view. Each sink requires its own configuration where the configuration options are specific to the sink type.

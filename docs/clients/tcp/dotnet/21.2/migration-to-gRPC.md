@@ -232,7 +232,7 @@ Read more [here](@clients/grpc/README.md#connection-string) about the connection
 
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
-Read more in [database security docs](../../../../server/v23.10/security.md).
+Read more in [database security docs](@server/configuration/security.md).
 
 ## Appending events
 
@@ -773,7 +773,7 @@ await foreach (var message in subscription.Messages.WithCancellation(ct)) {
 
 ### Resolving linked events
 
-[Projections in EventStoreDB](../../../../server/v24.2/projections.md) let you append new events or link existing events to streams. Links won't contain the original event data. EventStoreDB can resolve it automatically depending on the value you passed to the operation call.
+[Projections in EventStoreDB](@server/features/projections.md) let you append new events or link existing events to streams. Links won't contain the original event data. EventStoreDB can resolve it automatically depending on the value you passed to the operation call.
 
 The TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
 

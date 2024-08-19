@@ -1,4 +1,8 @@
-# Technical Details
+---
+order: 4
+---
+
+# Technical details
 
 ## Delivery guarantees
 

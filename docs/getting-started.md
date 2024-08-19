@@ -2,8 +2,6 @@
 
 Learn about key event sourcing concepts, get started on your application, find tutorials and reference material.
 
-[[toc]]
-
 ## Run EventStoreDB
 
 ### Installation
@@ -16,19 +14,19 @@ Learn about key event sourcing concepts, get started on your application, find t
 - Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
-- [Configuration guide](@server/configuration.md)
+- [Configuration guide](@server/configuration/README.md)
 
 ### Operations
-- [Upgrade](@server/upgrade-guide.md)
-- [Maintenance](@server/operations.md#maintenance)
+- [Upgrade](@server/quick-start/upgrade-guide.md)
+- [Maintenance](@server/operations/README.md)
 - [Diagnostics](@server/diagnostics/README.md)
 - [Metrics](@server/diagnostics/metrics.md)
 
 ### Features
-- [Event streams](@server/streams.md)
-- [Indexes](@server/indexes.md)
-- [Subscriptions](@server/persistent-subscriptions.md)
-- [Projections](@server/projections.md)
+- [Event streams](@server/features/streams.md)
+- [Indexes](@server/features/indexes.md)
+- [Persistent Subscriptions](@server/features/persistent-subscriptions.md)
+- [Projections](@server/features/projections.md)
 
 ## Start developing your application
 - Set up [a client to connect](./clients/grpc/README.md#connecting-to-eventstoredb) to EventStoreDB
@@ -92,7 +90,11 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 [NHS Wales app: EventStoreDB as “the backbone of a patient-held record”](https://www.eventstore.com/blog/eventstoredb-nhs-wales-app)
 
-## Design – Beginner
+## Design
+
+Check the following resources to learn more about designing your application with EventStoreDB.
+
+### Beginner
 
 [What's the difference between a command and an event?](https://www.eventstore.com/blog/whats-the-difference-between-a-command-and-an-event)
 
@@ -108,7 +110,7 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 [Practical advice on building event-sourced applications [Video]](https://www.youtube.com/watch?v=VeZZ2UZMDYo)
 
-## Design – Intermediate
+### Intermediate
 
 [Live projections for read models with Event Sourcing and CQRS](https://www.eventstore.com/blog/live-projections-for-read-models-with-event-sourcing-and-cqrs)
 
@@ -127,13 +129,13 @@ Learn about key event sourcing concepts, get started on your application, find t
 [How to get the current entity state from events?](https://www.eventstore.com/blog/how-to-get-the-current-entity-state-from-events)
 
 
-## Design – Advanced
+### Advanced
 
 [Counterexamples regarding consistency in event sourced solutions (Part 1)](https://www.eventstore.com/blog/counterexamples-regarding-consistency-in-event-sourced-solutions-part-1)
 
 [When to go from collaborative modelling to coding? Part 1](https://www.eventstore.com/blog/when-to-go-from-collaborative-modelling-to-coding-part-1)
 
-## Release Schedule for EventStoreDB
+## Release schedule for EventStoreDB
 
 This is the release schedule for EventStoreDB:
 

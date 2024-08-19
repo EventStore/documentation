@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # Manage Connectors
 
 ::: note
@@ -8,8 +12,8 @@ The Connector management API is idempotent.
 
 Create a connector by sending a `POST` request to `connectors/<connector-name>`.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ```powershell
 $JSON = @'
 {
@@ -23,8 +27,7 @@ curl.exe -i                           `
   -d $JSON                            `
   https://localhost:2113/connectors/my-connector
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ```bash
 export json="{
   \"Sink\": \"https://enkb1keveb5r.x.pipedream.net\"
@@ -37,7 +40,6 @@ curl -i \
   https://localhost:2113/connectors/my-connector
 ```
 :::
-::::
 
 ::: tip
 Replace `https://enkb1keveb5r.x.pipedream.net` with your own sink URL.
@@ -77,56 +79,50 @@ The following are examples of filters:
 
 List all connectors by sending a `GET` request to `connectors/list`.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ```powershell
 curl.exe -i -u "admin:changeit" https://localhost:2113/connectors/list
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ```bash
 curl -i -u "admin:changeit" https://localhost:2113/connectors/list
 ```
 :::
-::::
 
 ## Enable
 
 Enable a connector by sending a `POST` request to `connectors/<connector-name>/enable`.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ``` powershell
 curl.exe -i -u "admin:changeit" -X POST `
     https://localhost:2113/connectors/my-connector/enable
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ``` bash
 curl -i -u "admin:changeit" -X POST \
     https://localhost:2113/connectors/my-connector/enable
 ```
 :::
-::::
 
 ## Disable
 
 Disable a connector by sending a `POST` request to `connectors/<connector-name>/disable`. The system will not activate disabled connectors.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ``` powershell
 curl.exe -i -u "admin:changeit" -X POST `
     https://localhost:2113/connectors/my-connector/disable
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ``` bash
 curl -i -u "admin:changeit" -X POST \
     https://localhost:2113/connectors/my-connector/disable
 ```
 :::
-::::
 
 ## Reset
 
@@ -134,8 +130,8 @@ Reset a connector's checkpoint by sending a `POST` request to `connectors/<conne
 
 With an empty payload the connector will be reset to the beginning.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ``` powershell
 curl.exe -i                           `
   -H "Content-Type: application/json" `
@@ -143,8 +139,7 @@ curl.exe -i                           `
   -d "{}"                             `
   https://localhost:2113/connectors/my-connector/reset
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ``` bash
 curl -i \
   -H "Content-Type: application/json" \
@@ -153,15 +148,14 @@ curl -i \
   https://localhost:2113/connectors/my-connector/reset
 ```
 :::
-::::
 
 `CommitPosition` and `PreparePosition` can be specified to reset a
 connector to a particular position. This position is treated as the new
 checkpoint i.e. the position of a successfully processed event. The
 connector will resume processing starting with the event *after* this.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ``` powershell
 $JSON = @'
 {
@@ -176,8 +170,7 @@ curl.exe -i                           `
   -d $JSON                            `
   https://localhost:2113/connectors/my-connector/reset
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ``` bash
 export json="{
   \"CommitPosition\": 0,
@@ -191,23 +184,20 @@ curl -i \
   https://localhost:2113/connectors/my-connector/reset
 ```
 :::
-::::
 
 ## Delete
 
 Delete a connector by sending a `DELETE` request to `connectors/<connector-name>`.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ``` powershell
 curl.exe -i -u "admin:changeit" -X DELETE `
   https://localhost:2113/connectors/my-connector
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ``` bash
 curl -i -u "admin:changeit" -X DELETE \
     https://localhost:2113/connectors/my-connector
 ```
 :::
-::::

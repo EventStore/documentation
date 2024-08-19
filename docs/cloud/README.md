@@ -15,7 +15,7 @@ As a customer of Event Store Cloud you get access to the [Cloud console](https:/
 - Back and up restore your data
 - Establish the connection between Event Store Cloud networks and your own cloud infrastructure
 
-Event Store Cloud operations can be automated using the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud) and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
+Event Store Cloud operations can be automated using the [Terraform provider](automation/terraform.md) and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
 
 ## Cloud quick start
 
@@ -25,7 +25,7 @@ Follow the steps in this guide to get access to the Event Store Cloud console, p
 
 EventStoreDB offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
 
-To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/)  where you'll see the login screen. There you get an option to sign up:
+To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/) where you'll see the login screen. There you get an option to sign up:
 
 ![Sign up screen](./images/intro/discuss-signup.png)
 
@@ -38,10 +38,6 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 ### Login to Cloud console
 
 With the new account, you can log in to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects, and EventStoreDB clusters.
-
-::: warning Gated provisioning
-You won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
-:::
 
 In the console, you first get to the list of organisations that you have access to.
 
@@ -91,9 +87,9 @@ Within the project context, you can manage project clusters, backups, networks, 
 
 By reaching this point, you are now ready to start provisioning cloud resources with Event Store Cloud. Follow one of the available guidelines for your cloud provider:
 
-- [Amazon Web Services (AWS)](../provision/README.md#amazon-web-services-aws)
-- [Google Cloud Platform (GCP)](../provision/README.md#google-cloud-platform-gcp)
-- [Microsoft Azure](../provision/README.md#microsoft-azure)
+- [Amazon Web Services (AWS)](./provision/aws.md)
+- [Google Cloud Platform (GCP)](./provision/gcp.md)
+- [Microsoft Azure](./provision/azure.md)
 
 ### Multi-factor Authentication (MFA)
 
@@ -113,7 +109,7 @@ You will be logged out as part of the MFA enrollment process. Follow the guided 
 
 Once MFA is enabled, tokens generated with the `esc` command-line tool are invalidated. To regain access, generate new tokens using the following command:
 
-```bash:no-line-numbers
+```bash
 esc access tokens create
 ```
 
@@ -158,7 +154,7 @@ Optional Parameters:
 
 ## Operational status
 
-You can check and subscribe to the current status of the Event Store Cloud Console at [status.eventstore.cloud](https://status.eventstore.cloud) or by using our [X account](https://twitter.com/esc_status).
+You can check and subscribe to the current status of Event Store Cloud at [our status page](https://status.eventstore.cloud).
 
 Should there be any outage of the console, it will be shown and updated here.
 

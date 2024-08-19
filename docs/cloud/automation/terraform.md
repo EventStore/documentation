@@ -1,17 +1,15 @@
 ---
-terraform_current_version: 1.5.12
+terraform_current_version: 1.5.29
+order: 1
 ---
-# Automations
 
-In addition to the [Cloud console][cloud console], Event Store Cloud provides the API, a [Terraform provider](#terraform-provider), a [Pulumi provider][pulumi provider], as well as a [CLI tool][esc cli github] to automate any operation accessible from the console.
-
-## Terraform provider
+# Terraform provider
 
 Event Store Cloud provider for Terraform is available in the public [provider registry][terraform registry].
 
 Provider documentation is available there as well, on the [Documentation tab](https://registry.terraform.io/providers/EventStore/eventstorecloud/latest/docs).
 
-### Installation
+## Installation
 
 The current version of the provider is: {{ $frontmatter.terraform_current_version }}. The releases are available in Terraform official [registry][terraform registry] and via [GitHub releases][terraform github releases].
 
@@ -26,13 +24,13 @@ The binaries are available for the following platforms:
 | arm64     | FreeBSD          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip` |
 | arm64     | Linux            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip`   |
 
-#### Terraform 0.13+
+### Terraform 0.13+
 
 Terraform supports third party modules installed via the plugin registry. Add the following to your terraform module configuration:
 
-@[code](./snippets/automation/providers_eventstore.tf.hcl)
+@[code](snippets/providers_eventstore.tf.hcl)
 
-#### Terraform 0.12
+### Terraform 0.12
 
 In order for Terraform to find the plugin, place the appropriate binary into the Terraform third-party plugin directory. The location varies by operating system:
 
@@ -43,27 +41,21 @@ Alternatively, the binary can be placed alongside the main `terraform` binary.
 
 You can download the provider using the following commands:
 
-::: code-tabs
+::: code-tabs#os
 
 @tab Linux
-
->>> ./snippets/automation/download_provider_linux.sh
-
+@[code](./snippets/download_provider_linux.sh)
 @tab macOS
-
->>> ./snippets/automation/download_provider_macos.sh
-
+@[code](./snippets/download_provider_macos.sh)
 @tab Windows
-
->>> ./snippets/automation/download_provider_windows.ps1.powershell
-
+@[code](./snippets/download_provider_windows.ps1.powershell)
 :::
 
-#### Building from source
+### Building from source
 
 If you prefer to install from source, use the `make install` target in this [repository][terraform github]. You will need a Go 1.13+ development environment.
 
-### Provider configuration
+## Provider configuration
 
 The Event Store Cloud provider must be configured with an access token. There are several additional options that may be useful. Provider configuration options are:
 
@@ -74,13 +66,13 @@ The Event Store Cloud provider must be configured with an access token. There ar
 | `url`             | `ESC_URL`            | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud.  |
 | `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI. |
 
-#### Obtaining the access token
+### Obtaining the access token
 
 You can use the [Event Store Cloud console][cloud console tokens] or the [Event Store Cloud CLI][esc cli github releases] (`esc-cli`) to obtain a token
 
 Use the following command to get the access token using `esc-cli`:
 
-``` bash
+```bash
 $ esc access tokens create --email <email>
 
 Password:
@@ -90,24 +82,22 @@ FDGco0u_1Ypw9WVVIfAHtIJh0ioUI_XbMhxMlEpiCUlHR
 
 If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page, then click on "Request refresh token" button.
 
-![token in cloud console](./images/automation/token_console.png)
+![token in cloud console](images/token_console.png)
 
-#### Obtaining the organisation ID
+### Obtaining the organisation ID
 
 As for the token, you can use the Cloud Console, or `esc-cli` to get the organisation ID.
 
 That's how you do it with `esc-cli`:
 
-``` bash
+```bash
 $ esc resources organizations list
 Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Event Store Ltd"
 ```
 
-In the Cloud Console, open the [organisations page][cloud console organizations]. Then, select the organisation from the list and go to its settings. There, you can copy the organisation ID:
+In the Cloud Console, open the [organisations page][cloud console organizations]. Then, select the organisation from the list and go to its settings. There, you can copy the organisation ID.
 
-![organisation id in the cloud console](./images/automation/org_id.png)
-
-### Resources
+## Resources
 
 All resources in Event Store Cloud can be provisioned using the Terraform provider. Existing projects can be queried using a data source in the provider. More complete samples can be found [here][terraform github samples].
 
@@ -120,19 +110,19 @@ Using the Terraform provider, you can create, manipulate, and delete the followi
 | `eventstorecloud_peering`         | [Network peering](#network-peerings)                              |
 | `eventstorecloud_managed_cluster` | [Managed EventStoreDB instance or cluster](#managed-eventstoredb) |
 
-#### Projects
+### Projects
 
 You can create Event Store Cloud projects for the organisation using the `eventstorecloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
 
 You need a project to provision any other resource.
 
-##### Arguments
+#### Arguments
 
 | Name   | Type     | Description                          |
 |:-------|:---------|:-------------------------------------|
 | `name` | `string` | *Required*, the name of the project. |
 
-##### Attributes
+#### Attributes
 
 The Project Terraform resource will get the following attributes:
 
@@ -142,17 +132,17 @@ The Project Terraform resource will get the following attributes:
 
 You will need the project ID to provision other resources within the project.
 
-##### Creating a project
+#### Creating a project
 
 Here is an example of a Terraform script to create a project in Event Store Cloud:
 
->>> ./snippets/automation/eventstorecloud_project.create.tf.hcl
+@[code](./snippets/eventstorecloud_project.create.tf.hcl)
 
-#### Networks
+### Networks
 
 Before provisioning a database cluster, you need a network, which the cluster will connect to. Use the `eventstorecloud_network` resource to provision a new Event Store Cloud network. The network should be in the same cloud provider, which you plan to use for the database cluster.
 
-##### Arguments
+#### Arguments
 
 | Name                | Type     | Description                                                                |
 |:--------------------|:---------|:---------------------------------------------------------------------------|
@@ -162,7 +152,7 @@ Before provisioning a database cluster, you need a network, which the cluster wi
 | `region`            | `string` | *Required*, the cloud region of the new network (cloud provider-specific). |
 | `cidr_block`        | `string` | *Required*, the new network IP range.                                      |
 
-##### Attributes
+#### Attributes
 
 | Name | Type     | Description    |
 |:-----|:---------|:---------------|
@@ -178,13 +168,14 @@ Region names must be in the format used by the cloud resource provider, for exam
 
 Smaller networks can hold fewer managed clusters, but may be easier to peer to infrastructure hosting your applications.
 
-##### Creating a network
+#### Creating a network
 
->>> ./snippets/automation/eventstorecloud_network.create.tf.hcl)
+@[code](./snippets/eventstorecloud_network.create.tf.hcl)
 
-#### Network peerings
+### Network peerings
 
 When you got a network provisioned, you can already start creating database clusters. However, you won't be able to connect to your new cluster, unless you create a peering link between the network in Event Store Cloud, and the network on your own cloud account or project.
+
 
 Use the `eventstorecloud_peering` resource to initiate the peering link. You will need to collect the details about your own cloud network (VPC or Virtual Network) as described in the arguments list below. Depending on the cloud provider, you'll need to complete some actions on your side to confirm the peering.
 
@@ -198,7 +189,7 @@ The format of the following arguments depends on the cloud provider:
 * `peer_network_id`
 :::
 
-##### Arguments
+#### Arguments
 
 | Name                     | Type     | Description                                                                                             |
 |:-------------------------|:---------|:--------------------------------------------------------------------------------------------------------|
@@ -233,7 +224,7 @@ For the `peer_network_id`, use the following cloud network property:
 - `routes` - typically, this consists of one element, the address space of a subnet in your managed network.
 :::
 
-##### Attributes
+#### Attributes
 
 After completing the operation, the peering Terraform resource will get the following attributes:
 
@@ -250,17 +241,17 @@ For AWS, you'd need to confirm the peering request, use the `aws_peering_link_id
 
 For GCP, you need to initiate a peering from your cloud account to Event Store Cloud. Use the resource attributes with `gcp` prefix to automate that part.
 
-##### Creating a peering
+#### Creating a peering
 
 Here is an example how to initiate a peering from Event Store Cloud to your own AWS account:
 
->>> ./snippets/automation/eventstorecloud_peering.create.tf.hcl
+@[code](./snippets/eventstorecloud_peering.create.tf.hcl)
 
-#### Managed EventStoreDB
+### Managed EventStoreDB
 
 Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
 
-##### Arguments
+#### Arguments
 
 | Name               | Type     | Description                                                                                                                                                      |
 |:-------------------|:---------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -294,7 +285,7 @@ The actual implementation of each topology is specific to the resource provider.
 For GCP and AWS clusters you can resize the disks without downtime. In Azure, it is currently not supported, please plan the disk size according to your projected database size.
 :::
 
-##### Attributes
+#### Attributes
 
 After completing the operation, the EventStoreDB cluster Terraform resource will get the following attributes:
 
@@ -311,27 +302,20 @@ After completing the operation, the EventStoreDB cluster Terraform resource will
 Attribute values for `region` and `resource_provider` are controlled by the network in which the cluster is created.
 :::
 
-##### Creating a cluster
+#### Creating a cluster
 
 Here are the cloud-specific examples of a Terraform script to create a managed EventStoreDB cluster:
 
 ::: code-tabs
-
 @tab AWS
-
->>> ./snippets/automation/eventstorecloud_managed_cluster.create.aws.tf.hcl
-
+@[code](./snippets/eventstorecloud_managed_cluster.create.aws.tf.hcl)
 @tab Azure
-
->>> ./snippets/automation/eventstorecloud_managed_cluster.create.az.tf.hcl
-
+@[code](./snippets/eventstorecloud_managed_cluster.create.az.tf.hcl)
 @tab GCP
-
->>> ./snippets/automation/eventstorecloud_managed_cluster.create.gcp.tf.hcl
-
+@[code](./snippets/eventstorecloud_managed_cluster.create.gcp.tf.hcl)
 :::
 
-### Data sources
+## Data sources
 
 The following data source is available:
 
@@ -339,26 +323,26 @@ The following data source is available:
 |:--------------------------|:---------------------------|
 | `eventstorecloud_project` | [Project](#project)        |
 
-#### Project
+### Project
 
 Use the `eventstorecloud_project` data source to query your Event Store Cloud projects.
 
-##### Arguments
+#### Arguments
 
 | Name | Type   | Description                          |
 |:-----|:-------|:-------------------------------------|
 | name | string | *Required*, the name of the project. |
 | id   | string | *Optional*, the name of the project. |
 
-##### Looking up a project
+#### Looking up a project
 
->>> ./snippets/automation/eventstorecloud_project.lookup.tf.hcl
+@[code](./snippets/eventstorecloud_project.lookup.tf.hcl)
 
 ::: tip
 The value of `eventstorecloud_project.name` is case-sensitive, so `Production Project` is not the same as `^production project`.
 :::
 
-### FAQ
+## FAQ
 
 **Error `error obtaining access token: error 400 requesting access token`**
 

@@ -1,5 +1,8 @@
 ---
-title: Operations
+title: Managing ES Cloud resources
+dir:
+  text: Operations
+  order: 3
 ---
 
 ## Resizing cluster nodes
@@ -8,7 +11,8 @@ Clusters can be expanded on-demand, to accommodate database growth, through the 
 
 You can choose a larger or smaller node size. See also the cloud [sizing guide](../provision/README.md#cloud-instance-sizing-guide) for general guidance.
 
-### Using the Cloud Console
+::: tabs#way
+@tab Cloud Console
 
 To resize a cluster in the console, navigate to the clusters view and select _Resize Cluster_.
 
@@ -28,7 +32,7 @@ Once the resize operation is complete, the new cluster size will show in the clu
 
 ![cluster_expand_detail](./images/Resize05Complete.png)
 
-### Using the command line
+@tab esc
 
 To resize a cluster with the command line, use the `clusters resize` command, where `--target_size` is the target instance size. Possible values are: F1, C4, M8, M16, M32, M64, M128.
 
@@ -39,6 +43,7 @@ esc mesdb clusters resize \
     --project-id cn62uolo0aegb5icm0bg \
     --org-id 9bsv0s4qu99g029v5560
 ```
+:::
 
 ## Upgrading EventStoreDB version
 
@@ -49,7 +54,8 @@ Limitations:
 * At this time, clusters can only be updated to a minor version of the current version. Upgrading to a major version is part of a future release. Until that point, if you need to upgrade to a major server version, you should perform a [backup](#manual-backup) and [restore](#restore-from-backup) to a new cluster. When restoring the backup, you can choose the EventStoreDB version you need. You can then switch your applications over to the connection string for the new cluster.
 :::
 
-### Using the Cloud Console
+::: tabs#way
+@tab Cloud Console
 
 To upgrade a cluster in the console, navigate to the clusters view and select _Upgrade Cluster_.
 
@@ -69,7 +75,7 @@ Once the upgrade operation is complete, the new cluster version will show in the
 
 ![cluster_expand_detail](./images/upgrade05Complete.png)
 
-### Using the command line
+@tab esc
 
 To upgrade a cluster with the command line, use the `clusters upgrade` command, where `--target_tag` is the version you want to upgrade to. This must include the full version, e.g. 23.10.0.
 
@@ -80,6 +86,7 @@ esc mesdb clusters upgrade \
     --project-id cn62uolo0aegb5icm0bg \
     --org-id 9bsv0s4qu99g029v5560
 ```
+:::
 
 ## Expanding disks
 
@@ -92,7 +99,8 @@ Limitations:
 * on AWS expanding disks is subject to a rate limit, see [here](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVolume.html) for more information.
 :::
 
-### Using the Cloud Console
+::: tabs#way
+@tab Cloud Console
 
 To expand disks in the console, navigate to the clusters view and click on the _Expand Disks_ icon.
 
@@ -102,16 +110,17 @@ On the detail page, specify the new disk size (as well as the disk IOPS and thro
 
 ![cluster_expand_detail](./images/disk_expand_detail.png)
 
-### Using the command line
+@tab esc
 
 To expand disks with the command line, use the `clusters expand` command, where `--id` is the cluster id.
 
 ```bash
-$ esc mesdb clusters expand \
+esc mesdb clusters expand \
     --disk-size-in-gb 16 --id c3fi17to0aer9r834480 \
     --project-id c3fhvdto0aepmg0789m0 \
     --org-id bt77lfqrh41scaatc180
 ```
+:::
 
 ## Event Store Cloud Jobs
 
@@ -189,20 +198,19 @@ You can customise the backup label using a combination of free-text and predefin
   - [JSON](https://en.m.wikipedia.org/wiki/ISO_8601): `datetime:json`,
   - [RFC3339](https://tools.ietf.org/html/rfc3339): `datetime:rfc3339`,
 
-### Using the Cloud Console
+::: tabs#way
+@tab Cloud Console
 
 To create a backup in the console, navigate to the clusters view and click on the _Create backup_ icon. In the popup, click the `Create one-off backup` button.
 
 ![take backup](./images/take_backup.png)
 
-### Using the command line
-
-You can also take a backup of your cluster using the [Event Store Cloud CLI](https://github.com/EventStore/esc).
+@tab esc
 
 To create a backup, use the `backups create` command:
 
 ```bash
-$ esc mesdb backups create --description "on demand backup" \
+esc mesdb backups create --description "on demand backup" \
     --source-cluster-id c1eut65o0aeu6ojco7a0 \
     --project-id btfjev2rh41scaatc1k0
 
@@ -212,7 +220,7 @@ BackupId("c1ev3l5o0aeu6ojco7b0")
 To see the status of the backup use the `backups get` command:
 
 ```bash
-$ esc mesdb backups get --project-id btfjev2rh41scaatc1k0 \
+esc mesdb backups get --project-id btfjev2rh41scaatc1k0 \
     --id c1ev3l5o0aeu6ojco7b0
 
 Backup { id: BackupId("c1ev3l5o0aeu6ojco7b0"),
@@ -224,6 +232,7 @@ provider: Aws, region: "eu-central-1",
 status: "available", created: "2021-03-26T14:38:12Z",
 linked_resource: None }
 ```
+:::
 
 ## Scheduled Backups
 
@@ -237,7 +246,8 @@ Multiple scheduled backups can target the same cluster. However, if schedules ov
 
 For example, you could create one scheduled backup that executes every hour, along with a second scheduled backup that executes once a week. Backups from these scheduled jobs are pruned independently regardless of their age, so if both saved a maximum of four backups, the oldest backup from the weekly job might be close to a month old, while the hourly job's backups would never be older than a fraction of a day.
 
-### Using the Cloud Console
+:::: tabs#way
+@tab Cloud Console
 
 To create a scheduled backup in the console, navigate to the clusters view and click on the _create backup_ icon and then on `Create backup schedule`.
 
@@ -261,14 +271,14 @@ There you can see all backups created by a job, as well as their history, which 
 A backup might fail, for instance, if a cluster is locked by another operation when the backup tries to run. Such a locking operation could be the disk expand or manual backup.
 :::
 
-### Using the command Line
+@tab esc
 
 A scheduled backup can be created using the Event Store Cloud CLI by using the `orchestrate` subcommand.
 
 The following call will create a new scheduled backup of the cluster with ID `c196ogto0aeqohe3ommq`:
 
 ```bash
-$ esc orchestrate jobs create \
+esc orchestrate jobs create \
     --description 'My Hourly Backup' \
     --schedule '0 */1 * * *' scheduled-backup \
     --description '{cluster} Hourly Backup {datetime:RFC3339}' \
@@ -280,15 +290,16 @@ For details on the scheduled field, see [Job Schedules](./README.md).
 
 To list current jobs, run:
 
-```bash:no-line-numbers
-$ esc orchestrate jobs list
+```bash
+esc orchestrate jobs list
 ```
 
 To view the history of a job, run:
 
-```bash:no-line-numbers
-$ esc orchestrate history list --job-id <job-id>
+```bash
+esc orchestrate history list --job-id <job-id>
 ```
+::::
 
 ## Restore from backup
 
@@ -298,10 +309,10 @@ Restores can be done on demand using the [Cloud Console](https://console.eventst
 Restoring a backup will create a new cluster
 :::
 
-The topology of the new cluster does not need to be the same as the source of the backup: you can restore a 3 nodes cluster backup to a single node one.
-Do make sure that the disk size of the target cluster is large enough.
+The topology of the new cluster does not need to be the same as the source of the backup: you can restore a 3 nodes cluster backup to a single node one. Do make sure that the disk size of the target cluster is large enough.
 
-### Using the Cloud Console
+::: tabs#way
+@tab Cloud Console
 
 To restore a backup, navigate to the `Backups` section fo the [Cloud Console](https://console.eventstore.cloud/) and click on the `Restore` icon of the backup you want to restore.
 
@@ -311,9 +322,9 @@ Backups are restored as new clusters. You will be then redirected to the usual p
 
 ![one off restore cluster backup](./images/one_off_restore_cluster.png)
 
-### Using the command line
+@tab esc
 
-You can also restore a backup using the [Event Store Cloud CLI](https://github.com/EventStore/esc). As you cannot restore to the existing cluster, you should use the `source-backup-id` option of the `mesdb clusters create` command. When the backup id is provided, the CLI tool will create a new cluster using the provided backup.
+As you cannot restore to the existing cluster, you should use the `source-backup-id` option of the `mesdb clusters create` command. When the backup id is provided, the CLI tool will create a new cluster using the provided backup.
 
 Example: restoring the backup with ID `c10dvoarh41lb9otkdrg` to an F1 single node instance.
 
@@ -368,6 +379,7 @@ The output will be similar to:
     }
 }
 ```
+:::
 
 ## Protecting the cluster from removal
 
@@ -375,7 +387,8 @@ Cluster can be protected from accidental removal using the [Cloud Console](https
 
 This feature will require an extra step to unprotect the cluster before it will be possible to remove it.
 
-### Using the Cloud Console
+::: tabs#way
+@tab Cloud Console
 
 To protect a cluster, navigate to the clusters view and click on the _Protect Cluster_ icon.
 
@@ -393,9 +406,7 @@ To unprotect a cluster, navigate to Clusters action and click on the _Unprotect 
 
 ![disable protection](./images/disable_protection.png)
 
-### Using the command line
-
-You can also protect a cluster using the [Event Store Cloud CLI](https://github.com/EventStore/esc).
+@tab esc
 
 To protect a cluster, you need to update a value of `protected` parameter to `true`:
 
@@ -408,3 +419,4 @@ To unprotect a cluster, you need to update it to `false`:
 ```bash:no-line-numbers
 esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected false
 ```
+:::

@@ -1,3 +1,7 @@
+---
+order: 1
+---
+
 # Quick start
 
 The Connectors plugin is pre-installed in the commercial edition. The first version of EventStoreDB to support Connectors is **v24.2**.
@@ -35,8 +39,8 @@ When you create a public request bin, it will start waiting for requests. You ca
 
 Use `curl` or a similar utility to issue a `POST` request as follows. This will create a connector instance called `my-connector`, configure it to send events to our external system, and enable the connector instance.
 
-:::: code-group
-::: code-group-item Powershell
+::: tabs#shell
+@tab Powershell
 ```powershell
 $JSON = @'
 {
@@ -50,8 +54,7 @@ curl.exe -i                           `
   -d $JSON                            `
   https://localhost:2113/connectors/my-connector
 ```
-:::
-::: code-group-item Bash
+@tab Bash
 ```bash
 export json="{
   \"Sink\": \"https://enkb1keveb5r.x.pipedream.net\"
@@ -64,7 +67,6 @@ curl -i \
   https://localhost:2113/connectors/my-connector
 ```
 :::
-::::
 
 - Ensure you pass the correct credentials for the `-u` flag. Only administrators can create connectors.
 - The sink URL is where the sink will POST to. Adjust it to be your own URL created in the first step.

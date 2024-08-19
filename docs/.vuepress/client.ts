@@ -8,7 +8,7 @@ export default defineClientConfig({
         // Router configuration
         router.addRoute({
             path: "/latest.html",
-            redirect: `/${__VERSIONS__.latest}/`
+            redirect: `/${__VERSIONS__.latest}/quick-start/`
         });
     },
 })

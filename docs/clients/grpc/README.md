@@ -18,65 +18,80 @@ All our GRPC clients are secure by default and must be configured to connect to 
 
 Install the client SDK package to your project.
 
-:::: code-group
-::: code-group-item Python
-```:no-line-numbers
-# From Pypi
-$ pip install esdbclient
+#### Python
 
-# With Poetry
-$ poetry add esdbclient
+Install the `esdbclient` package from PyPI or use Poetry:
+
+::: tabs
+@tab pip
+```bash
+pip install esdbclient
+```
+@tab Poetry
+```bash
+poetry add esdbclient
 ```
 :::
-::: code-group-item JavaScript
-```:no-line-numbers
-# Yarn
-$ yarn add @eventstore/db-client
 
-# NPM
-$ npm install --save @eventstore/db-client
+#### NodeJS
+
+Install the `@eventstore/db-client` package using NPM, Yarn or PNPM:
+
+::: tabs
+@tab npm
+```bash
+npm install --save @eventstore/db-client
+```
+@tab yarn
+```bash
+yarn add @eventstore/db-client
+```
+@tab pnpm
+```bash
+pnpm add @eventstore/db-client
 ```
 :::
-::: code-group-item TypeScript
-```:no-line-numbers
-# TypeScript Declarations are included in the package.
 
-# Yarn
-$ yarn add @eventstore/db-client
+TypeScript Declarations are included in the package.
 
-# NPM
-$ npm install --save @eventstore/db-client
-```
-:::
-::: code-group-item Java
-```:no-line-numbers
-# Maven
+#### Java
+
+Add the `db-client-java` dependency to your Maven or Gradle project:
+
+::: tabs
+@tab Maven
+```xml
 <dependency>
   <groupId>com.eventstore</groupId>
   <artifactId>db-client-java</artifactId>
   <version>5.2.0</version>
 </dependency>
-
-# Gradle
+```
+@tab Gradle
+```groovy
 implementation 'com.eventstore:db-client-java:5.2.0'
 ```
 :::
-::: code-group-item C#
-```:no-line-numbers
-$ dotnet add package EventStore.Client.Grpc.Streams --version 23.1.0
+
+#### .NET
+
+Add the `EventStore.Client.Grpc.Streams` package to your project:
+
+```bash
+dotnet add package EventStore.Client.Grpc.Streams --version 23.1.0
 ```
-:::
-::: code-group-item Go
-```:no-line-numbers
+
+#### Go
+
+Install the `esdb` package using Go modules:
+
+```bash
 go get github.com/EventStore/EventStore-Client-Go/v3.2.0/esdb
 ```
-:::
-::: code-group-item Rust
-```:no-line-numbers
-No additional configuration is needed having Rust installed. Go check https://rustup.rs.
-```
-:::
-::::
+
+#### Rust
+
+No additional configuration is needed having Rust installed. Go check [https://rustup.rs](https://rustup.rs).
 
 ### Connection string
 
@@ -86,13 +101,13 @@ Since version 22.10, ESDB supports gossip on single-node deployments, so `esdb+d
 
 The connection string has the following format:
 
-```:no-line-numbers
+```
 esdb+discover://admin:changeit@cluster.dns.name:2113
 ```
 
 There, `cluster.dns.name` is the name of a DNS `A` record that points to all the cluster nodes. Alternatively, you can list cluster nodes separated by comma instead of the cluster DNS name:
 
-```:no-line-numbers
+```
 esdb+discover://admin:changeit@node1.dns.name:2113,node2.dns.name:2113,node3.dns.name:2113
 ```
 

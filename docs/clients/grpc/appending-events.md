@@ -1,3 +1,7 @@
+---
+order: 1
+---
+
 # Appending events
 
 When you start working with EventStoreDB, the database is empty. So, the first meaningful operation in this case would be to add one or more events to the database using one of the available client SDKs.

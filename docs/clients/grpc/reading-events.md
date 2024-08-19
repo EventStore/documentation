@@ -1,3 +1,7 @@
+---
+order: 2
+---
+
 # Reading events
 
 There are two options for reading events from EventStoreDB. You can either: 

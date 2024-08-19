@@ -91,16 +91,21 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
+                console.log(`Processing ${JSON.stringify(v)}`);
                 const p = `${version.basePath}/${v.path}`;
                 const sidebarPath = path.resolve(__dirname, `../../${p}`);
                 const sidebarBase = path.join(sidebarPath, "sidebar");
                 const sidebarJs = `${sidebarBase}.js`;
                 const sidebarCjs = `${sidebarBase}.cjs`;
-                fs.copyFileSync(sidebarJs, sidebarCjs);
-                log.info(`Importing sidebar from ${sidebarJs}`);
-                const sidebar: ImportedSidebarArrayOptions = require(sidebarCjs);
-                sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
-                fs.rmSync(sidebarCjs);
+                if (!fs.existsSync(sidebarJs)) {
+                    log.info(`Sidebar file ${sidebarJs} not found`);
+                } else {
+                    fs.copyFileSync(sidebarJs, sidebarCjs);
+                    log.info(`Importing sidebar from ${sidebarJs}`);
+                    const sidebar: ImportedSidebarArrayOptions = require(sidebarCjs);
+                    sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
+                    fs.rmSync(sidebarCjs);
+                }
             });
         })
 
