@@ -120,6 +120,14 @@ First, create a client and get it connected to the database.
 
 The client instance can be used as a singleton across the whole application. It doesn't need to open or close the connection.
 
+::: tip
+
+When using the Python client to connect to a 3-node cluster, ensure that your client has access to the root CA certificate.
+
+Include the certificate in the connection string to establish a secure connection.
+
+:::
+
 ### Creating an event
 
 You can write anything to EventStoreDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object, and it's up to you to choose the serialization method.
