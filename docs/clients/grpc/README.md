@@ -151,4 +151,3 @@ Finally, we can read events back from the `some-stream` stream.
 @[code{readStream}](@grpc:quickstart.py;get-started.js;get-started.ts;quick_start/QuickStart.java;quick-start/Program.cs;quickstart.go;quickstart.rs)
 
 When you read events from the stream, you get a collection of `ResolvedEvent` structures. The event payload is returned as a byte array and needs to be deserialized. See more advanced scenarios in [reading events documentation](./reading-events.md).
-
