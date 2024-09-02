@@ -61,8 +61,7 @@ handling many streams at once, or including custom rules. Code is especially hel
 ---
 
 ## Hard Delete
-
-Hard delete in EventStoreDB permanently removes a stream and its events. While you can use the HTTP API, code is often better for automating the process, managing multiple streams, and ensuring precise control. Code is especially useful when you need to integrate hard delete into larger workflows or apply specific conditions.
+Hard delete in EventStoreDB permanently removes a stream and its events. While you can use the HTTP API, code is often better for automating the process, managing multiple streams, and ensuring precise control. Code is especially useful when you need to integrate hard delete into larger workflows or apply specific conditions. Note that when a stream is hard deleted, you cannot reuse the stream name, it will raise an exception if you try to append to it again.
 
 :::: code-group
 ::: code-group-item Python
