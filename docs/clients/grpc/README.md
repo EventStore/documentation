@@ -78,7 +78,7 @@ implementation 'com.eventstore:db-client-java:5.2.0'
 Add the `EventStore.Client.Grpc.Streams` package to your project:
 
 ```bash
-dotnet add package EventStore.Client.Grpc.Streams --version 23.1.0
+dotnet add package EventStore.Client.Grpc.Streams
 ```
 
 #### Go

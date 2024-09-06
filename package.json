@@ -12,6 +12,7 @@
     "@mdit/plugin-dl": "^0.13.0",
     "@types/fs-extra": "^11.0.4",
     "@types/markdown-it": "^14.1.1",
+    "@vuepress/plugin-watermark": "2.0.0-rc.41",
     "degit": "2.8.4",
     "del": "5.1.0",
     "dotenv": "10.0.0",
@@ -26,8 +27,8 @@
     "stylus": "^0.56.0",
     "tsconfig-vuepress": "^4.5.0",
     "typescript": "^5.5.3",
-    "vite-plugin-vue-devtools": "^7.3.6",
-    "@vuepress/plugin-watermark": "2.0.0-rc.41"
+    "vidstack": "^1.12.9",
+    "vite-plugin-vue-devtools": "^7.3.6"
   },
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.9",
@@ -37,6 +38,8 @@
     "@vuepress/bundler-vite": "2.0.0-rc.14",
     "@vuepress/plugin-docsearch": "2.0.0-rc.40",
     "@vuepress/plugin-google-analytics": "2.0.0-rc.37",
+    "dashjs": "^4.7.4",
+    "hls.js": "^1.5.14",
     "iconify-icon": "^2.1.0",
     "sass-loader": "^15.0.0",
     "vue": "^3.4.30",

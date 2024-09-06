@@ -42,15 +42,57 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ## Event Sourcing: What Is it and Why Use it?
 
-[Introduction to event sourcing](https://www.eventstore.com/event-sourcing)
+<div class="vp-card-container">
 
-[Event Driven Architecture](https://www.eventstore.com/event-driven-architecture)
+```component VPCard
+title: Introduction to Event Sourcing
+desc: For developers and software architects looking to build event-sourced systems within modern event-driven architectures.
+logo: /eventstore.svg
+link: https://www.eventstore.com/event-sourcing
+background: rgba(253, 230, 138, 0.15)
+```
 
-[CQRS](https://www.eventstore.com/cqrs-pattern)
+```component VPCard
+title: Event Driven Architecture
+desc: Using events as the core of your system can help you build more resilient, scalable systems for the future of your business.
+logo: /eventstore.svg
+link: https://www.eventstore.com/event-sourcing
+background: rgba(253, 230, 138, 0.15)
+```
 
-[How to implement a basic application with CQRS and Event Sourcing [Video]](https://www.youtube.com/watch?v=Hq6zO-A0hMI)
+```component VPCard
+title: "Webinar: CQRS"
+desc: "Command-Query Responsibility Segregation: A software pattern that separates command (or update) and query (or read) operations in applications."
+logo: /video.png
+link: https://www.eventstore.com/cqrs-pattern
+background: rgba(253, 230, 138, 0.15)
+```
 
-[A practical guide to implementing CQRS with C# & NET5 [Video]](https://www.youtube.com/watch?v=eOPlg-eB4As)
+```component VPCard
+title: "Video: building an app"
+desc: "How to implement a basic application with CQRS and Event Sourcing"
+logo: /video.png
+link: https://www.youtube.com/watch?v=Hq6zO-A0hMI
+background: rgba(253, 230, 138, 0.15)
+```
+
+```component VPCard
+title: "Video: practical buide with .NET"
+desc: "A practical guide to implementing CQRS with C# & NET5"
+logo: /video.png
+link: https://www.youtube.com/watch?v=eOPlg-eB4As
+background: rgba(253, 230, 138, 0.15)
+```
+
+```component VPCard
+title: "Event Sourcing with ESDB and Python end to end"
+desc: "In this article we cover a full end-to-end example, from Event Storming, to creating Event Sourcing and architecture diagrams to implementation in Python."
+logo: /eventstore.svg
+link: https://www.eventstore.com/blog/eventstoredb-implementation-with-event-sourcing
+background: rgba(253, 230, 138, 0.15)
+```
+</div>
+
 
 [Why Event Sourcing? Part 1 - Growing Costs of Complex Data](https://www.eventstore.com/blog/why-event-sourcing-part-1-growing-costs-of-complex-data)
 

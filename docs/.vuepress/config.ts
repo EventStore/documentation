@@ -63,6 +63,9 @@ export default defineUserConfig({
         headerDepth: 3,
         iconAssets: "iconify",
         plugins: {
+            components: {
+                components: ["Badge", "VPBanner", "VPCard", "VidStack"]
+            },
             docsearch: {
                 apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
                 indexName: process.env.ALGOLIA_INDEX_NAME,
@@ -75,6 +78,7 @@ export default defineUserConfig({
                 imgSize: true,
                 tabs: true,
                 codetabs: true,
+                component: true,
             },
             seo: {
             },

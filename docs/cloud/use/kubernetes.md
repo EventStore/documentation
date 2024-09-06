@@ -14,7 +14,7 @@ EKS clusters require at least two subnets, which are connected to internet using
 
 Before you provision a cluster in Event Store Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR block.
 
-You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own Azure account in the [provisioning](../provision/README.md#amazon-web-services-aws) section.
+You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own Azure account in the [provisioning](../provision/aws.md) section.
 
 In this example, we'll use the following network configuration:
 
@@ -71,7 +71,7 @@ Before you provision a cluster in Event Store Cloud, you need to have a network,
 
 In order to be able to work with the cluster, you need to establish a connection between the Event Store Cloud network and your own VPC Network in Google Cloud. You do it by provisioning a network peering between those two networks.
 
-You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own GCP project in the [provisioning](../provision/README.md#google-cloud-platform-gcp) section.
+You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own GCP project in the [provisioning](../provision/gcp.md) section.
 
 ### Planning IP ranges
 
@@ -167,7 +167,7 @@ In this section, you find instructions on how to set up an Azure Kubernetes Serv
 
 Before you provision a cluster in Event Store Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR block.
 
-You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own Azure account in the [provisioning](@cloud/provision/README.md#microsoft-azure) section.
+You can find more information about the steps needed for provisioning Event Store Cloud resources and connecting them to your own Azure account in the [provisioning](../provision/azure.md) section.
 
 When provisioning a new AKS cluster, you can choose one of the following network configurations:
 - **kubenet**, which will create a new VNet using default values
