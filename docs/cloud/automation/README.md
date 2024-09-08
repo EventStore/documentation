@@ -386,4 +386,4 @@ Ensure you entered the correct project name. Remember that data source names are
 [cloud console]: https://console.eventstore.cloud/
 [cloud console tokens]:https://console.eventstore.cloud/authentication-tokens
 [cloud console organizations]:https://console.eventstore.cloud/organizations
-[pulumi provider]: https://github.com/EventStore/pulumi-eventstorecloud
+[pulumi provider]: https://www.pulumi.com/registry/packages/eventstorecloud/

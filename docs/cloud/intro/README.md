@@ -12,9 +12,7 @@ Not using Event Store Cloud and want to learn more? Find more information and si
 
 As a customer of Event Store Cloud you get access to the [Cloud console](https://console.eventstore.cloud), where you can provision and manage EventStoreDB clusters, back and up restore your data, establish the connection between Event Store Cloud networks and your own cloud infrastructure.
 
-Event Store Cloud operations can be automated using the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud) and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
-
-The roadmap can be found [here](https://www.eventstore.com/event-store-cloud).
+Event Store Cloud operations can be automated using the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud), [Pulumi provider](https://www.pulumi.com/registry/packages/eventstorecloud/), and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
 
 ## Cloud quick start
 
@@ -24,9 +22,7 @@ Follow the steps in this guide to get access to the Event Store Cloud console, p
 
 EventStoreDB offers a single sign-on (SSO) for our customers. Using a single account you get access to a variety of free and paid services.
 
-To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/)  where you'll see the login screen. There you get an option to sign up:
-
-![Sign up screen](./images/discuss-signup.png)
+To get an account, proceed to the [Cloud console](https://console.eventstore.cloud/)  where you'll see the login screen. There you get an option to sign up.
 
 ::: tip
 If you already have an account at our community forum (Discuss), you can use it to log in to Event Store Cloud.
@@ -36,11 +32,7 @@ To finalize the sign-up process, you'd need to confirm your email address by cli
 
 ### Login to Cloud console
 
-With the new account, you can log in to the [Cloud console](https://console.eventstore.cloud). From the console you can manage your organisations, users, projects and EventStoreDB clusters.
-
-::: warning Gated provisioning
-You won't be able to create new cloud resources like networks and clusters. Click on the `Request to enable provisioning` link to get provisioning enabled.
-:::
+With the new account, you can log in to the [Cloud console](https://console.eventstore.cloud). 
 
 In the console, you first get to the list of organisations that you have access to.
 
