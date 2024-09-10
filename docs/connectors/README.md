@@ -1,5 +1,10 @@
 ---
 title: "Connectors Preview"
+head:
+    - - meta
+      - name: foo
+        content: yaml array syntax
+    - [meta, { name: bar, content: square brackets syntax }]
 ---
 
 # Connectors Preview introduction 
