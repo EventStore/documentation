@@ -7,7 +7,15 @@ import {notices} from "./notices";
 const seoPlugin: SeoPluginOptions = {
     hostname: 'https://developers.eventstore.com',
     customHead: (head: HeadConfig[], page: Page, app: App) => {
-        head.push(["meta", {name: "test:keywords", content: "EventStoreDB, Event Sourcing, Event Streams"}]);
+        if (!page.pathInferred) return;
+
+        const pathSplit = page.pathInferred.split("/");
+        const maybeVersion = pathSplit[1];
+        if (maybeVersion && maybeVersion.startsWith("v") && maybeVersion.indexOf(".") > 0) {
+            head.push(["meta", {name: "test:version", content: maybeVersion}]);
+        }
+        // console.log(page.pathInferred);
+        // head.push(["meta", {name: "test:keywords", content: "EventStoreDB, Event Sourcing, Event Streams"}]);
     },
 }
 
