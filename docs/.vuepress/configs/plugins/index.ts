@@ -10,12 +10,13 @@ const seoPlugin: SeoPluginOptions = {
         if (!page.pathInferred) return;
 
         const pathSplit = page.pathInferred.split("/");
-        const maybeVersion = pathSplit[1];
-        if (maybeVersion && maybeVersion.startsWith("v") && maybeVersion.indexOf(".") > 0) {
+        const maybeVersion = pathSplit.length > 1 ? pathSplit[2] : null;
+        if (maybeVersion && maybeVersion.startsWith("v") && (maybeVersion.indexOf(".") > 0 || maybeVersion === "v5")) {
             head.push(["meta", {name: "test:version", content: maybeVersion}]);
+            console.log("Path: " + page.pathInferred + "; Version: " + maybeVersion);
+        } else {
+            console.log("Path: " + page.pathInferred + "; No version found");
         }
-        // console.log(page.pathInferred);
-        // head.push(["meta", {name: "test:keywords", content: "EventStoreDB, Event Sourcing, Event Streams"}]);
     },
 }
 
