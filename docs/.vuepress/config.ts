@@ -12,9 +12,10 @@ import {instance as ver} from "./lib/versioning";
 import {linkCheckPlugin} from "./markdown/linkCheck";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
-import {hopeTheme} from "vuepress-theme-hope";
+import {hopeTheme, PluginsOptions, ThemeOptions} from "vuepress-theme-hope";
 import {watermarkPlugin} from '@vuepress/plugin-watermark';
 import {dl} from "@mdit/plugin-dl";
+import {themeOptions} from "./configs/theme";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
 
@@ -50,118 +51,7 @@ export default defineUserConfig({
         // @ts-ignore
         md.use(dl);
     },
-    theme: hopeTheme({
-        logo: "/eventstore-dev-logo-dark.svg",
-        logoDark: "/eventstore-logo-alt.svg",
-        docsDir: 'docs',
-        editLink: false,
-        lastUpdated: true,
-        navbar: navbar.en,
-        sidebar: sidebar.en,
-        toc: true,
-        pure: false,
-        headerDepth: 3,
-        iconAssets: "iconify",
-        plugins: {
-            components: {
-                components: ["Badge", "VPBanner", "VPCard", "VidStack"]
-            },
-            docsearch: {
-                apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
-                indexName: process.env.ALGOLIA_INDEX_NAME,
-                appId: process.env.ALGOLIA_APPLICATION_ID
-            },
-            mdEnhance: {
-                figure: true,
-                imgLazyload: true,
-                imgMark: true,
-                imgSize: true,
-                tabs: true,
-                codetabs: true,
-                component: true,
-            },
-            seo: {
-                customHead: (head: HeadConfig[], page: Page, app: App) => {
-                    head.push(["meta", {name: "test:keywords", content: "EventStoreDB, Event Sourcing, Event Streams"}]);
-                }
-            },
-            sitemap: {
-                devServer: process.env.NODE_ENV === 'development',
-                modifyTimeGetter: (page, app) =>
-                    fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
-            },
-            shiki: {
-                themes: {
-                    light: "one-light",
-                    dark: "one-dark-pro",
-                },
-            },
-            watermark: {
-                enabled(page) {
-                    const relPath = page.filePathRelative;
-                    if (relPath === null) return false;
-                    return (relPath.includes("clients/tcp") && !relPath.includes("/migration-to-gRPC")) || relPath.includes("server/v5") || relPath.includes("http-api/v5");
-                },
-                watermarkOptions: {
-                    content: "Deprecated",
-                    fontSize: '30px',
-                    globalAlpha: 0.3,
-                }
-            },
-            notice: {
-                config: [
-                    {
-                        path: "/clients/tcp/dotnet/21.2/",
-                        title: "This documentation is for the legacy TCP client",
-                        content: "This client is no longer supported because newer versions of EventStoreDB only support gRPC-based client protocol. Please use the latest client libraries.",
-                        confirm: true,
-                        actions: [
-                            {
-                                text: "Migration guide",
-                                link: "/clients/tcp/dotnet/21.2/migration-to-gRPC.html"
-                            }
-                        ]
-                    },
-                    {
-                        path: "/server/v5/",
-                        title: "This documentation is for the unsupported EventStoreDB version",
-                        content: "EventStoreDB v5 and below are out of support. Please migrate to the latest server version.",
-                        confirm: true,
-                        actions: [
-                            {
-                                text: "View latest server documentation",
-                                link: "/latest.html"
-                            }
-                        ]
-                    },
-                    {
-                        path: "/server/v23.10/",
-                        title: "EventStoreDB v23.10",
-                        content: "You are reading the documentation for EventStoreDB v23.10 LTS.",
-                        confirm: true,
-                        // actions: [
-                        //     {
-                        //         text: "View latest server documentation",
-                        //         link: "/latest.html"
-                        //     }
-                        // ]
-                    },
-                    {
-                        path: "/server/v22.10/",
-                        title: "EventStoreDB v22.10",
-                        content: "EventStoreDB v22.10 is reaching its end of life. Please migrate to the latest server version.",
-                        confirm: true,
-                        actions: [
-                            {
-                                text: "View latest server documentation",
-                                link: "/latest.html"
-                            }
-                        ]
-                    }
-                ]
-            }
-        }
-    }),
+    theme: hopeTheme(themeOptions),
     head: [
         ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',

@@ -1,7 +1,7 @@
 import { instance as ver } from "../lib/versioning";
 import type {EsSidebarOptions} from "../lib/types";
 
-export const en: EsSidebarOptions = {
+export const sidebarEn: EsSidebarOptions = {
   "/connectors/": "structure",
   //   "/connectors/": [
   //   {

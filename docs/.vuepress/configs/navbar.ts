@@ -1,7 +1,7 @@
 import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "vuepress-theme-hope";
 
-export const en: NavbarOptions = [
+export const navbarEn: NavbarOptions = [
     {
         text: "Getting started",
         link: "/getting-started.html",
