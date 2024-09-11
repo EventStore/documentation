@@ -4,7 +4,7 @@ import {path} from 'vuepress/utils';
 // @ts-expect-error
 import dotenv from 'dotenv';
 import vueDevTools from 'vite-plugin-vue-devtools'
-import {defineUserConfig} from "vuepress";
+import {App, defineUserConfig, HeadConfig, Page} from "vuepress";
 import {fs} from "vuepress/utils";
 import {navbar, sidebar} from "./configs";
 import {projectionSamplesPath, resolveMultiSamplesPath} from "./lib/samples";
@@ -13,7 +13,7 @@ import {linkCheckPlugin} from "./markdown/linkCheck";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
 import {hopeTheme} from "vuepress-theme-hope";
-import { watermarkPlugin } from '@vuepress/plugin-watermark';
+import {watermarkPlugin} from '@vuepress/plugin-watermark';
 import {dl} from "@mdit/plugin-dl";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
@@ -32,7 +32,7 @@ export default defineUserConfig({
             all: ver.all
         },
     },
-    markdown: {importCode: false, headers: {level: [2,3]}},
+    markdown: {importCode: false, headers: {level: [2, 3]}},
     extendsMarkdown: md => {
         md.use(replaceLinkPlugin, {
             replaceLink: (link: string, _) => link
@@ -81,8 +81,11 @@ export default defineUserConfig({
                 component: true,
             },
             seo: {
+                customHead: (head: HeadConfig[], page: Page, app: App) => {
+                    head.push(["meta", {name: "test:keywords", content: "EventStoreDB, Event Sourcing, Event Streams"}]);
+                }
             },
-            sitemap:{
+            sitemap: {
                 devServer: process.env.NODE_ENV === 'development',
                 modifyTimeGetter: (page, app) =>
                     fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
