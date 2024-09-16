@@ -2,6 +2,28 @@ import { instance as ver } from "../lib/versioning";
 import type {EsSidebarOptions} from "../lib/types";
 
 export const en: EsSidebarOptions = {
+  "/getting-started/": [
+    {
+      text: "Introduction",
+      link: "/getting-started/README.md",
+      group: "Getting Started (DRAFT)",
+    },
+    {
+      text: "Quickstart",
+      group: "Getting Started (DRAFT)",
+      children: [
+        "/getting-started/quickstart/README.md"
+      ],
+    },
+    {
+      text: "Concept",
+      group: "Getting Started (DRAFT)",
+      children: [
+        "/getting-started/concept/architecture.md",
+        "/getting-started/concept/key-benefits.md"
+      ],
+    },
+  ],
   "/connectors/": [
     {
       text: "",

@@ -2,10 +2,7 @@ import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "@vuepress/theme-default";
 
 export const en: NavbarOptions = [
-    {
-        text: "Getting started",
-        link: "/getting-started.html"
-    },
+    {text: "Getting Started", link: "/getting-started/"},
     {
         text: "Server",
         children: ver.linksFor("server")
