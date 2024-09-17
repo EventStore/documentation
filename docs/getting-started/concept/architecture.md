@@ -2,7 +2,9 @@
 title: EventStoreDB Architecture
 ---
 
-# Event
+# EventStoreDB Architecture
+
+## Event
 
 ![image.png](images/architecture/image.png)
 
@@ -16,7 +18,7 @@ An event usually represents a state change in an application, its entities, or b
 2. Bob approved the loan. 
 3. A loan payment of $50 was received.
 
-# Event Log
+## Event Log
 
 ![image.png](images/architecture/image%202.png)
 
@@ -28,7 +30,7 @@ It is append-only. New events are added exclusively to the end of the log—neve
 
 Internally, the event log consists of a series of data files that store events in the exact order in which they were appended.
 
-# Event Stream
+## Event Stream
 
 EventStoreDB's event log can store billions of events, many of which might be unrelated.
 
@@ -38,13 +40,13 @@ Events are commonly arranged into smaller and logically related groups known as 
 
 Event stream is a sequenced group of events from the event log that is identified by a stream ID.
 
-## Example of Event Stream
+### Example of Event Stream
 
 Imagine the management of a loan system. The system's event log could hold millions of loan applications and customer events. Searching through millions of events to find specific loan or customer information is slow and burdensome. Instead, users can find events more efficiently by organizing them into fine-grained streams based on the unique Loan ID or Customer ID.
 
 For example, a stream named "loan-123" would contain all the events related to Loan ID #123, while "customer-321" might store events specific to Customer ID #321. This configuration enables a quick read of a few related events instead of searching through the entire event log.
 
-## Basics of Event Stream
+### Basics of Event Stream
 
 Conceptually, an event stream serves two essential purposes:
 
@@ -57,7 +59,7 @@ At their core, streams consist of a **stream ID** (a simple string) and a **sequ
 
 When appending an event to EventStoreDB, it must be associated with a specific stream ID. This process simultaneously appends the event to the event log and the designated stream.
 
-## Event Stream Design
+### Event Stream Design
 
 In EventStoreDB, a stream typically represents an instance of an object, entity, or business process. For example:
 
@@ -77,7 +79,7 @@ However, there are cases where it makes sense for a stream to encompass a more e
 
 Designing streams and deciding which events belong to which stream involves balancing performance, scalability, and maintainability. Understanding the trade-offs is the starting point for designing streams that best suit organizational goals.
 
-# Event Streams and the EventStoreDB Index
+## Event Streams and the EventStoreDB Index
 
 An EventStoreDB index entry is automatically created whenever an event is appended to the event log. The index uses the hash of the stream ID as the key, with the corresponding index entry as the value. Each entry consists of:
 
@@ -92,7 +94,7 @@ Conceptually, this resembles a simple key-value store, where the stream's ID is 
 
 These pointers don't store the events but reference their positions in the event log. It's important to remember that neither the stream nor the index physically holds the actual events.
 
-# Guaranteed Global Ordering in Event Log and Stream
+## Guaranteed Global Ordering in Event Log and Stream
 
 EventStoreDB ensures that all events in both the event log and its streams are consistently ordered by append time. Moreover, the event log maintains a global ordering of events across all streams.
 
@@ -102,13 +104,13 @@ Events within each stream also retain this global ordering, even though they are
 
 For example, running a complex fraud detection system relies on the precise order of events across multiple accounts and customer interactions.
 
-# Immutability of EventStoreDB
+## Immutability of EventStoreDB
 
 EventStoreDB is designed to be immutable. Once an event is appended, its type, body, or any part of it cannot be modified. The event remains unchanged forever. 
 
 The same principle applies to the event log and stream; once an event is appended, its position is locked. Events are never reordered or shifted within the log or stream. This immutability guarantees data integrity and consistency while enabling performance optimizations.
 
-# Fine-grained Event Streams
+## Fine-grained Event Streams
 
 EventStoreDB natively supports billions of streams. This enables a design that leverages fine-grained streams, providing precise control to track and isolate individual entities, actions, or processes—even when working at a massive scale with millions or even billions of them.
 
@@ -118,7 +120,7 @@ For example, a business can maintain dedicated streams for each of its millions 
 
 Without fine-grained streams, events are lumped into longer, disorganized streams, leading to a mix of loosely related data. This makes locating and processing events for a specific customer slower and less efficient, as unrelated events have to be sifted through simultaneously.
 
-# Optimistic Concurrency Control in Event Streams
+## Optimistic Concurrency Control in Event Streams
 
 With EventStoreDB, optimistic concurrency control can be applied to prevent accidental overwrites or lost updates due to race conditions.
 
