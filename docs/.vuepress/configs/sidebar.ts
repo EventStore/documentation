@@ -20,7 +20,8 @@ export const en: EsSidebarOptions = {
       group: "Getting Started (DRAFT)",
       children: [
         "/getting-started/concept/architecture.md",
-        "/getting-started/concept/key-benefits.md"
+        "/getting-started/concept/key-benefit.md",
+        "/getting-started/concept/business-process.md",
       ],
     },
   ],
