@@ -19,7 +19,7 @@ The provisioning process consists of three steps:
 
 ### Create a network
 
-In the Event Store Cloud console, go to the [project context](../intro/README.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the Event Store Cloud console, go to the [project context](../README.md#projects) and switch to `Networks`. Then, click on the `New network` button.
 
 Make sure to fill out the required information:
 - Network name
@@ -52,7 +52,7 @@ On the first part of the form you need to specify the new cluster name, the clou
 ![GCP cluster first part](./images/gcp/gcp-new-cluster-1.png)
 
 ::: warning Projections impact on performance
-Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/projections.md#performance-impact) section of the projections documentation to learn more.
+Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/features/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
 The next section of the form allows choosing the instance size for cluster nodes. Use the provided instance size guidelines to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
@@ -135,7 +135,7 @@ Here is what our example GCP peering form would look like:
 Click the `Create` button and when in the `VPC network peering` list, click `Refresh` until the peering status changes to `Active`. The peering status in Event Store Cloud console should also change to `Active`.
 
 ::: tip Peering issues
-You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the `Event Console` in Event Store Cloud.
+You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the Event Console in Event Store Cloud.
 :::
 
 At this moment, you should be able to connect to the EventStoreDB cluster in the cloud from any VM, which is connected to your GCP VPC network.

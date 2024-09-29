@@ -37,7 +37,7 @@ export const sidebarEn: EsSidebarOptions = {
   ...ver.getSidebars(),
   "/server/v24.6/": "structure",
   // "/server/v24.2/": "structure",
-  // "/server/v23.10/": "structure",
+  "/server/v23.10/": "structure",
   "/http-api/v24.6/": "structure",
   "/clients/tcp/dotnet/21.2/": "structure",
 };

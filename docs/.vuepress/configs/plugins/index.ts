@@ -1,24 +1,9 @@
 import type {PluginsOptions} from "vuepress-theme-hope";
-import { SeoPluginOptions } from '@vuepress/plugin-seo';
-import {App, HeadConfig, Page} from "vuepress";
 import {fs} from "vuepress/utils";
 import {notices} from "./notices";
-
-const seoPlugin: SeoPluginOptions = {
-    hostname: 'https://developers.eventstore.com',
-    customHead: (head: HeadConfig[], page: Page, app: App) => {
-        if (!page.pathInferred) return;
-
-        const pathSplit = page.pathInferred.split("/");
-        const maybeVersion = pathSplit.length > 1 ? pathSplit[2] : null;
-        if (maybeVersion && maybeVersion.startsWith("v") && (maybeVersion.indexOf(".") > 0 || maybeVersion === "v5")) {
-            head.push(["meta", {name: "test:version", content: maybeVersion}]);
-            console.log("Path: " + page.pathInferred + "; Version: " + maybeVersion);
-        } else {
-            console.log("Path: " + page.pathInferred + "; No version found");
-        }
-    },
-}
+import {watermark} from "./watermark";
+import {seoPlugin} from "./seo";
+import {hostname} from "./shared";
 
 export default {
     components: {
@@ -40,9 +25,9 @@ export default {
     },
     seo: seoPlugin,
     sitemap: {
+        hostname: hostname,
         devServer: process.env.NODE_ENV === 'development',
-        modifyTimeGetter: (page, app) =>
-            fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
+        modifyTimeGetter: (page, app) => fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
     },
     shiki: {
         themes: {
@@ -50,18 +35,7 @@ export default {
             dark: "one-dark-pro",
         },
     },
-    watermark: {
-        enabled(page) {
-            const relPath = page.filePathRelative;
-            if (relPath === null) return false;
-            return (relPath.includes("clients/tcp") && !relPath.includes("/migration-to-gRPC")) || relPath.includes("server/v5") || relPath.includes("http-api/v5");
-        },
-        watermarkOptions: {
-            content: "Deprecated",
-            fontSize: '30px',
-            globalAlpha: 0.3,
-        }
-    },
+    watermark: watermark,
     notice: notices
 
 } satisfies PluginsOptions;

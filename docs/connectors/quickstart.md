@@ -8,7 +8,7 @@ The Connectors plugin is pre-installed in the commercial edition. The first vers
 
 ## Enable the plugin
 
-Refer to the general [plugins configuration](/server/v24.2/configuration.md#plugins-configuration) guide to see how to configure plugins with JSON files and environment variables.
+Refer to the general [plugins configuration](/server/v24.6/configuration/plugins.md) guide to see how to configure plugins with JSON files and environment variables.
 
 Sample JSON configuration:
 

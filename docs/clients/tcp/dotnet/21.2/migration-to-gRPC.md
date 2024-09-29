@@ -773,7 +773,7 @@ await foreach (var message in subscription.Messages.WithCancellation(ct)) {
 
 ### Resolving linked events
 
-[Projections in EventStoreDB](@server/features/projections.md) let you append new events or link existing events to streams. Links won't contain the original event data. EventStoreDB can resolve it automatically depending on the value you passed to the operation call.
+[Projections in EventStoreDB](@server/features/projections/README.md) let you append new events or link existing events to streams. Links won't contain the original event data. EventStoreDB can resolve it automatically depending on the value you passed to the operation call.
 
 The TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
 

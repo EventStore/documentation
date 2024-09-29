@@ -1,5 +1,10 @@
 import {NoticePluginOptions} from '@vuepress/plugin-notice';
 
+const actionLatest = {
+    text: "View latest server documentation",
+    link: "/latest.html"
+};
+
 export const notices: NoticePluginOptions = {
     config: [
         {
@@ -19,36 +24,27 @@ export const notices: NoticePluginOptions = {
             title: "This documentation is for the unsupported EventStoreDB version",
             content: "EventStoreDB v5 and below are out of support. Please migrate to the latest server version.",
             confirm: true,
-            actions: [
-                {
-                    text: "View latest server documentation",
-                    link: "/latest.html"
-                }
-            ]
+            actions: [actionLatest]
+        },
+        {
+            path: "/server/v24.2/",
+            title: "EventStoreDB v24.2",
+            content: "EventStoreDB v24.2 is out of support. Upgrade to the latest version.",
+            confirm: true,
+            actions: [actionLatest]
         },
         {
             path: "/server/v23.10/",
             title: "EventStoreDB v23.10",
             content: "You are reading the documentation for EventStoreDB v23.10 LTS.",
             confirm: true,
-            // actions: [
-            //     {
-            //         text: "View latest server documentation",
-            //         link: "/latest.html"
-            //     }
-            // ]
         },
         {
             path: "/server/v22.10/",
             title: "EventStoreDB v22.10",
-            content: "EventStoreDB v22.10 is reaching its end of life. Please migrate to the latest server version.",
+            content: "EventStoreDB v22.10 is reaching its end of life. Upgrade to the latest server version.",
             confirm: true,
-            actions: [
-                {
-                    text: "View latest server documentation",
-                    link: "/latest.html"
-                }
-            ]
+            actions: [actionLatest]
         }
     ]
 }

@@ -97,19 +97,25 @@ export class versioning {
                 const sidebarBase = path.join(sidebarPath, "sidebar");
                 const sidebarJs = `${sidebarBase}.js`;
                 const sidebarCjs = `${sidebarBase}.cjs`;
-                if (!fs.existsSync(sidebarJs)) {
-                    log.info(`Sidebar file ${sidebarJs} not found`);
-                } else {
-                    fs.copyFileSync(sidebarJs, sidebarCjs);
-                    log.info(`Importing sidebar from ${sidebarJs}`);
-                    const sidebar: ImportedSidebarArrayOptions = require(sidebarCjs);
+
+                const importSidebar = (path: string) => {
+                    log.info(`Importing sidebar from ${path}`);
+                    const sidebar: ImportedSidebarArrayOptions = require(path);
                     sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
+                }
+
+                if (fs.existsSync(sidebarCjs)) {
+                    importSidebar(sidebarCjs);
+                } else if (fs.existsSync(sidebarJs)) {
+                    fs.copyFileSync(sidebarJs, sidebarCjs);
+                    importSidebar(sidebarCjs);
                     fs.rmSync(sidebarCjs);
+                } else {
+                    log.info(`Sidebar file ${sidebarJs} not found`);
                 }
             });
         })
 
-        console.log(JSON.stringify(sidebars, null, 2));
         return sidebars;
     }
 

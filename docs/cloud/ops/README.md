@@ -9,7 +9,7 @@ dir:
 
 Clusters can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc).
 
-You can choose a larger or smaller node size. See also the cloud [sizing guide](../provision/README.md#cloud-instance-sizing-guide) for general guidance.
+You can choose a larger or smaller node size. See also the cloud [sizing guide](../provision/sizing.md) for general guidance.
 
 ::: tabs#way
 @tab Cloud Console
@@ -92,7 +92,7 @@ esc mesdb clusters upgrade \
 
 Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc)
 
-See also the cloud [sizing guide](../provision/README.md#cloud-instance-sizing-guide) for general guidance.
+See also the cloud [sizing guide](../provision/sizing.md) for general guidance.
 
 ::: note
 Limitations:

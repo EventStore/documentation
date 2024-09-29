@@ -24,9 +24,8 @@ Learn about key event sourcing concepts, get started on your application, find t
 
 ### Features
 - [Event streams](@server/features/streams.md)
-- [Indexes](@server/features/indexes.md)
 - [Persistent Subscriptions](@server/features/persistent-subscriptions.md)
-- [Projections](@server/features/projections.md)
+- [Projections](@server/features/projections/README.md)
 
 ## Start developing your application
 - Set up [a client to connect](./clients/grpc/README.md#connecting-to-eventstoredb) to EventStoreDB
