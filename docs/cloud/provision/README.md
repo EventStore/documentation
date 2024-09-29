@@ -1,8 +1,8 @@
 ---
-title: Get started
+title: Provisioning
 dir:
-    text: "Provisioning"
-    order: 1
+    text: "Get started"
+    order: 2
 ---
 
 # Event Store Cloud provisioning

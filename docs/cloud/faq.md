@@ -34,7 +34,7 @@ Please remember, however, that each use case is different, and you might always 
 
 #### Is there any type of alerting functionality for cluster issues?
 
-Yes. Learn more in the [Events Console](./README.md#events-and-notifications) documentation section.
+Yes. Learn more in the [Events Console](./introduction.md#events-and-notifications) documentation section.
 
 #### How do you handle infrastructure related issues, which cause unavailability or degradation of service?
 
@@ -118,7 +118,7 @@ Please ensure to learn about the SLA levels provided by Event Store Cloud in our
 
 #### How can I to get an audit log of access to the console?
 
-The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](README.md#audit-log-api) using the `esc` command line tool.
+The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](introduction.md#audit-log-api) using the `esc` command line tool.
 
 #### Does Event Store have a security policy?
 

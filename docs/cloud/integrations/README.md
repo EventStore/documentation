@@ -1,7 +1,8 @@
 ---
+title: Integrations
 dir:
   text: Integrations
-  order: 4
+  order: 5
 ---
 
 # Integrations overview

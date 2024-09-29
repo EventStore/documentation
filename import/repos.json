@@ -23,12 +23,14 @@
       {
         "version": "v22.10",
         "name": "docs/v22.10-hope",
-        "relativePath": ["server"]
+        "relativePath": ["server"],
+        "startPage": "introduction.html"
       },
       {
         "version": "v5",
         "name": "docs/v5-hope",
-        "relativePath": ["server"]
+        "relativePath": ["server"],
+        "startPage": "introduction.html"
       }
     ],
     "postprocess": [
@@ -49,19 +51,23 @@
     "branches": [
       {
         "version": "v24.6",
-        "name": "docs/v24.6-hope"
+        "name": "docs/v24.6-hope",
+        "startPage": "introduction.html"
       },
       {
         "version": "v23.10",
-        "name": "docs/v23.10-hope"
+        "name": "docs/v23.10-hope",
+        "startPage": "introduction.html"
       },
       {
         "version": "v22.10",
-        "name": "docs/v22.10-hope"
+        "name": "docs/v22.10-hope",
+        "startPage": "introduction.html"
       },
       {
         "version": "v5",
-        "name": "docs/v5-hope"
+        "name": "docs/v5-hope",
+        "startPage": "introduction.html"
       }
     ]
   },

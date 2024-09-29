@@ -1,7 +1,7 @@
 ---
 title: Using Event Store Cloud
 dir:
-  order: 2
+  order: 3
 ---
 
 ## Networking

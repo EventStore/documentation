@@ -2,7 +2,7 @@
 title: Managing ES Cloud resources
 dir:
   text: Operations
-  order: 3
+  order: 4
 ---
 
 ## Resizing cluster nodes

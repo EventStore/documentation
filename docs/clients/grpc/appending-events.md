@@ -7,7 +7,7 @@ order: 1
 When you start working with EventStoreDB, the database is empty. So, the first meaningful operation in this case would be to add one or more events to the database using one of the available client SDKs.
 
 ::: tip
-Check the [Getting Started](README.md) guide to learn how to configure and use the client SDK.
+Check the [Getting Started](getting-started.md) guide to learn how to configure and use the client SDK.
 :::
 
 ## Append your first event

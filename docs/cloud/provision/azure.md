@@ -24,7 +24,7 @@ The provisioning process consists of three steps:
 
 ## Create a network
 
-In the Event Store Cloud console, go to the [project context](../README.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the Event Store Cloud console, go to the [project context](../introduction.md#projects) and switch to `Networks`. Then, click on the `New network` button.
 
 Make sure to fill out the required information:
 - Network name

@@ -21,14 +21,14 @@ export const navbarEn: NavbarOptions = [
         text: "Clients & APIs",
         icon: "material-symbols:sdk",
         children: [
-            {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/"}]},
+            {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/getting-started"}]},
             {text: "HTTP API", children: ver.linksFor("http-api")},
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
     },
     {
         text: "Cloud",
-        link: "/cloud/",
+        link: "/cloud/introduction",
         icon: "hugeicons:cloud"
     },
     {

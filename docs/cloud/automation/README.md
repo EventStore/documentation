@@ -1,3 +1,8 @@
+---
+dir:
+  order: 6
+---
+
 # Automations
 
 In addition to the [Cloud console][cloud console], Event Store Cloud provides an API as well as the following automation tools:

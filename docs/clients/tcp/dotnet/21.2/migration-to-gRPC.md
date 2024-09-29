@@ -1,4 +1,5 @@
 ---
+order: 2
 sitemap:
   - priority: 0.4
   - changefreq: monthly
@@ -226,7 +227,7 @@ services.AddSingleton(client);
 
 For the gRPC client, we recommend switching from the settings object to using a connection string. All the settings are exposed through it. The TCP client and gRPC client connection strings are not compatible with each other. However, a unified approach to using connection strings instead of settings can help in the step by step migration. 
 
-Read more [here](@clients/grpc/README.md#connection-string) about the connection string format.
+Read more [here](@clients/grpc/getting-started.md#connection-string) about the connection string format.
 
 ## Security
 

@@ -11,7 +11,7 @@ Learn about key event sourcing concepts, get started on your application, find t
   - [Docker](@server/quick-start/installation.md#docker)
   - [Windows](@server/quick-start/installation.md#windows)
 - See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/README.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
+- Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/introduction.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
 
 ### Configuration
 - [Configuration guide](@server/configuration/README.md)
@@ -28,13 +28,13 @@ Learn about key event sourcing concepts, get started on your application, find t
 - [Projections](@server/features/projections/README.md)
 
 ## Start developing your application
-- Set up [a client to connect](./clients/grpc/README.md#connecting-to-eventstoredb) to EventStoreDB
+- Set up [a client to connect](clients/grpc/getting-started.md#connecting-to-eventstoredb) to EventStoreDB
 - [Appending events](./clients/grpc/appending-events.md)
 - [Reading events](./clients/grpc/reading-events.md)
 - [Catch-up subscriptions](./clients/grpc/subscriptions.md)
 - [Persistent subscriptions](./clients/grpc/persistent-subscriptions.md)
 - [Projection management](clients/grpc/projections.md)
-- [Get sample code in your preferred language](./clients/grpc/README.md#creating-a-client)
+- [Get sample code in your preferred language](./clients/grpc/getting-started.md#creating-a-client)
 - Check out [full code examples](https://github.com/EventStore/samples)
 
 ## [FAQs](https://www.eventstore.com/faq)
