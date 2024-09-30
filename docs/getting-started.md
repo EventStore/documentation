@@ -1,183 +1,54 @@
-# Working with EventStoreDB
+---
+home: true
+heroText: Getting started
+tagline: Start your event-native journey with Event Store
 
-Learn about key event sourcing concepts, get started on your application, find tutorials and reference material.
+highlights:
+- header: Get started with Event Sourcing
+  features:
+    - title: Introduction to Event Sourcing
+      details: For developers and software architects looking to build event-sourced systems within modern event-driven architectures.
+      icon: noto:japanese-symbol-for-beginner
+      link: https://www.eventstore.com/event-sourcing
+    - title: Event Sourcing Training Videos
+      details: Learn about Event Sourcing from the experts at Event Store. Click here to watch the video series on YouTube.
+      icon: vscode-icons:file-type-video
+      link: https://www.youtube.com/watch?v=mZAWsvym43Q&list=PLWG5TK2D4U_N3hiOYPu40FiYF7-quXp9X
+    - title: What is CQRS?
+      details: It's common to use CQRS (Command-Query Responsibility Segregation) with Event Sourcing. Learn more about CQRS.
+      icon: vscode-icons:file-type-video
+      link: https://www.youtube.com/watch?v=D-3N2vQ7ADE&list=PLWG5TK2D4U_Ny42uD4qz3zdafAJha_OYl&index=36
 
-## Run EventStoreDB
+- header: Use EventStoreDB in your environment
+  description: Run EventStoreDB locally using Docker, or spin up an instance in Event Store Cloud.
+  features:
+    - title: Run in Docker
+      icon: devicon:docker
+      details: Start using EventStoreDB in a local container with Docker. Get your local environment up and running in a few seconds.
+      link: /latest/quick-start/installation.html#docker
 
-### Installation
+    - title: Event Store Cloud
+      icon: emojione:cloud
+      details: Use fully-managed clusters in Event Store Cloud to deploy and manage EventStoreDB. Supports AWS, Azure and GCP.
+      link: /cloud/introduction.html
 
-- [Installation Guide](@server/quick-start/installation.md)
-  - [Linux](@server/quick-start/installation.md#linux)
-  - [Docker](@server/quick-start/installation.md#docker)
-  - [Windows](@server/quick-start/installation.md#windows)
-- See our [Windows how-to guide](https://www.eventstore.com/blog/getting-started-with-eventstoredb-our-how-to-guide) or watch directly on our [YouTube channel](https://youtu.be/TLnYOQRJdig).
-- Want to run Event Store in the Cloud? Head to the [Cloud introduction](cloud/introduction.md) or the [YouTube Cloud playlist](https://youtube.com/playlist?list=PLWG5TK2D4U_P2G6s2N4LdhTkmv5My96l_). 
+    - title: Deploy in your environment
+      icon: emojione:rocket
+      details: Deploy EventStoreDB in your environment using our binaries, Docker Compose, or Kubernetes Operator.
+      link: /latest/quick-start/installation.html
 
-### Configuration
-- [Configuration guide](@server/configuration/README.md)
-
-### Operations
-- [Upgrade](@server/quick-start/upgrade-guide.md)
-- [Maintenance](@server/operations/README.md)
-- [Diagnostics](@server/diagnostics/README.md)
-- [Metrics](@server/diagnostics/metrics.md)
-
-### Features
-- [Event streams](@server/features/streams.md)
-- [Persistent Subscriptions](@server/features/persistent-subscriptions.md)
-- [Projections](@server/features/projections/README.md)
-
-## Start developing your application
-- Set up [a client to connect](clients/grpc/getting-started.md#connecting-to-eventstoredb) to EventStoreDB
-- [Appending events](./clients/grpc/appending-events.md)
-- [Reading events](./clients/grpc/reading-events.md)
-- [Catch-up subscriptions](./clients/grpc/subscriptions.md)
-- [Persistent subscriptions](./clients/grpc/persistent-subscriptions.md)
-- [Projection management](clients/grpc/projections.md)
-- [Get sample code in your preferred language](./clients/grpc/getting-started.md#creating-a-client)
-- Check out [full code examples](https://github.com/EventStore/samples)
-
-## [FAQs](https://www.eventstore.com/faq)
-
-## Event Sourcing: What Is it and Why Use it?
-
-<div class="vp-card-container">
-
-```component VPCard
-title: Introduction to Event Sourcing
-desc: For developers and software architects looking to build event-sourced systems within modern event-driven architectures.
-logo: /eventstore.svg
-link: https://www.eventstore.com/event-sourcing
-background: rgba(253, 230, 138, 0.15)
-```
-
-```component VPCard
-title: Event Driven Architecture
-desc: Using events as the core of your system can help you build more resilient, scalable systems for the future of your business.
-logo: /eventstore.svg
-link: https://www.eventstore.com/event-sourcing
-background: rgba(253, 230, 138, 0.15)
-```
-
-```component VPCard
-title: "Webinar: CQRS"
-desc: "Command-Query Responsibility Segregation: A software pattern that separates command (or update) and query (or read) operations in applications."
-logo: /video.png
-link: https://www.eventstore.com/cqrs-pattern
-background: rgba(253, 230, 138, 0.15)
-```
-
-```component VPCard
-title: "Video: building an app"
-desc: "How to implement a basic application with CQRS and Event Sourcing"
-logo: /video.png
-link: https://www.youtube.com/watch?v=Hq6zO-A0hMI
-background: rgba(253, 230, 138, 0.15)
-```
-
-```component VPCard
-title: "Video: practical buide with .NET"
-desc: "A practical guide to implementing CQRS with C# & NET5"
-logo: /video.png
-link: https://www.youtube.com/watch?v=eOPlg-eB4As
-background: rgba(253, 230, 138, 0.15)
-```
-
-```component VPCard
-title: "Event Sourcing with ESDB and Python end to end"
-desc: "In this article we cover a full end-to-end example, from Event Storming, to creating Event Sourcing and architecture diagrams to implementation in Python."
-logo: /eventstore.svg
-link: https://www.eventstore.com/blog/eventstoredb-implementation-with-event-sourcing
-background: rgba(253, 230, 138, 0.15)
-```
-</div>
-
-
-[Why Event Sourcing? Part 1 - Growing Costs of Complex Data](https://www.eventstore.com/blog/why-event-sourcing-part-1-growing-costs-of-complex-data)
-
-[Why Event Sourcing? Part 2 - The Unique Feature of Event Sourcing](https://www.eventstore.com/blog/why-event-sourcing-part-2-the-unique-feature-of-event-sourcing)
-
-[Turning the database inside out with Event Store - Event Store Blog](https://www.eventstore.com/blog/turning-the-database-inside-out)
-
-[Relational vs state transition databases: how they compare](https://www.eventstore.com/blog/relational-vs-event-based-state-transition-databases)
-
-[State Transition: Uncovering a New Data Model](https://www.eventstore.com/blog/state-transition-new-data-model)
-
-[Convince your CTO to use Event Sourcing - Event Store Blog](https://www.eventstore.com/blog/convincing-your-cto)
-
-[10 problems that Event Sourcing can help solve for you](https://www.eventstore.com/blog/10-problems-that-event-sourcing-can-help-solve-for-you)
-
-[Unleashing AI/ML potential with EventStoreDB](https://www.eventstore.com/blog/unleashing-ai/ml-potential-with-eventstoredb)
-
-[How using events helps with a teams' autonomy](https://www.eventstore.com/blog/how-using-events-helps-with-a-teams-autonomy)
-
-[Event immutability and dealing with change](https://www.eventstore.com/blog/event-immutability-and-dealing-with-change)
-
-## Use Cases
-
-[Exploring the 4 Major Use Cases of EventStoreDB](https://www.eventstore.com/blog/4-major-use-cases-esdb)
-
-[From data to insights: using event log data to train machine learning models](https://www.eventstore.com/blog/from-data-to-insights-using-event-log-data-to-train-machine-learning-models)
-
-[Harnessing EDA with legacy systems: Sidecar Source of Truth](https://www.eventstore.com/blog/sidecar-source-of-truth)
-
-[A Story of Simple Solutions that Led to Complex Problems](https://www.eventstore.com/blog/a-story-of-simple-solutions-that-led-to-complex-problems)
-
-[Event Sourcing without Responsibility](https://www.eventstore.com/blog/event-sourcing-without-responsibility)
-
-[Modernizing Legacy Systems with EventStoreDB - The Insureon Success Story](https://www.eventstore.com/blog/modernizing-legacy-systems-with-eventstoredb-the-insureon-success-story)
-
-[Navigating Complexity: The Oceanic Safety Validation Pipeline built with EventStoreDB](https://www.eventstore.com/blog/navigating-complexity-the-oceanic-safety-validation-pipeline-built-with-eventstoredb)
-
-[NHS Wales app: EventStoreDB as “the backbone of a patient-held record”](https://www.eventstore.com/blog/eventstoredb-nhs-wales-app)
-
-## Design
-
-Check the following resources to learn more about designing your application with EventStoreDB.
-
-### Beginner
-
-[What's the difference between a command and an event?](https://www.eventstore.com/blog/whats-the-difference-between-a-command-and-an-event)
-
-[What’s in an (event) name?](https://www.eventstore.com/blog/whats-in-an-event-name)
-
-[Untangle Tightly Coupled Systems with EventStoreDB (Part 1)](https://www.eventstore.com/blog/untangle-tightly-coupled-systems-with-eventstoredb-part-1)
-
-[Untangle Tightly Coupled Systems with EventStoreDB (Part 2)](https://www.eventstore.com/blog/untangle-tightly-coupled-systems-with-eventstoredb-part-2)
-
-[Building a scalable and reliable event-driven architecture with EventStoreDB and Kafka](https://www.eventstore.com/blog/eventstoredb-kafka)
-
-[A recipe for gradually migrating from CRUD to Event Sourcing](https://www.eventstore.com/blog/a-recipe-for-gradually-migrating-from-crud-to-event-sourcing)
-
-[Practical advice on building event-sourced applications [Video]](https://www.youtube.com/watch?v=VeZZ2UZMDYo)
-
-### Intermediate
-
-[Live projections for read models with Event Sourcing and CQRS](https://www.eventstore.com/blog/live-projections-for-read-models-with-event-sourcing-and-cqrs)
-
-[Keep your streams short! Temporal modeling for fast reads and optimal data retention](https://www.eventstore.com/blog/keep-your-streams-short-temporal-modelling-for-fast-reads-and-optimal-data-retention)
-
-[Strategies for future events with Event Sourcing](https://www.eventstore.com/blog/4-strategies-for-future-events-with-event-sourcing)
-
-[EventStorming Modelling Patterns: Going Beyond the Superficial - Event Store Blog](https://www.eventstore.com/blog/event-storming-going-beyond-the-superficial)
-
-[Snapshots in Event Sourcing](https://www.eventstore.com/blog/snapshots-in-event-sourcing)
-
-[Snapshotting Strategies](https://www.eventstore.com/blog/snapshotting-strategies)
-
-[Protecting Sensitive Data in Event-Sourced Systems with Crypto Shredding](https://www.eventstore.com/blog/protecting-sensitive-data-in-event-sourced-systems-with-crypto-shredding-1)
-
-[How to get the current entity state from events?](https://www.eventstore.com/blog/how-to-get-the-current-entity-state-from-events)
-
-
-### Advanced
-
-[Counterexamples regarding consistency in event sourced solutions (Part 1)](https://www.eventstore.com/blog/counterexamples-regarding-consistency-in-event-sourced-solutions-part-1)
-
-[When to go from collaborative modelling to coding? Part 1](https://www.eventstore.com/blog/when-to-go-from-collaborative-modelling-to-coding-part-1)
-
-## Release schedule for EventStoreDB
-
-This is the release schedule for EventStoreDB:
-
-![Release schedule graph](./images/release-graph.png)
+- header: Start using EventStoreDB
+  description: Learn more about database features and how to use EventStoreDB in your applications.
+  features:
+    - title: Navigator Preview
+      details: Use the EventStoreDB Navigator (Preview) to explore your data, manage streams, and interact with the database.
+      link: https://learn.eventstore.com/event-store-navigator-preview
+      icon: mdi:compass-outline
+    - title: Projections
+      details: Use projections to transform or aggregate events in EventStoreDB. Learn how to create and manage projections.
+      link: /latest/features/projections/
+      icon: mdi:projector-screen
+    - title: Client libraries
+      details: Use one of our client libraries to start building your application. Supporting .NET, Java, Node.js, and more.
+      link: /clients/grpc/getting-started.html
+      icon: mdi:code-braces
