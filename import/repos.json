@@ -10,25 +10,25 @@
     "branches": [
       {
         "version": "v24.6",
-        "name": "docs/v24.6-hope",
+        "name": "release/oss-v24.6",
         "relativePath": ["server"],
         "startPage": "quick-start/"
       },
       {
         "version": "v23.10",
-        "name": "docs/v23.10-hope",
+        "name": "release/oss-v23.10",
         "relativePath": ["server"],
         "startPage": "quick-start/"
       },
       {
         "version": "v22.10",
-        "name": "docs/v22.10-hope",
+        "name": "release/oss-v22.10",
         "relativePath": ["server"],
         "startPage": "introduction.html"
       },
       {
         "version": "v5",
-        "name": "docs/v5-hope",
+        "name": "release/oss-v5",
         "relativePath": ["server"],
         "startPage": "introduction.html"
       }
