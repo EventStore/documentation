@@ -6,11 +6,11 @@ title: Cloud FAQ
 
 #### Is it possible to change the cluster instance size or topology?
 
-We don't have this feature available yet. However, you can always do it using [backup and restore](ops/README.md#resizing-cluster-nodes).
+You can [resize a cluster](ops/README.md#resizing-cluster-nodes), but we do not support changing the topology of an existing cluster. If you need a different topology, you can take a [backup](ops/README.md#manual-backup) of the existing cluster, and [restore](ops/README.md#restore-from-backup) that backup to a new cluster.
 
 #### Are there plans to support automatic resize of cluster nodes?
 
-You will be able to do an online instance resize, but it won't be auto-scaling. You will have to change the instance size for your clusters yourself, when this feature will become available.
+We don't support automatic resizing of clusters. If you wish to automate cluster resizing, the `esc` command line tool, as well as the Terraform and Pulumi providers are options to consider.
 
 #### Are there plans to support automatic disk resize?
 
@@ -92,7 +92,7 @@ You can find out about the SLA levels provided by Event Store Cloud in our [Serv
 
 #### Are maintenance windows part of the SLA?
 
-You can find out about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+You can find out about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement). Any scheduled maintenances will be posted in the Event Store Cloud Console, as well as on the [Event Store Cloud Status Page](https://status.eventstore.cloud/).
 
 ## Support
 
