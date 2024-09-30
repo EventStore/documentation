@@ -13,11 +13,6 @@ export const navbarEn: NavbarOptions = [
         children: ver.linksFor("server")
     },
     {
-        text: "Connectors",
-        link: "/connectors/",
-        icon: "carbon:iot-connect"
-    },
-    {
         text: "Clients & APIs",
         icon: "material-symbols:sdk",
         children: [
@@ -40,7 +35,5 @@ export const navbarEn: NavbarOptions = [
             {text: "Webinars", link: "https://eventstore.com/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
         ]
-    },
-    // {text: 'Resources', link: '/resources/'},
-    // {text: "Profile", link: "/profile/"}
+    }
 ];
