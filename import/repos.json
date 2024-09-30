@@ -51,22 +51,22 @@
     "branches": [
       {
         "version": "v24.6",
-        "name": "docs/v24.6-hope",
+        "name": "release/oss-v24.6",
         "startPage": "introduction.html"
       },
       {
         "version": "v23.10",
-        "name": "docs/v23.10-hope",
+        "name": "release/oss-v23.10",
         "startPage": "introduction.html"
       },
       {
         "version": "v22.10",
-        "name": "docs/v22.10-hope",
+        "name": "release/oss-v22.10",
         "startPage": "introduction.html"
       },
       {
         "version": "v5",
-        "name": "docs/v5-hope",
+        "name": "release/oss-v5",
         "startPage": "introduction.html"
       }
     ]
