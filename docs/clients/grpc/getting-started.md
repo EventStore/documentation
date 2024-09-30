@@ -1,5 +1,5 @@
 ---
-headerDepth: 3
+order: 1
 ---
 
 # Getting started

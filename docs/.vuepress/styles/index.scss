@@ -4,7 +4,7 @@
   display: none;
 }
 
-body {
+body, html {
   font-size: 15px;
 }
 
@@ -16,6 +16,12 @@ body:has(#kapa-widget-container) .vp-back-to-top-button {
   font-size: 1.5em;
   vertical-align: middle;
 }
+
+//.vp-hero-image {
+//  width: 100%;
+  //height: 288px;
+  //max-width: 288px;
+//}
 
 .vp-nav-links {
   font-size: 1rem;
