@@ -1,3 +1,7 @@
+---
+order: 4
+---
+
 # Catch-up subscriptions
 
 Subscriptions allow you to subscribe to a stream and receive notifications about new events added to the stream.
@@ -7,7 +11,7 @@ You provide an event handler and an optional starting point to the subscription.
 If events already exist, the handler will be called for each event one by one until it reaches the end of the stream. From there, the server will notify the handler whenever a new event appears.
 
 :::tip
-Check the [Getting Started](README.md) guide to learn how to configure and use the client SDK.
+Check the [Getting Started](getting-started.md) guide to learn how to configure and use the client SDK.
 :::
 
 ## Subscribing from the start

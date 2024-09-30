@@ -3,6 +3,7 @@
   "start_urls": [
     {
       "url": "http://localhost:8080/server/(?P<version>.*?)/",
+      "lvl0": "Server v24.2",
       "variables": {
         "version": ["v24.2"]
       },
@@ -34,7 +35,7 @@
       "page_rank": 10
     },
     {
-      "url": "http://localhost:8080/clients/http-api/v24.2/",
+      "url": "http://localhost:8080/http-api/v24.2/",
       "page_rank": 6
     },
     {
@@ -48,25 +49,16 @@
   ],
   "selectors": {
     "default": {
-      "lvl0": ".sidebar h4.version",
-      "lvl1": {
-        "selector": ".sidebar-heading.active+ul li a.active",
-        "strip_chars": "#"
+      "lvl1": ".vp-sidebar-header.clickable.active span",
+      "content": "main p, main li",
+      "lvl0": {
+        "selector": "",
+        "default_value": "Documentation"
       },
-      "lvl2": {
-        "selector": ".theme-default-content h2",
-        "strip_chars": "#"
-      },
-      "lvl3": {
-        "selector": ".theme-default-content h3",
-        "strip_chars": "#"
-      },
-      "text": ".theme-default-content p, .theme-default-content li, .theme-default-content td",
-      "lang": {
-        "selector": "/html/@lang",
-        "type": "xpath",
-        "global": true
-      }
+      "lvl2": "main h1",
+      "lvl3": "main h2",
+      "lvl4": "main h3",
+      "lvl5": "main h4"
     }
   },
   "custom_settings": {

@@ -1,3 +1,7 @@
+---
+order: 5
+---
+
 # Persistent subscriptions
 
 Persistent subscriptions are similar to catch-up subscriptions, but there are two key differences:
@@ -6,7 +10,7 @@ Persistent subscriptions are similar to catch-up subscriptions, but there are tw
 
 Because of those, persistent subscriptions are defined as subscription groups that are defined and maintained by the server. Consumer then connect to a particular subscription group, and the server starts sending event to the consumer.
 
-You can read more about persistent subscriptions in the [server documentation](@server/persistent-subscriptions.md).
+You can read more about persistent subscriptions in the [server documentation](@server/features/persistent-subscriptions.md).
 
 ## Creating a subscription group
 

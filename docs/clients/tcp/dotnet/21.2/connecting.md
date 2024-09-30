@@ -1,4 +1,5 @@
 ---
+order: 3
 sitemap.priority: 0.005
 ---
 
@@ -24,14 +25,12 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for connecting to a server using [connection string](#connection-string) and [connection settings](#connection-settings), [reading events](reading.md) and [appending to a stream](appending.md)
 
-:::: code-group
-::: code-group-item JSON format event
+::: tabs
+@tab JSON format event
 @[code{12-28}](./sample-code/DotNetClient/QuickStartJsonFormat.cs)
-:::
-::: code-group-item Plain-text format event
+@tab Plain-text format event
 @[code{12-28}](./sample-code/DotNetClient/QuickStartPlainFormat.cs)
 :::
-::::
 
 ::: tip
 We recommended using the JSON format for data and metadata.
@@ -317,13 +316,20 @@ You can connect to a cluster running insecure v5, insecure v20+, or secure v20+ 
 
 ###### Connection string
 
+::: tabs
+@tab Cluster DNS Discovery
 ```csharp
-var clusterDnsConnectionString = $"ConnectTo=discover://{dns_address}:2113;TargetHost={dns_address};CompatibilityMode=auto;ValidateServer=true;"
+var clusterDnsConnectionString = 
+    $"ConnectTo=discover://{dns_address}:2113;TargetHost={dns_address};" +
+    "CompatibilityMode=auto;ValidateServer=true;"
 ```
-
+@tab Gossip Seeds
 ```csharp
-var gossipSeedConnectionSTring = $"GossipSeeds={node1}:2113,{node2}:2113,{node3}:2113;CompatibilityMode=auto;ValidateServer=true;"
+var gossipSeedConnectionSTring = 
+    $"GossipSeeds={node1}:2113,{node2}:2113,{node3}:2113;" + 
+    "CompatibilityMode=auto;ValidateServer=true;"
 ```
+:::
 
 ::: warning
 Auto-compatibility mode does not enable Server Certificate Validation by default. As such, we recommend that you enable this explicitly in your connection string.
@@ -331,14 +337,12 @@ Auto-compatibility mode does not enable Server Certificate Validation by default
 
 ###### Connection settings
 
-:::: code-group
-::: code-group-item Cluster DNS Discovery
+::: tabs
+@tab Cluster DNS Discovery
 @[code{AutoCompatibilityWithClusterDns}](./sample-code/DotNetClient/CompatibilityMode.cs)
-:::
-::: code-group-item Gossip Seeds
+@tab Gossip Seeds
 @[code{AutoCompatibilityWithGossipSeeds}](./sample-code/DotNetClient/CompatibilityMode.cs)
 :::
-::::
 
 ###### v5 Compatibility Mode
 

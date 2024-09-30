@@ -1,26 +1,23 @@
-import {defineUserConfig} from "vuepress";
-import {instance as ver} from "./lib/versioning";
-import {path} from '@vuepress/utils';
-import {importCodePlugin} from "./markdown/xode/importCodePlugin";
+import viteBundler from "@vuepress/bundler-vite";
+import {path} from 'vuepress/utils';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import dotenv from 'dotenv';
+import vueDevTools from 'vite-plugin-vue-devtools'
+import {App, defineUserConfig, HeadConfig, Page} from "vuepress";
+import {fs} from "vuepress/utils";
 import {navbar, sidebar} from "./configs";
 import {projectionSamplesPath, resolveMultiSamplesPath} from "./lib/samples";
-import {replaceLinkPlugin} from "./markdown/replaceLink";
+import {instance as ver} from "./lib/versioning";
 import {linkCheckPlugin} from "./markdown/linkCheck";
-import {docsearchPlugin} from '@vuepress/plugin-docsearch';
-import {googleAnalyticsPlugin} from '@vuepress/plugin-google-analytics';
-import viteBundler from "@vuepress/bundler-vite";
-// @ts-ignore
-import dotenv from 'dotenv';
-import {defaultTheme} from '@vuepress/theme-default';
-import {containerPlugin} from "@vuepress/plugin-container";
-import vueDevTools from 'vite-plugin-vue-devtools'
-import {markdownImagePlugin} from "@vuepress/plugin-markdown-image";
-import {sitemapPlugin} from "@vuepress/plugin-sitemap";
-import {fs} from "vuepress/utils";
-import {seoPlugin} from "@vuepress/plugin-seo";
+import {replaceLinkPlugin} from "./markdown/replaceLink";
+import {importCodePlugin} from "./markdown/xode/importCodePlugin";
+import {hopeTheme, PluginsOptions, ThemeOptions} from "vuepress-theme-hope";
+import {watermarkPlugin} from '@vuepress/plugin-watermark';
+import {dl} from "@mdit/plugin-dl";
+import {themeOptions} from "./configs/theme";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
-const hostname = "developers.eventstore.com";
 
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig({
@@ -36,11 +33,8 @@ export default defineUserConfig({
             all: ver.all
         },
     },
-    markdown: {importCode: false},
+    markdown: {importCode: false, headers: {level: [2, 3]}},
     extendsMarkdown: md => {
-        md.use(importCodePlugin, {
-            handleImportPath: s => resolveMultiSamplesPath(s)
-        });
         md.use(replaceLinkPlugin, {
             replaceLink: (link: string, _) => link
                 .replace("@clients/grpc/", "/clients/grpc/")
@@ -50,50 +44,14 @@ export default defineUserConfig({
                 .replace("@httpapi/data/", projectionSamplesPath)
                 .replace("@httpapi/", "/http-api/{version}/")
         });
+        md.use(importCodePlugin, {
+            handleImportPath: s => resolveMultiSamplesPath(s)
+        });
         md.use(linkCheckPlugin);
+        // @ts-ignore
+        md.use(dl);
     },
-    plugins: [
-        docsearchPlugin(
-            {
-                apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
-                indexName: process.env.ALGOLIA_INDEX_NAME,
-                appId: process.env.ALGOLIA_APPLICATION_ID
-            }),
-        containerPlugin( {
-            type: "note",
-            before: title => `<div class="custom-container note"><p class="custom-container-title">${title === "" ? "NOTE" : title}</p>`,
-            after: _ => `</div>`
-        }),
-        markdownImagePlugin({
-            figure: true,
-            lazyload: true,
-            mark: true,
-            size: true,
-        }),
-        sitemapPlugin({
-            hostname: hostname,
-            devServer: process.env.NODE_ENV === 'development',
-            modifyTimeGetter: (page, app) =>
-                fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
-        }),
-        seoPlugin({
-            hostname: hostname
-        })
-        // googleAnalyticsPlugin({id: process.env.GOOGLE_TAG_ID}),
-    ],
-    theme: defaultTheme({
-        logo: "/eventstore-dev-logo-dark.svg",
-        logoDark: "/eventstore-logo-alt.svg",
-        docsDir: 'docs',
-        editLink: false,
-        editLinkText: "Help us improve this page!",
-        sidebarDepth: 2,
-        // searchPlaceholder: "Search",
-        // searchMaxSuggestions: 20,
-        lastUpdated: true,
-        navbar: navbar.en,
-        sidebar: sidebar.en,
-    }),
+    theme: hopeTheme(themeOptions),
     head: [
         ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
@@ -101,6 +59,6 @@ export default defineUserConfig({
             'data-project-name': 'Event Store',
             'data-project-color': '#1976d2',
             'data-project-logo': 'https://6850195.fs1.hubspotusercontent-na1.net/hubfs/6850195/Brand/ouroboros.png'
-        }]
+        }],
     ]
 });
