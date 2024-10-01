@@ -8,7 +8,9 @@ const storageKey = "VUEPRESS_TAB_STORE";
 
 export default defineClientConfig({
     enhance({app, router, siteData}) {
-        window.analytics = new AnalyticsBrowser();
+        if (typeof window !== "undefined") {
+            window.analytics = new AnalyticsBrowser();
+        }
         // Router configuration
         router.addRoute({
             path: '/client/:lang',
