@@ -1,7 +1,6 @@
 import {defineClientConfig, useRoute} from 'vuepress/client';
 import "iconify-icon";
 import {onMounted} from "vue";
-import {AnalyticsBrowser} from "@segment/analytics-next";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -25,10 +24,6 @@ const findEsMeta = (route) => {
         category: findMeta(head, "es:category"),
     }
 }
-
-var globalAnalyticsKey = "analytics"
-var analytics = window[globalAnalyticsKey] = window[globalAnalyticsKey] || [];
-// const analytics = new AnalyticsBrowser();
 
 export default defineClientConfig({
     enhance({app, router, siteData}) {
@@ -61,7 +56,7 @@ export default defineClientConfig({
             redirect: `/${__VERSIONS__.latest}/quick-start/`
         });
         router.afterEach((to, from) => {
-            if (to.path === from.path) return;
+            if (typeof window === "undefined" || to.path === from.path) return;
             const esData = findEsMeta(to);
             const a = window.analytics;
             setTimeout(() => {

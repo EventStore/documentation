@@ -5,8 +5,6 @@ import {path} from 'vuepress/utils';
 import dotenv from 'dotenv';
 import vueDevTools from 'vite-plugin-vue-devtools'
 import {defineUserConfig} from "vuepress";
-// import {fs} from "vuepress/utils";
-import * as fs from "fs";
 import {projectionSamplesPath, resolveMultiSamplesPath} from "./lib/samples";
 import {instance as ver} from "./lib/versioning";
 import {linkCheckPlugin} from "./markdown/linkCheck";
@@ -17,8 +15,6 @@ import {dl} from "@mdit/plugin-dl";
 import {themeOptions} from "./configs/theme";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
-
-const snippetSource = fs.readFileSync(path.join(__dirname, "snippet.js"), "utf8");
 
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig({
