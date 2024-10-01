@@ -8,9 +8,6 @@ const storageKey = "VUEPRESS_TAB_STORE";
 
 export default defineClientConfig({
     enhance({app, router, siteData}) {
-        if (typeof window !== "undefined") {
-            window.analytics = new AnalyticsBrowser();
-        }
         // Router configuration
         router.addRoute({
             path: '/client/:lang',
@@ -41,7 +38,7 @@ export default defineClientConfig({
         });
         router.afterEach((to, from) => {
             if (to.path === from.path) return;
-            console.log(`Navigating from ${from.path} to ${to.path}`);
+            // console.log(`Navigating from ${from.path} to ${to.path}`);
         });
     },
 })
