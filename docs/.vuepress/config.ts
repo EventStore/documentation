@@ -60,5 +60,6 @@ export default defineUserConfig({
             'data-project-color': '#1976d2',
             'data-project-logo': 'https://6850195.fs1.hubspotusercontent-na1.net/hubfs/6850195/Brand/ouroboros.png'
         }],
+        ['script', {src: "https://developers.eventstore.com/segment/ajs/REDACTED"}]
     ]
 });
