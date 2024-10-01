@@ -50,6 +50,9 @@ importers:
       sass-loader:
         specifier: ^15.0.0
         version: 15.0.0(node-sass@9.0.0)(sass@1.77.8)
+      uglify-js:
+        specifier: ^3.19.3
+        version: 3.19.3
       vue:
         specifier: ^3.4.30
         version: 3.4.31(typescript@5.5.3)
@@ -4294,6 +4297,11 @@ packages:
 
   uc.micro@2.1.0:
     resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
+
+  uglify-js@3.19.3:
+    resolution: {integrity: sha512-v3Xu+yuwBXisp6QYTcH4UbH+xYJXqnq2m/LtQVWKWzYc1iehYnLixoQDN9FH6/j9/oybfd6W9Ghwkl8+UMKTKQ==}
+    engines: {node: '>=0.8.0'}
+    hasBin: true
 
   unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
@@ -9727,6 +9735,8 @@ snapshots:
   ua-parser-js@1.0.38: {}
 
   uc.micro@2.1.0: {}
+
+  uglify-js@3.19.3: {}
 
   unbox-primitive@1.0.2:
     dependencies:

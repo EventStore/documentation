@@ -4,20 +4,22 @@ import {path} from 'vuepress/utils';
 // @ts-expect-error
 import dotenv from 'dotenv';
 import vueDevTools from 'vite-plugin-vue-devtools'
-import {App, defineUserConfig, HeadConfig, Page} from "vuepress";
-import {fs} from "vuepress/utils";
-import {navbar, sidebar} from "./configs";
+import {defineUserConfig} from "vuepress";
+// import {fs} from "vuepress/utils";
+import * as fs from "fs";
 import {projectionSamplesPath, resolveMultiSamplesPath} from "./lib/samples";
 import {instance as ver} from "./lib/versioning";
 import {linkCheckPlugin} from "./markdown/linkCheck";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
-import {hopeTheme, PluginsOptions, ThemeOptions} from "vuepress-theme-hope";
-import {watermarkPlugin} from '@vuepress/plugin-watermark';
+import {hopeTheme} from "vuepress-theme-hope";
 import {dl} from "@mdit/plugin-dl";
 import {themeOptions} from "./configs/theme";
+import uglifyJS from "uglify-js";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
+
+const snippetSource = fs.readFileSync(path.join(__dirname, "snippet.js"));
 
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig({
@@ -60,6 +62,6 @@ export default defineUserConfig({
             'data-project-color': '#1976d2',
             'data-project-logo': 'https://6850195.fs1.hubspotusercontent-na1.net/hubfs/6850195/Brand/ouroboros.png'
         }],
-        ['script', {src: "https://developers.eventstore.com/segment/ajs/REDACTED"}]
+        ['script', {}, uglifyJS.minify(snippetSource).code]
     ]
 });
