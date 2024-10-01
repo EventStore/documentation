@@ -18,7 +18,7 @@ import {themeOptions} from "./configs/theme";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
 
-const snippetSource = fs.readFileSync(path.join(__dirname, "snippet.js"));
+const snippetSource = fs.readFileSync(path.join(__dirname, "snippet.js"), "utf8");
 
 // noinspection JSUnusedGlobalSymbols
 export default defineUserConfig({
