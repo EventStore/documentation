@@ -15,7 +15,6 @@ import {importCodePlugin} from "./markdown/xode/importCodePlugin";
 import {hopeTheme} from "vuepress-theme-hope";
 import {dl} from "@mdit/plugin-dl";
 import {themeOptions} from "./configs/theme";
-import uglifyJS from "uglify-js";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
 
@@ -62,6 +61,6 @@ export default defineUserConfig({
             'data-project-color': '#1976d2',
             'data-project-logo': 'https://6850195.fs1.hubspotusercontent-na1.net/hubfs/6850195/Brand/ouroboros.png'
         }],
-        ['script', {}, uglifyJS.minify(snippetSource).code]
+        ['script', {}, snippetSource]
     ]
 });
