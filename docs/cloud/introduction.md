@@ -45,7 +45,7 @@ You start with an empty list, so you must add an organization.
 The Cloud console has the concept of Context. You'll typically be in the organization or project context.
 :::
 
-### Organisations
+### Organizations
 
 With your account, you might have more than one organization. Each organization has its own billing account and is, therefore, invoiced separately for all the resources within the organization. For example, if you have several customers and want to have a separate EventStoreDB cluster for each customer and also be able to bill the customer for the cloud resources, you can separate each customer into its own organization.
 
