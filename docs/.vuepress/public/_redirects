@@ -43,9 +43,7 @@
 # ##################################################
 ## gRPC Clients from Vuepress v1 to v2
 /clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301!
-/clients/grpc/getting-started/*                                      /clients/grpc/                               301!
 /clients/grpc/subscribing-to-streams/*                               /clients/grpc/subscriptions.html             301!
-/clients/grpc/:firstpart.html                                        /clients/grpc/:firstpart.html                200
 /clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301!
 
 # ##################################################
@@ -91,7 +89,7 @@
 # Cloud 
 # ########################################################################################################################
 
-/cloud/quick-start.html                                             /cloud/intro   301!
+/cloud/quick-start.html                     /cloud/introduction.html   301!
 
 ## Cloud from Vuepress v1 to v2
 /cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide 301!
@@ -99,20 +97,20 @@
 /cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301!
 
 ## Cloud docs deep links
-/cloud/provision/aws/network                /cloud/provision/#create-a-network            301!
-/cloud/provision/aws/cluster                /cloud/provision/#deploy-a-managed-instance   301!
-/cloud/provision/aws/peering                /cloud/provision/#network-peering             301!
-/cloud/provision/aws/regions                /cloud/provision/#available-regions           301!
+/cloud/provision/aws/network                /cloud/provision/aws.html#create-a-network            301!
+/cloud/provision/aws/cluster                /cloud/provision/aws.html#deploy-a-managed-instance   301!
+/cloud/provision/aws/peering                /cloud/provision/aws.html#network-peering             301!
+/cloud/provision/aws/regions                /cloud/provision/aws.html#available-regions           301!
 
-/cloud/provision/azure/network              /cloud/provision/#create-a-network-1          301!
-/cloud/provision/azure/cluster              /cloud/provision/#deploy-a-managed-instance-1 301!
-/cloud/provision/azure/peering              /cloud/provision/#network-peering-1           301!
-/cloud/provision/azure/regions              /cloud/provision/#available-regions-1         301!
+/cloud/provision/azure/network              /cloud/provision/azure.html#create-a-network          301!
+/cloud/provision/azure/cluster              /cloud/provision/azure.html#deploy-a-managed-instance 301!
+/cloud/provision/azure/peering              /cloud/provision/azure.html#network-peering           301!
+/cloud/provision/azure/regions              /cloud/provision/azure.html#available-regions         301!
 
-/cloud/provision/gcp/network                /cloud/provision/#create-a-network-2          301!
-/cloud/provision/gcp/cluster                /cloud/provision/#deploy-a-managed-instance-2 301!
-/cloud/provision/gcp/peering                /cloud/provision/#network-peering-2           301!
-/cloud/provision/gcp/regions                /cloud/provision/#available-regions-2         301!
+/cloud/provision/gcp/network                /cloud/provision/gcp.html#create-a-network          301!
+/cloud/provision/gcp/cluster                /cloud/provision/gcp.html#deploy-a-managed-instance 301!
+/cloud/provision/gcp/peering                /cloud/provision/gcp.html#network-peering           301!
+/cloud/provision/gcp/regions                /cloud/provision/gcp.html#available-regions         301!
 
 
 # ########################################################################################################################
@@ -124,87 +122,13 @@
 /server/:version/docs/*                     /server/:version/:splat                    301!
 
 # ########################################################################################################################
-## Server version 23
-/server/v23.6/*                             /server/v23.10/:splat                      301!
-
-# ########################################################################################################################
-## Server version 22
+## Server versions - latest and LTS
+/server/v24.2/*                             /server/v24.6/quick-start/                 301!
+/server/v23.6/*                             /server/v23.10/quick-start/                301!
 /server/v22.6/*                             /server/v22.10/:splat                      301!
 
-/server/v22.6/server/introduction                                 /server/v22.10/#introduction   301!
-/server/v22.6/server/streams/metadata-and-reserved-names.html     /server/v22.10/streams.html#metadata-and-reserved-names   301!
-/server/v22.6/server/threading.html                               /server/v22.10/server-settings.html#threading   301!
-
-# ########################################################################################################################
-## Server version 5
-/server/v5/server/*                         /server/v5/:splat                          301!
-/server/v5.0/server/*                       /server/v5/:splat                          301!
-/server/5.0.8/server/*                      /server/v5/:splat                          301!
-/server/5.0.9/server/*                      /server/v5/:splat                          301!
-/server/generated/v5/docs/*                 /server/v5/:splat                          301!
-
-/server/v5/introduction/clients.html                              /server/v5/#protocols-clients-and-sdks   301!
-/server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
-/server/v5/installation/configuration.html                        /server/v5/configuration.html#options-and-configuration   301!
-/server/v5/installation/kubernetes-aks.html                       /server/v5/networking.html#communication-with-clients   301!
-/server/v5/server/default-directories.html                        /server/v5/server-settings.html#default-directories   301!
-/server/v5/default-directories.html                               /server/v5/server-settings.html#default-directories   301!
-/server/v5/server/database.html                                   /server/v5/server-settings.html#database-settings   301!
-/server/v5/database.html                                          /server/v5/server-settings.html#database-settings   301!
-/server/v5/operations/database-backup.html                        /server/v5/operations.html#database-backup-and-restore   301!
-/server/generated/v5/docs/introduction/clients.html               /server/v5/#protocols-clients-and-sdks   301!
-/server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
-/server/generated/v5/docs/security/acl.html                       /server/v5/security.html#access-control-lists   301!
-/server/v5/security/acl.html                                      /server/v5/security.html#access-control-lists   301!
-/server/v5/security/authentication.html                           /server/v5/security.html   301!
-/server/generated/v5/docs/server/security/configuration.html      /server/v5/security.html   301!
-/server/generated/v5/docs/server/security                         /server/v5/security.html   301!
-/server/v5/networking/nat.html                                    /server/v5/networking.html#nat-and-port-forward   301!
-/server/v5/networking/heartbeat.html                              /server/v5/networking.html#heartbeat-timeouts   301!
-/server/v5/server/threading.html                                  /server/v5/server-settings.html#threading   301!
-/server/v5/projections/configuration.html                         /server/v5/projections.html#configuring-projections   301!
-/docs/server/v5/server/projections                                /server/v5/projections.html   301!
-/server/v5/projections/projections-config.html                    /server/v5/projections.html#configuring-projections   301!
-/server/v5/projections/debugging.html                             /server/v5/projections.html#debugging   301!
-/server/v5/indexes/configuration.html                             /server/v5/indexes.html#configuration-options   301!
-/server/v5/projections/system-projections.html                    /server/v5/projections.html#system-projections   301!
-/server/v5/diagnostics/datadog.html                               /server/v5/diagnostics.html#datadog   301!
-/server/v5/diagnostics/prometheus.html                            /server/v5/diagnostics.html#prometheus   301!
-server/v5/diagnostics/histograms.html                             /server/v5/diagnostics.html#histograms   301! 
-/server/v5/security/trusted-intermediary.html                     /server/v5/security.html#trusted-intermediary   301!
-/v5/server/access-control-lists                                   /server/v5/security.html#access-control-lists   301!
-/server/generated/v5/docs/clustering                              /server/v5/cluster.html   301!
-/server/v5/clustering                                             /server/v5/cluster.html   301!
-/server/v5/clustering/node-roles.html                             /server/v5/cluster.html#cluster-node-roles      301!
-/server/generated/v5/docs/networking                              /server/v5/networking.html   301!
-/server/v5/clustering/using-ip-addresses.html                     /server/v5/cluster.html#cluster-with-dns   301!
-/server/5.0/projections/user-defined-projections.html             /server/v5/projections.html#user-defined-projections   301!
-/server/generated/v5/docs/server/networking/external.html         /server/v5/networking.html#external-interface   301!
-/server/v5/streams/deleting-streams-and-events.html               /server/v5/streams.html#deleting-streams-and-events   301!
-/server/generated/v5/http-api/deleting-a-stream.html              /server/v5/streams.html#deleting-streams-and-events   301!
-/server/v5/streams/metadata-and-reserved-names.html               /server/v5/streams.html#metadata-and-reserved-names   301!
-/server/generated/v5/docs/installation/kubernetes-aks.html        /server/v5/installation.html   301! 
-/server/generated/v5/docs/installation/kubernetes-gke.html        /server/v5/installation.html   301!
-/server/generated/v5/docs/server/diagnostics                      /server/v5/diagnostics.html#diagnostics   301!
-/server/generated/v5/docs/installation/linux.html                 /server/v5/installation.html#linux   301!
-/server/generated/v5/docs/server/networking/internal.html         /server/v5/networking.html#internal-interface   301!
-/server/generated/v5/docs/projections/debugging.html              /server/v5/projections.html#debugging   301!
-/server/generated/v5/docs/server/projections                      /server/v5/projections.html#introduction-to-projections   301!
-/server/generated/v5/docs/server/clustering                       /server/v5/cluster.html#introduction   301!
-/server/generated/v5/docs/installation/configuration.html         /server/v5/configuration.html#options-and-configuration   301!
-/server/v5/installation/docker.html                               /server/v5/installation.html#docker   301!
-/server/v5/diagnostics/logging.html                               /server/v5/diagnostics.html#logging   301!
-/server/v5/operations/scavenge.html                               /server/v5/operations.html#scavenging-events   301!
-/server/v5/installation/windows.html                              /server/v5/installation.html#windows   301!
-/server/generated/v5/docs/server/indexes                          /server/v5/indexes.html#indexing   301!
-/server/generated/v5/docs/projections/system-projections.html     /server/v5/projections.html#system-projections   301!
-/server/generated/v5/docs/http-api/stream-metadata.html           /server/v5/streams.html#stream-metadata   301!
-
-/server/v5/server/                          /server/v5/server/                         200!
-/server/v5/server/threading.html            /server/v5/server-settings.html#threading  200!
-/server/v5/server/caching.html              /server/v5/server/caching.html             200!
-
-
-
-
-                                                                                                  
+## Hope migration
+/connectors/* /server/v24.6/features/connectors/ 301!
+/server/v24.2/metrics.html#opentelemetry-exporter /server/v24.6/diagnostics/integrations.html#opentelemetry-exporter 301!
+/server/v24.2/diagnostics.html#logs-download /server/v24.6/diagnostics/logs.html#logs-download #301!
+/server/v23.10/metrics.html /server/v24.6/diagnostics/metrics.html 301!
