@@ -1,6 +1,7 @@
 import {defineClientConfig, useRoute} from 'vuepress/client';
 import "iconify-icon";
 import {onMounted} from "vue";
+import type {Router} from "vue-router";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -24,6 +25,17 @@ const findEsMeta = (route) => {
         category: findMeta(head, "es:category"),
     }
 }
+
+interface ClientConfig {
+    enhance?: (context: {
+        app: any;
+        router: Router;
+        siteData: any;
+    }) => void | Promise<void>;
+    setup?: () => void;
+}
+
+const removeHtml = (path: string) => path.replace(".html", "");
 
 export default defineClientConfig({
     enhance({app, router, siteData}) {
@@ -56,12 +68,13 @@ export default defineClientConfig({
             redirect: `/${__VERSIONS__.latest}/quick-start/`
         });
         router.afterEach((to, from) => {
-            if (typeof window === "undefined" || to.path === from.path) return;
+            if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
             const esData = findEsMeta(to);
             const a = window.analytics;
             setTimeout(() => {
                 a.page({
-                    url: to.path,
+                    site: "docs",
+                    url: to.fullPath,
                     title: to.meta.t,
                     version: esData?.version,
                     category: esData?.category,
@@ -76,4 +89,4 @@ export default defineClientConfig({
             // console.log(route.meta._pageChunk.data.frontmatter.head);
         });
     },
-})
+} satisfies ClientConfig);

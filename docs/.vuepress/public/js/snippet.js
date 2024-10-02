@@ -72,7 +72,7 @@
         t.type = "text/javascript";
         t.async = true;
         t.setAttribute("data-global-segment-analytics-key", globalAnalyticsKey)
-        t.src = "https://developers.eventstore.com/segment/ajs/REDACTED";
+        t.src = "https://cloud.eventstore.com/segment/ajs/REDACTED";
 
         var first = document.getElementsByTagName("script")[0];
         first.parentNode.insertBefore(t, first);
@@ -81,5 +81,8 @@
     analytics._writeKey = "REDACTED";
     analytics.SNIPPET_VERSION = "5.2.1";
     analytics.load("REDACTED");
-    analytics.page();
+    analytics.page({
+        site: "docs",
+        title: "Home"
+    });
 })();
