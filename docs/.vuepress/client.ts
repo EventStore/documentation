@@ -1,8 +1,7 @@
 import {defineClientConfig, useRoute} from 'vuepress/client';
 import "iconify-icon";
-import {App, Component, onMounted, Ref} from "vue";
+import {onMounted} from "vue";
 import type {Router} from "vue-router";
-import {SiteData} from "vuepress";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -29,12 +28,11 @@ const findEsMeta = (route) => {
 
 interface ClientConfig {
     enhance?: (context: {
-        app: App;
+        app: any;
         router: Router;
-        siteData: Ref<SiteData>;
+        siteData: any;
     }) => void | Promise<void>;
     setup?: () => void;
-    rootComponents?: Component[];
 }
 
 const removeHtml = (path: string) => path.replace(".html", "");
