@@ -92,7 +92,7 @@ export default defineClientConfig({
             setTimeout(() => {
                 a.page({
                     site: "docs",
-                    url: to.fullPath,
+                    url: window.location.origin + to.fullPath,
                     title: to.meta.t,
                     version: esData?.version,
                     category: esData?.category,
