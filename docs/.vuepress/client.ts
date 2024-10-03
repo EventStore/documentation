@@ -1,7 +1,7 @@
 import {defineClientConfig, useRoute} from 'vuepress/client';
 import "iconify-icon";
 import {onMounted} from "vue";
-import type {Router} from "vue-router";
+import type {RouteLocationNormalized, Router} from "vue-router";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -37,36 +37,47 @@ interface ClientConfig {
 
 const removeHtml = (path: string) => path.replace(".html", "");
 
+const reload = () => {
+    if (typeof window !== "undefined") {
+        setTimeout(() => {
+            window.location.reload()
+        }, 200);
+    }
+}
+
 export default defineClientConfig({
     enhance({app, router, siteData}) {
-        // Router configuration
-        router.addRoute({
-            path: '/client/:lang',
-            redirect: to => {
-                const stored = JSON.parse(localStorage.getItem(storageKey) ?? "{}");
-                localStorage.setItem(storageKey, JSON.stringify({...stored, code: to.params.lang}));
-                return '/clients/grpc/getting-started.html';
-            },
-        });
-        router.addRoute({
-            path: '/http/',
-            redirect: to => {
-                const apiPath = __VERSIONS__.latest.replace("server", "http-api");
-                return `${apiPath}/introduction`;
+        const apiPath = __VERSIONS__.latest.replace("server", "http-api");
+        const addFixedRoute = (from: string, to: string) => router.addRoute({
+            path: from, redirect: _ => {
+                reload();
+                return to;
             }
         });
-        router.addRoute({
-            path: '/latest/:pathMatch(.*)*',
-            redirect: (to) => to.path.replace(/^\/latest/, `/${__VERSIONS__.latest}`)
-        });
-        router.addRoute({
-            path: "/latest",
-            redirect: `/${__VERSIONS__.latest}/quick-start/`
-        });
-        router.addRoute({
-            path: "/latest.html",
-            redirect: `/${__VERSIONS__.latest}/quick-start/`
-        });
+        const addDynamicRoute = (from: string, calc: ((to: RouteLocationNormalized) => string)) =>
+            router.addRoute({
+                path: from,
+                redirect: to => {
+                    reload();
+                    return calc(to);
+                }
+            });
+
+        // Router configuration
+        addFixedRoute("/http/", `${apiPath}/introduction`);
+        addFixedRoute("/cloud/", `/cloud/introduction.html`);
+        addDynamicRoute("/server/:version", to => `/server/${to.params.version}/quick-start/`);
+        addDynamicRoute('/client/:lang',
+            to => {
+                const lang = to.params.lang === "csharp" ? "C#" : to.params.lang;
+                const stored = JSON.parse(localStorage.getItem(storageKey) ?? "{}");
+                localStorage.setItem(storageKey, JSON.stringify({...stored, code: lang}));
+                return '/clients/grpc/getting-started.html';
+            });
+        addDynamicRoute('/latest/:pathMatch(.*)*', to => to.path.replace(/^\/latest/, `/${__VERSIONS__.latest}`));
+        addFixedRoute("/latest", `/${__VERSIONS__.latest}/quick-start/`);
+        addFixedRoute("/latest.html", `/${__VERSIONS__.latest}/quick-start/`);
+
         router.afterEach((to, from) => {
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
             const esData = findEsMeta(to);
@@ -74,7 +85,7 @@ export default defineClientConfig({
             setTimeout(() => {
                 a.page({
                     site: "docs",
-                    url: to.fullPath,
+                    url: window.location.origin + to.fullPath,
                     title: to.meta.t,
                     version: esData?.version,
                     category: esData?.category,

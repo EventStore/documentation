@@ -57,7 +57,7 @@ highlights:
     - title: C#
       icon: devicon:csharp
       details: Build .NET applications with EventStoreDB using the .NET client for latest .NET and legacy .NET Framework.
-      link: /client/C#
+      link: /client/csharp
 
     - title: Python
       icon: devicon:python
