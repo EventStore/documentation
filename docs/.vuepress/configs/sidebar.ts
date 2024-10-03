@@ -5,6 +5,7 @@ export const sidebarEn: EsSidebarOptions = {
   "/clients/grpc/": "structure",
   "/cloud/": "structure",
   // ...ver.getSidebars(),
+  "/server/v24.10 Preview 1/": "structure",
   "/server/v24.6/": "structure",
   "/server/v23.10/": "structure",
   "/server/v22.10/": "structure",

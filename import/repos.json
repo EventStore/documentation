@@ -9,6 +9,13 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
+        "version": "v24.10 Preview 1",
+        "name": "docs/v24.10-preview.1",
+        "relativePath": ["server"],
+        "startPage": "quick-start/",
+        "preview": true
+      },
+      {
         "version": "v24.6",
         "name": "release/oss-v24.6",
         "relativePath": ["server"],
@@ -49,6 +56,12 @@
     "samplesRelativePath": ["samples", "http-api"],
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
+      {
+        "version": "v24.10 Preview 1",
+        "name": "docs/v24.10-preview.1",
+        "startPage": "introduction.html",
+        "preview": true
+      },
       {
         "version": "v24.6",
         "name": "release/oss-v24.6",
