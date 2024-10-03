@@ -49,8 +49,9 @@ export default defineClientConfig({
         router.addRoute({
             path: '/client/:lang',
             redirect: to => {
+                const lang = to.params.lang === "csharp" ? "C#" : to.params.lang;
                 const stored = JSON.parse(localStorage.getItem(storageKey) ?? "{}");
-                localStorage.setItem(storageKey, JSON.stringify({...stored, code: to.params.lang}));
+                localStorage.setItem(storageKey, JSON.stringify({...stored, code: lang}));
                 reload();
                 return '/clients/grpc/getting-started.html';
             },
