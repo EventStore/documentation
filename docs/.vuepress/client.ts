@@ -37,6 +37,12 @@ interface ClientConfig {
 
 const removeHtml = (path: string) => path.replace(".html", "");
 
+const reload = () => {
+    if (typeof window !== "undefined") {
+        setTimeout(() => {window.location.reload()}, 200);
+    }
+}
+
 export default defineClientConfig({
     enhance({app, router, siteData}) {
         // Router configuration
@@ -45,30 +51,38 @@ export default defineClientConfig({
             redirect: to => {
                 const stored = JSON.parse(localStorage.getItem(storageKey) ?? "{}");
                 localStorage.setItem(storageKey, JSON.stringify({...stored, code: to.params.lang}));
+                reload();
                 return '/clients/grpc/getting-started.html';
             },
         });
         router.addRoute({
             path: '/http/',
-            redirect: to => {
+            redirect: _ => {
                 const apiPath = __VERSIONS__.latest.replace("server", "http-api");
-                if (typeof window !== "undefined") {
-                    setTimeout(() => {window.location.reload()}, 200);
-                }
+                reload();
                 return `${apiPath}/introduction`;
             }
         });
         router.addRoute({
             path: '/latest/:pathMatch(.*)*',
-            redirect: (to) => to.path.replace(/^\/latest/, `/${__VERSIONS__.latest}`)
+            redirect: to => {
+                reload();
+                return to.path.replace(/^\/latest/, `/${__VERSIONS__.latest}`);
+            }
         });
         router.addRoute({
             path: "/latest",
-            redirect: `/${__VERSIONS__.latest}/quick-start/`
+            redirect: _ => {
+                reload();
+                return `/${__VERSIONS__.latest}/quick-start/`;
+            }
         });
         router.addRoute({
             path: "/latest.html",
-            redirect: `/${__VERSIONS__.latest}/quick-start/`
+            redirect: _ => {
+                reload();
+                return `/${__VERSIONS__.latest}/quick-start/`;
+            }
         });
         router.afterEach((to, from) => {
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
