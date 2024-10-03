@@ -52,6 +52,9 @@ export default defineClientConfig({
             path: '/http/',
             redirect: to => {
                 const apiPath = __VERSIONS__.latest.replace("server", "http-api");
+                if (typeof window !== "undefined") {
+                    setTimeout(() => {window.location.reload()}, 200);
+                }
                 return `${apiPath}/introduction`;
             }
         });
