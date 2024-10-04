@@ -11,7 +11,8 @@ import type {
 interface VersionDetail {
     version: string,
     path: string,
-    startPage: string
+    startPage: string,
+    preview: boolean
 }
 
 interface Version {
@@ -77,7 +78,9 @@ export class versioning {
         if (!serverDocs) {
             throw new Error("Server docs not found");
         }
-        return `${serverDocs.basePath}/${serverDocs.versions[0].path}`;
+        const releases = serverDocs.versions.filter(v => !v.preview);
+        console.log(releases[0])
+        return `${serverDocs.basePath}/${releases[0].path}`;
     }
 
     get all() {
