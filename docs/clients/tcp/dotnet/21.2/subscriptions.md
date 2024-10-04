@@ -1,4 +1,5 @@
 ---
+order: 6
 sitemap.priority: 0.005
 ---
 

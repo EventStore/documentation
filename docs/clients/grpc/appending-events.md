@@ -1,9 +1,13 @@
+---
+order: 2
+---
+
 # Appending events
 
-When you start working with EventStoreDB, the database is empty. So, the first meaningful operation in this case would be to add one or more events to the database using one of the available client SDKs.
+When you start working with EventStoreDB, it is empty. The first meaningful operation is to add one or more events to the database using one of the available client SDKs.
 
 ::: tip
-Check the [Getting Started](README.md) guide to learn how to configure and use the client SDK.
+Check the [Getting Started](getting-started.md) guide to learn how to configure and use the client SDK.
 :::
 
 ## Append your first event
@@ -12,9 +16,9 @@ The simplest way to append an event to EventStoreDB is to create an `EventData` 
 
 @[code{append-to-stream}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
-As you can see, `AppendToStream` takes a collection of `EventData`, which makes possible saving more than one event in a single batch.
+`AppendToStream` takes a collection of `EventData`, which allows you to save more than one event in a single batch.
  
-As well as the example above there is also a number of other options for dealing with different scenarios. 
+Outside the example above, other options exist for dealing with different scenarios. 
 
 ::: tip
 If you are new to Event Sourcing, please study the [Handling concurrency](#handling-concurrency) section below.
@@ -22,11 +26,11 @@ If you are new to Event Sourcing, please study the [Handling concurrency](#handl
 
 ## Working with EventData
 
-When appending events to EventStoreDB they must first all be wrapped in an `EventData` object. This allows you to specify the content of the event, the type of event and whether its in Json format. In its simplest form you need to the three following arguments:
+Events appended to EventStoreDB must be wrapped in an `EventData` object. This allows you to specify the event's content, the type of event, and whether it's in JSON format. In its simplest form, you need three arguments:  **eventId**, **type**, and **data**.
 
 ### eventId
 
-This takes the format of a `Uuid` and is used to uniquely identify the event you are trying to append. If two events with the same `Uuid` are appended to the same stream in quick succession EventStoreDB will only append one copy of the event to the stream. 
+This takes the format of a `Uuid` and is used to uniquely identify the event you are trying to append. If two events with the same `Uuid` are appended to the same stream in quick succession, EventStoreDB will only append one of the events to the stream. 
 
 For example, the following code will only append a single event:
 
@@ -36,17 +40,17 @@ For example, the following code will only append a single event:
 
 ### type
 
-An event type should be supplied for each event. This is a unique string used to identify the type of event you are saving. 
+Each event should be supplied with an event type. This unique string is used to identify the type of event you are saving. 
 
 It is common to see the explicit event code type name used as the type as it makes serialising and de-serialising of the event easy. However, we recommend against this as it couples the storage to the type and will make it more difficult if you need to version the event at a later date.
 
 ### data
 
-Representation of your event data. It is recommended that you store your events as JSON objects as this will allow you to make use of all of EventStoreDB's functionality such as projections. Ultimately though, you can save it using whatever format you like as eventually, it will be stored as encoded bytes.
+Representation of your event data. It is recommended that you store your events as JSON objects.  This allows you to take advantage of all of EventStoreDB's functionality, such as projections. That said, you can save events using whatever format suits your workflow. Eventually, the data will be stored as encoded bytes.
 
 ### metadata
 
-It is common to need to store additional information along side your event that is part of the event itself. This can be correlation Id's, timestamps, access information etc. EventStoreDB allows you to store a separate byte array containing this information to keep it separate.
+Storing additional information alongside your event that is part of the event itself is standard practice. This can be correlation IDs, timestamps, access information, etc. EventStoreDB allows you to store a separate byte array containing this information to keep it separate.
 
 ### isJson
 
@@ -54,9 +58,9 @@ Simple boolean field to tell EventStoreDB if the event is stored as json, true b
 
 ## Handling concurrency
 
-When appending events to a stream you can supply a *stream state* or *stream revision*. Your client can use this to tell EventStoreDB what state or version you expect the stream to be in when you append. If the stream isn't in that state then an exception will be thrown. 
+When appending events to a stream, you can supply a *stream state* or *stream revision*. Your client uses this to inform EventStoreDB of the state or version you expect the stream to be in when appending an event. If the stream isn't in that state, an exception will be thrown. 
 
-For example if we try and append the same record twice expecting both times that the stream doesn't exist we will get an exception on the second:
+For example, if you try to append the same record twice, expecting both times that the stream doesn't exist, you will get an exception on the second:
 
 @[code{append-with-no-stream}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
@@ -65,7 +69,7 @@ There are three available stream states:
 - `NoStream`
 - `StreamExists`
 
-This check can be used to implement optimistic concurrency. When you retrieve a stream from EventStoreDB, you take note of the current version number, then when you save it back you can determine if somebody else has modified the record in the meantime.
+This check can be used to implement optimistic concurrency. When retrieving a stream from EventStoreDB, note the current version number. When you save it back, you can determine if somebody else has modified the record in the meantime.
 
 @[code{append-with-concurrency-check}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
@@ -73,7 +77,7 @@ This check can be used to implement optimistic concurrency. When you retrieve a 
 
 ## User credentials
 
-You can provide user credentials to be used to append the data as follows. This will override the default credentials set on the connection.
+You can provide user credentials to append the data as follows. This will override the default credentials set on the connection.
 
 @[code{overriding-user-credentials}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 

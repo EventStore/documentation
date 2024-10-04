@@ -1,5 +1,6 @@
 ---
 title: Authentication
+order: 7
 ---
 
 ## Client x.509 certificate <Badge type="warning" text="Commercial" vertical="middle"/>
@@ -10,28 +11,23 @@ X.509 certificates are digital certificates that use the X.509 public key infras
 
 1. EventStoreDB 24.2.0 or greater with commercial license.
 2. A valid x.509 certificate, which can be created using version `1.3` or higher of the [gencert tool](https://github.com/EventStore/es-gencert-cli).
-3. The server must run in secure mode. See [Security Options](@server/security.md#security-options) for more information.
-4. [Enable User Certificates plugin on the server](@server/configuration.md#plugins-configuration)
+3. The server must run in secure mode. See [Security Options](@server/configuration/security.md#security-options) for more information.
+4. [Enable User Certificates plugin on the server](@server/configuration/plugins.md)
 
 #### Generate user certificates
 
 The following command uses the [gencert tool](https://github.com/EventStore/es-gencert-cli) to generate a user certificate for the user `admin` that will expire in 10 days:
 
-:::: code-group
-::: code-group-item shell
-
-```shell:no-line-numbers
+::: tabs#os
+@tab bash
+```bash
 ./es-gencert-cli create-user -username admin -days 10 -ca-certificate ./es-ca/ca.crt -ca-key ./es-ca/ca.key
 ```
-
-:::
-::: code-group-item PowerShell
-
-```powershell:no-line-numbers
+@tab PowerShell
+```powershell
 .\es-gencert-cli.exe create-user -username admin -days 10 -ca-certificate ./es-ca/ca.crt -ca-key ./es-ca/ca.key
 ```
-
-::::
+:::
 
 ### Connect to EventStoreDB using an x.509 certificate
 
@@ -56,16 +52,13 @@ To authenticate, include these two parameters in your connection string or const
 
 Check the samples for the following clients:
 
-:::: code-group
-::: code-group-item TypeScript
+::: code-tabs
+@tab TypeScript
 @[code{client-with-user-certificates}](@grpc:user-certificates.ts)
-:::
-::: code-group-item Java
+@tab Java
 @[code{client-with-user-certificates}](@grpc:authentication/UserCertificate.java)
-:::
-::: code-group-item C#
+@tab C#
 @[code{client-with-user-certificates}](@grpc:user-certificates/Program.cs)
 :::
-::::
 
 

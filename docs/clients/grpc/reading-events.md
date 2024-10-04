@@ -1,3 +1,7 @@
+---
+order: 3
+---
+
 # Reading events
 
 There are two options for reading events from EventStoreDB. You can either: 
@@ -9,7 +13,7 @@ Each event in EventStoreDB belongs to an individual stream. When reading events,
 All events have a `StreamPosition` and a `Position`.  `StreamPosition` is a *big int* (unsigned 64-bit integer) and represents the place of the event in the stream. `Position` is the event's logical position, and is represented by `CommitPosition` and a `PreparePosition`. Note that when reading events you will supply a different "position" depending on whether you are reading from an individual stream or the `$all` stream.
 
 :::tip
-Check [connecting to EventStoreDB instructions](./README.md#required-packages) to learn how to configure and use the client SDK.
+Check [connecting to EventStoreDB instructions](getting-started.md#required-packages) to learn how to configure and use the client SDK.
 :::
 
 ## Reading from a stream

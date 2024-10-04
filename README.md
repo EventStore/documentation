@@ -27,7 +27,7 @@ Documentation is written using [VuePress](https://vuepress.vuejs.org/).
 ### Prerequisites
 
 1. `NodeJS` installed (see [the installation guide](https://nodejs.org/en/download//)).
-2. `pnpm` installed (see [an installation guide](https://pnpm.io/installation)).
+2. `pnpm` installed (see [the installation guide](https://pnpm.io/installation)).
 
 ### Running docs locally
 

@@ -1,3 +1,7 @@
+---
+order: 8
+---
+
 # Observability
 
 The EventStoreDB gRPC clients are designed with observability in mind, offering
@@ -16,48 +20,36 @@ You can click on the links below to view the full code for each client:
 - [Java](https://github.com/EventStore/EventStoreDB-Client-Java/blob/trunk/db-client-java/src/test/java/com/eventstore/dbclient/samples/opentelemetry/Instrumentation.java)
 - [C#](https://github.com/EventStore/EventStore-Client-Dotnet/blob/master/samples/diagnostics/Program.cs)
 
-## Required Packages
+## Required packages
 
-:::: code-group
-::: code-group-item JavaScript
+OpenTelemetry support is included to the EventStoreDB Java client by default. For other clients, you need to install the dedicated package to enable OpenTelemetry support. 
 
+### NodeJS
+
+Install the `@eventstore/opentelemetry` package using your package manager of choice. TypeScript type declarations are included in the package.
+
+::: tabs
+@tab npm
+```bash
+npm install --save @eventstore/opentelemetry
 ```
-# Yarn
-$ yarn add @eventstore/opentelemetry
-
-# NPM
-$ npm install --save @eventstore/opentelemetry
+@tab yarn
+```bash
+yarn add @eventstore/opentelemetry
 ```
-
+@tab pnpm
+```bash
+pnpm add @eventstore/opentelemetry
+```
 :::
-::: code-group-item TypeScript
 
-```
-# TypeScript Declarations are included in the package.
+### .NET
 
-# Yarn
-$ yarn add @eventstore/opentelemetry
-
-# NPM
-$ npm install --save @eventstore/opentelemetry
-```
-
-:::
-::: code-group-item Java
-
-```
-OpenTelemetry is supported out of the box in the Java client.
-```
-
-:::
-::: code-group-item C#
+Install the `EventStore.Client.Extensions.OpenTelemetry` package using the .NET CLI.
 
 ```bash
 dotnet add package EventStore.Client.Extensions.OpenTelemetry
 ```
-
-:::
-::::
 
 ## Instrumentation
 
@@ -65,21 +57,7 @@ To emit trace data, you must first install and use the dedicated package, as ins
 [Required Packages](./observability.md#required-packages) section, if provided. This package
 includes the necessary instrumentation that needs to be registered with the client.
 
-:::: code-group
-::: code-group-item JavaScript
-@[code{register-instrumentation}](@grpc:opentelemetry.js)
-:::
-::: code-group-item TypeScript
-@[code{register-instrumentation}](@grpc:opentelemetry.ts)
-:::
-::: code-group-item Java
-// Instrumentation is enabled by default in the Java client. 
-@[code{register-instrumentation}](@grpc:opentelemetry/Instrumentation.java)
-:::
-::: code-group-item C#
-@[code{register-instrumentation}](@grpc:diagnostics/Program.cs)
-:::
-::::
+@[code{register-instrumentation}](@grpc:opentelemetry.js;opentelemetry.ts;opentelemetry/Instrumentation.java;diagnostics/Program.cs)
 
 ## Traces
 
@@ -131,7 +109,7 @@ The structure of the trace may vary depending on the client and the operation
 being performed but will generally include the same information.
 :::
 
-## Exporting Traces
+## Exporting traces
 
 You can set up various exporters to send traces to different destinations.
 Additionally, you have the option to export these traces to a collector of your
@@ -144,20 +122,7 @@ querying and visualizing your trace data.
 The code snippets below demonstrate how to set up one or more exporters for each
 client:
 
-:::: code-group
-::: code-group-item JavaScript
-@[code{setup-exporter}](@grpc:opentelemetry.js)
-:::
-::: code-group-item TypeScript
-@[code{setup-exporter}](@grpc:opentelemetry.ts)
-:::
-::: code-group-item Java
-@[code{setup-exporter}](@grpc:opentelemetry/Instrumentation.java)
-:::
-::: code-group-item C#
-@[code{setup-exporter}](@grpc:diagnostics/Program.cs)
-:::
-::::
+@[code{setup-exporter}](@grpc:opentelemetry.js;opentelemetry.ts;opentelemetry/Instrumentation.java;diagnostics/Program.cs)
 
 For more details on configuring exporters for specific programming languages,
 refer to the [OpenTelemetry](https://opentelemetry.io/docs/languages/)
