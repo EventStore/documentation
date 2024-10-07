@@ -62,7 +62,7 @@ export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: bo
             }
             pathToCheck = env.filePath;
         }
-        if (split.length > 1) {
+        if (split.length > 1 && !split[0].endsWith(".md)") && split[1] !== "light" && split[1] !== "dark") {
             const anchorResolved = findAnchor(pathToCheck, split[1]);
             if (!anchorResolved) {
                 logger.error(`Broken anchor link in ${env.filePathRelative}: ${split[1]} in file ${pathToCheck}`);

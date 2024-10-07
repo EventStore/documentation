@@ -9,24 +9,35 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
-        "version": "v24.6",
-        "name": "release/oss-v24.6"
+        "version": "v24.10 Preview 1",
+        "name": "docs/v24.10-preview.1",
+        "relativePath": ["server"],
+        "startPage": "quick-start/",
+        "preview": true
       },
       {
-        "version": "v24.2",
-        "name": "release/oss-v24.2"
-      },      
+        "version": "v24.6",
+        "name": "release/oss-v24.6",
+        "relativePath": ["server"],
+        "startPage": "quick-start/"
+      },
       {
         "version": "v23.10",
-        "name": "release/oss-v23.10"
+        "name": "release/oss-v23.10",
+        "relativePath": ["server"],
+        "startPage": "quick-start/"
       },
       {
         "version": "v22.10",
-        "name": "release/oss-v22.10"
+        "name": "release/oss-v22.10",
+        "relativePath": ["server"],
+        "startPage": "introduction.html"
       },
       {
         "version": "v5",
-        "name": "release/oss-v5"
+        "name": "release/oss-v5",
+        "relativePath": ["server"],
+        "startPage": "introduction.html"
       }
     ],
     "postprocess": [
@@ -34,7 +45,6 @@
       "pnpm shx rm -rf ./docs/server/v5/http-api",
       "pnpm shx rm -rf ./docs/server/v22.10/http-api",
       "pnpm shx rm -rf ./docs/server/v23.10/http-api",
-      "pnpm shx rm -rf ./docs/server/v24.2/http-api",
       "pnpm shx rm -rf ./docs/server/v24.6/http-api"
     ]
   },
@@ -47,24 +57,30 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
-        "version": "v24.6",
-        "name": "release/oss-v24.6"
+        "version": "v24.10 Preview 1",
+        "name": "docs/v24.10-preview.1",
+        "startPage": "introduction.html",
+        "preview": true
       },
       {
-        "version": "v24.2",
-        "name": "release/oss-v24.2"
-      },      
+        "version": "v24.6",
+        "name": "release/oss-v24.6",
+        "startPage": "introduction.html"
+      },
       {
         "version": "v23.10",
-        "name": "release/oss-v23.10"
+        "name": "release/oss-v23.10",
+        "startPage": "introduction.html"
       },
       {
         "version": "v22.10",
-        "name": "release/oss-v22.10"
+        "name": "release/oss-v22.10",
+        "startPage": "introduction.html"
       },
       {
         "version": "v5",
-        "name": "release/oss-v5"
+        "name": "release/oss-v5",
+        "startPage": "introduction.html"
       }
     ]
   },

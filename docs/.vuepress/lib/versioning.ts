@@ -11,7 +11,8 @@ import type {
 interface VersionDetail {
     version: string,
     path: string,
-    startPage: string
+    startPage: string,
+    preview: boolean
 }
 
 interface Version {
@@ -77,7 +78,9 @@ export class versioning {
         if (!serverDocs) {
             throw new Error("Server docs not found");
         }
-        return `${serverDocs.basePath}/${serverDocs.versions[0].path}`;
+        const releases = serverDocs.versions.filter(v => !v.preview);
+        console.log(releases[0])
+        return `${serverDocs.basePath}/${releases[0].path}`;
     }
 
     get all() {
@@ -91,20 +94,31 @@ export class versioning {
 
         this.versions.forEach(version => {
             version.versions.forEach(v => {
+                console.log(`Processing ${JSON.stringify(v)}`);
                 const p = `${version.basePath}/${v.path}`;
                 const sidebarPath = path.resolve(__dirname, `../../${p}`);
                 const sidebarBase = path.join(sidebarPath, "sidebar");
                 const sidebarJs = `${sidebarBase}.js`;
                 const sidebarCjs = `${sidebarBase}.cjs`;
-                fs.copyFileSync(sidebarJs, sidebarCjs);
-                log.info(`Importing sidebar from ${sidebarJs}`);
-                const sidebar: ImportedSidebarArrayOptions = require(sidebarCjs);
-                sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
-                fs.rmSync(sidebarCjs);
+
+                const importSidebar = (path: string) => {
+                    log.info(`Importing sidebar from ${path}`);
+                    const sidebar: ImportedSidebarArrayOptions = require(path);
+                    sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
+                }
+
+                if (fs.existsSync(sidebarCjs)) {
+                    importSidebar(sidebarCjs);
+                } else if (fs.existsSync(sidebarJs)) {
+                    fs.copyFileSync(sidebarJs, sidebarCjs);
+                    importSidebar(sidebarCjs);
+                    fs.rmSync(sidebarCjs);
+                } else {
+                    log.info(`Sidebar file ${sidebarJs} not found`);
+                }
             });
         })
 
-        console.log(JSON.stringify(sidebars, null, 2));
         return sidebars;
     }
 

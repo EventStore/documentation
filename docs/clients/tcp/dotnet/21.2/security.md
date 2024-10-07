@@ -1,4 +1,5 @@
 ---
+order: 9
 sitemap.priority: 0.005
 ---
 
@@ -10,7 +11,7 @@ EventStoreDB supports basic authentication for HTTP API and TCP calls, and suppo
 
 EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](@clients/http-api/api.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
 
-Alternatively, you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](@server/security.md#trusted-intermediary).
+Alternatively, you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](@server/configuration/security.md#trusted-intermediary).
 
 If you were to use the wrong user or no user when connecting to EventStoreDB, you receive a `401 Unauthorized` response for HTTP API or Exception for the native client.
 
@@ -20,7 +21,7 @@ Remember to change the default password for default users and disable unused use
 
 ## Secure EventStoreDB node
 
-We recommend you connect to EventStoreDB over SSL to encrypt the user information. [Read this guide for instructions](@server/security.md#protocol-security).
+We recommend you connect to EventStoreDB over SSL to encrypt the user information. [Read this guide for instructions](@server/configuration/security.md#protocol-security).
 
 ::: warning
 Avoid exposing EventStoreDB to the global internet network.
@@ -133,7 +134,7 @@ Task ResetPasswordAsync(
 
 Alongside authentication, EventStoreDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
 
-For more information on the structure of Access Control Lists read [Access Control Lists](@server/security.md#access-control-lists).
+For more information on the structure of Access Control Lists read [Access Control Lists](@server/configuration/security.md#access-control-lists).
 
 ### ACL example
 
