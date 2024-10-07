@@ -222,3 +222,10 @@ pnpm run import
 If you removed any version from the import configuration, you might want to delete directories for that version from the `/docs/server` and `/docs/http-api` directories.
 
 Then, run `pnpm dev` to check if the new version is displayed correctly.
+
+## Troubleshooting
+
+### Windows
+
+1. `EPERM: operation not permitted` during `pnpm i` - this error may appear if you've run the `pnpm i` from Windows before running it on the WSL2. See troubleshooting [link](https://stackoverflow.com/a/58414196).
+2. If `pnpm dev` fails, verify if your path does not contain spaces. We noticed some issues related to that.
