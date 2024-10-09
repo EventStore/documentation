@@ -57,7 +57,7 @@ Check the samples for the following clients:
 @[code{client-with-user-certificates}](@grpc:user-certificates.ts)
 @tab Java
 @[code{client-with-user-certificates}](@grpc:authentication/UserCertificate.java)
-@tab C#
+@tab C##
 @[code{client-with-user-certificates}](@grpc:user-certificates/Program.cs)
 :::
 
