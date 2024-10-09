@@ -34,7 +34,7 @@ await client.deleteStream(streamName);
 client.deleteStream(streamName, DeleteStreamOptions.get()).get();
 ```
 
-@tab C#
+@tab C##
 
 ```csharp
 await client.DeleteAsync(streamName, StreamState.Any);
@@ -99,7 +99,7 @@ await client.tombstoneStream(streamName);
 client.tombstoneStream(streamName, DeleteStreamOptions.get()).get();
 ```
 
-@tab C#
+@tab C##
 
 ```csharp
 await client.TombstoneAsync(streamName, StreamState.Any);
