@@ -12,6 +12,15 @@ $text-color: (
     --code-c-bg: #fff;
   }
 }
+
+// override code block background color
+pre[class*="language-"] {
+  color: #fff !important;
+
+  [data-theme="dark"] & {
+    background-color: #fff !important;
+  }
+}
 // mm change ends here
 
 
