@@ -1,81 +1,180 @@
 ---
-title: Quickstart
+title: Quickstart with Github Codespaces
 ---
 
 # EventStoreDB Quickstart using GitHub Codespaces
 
-This quickstart will guide you through getting started with [EventStoreDB](https://www.eventstore.com/) using [GitHub Codespaces](https://github.com/features/codespaces). You will learn how to start the EventStoreDB server, append a message to the database, and read the message back using Python.
+This quickstart will guide you through getting started with EventStoreDB using [GitHub Codespaces](https://github.com/features/codespaces).
 
-To get started quickly, use the Codespace environment that already has everything set up for you.
+::: info
+The GitHub Codespaces provides an instant and preconfigured development environment in your browser for this quickstart.
+:::
+
+## Objectives
+
+In this quickstart, you will:
+
+- Set up a Codespace development environment.
+- Start an EventStoreDB server using Docker.
+- Append an event to EventStoreDB with sample code.
+- View the appended event using the Admin UI.
+- Read the appended event with sample code using the EventStoreDB client.
 
 ## Prerequisites
 
 Before starting, ensure you have the following:
 
-1. A GitHub account to use GitHub Codespaces.
-2. Basic knowledge of Python programming.
-3. Familiarity with command-line operations.
+- A GitHub account to use GitHub Codespaces.
+- Basic knowledge of one of the development languages/platforms below.
+- Familiarity with command-line operations.
 
 ## Step 1: Set up Your Codespace
 
-1. Click on the link below and follow the instructions to create a new Codespace from the GitHub repo:
+1. Choose one of development languages/plaforms below and click the Codespaces link:
 
-   [![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Python)
+::: tabs#dev-language-platform
 
-   This will open a pre-configured development environment with all the required dependencies already installed, including Python and EventStoreDB tools.
+@tab Select >
 
-2. Wait for your Codespace to build. This will take a few moments.
+
+@tab Python
+|Language/Platform|Link to Codespaces|
+|-----|--------|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Python?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+
+@tab Java
+|Language/Platform|Link to Codespaces|
+|-----|--------|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Java?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+
+@tab .NET
+|Language/Platform|Link to Codespaces|
+|-----|--------|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-plain-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-.Net?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+
+@tab node.js
+|Language/Platform|Link to Codespaces|
+|-----|--------|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Node.js?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+
+:::
+
+2. Follow the instructions to create a new Codespace.
+
+3. Wait for your Codespace to build. This will take a few moments and you will see a welcome message in the terminal.
 
 ## Step 2: Start the EventStoreDB Server
 
-1. Once inside your Codespace, run the following command in the terminal to start the EventStoreDB server:
+1. Once your Codespace is loaded, run the following custom script in the terminal to start the EventStoreDB server:
 
    ```sh
    ./start-cluster.sh
    ```
 
-   This command will pull the EventStoreDB server Docker container and start the server.
+   This script will: 
+   - Pull the EventStoreDB server Docker container,
+   - Start the server, and
+   - Print the URL to the EventStoreDB Admin UI. 
 
-2. Run the following command to output the URL of the EventStoreDB Admin UI:
+2. Open your browser and navigate to the printed URL. This will display the EventStoreDB Admin UI.
+3. Keep the Admin UI open for the next steps.
 
+## Step 3: Install Required Pacakge for Sample Code
+
+1. Run this command to install the package for EventStoreDB client. This will be used in the sample codes:
+
+::: tabs#dev-language-platform
+
+@tab Python
    ```sh
-   echo -e "\e[32m🚀 Click here to browse the EventStoreDB Admin UI:\e[0m \e[34m$(gh codespace ports --repo EventStore/EventStoreDB-From-Scratch-Python --json browseUrl,sourcePort --jq '.[] | select(.sourcePort == 2113) | .browseUrl')\e[0m"
+   pip install -r requirements.txt
    ```
 
-3. Press `CTRL` and click the URL displayed in the terminal to open the EventStoreDB Admin UI in your browser. A screenshot like the one below should be displayed showing the Admin UI:
-
-   ![Admin UI Screenshot](images/hello-world/admin-ui.png)
-
-   **Note:** Keep the Admin UI open for the next steps.
-
-## Step 3: Append an Event to a Stream
-
-Now that EventStoreDB is running, let’s append a message to a stream.
-
-1. In the terminal, run the provided script to append an event with the content `{"Id":"1", "value":"some data"}` to a stream named `SampleContent`:
+@tab Java
    ```sh
-   python sample_append.py
+   mvn package
    ```
 
-## Step 4: Verify the Appended Event in the Admin UI
+@tab .NET
+   Step not required
+   
+@tab node.js
+   ```sh
+   yarn install
+   ```
+:::
+
+## Step 4: Append an Event to EventStoreDB
+
+1. Run this command to execute the sample. This appends an event to EventStoreDB:
+
+::: tabs#dev-language-platform
+
+@tab Python
+   ```sh
+   python3 sample_append.py
+   ```
+
+@tab Java
+   ```sh
+   java -cp \
+      target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar \
+      com.eventstoredb_demo.SampleWrite
+   ```
+
+@tab .NET
+   ```sh
+   dotnet run --project SampleAppend/
+   ```
+
+@tab node.js
+   ```sh
+   node sample_append.js
+   ```
+:::
+
+2. You should see a confirmation for the event append.
+
+## Step 5: Verify the Appended Event in the Admin UI
 
 1. Return to the Admin UI and click the **Stream Browser** link from the top navigation bar.
 
-2. Under **Recently Changed Streams**, you should see `SampleContent`. Click on it.
+2. Under `Recently Changed Streams`, click `SampleStream` link.
 
-   ![New stream found under recently changed stream](images/hello-world/recently-changed-stream.png)
+3. Click on the `JSON` link in the last column of the first table row. 
+   
+4. You should see the content of the appended event.
 
-3. Click on the **JSON** link in the last column of the first table row. You should see the content of the appended event.
+## Step 6: Read the Event from EventStoreDB Programmatically
 
-## Step 5: Read an Event from the Stream
+1. Run this command to execute the sample. This reads the event from EventStoreDB:
 
-Finally, let’s read the message we just appended.
+::: tabs#dev-language-platform
 
-1. In the terminal, run the provided script to read events from the stream:
+@tab Python
    ```sh
-   python sample_read.py
+   python3 sample_read.py
    ```
-   You should see the message that you previously appended: `success`.
+
+@tab Java
+   ```sh
+   java -cp \
+      target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar \
+      com.eventstoredb_demo.SampleRead
+   ```
+
+@tab .NET
+   ```sh
+   dotnet run --project SampleRead/
+   ```
+
+@tab node.js
+   ```sh
+   node sample_read.js
+   ```
+:::
+
+2. You should see the content of the appended event.
 
 ## Summary
 
@@ -83,8 +182,24 @@ In this quickstart, you:
 
 1. Started the EventStoreDB server.
 2. Browsed to the Admin UI.
-3. Appended an event to a stream.
+3. Appended an event to EventStoreDB.
 4. Verified the event in the Admin UI.
-5. Read the event from the stream.
+5. Read the event from EventStoreDB programmatically.
 
 Feel free to experiment further by appending more events, reading them, or even exploring advanced features of EventStoreDB!
+
+## Next Steps
+
+Now that you've completed the quickstart, you may want to explore the following:
+
+- [EventStoreDB "From Scratch" Series](https://academy.eventstore.com/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
+
+- [Install EventStoreDB locally](https://developers.eventstore.com/server/v23.10/quick-start/installation.html): Learn how to installEventStoreDB on your local machine for deeper exploration and integration with your projects.
+
+- [EventStoreDB Client SDK Documentation](https://developers.eventstore.com/clients/grpc/getting-started.html): Understand how to interact with EventStoreDB programmatically with EventStoreDB clients.
+
+- [EventStoreDB Server Configuration Documentation](https://developers.eventstore.com/server/v23.10/configuration/): Explore how to configure EventStoreDB for your environment.
+
+- [Event Store Cloud](https://www.eventstore.com/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
+
+- [EventStoreDB Samples](https://github.com/EventStore/samples/tree/main): Experiment with different SDKs to interact with EventStoreDB using various programming languages.
