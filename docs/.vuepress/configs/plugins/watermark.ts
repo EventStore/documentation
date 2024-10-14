@@ -3,13 +3,13 @@ const isLegacyServer = (relPath) => relPath.includes("server/v5") || relPath.inc
 
 export const watermark = {
     enabled(page) {
-    const relPath = page.filePathRelative;
-    if (relPath === null) return false;
-    return isLegacyClient(relPath) || isLegacyServer(relPath);
-},
+        const relPath = page.filePathRelative;
+        if (relPath === null) return false;
+        return isLegacyClient(relPath) || isLegacyServer(relPath);
+    },
     watermarkOptions: {
         content: "Deprecated",
-            fontSize: '30px',
-            globalAlpha: 0.3,
+        fontSize: '30px',
+        globalAlpha: 0.3,
     }
 }

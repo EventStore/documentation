@@ -66,6 +66,23 @@ export default defineClientConfig({
         // Router configuration
         addFixedRoute("/http/", `${apiPath}/introduction`);
         addFixedRoute("/cloud/", `/cloud/introduction.html`);
+        router.afterEach(() => {
+            setTimeout(() => { // to ensure this runs after DOM updates
+                try {
+                    const { code } = JSON.parse(localStorage.getItem('VUEPRESS_TAB_STORE'));
+                    if (code) { // If a valid 'code' is found in localStorage
+                        Array.from(document.querySelectorAll('.vp-tab-nav'))
+                            .forEach((button: HTMLButtonElement) => {
+                                if (button.textContent.trim() === code) {
+                                    button.click(); // click the button to switch the tab
+                                }
+                            });
+                    }
+                } catch (_error) {
+                    // Error is ignored
+                }
+            }, 0);
+        });
         addDynamicRoute("/server/:version", to => `/server/${to.params.version}/quick-start/`);
         addDynamicRoute('/client/:lang',
             to => {
@@ -99,5 +116,6 @@ export default defineClientConfig({
             if (route.path !== "/") return;
             // console.log(route.meta._pageChunk.data.frontmatter.head);
         });
+        
     },
 } satisfies ClientConfig);
