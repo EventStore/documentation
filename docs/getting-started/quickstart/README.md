@@ -84,6 +84,7 @@ Before starting, ensure you have the following:
 1. Run this command to install the package for EventStoreDB client. This will be used in the sample codes:
 
 ::: tabs#dev-language-platform
+@tab Select >
 
 @tab Python
    ```sh
@@ -109,6 +110,7 @@ Before starting, ensure you have the following:
 1. Run this command to execute the sample. This appends an event to EventStoreDB:
 
 ::: tabs#dev-language-platform
+@tab Select >
 
 @tab Python
    ```sh
@@ -150,6 +152,7 @@ Before starting, ensure you have the following:
 1. Run this command to execute the sample. This reads the event from EventStoreDB:
 
 ::: tabs#dev-language-platform
+@tab Select >
 
 @tab Python
    ```sh
