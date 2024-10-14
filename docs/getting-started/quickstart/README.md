@@ -7,7 +7,7 @@ title: Quickstart with Github Codespaces
 This quickstart will guide you through getting started with EventStoreDB using [GitHub Codespaces](https://github.com/features/codespaces).
 
 ::: info
-The GitHub Codespaces provides an instant and preconfigured development environment in your browser for this quickstart.
+GitHub Codespaces provides an instant and preconfigured development environment in your browser for this quickstart.
 :::
 
 ## Objectives
@@ -78,6 +78,7 @@ Before starting, ensure you have the following:
 
 2. Open your browser and navigate to the printed URL. This will display the EventStoreDB Admin UI.
 3. Keep the Admin UI open for the next steps.
+4. (Optional) Review the content of custom script.
 
 ## Step 3: Install Required Pacakge for Sample Code
 
@@ -136,6 +137,7 @@ Before starting, ensure you have the following:
 :::
 
 2. You should see a confirmation for the event append.
+3. (Optional) Review the content of sample code.
 
 ## Step 5: Verify the Appended Event in the Admin UI
 
@@ -143,7 +145,7 @@ Before starting, ensure you have the following:
 
 2. Under `Recently Changed Streams`, click `SampleStream` link.
 
-3. Click on the `JSON` link in the last column of the first table row. 
+3. Click on the `JSON` link in the right most column of the table. 
    
 4. You should see the content of the appended event.
 
@@ -178,6 +180,7 @@ Before starting, ensure you have the following:
 :::
 
 2. You should see the content of the appended event.
+3. (Optional) Review the content of sample code.
 
 ## Summary
 
