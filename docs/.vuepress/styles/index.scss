@@ -80,3 +80,13 @@ body:has(#kapa-widget-container) .vp-back-to-top-button {
 .theme-hope-content:not(.custom)>ul p {
   text-align: left;
 }
+
+html[data-theme='dark'] #kapa-widget-portal {
+  code {
+    background: rgba(127, 127, 127, 0.12);
+  }
+
+  blockquote {
+    border-color: #eee;
+  }
+}
