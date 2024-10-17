@@ -2,11 +2,7 @@ import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "vuepress-theme-hope";
 
 export const navbarEn: NavbarOptions = [
-    {
-        text: "Getting started",
-        link: "/getting-started.html",
-        icon: "hugeicons:start-up-02",
-    },
+    {text: "Getting Started", link: "/getting-started/"},
     {
         text: "Server",
         icon: "ion:server-outline",
