@@ -51,7 +51,7 @@ highlights:
 
     - title: Java
       icon: devicon:java
-      details: Decorate Markdown content with styles
+      details: Use the Java client to build applications in Java or other JVM languages.
       link: /client/Java
 
     - title: C#
@@ -61,12 +61,12 @@ highlights:
 
     - title: Python
       icon: devicon:python
-      details: Decorate Markdown content with styles
+      details: Create applications and scripts in Python using the EventStoreDB client.
       link: /client/Python
 
     - title: Rust
       icon: skill-icons:rust
-      details: Decorate Markdown content with styles
+      details: Bring EventStoreDB to your Rust applications using the Rust client.
       link: /client/Rust
 
     - title: HTTP API
