@@ -74,7 +74,7 @@ For this quickstart, you can safely ignore or close any notification that appear
 1. Once your Codespace is loaded, run the following custom script in the terminal to start the EventStoreDB server:
 
    ```sh
-   ./start-cluster.sh
+   ./start_cluster.sh
    ```
 
    This script will: 
