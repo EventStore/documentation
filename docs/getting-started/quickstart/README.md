@@ -126,9 +126,7 @@ For this quickstart, you can safely ignore or close any notification that appear
 
 @tab Java
    ```sh
-   java -cp \
-      target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar \
-      com.eventstoredb_demo.SampleWrite
+   java -cp target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar com.eventstoredb_demo.SampleWrite
    ```
 
 @tab .NET
@@ -169,9 +167,7 @@ For this quickstart, you can safely ignore or close any notification that appear
 
 @tab Java
    ```sh
-   java -cp \
-      target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar \
-      com.eventstoredb_demo.SampleRead
+   java -cp target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar com.eventstoredb_demo.SampleRead
    ```
 
 @tab .NET
