@@ -61,7 +61,13 @@ Before starting, ensure you have the following:
 
 2. Follow the instructions to create a new Codespace.
 
-3. Wait for your Codespace to build. This will take a few moments and you will see a welcome message in the terminal.
+3. Wait for your Codespace to build. This will take a few moments. Once complete, you will see a welcome message in the terminal.
+
+::: info
+
+For this quickstart, you can safely ignore or close any notification that appear on the bottom right of the Codespace page.
+
+:::
 
 ## Step 2: Start the EventStoreDB Server
 
@@ -98,7 +104,7 @@ Before starting, ensure you have the following:
    ```
 
 @tab .NET
-   Step not required
+   This step is not required for .NET. Please continue with next step. 
    
 @tab node.js
    ```sh
@@ -181,6 +187,10 @@ Before starting, ensure you have the following:
 
 2. You should see the content of the appended event.
 3. (Optional) Review the content of sample code.
+
+## Troubleshooting
+
+If you encounter difficulties with this quickstart, you can follow a more detailed tutorial in the ["EventStoreDB From Scratch" series on Event Store Academy](https://academy.eventstore.com/from-scratch).
 
 ## Summary
 
