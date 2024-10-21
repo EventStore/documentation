@@ -40,22 +40,22 @@ Before starting, ensure you have the following:
 @tab Python
 |Language/Platform|Link to Codespaces|
 |-----|--------|
-|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Python?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/?repo=793881789&ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
 
 @tab Java
 |Language/Platform|Link to Codespaces|
 |-----|--------|
-|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Java?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/?repo=793886190&ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
 
 @tab .NET
 |Language/Platform|Link to Codespaces|
 |-----|--------|
-|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-plain-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-.Net?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-plain-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/?repo=790993560&ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
 
 @tab node.js
 |Language/Platform|Link to Codespaces|
 |-----|--------|
-|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/EventStore/EventStoreDB-From-Scratch-Node.js?ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
+|<div style="display: flex; justify-content: center; align-items: center;"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-plain-wordmark.svg" alt="Python" style="height: 64px;" /></div>|[![Open in Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/?repo=793877904&ref=stephen-getting-started&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)|
 
 :::
 
