@@ -11,7 +11,6 @@ production environment.
 - [Broker Acknowledgment](#broker-acknowledgment)
 - [Authentication](#authentication)
 - [Secured connection](#secured-connection)
-- [Routing Key Extraction](#partition-key-extraction)
 
 ### Broker Acknowledgment
 
@@ -56,64 +55,6 @@ information from unauthorized access and ensuring compliance with security stand
 }
 ```
 
-### Routing Key Extraction
-
-The sink connector can extract routing keys from the record based on various sources to ensure that messages are
-correctly routed in RabbitMQ. This feature can be configured using the `RoutingKeyExtraction` option, to determine
-how routing keys are derived from the records.
-
-**Extracts the routing key from the stream ID using a regular expression**
-
-```json
-{
-  "RoutingKeyExtraction:Enabled": true,
-  "RoutingKeyExtraction:Source": "Stream",
-  "RoutingKeyExtraction:Expression": "your-regex-pattern"
-}
-```
-
-If the `Stream` source is selected, the routitng key is extracted from the stream ID based on the provided regular
-expression. If the regular expression matches part of the stream ID, that matched value is used as the routing key.
-
-**Extracts the routing key from the suffix of the stream ID**
-
-```json
-{
-  "RoutingKeyExtraction:Enabled": true,
-  "RoutingKeyExtraction:Source": "StreamSuffix"
-}
-```
-
-When the `StreamSuffix` source is chosen, the routing key is derived from the last segment of the stream ID, split
-by the '-' character. For example, if the stream ID is `order-2021-05-15`, the routing key would be `2021-05-15`.
-
-**Extracts the routing key from the record headers using a regular expression**
-
-```json
-{
-  "RoutingKeyExtraction:Enabled": true,
-  "RoutingKeyExtraction:Source": "Headers",
-  "RoutingKeyExtraction:Expression": "your-regex-pattern",
-  "RoutingKeyExtraction:HeaderKey": "your-header-key"
-}
-```
-
-If the `Headers` source is selected, the routing key is extracted from the headers of the record using the provided
-regular expression and header key. The connector searches through the headers, and if a match is found based on the
-regular expression and header key, that value is used as the routing key. If no match is found, the record's key is
-used instead.
-
-**Use the record key as the routing key**
-
-```json
-{
-  "RoutingKeyExtraction:Enabled": true,
-  "RoutingKeyExtraction:Source": "RecordKey"
-}
-```
-
-When the `RecordKey` source is chosen, the routing key is set to the value of the record key.
-
 ## Settings
 
 ::: note
@@ -125,18 +66,18 @@ The RabbitMQ Sink Connector can be configured with the following options:
 
 <!-- | Option                        | Description                                                                                                                                                                                                                                                   | Required |
 |------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-| `HostName`                         | **Type**: string<br><br>**Description:** Broker's hostname.                                                                                                                                                                               | Yes      |
-| `Port`                             | **Type**: string<br><br>**Description:** Broker's port.                                                                                                                                                                               | Yes      |
-| `WaitForBrokerAck`                 | **Type**: boolean<br><br>**Description:** Whether the channel waits for broker acknowledgment before considering the send operation complete.<br><br>**Default**: true                                                                                       | No       |
-| `Exchange`                         | **Type**: string<br><br>**Description:** Exchange's name.                                                                                                                            | Yes      |
-| `RoutingKey`                       | **Type**: string<br><br>**Description:** Fixed routing key. Used only if `RoutingKeyExtraction` is disabled.                                                                                                                                                                               | Yes      |
-| `RoutingKeyExtraction:Enabled`     | **Type**: boolean<br><br>**Description:** Enables routing key extraction. Must be enabled if `RoutingKey` is empty<br><br>**Default**: false                                                                                                                                                         | No       |
-| `RoutingKeyExtraction:Source`      | **Type**: PartitionKeySource<br><br>**Description:** Source for extracting the partition key.g<br><br>**Available Values:**`Stream`, `StreamSuffix`, `Headers`, `RecordKey`<br><br>**Default**: `Unspecified`                                                 | No       |
-| `RoutingKeyExtraction:Expression`  | **Type**: string<br><br>**Description:** Regular expression for extracting the partition key.                                                                                                                                                                 | No       |
-| `Resilience:Enabled`               | **Type**: boolean<br><br>**Description:** Enables resilience features.<br><br>**Default**: `true`                                                                                                                                                             | No       |
-| `Resilience:MaxRetries`            | **Type**: int<br><br>**Description:** Maximum number of retry attempts.<br><br>**Default**: `-1` (unlimited)                                                                                                                                                  | No       |
-| `Resilience:TransientErrorDelay`   | **Type**: TimeSpan<br><br>**Description:** Delay between retries for transient errors.<br><br>**Default**: `00:00:05`                                                                                                                                         | No       |
-| `Resilience:ReconnectBackoffMaxMs` | **Type**: int<br><br>**Description:** Maximum backoff time for reconnect attempts in milliseconds.<br><br>**Default**: `20000`                                                                                                                                | No       |
-| `Resilience:MessageSendMaxRetries` | **Type**: int<br><br>**Description:** Maximum retry attempts for sending messages.<br><br>**Default**: `2147483647`                                                                                                                                           | No       |
+| `HostName`                         | **Type**: string<br><br>**Description:** Broker's hostname. Default localhost.                                                                                                                                                                                | No       |
+| `Port`                             | **Type**: string<br><br>**Description:** Broker's port. Default 5672.                                                                                                                                                                                         | No       |
+| `ConnectionName`                   | **Type**: string<br><br>**Description:** Connection name used for logging and diagnostics. The default value is the connector ID.Connection name used for logging and diagnostics. The default value is the connector ID                                      | No       |
+| `VirtualHost`                      | **Type**: string<br><br>**Description:** Represents the VirtualHost (vhost) used in RabbitMQ. Default /                                                                                                                                                       | No       |
+| `WaitForBrokerAck`                 | **Type**: boolean<br><br>**Description:** Whether the channel waits for broker acknowledgment before considering the send operation complete.<br><br>**Default**: true                                                                                        | No       |
 | `Authentication:Username`          | **Type**: string<br><br>**Description:** Username for authentication.                                                                                                                                                                                         | No       |
-| `Authentication:Password`          | **Type**: string<br><br>**Description:** Password for authentication.                                                                                                                                                                                         | No       | -->
+| `Authentication:Password`          | **Type**: string<br><br>**Description:** Password for authentication.                                                                                                                                                                                         | No       |
+| `Exchange:Name`                    | **Type**: string<br><br>**Description:** Exchange's name.                                                                                                                                                                                                     | Yes      |
+| `Exchange:Type`                    | **Type**: string<br><br>**Description:** Exchange's type. Default is fanout.                                                                                                                                                                                  | No       |
+| `AutoDelete`                       | **Type**: string<br><br>**Description:** Whether the exchange is automatically deleted when no longer in use. Default false                                                                                                                                   | No       |
+| `Durable`                          | **Type**: string<br><br>**Description:** Whether the exchange is durable. Default true.                                                                                                                                                                       | No       |
+| `RoutingKey`                       | **Type**: string<br><br>**Description:** Routing key.                                                                                                                                                                                                         | Yes      |
+| `Resilience:ConnectionTimeoutMs`   | **Type**: int<br><br>**Description:** Connection TCP establishment timeout in milliseconds. 0 for infinite. Default 6000                                                                                                                                      | No       |
+| `Resilience:HandshakeTimeoutMs`    | **Type**: int<br><br>**Description:** The protocol handshake timeout in milliseconds. Default 10000                                                                                                                                                           | No       |
+| `Resilience:RequestedHeartbeatMs`  | **Type**: int<br><br>**Description:** The requested heartbeat timeout in milliseconds. 0 means "heartbeats are disabled". Should be no lower than 1 second.                                                                                                   | No       |
