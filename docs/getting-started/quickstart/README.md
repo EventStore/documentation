@@ -58,13 +58,13 @@ Before starting, ensure you have the following:
 
 :::
 
-1. Login to Github if required.
+2. Login to Github if required.
    
-2. Follow the instructions to create a new Codespace.
+3. Follow the instructions to create a new Codespace.
 
-3. Wait for your Codespace to build. This can take up to a few minutes. 
+4. Wait for your Codespace to build. This can take up to a few minutes. 
 
-4. Once complete, you will see a welcome message in the terminal:
+5. Once complete, you will see a welcome message in the terminal:
 
 ```
 Hello!👋 Welcome to the EventStoreDB Getting Started Quickstart Guide.
@@ -129,7 +129,8 @@ docker run                        # Start a new Docker container using the 'dock
      --enable-atom-pub-over-http  # Enable the AtomPub API over HTTP. Required for the EventStoreDB Admin UI
 ```
 
-3. Review other parts of the script if you wish. 
+3. Review other parts of the script if you wish.
+
 4. Feel free to modify and re-run the script in your Codespace.
 
 ::: info
