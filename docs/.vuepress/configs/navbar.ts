@@ -30,6 +30,7 @@ export const navbarEn: NavbarOptions = [
             {text: "Articles", link: "https://eventstore.com/blog/articles/"},
             {text: "Webinars", link: "https://eventstore.com/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
+            {text: "Event Store Academy", link: "https://academy.eventstore.com"}
         ]
     }
 ];

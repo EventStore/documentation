@@ -4,24 +4,6 @@ $text-color: (
 );
 
 // override code block background color
-// updated by MM
-#app {
-  --code-c-bg: #fff;
-
-  [data-theme="dark"] & {
-    --code-c-bg: #fff;
-  }
-}
-
-// override code block background color
-pre[class*="language-"] {
-  color: #fff !important;
-
-  [data-theme="dark"] & {
-    background-color: #fff !important;
-  }
-}
-// mm change ends here
 
 
 $sidebar-width: 18rem;
