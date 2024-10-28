@@ -1,8 +1,8 @@
 ---
-title: Characteristics of Business Processes that Fit EventStoreDB
+title: Where EventStoreDB Fits in your Business
 ---
 
-#  Characteristics of Business Processes that Fit EventStoreDB
+#  Where EventStoreDB Fits in your Business
 
 EventStoreDB is well-suited to manage and track a wide range of business processes, from simple to sophisticated. While it's designed to handle processes that exhibit all the characteristics below, EventStoreDB is an excellent fit if your business processes demonstrate one or more of these traits.
 

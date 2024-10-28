@@ -4,7 +4,7 @@ heroText: Event Store Resources
 tagline: Event-native database for storing immutable facts as events, complex event processing, and event-driven architectures.
 actions:
 - text: Get started
-  link: /getting-started.html
+  link: /getting-started/
   icon: hugeicons:start-up-02
   type: primary
 - text: Start building

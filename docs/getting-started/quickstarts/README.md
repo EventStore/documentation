@@ -1,8 +1,8 @@
 ---
-title: Quickstart with Github Codespaces
+title: Quickstart
 ---
 
-# EventStoreDB Quickstart using GitHub Codespaces
+# EventStoreDB Quickstart
 
 This quickstart will guide you through getting started with EventStoreDB using GitHub Codespaces.
 
