@@ -69,6 +69,11 @@ highlights:
       details: Bring EventStoreDB to your Rust applications using the Rust client.
       link: /client/Rust
 
+    - title: Go
+      icon: skill-icons:golang
+      details: Connect EventStoreDB with your Go applications using the Go client.
+      link: /client/Go
+
     - title: HTTP API
       icon: catppuccin:http
       details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
