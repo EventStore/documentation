@@ -5,7 +5,7 @@ export const sidebarEn: EsSidebarOptions = {
   "/getting-started/": [
     {
       text: "Introduction",
-      link: "/getting-started/README.md",
+      link: "/getting-started/",
       group: "Getting Started",
     },
     {
