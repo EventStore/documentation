@@ -10,7 +10,7 @@ export const sidebarEn: EsSidebarOptions = {
     },
     {
       text: "Quickstart",
-      link: "/getting-started/quickstarts/",
+      link: "/getting-started/quickstart/",
       group: "Getting Started",
     },
     {
