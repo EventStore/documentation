@@ -11,9 +11,19 @@ An EventStoreDB index entry is automatically created whenever an event is append
 - the stream ID
 - the event's number within the stream (also known as the version number or sequence number)
 - the event's position within the log
+
+<div style="display: flex; max-height: 400px;">
+
+![](./images/conceptual-model-of-the-index.png#light)
     
-    ![image.png](./images/conceptual-model-of-the-index.png)
+</div>
+
+<div style="display: flex; max-height: 400px;">
+
+![](./images/conceptual-model-of-the-index-dark.png#dark)
     
+</div>
+
 
 Conceptually, this resembles a simple key-value store, where the stream's ID is the key, and the value is a set of pointers that direct you to the events within the event log.
 
@@ -23,7 +33,17 @@ These pointers don't store the events but reference their positions in the event
 
 EventStoreDB ensures that all events in both the event log and its streams are consistently ordered by append time. Moreover, the event log maintains a global ordering of events across all streams.
 
-![image.png](./images/consistent-event-ordering.png)
+<div style="display: flex; max-height: 400px;">
+
+![](./images/consistent-event-ordering.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 400px;">
+
+![](./images/consistent-event-ordering-dark.png#dark)
+
+</div>
 
 Events within each stream also retain this global ordering, even though they are only a subset of events from the event log. This ordering is crucial for order-sensitive operations where the correct sequence of events is necessary. 
 
@@ -53,7 +73,17 @@ This is especially important when multiple writers try to append to the same str
 
 For example, a financial institution has a stream representing a digital wallet where overdrawing is prohibited. The stream only contains deposit and withdrawal events regarding the wallet. EventStoreDB prevents someone from making thousands of huge withdrawals simultaneously to draw funds that are not available in reality.
 
-![image.png](./images/optimistic-concurrency-control.png)
+<div style="display: flex; max-height: 250px;">
+
+![](./images/optimistic-concurrency-control.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 250px;">
+
+![](./images/optimistic-concurrency-control-dark.png#dark)
+
+</div>
 
 To achieve this, when an event is appended to a stream, the event should include the stream's expected version number (essentially the stream's last known event number). If this version matches the current stream version, the append will be successful. If it doesn't match, the append fails due to a conflict, signaling that another writer has already appended an event and the stream has changed. This mechanism effectively avoids race condition issues, ensuring that no updates are lost or overwritten unintentionally.
 
