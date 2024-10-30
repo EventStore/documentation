@@ -27,6 +27,10 @@ Before starting, ensure you have the following:
 - Basic knowledge of one of the development languages/platforms below.
 - Familiarity with command-line operations.
 
+::: tip
+If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Event Store Academy](https://academy.eventstore.com/from-scratch).
+:::
+
 ## Step 1: Set up Your Codespace
 
 1. Choose one of development languages/plaforms below and click the Codespaces link:
@@ -808,10 +812,6 @@ To view the source code in Github, click the link below:
 ::::
 
 :::::
-
-## Troubleshooting
-
-If you encounter difficulties with this quickstart, you can follow a more detailed tutorial in the ["EventStoreDB From Scratch" series on Event Store Academy](https://academy.eventstore.com/from-scratch).
 
 ## Summary
 
