@@ -6,6 +6,8 @@ title: Concepts
 
 ## Event
 
+In EventStoreDB, an event is a factual occurrence from the past. It has an *event type* that headlines what happened and an *event body* that outlines the details:
+
 <div style="display: flex; max-height: 200px;">
 
 ![](./images/what-are-events.png#light)
@@ -18,7 +20,11 @@ title: Concepts
 
 </div>
 
-In EventStoreDB, an event is a factual occurrence from the past. It has an *event type* that headlines what happened and an *event body* that outlines the details.
+An event usually represents a state change in an application, its entities, or business processes. In this case below:
+
+1. Ada requested a $1,000 loan. 
+2. Bob approved the loan.
+3. A loan payment of $50 was received.
 
 
 <div style="display: flex; max-height: 200px;">
@@ -33,14 +39,9 @@ In EventStoreDB, an event is a factual occurrence from the past. It has an *even
 
 </div>
 
-An event usually represents a state change in an application, its entities, or business processes. In this case:
-
-1. Ada requested a $1,000 loan. 
-2. Bob approved the loan.
-3. A loan payment of $50 was received.
-
 ## Event Log
 
+The event log is an append-only sequence of events stored within the database. It is the ultimate source of truth, capturing every event appended to EventStoreDB:
 
 <div style="display: flex; max-height: 200px;">
 
@@ -54,7 +55,7 @@ An event usually represents a state change in an application, its entities, or b
 
 </div>
 
-The event log is an append-only sequence of events stored within the database. It is the ultimate source of truth, capturing every event appended to EventStoreDB. 
+It is append-only. New events are added exclusively to the end of the log—never at the start or in the middle:
 
 <div style="display: flex; max-height: 200px;">
 
@@ -68,8 +69,6 @@ The event log is an append-only sequence of events stored within the database. I
 
 </div>
 
-It is append-only. New events are added exclusively to the end of the log—never at the start or in the middle.
-
 Internally, the event log consists of a series of data files that store events in the exact order in which they were appended.
 
 ## Event Stream
@@ -77,6 +76,8 @@ Internally, the event log consists of a series of data files that store events i
 EventStoreDB's event log can store billions of events, many of which might be unrelated.
 
 Events are commonly arranged into smaller and logically related groups known as **event streams** to keep them organized and speed up retrieval.
+
+Event stream is a sequenced group of events from the event log that is identified by a stream ID:
 
 <div style="display: flex; max-height: 200px;">
 
@@ -90,36 +91,31 @@ Events are commonly arranged into smaller and logically related groups known as 
 
 </div>
 
-Event stream is a sequenced group of events from the event log that is identified by a stream ID.
-
 ### Example of Event Stream
 
-Imagine the management of a loan system. The system's event log could hold millions of loan applications and customer events. Searching through millions of events to find specific loan or customer information is slow and burdensome. Instead, users can find events more efficiently by organizing them into fine-grained streams based on the unique Loan ID or Customer ID.
+Consider managing a loan system with millions of loan applications and customer events. Searching this vast event log for specific loan or customer details is slow and cumbersome. Instead, organizing events into fine-grained streams using a unique Loan ID or Customer ID allows faster access. 
 
-For example, a stream named "loan-123" would contain all the events related to Loan ID #123, while "customer-321" might store events specific to Customer ID #321. This configuration enables a quick read of a few related events instead of searching through the entire event log.
+For example, a stream named "loan-123" would hold only the events related to Loan ID #123, while "customer-321" would contain events specific to Customer ID #321. This setup enables quick access to relevant events without combing through the entire event log.
 
-### Basics of Event Stream
+### Event Stream Basics
 
-Conceptually, an event stream serves two essential purposes:
+Event stream consists of a **stream ID** (a simple string) and a **sequence of events**. 
 
-1. Event Streams improve the read and event retrieval performance through [indexing⚠️](https://www.notion.so/Concept-EventStoreDB-Architecture-Storyboard-Ready-for-Review-4d7f136d21e742a9924f98c9c163558d?pvs=21).
-2. Event Streams help enforce business constraints across related events using [optimistic concurrency control⚠️](https://www.notion.so/Concept-EventStoreDB-Architecture-Storyboard-Ready-for-Review-4d7f136d21e742a9924f98c9c163558d?pvs=21).
+Event stream improves the read and event retrieval performance through indexing. It also help enforce business constraints across related events using optimistic concurrency control.
 
-At their core, streams consist of a **stream ID** (a simple string) and a **sequence of events**. 
+To append an event to EventStoreDB, it must be associated with a specific stream ID. This process simultaneously appends the event to the event log and the specified stream:
 
-<div style="display: flex; max-height: 200px;">
+<div style="display: flex; max-height: 300px;">
 
 ![](./images/how-events-are-appended.png#light)
 
 </div>
 
-<div style="display: flex; max-height: 200px;">
+<div style="display: flex; max-height: 300px;">
 
 ![](./images/how-events-are-appended-dark.png#dark)
 
 </div>
-
-When appending an event to EventStoreDB, it must be associated with a specific stream ID. This process simultaneously appends the event to the event log and the designated stream.
 
 ### Event Stream Design
 
