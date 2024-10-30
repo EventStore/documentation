@@ -6,12 +6,32 @@ title: Concepts
 
 ## Event
 
-<img src="./images/what-are-events.png" style="height: auto; max-height: 175px" />
+<div style="display: flex; max-height: 200px;">
+
+![](./images/what-are-events.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/what-are-events-dark.png#dark)
+
+</div>
 
 In EventStoreDB, an event is a factual occurrence from the past. It has an *event type* that headlines what happened and an *event body* that outlines the details.
 
 
-<img src="./images/examples-of-event.png" style="height: auto; max-height: 175px" />
+<div style="display: flex; max-height: 200px;">
+
+![](./images/examples-of-event.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/examples-of-event-dark.png#dark)
+
+</div>
 
 An event usually represents a state change in an application, its entities, or business processes. In this case:
 
@@ -21,11 +41,32 @@ An event usually represents a state change in an application, its entities, or b
 
 ## Event Log
 
-<img src="./images/event-log.png" style="height: auto; max-height: 175px" />
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/event-log.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/event-log-dark.png#dark)
+
+</div>
 
 The event log is an append-only sequence of events stored within the database. It is the ultimate source of truth, capturing every event appended to EventStoreDB. 
 
-<img src="./images/event-log-is-append-only.png" style="height: auto; max-height: 175px" />
+<div style="display: flex; max-height: 200px;">
+
+![](./images/event-log-is-append-only.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/event-log-is-append-only-dark.png#dark)
+
+</div>
 
 It is append-only. New events are added exclusively to the end of the log—never at the start or in the middle.
 
@@ -37,7 +78,17 @@ EventStoreDB's event log can store billions of events, many of which might be un
 
 Events are commonly arranged into smaller and logically related groups known as **event streams** to keep them organized and speed up retrieval.
 
-<img src="./images/what-are-event-streams.png" style="height: auto; max-height: 175px" />
+<div style="display: flex; max-height: 200px;">
+
+![](./images/what-are-event-streams.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/what-are-event-streams-dark.png#dark)
+
+</div>
 
 Event stream is a sequenced group of events from the event log that is identified by a stream ID.
 
@@ -56,7 +107,17 @@ Conceptually, an event stream serves two essential purposes:
 
 At their core, streams consist of a **stream ID** (a simple string) and a **sequence of events**. 
 
-<img src="./images/how-events-are-appended.png" style="height: auto; max-height: 175px" />
+<div style="display: flex; max-height: 200px;">
+
+![](./images/how-events-are-appended.png#light)
+
+</div>
+
+<div style="display: flex; max-height: 200px;">
+
+![](./images/how-events-are-appended-dark.png#dark)
+
+</div>
 
 When appending an event to EventStoreDB, it must be associated with a specific stream ID. This process simultaneously appends the event to the event log and the designated stream.
 
