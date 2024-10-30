@@ -136,5 +136,3 @@ title: EventStoreDB Feature List
 | Feature Name | Description |
 | --- | --- |
 | [Event Store CLI](https://developers.eventstore.com/commercial-tools/cli-tool.html) | Command line tool for administrative operations on EventStoreDB such as scavenge, backup, restore, merge index, delete stream as well as user and projection management |
-
-[Stephen’s working notes](https://www.notion.so/Stephen-s-working-notes-123e266ccf7f809b8f6bed44a4c0ce0e?pvs=21)
