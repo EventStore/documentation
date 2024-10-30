@@ -10,14 +10,17 @@ EventStoreDB is an event-native database, representing a new class of databases 
 
 An event records a change in an application’s state—like placing an order, processing a payment, or fulfilling a shipment. Each event captures a distinct, incremental change in a business process.
 
-EventStoreDB offers the following core features:
+EventStoreDB offers the following features:
 
 | Feature | Description |
 |---------|-------------|
-| Append-only Log | Serves as an immutable audit trail that captures all historical changes for one or multiple systems. |
+| Append-only Log | Audit trail that captures all historical changes as events for one or more systems. |
 | Streams | Groups and indexes events to organize and speed up retrieval. |
 | Subscription and Connectors | Delivers events to external systems through push or pull options. |
 | Projection | Transforms and filters events to different streams or state. |
+| Multiple Hosting Options | Fully managed with [Event Store Cloud](https://developers.eventstore.com/cloud/), or self-managed on Linux, Windows, macOS, or with Docker. |
+| Client SDK | Available in Python, Java, .NET, Node.js, Go, and Rust. |
+
 
 ## Why EventStoreDB?
 
