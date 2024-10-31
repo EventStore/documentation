@@ -17,24 +17,36 @@ EventStoreDB offers the following features:
 | Append-only Log | Audit trail that captures all historical changes as events for one or more systems. |
 | Streams | Groups and indexes events to organize and speed up retrieval. |
 | Subscription and Connectors | Delivers events to external systems through push or pull options. |
-| Projection | Transforms and filters events to different streams or state. |
+| Projection | Transforms and filters events into different streams or state. |
 | Multiple Hosting Options | Fully managed with [Event Store Cloud](https://developers.eventstore.com/cloud/), or self-managed on Linux, Windows, macOS, or with Docker. |
 | Client SDK | Available in Python, Java, .NET, Node.js, Go, and Rust. |
 
-
 ## Why EventStoreDB?
 
-Traditional databases are typically optimized to store the current state or view of business data (e.g. the latest product price) and do not keep the changes that led to it (e.g. price adjustments). However, these untracked changes often reveal trends and patterns that are critical to business analytics (e.g. customer price sensitivity). 
+Traditional databases typically focus on storing the current state(\*) and often lack the means to manage historical events(\*) effectively.
 
-By preserving a complete history of changes, EventStoreDB enables organizations to uncover deeper insights essential to remain adaptable, especially in today’s AI and data-driven world.
+EventStoreDB, however, keeps a complete history of changes, giving organizations access to deeper insights needed for adaptability in today’s AI and data-driven environment.
 
-Additionally, EventStoreDB enables real-time updates and reduces system dependencies, enhancing flexibility, scalability, and maintainability across applications.
+EventStoreDB also includes additional event-native features that enables real-time updates, reduces system dependencies, and maintains data consistency, enhancing flexibility, scalability, and maintainability across applications.
+
+Finally, EventStoreDB can reconstruct the current state from historical events, delivering the best of both worlds by answering the "what", "how", and "why" within a single system.
+
+::: info * Current State vs Historical Events
+
+In a system, any object can be represented in two distinct ways: by its current state, or by the historical events leading up to that state:
+
+- **Current state** is a snapshot of the object right now, like a digital wallet's balance. 
+- **Historical events** are the actions taken over time to reach this state, such as deposits and withdrawals.
+
+Both perspectives are important: the current balance can answer the "what", while historical transactions answer the "how" and "why".
+
+:::
 
 ## Who Uses EventStoreDB?
 
 Data engineers can provide context-rich events from EventStoreDB to data scientists to analyze historical and behavioral trends, uncovering patterns that traditional databases often miss. These patterns can, for example, reveal why a customer churned or highlight behaviors that lead to high-value contracts.
 
-Application developers can leverage EventStoreDB’s granular events to build real-time, distributed applications and break down tightly coupled systems. Events are typically simpler, self-contained, and independent. Unlike the tables and rows in traditional databases that are interdependent with various functions.
+Application developers can leverage EventStoreDB’s granular events to build real-time, distributed enterprise applications and break down tightly coupled systems. Events are typically simpler, self-contained, and independent. Unlike the tables and rows in traditional databases that are often interdependent with various functions.
 
 ## Where to Use EventStoreDB?
 
