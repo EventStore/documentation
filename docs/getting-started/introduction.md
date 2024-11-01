@@ -31,16 +31,18 @@ Traditional databases typically focus on storing the current state and often lac
 
 In contrast, EventStoreDB keeps a complete history of changes, providing organizations with richer, and more contextual data that supports deeper insights - critical in today’s AI and data-driven environment.
 
-EventStoreDB also includes additional event-native features that enables real-time updates, reduces system dependencies, and ensures data consistency. Enhancing flexibility, scalability, and maintainability across applications.
+EventStoreDB also includes additional features that make it simple to develop event-native applications that enable real-time updates and minimize system dependencies while maintaining data consistency.
 
-Finally, EventStoreDB can reconstruct the current state from historical events, delivering the best of both worlds by answering the "what", "how", and "why" within a single system.
+Finally, EventStoreDB can reconstruct the current state of any object from its historical events, providing the best of both current and historical representations by answering the "what", "how", and "why" within a single system. 
 
-::: info Current State vs Historical Events
+In comparion, traditional databases that only store current states are limited to answering the "what". Since it does not have the ability to derive past events from its state.
 
-In a system, any object can be represented in two distinct ways: by its current state, or by the historical events leading up to that state:
+::: info Current State vs Historical Events Representations
+
+In a system, any object can represented in one of two distinct ways: by its current state, or by the historical events leading up to that state:
 
 - **Current state** is a snapshot of the object right now, like a digital wallet's balance. 
-- **Historical events** are the actions taken over time to reach this state, such as deposits and withdrawals.
+- **Historical events** are the actions that led to this state, like a wallet's deposits and withdrawals.
 
 Both perspectives are important: the current balance can answer the "what", while historical transactions answer the "how" and "why".
 
