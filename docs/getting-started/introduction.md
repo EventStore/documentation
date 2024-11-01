@@ -21,7 +21,7 @@ EventStoreDB offers the following features:
 | Multiple Hosting Options | Fully managed with [Event Store Cloud](https://developers.eventstore.com/cloud/), or self-managed on Linux, Windows, macOS, or with Docker. |
 | Client SDK | Available in Python, Java, .NET, Node.js, Go, and Rust. |
 
-::: info
+::: note
  To learn more about the core features of EventStoreDB, [click here](./features/eventstoredb-core-features.html).
 :::
 
@@ -51,7 +51,7 @@ To learn more about this topic, [click here](./additional-reading/state-vs-event
 
 Data engineers can provide context-rich events from EventStoreDB to data pipelines to analyze historical and behavioral trends, uncovering patterns that traditional databases often miss. These patterns can, for example, reveal why a customer churned or highlight behaviors that lead to high-value contracts.
 
-::: info
+::: note
 To learn more about EventStoreDB's role in a data pipeline, [click here](./additional-reading/role-of-eventstoredb-in-a-data-pipeline.html).
 :::
 
@@ -63,7 +63,7 @@ EventStoreDB is valuable for critical enterprise applications and data pipelines
 
 Industries such as finance, healthcare, supply chain, and manufacturing benefit from EventStoreDB, as it supports flexible, scalable solutions with a complete audit trail. This enables businesses to maintain clear, comprehensive system oversight, which is essential for meeting compliance requirements and adapting to changing needs.
 
-::: info
+::: note
 To learn more where EventStoreDB fits in your business, [click here](./additional-reading/where-eventstoredb-fits-in-your-business.html).
 :::
 

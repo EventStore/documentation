@@ -39,6 +39,10 @@ An event usually represents a state change in an application, its entities, or b
 
 </div>
 
+::: note
+To learn more about how to perform basic operations around events, [click here](/clients/grpc/appending-events.html).
+:::
+
 ## Event Log
 
 The event log is an append-only sequence of events stored within the database. It is the ultimate source of truth, capturing every event appended to EventStoreDB:
@@ -117,6 +121,13 @@ To append an event to EventStoreDB, it must be associated with a specific stream
 
 </div>
 
+
+::: note
+To learn more about streams and its other basic features, [click here](/getting-started/features/eventstoredb-core-features.html#stream-indexing).
+
+To learn more about streams, its structure and behaviors in detail, [click here](/server/v24.10%20Preview%201/features/streams.html).
+:::
+
 ### Event Stream Design
 
 In EventStoreDB, a stream typically represents an instance of an object, entity, or business process. For example:
@@ -136,3 +147,13 @@ However, there are cases where it makes sense for a stream to encompass a more e
 | payment-gateway | Represents all events from an external payment gateway  |
 
 Designing streams and deciding which events belong to which stream involves balancing performance, scalability, and maintainability. Understanding the trade-offs is the starting point for designing streams that best suit organizational goals.
+
+## Next Steps
+
+- [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Learn more about the details around events, streams, and the event log.
+
+- [EventStoreDB Stream Documentation](/server/v24.10%20Preview%201/features/streams.html): Gain a deeper understanding of how stream works.
+
+- [EventStoreDB Client Documentation](/clients/grpc/getting-started.html): Understand how to work with events and streams programmatically.
+
+- [An End-To-End Example With EventStoreDB](https://www.youtube.com/watch?v=vIUw-jKpKfQ) Watch how to build an application with EventStoreDB

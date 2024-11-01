@@ -29,6 +29,10 @@ Conceptually, this resembles a simple key-value store, where the stream's ID is 
 
 These pointers don't store the events but reference their positions in the event log. It's important to remember that neither the stream nor the index physically holds the actual events.
 
+::: note
+To learn more about how indexing works in detail, [click here](/server/v24.10%20Preview%201/configuration/indexes.html). 
+:::
+
 ## Guaranteed Consistent Ordering in Event Log and Stream
 
 EventStoreDB ensures that all events in both the event log and its streams are consistently ordered by append time. Moreover, the event log maintains a global ordering of events across all streams.
@@ -54,6 +58,10 @@ For example, running a complex fraud detection system relies on the precise orde
 EventStoreDB is designed to be immutable. Once an event is appended, its type, body, or any part of it cannot be modified. The event remains unchanged forever. 
 
 The same principle applies to the event log and stream; once an event is appended, its position is locked. Events are never reordered or shifted within the log or stream. This immutability guarantees data integrity and consistency while enabling performance optimizations.
+
+::: note
+While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](/server/v24.10%20Preview%201/features/streams.html#deleting-streams-and-events)
+:::
 
 ## Fine-grained Event Streams
 
@@ -88,3 +96,17 @@ For example, a financial institution has a stream representing a digital wallet 
 To achieve this, when an event is appended to a stream, the event should include the stream's expected version number (essentially the stream's last known event number). If this version matches the current stream version, the append will be successful. If it doesn't match, the append fails due to a conflict, signaling that another writer has already appended an event and the stream has changed. This mechanism effectively avoids race condition issues, ensuring that no updates are lost or overwritten unintentionally.
 
 Optimistic concurrency control also operates without requiring resource locks, meaning these protections come without the performance hit of managing locks. This helps maintain high performance even when multiple concurrent writes occur.
+
+::: note
+To learn more about how use optimistic concurrency control, [click here](/clients/grpc/appending-events.html#handling-concurrency)
+:::
+
+## Next Steps
+
+- [Event Store Essentials](https://academy.eventstore.com/essentials): Understand more about these features in this in-depth guide.
+
+- [EventStoreDB Indexing Documentation](/server/v24.10%20Preview%201/configuration/indexes.html): Learn more about how stream and indexing work in detail.
+  
+- [EventStoreDB Client - Handling Concurrency](/clients/grpc/appending-events.html#handling-concurrency): Understand how use optimistic concurrency control with an EventStoreDB client.
+
+- [EventStoreDB Server Documentation](https://developers.eventstore.com/server/v24.10%20Preview%201/quick-start/): Gain a deeper understanding about other EventStoreDB features. 

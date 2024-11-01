@@ -136,3 +136,15 @@ title: EventStoreDB Feature List
 | Feature Name | Description |
 | --- | --- |
 | [Event Store CLI](https://developers.eventstore.com/commercial-tools/cli-tool.html) | Command line tool for administrative operations on EventStoreDB such as scavenge, backup, restore, merge index, delete stream as well as user and projection management |
+
+## Next Steps
+
+- [EventStoreDB Server Documentation](https://developers.eventstore.com/server/v24.10%20Preview%201/quick-start/): Gain a deeper understanding about other EventStoreDB features. 
+
+- [EventStoreDB Client Documentation](/clients/grpc/appending-events.html#handling-concurrency): Explore how to use these features with EventStoreDB clients.
+  
+- [Event Store Essentials](https://academy.eventstore.com/essentials): Understand more about these features in this in-depth guide.
+
+- [EventStoreDB From Scratch](https://academy.eventstore.com/from-scratch): Get hands-on and build a basic EventStoreDB application with this training series.
+
+- [An End-To-End Example With EventStoreDB](https://www.youtube.com/watch?v=vIUw-jKpKfQ) Watch how to build an application with EventStoreDB
