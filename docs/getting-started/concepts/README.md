@@ -152,7 +152,7 @@ Designing streams and deciding which events belong to which stream involves bala
 
 - [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Learn more about the details around events, streams, and the event log.
 
-- [EventStoreDB Stream Documentation](/server/v24.10%20Preview%201/features/streams.html): Gain a deeper understanding of how stream works.
+- [EventStoreDB Server Documentation - Stream](/server/v24.10%20Preview%201/features/streams.html): Gain a deeper understanding of how stream works.
 
 - [EventStoreDB Client Documentation](/clients/grpc/getting-started.html): Understand how to work with events and streams programmatically.
 

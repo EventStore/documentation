@@ -105,8 +105,8 @@ To learn more about how use optimistic concurrency control, [click here](/client
 
 - [Event Store Essentials](https://academy.eventstore.com/essentials): Understand more about these features in this in-depth guide.
 
-- [EventStoreDB Indexing Documentation](/server/v24.10%20Preview%201/configuration/indexes.html): Learn more about how stream and indexing work in detail.
+- [EventStoreDB Server Documentation - Indexing](/server/v24.10%20Preview%201/configuration/indexes.html): Learn more about how stream and indexing work in detail.
   
-- [EventStoreDB Client - Handling Concurrency](/clients/grpc/appending-events.html#handling-concurrency): Understand how use optimistic concurrency control with an EventStoreDB client.
+- [EventStoreDB Client Documentation - Handling Concurrency](/clients/grpc/appending-events.html#handling-concurrency): Understand how use optimistic concurrency control with an EventStoreDB client.
 
 - [EventStoreDB Server Documentation](https://developers.eventstore.com/server/v24.10%20Preview%201/quick-start/): Gain a deeper understanding about other EventStoreDB features. 
