@@ -21,6 +21,10 @@ EventStoreDB offers the following features:
 | Multiple Hosting Options | Fully managed with [Event Store Cloud](https://developers.eventstore.com/cloud/), or self-managed on Linux, Windows, macOS, or with Docker. |
 | Client SDK | Available in Python, Java, .NET, Node.js, Go, and Rust. |
 
+::: info
+ To learn more about the core features of EventStoreDB, [click here](./features/eventstoredb-core-features.html).
+:::
+
 ## Why EventStoreDB?
 
 Traditional databases typically focus on storing the current state and often lack the means to persist and manage historical events effectively.
@@ -40,11 +44,16 @@ In a system, any object can be represented in two distinct ways: by its current 
 
 Both perspectives are important: the current balance can answer the "what", while historical transactions answer the "how" and "why".
 
+To learn more about this topic, [click here](./additional-reading/state-vs-event-based-data-model.html).
 :::
 
 ## Who Uses EventStoreDB?
 
 Data engineers can provide context-rich events from EventStoreDB to data pipelines to analyze historical and behavioral trends, uncovering patterns that traditional databases often miss. These patterns can, for example, reveal why a customer churned or highlight behaviors that lead to high-value contracts.
+
+::: info
+To learn more about EventStoreDB's role in a data pipeline, [click here](./additional-reading/role-of-eventstoredb-in-a-data-pipeline.html).
+:::
 
 Application developers can leverage EventStoreDB’s granular events to build real-time, distributed enterprise applications and break down tightly coupled systems. Events are typically simpler, self-contained, and independent. Unlike the tables and rows in traditional databases that are often interdependent with various functions.
 
@@ -53,3 +62,15 @@ Application developers can leverage EventStoreDB’s granular events to build re
 EventStoreDB is valuable for critical enterprise applications and data pipelines with behavior-rich data, where interdependent business objects and processes interact in diverse ways over time. 
 
 Industries such as finance, healthcare, supply chain, and manufacturing benefit from EventStoreDB, as it supports flexible, scalable solutions with a complete audit trail. This enables businesses to maintain clear, comprehensive system oversight, which is essential for meeting compliance requirements and adapting to changing needs.
+
+::: info
+To learn more where EventStoreDB fits in your business, [click here](./additional-reading/where-eventstoredb-fits-in-your-business.html).
+:::
+
+## Next Steps
+
+- [Key Benefits of EventStoreDB](./additional-reading/key-benefits-of-eventstoredb.html): Learn what EventStoreDB can do for you. 
+
+- [Event Store Essentials](https://academy.eventstore.com/essentials): Understand fundamental concepts around EventStoreDB.
+
+- [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Receive step-by-step video tutorial to create a basic application.
