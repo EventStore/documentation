@@ -4,6 +4,16 @@ title: EventStoreDB Core Features
 
 # EventStoreDB Core Features
 
+## Immutable Events
+
+EventStoreDB is designed to be immutable. Once an event is appended, its type, body, or any part of it cannot be modified. The event remains unchanged forever. 
+
+The same principle applies to the event log and stream; once an event is appended, its position is locked. Events are never reordered or shifted within the log or stream. This immutability guarantees data integrity and consistency while enabling performance optimizations.
+
+::: note
+While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](/server/v24.10%20Preview%201/features/streams.html#deleting-streams-and-events)
+:::
+
 ## Stream Indexing
 
 An EventStoreDB index entry is automatically created whenever an event is appended to the event log. The index uses the hash of the stream ID as the key, with the corresponding index entry as the value. Each entry consists of:
@@ -52,16 +62,6 @@ EventStoreDB ensures that all events in both the event log and its streams are c
 Events within each stream also retain this global ordering, even though they are only a subset of events from the event log. This ordering is crucial for order-sensitive operations where the correct sequence of events is necessary. 
 
 For example, running a complex fraud detection system relies on the precise order of events across multiple accounts and customer interactions.
-
-## Immutable Events
-
-EventStoreDB is designed to be immutable. Once an event is appended, its type, body, or any part of it cannot be modified. The event remains unchanged forever. 
-
-The same principle applies to the event log and stream; once an event is appended, its position is locked. Events are never reordered or shifted within the log or stream. This immutability guarantees data integrity and consistency while enabling performance optimizations.
-
-::: note
-While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](/server/v24.10%20Preview%201/features/streams.html#deleting-streams-and-events)
-:::
 
 ## Fine-grained Event Streams
 

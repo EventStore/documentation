@@ -142,7 +142,7 @@ title: EventStoreDB Feature List
 
 - [EventStoreDB Client Documentation](/clients/grpc/appending-events.html#handling-concurrency): Explore how to use these features with EventStoreDB clients.
   
-- [Event Store Essentials](https://academy.eventstore.com/essentials): Understand more about these features in this in-depth guide.
+- [Event Store Essentials](https://academy.eventstore.com/essentials): Developer greater understanding of these features in this in-depth guide.
 
 - [EventStoreDB From Scratch](https://academy.eventstore.com/from-scratch): Get hands-on and build a basic EventStoreDB application with this training series.
 
