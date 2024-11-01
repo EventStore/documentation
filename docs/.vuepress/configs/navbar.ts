@@ -4,7 +4,7 @@ import type {NavbarOptions} from "vuepress-theme-hope";
 export const navbarEn: NavbarOptions = [
     {
         text: "Getting Started",
-        link: "/getting-started/",
+        link: "/getting-started/quickstart/",
         icon: "hugeicons:start-up-02"
     },
     {

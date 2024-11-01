@@ -4,13 +4,13 @@ import type {EsSidebarOptions} from "../lib/types";
 export const sidebarEn: EsSidebarOptions = {
   "/getting-started/": [
     {
-      text: "Introduction",
-      link: "/getting-started/",
+      text: "Quickstart",
+      link: "/getting-started/quickstart/",
       group: "Getting Started",
     },
     {
-      text: "Quickstart",
-      link: "/getting-started/quickstart/",
+      text: "Introduction",
+      link: "/getting-started/introduction.md",
       group: "Getting Started",
     },
     {
