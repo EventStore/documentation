@@ -132,3 +132,10 @@
 /server/v24.2/metrics.html#opentelemetry-exporter /server/v24.6/diagnostics/integrations.html#opentelemetry-exporter 301!
 /server/v24.2/diagnostics.html#logs-download /server/v24.6/diagnostics/logs.html#logs-download #301!
 /server/v23.10/metrics.html /server/v24.6/diagnostics/metrics.html 301!
+
+
+# ########################################################################################################################
+# Getting Started 
+# ########################################################################################################################
+
+/getting-started.html                   /getting-started/quickstart/                    301!
