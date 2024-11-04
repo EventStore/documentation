@@ -125,7 +125,7 @@ To append an event to EventStoreDB, it must be associated with a specific stream
 ::: note
 To learn more about streams and its other basic features, [click here](/getting-started/features/eventstoredb-core-features.html#stream-indexing).
 
-To learn more about streams, its structure and behaviors in detail, [click here](/server/v24.10%20Preview%201/features/streams.html).
+To learn more about streams, its structure and behaviors in detail, [click here](@server/features/streams.html).
 :::
 
 ### Event Stream Design
@@ -152,7 +152,7 @@ Designing streams and deciding which events belong to which stream involves bala
 
 - [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Learn more about the details around events, streams, and the event log.
 
-- [EventStoreDB Server Documentation - Stream](/server/v24.10%20Preview%201/features/streams.html): Gain a deeper understanding of how stream works.
+- [EventStoreDB Server Documentation - Stream](@server/features/streams.html): Gain a deeper understanding of how stream works.
 
 - [EventStoreDB Client Documentation](/clients/grpc/getting-started.html): Understand how to work with events and streams programmatically.
 

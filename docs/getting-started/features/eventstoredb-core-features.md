@@ -11,7 +11,7 @@ EventStoreDB is designed to be immutable. Once an event is appended, its type, b
 The same principle applies to the event log and stream; once an event is appended, its position is locked. Events are never reordered or shifted within the log or stream. This immutability guarantees data integrity and consistency while enabling performance optimizations.
 
 ::: note
-While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](/server/v24.10%20Preview%201/features/streams.html#deleting-streams-and-events)
+While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](@server/features/streams.html#deleting-streams-and-events)
 :::
 
 ## Stream Indexing
@@ -40,7 +40,7 @@ Conceptually, this resembles a simple key-value store, where the stream's ID is 
 These pointers don't store the events but reference their positions in the event log. It's important to remember that neither the stream nor the index physically holds the actual events.
 
 ::: note
-To learn more about how indexing works in detail, [click here](/server/v24.10%20Preview%201/configuration/indexes.html). 
+To learn more about how indexing works in detail, [click here](@server/configuration/indexes.html). 
 :::
 
 ## Guaranteed Consistent Ordering in Event Log and Stream
@@ -105,8 +105,8 @@ To learn more about how use optimistic concurrency control, [click here](/client
 
 - [Event Store Essentials](https://academy.eventstore.com/essentials): Understand more about these features in this in-depth guide.
 
-- [EventStoreDB Server Documentation - Indexing](/server/v24.10%20Preview%201/configuration/indexes.html): Learn more about how stream and indexing work in detail.
+- [EventStoreDB Server Documentation - Indexing](@server/configuration/indexes.html): Learn more about how stream and indexing work in detail.
   
 - [EventStoreDB Client Documentation - Handling Concurrency](/clients/grpc/appending-events.html#handling-concurrency): Understand how use optimistic concurrency control with an EventStoreDB client.
 
-- [EventStoreDB Server Documentation](https://developers.eventstore.com/server/v24.10%20Preview%201/quick-start/): Gain a deeper understanding about other EventStoreDB features. 
+- [EventStoreDB Server Documentation](@server/quick-start/): Gain a deeper understanding about other EventStoreDB features.

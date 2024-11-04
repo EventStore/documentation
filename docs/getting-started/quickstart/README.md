@@ -138,7 +138,7 @@ docker run                        # Start a new Docker container using the 'dock
 4. Feel free to modify and re-run the script in your Codespace.
 
 ::: info
-For more information about other EventStoreDB parameters and settings, [click here](https://developers.eventstore.com/server/v24.10%20Preview%201/configuration/).
+For more information about other EventStoreDB parameters and settings, [click here](@server/configuration/).
 :::
 
 :::: info
