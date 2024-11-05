@@ -70,7 +70,7 @@ highlights:
       link: /client/Rust
 
     - title: Go
-      icon: skill-icons:golang
+      icon: skill-icons:go
       details: Connect EventStoreDB with your Go applications using the Go client.
       link: /client/Go
 
