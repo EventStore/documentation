@@ -93,8 +93,6 @@ For example, a financial institution has a stream representing a digital wallet 
 
 </div>
 
-To achieve this, when an event is appended to a stream, the event should include the stream's expected version number (essentially the stream's last known event number). If this version matches the current stream version, the append will be successful. If it doesn't match, the append fails due to a conflict, signaling that another writer has already appended an event and the stream has changed. This mechanism effectively avoids race condition issues, ensuring that no updates are lost or overwritten unintentionally.
-
 Optimistic concurrency control also operates without requiring resource locks, meaning these protections come without the performance hit of managing locks. This helps maintain high performance even when multiple concurrent writes occur.
 
 ::: note
