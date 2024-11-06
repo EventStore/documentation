@@ -45,6 +45,20 @@ export const notices: NoticePluginOptions = {
             content: "EventStoreDB v22.10 is out of support. Upgrade to the latest server version.",
             confirm: true,
             actions: [actionLatest]
+        },
+        {
+            path: "/server/v24.6/",
+            title: "EventStoreDB v24.6",
+            content: "EventStoreDB v24.6 is out of support. Upgrade to the latest server version.",
+            confirm: true,
+            actions: [actionLatest]
+        },
+        {
+            path: "/server/v24.2/",
+            title: "EventStoreDB v24.2",
+            content: "EventStoreDB v24.2 is out of support. Upgrade to the latest server version.",
+            confirm: true,
+            actions: [actionLatest]
         }
     ]
 }
