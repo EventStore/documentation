@@ -27,7 +27,7 @@ To learn more about the core features of EventStoreDB, [click here](/getting-sta
 
 ## Why EventStoreDB?
 
-Traditional databases often focus on the current state and often lack the means to manage historical events effectively.
+Traditional databases often focus on the current state and do this by overwriting data, discarding valuable information about the past.
 
 In contrast, EventStoreDB keeps a complete history of changes, providing organizations with richer, and more contextual data that supports deeper insights - critical in today’s AI and data-driven environment.
 
