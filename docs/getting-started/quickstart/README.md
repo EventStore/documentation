@@ -156,10 +156,10 @@ To view the source code in Github, click the link below:
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-.NET)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Node.js)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -296,10 +296,10 @@ To view the source code in Github, click the link below:
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-.NET)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Node.js)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -538,10 +538,10 @@ To view the source code in Github, click the link below:
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-.NET)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Node.js)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -803,10 +803,10 @@ To view the source code in Github, click the link below:
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-.NET)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Node.js)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
 :::
 
 ::::
