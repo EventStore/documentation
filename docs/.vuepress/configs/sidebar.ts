@@ -20,14 +20,13 @@ export const sidebarEn: EsSidebarOptions = {
     },
     {
       text: "Features",
+      link: "/getting-started/features/eventstoredb-feature-list.md",
       group: "Getting Started",
-      children: [
-        "/getting-started/features/eventstoredb-core-features.md",
-        "/getting-started/features/eventstoredb-feature-list.md"
-      ]
     },
     {
-      text: "Additional Reading",
+      text: "Evaluate",
+      collapsible: true,
+      expanded: false,
       group: "Getting Started",
       children: [
         "/getting-started/additional-reading/state-vs-event-based-data-model.md",
