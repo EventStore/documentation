@@ -59,7 +59,7 @@ The event log is an append-only sequence of events stored within the database. I
 
 </div>
 
-It is append-only. New events are added exclusively to the end of the log—never at the start or in the middle:
+New events are added exclusively to the end of the log—never at the start or in the middle:
 
 <div style="display: flex; max-height: 200px;">
 
@@ -81,7 +81,7 @@ EventStoreDB's event log can store billions of events, many of which might be un
 
 Events are commonly arranged into smaller and logically related groups known as **event streams** to keep them organized and speed up retrieval.
 
-Event stream is a sequenced group of events from the event log that is identified by a stream ID:
+An event stream is a sequenced group of events from the event log that is identified by a stream ID:
 
 <div style="display: flex; max-height: 200px;">
 
@@ -136,7 +136,7 @@ In EventStoreDB, a stream typically represents an instance of an object, entity,
 | --- | --- |
 | loan-123 | Represents loan application ID#123 |
 | customer-321 | Represents customer ID#321 |
-| payment-222 | Represents payment ID#222 from external payment gateway |
+| payment-222 | Represents payment process ID#222 from an external payment gateway |
 
 However, there are cases where it makes sense for a stream to encompass a more extensive set of events. In these cases, streams may align to a broader set of events: 
 
@@ -181,7 +181,7 @@ An EventStoreDB index entry is automatically created whenever an event is append
 
 Conceptually, this resembles a simple key-value store, where the stream's ID is the key, and the value is a set of pointers that direct you to the events within the event log.
 
-These pointers don't store the events but reference their positions in the event log. It's important to remember that neither the stream nor the index physically holds the actual events.
+These pointers don't store the events but reference their positions in the event log. It's important to remember that neither the stream nor the index physically hold the actual events.
 
 ::: note
 To learn more about how indexing works in detail, [click here](@server/configuration/indexes.html). 
@@ -215,15 +215,15 @@ Organizing events into smaller, more focused streams enhances the speed and effi
 
 For example, a business can maintain dedicated streams for each of its millions of customers. Each stream would contain the complete history of interactions across various systems, providing an unparalleled, detailed view of the customer journey.
 
-Without fine-grained streams, events are lumped into longer, disorganized streams, leading to a mix of loosely related data. This makes locating and processing events for a specific customer slower and less efficient, as unrelated events have to be sifted through simultaneously.
+Without fine-grained streams, events are lumped into longer, disorganized streams, leading to a mix of loosely related data. This makes locating and processing events for a specific customer slower and less efficient, as unrelated events must be sifted through simultaneously.
 
 ## Optimistic Concurrency Control
 
 With EventStoreDB, optimistic concurrency control can be applied to prevent accidental overwrites or lost updates due to race conditions.
 
-This is especially important when multiple writers try to append to the same stream concurrently without checking if the stream has already changed. This is crucial to maintain any business constraints that must be enforced across the events in a stream.
+This is especially important when multiple writers try to append to the same stream concurrently without checking if the stream has already changed. This is crucial to enforce business constraints across events in a stream.
 
-For example, a financial institution has a stream representing a digital wallet where overdrawing is prohibited. The stream only contains deposit and withdrawal events regarding the wallet. EventStoreDB prevents someone from making thousands of huge withdrawals simultaneously to draw funds that are not available in reality.
+For example, a financial institution has a stream representing a digital wallet where overdrawing is prohibited. The stream contains deposit and withdrawal events specific to the wallet. EventStoreDB prevents someone from making multiple withdrawals simultaneously to draw funds that are not available.
 
 <div style="display: flex; max-height: 250px;">
 
