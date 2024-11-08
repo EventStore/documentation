@@ -6,7 +6,7 @@ title: EventStoreDB Feature List
 
 ## Core Features
 
-### <HopeIcon icon="solar:database-linear" size="1em"/> Event-Native Database
+### <HopeIcon icon="solar:database-linear" size="1.25em"/> Event-Native Database
 
 | Feature Name | Description |
 | --- | --- |
@@ -20,7 +20,7 @@ title: EventStoreDB Feature List
 | [Optimistic Concurrency Control](./concepts.md#optimistic-concurrency-control) | Concurrent appends that lead to lost updates can be prevented with optimistic concurrency control. This is done in a lock-free manner, to reduce contention and performance overhead. |
 | [Multiple Hosting Options](https://www.eventstore.com/downloads) | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/) or self-managed on Linux, Windows, macOS, or with Docker |
 
-### <HopeIcon icon="streamline:projector-board" size="1em"/> Projection
+### <HopeIcon icon="streamline:projector-board" size="1.25em"/> Projection
 
 | Feature Name | Description |
 | --- | --- |
@@ -29,14 +29,14 @@ title: EventStoreDB Feature List
 | [By Correlation ID System Projection](@server/features/projections/system.md#by-correlation-id) | Quickly retrieve indexed events with the same correlation ID, enabling data lineage and root cause analysis. |
 | [User-Defined Projection](@server/features/projections/custom.md) | Allows users to define custom projections in javascript to transform or filter events to another stream or a state programatically. |
 
-### <HopeIcon icon="uil:message" size="1em"/> Subscription
+### <HopeIcon icon="uil:message" size="1.25em"/> Subscription
 
 | Feature Name | Description |
 | --- | --- |
 | [Catch-up Subscription](/clients/grpc/subscriptions.md) | Self-managed subscription of filtered events by stream or event type from a particular position or in real-time as events occur. |
 | [Persistent Subscription](@server/features/persistent-subscriptions.md) | Server-managed subscription that supports multiple competing consumers, checkpointing, retries, and parking (i.e., dead-lettering) |
 
-### <HopeIcon icon="vaadin:cluster" size="1em"/> Connector
+### <HopeIcon icon="vaadin:cluster" size="1.25em"/> Connector
 
 | Feature Name | Description |
 | --- | --- |
@@ -46,14 +46,14 @@ title: EventStoreDB Feature List
 | RabbitMQ Sink | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a RabbitMQ exchange. Supports broker acknowledgment and basic authentication over a secured connection. |
 | MongoDB Sink | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a MongoDB collection or document. Supports basic authentication. |
 
-### <HopeIcon icon="grommet-icons:cluster" size="1em"/> Clustering
+### <HopeIcon icon="grommet-icons:cluster" size="1.25em"/> Clustering
 
 | Feature Name | Description |
 | --- | --- |
 | [High Availability Cluster](@server/configuration/cluster.md) | Ensures high availability and fault tolerance by using secure, quorum-based replication, leader election via the gossip protocol, and configurable node roles and communication, with each node independently maintaining data without shared disks. |
 | [Read-only Replica](@server/configuration/cluster.md) | Cluster nodes that replicate data asynchronously from the cluster but do not participate in write operations, elections, or quorum. Used primarily to scale read operations. |
 
-### <HopeIcon icon="material-symbols:sdk-outline" size="1em"/> Interface and SDK
+### <HopeIcon icon="material-symbols:sdk-outline" size="1.25em"/> Interface and SDK
 
 | Feature Name | Description |
 | --- | --- |
@@ -62,7 +62,7 @@ title: EventStoreDB Feature List
 | [HTTP API](/http-api/v24.10%20Preview%201/api.md) | Offers simple and basic RESTful administration of EventStoreDB. |
 | TCP API | <Badge type="note" vertical="middle" text="Deprecated"/><br><br>A deprecated API that provides low-level, high throughput TCP access to EventStoreDB. Not supported for releases after 23.10. |
 
-### <HopeIcon icon="tdesign:system-interface" size="1em"/> User Interface
+### <HopeIcon icon="tdesign:system-interface" size="1.25em"/> User Interface
 
 | Feature Name | Description |
 | --- | --- |
@@ -71,7 +71,7 @@ title: EventStoreDB Feature List
 
 ## Security
 
-### <HopeIcon icon="carbon:two-factor-authentication" size="1em"/> Authentication
+### <HopeIcon icon="carbon:two-factor-authentication" size="1.25em"/> Authentication
 
 | Feature Name | Description |
 | --- | --- |
@@ -80,7 +80,7 @@ title: EventStoreDB Feature List
 | [LDAP Authentication](@server/configuration/security.md#ldap-authentication)  |<Badge type="info" vertical="middle" text="License Required"/><br><br> Authenticate users against LDAP-based directory services. |
 | [User X.509 Certificates](@server/configuration/security.md#user-x-509-certificates) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Support user-based X.509 certificates for authentication. |
 
-### <HopeIcon icon="mdi:account-security-outline" size="1em"/> Authorization
+### <HopeIcon icon="mdi:account-security-outline" size="1.25em"/> Authorization
 
 | Feature Name | Description |
 | --- | --- |
@@ -88,7 +88,7 @@ title: EventStoreDB Feature List
 | [Stream Access Control List](@server/configuration/security.md#access-control-lists) | Define which users or groups can read, write, or delete on a stream level. |
 | [Stream Access Policy](@server/configuration/security.md#stream-policy-authorization-plugin) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Define access policies to control who can read, write, or delete streams for multiple streams using stream rules. |
 
-### <HopeIcon icon="streamline:device-database-encryption-1" size="1em"/> Encryption
+### <HopeIcon icon="streamline:device-database-encryption-1" size="1.25em"/> Encryption
 
 | Feature Name | Description |
 | --- | --- |
@@ -99,13 +99,13 @@ title: EventStoreDB Feature List
 
 ## Operations
 
-### <HopeIcon icon="uil:setting" size="1em"/> Configuration
+### <HopeIcon icon="uil:setting" size="1.25em"/> Configuration
 
 | Feature Name | Description |
 | --- | --- |
 | [Multiple Configuration Options](@server/configuration/) | Configure EventStoreDB through YAML, environment variables, or the command line |
 
-### <HopeIcon icon="lucide-lab:broom" size="1em"/> Data Cleanup and Housekeeping
+### <HopeIcon icon="lucide-lab:broom" size="1.25em"/> Data Cleanup and Housekeeping
 
 | Feature Name | Description |
 | --- | --- |
@@ -113,7 +113,7 @@ title: EventStoreDB Feature List
 | [Scavenging](@server/operations/scavenge.md) | Manually reclaim disk space for compliance or storage purposes by completely removing truncated and deleted streams from disk. |
 | [Auto-scavenging](@server/operations/auto-scavenge.md) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Automatically schedule and coordinate scavenging for a cluster in a way that minimizes performance impact. |
 
-### <HopeIcon icon="eos-icons:monitoring" size="1em"/> Monitoring
+### <HopeIcon icon="eos-icons:monitoring" size="1.25em"/> Monitoring
 
 | Feature Name | Description |
 | --- | --- |
@@ -123,14 +123,14 @@ title: EventStoreDB Feature List
 | [Metrics with Prometheus](@server/diagnostics/metrics.md) | Allow systems to scrape metrics in Prometheus format for monitoring over an HTTP endpoint. |
 | [Metrics with OpenTelemetry Exporter](@server/diagnostics/integrations.md#opentelemetry-exporter) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Export and push metrics to an endpoint via the OpenTelemetry protocol. |
 
-### <HopeIcon icon="clarity:backup-line" size="1em"/> Backup, Replication, and Migration
+### <HopeIcon icon="clarity:backup-line" size="1.25em"/> Backup, Replication, and Migration
 
 | Feature Name | Description |
 | --- | --- |
 | Backup and Restore | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
 | [Event Store Replicator](https://replicator.eventstore.org/) | Facilitate replication or migration of data between different EventStoreDB clusters or instances. |
 
-### <HopeIcon icon="carbon:tools" size="1em"/> Administrative Tool
+### <HopeIcon icon="carbon:tools" size="1.25em"/> Administrative Tool
 
 | Feature Name | Description |
 | --- | --- |
