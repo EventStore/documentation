@@ -238,7 +238,7 @@ For example, a financial institution has a stream representing a digital wallet 
 Optimistic concurrency control also operates without requiring resource locks, meaning these protections come without the performance hit of managing locks. This helps maintain high performance even when multiple concurrent writes occur.
 
 ::: note
-To learn more about how use optimistic concurrency control, [click here](/clients/grpc/appending-events.html#handling-concurrency)
+To learn more about how to apply optimistic concurrency control, [click here](/clients/grpc/appending-events.html#handling-concurrency)
 :::
 
 ## Next Steps
