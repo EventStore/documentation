@@ -29,10 +29,10 @@ export const sidebarEn: EsSidebarOptions = {
       expanded: false,
       group: "Getting Started",
       children: [
-        "/getting-started/additional-reading/state-vs-event-based-data-model.md",
-        "/getting-started/additional-reading/key-benefits-of-eventstoredb.md",
-        "/getting-started/additional-reading/where-eventstoredb-fits-in-your-business.md",
-        "/getting-started/additional-reading/role-of-eventstoredb-in-a-data-pipeline.md",
+        "/getting-started/evaluate/state-vs-event-based-data-model.md",
+        "/getting-started/evaluate/key-benefits-of-eventstoredb.md",
+        "/getting-started/evaluate/where-eventstoredb-fits-in-your-business.md",
+        "/getting-started/evaluate/role-of-eventstoredb-in-a-data-pipeline.md",
       ]
     },
   ],

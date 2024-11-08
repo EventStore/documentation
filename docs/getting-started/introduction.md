@@ -46,7 +46,7 @@ In a system, any object can represented in one of two distinct ways: by its curr
 
 Both perspectives are important: the current balance can answer the "what", while historical transactions answer the "why".
 
-To learn more about this topic, [click here](/getting-started/additional-reading/state-vs-event-based-data-model.html).
+To learn more about this topic, [click here](/getting-started/evaluate/state-vs-event-based-data-model.html).
 :::
 
 ## Who Uses EventStoreDB?
@@ -54,7 +54,7 @@ To learn more about this topic, [click here](/getting-started/additional-reading
 Data engineers can provide context-rich events from EventStoreDB to data pipelines to analyze historical and behavioral trends, uncovering patterns that traditional databases often miss. These patterns can, for example, reveal why a customer churned or highlight behaviors that lead to high-value contracts.
 
 ::: note
-To learn more about EventStoreDB's role in a data pipeline, [click here](/getting-started/additional-reading/role-of-eventstoredb-in-a-data-pipeline.html).
+To learn more about EventStoreDB's role in a data pipeline, [click here](/getting-started/evaluate/role-of-eventstoredb-in-a-data-pipeline.html).
 :::
 
 Application developers can leverage EventStoreDB’s granular events to build real-time, distributed enterprise applications and break down tightly coupled systems. Events are typically simpler, self-contained, and independent. Unlike the tables and rows in traditional databases that are often interdependent with various functions.
@@ -66,12 +66,12 @@ EventStoreDB is valuable for critical enterprise applications and data pipelines
 Industries such as finance, healthcare, supply chain, and manufacturing benefit from EventStoreDB, as it supports flexible, scalable solutions with a complete audit trail. This enables businesses to maintain clear, comprehensive system oversight, which is essential for meeting compliance requirements and adapting to changing needs.
 
 ::: note
-To learn more where EventStoreDB fits in your business, [click here](/getting-started/additional-reading/where-eventstoredb-fits-in-your-business.html).
+To learn more where EventStoreDB fits in your business, [click here](/getting-started/evaluate/where-eventstoredb-fits-in-your-business.html).
 :::
 
 ## Next Steps
 
-- [Key Benefits of EventStoreDB](/getting-started/additional-reading/key-benefits-of-eventstoredb.html): Learn what EventStoreDB can do for you. 
+- [Key Benefits of EventStoreDB](/getting-started/evaluate/key-benefits-of-eventstoredb.html): Learn what EventStoreDB can do for you. 
 
 - [Event Store Essentials](https://academy.eventstore.com/essentials): Understand fundamental concepts around EventStoreDB.
 
