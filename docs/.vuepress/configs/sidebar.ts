@@ -15,12 +15,12 @@ export const sidebarEn: EsSidebarOptions = {
     },
     {
       text: "Concepts",
-      link: "/getting-started/concepts/",
+      link: "/getting-started/concepts.md",
       group: "Getting Started",
     },
     {
       text: "Features",
-      link: "/getting-started/features/eventstoredb-feature-list.md",
+      link: "/getting-started/features.md",
       group: "Getting Started",
     },
     {

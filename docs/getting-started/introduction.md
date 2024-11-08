@@ -22,7 +22,9 @@ EventStoreDB offers the following features:
 | Client SDK | Available in Python, Java, .NET, Node.js, Go, and Rust. |
 
 ::: note
-To learn more about the core features of EventStoreDB, [click here](/getting-started/features/eventstoredb-core-features.html).
+To learn more about the concepts of EventStoreDB, such as events, event log, and event stream, [click here](/getting-started/concepts.md).
+
+To learn more about the features of EventStoreDB, [click here](/getting-started/features.md).
 :::
 
 ## Why EventStoreDB?

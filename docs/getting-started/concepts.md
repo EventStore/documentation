@@ -123,8 +123,6 @@ To append an event to EventStoreDB, it must be associated with a specific stream
 
 
 ::: note
-To learn more about streams and its other basic features, [click here](/getting-started/features/eventstoredb-core-features.html#stream-indexing).
-
 To learn more about streams, its structure and behaviors in detail, [click here](@server/features/streams.html).
 :::
 
