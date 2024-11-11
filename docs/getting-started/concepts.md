@@ -40,7 +40,7 @@ An event usually represents a state change in an application, its entities, or b
 </div>
 
 ::: note
-To learn more about how to perform basic operations around events, [click here](/clients/grpc/appending-events.html).
+To learn more about how to perform basic operations around events, [click here](/clients/grpc/appending-events.md).
 :::
 
 ## Event Log
@@ -123,7 +123,7 @@ To append an event to EventStoreDB, it must be associated with a specific stream
 
 
 ::: note
-To learn more about streams, its structure and behaviors in detail, [click here](@server/features/streams.html).
+To learn more about streams, its structure and behaviors in detail, [click here](@server/features/streams.md).
 :::
 
 ### Event Stream Design
@@ -153,7 +153,7 @@ EventStoreDB is designed to be immutable. Once an event is appended, its type, b
 The same principle applies to the event log and stream; once an event is appended, its position is locked. Events are never reordered or shifted within the log or stream. This immutability guarantees data integrity and consistency while enabling performance optimizations.
 
 ::: note
-While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](@server/features/streams.html#deleting-streams-and-events)
+While events can not be updated, streams can be truncated for housekeeping purposes. To learn how this works, [click here](@server/features/streams.md#deleting-streams-and-events)
 :::
 
 ## Stream Indexing
@@ -182,7 +182,7 @@ Conceptually, this resembles a simple key-value store, where the stream's ID is 
 These pointers don't store the events but reference their positions in the event log. It's important to remember that neither the stream nor the index physically hold the actual events.
 
 ::: note
-To learn more about how indexing works in detail, [click here](@server/configuration/indexes.html). 
+To learn more about how indexing works in detail, [click here](@server/configuration/indexes.md). 
 :::
 
 ## Guaranteed Consistent Ordering in Event Log and Stream
@@ -238,7 +238,7 @@ For example, a financial institution has a stream representing a digital wallet 
 Optimistic concurrency control also operates without requiring resource locks, meaning these protections come without the performance hit of managing locks. This helps maintain high performance even when multiple concurrent writes occur.
 
 ::: note
-To learn more about how to apply optimistic concurrency control, [click here](/clients/grpc/appending-events.html#handling-concurrency)
+To learn more about how to apply optimistic concurrency control, [click here](/clients/grpc/appending-events.md#handling-concurrency)
 :::
 
 ## Next Steps
@@ -247,14 +247,14 @@ To learn more about how to apply optimistic concurrency control, [click here](/c
 
 - [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Learn more about the details around events, streams, and the event log.
 
-- [EventStoreDB Server Documentation](@server/quick-start/): Gain a deeper understanding about other EventStoreDB features.
+- [EventStoreDB Server Documentation](@server/quick-start/README.md): Gain a deeper understanding about other EventStoreDB features.
 
-- [EventStoreDB Server Documentation - Stream](@server/features/streams.html): Gain a deeper understanding of how stream works.
+- [EventStoreDB Server Documentation - Stream](@server/features/streams.md): Gain a deeper understanding of how stream works.
 
-- [EventStoreDB Server Documentation - Indexing](@server/configuration/indexes.html): Learn more about how stream and indexing work in detail.
+- [EventStoreDB Server Documentation - Indexing](@server/configuration/indexes.md): Learn more about how stream and indexing work in detail.
 
-- [EventStoreDB Client Documentation](/clients/grpc/getting-started.html): Understand how to work with events and streams programmatically.
+- [EventStoreDB Client Documentation](/clients/grpc/getting-started.md): Understand how to work with events and streams programmatically.
 
-- [EventStoreDB Client Documentation - Handling Concurrency](/clients/grpc/appending-events.html#handling-concurrency): Understand how use optimistic concurrency control with an EventStoreDB client.
+- [EventStoreDB Client Documentation - Handling Concurrency](/clients/grpc/appending-events.md#handling-concurrency): Understand how use optimistic concurrency control with an EventStoreDB client.
 
 - [An End-To-End Example With EventStoreDB](https://www.youtube.com/watch?v=vIUw-jKpKfQ) Watch how to build an application with EventStoreDB

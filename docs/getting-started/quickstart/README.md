@@ -138,7 +138,7 @@ docker run                        # Start a new Docker container using the 'dock
 4. Feel free to modify and re-run the script in your Codespace.
 
 ::: info
-For more information about other EventStoreDB parameters and settings, [click here](@server/configuration/).
+For more information about other EventStoreDB parameters and settings, [click here](@server/configuration/README.md).
 :::
 
 :::: info
@@ -278,7 +278,7 @@ esdbclient==1.0.19
 
 
 ::: note
-The version of the EventStoreDB client above may be outdated. For more information about the client, [click here](@clients/grpc/getting-started.html).
+The version of the EventStoreDB client above may be outdated. For more information about the client, [click here](@clients/grpc/getting-started.md).
 :::
 
 :::: info
@@ -520,7 +520,7 @@ await client.appendToStream(eventStream, event);  // append the event to the str
 5. Feel free to modify and re-run the sample in your Codespace.
 
 ::: info
-To learn more about other EventStoreDB client functions, [click here](@clients/grpc/getting-started.html).
+To learn more about other EventStoreDB client functions, [click here](@clients/grpc/getting-started.md).
 :::
 
 :::: info
@@ -785,7 +785,7 @@ for await (const resolvedEvent of events) {                                  // 
 5. Feel free to modify and re-run the sample in your Codespace.
 
 ::: info
-To learn more about other EventStoreDB client functions, [click here](@clients/grpc/getting-started.html).
+To learn more about other EventStoreDB client functions, [click here](@clients/grpc/getting-started.md).
 :::
 
 :::: info
@@ -831,11 +831,11 @@ Now that you've completed the quickstart, you may want to explore the following:
 
 - [EventStoreDB "From Scratch" Series](https://academy.eventstore.com/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
 
-- [Install EventStoreDB locally](@server/quick-start/installation.html): Learn how to installEventStoreDB on your local machine for deeper exploration and integration with your projects.
+- [Install EventStoreDB locally](@server/quick-start/installation.md): Learn how to installEventStoreDB on your local machine for deeper exploration and integration with your projects.
 
-- [EventStoreDB Client SDK Documentation](@clients/grpc/getting-started.html): Understand how to interact with EventStoreDB programmatically with EventStoreDB clients.
+- [EventStoreDB Client SDK Documentation](@clients/grpc/getting-started.md): Understand how to interact with EventStoreDB programmatically with EventStoreDB clients.
 
-- [EventStoreDB Server Configuration Documentation](@server/configuration/): Explore how to configure EventStoreDB for your environment.
+- [EventStoreDB Server Configuration Documentation](@server/configuration/README.md): Explore how to configure EventStoreDB for your environment.
 
 - [Event Store Cloud](https://www.eventstore.com/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
 
