@@ -29,10 +29,9 @@ export const sidebarEn: EsSidebarOptions = {
       expanded: false,
       group: "Getting Started",
       children: [
+        "/getting-started/evaluate/business-process-support.md",
         "/getting-started/evaluate/state-vs-event-based-data-model.md",
-        "/getting-started/evaluate/key-benefits-of-eventstoredb.md",
-        "/getting-started/evaluate/where-eventstoredb-fits-in-your-business.md",
-        "/getting-started/evaluate/role-of-eventstoredb-in-a-data-pipeline.md",
+        "/getting-started/evaluate/data-pipeline.md",
       ]
     },
   ],
