@@ -18,7 +18,7 @@ title: EventStoreDB Feature List
 | [Stream Indexing](@server/configuration/indexes.md) | Events in streams are indexed to provide fast access to groups of events in the event log. |
 | [Fine Grained Stream](./concepts.md#fine-grained-event-streams) | EventStore supports billions of streams, allowing granular event organization to efficiently track the lifecycle of every distinct entity within a system. |
 | [Optimistic Concurrency Control](./concepts.md#optimistic-concurrency-control) | Concurrent appends that lead to lost updates can be prevented with optimistic concurrency control. This is done in a lock-free manner, to reduce contention and performance overhead. |
-| [Multiple Hosting Options](https://www.eventstore.com/downloads) | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/) or self-managed on Linux, Windows, macOS, or with Docker |
+| [Multiple Hosting Options](https://www.eventstore.com/downloads) | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/README.md) or self-managed on Linux, Windows, macOS, or with Docker |
 
 ### <HopeIcon icon="streamline:projector-board" size="1.25em"/> Projection
 
@@ -40,7 +40,7 @@ title: EventStoreDB Feature List
 
 | Feature Name | Description |
 | --- | --- |
-| [Connector](@server/features/connectors/) | <Badge type="tip" vertical="middle" text="v24.10"/><br><br>Fully configurable integration to external systems that can push events from EventStoreDB in real-time. Supports at least once delivery, retry, event filtering, event transformation, automatic checkpointing, leases, and high availability. |
+| [Connector](@server/features/connectors/README.md) | <Badge type="tip" vertical="middle" text="v24.10"/><br><br>Fully configurable integration to external systems that can push events from EventStoreDB in real-time. Supports at least once delivery, retry, event filtering, event transformation, automatic checkpointing, leases, and high availability. |
 | [HTTP Sink](@server/features/connectors/sinks/http.md) | <Badge type="tip" vertical="middle" text="v24.10"/><br><br>Publishes events from EventStoreDB to an HTTP endpoint. |
 | [Kafka Sink](@server/features/connectors/sinks/kafka.md) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to Kafka topic or partition using a key found in the events. Supports broker acknowledgment and basic authentication. |
 | RabbitMQ Sink | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a RabbitMQ exchange. Supports broker acknowledgment and basic authentication over a secured connection. |
@@ -59,7 +59,7 @@ title: EventStoreDB Feature List
 | --- | --- |
 | [EventStoreDB Client](/clients/grpc/getting-started.md) | Client SDKs are available in Python, Java, .NET, Node.js, Go, and Rust to use and administer EventStoreDB. |
 | gRPC API | Provides an API based on the gRPC protocol for high performance, low latency, and streaming support for all EventStoreDB operations |
-| [HTTP API](/http-api/v24.10%20Preview%201/api.md) | Offers simple and basic RESTful administration of EventStoreDB. |
+| [HTTP API](@httpapi/api.md) | Offers simple and basic RESTful administration of EventStoreDB. |
 | TCP API | <Badge type="note" vertical="middle" text="Deprecated"/><br><br>A deprecated API that provides low-level, high throughput TCP access to EventStoreDB. Not supported for releases after 23.10. |
 
 ### <HopeIcon icon="tdesign:system-interface" size="1.25em"/> User Interface
@@ -103,7 +103,7 @@ title: EventStoreDB Feature List
 
 | Feature Name | Description |
 | --- | --- |
-| [Multiple Configuration Options](@server/configuration/) | Configure EventStoreDB through YAML, environment variables, or the command line |
+| [Multiple Configuration Options](@server/configuration/README.md) | Configure EventStoreDB through YAML, environment variables, or the command line |
 
 ### <HopeIcon icon="lucide-lab:broom" size="1.25em"/> Data Cleanup and Housekeeping
 
@@ -138,7 +138,7 @@ title: EventStoreDB Feature List
 
 ## Next Steps
 
-- [EventStoreDB Server Documentation](@server/quick-start/): Gain a deeper understanding about other EventStoreDB features. 
+- [EventStoreDB Server Documentation](@server/quick-start/README.md): Gain a deeper understanding about other EventStoreDB features. 
 
 - [EventStoreDB Client Documentation](/clients/grpc/appending-events.md#handling-concurrency): Explore how to use these features with EventStoreDB clients.
   

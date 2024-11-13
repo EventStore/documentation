@@ -16,9 +16,9 @@ EventStoreDB offers the following features:
 |---------|-------------|
 | [Append-only Event Log](./concepts.md#event-log) | A durable, sequential, and immutable log that captures events in a consistent order. |
 | [Streams](./concepts.md#event-stream) | Groups and indexes events to organize and speed up retrieval. |
-| [Subscription](@server/features/persistent-subscriptions.md) and [Connectors](@server/features/connectors/) | Delivers events to external systems through push or pull options. |
-| [Projection](@server/features/projections/) | Transforms and filters events into different streams or state. |
-| [Multiple Hosting Options](https://eventstore.com/downloads) | Fully managed with [Event Store Cloud](/cloud/), or self-managed on Linux, Windows, macOS, or with Docker. |
+| [Subscription](@server/features/persistent-subscriptions.md) and [Connectors](@server/features/connectors/README.md) | Delivers events to external systems through push or pull options. |
+| [Projection](@server/features/projections/README.md) | Transforms and filters events into different streams or state. |
+| [Multiple Hosting Options](https://eventstore.com/downloads) | Fully managed with [Event Store Cloud](/cloud/README.md), or self-managed on Linux, Windows, macOS, or with Docker. |
 | [Client SDK](@clients/grpc/getting-started.md) | Available in Python, Java, .NET, Node.js, Go, and Rust. |
 
 ::: note
