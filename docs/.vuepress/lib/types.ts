@@ -3,6 +3,7 @@ import type {NavItemOptions, SidebarLinkOptions} from "vuepress-theme-hope";
 export interface EsSidebarGroupOptions extends NavItemOptions {
     group?: string;
     collapsible?: boolean;
+    expanded?: boolean;
     title?: string;
     version?: string;
     prefix?: string;

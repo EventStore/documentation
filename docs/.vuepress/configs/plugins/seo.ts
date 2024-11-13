@@ -34,6 +34,7 @@ export const seoPlugin: SeoPluginOptions = {
             .with("cloud", () => "Cloud")
             .with("http-api", () => "HTTP API")
             .with("connectors", () => "Connectors")
+            .with("getting-started", () => "Getting Started")
             .otherwise(() => category);
         head.push(["meta", {name: "es:category", content: readableCategory}]);
         console.log(`Path: ${page.pathInferred}; Category: ${readableCategory}`);

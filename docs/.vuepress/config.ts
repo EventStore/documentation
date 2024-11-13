@@ -34,6 +34,7 @@ export default defineUserConfig({
     extendsMarkdown: md => {
         md.use(replaceLinkPlugin, {
             replaceLink: (link: string, _) => link
+                .replace("@server/", "/server/{version}/")
                 .replace("@clients/grpc/", "/clients/grpc/")
                 .replace("@client/dotnet/5.0/", "/clients/tcp/dotnet/21.2/")
                 .replace("@clients/http-api/", "/http-api/{version}/")
