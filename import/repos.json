@@ -9,11 +9,10 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
-        "version": "v24.10 Preview 1",
-        "name": "docs/v24.10-preview.1",
+        "version": "v24.10",
+        "name": "release/v24.10",
         "relativePath": ["server"],
-        "startPage": "quick-start/",
-        "preview": true
+        "startPage": "quick-start/"
       },
       {
         "version": "v24.6",
@@ -57,10 +56,9 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
-        "version": "v24.10 Preview 1",
-        "name": "docs/v24.10-preview.1",
-        "startPage": "introduction.html",
-        "preview": true
+        "version": "v24.10",
+        "name": "release/v24.10",
+        "startPage": "introduction.html"
       },
       {
         "version": "v24.6",

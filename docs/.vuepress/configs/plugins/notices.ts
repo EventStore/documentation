@@ -27,24 +27,38 @@ export const notices: NoticePluginOptions = {
             actions: [actionLatest]
         },
         {
+            path: "/server/v24.10/",
+            title: "EventStoreDB v24.10",
+            content: "You are reading the documentation for EventStoreDB v24.10 LTS.",
+            confirm: true,
+        },
+        {
             path: "/server/v23.10/",
             title: "EventStoreDB v23.10",
-            content: "You are reading the documentation for EventStoreDB v23.10 LTS.",
+            content: "EventStoreDB v23.10 nearing end of life. Upgrade to the latest server version.",
             confirm: true,
+            actions: [actionLatest]
         },
         {
             path: "/server/v22.10/",
             title: "EventStoreDB v22.10",
-            content: "EventStoreDB v22.10 is reaching its end of life. Upgrade to the latest server version.",
+            content: "EventStoreDB v22.10 is out of support. Upgrade to the latest server version.",
             confirm: true,
             actions: [actionLatest]
         },
         {
-            path: "/server/v24.10%20Preview%201/",
-            title: "Preview version",
-            content: "You are reading the documentation for a preview version of EventStoreDB v24.10.",
+            path: "/server/v24.6/",
+            title: "EventStoreDB v24.6",
+            content: "EventStoreDB v24.6 is out of support. Upgrade to the latest server version.",
             confirm: true,
             actions: [actionLatest]
         },
+        {
+            path: "/server/v24.2/",
+            title: "EventStoreDB v24.2",
+            content: "EventStoreDB v24.2 is out of support. Upgrade to the latest server version.",
+            confirm: true,
+            actions: [actionLatest]
+        }
     ]
 }
