@@ -99,7 +99,7 @@ It is possible to restart the entire projection subsystem using the projections 
 
 Enables an existing projection by name.
 Once enabled, the projection will start to process events even after restarting the server or the projection subsystem.
-You must have access to a projection to enable it, see the [ACL documentation](@server/configuration/security.md#access-control-lists).
+You must have access to a projection to enable it, see the [ACL documentation](@server/security/user-authorization.md).
 
 @[code{Enable}](@grpc:projection-management.js;projection-management.ts;projection_management/ProjectionManagement.java;projection-management/Program.cs)
 
@@ -111,7 +111,7 @@ You can only enable an existing projection. When you try to enable a non-existin
 
 Disables a projection, this will save the projection checkpoint.
 Once disabled, the projection will not process events even after restarting the server or the projection subsystem.
-You must have access to a projection to disable it, see the [ACL documentation](@server/configuration/security.md#access-control-lists).
+You must have access to a projection to disable it, see the [ACL documentation](@server/security/user-authorization.md).
 
 @[code{Disable}](@grpc:projection-management.js;projection-management.ts;projection_management/ProjectionManagement.java;projection-management/Program.cs)
 
