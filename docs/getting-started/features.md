@@ -8,17 +8,17 @@ title: EventStoreDB Feature List
 
 ### <HopeIcon icon="solar:database-linear" size="1.25em"/> Event-Native Database
 
-| Feature Name | Description |
-| --- | --- |
-| [Append-only Log](./concepts.md#event-log) | A log where events are only appended and never modified, serving as an immutable audit trail that captures all historical changes within a system. |
-| [Immutable Event](./concepts.md#immutable-events) | All events stored in EventStoreDB cannot be altered once appended, ensuring data integrity and simplifying troubleshooting. |
-| Guaranteed Write | Writes are guaranteed to be fully durable once acknowledged. |
+| Feature Name                                                                                                 | Description                                                                                                                                                                                                                                  |
+|--------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Append-only Log](./concepts.md#event-log)                                                                   | A log where events are only appended and never modified, serving as an immutable audit trail that captures all historical changes within a system.                                                                                           |
+| [Immutable Event](./concepts.md#immutable-events)                                                            | All events stored in EventStoreDB cannot be altered once appended, ensuring data integrity and simplifying troubleshooting.                                                                                                                  |
+| Guaranteed Write                                                                                             | Writes are guaranteed to be fully durable once acknowledged.                                                                                                                                                                                 |
 | [Guaranteed Consistent Event Ordering](./concepts.md#guaranteed-consistent-ordering-in-event-log-and-stream) | Events are ordered by their append time across both the event log and streams to facilitate operations where the sequence of execution is crucial. Events are guaranteed to be read in the same consistent order whenever they are consumed. |
-| Sequential Event Numbering | An event appended to a stream is automatically assigned a strictly monotonically increasing number (without gap) to ensure reliable state reconstruction and concurrency handling |
-| [Stream Indexing](@server/configuration/indexes.md) | Events in streams are indexed to provide fast access to groups of events in the event log. |
-| [Fine Grained Stream](./concepts.md#fine-grained-event-streams) | EventStore supports billions of streams, allowing granular event organization to efficiently track the lifecycle of every distinct entity within a system. |
-| [Optimistic Concurrency Control](./concepts.md#optimistic-concurrency-control) | Concurrent appends that lead to lost updates can be prevented with optimistic concurrency control. This is done in a lock-free manner, to reduce contention and performance overhead. |
-| [Multiple Hosting Options](https://www.eventstore.com/downloads) | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/README.md) or self-managed on Linux, Windows, macOS, or with Docker |
+| Sequential Event Numbering                                                                                   | An event appended to a stream is automatically assigned a strictly monotonically increasing number (without gap) to ensure reliable state reconstruction and concurrency handling                                                            |
+| [Stream Indexing](@server/configuration/indexes.md)                                                          | Events in streams are indexed to provide fast access to groups of events in the event log.                                                                                                                                                   |
+| [Fine Grained Stream](./concepts.md#fine-grained-event-streams)                                              | EventStore supports billions of streams, allowing granular event organization to efficiently track the lifecycle of every distinct entity within a system.                                                                                   |
+| [Optimistic Concurrency Control](./concepts.md#optimistic-concurrency-control)                               | Concurrent appends that lead to lost updates can be prevented with optimistic concurrency control. This is done in a lock-free manner, to reduce contention and performance overhead.                                                        |
+| [Multiple Hosting Options](https://www.eventstore.com/downloads)                                             | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/README.md) or self-managed on Linux, Windows, macOS, or with Docker                                                                                                  |
 
 ### <HopeIcon icon="streamline:projector-board" size="1.25em"/> Projection
 
@@ -73,67 +73,67 @@ title: EventStoreDB Feature List
 
 ### <HopeIcon icon="carbon:two-factor-authentication" size="1.25em"/> Authentication
 
-| Feature Name | Description |
-| --- | --- |
-| [User name/Password Authentication](@server/configuration/security.md#authentication) | Authenticate users based on credentials provided. |
-| OAuth Authentication | <Badge type="info" vertical="middle" text="License Required"/><br><br>Connect to an identity server and authenticate users based on JWT |
-| [LDAP Authentication](@server/configuration/security.md#ldap-authentication)  |<Badge type="info" vertical="middle" text="License Required"/><br><br> Authenticate users against LDAP-based directory services. |
-| [User X.509 Certificates](@server/configuration/security.md#user-x-509-certificates) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Support user-based X.509 certificates for authentication. |
+| Feature Name                                                                                      | Description                                                                                                                                                                        |
+|---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [User name/Password Authentication](@server/security/user-authentication.md#basic-authentication) | Authenticate users based on credentials provided.                                                                                                                                  |
+| [OAuth Authentication](@server/security/user-authentication.md#oauth-authentication)              | <Badge type="info" vertical="middle" text="License Required"/><br><br>Connect to an identity server and authenticate users based on JWT                                            |
+| [LDAP Authentication](@server/security/user-authentication.md#ldap-authentication)                | <Badge type="info" vertical="middle" text="License Required"/><br><br> Authenticate users against LDAP-based directory services.                                                   |
+| [User X.509 Certificates](@server/security/user-authentication.md#user-x509-certificates)         | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Support user-based X.509 certificates for authentication. |
 
 ### <HopeIcon icon="mdi:account-security-outline" size="1.25em"/> Authorization
 
-| Feature Name | Description |
-| --- | --- |
-| [User Management](@server/configuration/security.md#authentication) | Create, update, and assign users to pre-defined user groups. |
-| [Stream Access Control List](@server/configuration/security.md#access-control-lists) | Define which users or groups can read, write, or delete on a stream level. |
-| [Stream Access Policy](@server/configuration/security.md#stream-policy-authorization-plugin) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Define access policies to control who can read, write, or delete streams for multiple streams using stream rules. |
+| Feature Name                                                                               | Description                                                                                                                                                                                                                                |
+|--------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [User Management](@server/security/user-authentication.md)                                 | Create, update, and assign users to pre-defined user groups.                                                                                                                                                                               |
+| [Stream Access Control List](@server/security/user-authorization.md#access-control-lists)  | Define which users or groups can read, write, or delete on a stream level.                                                                                                                                                                 |
+| [Stream Access Policy](@server/security/user-authorization.md#stream-policy-authorization) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Define access policies to control who can read, write, or delete streams for multiple streams using stream rules. |
 
 ### <HopeIcon icon="streamline:device-database-encryption-1" size="1.25em"/> Encryption
 
-| Feature Name | Description |
-| --- | --- |
-| [Encryption at rest](@server/configuration/security.md#encryption-at-rest) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Secure events stored on disk using file-level encryption. |
-| [Encryption in transit](@server/configuration/security.md#protocol-security) | Use TLS to secure data during network transmission. |
-| [Event Store Certificate Generation Tool](@server/operations/cert-update.md) | The command line interface that eases the generation of a certificate authority and node certificates for encryption in transit. |
-| [FIPS 140-2](@server/configuration/security.md#fips-140-2) | <Badge type="info" vertical="middle" text="License Required"/><br><br>Compliance with FIPS 140-2 standards for cryptographic modules. |
+| Feature Name                                                                 | Description                                                                                                                                                                        |
+|------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Encryption at rest](@server/security/README.md#encryption-at-rest)          | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Secure events stored on disk using file-level encryption. |
+| [Encryption in transit](@server/security/protocol-security.md)               | Use TLS to secure data during network transmission.                                                                                                                                |
+| [Event Store Certificate Generation Tool](@server/operations/cert-update.md) | The command line interface that eases the generation of a certificate authority and node certificates for encryption in transit.                                                   |
+| [FIPS 140-2](@server/security/README.md#fips-140-2)                          | <Badge type="info" vertical="middle" text="License Required"/><br><br>Compliance with FIPS 140-2 standards for cryptographic modules.                                              |
 
 ## Operations
 
 ### <HopeIcon icon="uil:setting" size="1.25em"/> Configuration
 
-| Feature Name | Description |
-| --- | --- |
+| Feature Name                                                      | Description                                                                     |
+|-------------------------------------------------------------------|---------------------------------------------------------------------------------|
 | [Multiple Configuration Options](@server/configuration/README.md) | Configure EventStoreDB through YAML, environment variables, or the command line |
 
 ### <HopeIcon icon="lucide-lab:broom" size="1.25em"/> Data Cleanup and Housekeeping
 
-| Feature Name | Description |
-| --- | --- |
-| [Stream Truncate and Deletion](@server/features/streams.md#soft-delete-and-truncatebefore) | Truncate streams by max age, max count, or before a particular position or delete an entire stream. |
-| [Scavenging](@server/operations/scavenge.md) | Manually reclaim disk space for compliance or storage purposes by completely removing truncated and deleted streams from disk. |
-| [Auto-scavenging](@server/operations/auto-scavenge.md) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Automatically schedule and coordinate scavenging for a cluster in a way that minimizes performance impact. |
+| Feature Name                                                                               | Description                                                                                                                                                                                                                         |
+|--------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Stream Truncate and Deletion](@server/features/streams.md#soft-delete-and-truncatebefore) | Truncate streams by max age, max count, or before a particular position or delete an entire stream.                                                                                                                                 |
+| [Scavenging](@server/operations/scavenge.md)                                               | Manually reclaim disk space for compliance or storage purposes by completely removing truncated and deleted streams from disk.                                                                                                      |
+| [Auto-scavenging](@server/operations/auto-scavenge.md)                                     | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Automatically schedule and coordinate scavenging for a cluster in a way that minimizes performance impact. |
 
 ### <HopeIcon icon="eos-icons:monitoring" size="1.25em"/> Monitoring
 
-| Feature Name | Description |
-| --- | --- |
-| [Logging](@server/diagnostics/logs.md) | Provides detailed logs for server operations to console and log files. |
-| [Logs Endpoint](@server/diagnostics/logs.md#logs-download)  |<Badge type="tip" vertical="middle" text="v24.10"/><br><br> View or download logs over HTTP for authenticated EventStoreDB users without needing file system access. |
-| [Metrics](@server/diagnostics/metrics.md) | Collect EventStoreDB metrics such as CPU, memory, disk usage, and the status of projections, subscriptions, elections, etc. |
-| [Metrics with Prometheus](@server/diagnostics/metrics.md) | Allow systems to scrape metrics in Prometheus format for monitoring over an HTTP endpoint. |
+| Feature Name                                                                                      | Description                                                                                                                                                                                     |
+|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Logging](@server/diagnostics/logs.md)                                                            | Provides detailed logs for server operations to console and log files.                                                                                                                          |
+| [Logs Endpoint](@server/diagnostics/logs.md#logs-download)                                        | <Badge type="tip" vertical="middle" text="v24.10"/><br><br> View or download logs over HTTP for authenticated EventStoreDB users without needing file system access.                            |
+| [Metrics](@server/diagnostics/metrics.md)                                                         | Collect EventStoreDB metrics such as CPU, memory, disk usage, and the status of projections, subscriptions, elections, etc.                                                                     |
+| [Metrics with Prometheus](@server/diagnostics/metrics.md)                                         | Allow systems to scrape metrics in Prometheus format for monitoring over an HTTP endpoint.                                                                                                      |
 | [Metrics with OpenTelemetry Exporter](@server/diagnostics/integrations.md#opentelemetry-exporter) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Export and push metrics to an endpoint via the OpenTelemetry protocol. |
 
 ### <HopeIcon icon="clarity:backup-line" size="1.25em"/> Backup, Replication, and Migration
 
-| Feature Name | Description |
-| --- | --- |
-| Backup and Restore | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
-| [Event Store Replicator](https://replicator.eventstore.org/) | Facilitate replication or migration of data between different EventStoreDB clusters or instances. |
+| Feature Name                                                 | Description                                                                                                   |
+|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| Backup and Restore                                           | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
+| [Event Store Replicator](https://replicator.eventstore.org/) | Facilitate replication or migration of data between different EventStoreDB clusters or instances.             |
 
 ### <HopeIcon icon="carbon:tools" size="1.25em"/> Administrative Tool
 
-| Feature Name | Description |
-| --- | --- |
+| Feature Name                                     | Description                                                                                                                                                               |
+|--------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Event Store CLI](/commercial-tools/cli-tool.md) | Command line tool for administrative operations on EventStoreDB such as scavenge, backup, restore, merge index, delete stream, as well as user and projection management. |
 
 ## Next Steps
