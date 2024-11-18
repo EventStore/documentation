@@ -14,7 +14,7 @@ GitHub Codespaces provides an instant and preconfigured development environment 
 
 In this quickstart, you will:
 
-- Start an EventStoreDB server using Docker.
+- Start an EventStoreDB server using Docker in GitHub Codespaces.
 - Append an event to EventStoreDB with sample code.
 - View the appended event using the Admin UI.
 - Read the appended event with sample code using the EventStoreDB client.
@@ -33,7 +33,7 @@ If you have trouble with this quickstart, you can find more help in the ["EventS
 
 ## Step 1: Set up Your Codespace
 
-1. Choose one of development languages/plaforms below and click the Codespaces link:
+1. Choose one of the development languages/platforms below and click the Codespaces link:
 
 ::: tabs#dev-language-platform
 
@@ -76,7 +76,7 @@ Hello!👋 Welcome to the EventStoreDB Getting Started Quickstart Guide.
 
 ::: tip
 
-For this quickstart, you can safely ignore and close any Codespaces notification that appear on the bottom right of the page.
+For this quickstart, you can safely ignore and close any Codespaces notification that appears on the bottom right of the page.
 
 :::
 
@@ -88,7 +88,7 @@ For this quickstart, you can safely ignore and close any Codespaces notification
    ./start_cluster.sh
    ```
 
-   This is a custom script written for this quickstart to help start EventStoreDB in docker.
+   This is a custom script written for this quickstart to help start EventStoreDB in Docker.
 
 2. You will see the below message printed in the terminal:
 
@@ -98,17 +98,17 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 URL to the EventStoreDB Admin UI 👉: https://XXXXXXXXX.XXX
 ```
 
-::::: details (Optional) Learn more about how to start EventStoreDB in docker and the start_cluster.sh script 
+::::: details (Optional) Learn more about how to start EventStoreDB in Docker and the start_cluster.sh script 
 
 #### Understanding How to Start EventStoreDB Server in Docker and How `start_cluster.sh` Works
 
 `start_cluster.sh` is a custom script written for the quickstart that will: 
-- Check if docker is currently running locally
+- Check if Docker is currently running locally
 - Pull the EventStoreDB server Docker container,
-- Start the server in docker, and
+- Start the server in Docker, and
 - Print the EventStoreDB Admin UI URL in the terminal.
 
-To see how to start EventStoreDB server in docker, follow these steps
+To see how to start the EventStoreDB server in Docker, follow these steps
 
 1. Run the following command to open `start_cluster.sh`:
    
@@ -126,7 +126,7 @@ To see how to start EventStoreDB server in docker, follow these steps
 docker run                        # Start a new Docker container using the 'docker run' command
      -d \                         # Run the container in detached mode (in the background)
      --name esdb-node \           # Assign the container a name ('esdb-node' in this case)
-     -p 2113:2113 \               # Map port 2113 on the host to port 2113 in the docker container. Required for the EventStoreDB
+     -p 2113:2113 \               # Map port 2113 on the host to port 2113 in the Docker container. Required for the EventStoreDB
      eventstore/eventstore:lts \  # Specify the Docker image to use, in this case, the EventStoreDB long-term support version (lts)
      --insecure \                 # Run EventStoreDB in insecure mode, without authentication and SSL/TLS security (usually for development)
      --run-projections=All \      # Enable all projections in EventStoreDB, including system and user projections
@@ -175,9 +175,9 @@ To view the source code in Github, click the link below:
 
 ![EventStoreDB Admin UI Dashboard](images/hello-world/admin-ui.png =300x)
 
-## Step 4: Install Required Pacakge for Sample Code
+## Step 4: Install Required Package for Sample Code
 
-1. In Codespace, run this command to install the package for EventStoreDB client. This will be used in the sample codes:
+1. In Codespace, run this command to install the package for the EventStoreDB client. This will be used in the sample codes:
 
 ::: tabs#dev-language-platform
 
@@ -194,7 +194,7 @@ To view the source code in Github, click the link below:
    ```
 
 @tab .NET
-   This step is not required for .NET. Please continue with next step. 
+   This step is not required for .NET. Please continue to the next step. 
    
 @tab node.js
    ```sh
@@ -426,7 +426,7 @@ const client = EventStoreDBClient.connectionString("esdb://localhost:2113?tls=fa
 ```
 :::
 
-3. In step 2 of the code, review how the a new event is initiated:
+3. In step 2 of the code, review how a new event is initiated:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -550,11 +550,11 @@ To view the source code in Github, click the link below:
 
 ## Step 6: Verify the Appended Event in the Admin UI
 
-1. In the the Admin UI, click the `Stream Browser` link from the top navigation bar.
+1. In the Admin UI, click the `Stream Browser` link from the top navigation bar.
 
 2. Under `Recently Changed Streams`, click `SampleStream` link.
 
-3. Click on the `JSON` link in the right most column of the table. 
+3. Click on the `JSON` link in the rightmost column of the table. 
    
 4. You should see the content of the appended event.
 
@@ -588,7 +588,7 @@ To view the source code in Github, click the link below:
    ```
 :::
 
-2. You should see the content of the appended event, similar to this:
+2. You should see the content of the appended event similar to this:
 
 ```
 ************************
@@ -603,9 +603,9 @@ Event Body: {"id":"1","importantData":"some value"}
 
 #### Understanding How the Read Sample Works
 
-To deepen your understanding of how events are read from EventStoreDB programmatically, you will explore the sample code used in this step. 
-The sample code demonstrates:
-- **Establishing a Connection**: Shows how to connect to EventStoreDB using the client library.
+You will explore the sample code used in this step to further understand how events are read from EventStoreDB programmatically. 
+The sample code demonstrates the following:
+- **Establishing a Connection**: Illustrates how to connect to EventStoreDB using the client library.
 - **Reading Events from a Stream**: Reads events from a specific stream.
 - **Processing Retrieved Events**: Iterates over the events retrieved from the stream.
 - **Deserializing Event Data**: Extracts and deserializes the event data from the retrieved events.
@@ -724,7 +724,7 @@ let events = client.readStream(        // Read events from stream
 ```
 :::
 
-4. In step 3 of the code, review how the the events are deserialized and printed:
+4. In step 3 of the code, review how the events are deserialized and printed:
 
 ::: tabs#dev-language-platform
 @tab Select >
