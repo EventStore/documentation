@@ -22,6 +22,7 @@ export default {
         tabs: true,
         codetabs: true,
         component: true,
+        mermaid: true,
     },
     seo: seoPlugin,
     sitemap: {
