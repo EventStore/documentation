@@ -233,7 +233,7 @@ Read more [here](@clients/grpc/getting-started.md#connection-string) about the c
 
 EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
-Read more in [database security docs](@server/configuration/security.md).
+Read more in [database security docs](@server/security/protocol-security.md).
 
 ## Appending events
 

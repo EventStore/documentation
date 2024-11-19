@@ -51,7 +51,8 @@
     "vue-router": "^4.4.0",
     "vuepress": "2.0.0-rc.14",
     "vuepress-plugin-md-enhance": "^2.0.0-rc.52",
-    "vuepress-theme-hope": "^2.0.0-rc.52"
+    "vuepress-theme-hope": "^2.0.0-rc.52",
+    "mermaid": "^11.4.0"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
