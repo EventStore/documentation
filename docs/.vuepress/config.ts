@@ -55,8 +55,8 @@ export default defineUserConfig({
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
             'data-website-id': '9ff147dd-2c68-495d-9859-de159901d8c5',
             'data-project-name': 'Event Store',
-            'data-project-color': '#1976d2',
-            'data-project-logo': 'https://6850195.fs1.hubspotusercontent-na1.net/hubfs/6850195/Brand/ouroboros.png'
+            'data-project-color': '#631B3A',
+            'data-project-logo': '/logo-white.png'
         }],
         ['script', {src: "/js/snippet.js"}]
     ]
