@@ -4,8 +4,8 @@ import {navbarEn} from "./navbar";
 import {sidebarEn} from "./sidebar";
 
 export const themeOptions: ThemeOptions = {
-    logo: "/eventstore-dev-logo-dark.svg",
-    logoDark: "/eventstore-logo-alt.svg",
+    logo: "/Kurrent Logo - Plum.svg",
+    logoDark: "/Kurrent Logo - White.svg",
     docsDir: 'docs',
     editLink: false,
     lastUpdated: true,
