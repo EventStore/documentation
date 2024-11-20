@@ -24,7 +24,7 @@ export default {
 .banner {
   // background-color: var(--theme-color); // Use the CSS variable defined by theme
   // color: var(--text-color-inverse);
-  // padding: 10px;
+  padding: 20px;
   // text-align: center;
   // border-bottom: 1px solid #ddd;
 }
