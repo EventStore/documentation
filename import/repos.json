@@ -21,6 +21,12 @@
         "startPage": "quick-start/"
       },
       {
+        "version": "v24.2",
+        "name": "release/oss-v24.2",
+        "relativePath": ["server"],
+        "startPage": "quick-start/"
+      },
+      {
         "version": "v23.10",
         "name": "release/oss-v23.10",
         "relativePath": ["server"],
