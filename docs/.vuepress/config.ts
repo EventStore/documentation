@@ -49,7 +49,13 @@ export default defineUserConfig({
         // @ts-ignore
         md.use(dl);
     },
-    theme: hopeTheme(themeOptions),
+    theme: hopeTheme(themeOptions, { custom: true }),
+    alias: {
+        "@theme-hope/components/NormalPage": path.resolve(
+            __dirname,
+            "./components/NormalPage.vue",
+        ),
+    },
     head: [
         ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
