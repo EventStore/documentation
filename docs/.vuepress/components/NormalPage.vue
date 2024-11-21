@@ -2,7 +2,9 @@
   <normal-page>
     <template #top>
       <div class="banner">
-        <img src="/rebrand-notice.png" style="max-width: 100%; height:auto；display: block; margin:0 auto;">
+        <a href="https://www.eventstore.com/blog/event-store-is-evolving-to-kurrent" target="_blank">
+          <img src="/rebrand-notice.png" style="max-width: 100%; height:auto；display: block; margin:0 auto;">
+        </a>
       </div>
     </template>
   </normal-page>
