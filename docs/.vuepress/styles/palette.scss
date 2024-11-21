@@ -1,6 +1,8 @@
+@use 'sass:color';
+
 $text-color: (
-  light: #2c3e50,
-  dark: #d4d4d4,
+  light: #000,
+  dark: #9FBBC5,
 );
 
 // override code block background color
@@ -8,7 +10,28 @@ $text-color: (
 
 $sidebar-width: 18rem;
 
-$font-family: 'Museo Sans, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", STHeiti, "Microsoft YaHei", SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-$font-family-heading: 'Museo Sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", STHeiti, "Microsoft YaHei", SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+$font-family: 'Solina, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", STHeiti, "Microsoft YaHei", SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+$font-family-heading: 'Solina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", STHeiti, "Microsoft YaHei", SimSun, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+
 $font-size: 15px;
 
+html[data-theme='dark'] {
+  --theme-color: #64EDBB;
+  --theme-color-light: #{color.scale(#64EDBB, $lightness: 10%)};
+  --theme-color-dark: #{color.scale(#64EDBB, $lightness: -10%)};
+  --theme-color-mask: #{color.change(#64EDBB, $alpha: 0.15)};
+
+}
+
+
+html[data-theme='light'] {
+  --theme-color: #631B3A;
+  --theme-color-light: #{color.scale(#631B3A, $lightness: -10%)};
+  --theme-color-dark: #{color.scale(#631B3A, $lightness: 10%)};
+  --theme-color-mask: #{color.change(#631B3A, $alpha: 0.15)};
+}
+
+$bg-color: (
+  light: #fff,
+  dark: #000,
+)
