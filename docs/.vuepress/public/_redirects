@@ -3,5 +3,5 @@
 # Refer to https://docs.netlify.com/routing/redirects/redirect-options/
 # ########################################################################################################################
 
-/getting-started.html                   /getting-started/quickstart/                    301!
-/getting-started/                       /getting-started/quickstart/                    301!
+/getting-started.html                   /getting-started/quickstart/                    301
+/getting-started/                       /getting-started/quickstart/                    301
