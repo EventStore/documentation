@@ -10,7 +10,7 @@ This quickstart will guide you through getting started with EventStoreDB using G
 GitHub Codespaces provides an instant and preconfigured development environment in your browser for this quickstart. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
 :::
 
-## Objectives
+## HELLO GUYS
 
 In this quickstart, you will:
 
