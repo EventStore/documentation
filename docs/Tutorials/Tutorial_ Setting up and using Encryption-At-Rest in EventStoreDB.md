@@ -41,7 +41,7 @@ Place the generated master key in a secure directory on a **separate drive** fro
    ```json
    {
      "EventStore": {  
-       "Plugins": {`  
+       "Plugins": {  
          "EncryptionAtRest": {  
            "Enabled": true,  
            "MasterKey": { 
