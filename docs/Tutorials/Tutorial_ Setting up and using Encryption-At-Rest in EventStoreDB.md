@@ -37,9 +37,8 @@ Place the generated master key in a secure directory on a **separate drive** fro
 1. Navigate to the `config` directory within the EventStoreDB installation.  
    There are multiple [configuration mechanisms](https://developers.eventstore.com/server/v24.10/configuration/) available. Since options set in a JSON configuration override those set in a YAML configuration, here is an example using JSON. You can also find a [YAML configuration file example in the documentation](https://developers.eventstore.com/server/v24.10/security/#configuration).   
      
-   Create a new JSON configuration file (e.g., `encryption-config.json`) with the following content:  
-   \[json code\]  
-   ```
+   Create a new JSON configuration file (e.g., `encryption-config.json`) with the following content:   
+   ```json
    {
      "EventStore": {  
        "Plugins": {`  
