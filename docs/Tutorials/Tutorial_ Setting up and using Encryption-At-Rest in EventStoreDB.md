@@ -25,9 +25,9 @@ Refer to the [log documentation](https://developers.eventstore.com/server/v24.10
 To encrypt the data, you must first generate a **master key** using the `es-cli` tool (available to be downloaded in Cloudsmith [here](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
 
 Run the following command to generate a master key:  
-\[bash code\]  
-`es-cli encryption generate-master-key`
-
+```bash 
+es-cli encryption generate-master-key
+```
 Place the generated master key in a secure directory on a **separate drive** from the database files, ensuring enhanced security. The key should be stored in the directory you will configure in the next step, for example, `/secure/keys/`.
 
 ### **Step 4: Configure and enable Encryption-At-Rest** 
@@ -66,8 +66,9 @@ Place the generated master key in a secure directory on a **separate drive** fro
 
 In the main EventStoreDB configuration file, add the following line to specify the encryption transformation:
 
-\[bash code\]  
-`Transform: aes-gcm`
+```bash code  
+Transform: aes-gcm
+```
 
 This ensures that the **AES Galois Counter Mode (AES-GCM)** encryption algorithm is applied to new chunks.
 
