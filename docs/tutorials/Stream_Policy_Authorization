@@ -233,14 +233,12 @@ You can create custom stream policies if you want to manage access more granular
        "userStreams": "publicDefault", 
        "systemStreams": "adminsDefault"  
      } 
-  ```
+   ```
     
      Combine the code from these three steps and follow the structure to configure a custom policy. The stream policies now include the custom policies you defined and, unless you want to remove or change them, the default policies created by the EventStoreDB whenStream Policy Authorization is initially enabled.  
 
-
-
- ::: details Click here to view the full JSON code of the example above titled customPolicy.json.
-   ```
+   ::: details Click here to view the full JSON code of the example above titled customPolicy.json.
+ 
 ```json
 {
   "streamPolicies": {
@@ -317,7 +315,7 @@ You can create custom stream policies if you want to manage access more granular
 }
 ```
  
-  :::      
+   :::      
 
 5. **Add custom policy to th**e `$policies` **stream**  
    To add your custom policy configuration to the `$policies` stream, append an event of type `$policy-updated` to the `$policies` stream like below:   
