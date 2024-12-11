@@ -22,7 +22,7 @@ Refer to the [log documentation](https://developers.eventstore.com/server/v24.10
 
 ### **Step 3: Enable Stream Policy Authorization**
 
-***Note:** WhenStream Policy Authorization is enabled, EventStoreDB will not enforce stream [Access Control Lists (ACLs)](https://developers.eventstore.com/server/v24.10/security/user-authorization.html#access-control-lists).*
+***Note:** When Stream Policy Authorization is enabled, EventStoreDB will not enforce stream [Access Control Lists (ACLs)](https://developers.eventstore.com/server/v24.10/security/user-authorization.html#access-control-lists).*
 
 To enable stream policies, append an event of type `$authorization-policy-changed` to the `$authorization-policy-settings` stream:
 
