@@ -1,3 +1,8 @@
+---
+title: Encryption-At-Rest
+order: 2
+---
+
 ## **Tutorial: Setting up and using Encryption-At-Rest in EventStoreDB**
 
 The **Encryption-At-Rest** feature provides encryption for EventStoreDB to secure database chunk files, ensuring data protection even if an attacker gains access to the physical disk. This step-by-step guide will walk you through the process of enabling and configuring this feature, including generating master keys and applying encryption.
