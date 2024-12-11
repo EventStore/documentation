@@ -367,7 +367,8 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
 ### **Step 7 (optional): Testing and monitoring policies**
 
 1. **Validate access controls**  
-   Test the permissions by attempting access to streams under various prefixes as different users.   
+   Test the permissions by attempting access to streams under various prefixes as different users.
+   
    For instance, given the code example in the tutorial, you should have the following test results:
 
     | Test users | Test streams | Access attempts | Expected result for each attempt |
@@ -384,9 +385,9 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
     | `user5` (a user not in the `salesTeam` or the `salesAdmin` group) | `sales-10` | Read, write, delete, metadata read, or metadata write | Failure |
      `User6` (any user) | `account-123` | Read, write, delete, metadata read, or metadata write | Success |
 
-2. **Monitor logs for errors**  
+3. **Monitor logs for errors**  
    Errors in policy applications are logged. If any issues arise, EventStoreDB maintains the last valid policy configuration. Adjust and repost policies as needed.  
-3. **Fallback policy**  
+4. **Fallback policy**  
    If custom policies are invalid or the feature fails to load, EventStoreDB restricts access to admins only, ensuring security. To resolve this, either update the `$authorization-policy-settings` stream with valid settings or revert to ACLs as outlined below.
 
 ### **Step 8 (optional): Disable Stream Policies Authorization (Reverting to ACLs)**
