@@ -1,3 +1,7 @@
+---
+title: Stream Policy Authorization
+order: 1
+---
 ## **Tutorial: Setting up and using Stream Policy Authorization in EventStoreDB**
 
 This step-by-step tutorial guides you through enabling and configuring **Stream Policy Authorization** in EventStoreDB. This feature allows EventStoreDB administrators to define stream access policies based on stream prefixes.
