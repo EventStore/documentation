@@ -164,6 +164,7 @@ You can create custom stream policies if you want to manage access more granular
 
 2. **Define custom policies in the** `$policies` **stream**  
    Policies control specific permissions, including read (`$r`), write (`$w`), delete (`$d`), metadata read (`$mr`), and metadata write (`$mw`).   
+
    In this example, based on the users and permissions you identified in the previous step:   
     * The custom policy `financePolicy` gives users in the `financeTeam` read and metadata read permissions, and superuser `ouro` and users in the `financeAdmin` group full permissions.   
    * Similarly, the custom policy `salesPolicy` gives users in the `salesTeam` read, write, and metadata read permissions, and superuser `ouro` and users in the `salesAdmin` group full permissions.  
@@ -225,7 +226,7 @@ You can create custom stream policies if you want to manage access more granular
     ]
    ```
 
-4. **Specify default stream rules **    
+4. **Specify default stream rules**    
    You still need to specify default stream rules when you update the `$policies` stream.  
 
    ```json  
@@ -238,86 +239,84 @@ You can create custom stream policies if you want to manage access more granular
      Combine the code from these three steps and follow the structure to configure a custom policy. The stream policies now include the custom policies you defined and, unless you want to remove or change them, the default policies created by the EventStoreDB whenStream Policy Authorization is initially enabled.  
 
    ::: details Click here to view the full JSON code of the example above titled customPolicy.json.
- 
-```json
-{
-  "streamPolicies": {
-    "financePolicy": {
-      "$r": ["ouro", "financeAdmin", "financeTeam"],
-      "$w": ["ouro", "financeAdmin"],
-      "$d": ["ouro", "financeAdmin"],
-      "$mr": ["ouro", "financeAdmin", "financeTeam"],
-      "$mw": ["ouro", "financeAdmin"]
-    },
-    "salesPolicy": {
-      "$r": ["ouro", "salesAdmin", "salesTeam"],
-      "$w": ["ouro", "salesAdmin", "salesTeam"],
-      "$d": ["ouro", "salesAdmin"],
-      "$mr": ["ouro", "salesAdmin", "salesTeam"],
-      "$mw": ["ouro", "salesAdmin"]
-    },
-    "publicDefault": {
-      "$r": ["$all"],
-      "$w": ["$all"],
-      "$d": ["$all"],
-      "$mr": ["$all"],
-      "$mw": ["$all"]
-    },
-    "adminsDefault": {
-      "$r": ["$admins"],
-      "$w": ["$admins"],
-      "$d": ["$admins"],
-      "$mr": ["$admins"],
-      "$mw": ["$admins"]
-    },
-    "projectionsDefault": {
-      "$r": ["$all"],
-      "$w": ["$admins"],
-      "$d": ["$admins"],
-      "$mr": ["$all"],
-      "$mw": ["$admins"]
+    ```json
+    {
+      "streamPolicies": {
+        "financePolicy": {
+          "$r": ["ouro", "financeAdmin", "financeTeam"],
+          "$w": ["ouro", "financeAdmin"],
+          "$d": ["ouro", "financeAdmin"],
+          "$mr": ["ouro", "financeAdmin", "financeTeam"],
+          "$mw": ["ouro", "financeAdmin"]
+        },
+        "salesPolicy": {
+          "$r": ["ouro", "salesAdmin", "salesTeam"],
+          "$w": ["ouro", "salesAdmin", "salesTeam"],
+          "$d": ["ouro", "salesAdmin"],
+          "$mr": ["ouro", "salesAdmin", "salesTeam"],
+          "$mw": ["ouro", "salesAdmin"]
+        },
+        "publicDefault": {
+          "$r": ["$all"],
+          "$w": ["$all"],
+          "$d": ["$all"],
+          "$mr": ["$all"],
+          "$mw": ["$all"]
+        },
+        "adminsDefault": {
+          "$r": ["$admins"],
+          "$w": ["$admins"],
+          "$d": ["$admins"],
+          "$mr": ["$admins"],
+          "$mw": ["$admins"]
+        },
+        "projectionsDefault": {
+          "$r": ["$all"],
+          "$w": ["$admins"],
+          "$d": ["$admins"],
+          "$mr": ["$all"],
+          "$mw": ["$admins"]
+        }
+      },
+      "streamRules": [
+        {
+          "startsWith": "finance-",
+          "policy": "financePolicy"
+        },
+        {
+          "startsWith": "sales-",
+          "policy": "salesPolicy"
+        },
+        {
+          "startsWith": "$et-",
+          "policy": "projectionsDefault"
+        },
+        {
+          "startsWith": "$ce-",
+          "policy": "projectionsDefault"
+        },
+        {
+          "startsWith": "$bc-",
+          "policy": "projectionsDefault"
+        },
+        {
+          "startsWith": "$category-",
+          "policy": "projectionsDefault"
+        },
+        {
+          "startsWith": "$streams",
+          "policy": "projectionsDefault"
+        }
+      ],
+      "defaultStreamRules": {
+        "userStreams": "publicDefault",
+        "systemStreams": "adminsDefault"
+      }
     }
-  },
-  "streamRules": [
-    {
-      "startsWith": "finance-",
-      "policy": "financePolicy"
-    },
-    {
-      "startsWith": "sales-",
-      "policy": "salesPolicy"
-    },
-    {
-      "startsWith": "$et-",
-      "policy": "projectionsDefault"
-    },
-    {
-      "startsWith": "$ce-",
-      "policy": "projectionsDefault"
-    },
-    {
-      "startsWith": "$bc-",
-      "policy": "projectionsDefault"
-    },
-    {
-      "startsWith": "$category-",
-      "policy": "projectionsDefault"
-    },
-    {
-      "startsWith": "$streams",
-      "policy": "projectionsDefault"
-    }
-  ],
-  "defaultStreamRules": {
-    "userStreams": "publicDefault",
-    "systemStreams": "adminsDefault"
-  }
-}
-```
- 
+    ```
    :::      
 
-5. **Add custom policy to th**e `$policies` **stream**  
+5. **Add custom policy to the** `$policies` **stream**  
    To add your custom policy configuration to the `$policies` stream, append an event of type `$policy-updated` to the `$policies` stream like below:   
    
    ::: tabs
