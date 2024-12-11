@@ -1,18 +1,18 @@
-## **Tutorial: Setting up and using Stream Policy Authorization in EventStoreDB**
+# Tutorial: Setting up and using Stream Policy Authorization in EventStoreDB
 
 This step-by-step tutorial guides you through enabling and configuring **Stream Policy Authorization** in EventStoreDB. This feature allows EventStoreDB administrators to define stream access policies based on stream prefixes.
 
-#### **Prerequisites**
+#### Prerequisites
 
 * [EventStoreDB 24.10 LTS installed and running.](https://developers.eventstore.com/server/v24.10/quick-start/installation.html)   
 * [License key](https://developers.eventstore.com/server/v24.10/quick-start/installation.html#license-keys) for Stream Policy Authorization (a valid license is required to use this feature).  
 * Basic understanding of EventStoreDB, stream prefixes, and access control.
 
-### **Step 1: Verify license key**
+### Step 1: Verify license key
 
 Ensure you have a valid **license key** to utilize Stream Policy Authorization. Without the license, this feature will not function.
 
-### **Step 2 (optional): Confirm Stream Policy Authorization availability**
+### Step 2 (optional): Confirm Stream Policy Authorization availability
 
 By default, Stream Policy Authorization is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
 
@@ -20,7 +20,7 @@ By default, Stream Policy Authorization is bundled with EventStoreDB 24.20 LTS. 
 
 Refer to the [log documentation](https://developers.eventstore.com/server/v24.10/diagnostics/logs.html) for instructions on accessing EventStoreDB logs.
 
-### **Step 3: Enable Stream Policy Authorization**
+### Step 3: Enable Stream Policy Authorization
 
 ***Note:** When Stream Policy Authorization is enabled, EventStoreDB will not enforce stream [Access Control Lists (ACLs)](https://developers.eventstore.com/server/v24.10/security/user-authorization.html#access-control-lists).*
 
@@ -125,7 +125,7 @@ curl -X POST \
 :::
 
 
-### **Step 4: Confirm Stream Policy Authorization activation**
+### Step 4: Confirm Stream Policy Authorization activation
 
 After enabling Stream Policy Authorization, you can confirm it is active by checking the log file. You should see the following log messages: 
 
@@ -138,7 +138,7 @@ After enabling Stream Policy Authorization, you can confirm it is active by chec
 
 If no valid license is detected, Stream Policy Authorization logs errors and defaults to the ACL policy settings. Refer to the [Stream Policy Authorization documentation](https://developers.eventstore.com/server/v24.10/security/user-authorization.html#troubleshooting) for a list of potential errors and their resolutions.
 
-### **Step 5: Configure stream policies and rules**
+### Step 5: Configure stream policies and rules
 
 EventStoreDB creates default stream policies by adding a default policy event in the `$policies` stream when the feature is enabled for the first time. The default policies specified in that event include:
 
@@ -146,7 +146,7 @@ EventStoreDB creates default stream policies by adding a default policy event in
 * Grants users outside of the `$ops` group access to user streams (i.e., streams created by users of EventStoreDB, excluding system streams) and their metadata.  
 * Grants users outside of the `$ops` group read access to the default projection streams (i.e., streams that start with `$ce`,`$et`,`$bc`, `$category`, `$streams`) and their metadata.
 
-You can create custom stream policies if you want to manage access more granularly. To do this, follow these steps:
+You can create custom stream policies to manage access more granularly. To do this, follow these steps:
 
 1. **Identify users or user groups and their access permissions**   
    Start by determining the users and their roles within your system, along with the specific stream access permissions each role requires, such as read, write, or delete.  
@@ -238,7 +238,7 @@ You can create custom stream policies if you want to manage access more granular
     
      Combine the code from these three steps and follow the structure to configure a custom policy. The stream policies now include the custom policies you defined and, unless you want to remove or change them, the default policies created by the EventStoreDB when Stream Policy Authorization is initially enabled.  
 
-   ::: details Click here to view the full JSON code of the example above titled customPolicy.json.
+   ::: details Click here to view the complete JSON code of the example above titled customPolicy.json.
     ```json
     {
       "streamPolicies": {
@@ -355,7 +355,7 @@ You can create custom stream policies if you want to manage access more granular
    ```
 
 
-### **Step 6: Validate the policy configuration**
+### Step 6: Validate the policy configuration
 
 After updating the `$policies` stream, ensure your policy update is applied correctly by checking the logs. You should see the following log message:
 
@@ -364,7 +364,7 @@ After updating the `$policies` stream, ensure your policy update is applied corr
 
 If the policy is invalid, EventStoreDB continues running with the previous valid policy, and an error is logged.
 
-### **Step 7 (optional): Testing and monitoring policies**
+### Step 7 (optional): Testing and monitoring policies
 
 1. **Validate access controls**  
    Test the permissions by attempting access to streams under various prefixes as different users.
@@ -390,7 +390,7 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
 4. **Fallback policy**  
    If custom policies are invalid or the feature fails to load, EventStoreDB restricts access to admins only, ensuring security. To resolve this, either update the `$authorization-policy-settings` stream with valid settings or revert to ACLs as outlined below.
 
-### **Step 8 (optional): Disable Stream Policies Authorization (Reverting to ACLs)**
+### Step 8 (optional): Disable Stream Policies Authorization (Reverting to ACLs)
 
 If you want to disable the stream policies authorization and revert to ACLs, you can post an event to `$authorization-policy-settings` with `streamAccessPolicyType` set to `acl`:
 
@@ -453,4 +453,4 @@ By following this tutorial, you should have successfully:
 * Applied stream access policies to specific stream prefixes.  
 * Validated the stream policy configuration.
 
-This setup ensures that your EventStoreDB instance has tailored access control based on stream prefixes, making it easier to manage permissions and secure access to streams in your environment. 
+This setup ensures that your EventStoreDB instance has tailored access control based on stream prefixes, making managing permissions and securing access to streams in your environment easier. 
