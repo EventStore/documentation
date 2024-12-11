@@ -18,7 +18,7 @@ Ensure you have a valid **license key** to utilize Stream Policy Authorization. 
 
 ### **Step 2 (optional): Confirm Stream Policy Authorization availability**
 
-By default, Stream Policy Authorization is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
+By default, Stream Policy Authorization is bundled with EventStoreDB 24.10 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
 
 `[INF] AuthorizationPolicyRegistryFactory Loaded Authorization Policy plugin: streampolicy`
 
