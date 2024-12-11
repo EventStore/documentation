@@ -236,7 +236,7 @@ You can create custom stream policies if you want to manage access more granular
      } 
    ```
     
-     Combine the code from these three steps and follow the structure to configure a custom policy. The stream policies now include the custom policies you defined and, unless you want to remove or change them, the default policies created by the EventStoreDB whenStream Policy Authorization is initially enabled.  
+     Combine the code from these three steps and follow the structure to configure a custom policy. The stream policies now include the custom policies you defined and, unless you want to remove or change them, the default policies created by the EventStoreDB when Stream Policy Authorization is initially enabled.  
 
    ::: details Click here to view the full JSON code of the example above titled customPolicy.json.
     ```json
