@@ -172,18 +172,18 @@ You can create custom stream policies if you want to manage access more granular
    ```json
     "streamPolicies": {  
       "financePolicy": {  
-        "$r": [“ouro”, "financeAdmin", “financeTeam”],  
-        "$w": [“ouro”, "financeAdmin"],  
-        "$d": [“ouro”, "financeAdmin"],  
-        "$mr": [“ouro”, "financeAdmin", “financeTeam”],  
-        "$mw": [“ouro”, "financeAdmin"]  
+        "$r": ["ouro", "financeAdmin", "financeTeam"],  
+        "$w": ["ouro", "financeAdmin"],  
+        "$d": ["ouro", "financeAdmin"],  
+        "$mr": ["ouro", "financeAdmin", "financeTeam"],  
+        "$mw": ["ouro", "financeAdmin"] 
       },  
       "salesPolicy": {  
-        "$r": [“ouro”, "salesAdmin", “salesTeam”],  
-        "$w": [“ouro”, "salesAdmin", “salesTeam”],  
-        "$d": [“ouro”, "salesAdmin"],  
-        "$mr": [“ouro”, "salesAdmin", “salesTeam”],  
-        "$mw": [“ouro”, "salesAdmin"]  
+        "$r": ["ouro", "salesAdmin", "salesTeam"],  
+        "$w": ["ouro", "salesAdmin", "salesTeam"],  
+        "$d": ["ouro", "salesAdmin"],  
+        "$mr": ["ouro", "salesAdmin", "salesTeam"],  
+        "$mw": ["ouro", "salesAdmin"] 
       }  
      }
    ```  
