@@ -105,7 +105,7 @@ Once Encryption-At-Rest is enabled, new chunk files created or scavenged will be
 
 ### **Step 7: Important considerations**
 
-* **Irreversible encryption:** Once encryption is enabled, you **cannot revert** to an unencrypted state if any new chunk file has been created or scavenged. To decrypt the encrypted chunks, special tooling would be required (currently unavailable). (SME question: do we have more information on the decryption or the tooling availability status?)  
+* **Irreversible encryption:** Once encryption is enabled, you **cannot revert** to an unencrypted state if any new chunk file has been created or scavenged. To decrypt the encrypted chunks, special tooling would be required (currently unavailable).
 * **Master key management:**  
   * If your master key is compromised, the entire database can be decrypted. Always secure the key on a different drive than your database files.  
   * If your master key is lost or corrupted, you’ll lose access to your data. Always keep a backup of your master key in a safe place.  
