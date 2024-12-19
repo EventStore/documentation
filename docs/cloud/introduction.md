@@ -1,9 +1,11 @@
 ---
-title: Introduction
+title: Introduction to Kurrent Cloud
 order: 1
 ---
 
-## What's Event Store Cloud?
+## What is Kurrent Cloud? (Formerly Event Store Cloud)
+
+<i>Event Store Cloud has been renamed Kurrent Cloud.  The documentation will be updated over the next few weeks to reflect the update more thoroughly.</i>
 
 Event Store Cloud allows you to deploy a managed EventStoreDB cluster in AWS, GCP, and Azure. The cloud cluster is optimized for the specific provider and provisioned as a multi-zone VM set.
 
