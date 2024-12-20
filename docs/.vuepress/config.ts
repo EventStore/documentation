@@ -58,11 +58,6 @@ export default defineUserConfig({
             'data-project-color': '#631B3A',
             'data-project-logo': '/logo-white.png'
         }],
-        ['script', {src: "/js/snippet.js"}],
-        ['script', {
-            src: "https://now-kurrent.eventstore.com/",
-            type: "module",
-            defer: true
-        }]
+        ['script', {src: "/js/snippet.js"}]
     ]
 });
