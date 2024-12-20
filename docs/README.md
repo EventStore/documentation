@@ -1,7 +1,7 @@
 ---
 home: true
-heroText: Event Store Resources
-tagline: Event-native database for storing immutable facts as events, complex event processing, and event-driven architectures.
+heroText: Kurrent Resources
+tagline: Kurrent (formerly Event Store) provides an event-native data platform to store and stream data as events for use in downstream use cases such as advanced analytics, microservices and AI/ML initiatives. 
 actions:
 - text: Get started
   link: /getting-started/quickstart/
@@ -12,7 +12,7 @@ actions:
   link: /clients/grpc/
 
 highlights:
-  - header: Jump start development
+  - header: <div align="center">Jump start development
     highlights:
     - title: Start database in a container
       details: Run <code>docker run eventstore/eventstore:latest --dev</code> to start EventStoreDB in developers mode.
@@ -79,5 +79,5 @@ highlights:
       details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
       link: /http/
 
-footer: Copyright © Event Store Limited
+footer: Copyright © Kurrent, Inc.
 ---
