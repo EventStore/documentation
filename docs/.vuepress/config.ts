@@ -21,8 +21,8 @@ export default defineUserConfig({
     base: "/",
     dest: "public",
     bundler: viteBundler({viteOptions: {plugins: [vueDevTools(),],}}),
-    title: "EventStoreDB Documentation",
-    description: "The stream database built for Event Sourcing",
+    title: "Kurrent Documentation",
+    description: "Kurrent (formerly Event Store) is the first and only event-native data platform. It is built to store and stream data as events for use in downstream use cases such as advanced analytics, microservices and AI/ML initiatives.",
     define: {
         __VERSIONS__: {
             latest: ver.latest,
