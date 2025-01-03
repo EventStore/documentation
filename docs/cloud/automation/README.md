@@ -5,6 +5,8 @@ dir:
 
 # Automations
 
+<i>Event Store Cloud has been renamed Kurrent Cloud.  The documentation will be updated over the next few weeks to reflect the update more thoroughly.</i>
+
 In addition to the [Cloud console][cloud console], Event Store Cloud provides an API as well as the following automation tools:
 
 * [Terraform provider][terraform]

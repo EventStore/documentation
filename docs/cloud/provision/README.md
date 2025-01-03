@@ -5,7 +5,9 @@ dir:
     order: 2
 ---
 
-# Event Store Cloud provisioning
+# Kurrent Cloud provisioning
+
+<i>Event Store Cloud has been renamed Kurrent Cloud.  The documentation will be updated over the next few weeks to reflect the update more thoroughly.</i>
 
 Event Store Cloud allows you to provision EventStoreDB clusters in AWS, GCP, and Azure.
 

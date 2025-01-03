@@ -2,6 +2,12 @@
 title: Cloud FAQ
 ---
 
+## Kurrent Cloud
+
+#### Is there a difference between Kurrent Cloud and Event Store Cloud?
+
+Event Store Cloud has been renamed Kurrent Cloud.  The documentation will be updated over the next few weeks to reflect the update more thoroughly.
+
 ## Cluster provisioning
 
 #### Is it possible to change the cluster instance size or topology?

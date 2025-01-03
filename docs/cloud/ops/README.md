@@ -7,6 +7,8 @@ dir:
 
 ## Resizing cluster nodes
 
+<i>Event Store Cloud has been renamed Kurrent Cloud.  The documentation will be updated over the next few weeks to reflect the update more thoroughly.</i>
+
 Clusters can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.eventstore.cloud/) and the [Event Store Cloud CLI](https://github.com/EventStore/esc).
 
 You can choose a larger or smaller node size. See also the cloud [sizing guide](../provision/sizing.md) for general guidance.
