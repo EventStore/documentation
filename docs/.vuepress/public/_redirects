@@ -31,114 +31,6 @@
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
 
-
-
-
-/http-api/v5/writing-events1.html                             /http-api/v5/introduction1.html    301
-/http-api/v5/writing-events2.html                             /http-api/v5/introduction2.html    301
-/http-api/v5/writing-events3.html                             /http-api/v5/introduction3.html    301
-/http-api/v5/writing-events4.html                             /http-api/v5/introduction4.html    301
-/http-api/v5/writing-events5.html                             /http-api/v5/introduction5.html    301
-/http-api/v5/writing-events6.html                             /http-api/v5/introduction6.html    301
-/http-api/v5/writing-events7.html                             /http-api/v5/introduction7.html    301
-/http-api/v5/writing-events8.html                             /http-api/v5/introduction8.html    301
-/http-api/v5/writing-events9.html                             /http-api/v5/introduction9.html    301
-/http-api/v5/writing-events0.html                             /http-api/v5/introduction0.html    301
-/http-api/v5/stream-metadata.html                             /http-api/v5/introduction.html    301
-/http-api/v5/writing-events11.html                             /http-api/v5/introduction11.html    301
-/http-api/v5/writing-events12.html                             /http-api/v5/introduction12.html    301
-/http-api/v5/writing-events13.html                             /http-api/v5/introduction13.html    301
-/http-api/v5/writing-events14.html                             /http-api/v5/introduction14.html    301
-/http-api/v5/writing-events15.html                             /http-api/v5/introduction15.html    301
-/http-api/v5/writing-events16.html                             /http-api/v5/introduction16.html    301
-/http-api/v5/writing-events17.html                             /http-api/v5/introduction17.html    301
-/http-api/v5/writing-events18.html                             /http-api/v5/introduction18.html    301
-/http-api/v5/writing-events19.html                             /http-api/v5/introduction19.html    301
-/http-api/v5/writing-events10.html                             /http-api/v5/introduction10.html    301
-/http-api/v5/writing-events21.html                             /http-api/v5/introduction21.html    301
-/http-api/v5/writing-events22.html                             /http-api/v5/introduction22.html    301
-/http-api/v5/writing-events23.html                             /http-api/v5/introduction23.html    301
-/http-api/v5/writing-events24.html                             /http-api/v5/introduction24.html    301
-/http-api/v5/writing-events25.html                             /http-api/v5/introduction25.html    301
-/http-api/v5/writing-events26.html                             /http-api/v5/introduction26.html    301
-/http-api/v5/writing-events27.html                             /http-api/v5/introduction27.html    301
-/http-api/v5/writing-events28.html                             /http-api/v5/introduction28.html    301
-/http-api/v5/writing-events29.html                             /http-api/v5/introduction29.html    301
-/http-api/v5/writing-events20.html                             /http-api/v5/introduction20.html    301
-/http-api/v5/writing-events31.html                             /http-api/v5/introduction31.html    301
-/http-api/v5/writing-events32.html                             /http-api/v5/introduction32.html    301
-/http-api/v5/writing-events33.html                             /http-api/v5/introduction33.html    301
-/http-api/v5/writing-events34.html                             /http-api/v5/introduction34.html    301
-/http-api/v5/writing-events35.html                             /http-api/v5/introduction35.html    301
-/http-api/v5/writing-events36.html                             /http-api/v5/introduction36.html    301
-/http-api/v5/writing-events37.html                             /http-api/v5/introduction37.html    301
-/http-api/v5/writing-events38.html                             /http-api/v5/introduction38.html    301
-/http-api/v5/writing-events39.html                             /http-api/v5/introduction39.html    301
-/http-api/v5/writing-events30.html                             /http-api/v5/introduction30.html    301
-/http-api/v5/writing-events41.html                             /http-api/v5/introduction41.html    301
-/http-api/v5/writing-events42.html                             /http-api/v5/introduction42.html    301
-/http-api/v5/writing-events43.html                             /http-api/v5/introduction43.html    301
-/http-api/v5/writing-events44.html                             /http-api/v5/introduction44.html    301
-/http-api/v5/writing-events45.html                             /http-api/v5/introduction45.html    301
-/http-api/v5/writing-events46.html                             /http-api/v5/introduction46.html    301
-/http-api/v5/writing-events47.html                             /http-api/v5/introduction47.html    301
-/http-api/v5/writing-events48.html                             /http-api/v5/introduction48.html    301
-/http-api/v5/writing-events49.html                             /http-api/v5/introduction49.html    301
-/http-api/v5/writing-events40.html                             /http-api/v5/introduction40.html    301
-/http-api/v5/writing-events51.html                             /http-api/v5/introduction51.html    301
-/http-api/v5/writing-events52.html                             /http-api/v5/introduction52.html    301
-/http-api/v5/writing-events53.html                             /http-api/v5/introduction53.html    301
-/http-api/v5/writing-events54.html                             /http-api/v5/introduction54.html    301
-/http-api/v5/writing-events55.html                             /http-api/v5/introduction55.html    301
-/http-api/v5/writing-events56.html                             /http-api/v5/introduction56.html    301
-/http-api/v5/writing-events57.html                             /http-api/v5/introduction57.html    301
-/http-api/v5/writing-events58.html                             /http-api/v5/introduction58.html    301
-/http-api/v5/writing-events59.html                             /http-api/v5/introduction59.html    301
-/http-api/v5/writing-events50.html                             /http-api/v5/introduction50.html    301
-/http-api/v5/writing-events61.html                             /http-api/v5/introduction61.html    301
-/http-api/v5/writing-events62.html                             /http-api/v5/introduction62.html    301
-/http-api/v5/writing-events63.html                             /http-api/v5/introduction63.html    301
-/http-api/v5/writing-events64.html                             /http-api/v5/introduction64.html    301
-/http-api/v5/writing-events65.html                             /http-api/v5/introduction65.html    301
-/http-api/v5/writing-events66.html                             /http-api/v5/introduction66.html    301
-/http-api/v5/writing-events67.html                             /http-api/v5/introduction67.html    301
-/http-api/v5/writing-events68.html                             /http-api/v5/introduction68.html    301
-/http-api/v5/writing-events69.html                             /http-api/v5/introduction69.html    301
-/http-api/v5/writing-events60.html                             /http-api/v5/introduction60.html    301
-/http-api/v5/writing-events71.html                             /http-api/v5/introduction71.html    301
-/http-api/v5/writing-events72.html                             /http-api/v5/introduction72.html    301
-/http-api/v5/writing-events73.html                             /http-api/v5/introduction73.html    301
-/http-api/v5/writing-events74.html                             /http-api/v5/introduction74.html    301
-/http-api/v5/writing-events75.html                             /http-api/v5/introduction75.html    301
-/http-api/v5/writing-events76.html                             /http-api/v5/introduction76.html    301
-/http-api/v5/writing-events77.html                             /http-api/v5/introduction77.html    301
-/http-api/v5/writing-events78.html                             /http-api/v5/introduction78.html    301
-/http-api/v5/writing-events79.html                             /http-api/v5/introduction79.html    301
-/http-api/v5/writing-events70.html                             /http-api/v5/introduction70.html    301
-/http-api/v5/writing-events81.html                             /http-api/v5/introduction81.html    301
-/http-api/v5/writing-events82.html                             /http-api/v5/introduction82.html    301
-/http-api/v5/writing-events83.html                             /http-api/v5/introduction83.html    301
-/http-api/v5/writing-events84.html                             /http-api/v5/introduction84.html    301
-/http-api/v5/writing-events85.html                             /http-api/v5/introduction85.html    301
-/http-api/v5/writing-events86.html                             /http-api/v5/introduction86.html    301
-/http-api/v5/writing-events87.html                             /http-api/v5/introduction87.html    301
-/http-api/v5/writing-events88.html                             /http-api/v5/introduction88.html    301
-/http-api/v5/writing-events89.html                             /http-api/v5/introduction89.html    301
-/http-api/v5/writing-events80.html                             /http-api/v5/introduction80.html    301
-/http-api/v5/writing-events91.html                             /http-api/v5/introduction91.html    301
-/http-api/v5/writing-events92.html                             /http-api/v5/introduction92.html    301
-/http-api/v5/writing-events93.html                             /http-api/v5/introduction93.html    301
-/http-api/v5/writing-events94.html                             /http-api/v5/introduction94.html    301
-/http-api/v5/writing-events95.html                             /http-api/v5/introduction95.html    301
-/http-api/v5/writing-events96.html                             /http-api/v5/introduction96.html    301
-/http-api/v5/writing-events97.html                             /http-api/v5/introduction97.html    301
-/http-api/v5/writing-events98.html                             /http-api/v5/introduction98.html    301
-/http-api/v5/writing-events99.html                             /http-api/v5/introduction99.html    301
-/http-api/v5/writing-events90.html                             /http-api/v5/introduction90.html    301
-
-
-
-
 ## /clients/dotnet/*                           /clients/tcp/dotnet/:splat                  301
 
 ## TCP Clients from Vuepress v1 to v2
@@ -288,6 +180,7 @@
 /http-api/v5/reading-streams.html                            /http-api/v5/introduction.html    301
 /http-api/v5/reading-subscribing-events.html                 /http-api/v5/introduction.html    301
 /http-api/v5/stream-metadata.html                            /http-api/v5/introduction.html    301
+/http-api/v5/writing-events.html                             /http-api/v5/introduction.html    301
 
 /project-types.html     /         301
 /option-template.html   /         301
