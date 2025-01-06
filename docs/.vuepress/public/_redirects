@@ -3,6 +3,37 @@
 # Refer to https://docs.netlify.com/routing/redirects/redirect-options/
 # ########################################################################################################################
 
+# ########################################################################################################################
+# General redirects 
+# Basic format is: from what the browser requests to what we serve
+# 
+/latest.html                           /server/v24.10/quick-start/                            301
+/latest                                /server/v24.10/quick-start/                            301
+# /server/latest/*                       /server/v24.2/:splat                      301
+
+# ########################################################################################################################
+# Clients 
+# ########################################################################################################################
+
+## redirect for internet search on "esdb .net client
+/clients/dotnet/5.0/connecting.html   /clients/grpc/getting-started.html#connecting-to-eventstoredb    301
+
+# ##################################################
+## TCP Clients
+
+/clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301
+/clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301
+/clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301
+
+## more TCP Clients redirects
+/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301
+/clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301
+/clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
+/clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
+
+
+
+
 /http-api/v5/writing-events1.html                             /http-api/v5/introduction1.html    301
 /http-api/v5/writing-events2.html                             /http-api/v5/introduction2.html    301
 /http-api/v5/writing-events3.html                             /http-api/v5/introduction3.html    301
@@ -104,33 +135,9 @@
 /http-api/v5/writing-events98.html                             /http-api/v5/introduction98.html    301
 /http-api/v5/writing-events99.html                             /http-api/v5/introduction99.html    301
 /http-api/v5/writing-events90.html                             /http-api/v5/introduction90.html    301
-# ########################################################################################################################
-# General redirects 
-# Basic format is: from what the browser requests to what we serve
-# 
-/latest.html                           /server/v24.10/quick-start/                            301
-/latest                                /server/v24.10/quick-start/                            301
-# /server/latest/*                       /server/v24.2/:splat                      301
 
-# ########################################################################################################################
-# Clients 
-# ########################################################################################################################
 
-## redirect for internet search on "esdb .net client
-/clients/dotnet/5.0/connecting.html   /clients/grpc/getting-started.html#connecting-to-eventstoredb    301
 
-# ##################################################
-## TCP Clients
-
-/clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301
-/clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301
-/clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301
-
-## more TCP Clients redirects
-/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301
-/clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301
-/clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
-/clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
 
 ## /clients/dotnet/*                           /clients/tcp/dotnet/:splat                  301
 
