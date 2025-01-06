@@ -147,83 +147,83 @@
 # 2025-01-01 Redirection cleanup 
 # ########################################################################################################################
 
-/clients/http-api/v20.10/*    /http-api/v24.10/introduction.html
-/clients/http-api/v21.10/*    /http-api/v24.10/introduction.html
-/clients/http-api/v22.10/*    /http-api/v22.10/introduction.html
-/clients/http-api/v23.6/*     /http-api/v23.10/introduction.html
-/clients/http-api/v23.10/*    /http-api/v23.10/introduction.html
-/clients/http-api/v24.2/*     /http-api/v24.10/introduction.html
+/clients/http-api/v20.10/*    /http-api/v24.10/introduction.html    301
+/clients/http-api/v21.10/*    /http-api/v24.10/introduction.html    301
+/clients/http-api/v22.10/*    /http-api/v22.10/introduction.html    301
+/clients/http-api/v23.6/*     /http-api/v23.10/introduction.html    301
+/clients/http-api/v23.10/*    /http-api/v23.10/introduction.html    301
+/clients/http-api/v24.2/*     /http-api/v24.10/introduction.html    301
 
-/clients/tcp/dotnet/5.0/*     /clients/tcp/dotnet/21.2/:splat
-/clients/tcp/dotnet/20.10/*   /clients/tcp/dotnet/21.2/:splat
+/clients/tcp/dotnet/5.0/*     /clients/tcp/dotnet/21.2/:splat       301
+/clients/tcp/dotnet/20.10/*   /clients/tcp/dotnet/21.2/:splat       301
 
-/cloud/intro/                               /cloud/introduction.html
-/cloud/provision/azure/considerations.html  /cloud/introduction.html
-/cloud/use/kubernetes/aks.html              /cloud/use/kubernetes.html
-/cloud/use/kubernetes/eks.html              /cloud/use/kubernetes.html
-/cloud/use/kubernetes/gke.html              /cloud/use/kubernetes.html
-/cloud/use/migration/replicator.html        /cloud/use/migration.html
+/cloud/intro/                               /cloud/introduction.html      301
+/cloud/provision/azure/considerations.html  /cloud/introduction.html      301
+/cloud/use/kubernetes/aks.html              /cloud/use/kubernetes.html    301
+/cloud/use/kubernetes/eks.html              /cloud/use/kubernetes.html    301
+/cloud/use/kubernetes/gke.html              /cloud/use/kubernetes.html    301
+/cloud/use/migration/replicator.html        /cloud/use/migration.html     301
 
-/http-api/5.0.8/*                   /http-api/v5/introduction.html
-/http-api/23.10/projections.html    /server/v23.10/features/projections/tutorial.html
-/http-api/v24.10%20Preview%201/*    /http-api/v24.10/:splat
-/http-api/v24.2/*                   /http-api/v24.10/introduction.html
-/http-api/v24.6/projections.html    /server/v24.6/features/projections/tutorial.html
+/http-api/5.0.8/*                   /http-api/v5/introduction.html                      301
+/http-api/v23.10/projections.html   /server/v23.10/features/projections/tutorial.html   301
+/http-api/v24.10%20Preview%201/*    /http-api/v24.10/:splat                             301
+/http-api/v24.2/*                   /http-api/v24.10/introduction.html                  301
+/http-api/v24.6/projections.html    /server/v24.6/features/projections/tutorial.html    301
 
-/http-api/v5/appending-events.html                           /http-api/v5/introduction.html
-/http-api/v5/deleting-a-stream.html                          /http-api/v5/introduction.html
-/http-api/v5/description-document.html                       /http-api/v5/introduction.html
-/http-api/v5/introduction/*                                  /http-api/v5/introduction.html
-/http-api/v5/optimistic-concurrency-and-idempotence.html     /http-api/v5/introduction.html
-/http-api/v5/optional-http-headers/*                         /http-api/v5/introduction.html
-/http-api/v5/projections/*                                   /http-api/v5/introduction.html
-/http-api/v5/reading-streams.html                            /http-api/v5/introduction.html
-/http-api/v5/reading-subscribing-events.html                 /http-api/v5/introduction.html
-/http-api/v5/stream-metadata.html                            /http-api/v5/introduction.html
-/http-api/v5/writing-events.html                             /http-api/v5/introduction.html
+/http-api/v5/appending-events.html                           /http-api/v5/introduction.html    301
+/http-api/v5/deleting-a-stream.html                          /http-api/v5/introduction.html    301
+/http-api/v5/description-document.html                       /http-api/v5/introduction.html    301
+/http-api/v5/introduction/*                                  /http-api/v5/introduction.html    301
+/http-api/v5/optimistic-concurrency-and-idempotence.html     /http-api/v5/introduction.html    301
+/http-api/v5/optional-http-headers/*                         /http-api/v5/introduction.html    301
+/http-api/v5/projections/*                                   /http-api/v5/introduction.html    301
+/http-api/v5/reading-streams.html                            /http-api/v5/introduction.html    301
+/http-api/v5/reading-subscribing-events.html                 /http-api/v5/introduction.html    301
+/http-api/v5/stream-metadata.html                            /http-api/v5/introduction.html    301
+/http-api/v5/writing-events.html                             /http-api/v5/introduction.html    301
 
-/project-types.html     /
-/option-template.html   /
+/project-types.html     /         301
+/option-template.html   /         301
 
 /resources/*            /         301
 
-/server/5.0.8/*             /server/v5/introduction.html
-/server/v5/clustering/*     /server/v5/introduction.html
-/server/v5/diagnostics/*    /server/v5/introduction.html
-/server/v5/indexes/*        /server/v5/introduction.html
-/server/v5/installation/*   /server/v5/introduction.html
-/server/v5/introduction/*   /server/v5/introduction.html
-/server/v5/networking/*     /server/v5/introduction.html
-/server/v5/operations/*     /server/v5/introduction.html
-/server/v5/networking/*     /server/v5/introduction.html
-/server/v5/projections/*    /server/v5/introduction.html
-/server/v5/security/*       /server/v5/introduction.html
-/server/v5/server/*         /server/v5/introduction.html
-/server/v5/streams/*        /server/v5/introduction.html
-/v5/*                       /server/v5/introduction.html
+/server/5.0.8/*             /server/v5/introduction.html    301
+/server/v5/clustering/*     /server/v5/introduction.html    301
+/server/v5/diagnostics/*    /server/v5/introduction.html    301
+/server/v5/indexes/*        /server/v5/introduction.html    301
+/server/v5/installation/*   /server/v5/introduction.html    301
+/server/v5/introduction/*   /server/v5/introduction.html    301
+/server/v5/networking/*     /server/v5/introduction.html    301
+/server/v5/operations/*     /server/v5/introduction.html    301
+/server/v5/networking/*     /server/v5/introduction.html    301
+/server/v5/projections/*    /server/v5/introduction.html    301
+/server/v5/security/*       /server/v5/introduction.html    301
+/server/v5/server/*         /server/v5/introduction.html    301
+/server/v5/streams/*        /server/v5/introduction.html    301
+/v5/*                       /server/v5/introduction.html    301
 
 
-/server/20.6/*          /server/v24.10/quick-start/
-/server/v20/*           /server/v24.10/quick-start/
-/server/v20.10/*        /server/v24.10/quick-start/
-/server/v21.2/*         /server/v24.10/quick-start/
-/server/v21.6/*         /server/v24.10/quick-start/
-/server/v21.10/*        /server/v24.10/quick-start/
+/server/20.6/*          /server/v24.10/quick-start/   301
+/server/v20/*           /server/v24.10/quick-start/   301
+/server/v20.10/*        /server/v24.10/quick-start/   301
+/server/v21.2/*         /server/v24.10/quick-start/   301
+/server/v21.6/*         /server/v24.10/quick-start/   301
+/server/v21.10/*        /server/v24.10/quick-start/   301
 
-/server/v23.10/cluster.html                       /server/v23.10/quick-start/
-/server/v23.10/configuration.html                 /server/v23.10/quick-start/
-/server/v23.10/diagnostics.html                   /server/v23.10/quick-start/
-/server/v23.10/indexes.html                       /server/v23.10/quick-start/
-/server/v23.10/installation.html                  /server/v23.10/quick-start/
-/server/v23.10/networking.html                    /server/v23.10/quick-start/
-/server/v23.10/operations.html                    /server/v23.10/quick-start/
-/server/v23.10/persistent-subscriptions.html      /server/v23.10/quick-start/
-/server/v23.10/projections.html                   /server/v23.10/quick-start/
-/server/v23.10/security.html                      /server/v23.10/quick-start/
-/server/v23.10/streams.html                       /server/v23.10/quick-start/
-/server/v23.10/upgrade-guide.html                 /server/v23.10/quick-start/
+/server/v23.10/cluster.html                       /server/v23.10/quick-start/   301
+/server/v23.10/configuration.html                 /server/v23.10/quick-start/   301
+/server/v23.10/diagnostics.html                   /server/v23.10/quick-start/   301
+/server/v23.10/indexes.html                       /server/v23.10/quick-start/   301
+/server/v23.10/installation.html                  /server/v23.10/quick-start/   301
+/server/v23.10/networking.html                    /server/v23.10/quick-start/   301
+/server/v23.10/operations.html                    /server/v23.10/quick-start/   301
+/server/v23.10/persistent-subscriptions.html      /server/v23.10/quick-start/   301
+/server/v23.10/projections.html                   /server/v23.10/quick-start/   301
+/server/v23.10/security.html                      /server/v23.10/quick-start/   301
+/server/v23.10/streams.html                       /server/v23.10/quick-start/   301
+/server/v23.10/upgrade-guide.html                 /server/v23.10/quick-start/   301
 
-/server/v24.6/*                     /server/v24.10/quick-start/
-/server/v24.10%20Preview%201/*      /server/v24.10/:splat
+/server/v24.6/*                     /server/v24.10/quick-start/   301
+/server/v24.10%20Preview%201/*      /server/v24.10/:splat         301
 
 /server/nightly/*         /       301
