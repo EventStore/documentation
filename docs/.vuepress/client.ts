@@ -83,6 +83,7 @@ export default defineClientConfig({
                 }
             }, 0);
         });
+        addDynamicRoute("/server/:version", to => `/server/${to.params.version}/quick-start/`);
         addDynamicRoute('/client/:lang',
             to => {
                 const lang = to.params.lang === "csharp" ? "C#" : to.params.lang;

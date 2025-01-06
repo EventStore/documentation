@@ -26,7 +26,6 @@
 /clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301
 
 ## more TCP Clients redirects
-/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301
 /clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
