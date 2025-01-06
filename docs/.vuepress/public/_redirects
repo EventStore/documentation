@@ -26,6 +26,7 @@
 /clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301
 
 ## more TCP Clients redirects
+/samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301
 /clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
@@ -169,11 +170,6 @@
 /http-api/v24.2/*                   /http-api/v24.10/introduction.html                  301
 /http-api/v24.6/projections.html    /server/v24.6/features/projections/tutorial.html    301
 
-/http-api/v5/appending-events.html                           /http-api/v5/introduction.html    301
-/http-api/v5/deleting-a-stream.html                          /http-api/v5/introduction.html    301
-/http-api/v5/description-document.html                       /http-api/v5/introduction.html    301
-/http-api/v5/introduction/*                                  /http-api/v5/introduction.html    301
-/http-api/v5/optimistic-concurrency-and-idempotence.html     /http-api/v5/introduction.html    301
 /http-api/v5/optional-http-headers/*                         /http-api/v5/introduction.html    301
 /http-api/v5/projections/*                                   /http-api/v5/introduction.html    301
 /http-api/v5/reading-streams.html                            /http-api/v5/introduction.html    301
