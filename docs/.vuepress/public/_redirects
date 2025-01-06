@@ -170,6 +170,10 @@
 /http-api/v24.2/*                   /http-api/v24.10/introduction.html                  301
 /http-api/v24.6/projections.html    /server/v24.6/features/projections/tutorial.html    301
 
+/http-api/v5/appending-events.html                           /http-api/v5/introduction.html    301
+/http-api/v5/deleting-a-stream.html                          /http-api/v5/introduction.html    301
+/http-api/v5/description-document.html                       /http-api/v5/introduction.html    301
+/http-api/v5/optimistic-concurrency-and-idempotence.html     /http-api/v5/introduction.html    301
 /http-api/v5/optional-http-headers/*                         /http-api/v5/introduction.html    301
 /http-api/v5/projections/*                                   /http-api/v5/introduction.html    301
 /http-api/v5/reading-streams.html                            /http-api/v5/introduction.html    301
