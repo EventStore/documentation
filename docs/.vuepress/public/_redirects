@@ -1,48 +1,41 @@
 # ########################################################################################################################
-# List of redirect rules in Netlify
-# Refer to https://docs.netlify.com/routing/redirects/redirect-options/
+# List of redirect rules in Cloudflare Pages
+# Refer to https://developers.cloudflare.com/pages/configuration/redirects/
 # ########################################################################################################################
 
-# ########################################################################################################################
 # ########################################################################################################################
 # STATIC REDIRECTS
 #
 # This section must precede DYNAMIC REDIRECTS
 # https://developers.cloudflare.com/pages/configuration/redirects/#per-file
 # ########################################################################################################################
-# ########################################################################################################################
 
 
-# ########################################################################################################################
+# ######################
 # General redirects
-# Basic format is: from what the browser requests to what we serve
-#
+# ######################
+
 /latest.html                           /server/v24.10/quick-start/                            301
 /latest                                /server/v24.10/quick-start/                            301
-# /server/latest/*                       /server/v24.2/:splat                      301
 
-# ########################################################################################################################
+# ######################
 # Clients
-# ########################################################################################################################
+# ######################
 
-## redirect for internet search on "esdb .net client
+# redirect for internet search on "esdb .net client
 /clients/dotnet/5.0/connecting.html   /clients/grpc/getting-started.html#connecting-to-eventstoredb    301
 
-# ##################################################
-## TCP Clients
-
+# TCP Clients
 /clients/dotnet/21.2/migration-to-gRPC.html#appending-events       /clients/tcp/dotnet/21.2/migration-to-gRPC.html#appending-events    301
 /clients/dotnet/5.0/migration-to-gRPC.html#update-the-target-framework /clients/tcp/dotnet/21.2/migration-to-gRPC.html#update-the-target-framework  301
 /clients/dotnet/5.0/migration-to-gRPC.html    /clients/tcp/dotnet/21.2/migration-to-gRPC.html  301
 
-## TCP Clients from Vuepress v1 to v2
+# TCP Clients from Vuepress v1 to v2
 /clients/dotnet/generated/v20.6.0           /clients/tcp/dotnet/21.2                       301
 
-# ##################################################
-## gRPC Clients from Vuepress v1 to v2
+# gRPC Clients from Vuepress v1 to v2
 /clients/grpc/subscribing-to-streams/persistent-subscriptions.html   /clients/grpc/persistent-subscriptions.html  301
 
-# ##################################################
 # HTTP API from Vuepress v1 to v2
 /server/v5/docs/http-api/                   /http-api/v5/                      301
 
@@ -72,22 +65,20 @@
 /server/5.0.8/http-api/stream-metadata.html                       /http-api/v5/#stream-metadata   301
 /server/5.0.9/http-api                                            /http-api/v5   301
 
-# ##################################################
 # General clients redirect
 # This rule should be last in this clients list otherwise it takes precedence.
-# ##################################################
 /clients                                                            /clients/grpc/getting-started.html   301
 
-# ########################################################################################################################
+# ######################
 # Cloud
-# ########################################################################################################################
+# ######################
 
 /cloud/quick-start.html                     /cloud/introduction.html   301
 
-## Cloud from Vuepress v1 to v2
+# Cloud from Vuepress v1 to v2
 /cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide 301
 
-## Cloud docs deep links
+# Cloud docs deep links
 /cloud/provision/aws/network                /cloud/provision/aws.html#create-a-network            301
 /cloud/provision/aws/cluster                /cloud/provision/aws.html#deploy-a-managed-instance   301
 /cloud/provision/aws/peering                /cloud/provision/aws.html#network-peering             301
@@ -104,60 +95,58 @@
 /cloud/provision/gcp/regions                /cloud/provision/gcp.html#available-regions         301
 
 
-# ########################################################################################################################
+# ######################
 # Db Server
-# ########################################################################################################################
+# ######################
 
-## Hope migration
+# Hope migration
 /server/v24.2/metrics.html#opentelemetry-exporter /server/v24.10/diagnostics/integrations.html#opentelemetry-exporter 301
 /server/v24.2/diagnostics.html#logs-download /server/v24.10/diagnostics/logs.html#logs-download #301
 /server/v23.10/metrics.html /server/v24.10/diagnostics/metrics.html 301
 
 
-# ########################################################################################################################
+# ######################
 # Getting Started
-# ########################################################################################################################
+# ######################
 
 /getting-started.html                   /getting-started/quickstart/                    301
 /getting-started/                       /getting-started/quickstart/                    301
 
 
-# ########################################################################################################################
+
+
+
+
+
+
+
 # ########################################################################################################################
 # DYNAMIC REDIRECTS
 #
 # This section must succeed STATIC REDIRECTS
 # https://developers.cloudflare.com/pages/configuration/redirects/#per-file
 # ########################################################################################################################
-# ########################################################################################################################
 
 
-# ########################################################################################################################
+# ######################
 # Clients
-# ########################################################################################################################
+# ######################
 
-# ##################################################
-## TCP Clients
-
-## more TCP Clients redirects
+# TCP Clients redirects
 /samples/clients/dotnet/22.0/*              /clients/tcp/dotnet/21.2                       301
 /clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
 
-## /clients/dotnet/*                           /clients/tcp/dotnet/:splat                  301
-
-## TCP Clients from Vuepress v1 to v2
+# TCP Clients from Vuepress v1 to v2
 /clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301
 /clients/dotnet/:version/:firstpart.html    /clients/tcp/dotnet/:version/:firstpart.html   200
 /clients/dotnet/:version/:firstpart/*       /clients/tcp/dotnet/:version/:firstpart.html   301
 
-# ##################################################
-## gRPC Clients from Vuepress v1 to v2
+# gRPC Clients from Vuepress v1 to v2
 /clients/grpc/subscribing-to-streams/*                               /clients/grpc/subscriptions.html             301
 /clients/grpc/:firstpart/*                                           /clients/grpc/:firstpart.html                301
 
-# ##################################################
 # HTTP API from Vuepress v1 to v2
 /server/v5/docs/http-api/:firstpart.html    /http-api/v5/                      301
 /server/v5/docs/http-api/:firstpart/*       /http-api/v5/:firstpart/:splat     301
@@ -165,24 +154,23 @@
 
 /clients/http-api/v5/*                                            /http-api/v5/:splat
 
-# ########################################################################################################################
+# ######################
 # Cloud
-# ########################################################################################################################
+# ######################
 
-## Cloud from Vuepress v1 to v2
+# Cloud from Vuepress v1 to v2
 /cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301
 /cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301
 
-# ########################################################################################################################
+# ######################
 # Db Server
-# ########################################################################################################################
+# ######################
 
-## Database from Vuepress v1 to v2
+# Database from Vuepress v1 to v2
 /server/:version/introduction/              /server/:version/                          301
 /server/:version/docs/*                     /server/:version/:splat                    301
 
-# ########################################################################################################################
-## Server versions - latest and LTS
+# Server versions - latest and LTS
 /server/v24.2/*                             /server/v24.10/quick-start/                 301
 /server/v23.6/*                             /server/v23.10/quick-start/                301
 /server/v22.6/*                             /server/v22.10/:splat                      301
