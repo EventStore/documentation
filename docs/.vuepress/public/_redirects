@@ -200,6 +200,12 @@
 /http-api/v24.2/*                   /http-api/v24.10/introduction.html                  301
 /http-api/v24.10%20Preview%201/*    /http-api/v24.10/:splat                             301
 
+/clients/http-api/v20.10/*          /http-api/v24.10/introduction.html                  301
+/clients/http-api/v21.10/*          /http-api/v24.10/introduction.html                  301
+/clients/http-api/v22.10/*          /http-api/v22.10/introduction.html                  301
+/clients/http-api/v23.6/*           /http-api/v23.10/introduction.html                  301
+/clients/http-api/v23.10/*          /http-api/v23.10/introduction.html                  301
+/clients/http-api/v24.2/*           /http-api/v24.10/introduction.html                  301
 
 # ######################
 # Cloud
