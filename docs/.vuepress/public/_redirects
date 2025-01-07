@@ -65,6 +65,20 @@
 /server/5.0.8/http-api/stream-metadata.html                       /http-api/v5/#stream-metadata   301
 /server/5.0.9/http-api                                            /http-api/v5   301
 
+# HTTP API moved projection section to server docs (90c84819f4226e127360cdfc807a8106735acc91@documentation)
+/http-api/v23.10/projections.html   /server/v23.10/features/projections/tutorial.html   301
+/http-api/v24.6/projections.html    /server/v24.6/features/projections/tutorial.html    301
+
+# HTTP API removed database docs (a99ff9f9cb89dfa0ecf1d731aaac4435189b6512@documentation)
+/http-api/v5/appending-events.html                           /http-api/v5/introduction.html    301
+/http-api/v5/deleting-a-stream.html                          /http-api/v5/introduction.html    301
+/http-api/v5/description-document.html                       /http-api/v5/introduction.html    301
+/http-api/v5/optimistic-concurrency-and-idempotence.html     /http-api/v5/introduction.html    301
+/http-api/v5/reading-streams.html                            /http-api/v5/introduction.html    301
+/http-api/v5/reading-subscribing-events.html                 /http-api/v5/introduction.html    301
+/http-api/v5/stream-metadata.html                            /http-api/v5/introduction.html    301
+/http-api/v5/writing-events.html                             /http-api/v5/introduction.html    301
+
 # General clients redirect
 # This rule should be last in this clients list otherwise it takes precedence.
 /clients                                                            /clients/grpc/getting-started.html   301
@@ -76,7 +90,8 @@
 /cloud/quick-start.html                     /cloud/introduction.html   301
 
 # Cloud from Vuepress v1 to v2
-/cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide 301
+/cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide   301
+/cloud/provision/azure/considerations.html  /cloud/introduction.html                        301
 
 # Cloud docs deep links
 /cloud/provision/aws/network                /cloud/provision/aws.html#create-a-network            301
@@ -94,29 +109,48 @@
 /cloud/provision/gcp/peering                /cloud/provision/gcp.html#network-peering           301
 /cloud/provision/gcp/regions                /cloud/provision/gcp.html#available-regions         301
 
+# Cloud hope migration
+/cloud/intro/                               /cloud/introduction.html      301
+
+# Cloud content fix (d3a7ba155f6f10297065362f3e9c1e0c10f0f6a8@documentation)
+/cloud/use/kubernetes/aks.html              /cloud/use/kubernetes.html    301
+/cloud/use/kubernetes/eks.html              /cloud/use/kubernetes.html    301
+/cloud/use/kubernetes/gke.html              /cloud/use/kubernetes.html    301
+/cloud/use/migration/replicator.html        /cloud/use/migration.html     301
+
 
 # ######################
 # Db Server
 # ######################
 
 # Hope migration
-/server/v24.2/metrics.html#opentelemetry-exporter /server/v24.10/diagnostics/integrations.html#opentelemetry-exporter 301
-/server/v24.2/diagnostics.html#logs-download /server/v24.10/diagnostics/logs.html#logs-download #301
-/server/v23.10/metrics.html /server/v24.10/diagnostics/metrics.html 301
+/server/v24.2/metrics.html#opentelemetry-exporter   /server/v24.10/diagnostics/integrations.html#opentelemetry-exporter 301
+/server/v24.2/diagnostics.html#logs-download        /server/v24.10/diagnostics/logs.html#logs-download #301
+/server/v23.10/metrics.html                         /server/v24.10/diagnostics/metrics.html 301
+/server/v23.10/cluster.html                         /server/v23.10/quick-start/   301
+/server/v23.10/configuration.html                   /server/v23.10/quick-start/   301
+/server/v23.10/diagnostics.html                     /server/v23.10/quick-start/   301
+/server/v23.10/indexes.html                         /server/v23.10/quick-start/   301
+/server/v23.10/installation.html                    /server/v23.10/quick-start/   301
+/server/v23.10/networking.html                      /server/v23.10/quick-start/   301
+/server/v23.10/operations.html                      /server/v23.10/quick-start/   301
+/server/v23.10/persistent-subscriptions.html        /server/v23.10/quick-start/   301
+/server/v23.10/projections.html                     /server/v23.10/quick-start/   301
+/server/v23.10/security.html                        /server/v23.10/quick-start/   301
+/server/v23.10/streams.html                         /server/v23.10/quick-start/   301
+/server/v23.10/upgrade-guide.html                   /server/v23.10/quick-start/   301
 
 
 # ######################
-# Getting Started
+# Others
 # ######################
 
+# Getting started
 /getting-started.html                   /getting-started/quickstart/                    301
 /getting-started/                       /getting-started/quickstart/                    301
 
-
-
-
-
-
+# Project types
+/project-types.html                     /                                               301
 
 
 
@@ -137,6 +171,8 @@
 /clients/dotnet/5.0/*                       /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/21.2/*                      /clients/tcp/dotnet/21.2/:splat                301
 /clients/dotnet/20.10/*                     /clients/tcp/dotnet/21.2/:splat                301
+/clients/tcp/dotnet/5.0/*                   /clients/tcp/dotnet/21.2/:splat                301
+/clients/tcp/dotnet/20.10/*                 /clients/tcp/dotnet/21.2/:splat                301
 
 # TCP Clients from Vuepress v1 to v2
 /clients/dotnet/:version/getting-started/*  /clients/tcp/dotnet/:version/:splat            301
@@ -154,6 +190,17 @@
 
 /clients/http-api/v5/*                                            /http-api/v5/:splat
 
+# HTTP API v5 directory structure change (fde9dd319a406350292fd2fd4a2809fd36338794@eventstore)
+/http-api/v5/introduction/*                                  /http-api/v5/introduction.html    301
+/http-api/v5/optional-http-headers/*                         /http-api/v5/introduction.html    301
+/http-api/v5/projections/*                                   /http-api/v5/introduction.html    301
+
+# HTTP API deprecated
+/http-api/5.0.8/*                   /http-api/v5/introduction.html                      301
+/http-api/v24.2/*                   /http-api/v24.10/introduction.html                  301
+/http-api/v24.10%20Preview%201/*    /http-api/v24.10/:splat                             301
+
+
 # ######################
 # Cloud
 # ######################
@@ -170,10 +217,42 @@
 /server/:version/introduction/              /server/:version/                          301
 /server/:version/docs/*                     /server/:version/:splat                    301
 
-# Server versions - latest and LTS
-/server/v24.2/*                             /server/v24.10/quick-start/                 301
-/server/v23.6/*                             /server/v23.10/quick-start/                301
-/server/v22.6/*                             /server/v22.10/:splat                      301
+# Server deprecated
 
-## Hope migration
+/v5/*                                       /server/v5/introduction.html              301
+/server/5.0.8/*                             /server/v5/introduction.html              301
+/server/v20/*                               /server/v24.10/quick-start/               301
+/server/20.6/*                              /server/v24.10/quick-start/               301
+/server/v20.10/*                            /server/v24.10/quick-start/               301
+/server/v21.2/*                             /server/v24.10/quick-start/               301
+/server/v21.6/*                             /server/v24.10/quick-start/               301
+/server/v21.10/*                            /server/v24.10/quick-start/               301
+/server/v22.6/*                             /server/v22.10/:splat                     301
+/server/v23.6/*                             /server/v23.10/quick-start/               301
+/server/v24.2/*                             /server/v24.10/quick-start/               301
+/server/v24.6/*                             /server/v24.10/quick-start/               301
+/server/v24.10%20Preview%201/*              /server/v24.10/:splat                     301
+
+
+# Hope migration
 /connectors/* /server/v24.10/features/connectors/ 301
+
+# Server v5 directory structure change (fde9dd319a406350292fd2fd4a2809fd36338794@eventstore)
+/server/v5/clustering/*     /server/v5/introduction.html    301
+/server/v5/diagnostics/*    /server/v5/introduction.html    301
+/server/v5/indexes/*        /server/v5/introduction.html    301
+/server/v5/installation/*   /server/v5/introduction.html    301
+/server/v5/introduction/*   /server/v5/introduction.html    301
+/server/v5/networking/*     /server/v5/introduction.html    301
+/server/v5/operations/*     /server/v5/introduction.html    301
+/server/v5/networking/*     /server/v5/introduction.html    301
+/server/v5/projections/*    /server/v5/introduction.html    301
+/server/v5/security/*       /server/v5/introduction.html    301
+/server/v5/server/*         /server/v5/introduction.html    301
+/server/v5/streams/*        /server/v5/introduction.html    301
+
+# ######################
+# Other
+# ######################
+
+/resources/*            /         301
