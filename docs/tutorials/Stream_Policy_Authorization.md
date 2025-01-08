@@ -77,57 +77,6 @@ curl -X POST \
 ```
 :::
 
-And disable stream policies by setting the stream access policy type back to `acl`:
-
-::: tabs
-@tab HTTP
-
-```http
-### Configure cluster to use acls
-POST https://localhost:2113/streams/$authorization-policy-settings
-Authorization: Basic admin changeit
-Content-Type: application/json
-ES-EventId: d07a6637-d9d0-43b7-8f48-6a9a8800af12
-ES-EventType: $authorization-policy-changed
-
-{
-    "streamAccessPolicyType": "acl"
-}
-```
-
-@tab Powershell
-```Powershell
-$JSON = @"
-{
-    "streamAccessPolicyType": "acl"
-}
-"@ `
-
-curl.exe -X POST `
-  -H "Content-Type: application/json" `
-  -H "ES-EventId: 3762c89e-d12e-4a01-83bb-781459c93ebc" `
-  -H "ES-EventType: `$authorization-policy-changed" `
-  -u "admin:changeit" `
-  -d $JSON `
-  https://localhost:2113/streams/%24authorization-policy-settings
-```
-@tab Bash
-```bash
-JSON='{
-    "streamAccessPolicyType": "acl"
-}'
-
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "ES-EventId: d6b3a316-2493-4bcd-9019-e02b5ae4eec3" \
-  -H "ES-EventType: \$authorization-policy-changed" \
-  -u "admin:changeit" \
-  -d "$JSON" \
-  https://localhost:2113/streams/%24authorization-policy-settings
-```
-
-:::
-
 
 ### **Step 4: Confirm Stream Policy Authorization activation**
 
