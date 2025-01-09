@@ -7,6 +7,8 @@ dir:
 
 # Integrations overview
 
+<i>Event Store Cloud has been renamed Kurrent Cloud.  The documentation will be updated over the next few weeks to reflect the update more thoroughly.</i>
+
 Event Store Cloud offers integrations between internal sources such as cluster health, [issue](#issues) detection, [notifications](#notifications) events, EventStore DB [logs](#logs), EventStore DB [metrics](#metrics) and sinks which include external services such as Slack and Amazon CloudWatch.
 
 ## Integration sources
