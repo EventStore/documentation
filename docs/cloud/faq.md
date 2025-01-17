@@ -116,7 +116,7 @@ Please ensure to learn about the SLA levels provided by Event Store Cloud in our
 
 ## Security
 
-#### How can I to get an audit log of access to the console?
+#### How to get an audit log of access to the console?
 
 The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](introduction.md#audit-log-api) using the `esc` command line tool.
 
@@ -124,13 +124,13 @@ The Cloud Console access audit log is in our roadmap. Right now, you can [access
 
 Event Store Ltd has security policies in place.
 
-If you have specific questions please [contact us](https://www.eventstore.com/contact)
+If you have specific questions please [contact us](https://www.eventstore.com/contact).
 
 #### Has the system been independently audited?
 
 Event Store Ltd is aware of the security importance. We're treating it is as a high priority. Our Cloud offering has been independently audited, and we achieved [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certification in January 2022.
 
-If you have specific questions please [contact us](https://www.eventstore.com/contact)
+If you have specific questions please [contact us](https://www.eventstore.com/contact).
 
 ## Troubleshooting
 
