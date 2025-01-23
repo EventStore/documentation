@@ -5,7 +5,7 @@ order: 1
 
 # Terraform provider
 
-Event Store Cloud provider for Terraform is available in the public [provider registry][terraform registry].
+Kurrent Cloud provider for Terraform is available in the public [provider registry][terraform registry].
 
 Provider documentation is available there as well, on the [Documentation tab](https://registry.terraform.io/providers/EventStore/eventstorecloud/latest/docs).
 
@@ -15,14 +15,14 @@ The current version of the provider is: {{ $frontmatter.terraform_current_versio
 
 The binaries are available for the following platforms:
 
-| Processor | Operating system | Filename                                                                                            |
-|:----------|:-----------------|:----------------------------------------------------------------------------------------------------|
-| x64       | macOS            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip`  |
-| x64       | FreeBSD          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip` |
-| x64       | Linux            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip`   |
-| x64       | Windows          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip` |
-| arm64     | FreeBSD          | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip` |
-| arm64     | Linux            | `terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip`   |
+| Processor | Operating system | Filename                                                                                          |
+|:----------|:-----------------|:--------------------------------------------------------------------------------------------------|
+| x64       | macOS            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip  |
+| x64       | FreeBSD          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip |
+| x64       | Linux            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip   |
+| x64       | Windows          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip |
+| arm64     | FreeBSD          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip |
+| arm64     | Linux            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip   |
 
 ### Terraform 0.13+
 
@@ -57,18 +57,18 @@ If you prefer to install from source, use the `make install` target in this [rep
 
 ## Provider configuration
 
-The Event Store Cloud provider must be configured with an access token. There are several additional options that may be useful. Provider configuration options are:
+The Kurrent Cloud provider must be configured with an access token. There are several additional options that may be useful. Provider configuration options are:
 
 | Option            | Environment Variable | Description                                                                                                         |
 |:------------------|:---------------------|:--------------------------------------------------------------------------------------------------------------------|
-| `token`           | `ESC_TOKEN`          | *Required*, your access token for Event Store Cloud.                                                                |
-| `organization_id` | `ESC_ORG_ID`         | *Required*, your Event Store Cloud organization ID.                                                                 |
-| `url`             | `ESC_URL`            | *Optional*, the URL of the Event Store Cloud API. This defaults to the public cloud instance of Event Store Cloud.  |
-| `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the Event Store Cloud CLI. |
+| `token`           | `ESC_TOKEN`          | *Required*, your access token for Kurrent Cloud.                                                                |
+| `organization_id` | `ESC_ORG_ID`         | *Required*, your Kurrent Cloud organization ID.                                                                 |
+| `url`             | `ESC_URL`            | *Optional*, the URL of the Kurrent Cloud API. This defaults to the public cloud instance of Kurrent Cloud.  |
+| `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the Kurrent Cloud CLI. |
 
 ### Obtaining the access token
 
-You can use the [Event Store Cloud console][cloud console tokens] or the [Event Store Cloud CLI][esc cli github releases] (`esc-cli`) to obtain a token
+You can use the [Kurrent Cloud console][cloud console tokens] or the [Kurrent Cloud CLI][esc cli github releases] (`esc-cli`) to obtain a token
 
 Use the following command to get the access token using `esc-cli`:
 
@@ -99,20 +99,20 @@ In the Cloud Console, open the [organisations page][cloud console organizations]
 
 ## Resources
 
-All resources in Event Store Cloud can be provisioned using the Terraform provider. Existing projects can be queried using a data source in the provider. More complete samples can be found [here][terraform github samples].
+All resources in Kurrent Cloud can be provisioned using the Terraform provider. Existing projects can be queried using a data source in the provider. More complete samples can be found [here][terraform github samples].
 
-Using the Terraform provider, you can create, manipulate, and delete the following resources in Event Store Cloud:
+Using the Terraform provider, you can create, manipulate, and delete the following resources in Kurrent Cloud:
 
-| Terraform resource                | Event Store Cloud resource                                        |
+| Terraform resource                | Kurrent Cloud resource                                        |
 |:----------------------------------|:------------------------------------------------------------------|
 | `eventstorecloud_project`         | [Project](#projects)                                              |
 | `eventstorecloud_network`         | [Network](#networks)                                              |
 | `eventstorecloud_peering`         | [Network peering](#network-peerings)                              |
-| `eventstorecloud_managed_cluster` | [Managed EventStoreDB instance or cluster](#managed-eventstoredb) |
+| `eventstorecloud_managed_cluster` | [Managed KurrentDB instance or cluster](#managed-KurrentDB) |
 
 ### Projects
 
-You can create Event Store Cloud projects for the organisation using the `eventstorecloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
+You can create Kurrent Cloud projects for the organisation using the `eventstorecloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
 
 You need a project to provision any other resource.
 
@@ -134,13 +134,13 @@ You will need the project ID to provision other resources within the project.
 
 #### Creating a project
 
-Here is an example of a Terraform script to create a project in Event Store Cloud:
+Here is an example of a Terraform script to create a project in Kurrent Cloud:
 
 @[code](./snippets/eventstorecloud_project.create.tf.hcl)
 
 ### Networks
 
-Before provisioning a database cluster, you need a network, which the cluster will connect to. Use the `eventstorecloud_network` resource to provision a new Event Store Cloud network. The network should be in the same cloud provider, which you plan to use for the database cluster.
+Before provisioning a database cluster, you need a network, which the cluster will connect to. Use the `eventstorecloud_network` resource to provision a new Kurrent Cloud network. The network should be in the same cloud provider, which you plan to use for the database cluster.
 
 #### Arguments
 
@@ -174,7 +174,7 @@ Smaller networks can hold fewer managed clusters, but may be easier to peer to i
 
 ### Network peerings
 
-When you got a network provisioned, you can already start creating database clusters. However, you won't be able to connect to your new cluster, unless you create a peering link between the network in Event Store Cloud, and the network on your own cloud account or project.
+When you got a network provisioned, you can already start creating database clusters. However, you won't be able to connect to your new cluster, unless you create a peering link between the network in Kurrent Cloud, and the network on your own cloud account or project.
 
 
 Use the `eventstorecloud_peering` resource to initiate the peering link. You will need to collect the details about your own cloud network (VPC or Virtual Network) as described in the arguments list below. Depending on the cloud provider, you'll need to complete some actions on your side to confirm the peering.
@@ -195,12 +195,12 @@ The format of the following arguments depends on the cloud provider:
 |:-------------------------|:---------|:--------------------------------------------------------------------------------------------------------|
 | `name`                   | `string` | *Required*, the new peering name.                                                                       |
 | `project_id`             | `string` | *Required*, the project ID for the new peering.                                                         |
-| `network_id`             | `string` | *Required*, the EventStore Cloud network ID, for which the peering will be created.                     |
+| `network_id`             | `string` | *Required*, the Kurrent Cloud network ID, for which the peering will be created.                     |
 | `peer_resource_provider` | `string` | *Required*, the cloud resource provider of the given network (`aws`, `gcp`, `azure`).                   |
 | `peer_network_region`    | `string` | *Required*, the cloud region of your own network, which you are going to peer with.                     |
 | `peer_account_id`        | `string` | *Required*, your cloud account ID, your cloud network should belong to that account.                    |
 | `peer_network_id`        | `string` | *Required*, the network ID for your own cloud network.                                                  |
-| `routes`                 | `string` | *Required*, CIDR blocks in your cloud network, which should be routed to the Event Store Cloud network. |
+| `routes`                 | `string` | *Required*, CIDR blocks in your cloud network, which should be routed to the Kurrent Cloud network. |
 
 Use the following provider-specific values for the `peer_account_id` argument:
 
@@ -219,8 +219,8 @@ For the `peer_network_id`, use the following cloud network property:
 | Azure | Virtual network resource ID |
 
 ::: tip
-- `peer_resource_provider` - currently, this must be the same as the resource provider of the Event Store Cloud network.
-- `peer_network_region` - currently, this must be the same as the region of the Event Store Cloud network, and specified in the format used by your cloud. For example `us-west-2` for AWS, `westus2` for Azure and `us-east1` for GCP
+- `peer_resource_provider` - currently, this must be the same as the resource provider of the Kurrent Cloud network.
+- `peer_network_region` - currently, this must be the same as the region of the Kurrent Cloud network, and specified in the format used by your cloud. For example `us-west-2` for AWS, `westus2` for Azure and `us-east1` for GCP
 - `routes` - typically, this consists of one element, the address space of a subnet in your managed network.
 :::
 
@@ -239,17 +239,17 @@ After completing the operation, the peering Terraform resource will get the foll
 
 For AWS, you'd need to confirm the peering request, use the `aws_peering_link_id` resource attribute for that purpose.
 
-For GCP, you need to initiate a peering from your cloud account to Event Store Cloud. Use the resource attributes with `gcp` prefix to automate that part.
+For GCP, you need to initiate a peering from your cloud account to Kurrent Cloud. Use the resource attributes with `gcp` prefix to automate that part.
 
 #### Creating a peering
 
-Here is an example how to initiate a peering from Event Store Cloud to your own AWS account:
+Here is an example how to initiate a peering from Kurrent Cloud to your own AWS account:
 
 @[code](./snippets/eventstorecloud_peering.create.tf.hcl)
 
-### Managed EventStoreDB
+### Managed KurrentDB
 
-Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
+Use the `eventstorecloud_managed_cluster` resource to provision an KurrentDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
 
 #### Arguments
 
@@ -257,7 +257,7 @@ Use the `eventstorecloud_managed_cluster` resource to provision an EventStoreDB 
 |:-------------------|:---------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`             | `string` | *Required*, the name of the managed. cluster.                                                                                                                    |
 | `project_id`       | `string` | *Required*, the ID of the project in which the managed cluster should be created.                                                                                |
-| `network_id`       | `string` | *Required*, the ID of the EventStore Cloud network into which the managed cluster should be created.                                                             |
+| `network_id`       | `string` | *Required*, the ID of the Kurrent Cloud network into which the managed cluster should be created.                                                             |
 | `topology`         | `string` | *Required*, the topology of the managed cluster. This determines the fault tolerance of the cluster. Valid values are `single-node` and `three-node-multi-zone`. |
 | `instance_type`    | `string` | *Required*, the size of the instances to use in the managed cluster.                                                                                             |
 | `disk_size`        | `int`    | *Required*, the size of the data disks in gigabytes. Minimal size is 10Gb. All cluster members will get a disk of the same size.                                 |
@@ -287,7 +287,7 @@ For GCP and AWS clusters you can resize the disks without downtime. In Azure, it
 
 #### Attributes
 
-After completing the operation, the EventStoreDB cluster Terraform resource will get the following attributes:
+After completing the operation, the KurrentDB cluster Terraform resource will get the following attributes:
 
 | Name                | Type     | Description                                                                                     |
 |:--------------------|:---------|:------------------------------------------------------------------------------------------------|
@@ -304,7 +304,7 @@ Attribute values for `region` and `resource_provider` are controlled by the netw
 
 #### Creating a cluster
 
-Here are the cloud-specific examples of a Terraform script to create a managed EventStoreDB cluster:
+Here are the cloud-specific examples of a Terraform script to create a managed KurrentDB cluster:
 
 ::: code-tabs
 @tab AWS
@@ -319,13 +319,13 @@ Here are the cloud-specific examples of a Terraform script to create a managed E
 
 The following data source is available:
 
-| Terraform resource        | Event Store Cloud resource |
+| Terraform resource        | Kurrent Cloud resource |
 |:--------------------------|:---------------------------|
 | `eventstorecloud_project` | [Project](#project)        |
 
 ### Project
 
-Use the `eventstorecloud_project` data source to query your Event Store Cloud projects.
+Use the `eventstorecloud_project` data source to query your Kurrent Cloud projects.
 
 #### Arguments
 

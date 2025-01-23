@@ -4,6 +4,6 @@ index: false
 
 # Cloud
 
-Event Store Cloud documentation.
+Kurrent Cloud documentation.
 
 <Catalog/>

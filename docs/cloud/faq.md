@@ -14,11 +14,15 @@ We don't support automatic resizing of clusters. If you wish to automate cluster
 
 #### Are there plans to support automatic disk resize?
 
-Currently, you have to resize the disks yourself. Disks can be expanded on-demand without downtime. Because cloud providers limit how often disk resize operations can be performed the Event Store Cloud may enforce a waiting period on recently resized clusters before they can get resized again.
+Currently, you have to resize the disks yourself. Disks can be expanded on-demand without downtime. Because cloud providers limit how often disk resize operations can be performed the Kurrent Cloud may enforce a waiting period on recently resized clusters before they can get resized again.
+
+#### Can I switch a cluster from private to publicly accessible or vice versa?
+
+We don't support switching clusters from private to publicly accessible or vice versa. If you find yourself in a situation where you need to do that, you can take a [backup](ops/README.md#manual-backup) of the existing cluster, and [restore](ops/README.md#restore-from-backup) that backup to the network you need.
 
 ## Migrating to Cloud
 
-#### How can I migrate data from my self-hosted database to Event Store Cloud?
+#### How can I migrate data from my self-hosted database to Kurrent Cloud?
 
 We have a [replication tool](use/migration.md), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
@@ -38,9 +42,9 @@ Yes. Learn more in the [Events Console](./introduction.md#events-and-notificatio
 
 #### How do you handle infrastructure related issues, which cause unavailability or degradation of service?
 
-Event Store Cloud site reliability engineering (SRE) team manages cluster availability.
+Kurrent Cloud site reliability engineering (SRE) team manages cluster availability.
 
-Please ensure to learn about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
 
 ## Providers
 
@@ -52,23 +56,29 @@ Customer data is only stored on Premium SSD block device targets. We do not util
 
 #### We use AKS, to simplify setup can you expose the cluster to the public internet?
 
-We have plans to expose clusters via a public IP address, but it's not available yet. We provided [guidelines](use/kubernetes.md) on how to connect AKS clusters to Event Store Cloud.
+We have plans to expose clusters via a public IP address, but it's not available yet. We provided [guidelines](use/kubernetes.md) on how to connect AKS clusters to Kurrent Cloud.
 
 ### Supported regions
 
 ### What regions do you support on AWS, GCP and Azure?
 
-At the moment, you can deploy EventStoreDB clusters only in regions with three or more availability zones. Each region also need to support a set of services necessary for the provisioning and monitoring of the clusters.
+At the moment, KurrentDB clusters are only available in regions with three or more availability zones. Each region also need to support a set of services necessary for the provisioning and monitoring of the clusters.
 
-You can see the list of supported regions when you create a new cluster in the Cloud Console.
+You can see the list of supported regions when you create a new cluster or network in the Cloud Console.
 
-If you think a region should be available [contact us](https://www.eventstore.com/contact).
+::: note
 
-## Managed EventStoreDB
+For AWS, we offer the regions that are enabled by default. We can enable [opt-in regions](https://docs.aws.amazon.com/controltower/latest/userguide/opt-in-region-considerations.html) for an organization on request.
+
+:::
+
+If there is a region that you need, but is missing, please don't hesitate to [let us know](https://www.eventstore.com/contact).
+
+## Managed KurrentDB
 
 #### Does the admin UI run on the provisioned cluster?
 
-Yes. Go to the clusters list in the Cloud Console, select the cluster you need and click on the `Addresses` tab on the bottom panel. You will find the admin UI URL there. You need to be connected to a network, which is routed to Event Store Cloud to open the admin UI in your browser.
+Yes. Go to the clusters list in the Cloud Console, select the cluster you need and click on the `Addresses` tab on the bottom panel. You will find the admin UI URL there. You need to be connected to a network, which is routed to Kurrent Cloud to open the admin UI in your browser.
 
 #### Are there plans for the scheduled scavenge feature?
 
@@ -82,17 +92,17 @@ The scheduled backup feature has been released in March 2021. Read more in [clou
 
 #### Can I download a backup to store it locally?
 
-We plan to allow backup copies to the customer cloud account in the future. Currently, it's not possible because of security considerations.
+Currently, it's not possible due to security considerations. In the future, we plan to offer data export functionality from the database.
 
 ## Service levels
 
-#### What is the SLA for Event Store Cloud?
+#### What is the SLA for Kurrent Cloud?
 
-You can find out about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
 
 #### Are maintenance windows part of the SLA?
 
-You can find out about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement). Any scheduled maintenances will be posted in the Event Store Cloud Console, as well as on the [Event Store Cloud Status Page](https://status.eventstore.cloud/).
+You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement). Any scheduled maintenances will be posted in the Kurrent Cloud Console, as well as on the [Kurrent Cloud Status Page](https://status.eventstore.cloud/).
 
 ## Support
 
@@ -102,17 +112,19 @@ Our support response time windows are provided in GMT time zone. We are expandin
 
 #### What level of access does the customer have to resolve minor incidents?
 
-Customers do not have direct access to VMs, where the database cluster nodes are running. A lot of management functions are available via the HTTP API, which is available for customers to access and use.
+Customers do not have direct access to the compute instances where the database cluster nodes are running. However, most management functions are available via the HTTP API, which is available for customers to access and use.
 
-You can also use our cloud automation tools ([Terraform](automation/terraform.md) provider and CLI) to manage your cloud resources.
+You can also use our cloud automation tools ([Terraform](automation/terraform.md) and [Pulumi](automation/pulumi.md) providers and the [Kurrent Cloud CLI](https://github.com/EventStore/esc)) to manage your cloud resources.
 
 #### If a node goes down in a cluster, how is the cluster recovered and who does it?
 
-If the issue is cloud provider related, our staff manages the replacement.
+Staff will be alerted if a node goes down. We will investigate the issue and take the necessary actions to return the cluster to a healthy state.
 
-If it is customer load related, an issue will be created with a call to action for the customer to address.
+If it is a customer load related issue, our support staff will attempt to reach out to the customer to address the issue.
 
-Please ensure to learn about the SLA levels provided by Event Store Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+You can utilize our [integrations feature](integrations/README.md) to get notified of cluster events, such as high CPU usage, low disk space, or other events.
+
+Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
 
 ## Security
 
@@ -120,15 +132,15 @@ Please ensure to learn about the SLA levels provided by Event Store Cloud in our
 
 The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](introduction.md#audit-log-api) using the `esc` command line tool.
 
-#### Does Event Store have a security policy?
+#### Does Kurrent have a security policy?
 
-Event Store Ltd has security policies in place.
+Kurrent, Inc. has security policies in place.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact).
 
 #### Has the system been independently audited?
 
-Event Store Ltd is aware of the security importance. We're treating it is as a high priority. Our Cloud offering has been independently audited, and we achieved [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certification in January 2022.
+Security is top of mind for Kurrent. Every feature we build has security in mind. Our Cloud offering maintains [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certifications, which require annual independent internal audits, as well as external audits as part of our certification process.
 
 If you have specific questions please [contact us](https://www.eventstore.com/contact).
 
@@ -136,13 +148,19 @@ If you have specific questions please [contact us](https://www.eventstore.com/co
 
 ### Connectivity
 
-#### Are managed EventStoreDB clusters available via public Internet?
+#### Unable to connect to a public cluster
 
-We consider exposing EventStoreDB clusters to public Internet harmful as it's a database, which contains sensitive business data. Therefore, all managed EventStoreDB instances and clusters only have private IP addresses within their cloud networks (VPCs). You need to establish a peering link between Event Store Cloud network and your own VPC, so you can access the cluster from your cloud workloads.
+If you are trying to connect to a public cluster and you are not able to, please check the following:
+
+- You are able to resolve the cluster DNS name
+- Your IP address has been added to the IP Access List assigned to the cluster
+- Your local network policies permit outbound connections to TCP port 2113
+
+It is possible that your local network may be using a transparent web proxy which could cause the common methods of determining your source IP address to be incorrect. If you are on a corporate network or VPN, you may be able to get your network administrator to assist you.
 
 #### The cluster DNS name does not resolve on my machine, what do I do?
 
-Some Internet providers, routers, and DNS servers will not resolve or filter out answers to DNS queries for `xxxx.mesdb.eventstore.cloud` because the DNS name resolves to a private IP range.
+For clusters on private networks, the DNS name will resolve to the private IP addresses of the cluster nodes. Some Internet providers, routers, and DNS servers will not resolve or filter out answers to DNS queries for `xxxx.mesdb.eventstore.cloud` because the DNS name resolves to a private IP range.
 
 You can check if that's the issue you're experiencing by running the following `nslookup` query. Replace the domain name by your cluster DNS name.
 
@@ -185,31 +203,33 @@ If the cluster DNS name resolves using an external DNS server, but your local DN
 - When you are sure that the router is fine, it might be your Internet provider, which is blocking such queries. Try getting in touch with them to resolve the issue.
 - You can also reconfigure your router, or your machine, to use public DNS servers like `1.1.1.1` or `8.8.8.8`.
 
-## Operational characteristics of Event Store Cloud
+## Operational characteristics of Kurrent Cloud
 
-Event Store Cloud is a distributed fault-tolerant provisioning system and control plane. It is hosted in Amazon AWS. All data components and processing components are distributed across three availability zones. State is backed up, and the platform can be easily restored to another region in the event of a total region failure.
+Kurrent Cloud is a distributed fault-tolerant provisioning system and control plane. It is hosted in Amazon AWS. All data components and processing components are distributed across three availability zones. State is backed up, and the platform can be easily restored to another region in the event of a total region failure.
 
 ## The impact of outages on resources
 
 The following is a brief description of what can be expected given an outage of the given component.
 
-### Event Store Cloud
+### Kurrent Cloud
 
 #### Cloud API
 
-Performance may be degraded or inaccessible.
+- Viewing, creating, updating, and deleting resources may be impacted.
+- Integrations and alerting may be impacted.
+- Scheduled backup jobs may be impacted.
 
 #### Web console
 
-Performance may be degraded or inaccessible.
+- Viewing, creating, updating, and deleting resources may be impacted.
 
 #### Provisioned resources
 
-The availability of provisioned resources (networks, peering links, clusters, and backups) **will not** be affected in the case that Event Store Cloud services become unavailable.
+The availability of provisioned resources (networks, peering links, clusters, and backups) **will not** be affected in the case that Kurrent Cloud services become unavailable.
 
 ### Cloud providers
 
-Cloud Provider outages may affect the availability of resources or the ability to create, delete, and update resources within Event Store Cloud.
+Cloud Provider outages may affect the availability of resources or the ability to create, delete, and update resources within Kurrent Cloud.
 
 #### Networks and peerings
 
@@ -217,9 +237,9 @@ While networks and peering links at cloud providers are fault-tolerant, occasion
 
 #### Clusters
 
-In the event of a failure, single node topology clusters may become unavailable until the service can be restored. Most failures will be handled by Event Store Cloud, however there will be a period of lost connectivity.
+In the event of a single availability zone failure, three-node topology clusters should continue to operate at a degraded level. If a leader node goes down, the remaining follower node will elect a new leader and the cluster will continue to function. When the leader node is able to re-join the cluster, it will join as a follower and catch up on any events that were written while it was down.
 
-Multi-node, multi-zone topology clusters should sustain a single availability failure.
+In the event of a single availability zone failure, single node topology clusters may become unavailable until the service can be restored. Most failures will be handled by Kurrent Cloud, however there will be a period of lost connectivity.
 
 #### Backups
 

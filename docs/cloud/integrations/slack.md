@@ -24,7 +24,7 @@ Before adding a Slack integration, you need to create a Slack App and obtain a t
 
 ## Add a new integration
 
-1. In the Event Store Cloud console, select an organization and then a project.
+1. In the Kurrent Cloud console, select an organization and then a project.
 2. Once viewing a project, you should see `Integrations` under the heading `Project` in the sidebar to the left. Click it.
 3. Click `New Integration`. Enter a name that will make it easier to find later, and then select Issues or Notifications. Then select the Sink `Slack` as in the screen below.
 4. Under `Configuration`, next to `Channel ID`, enter the channel you want the slack bot to communicate with (this must be the same as the place you invited the bot earlier). Remember to start the channel ID with a hash sign if appropriate.
@@ -43,5 +43,4 @@ If the source is `Issues`, a single message will be sent for each open issue and
 
 When the issue is closed, the original message will be changed to reflect this, and the bar will be changed to green.
 
-In order to send messages to multiple channels, create more integrations in Event Store Cloud using the same credentials.
-
+In order to send messages to multiple channels, create more integrations in Kurrent Cloud using the same credentials.
