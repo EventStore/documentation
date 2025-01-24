@@ -28,15 +28,15 @@ On the new network page:
 4. Select a region from the dropdown list.
 5. Click on the `Create network` button.
 
-![New network page](./images/new_public_net01.png)
+![New network page](./images/public-net-new-1.png)
 
 Once you have created the network, you will be taken to the network detail page, where you can see the network is in the `Provisioning` state.
 
-![Network detail page](./images/new_public_net02.png)
+![Network detail page](./images/public-net-new-2.png)
 
 Once the network is provisioned, the network will be in the `Available` state.
 
-![Network detail page](./images/new_public_net03.png)
+![Network detail page](./images/public-net-new-3.png)
 
 @tab esc
 
@@ -64,15 +64,15 @@ Once a Network resource has been created, you can only modify the name or delete
 
 To rename a Public Network in the console, navigate to the **Networks** view and click on the menu button for the network you want to rename, either in the Network list or in the Network detail section. Click on the `Rename <network name>` menu item.
 
-![Network detail](./images/rename_public_network1.png)
+![Network detail](./images/public-net-rename-1.png)
 
 You will be taken to the **Rename Network** view, where you can enter a new name for the network. When you are done, click on the `Rename network` button.
 
-![Rename network](./images/rename_public_network2.png)
+![Rename network](./images/public-net-rename-2.png)
 
 You will be taken back to the **Networks** view, where you will see a notification that the network name has been updated.
 
-![Network detail](./images/rename_public_network3.png)
+![Network detail](./images/public-net-rename-3.png)
 
 @tab esc
 
@@ -100,23 +100,23 @@ You will not be able to delete a network until all clusters provisioned on that 
 
 To delete a Public Network, navigate to the **Networks** view and click on the menu button for the network you want to delete, either in the Network list or in the Network detail section. Click on the `Delete <network name>` menu item.
 
-![Network detail](./images/pub_net_del_01.png)
+![Network detail](./images/public-net-delete-1.png)
 
 You will be taken to the **Delete Network** view. You will be prompted to confirm the deletion by entering the name of the Network. Click on the `Delete network` button.
 
-![Delete network](./images/pub_net_del_02.png)
+![Delete network](./images/public-net-delete-2.png)
 
 If there are no clusters provisioned on the network, you will be taken back to the **Networks** view, where you will see a notification that the network deletion has been initiated.
 
-![Network detail](./images/pub_net_del_03.png)
+![Network detail](./images/public-net-delete-3.png)
 
 If there are clusters provisioned on the network, you will receive an error stating that the network cannot be deleted because there are clusters provisioned on it.
 
-![Network detail](./images/delete_with_cluster_error.png)
+![Network detail](./images/net-delete-with-cluster-error.png)
 
 Once the network deletion has been completed, the network will show as `Deleted` in the **Networks** view. After 24 hours, the network will be removed from the **Networks** view.
 
-![Network detail](./images/pub_net_del_04.png)
+![Network detail](./images/public-net-delete-4.png)
 
 @tab esc
 
@@ -157,11 +157,11 @@ Besides creating an IP Access List as part of the cluster creation process, you 
 
 To create an IP Access List, navigate to the **IP Access Lists** view and click on the `New IP Access List` button.
 
-![New IP Access List](./images/new_ip_access_list_01.png)
+![New IP Access List](./images/ip-access-list-create-1.png)
 
 You will be taken to the **New IP Access List** view, where you can enter a name for the IP Access List, as well as the IP Addresses or CIDR blocks you want to allow access to the cluster and an optional comment for each CIDR block. When you are done, click on the `Create IP Access List` button.
 
-![New IP Access List](./images/new_ip_access_list_02.png)
+![New IP Access List](./images/ip-access-list-create-2.png)
 
 @tab esc
 
@@ -188,15 +188,15 @@ When are request to change the CIDR blocks in an IP Access List, the changes are
 
 To modify an IP Access List, navigate to the **IP Access Lists** view and click on the menu button for the IP Access List you want to modify, either in the IP Access List list or in the IP Access List detail section. Click the `Edit <IP Access List name>` menu item.
 
-![IP Access List detail](./images/edit_acl_01.png)
+![IP Access List detail](./images/ip-access-list-edit-1.png)
 
 You will be taken to the **Edit IP Access List** view, where you can enter a new name for the IP Access List. When you are done, click the `Update IP Access List` button.
 
-![Edit IP Access List](./images/edit_acl_02.png)
+![Edit IP Access List](./images/ip-access-list-edit-2.png)
 
 You will be taken back to the **IP Access Lists** view, where you will see a notification that the IP Access List has been updated.
 
-![IP Access List detail](./images/edit_acl_03.png)
+![IP Access List detail](./images/ip-access-list-edit-3.png)
 
 @tab esc
 

@@ -10,15 +10,13 @@ There are two types of backups:
 - **Manual Backups**: These are backups that you create on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
 - **Scheduled Backups**: These are backups that are created automatically by a [Scheduled Job](./jobs.md) that defines the frequency and number of backups to keep at a time.
 
+Both types of backups can be viewed in the **Backups** view of the console. All backups created by the same job will be grouped together in one row, which can be expanded by clicking the down arrow icon on the right side of the row.
+
+![Backups List](./images/backups-list.png)
+
 ## Manual Backup
 
 Backups can be created on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
-
-Manually created backups appear in the console alongside backups created by scheduled jobs.
-
-To see the status of the backup, navigate to the `Backups` section of the console. There you can see all backups created manually or by a scheduled job.
-
-![one off backup](./images/one_off_backup.png)
 
 You can customise the backup label using a combination of free-text and predefined variables:
 - **index—**: the auto-incremented value with the number of backups. You can format it as:
@@ -38,9 +36,9 @@ You can customise the backup label using a combination of free-text and predefin
 ::: tabs#way
 @tab Cloud Console
 
-To create a backup in the console, navigate to the clusters view and click on the _Create backup_ icon. In the popup, click the `Create one-off backup` button.
+To create a backup in the console, navigate to the clusters view and click on the **Create backup** icon, or . In the popup, click the **Create one-off backup** button.
 
-![take backup](./images/take_backup.png)
+![Create One-Off Backup](./images/one-off-backup.png)
 
 @tab esc
 
@@ -113,23 +111,23 @@ You can receive notifications of backup failures by setting up an [Integration](
 :::: tabs#way
 @tab Cloud Console
 
-To create a scheduled backup in the console, navigate to the clusters view and click on the _create backup_ icon and then on `Create backup schedule`.
+To create a scheduled backup in the console, navigate to the **Clusters** view and click on the `create backup` icon and then on `Create backup schedule`.
 
-![take backup](./images/take_backup.png)
+![Create Scheduled Backup](./images/scheduled-backup-new-1.png)
 
-Choose a description, the frequency as well as the number of backups to keep before pruning. Finally, click the `Create backup schedule` button.
+Choose a description, the frequency as well as the number of backups to keep before pruning. Finally, click the **Create backup schedule** button.
 
-![take scheduled backup](./images/take_scheduled_backup.png)
+![Create Scheduled Backup](./images/scheduled-backup-new-2.png)
 
-Backups created this way appear in the console alongside backups created manually. All backups created by the same job will be grouped together in one row, which can be expanded by clicking the down arrow icon on the right side of the row.
+Backups created this way appear in the console alongside backups created manually.
 
-![list of scheduled backup](./images/one_off_restore_scheduled.png)
+To see the status on the scheduled backup jobs, navigate to the **Jobs** view of the console.
 
-To see the status on the scheduled backup jobs, navigate to the `Jobs` section of the console.
+![Backup Jobs](./images/scheduled-backup-jobs.png)
 
-![backup jobs](./images/jobs_scheduled_backup.png)
+There you can see all backups created by a job, as well as their history and any backup jobs that may have failed.
 
-There you can see all backups created by a job, as well as their history, which operations have failed (if any).
+
 
 ::: note
 A backup might fail, for instance, if a cluster is locked by another operation when the backup tries to run. Such a locking operation could be the disk expand or manual backup.
@@ -184,11 +182,11 @@ Limitations:
 
 To restore a backup, navigate to the `Backups` view of the [Cloud Console](https://console.kurrent.cloud/) and click on the `Restore` icon of the backup you want to restore.
 
-![one off restore backup](./images/one_off_restore_scheduled.png)
+![one off restore backup](./images/backup-restore-1.png)
 
-Backups are restored as new clusters. You will be then redirected to the usual provisioning page, where you can choose your cluster parameters. Note that you are not limited to restoring the backup to exactly the same cluster as the cluster for which the backup was taken. You can change the cluster topology, the database software version, and the instance size. You cannot restore between different cloud providers though.
+Backups are restored as new clusters. You will be then redirected to the **Restore Backup** page, which is nearly identical to the **Cluster Create** page, where you can choose your cluster parameters. Note that you are not limited to restoring the backup to exactly the same cluster configuration as the cluster for which the backup was taken. You can change the cluster topology, the database software version, and the instance size. You cannot restore between different cloud providers, regions, or to another organization.
 
-![one off restore cluster backup](./images/one_off_restore_cluster.png)
+![one off restore cluster backup](./images/backup-restore-2.png)
 
 @tab esc
 

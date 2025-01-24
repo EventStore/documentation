@@ -23,7 +23,7 @@ Currently, supported sources include:
 
 * [Notifications](#notifications) - notifications are noteworthy events detected within Kurrent Cloud resources or the backend. For example notifications may be emitted when a cluster fails to provision.
 
-### Issues
+## Issues
 
 Issues represent possibly problematic states detected within the Kurrent Cloud. Below, you can find several issue examples.
 
@@ -31,31 +31,31 @@ Issues represent possibly problematic states detected within the Kurrent Cloud. 
 These examples are a subset of issues created by the system. The exact details of why issues are created are subject to change, but the cause of the issue and steps to resolve it will be clear in the messages associated with the related events.
 :::
 
-#### Core load count
+### Core load count
 
 For each node of a cluster, the core load average is measured and divided by the number of physical cores on the node. If the result exceeds 2.0 an issue is opened. This issue is closed when the result consistently dips under 2.0.
 
 If this happens consider increasing the size of the instance type for the cluster.
 
-#### Disk usage
+### Disk usage
 
 For each node of a cluster, the disk usage is measured several times a minute. If it starts to consistently exceed 80% an issue is opened. The issue is closed when the usage drops below 80%.
 
 If this happens consider either removing data, running scavenge or increasing the disk size for the cluster.
 
-#### Memory usage
+### Memory usage
 
 For each node of a cluster, the memory usage is measured several times a minute. If it exceeds 90% an issue is opened. The issue is closed when memory usage consistently drops below 90%.
 
 If this happens consider increasing the size of the instance type for the cluster.
 
-#### Cluster consensus
+### Cluster consensus
 
 Every node on a cluster has it's gossip status queried twice each minute. An issue is opened if either the query fails or if the reported gossip state for each node is not identical on a multi-node cluster.
 
 The issue closes when the gossip status again returns expected values.
 
-### Notifications
+## Notifications
 
 Notifications represent noteworthy events which occur within the Kurrent Cloud. Below you can find notifications examples.
 
@@ -63,15 +63,15 @@ Notifications represent noteworthy events which occur within the Kurrent Cloud. 
 The following represent a subset of events which can lead to notifications.
 :::
 
-#### Cluster provisioning failure
+### Cluster provisioning failure
 
 If, for some reason, the instances backing a cluster fail to provision the resource is marked as defunct by the API and a notification is sent with the message `Cluster instances failed to provision`.
 
-#### Volume expansion failure
+### Volume expansion failure
 
 If the volume fails to expand while expanding an instances size a notification event is created with the message `Cluster volumes failed to provision`.
 
-### Logs
+## Logs
 
 ::: note
 Logs are currently in beta. The data coming from this source may change over time.
@@ -79,7 +79,7 @@ Logs are currently in beta. The data coming from this source may change over tim
 
 Logs are sent in the form of JSON objects. Each object's "message" field contains the original structured event from KurrentDB itself.
 
-### Metrics
+## Metrics
 
 ::: note
 Logs are currently in beta. The data coming from this source may change over time.

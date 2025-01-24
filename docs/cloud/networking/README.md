@@ -9,9 +9,13 @@ Each major cloud provider implements the concept of a Virtual Private Cloud (VPC
 
 Kurrent Cloud Networks are project level resources. When you create a network in Kurrent Cloud, a VPC/VNet is created in the cloud provider's region requested. All Kurrent Cloud Networks are created with at least three availability zones. This is to ensure that the cluster can withstand the loss of a single availability zone with minimal impact to the cluster's availability. If a single node is unable to communicate with the other nodes in the cluster, once connectivity is restored, that node will catch up on the events that were missed while the node was offline and resume normal operation as a follower node.
 
-When you create a KurrentDB Managed Cluster, you choose the network you want the cluster to be created on. Once the cluster is created, you cannot change the cluster's network. If you need to change the network of a cluster, you can create a backup of the cluster and restore that backup to a new cluster on the desired network.
+When you create a KurrentDB Managed Cluster, you choose to create a cluster on an existing Network or to create a new Network. Once the cluster is created, you cannot change the Network of the cluster. If you need to change the Network of a cluster, you can create a backup of the cluster and restore that backup to a new cluster on the desired network. When this is done, a new cluster ID is generated and any existing connection strings will need to be updated to use the new cluster address.
 
-Even though multiple clusters can share the same Network, each cluster is isolated from other clusters using the cloud provider's network security groups/firewall rules. This means that you can create multiple clusters on the same network without worrying about unauthorized access from one cluster to another.
+::: tip Network Isolation
+
+Even though multiple clusters can share the same Network, each cluster is isolated from other clusters using the cloud provider's network security groups/firewall rules. This means that you can create multiple clusters on the same network without risk of a cluster being used as a way to gain unauthorized access to another cluster's data.
+
+:::
 
 ## Network Types
 

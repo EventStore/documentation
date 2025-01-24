@@ -13,7 +13,7 @@ Clusters can be provisioned with public access enabled or restrict access to pri
 
 ## Public access
 
-For public access, the provisioning process is straightforward. You can go to the Clusters screen and click on the `New cluster` button. A Network and IP Access List will be created and the cluster will be deployed.
+For public access, the provisioning process is straightforward. You can go to the Clusters screen and click on the **New cluster** button. A Network and IP Access List will be created and the cluster will be deployed.
 
 See the [Public Access Clusters](public.md) guide to get started.
 

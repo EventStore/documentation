@@ -6,7 +6,7 @@ title: Cloud FAQ
 
 #### Is it possible to change the cluster instance size or topology?
 
-You can [resize a cluster](ops/README.md#resizing-cluster-nodes), but we do not support changing the topology of an existing cluster. If you need a different topology, you can take a [backup](ops/README.md#manual-backup) of the existing cluster, and [restore](ops/README.md#restore-from-backup) that backup to a new cluster.
+You can [resize a cluster](ops/README.md#resizing-cluster-nodes), but we do not support changing the topology of an existing cluster. If you need a different topology, you can take a [backup](ops/backups.md#manual-backup) of the existing cluster, and [restore](ops/backups.md#restore-from-backup) that backup to a new cluster.
 
 #### Are there plans to support automatic resize of cluster nodes?
 
@@ -18,19 +18,19 @@ Currently, you have to resize the disks yourself. Disks can be expanded on-deman
 
 #### Can I switch a cluster from private to publicly accessible or vice versa?
 
-We don't support switching clusters from private to publicly accessible or vice versa. If you find yourself in a situation where you need to do that, you can take a [backup](ops/README.md#manual-backup) of the existing cluster, and [restore](ops/README.md#restore-from-backup) that backup to the network you need.
+We don't support switching clusters from private to publicly accessible or vice versa. If you find yourself in a situation where you need to do that, you can take a [backup](ops/backups.md#manual-backup) of the existing cluster, and [restore](ops/backups.md#restore-from-backup) that backup to the network you need.
 
 ## Migrating to Cloud
 
 #### How can I migrate data from my self-hosted database to Kurrent Cloud?
 
-We have a [replication tool](use/migration.md), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
+We have a [replication tool](guides/migration.md), which is available now. It has certain limitations, especially with performance. Get in touch, so we can help you to analyse your setup and requirements, before we can recommend using the replication tool.
 
 ## Performance
 
 #### Do you have indicative performance benchmarks for the offered cluster sizes?
 
-We published such benchmarks available on the [Cloud instance sizing guide](provision/sizing.md) page.
+We published such benchmarks available on the [Cloud instance sizing guide](ops/sizing.md) page.
 
 Please remember, however, that each use case is different, and you might always get better or worse performance, compared with our advertised benchmarking figures. We can help you to analyse your needs and provide more detailed expected performance figures, please get in touch.
 
@@ -38,13 +38,13 @@ Please remember, however, that each use case is different, and you might always 
 
 #### Is there any type of alerting functionality for cluster issues?
 
-Yes. Learn more in the [Events Console](./introduction.md#events-and-notifications) documentation section.
+Yes. Learn more in the [Integrations](integrations/README.md) documentation section.
 
 #### How do you handle infrastructure related issues, which cause unavailability or degradation of service?
 
 Kurrent Cloud site reliability engineering (SRE) team manages cluster availability.
 
-Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+More information about SLA levels provided by Kurrent Cloud can be found in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement).
 
 ## Providers
 
@@ -56,7 +56,7 @@ Customer data is only stored on Premium SSD block device targets. We do not util
 
 #### We use AKS, to simplify setup can you expose the cluster to the public internet?
 
-We have plans to expose clusters via a public IP address, but it's not available yet. We provided [guidelines](use/kubernetes.md) on how to connect AKS clusters to Kurrent Cloud.
+We have plans to expose clusters via a public IP address, but it's not available yet. We've provided a [guide](guides/kubernetes.md) on how to connect AKS clusters to Kurrent Cloud.
 
 ### Supported regions
 
@@ -72,13 +72,13 @@ For AWS, we offer the regions that are enabled by default. We can enable [opt-in
 
 :::
 
-If there is a region that you need, but is missing, please don't hesitate to [let us know](https://www.eventstore.com/contact).
+If there is a region that you need, but is missing, please don't hesitate to [let us know](https://www.kurrent.io/contact).
 
 ## Managed KurrentDB
 
 #### Does the admin UI run on the provisioned cluster?
 
-Yes. Go to the clusters list in the Cloud Console, select the cluster you need and click on the `Addresses` tab on the bottom panel. You will find the admin UI URL there. You need to be connected to a network, which is routed to Kurrent Cloud to open the admin UI in your browser.
+Yes. Go to the clusters list in the Cloud Console, select the cluster you need and click on the **Addresses** tab on the bottom panel. You will find the admin UI URL there. You need to be connected to a network, which is routed to Kurrent Cloud to open the admin UI in your browser.
 
 #### Are there plans for the scheduled scavenge feature?
 
@@ -98,11 +98,11 @@ Currently, it's not possible due to security considerations. In the future, we p
 
 #### What is the SLA for Kurrent Cloud?
 
-You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement).
 
 #### Are maintenance windows part of the SLA?
 
-You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement). Any scheduled maintenances will be posted in the Kurrent Cloud Console, as well as on the [Kurrent Cloud Status Page](https://status.eventstore.cloud/).
+You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement). Any scheduled maintenances will be posted in the Kurrent Cloud Console, as well as on the [Kurrent Cloud Status Page](https://status.eventstore.cloud/).
 
 ## Support
 
@@ -120,29 +120,29 @@ You can also use our cloud automation tools ([Terraform](automation/terraform.md
 
 Staff will be alerted if a node goes down. We will investigate the issue and take the necessary actions to return the cluster to a healthy state.
 
-If it is a customer load related issue, our support staff will attempt to reach out to the customer to address the issue.
+If it is a due to load related to the customer's usage of the cluster or exhaustion of disk space, our support staff will attempt to reach out to the customer to address the issue.
 
 You can utilize our [integrations feature](integrations/README.md) to get notified of cluster events, such as high CPU usage, low disk space, or other events.
 
-Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.eventstore.com/cloud-services-service-level-agreement).
+Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement).
 
 ## Security
 
 #### How to get an audit log of access to the console?
 
-The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](introduction.md#audit-log-api) using the `esc` command line tool.
+The Cloud Console access audit log is in our roadmap. Right now, you can [access the audit logs](ops/account-security.md#audit-log-api) using the `esc` command line tool.
 
 #### Does Kurrent have a security policy?
 
 Kurrent, Inc. has security policies in place.
 
-If you have specific questions please [contact us](https://www.eventstore.com/contact).
+If you have specific questions please [contact us](https://www.kurrent.io/contact)
 
 #### Has the system been independently audited?
 
 Security is top of mind for Kurrent. Every feature we build has security in mind. Our Cloud offering maintains [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certifications, which require annual independent internal audits, as well as external audits as part of our certification process.
 
-If you have specific questions please [contact us](https://www.eventstore.com/contact).
+If you have specific questions please [contact us](https://www.kurrent.io/contact)
 
 ## Troubleshooting
 
@@ -158,7 +158,7 @@ If you are trying to connect to a public cluster and you are not able to, please
 
 It is possible that your local network may be using a transparent web proxy which could cause the common methods of determining your source IP address to be incorrect. If you are on a corporate network or VPN, you may be able to get your network administrator to assist you.
 
-#### The cluster DNS name does not resolve on my machine, what do I do?
+#### DNS resolution issues
 
 For clusters on private networks, the DNS name will resolve to the private IP addresses of the cluster nodes. Some Internet providers, routers, and DNS servers will not resolve or filter out answers to DNS queries for `xxxx.mesdb.eventstore.cloud` because the DNS name resolves to a private IP range.
 
@@ -199,9 +199,10 @@ Addresses:  172.29.98.189
 
 If the cluster DNS name resolves using an external DNS server, but your local DNS server fails or rejects to resolve it, you can try the following:
 
-- If the issue is in the router, and you can configure it, check the router documentation to allow DNS queries, which resolve to private IP ranges.
-- When you are sure that the router is fine, it might be your Internet provider, which is blocking such queries. Try getting in touch with them to resolve the issue.
-- You can also reconfigure your router, or your machine, to use public DNS servers like `1.1.1.1` or `8.8.8.8`.
+- On a corporate network or VPN, check with your IT department or team responsible for network configuration to allow DNS queries which resolve to private IP ranges
+- On a home network, routers typically configure clients to use the DNS servers provided by your Internet provider, which could be blocking such queries
+    - You can reconfigure your router to configure clients on your network to use public DNS servers like `1.1.1.1` or `8.8.8.8`
+    - You can also change the DNS configuration of your local machine to use public DNS servers like `1.1.1.1` or `8.8.8.8`
 
 ## Operational characteristics of Kurrent Cloud
 

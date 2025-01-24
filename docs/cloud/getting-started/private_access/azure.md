@@ -15,8 +15,11 @@ Pre-requisites:
 - You can log in to the Cloud console as admin
 - Your organization has at least one project
 - You are the admin of the project
-- You have access to create Azure resources in the Azure account of your organization
+- A Virtual Network in the Azure subscription from which the KurrentDB cluster will be accessed
 - You have the Azure CLI installed and logged in to your Azure subscription
+- You have access to create resources in the Azure subscription that will be used to access the KurrentDB cluster
+    - Service principal for the Kurrent Cloud application
+    - Role assignments for the service principal to grant access to create a Virtual Network Peering for the Virtual Network that will be peered with the Kurrent Cloud network
 
 The provisioning process consists of three steps:
 1. Create a network in Kurrent Cloud
@@ -25,33 +28,43 @@ The provisioning process consists of three steps:
 
 ## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../../introduction.md#projects) under which you want to create the cluster and switch to **Clusters**. Then, click on the `New cluster` button.
+In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
 
-First, provide a descriptive name for the cluster.
+Click on the **New cluster** button to begin the cluster creation process.
+
+### Cluster name
+
+![Cluster name](../images/new-cluster-name.png)
+
+Provide a descriptive name for the cluster in the **Cluster name** field.
 
 ### Network
 
-In the Network section, if you have not created a network yet, you will see fields for creating a new network. If you have created a network already, you will see those networks listed, as well as the option to create a new network.
+![Create a network](./images/azure/azure-new-cluster-network.png)
+
+In the **Network** section, if you have not created a network yet, you will see fields for creating a new network. If you have any existing Networks, you will see those listed, as well as the option to create a new Network.
 
 When creating a new network, you will need to provide the following information:
 
 - **Network name** is a descriptor to allow you to identify the network in the list of networks.
 - **Type** should be set to `Private`.
 - **Cloud provider** should be set to Azure.
-- **Region** is the Azure region where the cluster will be created.
+- **Region** is the AWS region where the cluster will be created.
 - **CIDR block** is the new network address range.
 
-::: warning CIDR block
-The network address range should not overlap with the address range of other networks which you will be peering with. Once a network is created, you will not be able to change the CIDR block. To change the CIDR block, you will need to delete the network and create a new one.
-:::
+As any other cloud network, the CIDR block must be within a range specified by RFC1918, e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`. The minimum size of the CIDR block allowed is `/25`.
 
-To establish a connection between the cluster network and your own cloud network, you will need to peer them. As any other cloud network, the CIDR block needs to be within the range specified by RFC1918, e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`. The minimum size of the CIDR block allowed is `/25`.
+::: warning CIDR block overlap
+The network address range should not overlap with the address range of any other networks which you will be peering with. Once a network is created, you will not be able to change the CIDR block. To change the CIDR block, you will need to delete the network and create a new one.
+:::
 
 ### Database
 
-The Database section is where you can specify the database settings for the cluster.
+![Database configuration](../images/cluster-new-db.png)
 
-You will need to select the `Server Version`, and choose whether to start server-side projections by default.
+The **Database** section is where you can specify the database settings for the cluster.
+
+You will need to select the **Server Version**, and choose if [server-side projections](@server/features/projections/README.md) should be enabled and what level of projections should be enabled.
 
 ::: warning Projections impact on performance
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/features/projections/README.md#performance-impact) section of the projections documentation to learn more.
@@ -59,7 +72,9 @@ Both system projections and user-defined projections produce new events. Careful
 
 ### Instance size
 
-The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
+![Instance size](../images/cluster-new-size-topology.png)
+
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 If you find that your cluster is not performing as expected, you can always resize the cluster instances later. If you create a three-node cluster, a resize is done in a rolling fashion that should take only a few minutes and not impact the availability of the cluster.
@@ -69,27 +84,29 @@ You will also need to specify the topology of the cluster. We recommend three-no
 
 ### Storage
 
-Further, you need to configure the storage for the cluster. For all three providers, only one disk type is available at the moment via the Cloud console. The storage capacity is gigabytes, with 8GiB being the minimum for AWS, and 10GiB for Azure and GCP. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+![Storage](./images/azure/azure-new-cluster-storage.png)
+
+Now you need to configure the storage for the cluster. For all three providers, only one disk type is available at the moment via the Cloud console. The storage capacity is gigabytes, with 8GiB being the minimum for AWS, and 10GiB for Azure and GCP. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
 ### Pricing
 
 Finally, you will see the estimated monthly price for the selected cluster size and storage capacity.
 
+::: note Network usage
+Since the network usage is billed based on actual usage, the estimated price will not reflect the full cost of the cluster.
+:::
+
 ## Provisioning begins
 
-When you click on `Create cluster`, the provisioning process starts. You will be redirected to the cluster details page, where you can follow the progress of the provisioning process. As the creation process progresses, you will see the status of the cluster change.
+When you click on **Create cluster**, the provisioning process starts. You will be redirected to the cluster details page, where you can follow the progress of the provisioning process. As the creation process progresses, you will see the status of the cluster change.
 
-![Cluster status](./images/azure/azure_cluster_creation_steps.png)
+![Cluster provisioning statuses](./images/azure/azure-cluster-creation-steps.png)
 
-If you created a new network, it will be created first. You can see the status of the network creation in the `Networks` view.
+If you created a new network, it will be created first. You can see the status of the network creation in the **Networks** view.
 
-![Network status](./images/azure/azure_network_provisioning.png)
+![Network status](./images/azure/azure-network-provisioning.png)
 
-Once you see the clusters status change to `Ok`, your cluster is ready to use.
-
-![Cluster status](./images/azure/azure_cluster_prov_complete.png)
-
-First, you will need to setup a peering link between your Azure Virtual Network and the Kurrent Cloud network.
+Once you see the new cluster's status change to `Ok`, your cluster is ready to use, but you still need to setup a peering link between your Azure Virtual Network and the Kurrent Cloud network.
 
 ## Network peering
 
@@ -97,9 +114,9 @@ When the cluster provisioning process finishes, you get a new cluster (or single
 
 For this example, we'll use an Azure network the same region (Central US).
 
-In Kurrent Cloud console, navigate to the `Networks` view and click on the Private Network you want to setup a peering link for and click on the `Initiate peering` button.
+In Kurrent Cloud console, navigate to the **Networks** view and click on the Private Network you want to setup a peering link for and click on the **Initiate peering** button.
 
-![Network status](./images/azure/azure_network_ready.png)
+![Network status](./images/azure/azure-network-ready.png)
 
 ### Azure Virtual Network details
 
@@ -114,13 +131,15 @@ You will need to gather the following information about your Azure Virtual Netwo
 
 You also need to find your tenant ID, which is only visible on the [Microsoft Entra admin center page](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/TenantOverview.ReactView). Alternatively, you can use the `Get-AzureADTenantDetails` [PowerShell command](https://docs.microsoft.com/en-us/powershell/module/azuread/Get-AzureADTenantDetail?view=azureadps-2.0).
 
-Peer Network ID is the one that requires the most attention, because it's not very obvious how to find it.
+Peer Network ID is the one that requires the most attention, because it's not very obvious how to find it. You can find it in the Azure portal, in the Virtual Network's properties page or in the JSON view of the network.
 
-![Azure network ID](./images/azure/azure_network_resource_id_example.png)
+![Azure network ID](./images/azure/azure-network-resource-id-example.png)
 
 For our example, here is the complete form:
 
 ![Azure peering - complete form](./images/azure/azure-peering-1.png)
+
+### Initiate peering
 
 When you click on the `Next` button, Kurrent Cloud will check if it has permissions to create the peering (see [Azure Considerations](#network-peering-in-azure)). The Cloud console will display a set of pre-populated Azure CLI commands, which you need to execute in order for Kurrent Cloud to be able to create the peering.
 

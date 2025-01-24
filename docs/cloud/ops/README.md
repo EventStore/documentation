@@ -5,11 +5,78 @@ dir:
   order: 3
 ---
 
+## Viewing clusters
+
+When you create a cluster, from the Clusters view, you will see a list of all your currently provisioned clusters, as well as any clusters that have been deleted within the last 24 hours. For each cluster, you will see the cluster name, type (public or private), cluster ID, provider, region, type, KurrentDB version, status, and date of creation, as well as a set of icons for performing common actions, and a menu with additional actions.
+
+![Clusters list](./images/clusters-list.png)
+
+### Details tab
+
+When you select a cluster from the Clusters list, you will see the cluster details page, which includes the cluster Name, ID, provisioning status, and date of creation.
+
+![Cluster details - Details](./images/cluster-details.png)
+### Provider tab
+
+The Provider tab contains details about the cloud provider, region, type (F1, C4, M8, etc), cluster topology (single node, three node multi zone), disk type, size, and any provider specific details.
+
+![Cluster details - Provider](./images/cluster-details-provider.png)
+
+### Network tab
+
+The Network tab contains details about the network configuration, including the Network ID, link to the Network details page, network type (public, private).
+
+![Cluster details - Private Network](./images/cluster-details-network-private.png)
+
+For public clusters, the network tab also includes the IP Access List ID and a link to the IP Access List.
+
+![Cluster details - Public Network](./images/cluster-details-network-public.png)
+
+### Database tab
+
+The Database tab contains details about version of KurrentDB running on the cluster and the health status of the cluster. The `Version` field shows the major release version of KurrentDB, and `Tag` shows the specific patch version.
+
+![Cluster details - Database](./images/cluster-details-database.png)
+
+### Addresses tab
+
+The Addresses tab contains addresses for accessing the cluster UI, as well as URIs for gRPC and TCP clients.
+
+![Cluster details - Addresses](./images/cluster-details-addresses.png)
+
+### Issues tab
+
+The Issues tab contains a list of operational issues that have been detected for the cluster, such as if cluster nodes out of sync, high system load or memory usage, low disk space, etc.
+
+![Cluster details - Issues](./images/cluster-details-issues.png)
+
+You can click on an issue to be taken to the specific issue details page. Additional information on issues can be found in the [Integrations](../integrations/README.md#issues) section.
+
+### Notifications tab
+
+The Notifications tab contains details about provisioning errors, or errors encountered while upgrading or resizing a cluster. Additional information on notifications can be found in the [Integrations](../integrations/README.md#notifications) section.
+
+![Cluster details - Notifications](./images/cluster-details-notifications.png)
+
 ## Connecting to a cluster
 
-After you provision the cloud cluster, you can find connection details by going to the Clusters view of the Cloud console. For each cluster, in the **Addresses** section, you will find the addresses for accessing the cluster UI, as well as URIs for gRPC and TCP clients.
+As mentioned above, the **Addresses** tab of a cluster details section contains the addresses to use for accessing the cluster UI, as well as URIs for gRPC and TCP clients. You will also see a button labeled `Connect to <Cluster Name>`. When clicked, a modal will appear that will first check if the cluster is reachable.
 
-![Cluster details](./images/cluster-addresses.png)
+If it is, you will get a list of options for connecting to the cluster, including a link to the cluster UI, as well as links to the official KurrentDB client libraries for a variety of languages.
+
+![Connect to cluster](./images/cluster-connect.png)
+
+If there are issues connecting to the cluster, you will see some diagnostic information indicating some possible reasons why the connection may be failing.
+
+For example, if the cluster is private and no peering has been established
+
+![Connect to Private Cluster - Error](./images/connect-private-error-diagnostic.png)
+
+Another example of a public cluster that is not reachable
+
+![Connect to Public Cluster - Error](./images/connect-public-error-diagnostic.png)
+
+If you are having trouble connecting to a cluster, see the [Troubleshooting](../faq.md#troubleshooting) section of the FAQ for more information, and contact our support team if you need assistance.
 
 ### DNS names
 
@@ -32,39 +99,62 @@ You can always check the `/gossip` endpoint from any node to see the list of nam
 
 Kurrent Cloud provisions secure KurrentDB clusters with TLS enabled for HTTP and gRPC using certificates issued by Let's Encrypt. We automatically renew the certificates before they expire and replace the certificates on all cluster nodes. This is all done with zero impact to client connections or cluster availability.
 
-We do not support using third party certificates or offer private certificate authorities, which also means that we do not support mutual TLS client authentication at this time.
+We do not support using third party certificates or offer private certificate authorities.
+
+## Changing the default passwords
+
+Every KurrentDB cluster starts with two default users: `$admin` and `$ops`. When you create a cluster, those users have the default password `changeit`. It is **strongly recommended** that the first thing you do after creating a cluster is to change the passwords for these users, particularly for clusters that are publically accessible. See the [User Authentication](@server/security/user-authentication#basic-authentication) section of the KurrentDB documentation for details of how to .
+
+::: note Limitation
+While the enterprise version of KurrentDB supports authentications methods such as x509 certificates, LDAP, and OAuth, Kurrent Cloud Managed Clusters only support basic authentication.
+:::
 
 ## Resizing cluster nodes
 
-Clusters can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc). When you resize a cluster, you are changing the type of compute instances that make up the cluster. You can resize a cluster to a larger or smaller node size, but you cannot change the topology of the cluster.
+Clusters can be scaled up or down on-demand to optimize for cost or performance through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc). When you resize a cluster, the compute instances that make up the cluster are resized. You can resize a cluster to a larger or smaller node size, but you cannot change the topology of the cluster.
 
-See also the cloud [sizing guide](./sizing.md) for general guidance.
+See also the [sizing guide](./sizing.md) for general guidance.
 
 ::: note Resizing restrictions
-Single-node clusters are not intended for production use, so the maximum size you can resize a single-node cluster to via the Cloud Console is `M8`.
+Single-node clusters are not intended for production use. For this reason, the maximum size you can resize a single-node cluster to via the Cloud Console is `M8`.
 :::
 
+### Resize operation overview
+
+For multi-node clusters, resizes are done in a rolling fashion, meaning that the cluster is available throughout the resize operation.
+
+Before a resize starts, the cluster health is verified. If there are any issues with the cluster, such as a node is down or is too far out of sync with the cluster, the resize operation will not be allowed to begin. To minimize impact to clients, the two follower nodes are resized one at a time, then before resizing the leader node, the leader is resigned and a leader election is initiated to ensure the final node can be resized without disruption.
+
+Nodes are stopped one at a time, compute instance type is changed, and the node is started again. Once a node has been resized, before proceeding to the next node, the cluster must return to a consistent state before the next node is resized. If any cluster node does not return to a healthy state, the resize operation is aborted and the Cloud team is alerted.
+
+::: note Client connections during resizes
+When a cluster node is resized, clients that are connected to that node will be disconnected and automatically reconnect to another node. If the `nodePreference` connection parameter is set to `leader`, the client will reconnect to the new leader once one has been elected.
+:::
+
+For single-node instances, the resize operation requires downtime because the compute instance must be stopped. For larger databases, once the node is started again, KurrentDB may take several minutes or more to become available.
+
+### How to resize a cluster
 
 ::: tabs#way
 @tab Cloud Console
 
-To resize a cluster in the console, navigate to the clusters view and select _Resize Cluster_ for the cluster you want to resize.
+To resize a cluster in the console, navigate to the clusters view and select **Resize Cluster** for the cluster menu icon in the clusters list or from the menu in the cluster details section.
 
-![cluster list](./images/Resize01DropDown.png)
+![cluster list](./images/cluster-resize-1.png)
 
-On the detail page, specify the new cluster size and click on _Resize Cluster_.
+On the detail page, specify the new cluster size and click on **Resize Cluster**.
 
-![cluster_expand_detail](./images/Resize02Selection.png)
+![cluster_expand_detail](./images/cluster-resize-2.png)
 
-Depending on your configuration, downtime may vary. Resizing a single-node ESDB instance requires downtime, while resizing a 3-node cluster uses a rolling upgrade, ensuring zero downtime.
+If there a resize will incur downtime, you will receive a warning before the resize proceeds.
+
+![Cluster Resize Warning](./images/cluster-resize-downtime-warning.png)
 
 In the cluster view, you can see that the resize is in progress.
 
-![cluster_expand_detail](./images/Resize04Progress.png)
+![cluster_expand_detail](./images/cluster-resize-3.png)
 
-Once the resize operation is complete, the new cluster size will show in the cluster view.
-
-![cluster_expand_detail](./images/Resize05Complete.png)
+Once the resize operation is complete, the new cluster status will return to `Ok` and the new cluster size will be reflected in the **Type** column in the **Clusters List**, as well as under the **Provider** tab in the **Cluster Details** section.
 
 @tab esc
 
@@ -89,38 +179,42 @@ If a cluster's current version of KurrentDB is compatible with an older version,
 
 ### Upgrade process overview
 
-When upgrading a three-node cluster, the upgrade is done in a rolling fashion, meaning that the cluster is available throughout the upgrade process. Before an upgrade is started, the cluster health is verified. Nodes are upgraded one at a time. Once a node has been upgraded, before proceeding to the next node, the cluster must return to a consistent state. If any cluster node does not return to a healthy state, the upgrade process is aborted and the Cloud team is alerted.
+When upgrading a three-node cluster, the upgrade is done in a rolling fashion, meaning that the cluster is available throughout the upgrade process.
 
-To minimize impact to clients, the two follower nodes are upgraded one at a time, then before upgrading the leader node, the leader is resigned and a leader election is initiated to ensure the final node can be upgraded without disruption.
+Before an upgrade is started, the cluster health is verified. If there are any issues with the cluster, such as a node is down or is too far out of sync with the cluster, the upgrade operation will not be allowed to begin. To minimize impact to clients, the two follower nodes are upgraded one at a time, then before upgrading the leader node, the leader is resigned and a leader election is initiated to ensure the final node can be upgraded without disruption.
 
-::: note
-When a cluster's leader node resigns and a leader election occurs, clients that are connected to the leader node will be disconnected and automatically reconnect to another node. If the `nodePreference` connection parameter is set to `leader`, the client will reconnect to the new leader once one has been elected.
+Nodes are stopped one at a time, compute instance type is changed, and the node is started again. Once a node has been upgraded, before proceeding to the next node, the cluster must return to a consistent state before the next node is upgraded. If any cluster node does not return to a healthy state, the upgrade operation is aborted and the Cloud team is alerted.
+
+::: note Client connections during upgrades
+When a cluster node is upgraded, clients that are connected to that node will be disconnected and automatically reconnect to another node. If the `nodePreference` connection parameter is set to `leader`, the client will reconnect to the new leader once one has been elected.
 :::
 
-Upgrading a single-node instance, on the other hand, does require downtime because the KurrentDB service must be restarted. Depending on the size of the database, this may take a few seconds to several minutes or more.
+Upgrading a single-node instance, on the other hand, does require downtime because the KurrentDB service must be restarted. For larger databases, KurrentDB may take several minutes or more to become available.
 
 ::: tabs#way
 @tab Cloud Console
 
 In the Clusters view, if there is a dot on the _Upgrade Cluster_ icon for a cluster, this indicates that there is an upgrade available for the current version of the database.
 
-![Upgrade available](./images/upgrade_available.png)
+![Upgrade available](./images/cluster-upgrade-1.png)
 
-To upgrade the cluster, select _Upgrade Cluster_ in the cluster's menu icon in the clusters list, the _Upgrade Cluster_ icon, or from the menu in the cluster details section.
+To upgrade the cluster, select **Upgrade Cluster** in the cluster's menu icon in the clusters list, the **Upgrade Cluster** icon, or from the menu in the cluster details section.
 
-![cluster list](./images/upgrade01ClusterDropDown.png)
+![Cluster list](./images/cluster-upgrade-2.png)
 
-On the detail page, specify the new cluster version and click on _Upgrade Cluster_.
+On the detail page, specify the new cluster version and click on **Upgrade Cluster**.
 
-![cluster_expand_detail](./images/upgrade02ClusterSelection.png)
+![Cluster Upgrade](./images/cluster-upgrade-3.png)
 
 In the cluster view, you can see that the upgrade is in progress.
 
-![cluster_expand_detail](./images/upgrade04Progress.png)
+![Cluster List - Upgrade in Progress](./images/cluster-upgrade-4.png)
 
 Once the upgrade operation is complete, the new cluster version will show in the cluster view.
 
-![cluster_expand_detail](./images/upgrade05Complete.png)
+If the upgrade cannot be done online, a warning will be displayed and must be confirmed before the upgrade will be started.
+
+![Cluster Upgrade Downtime Warning](./images/cluster-upgrade-downtime-warning.png)
 
 @tab esc
 
@@ -148,13 +242,19 @@ After modifying a disk for a cluster in **AWS**, you must wait at least **six ho
 ::: tabs#way
 @tab Cloud Console
 
-To expand disks in the console, navigate to the clusters view and click on the _Expand Disks_ icon.
+To expand disks in the console, navigate to the clusters view and click on **Expand Disk** in the cluster's menu icon in the clusters list or from the menu in the cluster details section.
 
-![cluster list](./images/disk_expand_list.png)
+![Expand Disk Menu](./images/expand-disk-1.png)
 
-On the detail page, specify the new disk size (as well as the disk IOPS and throughput when using the AWS GP3 disk type) and click on _Expand cluster disk_.
+On the **Expand Disk** page, specify the new disk size (as well as the disk IOPS and throughput when using the AWS GP3 disk type) and click on **Expand cluster disk**.
 
-![cluster_expand_detail](./images/disk_expand_detail.png)
+![Expand Disk Page](./images/expand-disk-2.png)
+
+You will be redirected to the Clusters view, where you can see that the disk expansion is in progress.
+
+![Expand Disk Progress](./images/expand-disk-3.png)
+
+Once the disk expansion operation is complete, the new disk size will show under the **Provider** tab in the **Cluster Details** section.
 
 @tab esc
 
@@ -172,26 +272,27 @@ esc mesdb clusters expand \
 
 Cluster can be protected from accidental deletion using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
 
-This feature will require an extra step to unprotect the cluster before it will be possible to remove it.
+
+### Enable Protection
 
 ::: tabs#way
 @tab Cloud Console
 
-To protect a cluster, navigate to the clusters view and click on the _Protect Cluster_ icon.
+To protect a cluster, navigate to the **Clusters view** and click on the **Protect Cluster** icon, the **Enable Protection** the cluster menu icon in the **Clusters list**, or from the menu in the **Cluster details** section.
 
-![cluster list](./images/enable_protection1.png)
+![Enable Protection menu](./images/cluster-enable-protection-1.png)
 
-On the detail page click on _Enable Protection_ button.
+A confirmation dialog will appear. Click on **Enable Protection**.
 
-![enable protection](./images/enable_protection2.png)
+![Enable Protection confirmat](./images/cluster-enable-protection-2.png)
 
-Protected cluster does not have a _Delete Cluster_ active action.
+You will then see a notification that Protection has been enabled.
 
-![delete inactive](./images/protected_cluster.png)
+![Enable Protection success](./images/cluster-enable-protection-3.png)
 
-To unprotect a cluster, navigate to Clusters action and click on the _Unprotect Cluster_ icon.
+Now the option to delete the cluster is disabled.
 
-![disable protection](./images/disable_protection.png)
+![Delete inactive](./images/cluster-enable-protection-4.png)
 
 @tab esc
 
@@ -201,7 +302,32 @@ To protect a cluster, you need to update a value of `protected` parameter to `tr
 esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected true
 ```
 
-To unprotect a cluster, you need to update it to `false`:
+:::
+
+### Disable Protection
+
+To delete a protected cluster, you must first disable protection
+
+::: tabs#way
+@tab Cloud Console
+
+To disable protection, navigate to the **Clusters view** and click on the **Disable Protection** icon, the **Disable Protection** the cluster menu icon in the **Clusters list**, or from the menu in the **Cluster details** section.
+
+![Disable Protection menu](./images/cluster-disable-protection-1.png)
+
+A confirmation dialog will appear. Click on **Disable Protection**.
+
+![Disable Protection confirmation](./images/cluster-disable-protection-2.png)
+
+You will then see a notification that Protection has been disabled.
+
+![Disable Protection success](./images/cluster-disable-protection-3.png)
+
+Now the option to delete the cluster is available again.
+
+![Delete available](./images/cluster-disable-protection-4.png)
+
+@tab esc
 
 ```bash:no-line-numbers
 esc mesdb clusters update --id cis4pcid60b5q96r8hm0 --protected false

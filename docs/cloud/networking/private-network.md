@@ -11,20 +11,16 @@ For all of the cloud providers supported by Kurrent Cloud, you can peer a Privat
 
 ### Security for peering links
 
-It is important to understand that peering links can allow bi-directional traffic from either side of the peering link. While security is a top priority for us and do everything we can to ensure the security of the compute instances, it is the customer's responsibility to follow best practices to limit what traffic is allowed to transit the peering link into their VPC/VNet.
+It is important to understand that peering links can allow bi-directional traffic from either side of the peering link. While security is a top priority for Kurrent Cloud and we do everything we can to ensure the security of the compute instances, always follow best practices to limit what traffic is allowed to transit the peering link into your VPCs/VNets.
 
-Kurrent Cloud limits the ports that are open for connections coming from the customer VPC/VNet to those necessary for clients to connect to the KurrentDB cluster. Unless you are using the [Connectors](../../server/v24.10/features/connectors/) feature, you can block all inbound traffic initiated from the Kurrent Cloud Private Network. See your cloud provider's documentation for how to utilize security groups, firewall rules, etc. to restrict inbound traffic.
+Unless you are using the [Connectors](../../server/v24.10/features/connectors/) feature, due diligence should be taken to ensure inbound traffic originating from the Kurrent Cloud Private Network is denied. See your cloud provider's documentation to learn how to configure security groups, firewall rules, etc. to restrict network traffic from peered VPC/VNets.
 
 :::tip Connectors
-
 With the release of KurrentDB 24.10, we have added the [Connectors](../../server/v24.10/features/connectors/) feature. Connectors run on the server-side and use a catch-up subscription to receive events, filter or transform them, and push them to an external system. This feature is a great way to extend the capabilities of your KurrentDB cluster, but it also means that the KurrentDB cluster nodes will be connecting to external systems. If you are using Connectors to push events to a system that is on the peered VPC/VNet, you will need to ensure that your network configuration allows ingress traffic from the KurrentDB cluster nodes.
-
 :::
 
 :::note Alternative Private Network Connectivity
-
 AWS PrivateLink, GCP Private Service Connect, and Azure Private Link provide private connectivity to third party services from within a VPC/VNet without the need for establishing peering links. We plan to add support for these services in the near future.
-
 :::
 
 ## End-user connectivity

@@ -18,131 +18,172 @@ The provisioning process consists of three steps:
 2. Provision the KurrentDB instance or cluster
 3. Peer the new network with your own network in GCP
 
-### Create a network
+## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) and switch to `Networks`. Then, click on the `New network` button.
+In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
 
-Make sure to fill out the required information:
-- Network name
-- Cloud provider - GCP
-- Region - choose the GCP region
-- CIDR block - the new network address range
+Click on the **New cluster** button to begin the cluster creation process.
 
-![Create GCP network](./images/gcp/gcp-create-network.png)
+### Cluster name
 
-To establish a connection between the cluster network and your own cloud network, you'd need to peer them. Currently, Kurrent Cloud only supports peering within the same region. Therefore, ensure that you choose the same region as your own cloud network.
+![Cluster name](../images/new-cluster-name.png)
 
-The network address range should not overlap with the address range of other networks in the same region and with your own GCP network, which you will be peering with. As any other cloud network, the CIDR block needs to be within the range specified by RFC1918.
+Provide a descriptive name for the cluster in the **Cluster name** field.
 
-After specifying all the details, click on the `Create network` button. You will be brought back to the networks list where the new network will appear as being provisioned. The provisioning process in GCP might take a little while. You'd need to click on the refresh button from time to time as the view won't update automatically.
+### Network
 
-![GCP active network](./images/gcp/gcp-network-active.png)
+![Create a network](./images/gcp/gcp-new-cluster-network.png)
 
-By clicking on the network in the list you can inspect the details like its name, status, region and address range.
+In the **Network** section, if you have not created a network yet, you will see fields for creating a new network. If you have any existing Networks, you will see those listed, as well as the option to create a new Network.
 
-Wait until the network becomes `Active` in the list before moving to the next step.
+When creating a new network, you will need to provide the following information:
 
-### Deploy a managed instance
+- **Network name** is a descriptor to allow you to identify the network in the list of networks.
+- **Type** should be set to `Private`.
+- **Cloud provider** should be set to `Google Cloud`.
+- **Region** is the GCP region where the cluster will be created.
+- **CIDR block** is the new network address range.
 
-Within the project scope you can view KurrentDB clusters for the project if you click on the `Clusters` menu. Initially, the cluster list is empty and you will only see the `New cluster` button.
+As any other cloud network, the CIDR block must be within a range specified by RFC1918, e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`. The minimum size of the CIDR block allowed is `/25`.
 
-When you click on the button, you get to the cluster creation form.
+::: warning CIDR block overlap
+The network address range should not overlap with the address range of any other networks which you will be peering with. Once a network is created, you will not be able to change the CIDR block. To change the CIDR block, you will need to delete the network and create a new one.
+:::
 
-On the first part of the form you need to specify the new cluster name, the cloud provider (GCP) and the KurrentDB version. Further, you need to choose whether to start server-side projections by default.
+### Database
 
-![GCP cluster first part](./images/gcp/gcp-new-cluster-1.png)
+![Database configuration](../images/cluster-new-db.png)
+
+The **Database** section is where you can specify the database settings for the cluster.
+
+You will need to select the **Server Version**, and choose if [server-side projections](@server/features/projections/README.md) should be enabled and what level of projections should be enabled.
 
 ::: warning Projections impact on performance
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/features/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-The next section of the form allows choosing the instance size for cluster nodes. Use the provided instance size guidelines to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
+### Instance size
+
+![Instance size](../images/cluster-new-size-topology.png)
+
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
-At this moment, it is not possible to change the cluster node instance size. You can still resize cluster instances by taking a backup and restoring it to a different cluster with larger or smaller instances.
+If you find that your cluster is not performing as expected, you can always resize the cluster instances later. If you create a three-node cluster, a resize is done in a rolling fashion that should take only a few minutes and not impact the availability of the cluster.
 :::
 
-Further, you need to specify the storage capacity. One disk kind is available at the moment, but you can change the disk size. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
+You will also need to specify the topology of the cluster. We recommend three-node clusters to ensure high availability, but you can also create a single-node cluster for testing or development purposes.
 
-Next, choose the network provisioned previously from the list. All cluster nodes will be attached to that network.
+### Storage
 
-![GCP cluster second part](./images/gcp/gcp-new-cluster-2.png)
+![Storage](./images/gcp/gcp-new-cluster-storage.png)
 
-You will get the monthly price for the selected cluster size down below in the form.
+Now you need to configure the storage for the cluster. For all three providers, only one disk type is available at the moment via the Cloud console. The storage capacity is gigabytes, with 8GiB being the minimum for AWS, and 10GiB for Azure and GCP. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
-Finally, when you click on `Create cluster`, the provisioning process starts, and you will get a new cluster available after a few minutes.
+### Pricing
 
-### Network peering
+Finally, you will see the estimated monthly price for the selected cluster size and storage capacity.
 
-When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the network and consequently to all the clusters in that network, you'd need to peer the Kurrent Cloud network to your own GCP VPC network. Normally, your GCP VPC network would be also accessible by applications, which you want to connect to the new cloud KurrentDB cluster.
-
-::: warning Peering limitations
-Currently, you can peer one Kurrent Cloud network with only one GCP network on your account. We expect to lift this limitation in the future.
+::: note Network usage
+Since the network usage is billed based on actual usage, the estimated price will not reflect the full cost of the cluster.
 :::
 
-For this example, we'll use a VPC network in GCP in the same region (`europe-west-4`).
+## Provisioning begins
 
-![GCP VPC details](./images/gcp/gpc-vpc-details.png)
+When you click on **Create cluster**, the provisioning process starts. You will be redirected to the cluster details page, where you can follow the progress of the provisioning process. As the creation process progresses, you will see the status of the cluster change.
 
-Notice that the VPC has one subnet in the same region as the Kurrent Cloud network provisioned earlier.
+![Cluster provisioning statuses](./images/gcp/gcp-cluster-creation-steps.png)
 
-The network page provide us enough details to start the peering process. In Kurrent Cloud console, while in the same project context as the new network and cluster, click on `Peering` under the `Project` menu, then click on `New peering`.
+If you created a new network, it will be created first. You can see the status of the network creation in the **Networks** view.
 
-Then, give the new peering a name and select the network created earlier. You'd need to fill out the remaining fields, using the information from GCP VPC. As you are peering with the whole VPC, you can specify multiple IP ranges for different subnets, or multiple IP ranges for the same subnet (GKE aliases, for example) as separate peer routes. However, the routed IP ranges must belong to subnets in the same region as the Kurrent Cloud network.
+![Network status](./images/gcp/gcp-network-provisioning.png)
 
-| Peering form        | GCP VPC screen                                       |
-|:--------------------|:-----------------------------------------------------|
-| Peer GCP Project ID | GCP project ID, found in the project selection popup |
-| Peer Network Name   | The VPC name                                         |
-| GCP region          | VPC subnet region, cannot be changed                 |
-| Peer routes         | One or more VPC subnet address ranges                |
+Once you see the new cluster's status change to `Ok`, your cluster is ready to use, but you still need to setup a peering link between your GCP Virtual Network and the Kurrent Cloud network.
+
+## Network peering
+
+When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the clusters in the new Network, you'd need to configure a peering link between your GCP VPC network and the Kurrent Cloud network. Besides services running on compute instances, your GCP VPC network would also be accessible by applications that you may want to connect to the new cloud KurrentDB cluster.
+
+For this example, we'll use a VPC network in GCP in the same region (`us-west3`).
+
+In Kurrent Cloud console, while in the same project context as the new network and cluster, click on **Networks** under the **Networking** section. Select the network you want to peer with the GCP VPC, and click on the **Peerings** tab in the network details. You should see there are no peerings yet. To begin the peering process, click on the **Initiate peering** button.
+
+![Network status](./images/gcp/gcp-network-ready.png)
+
+### GCP VPC details
+
+You will need to gather the following information about your GCP VPC network:
+
+| Field               | Description                           |
+|:--------------------|:--------------------------------------|
+| Peer GCP Project ID | GCP project ID                        |
+| Peer Network Name   | The VPC name                          |
+| GCP region          | VPC subnet region, cannot be changed  |
+| Peer routes         | One or more VPC subnet address ranges |
+
+To find the GCP project ID, in the [Google Cloud Console](https://console.cloud.google.com/), click on the project selector in the top left corner, and select the project that contains the VPC you want to peer with.
+
+![GCP project selector](./images/gcp/gcp-project-selector.png)
+
+![GCP project ID](./images/gcp/gcp-project-id.png)
 
 For our example, here is the complete form:
 
 ![GCP peering - complete form](./images/gcp/gcp-peering-1.png)
 
 ::: note
-Multiple peer routes are useful in case you want to peer with a subnet that has multiple IP ranges (aliases). A typical example would be aif you have a VPC-native GKE cluster, and you need pods in that cluster to work with Kurrent Cloud. Then, you need to add the pod IP range to the peer route in addition to the subnet's primary IP range.
-
+Multiple peer routes are useful in case you want to peer with a subnet that has multiple IP ranges (aliases). A typical example would be if you have a VPC-native GKE cluster, and you need pods in that cluster to work with Kurrent Cloud. Then, you need to add the pod IP range to the peer route in addition to the subnet's primary IP range.
 :::
 
 ::: warning
 After you create a peering, you can't change the peer routes. If you would need to modify the routes, delete the peering and create it again with the updated set of peer routes. The limitation applies even in cases where a cloud provider supports dynamic route updates, e.g. in GCP. The reason is that the EventStore automation creates firewall rules for the peer routes when the peering is created. The firewall rules are not updated dynamically to prevent security breaches.
 :::
 
-When you click on the `Create peering` button, you'll be redirected to the peering list screen with the new peering resource being provisioned. After a little while, the status will change to `Intiated`.
+### Initiate peering
 
-![GCP peering - pending](./images/gcp/gcp-peering-2.png)
+When you click on the **Initiate peering** button, you'll be redirected back to the **Networks** screen, which should now show the new peering resource being provisioned.
 
-The information on the peering details screen provides some essential information to complete the peering process from GCP side.
+![Peering provisioning](./images/gcp/gcp-peering-2.png)
 
-When the peering is initiated, get back to Google Cloud console and navigate to `VPC network peering`. There, click `Create connection` and then `Continue`. Give new peering a name and choose the network on GCP side. Next, fill out the remaining values using the initiated peering details:
+After a few minutes, the Network's status will change to `Peering initiated`.
 
-| Kurrent Cloud | GCP connection peering |
+![Peering initiated](./images/gcp/gcp-peering-3.png)
+
+The information on the **Peerings** tab of the **Network details** section provides some essential information to complete the peering process from GCP side.
+
+Go back to Google Cloud console and navigate to **VPC network peering** tab of the VPC network you want to peer with, then click **Add Peering**.
+
+![GCP peering list](./images/gcp/gcp-peering-4.png)
+
+Give the new peering a name and fill out the values using the initiated peering details from the Kurrent Cloud console:
+
+| Kurrent Cloud     | GCP connection peering |
 |:------------------|:-----------------------|
 | Peer Project ID   | Project ID             |
 | Peer Network Name | VPC network name       |
 
-Your Kurrent Cloud Peered Project ID should be formatted as estenant-{organization id}.
-The Peer Network Name should be the Network ID of your VPC Network on Kurrent Cloud.
-View the screenshot below for more information.
-
-**Important**: expand the `Exchange custom routes` section and enable both `Import` and `Export` options for custom routes. It will instruct GCP to create routes automatically.
+**Important**: under the **Exchange custom routes** section, enable both **Import** and **Export custom routes** options. This will instruct GCP to create routes automatically.
 
 Here is what our example GCP peering form would look like:
 
-![Incoming peering request](./images/gcp/gcp-peering-3.png)
+![GCP peering form](./images/gcp/gcp-peering-5.png)
 
-Click the `Create` button and when in the `VPC network peering` list, click `Refresh` until the peering status changes to `Active`. The peering status in Kurrent Cloud console should also change to `Active`.
+Click the **Create** button, which will return you to the **VPC network peering** list. Shortly after, the peering status should change to `Active`.
+
+![Peering active](./images/gcp/gcp-peering-6.png)
+
+The peering status in Kurrent Cloud console should also change to `Active`.
+
+![Peering active](./images/gcp/gcp-peering-finished.png)
 
 ::: tip Peering issues
-You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. You can find all the necessary diagnostics in the Event Console in Kurrent Cloud.
+You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. Check the Event Console in the Cloud console for diagnostic details, and contact support if you need assistance.
 :::
 
-At this moment, you should be able to connect to the KurrentDB cluster in the cloud from any VM, which is connected to your GCP VPC network.
+At this point, you should be able to connect to the KurrentDB cluster in the cloud from any VM or application connected to your GCP VPC network.
 
 Depending on your setup, you might already have a connection available from your local machine to the GCP VPC using a site-to-site VPN. If not, ask your operations about the connection details.
 
-### Next step
+### Next steps
 
 You are now ready to start using the new KurrentDB cluster in the cloud. Head over to the [Operations](../ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.
