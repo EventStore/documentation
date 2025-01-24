@@ -3,7 +3,7 @@ title: Public Access Clusters
 order: 2
 ---
 
-Public access is the quickest and easiest way to provision and get to using a KurrentDB cluster in Kurrent Cloud.
+Public access is the quickest and easiest way to provision and start using a KurrentDB cluster in Kurrent Cloud.
 
 Pre-requisites:
 - You have an organization registered in Cloud console
@@ -13,11 +13,7 @@ Pre-requisites:
 
 ## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) and switch to **Clusters**. Then, click on the **New cluster** button.
-
-In the Kurrent Cloud console, go to the [Project context](../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
-
-Click on the **New cluster** button to begin the cluster creation process.
+In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) and switch to **Clusters**. Then, click on the **New cluster** button to begin the cluster creation process.
 
 ### Cluster name
 

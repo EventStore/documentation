@@ -104,7 +104,7 @@ Give the policy some appropriate name, and click on "Create policy".
 
 ### Testing the integration
 
-Log integration with Kurrent Cloud will take a few minutes to be fully active
+Log integration with Kurrent Cloud will take a few minutes to be fully active.
 
 If you're making sure the integration is set up correctly it's a good idea to write a few test events to the cluster. Clusters which are seeing no activity (such as dev or test clusters) will sometimes emit no logs at all.
 
@@ -189,7 +189,7 @@ Give the policy some appropriate name, and click on "Create policy".
 
 ### Testing the integration
 
-Metrics integration with Kurrent Cloud will take a few minutes to be fully activate
+Metrics integration with Kurrent Cloud will take a few minutes to be fully activated.
 
 Metrics will typically appear after that without any action on your part.
 

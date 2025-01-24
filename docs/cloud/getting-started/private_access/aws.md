@@ -164,7 +164,7 @@ Back in the Kurrent Cloud console, within a few moments the Network status will 
 
 ![Peering active](./images/aws/aws-peering-active.png)
 
-Now, although both networks are now connected, AWS does not create the necessary routes for the VPC to reach the Kurrent Cloud network automatically. You will need to add a route for the peering connection to each the route table(s) associated to the subnets that you want to be able to reach the Kurrent Cloud clusters.
+Now, although both networks are now connected, AWS does not create the necessary routes for the VPC to reach the Kurrent Cloud network automatically. You will need to add a route for the peering connection to each of the route table(s) associated to the subnets that you want to be able to reach the Kurrent Cloud clusters.
 
 To finish the setup, open the AWS VPC details and then click on the **Resource map** tab. There you will see a list of **Subnets** and **Route tables**.
 
@@ -185,7 +185,7 @@ Once saved, the route table should look similar to this:
 If you are using one or more subnets associated to this VPC, make sure you update the routing table for all of them, not only on the main route table of the VPC.
 
 ::: tip Peering issues
-You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. Check the Event Console in the Cloud console for diagnostic details, and contact support if you need assistance.
+You might see the peering request getting stuck. There are several reasons this may happen, such as your cloud account quota or overlapping CIDR blocks. Check the Event Console in the Cloud console for diagnostic details, and contact support if you need assistance.
 :::
 
 At this point, you should be able to connect to the KurrentDB cluster in the cloud from any VM or application connected to your AWS VPC network.
