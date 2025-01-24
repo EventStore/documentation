@@ -22,6 +22,9 @@ export const sidebarEn: EsSidebarOptions = {
       text: "Features",
       link: "/getting-started/features.md",
       group: "Getting Started",
+      children: [
+        "/getting-started/features/kafka-sink-quickstart.md",
+      ]
     },
     {
       text: "Evaluate",
