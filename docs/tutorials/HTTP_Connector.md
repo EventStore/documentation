@@ -18,11 +18,11 @@ Ensure you have an **HTTP endpoint** that can receive messages. In this example 
 
 1. Navigate to https://www.postb.in/ and click **create bin**
 
-PostBin is used to collect **(GET, POST, PUT, PATCH, DELETE, etc)** requests to a URL. We are using it to create an HTTP endpoint to send EventStoreDB data. 
+   PostBin is used to collect **(GET, POST, PUT, PATCH, DELETE, etc)** requests to a URL. We are using it to create an HTTP endpoint to send EventStoreDB data. 
 
 2. Copy the bin url
 
-After clicking create bin you will be directed to a page with the endpoint urls for curl, wget, and echo. Copy the bin url for curl
+   After clicking create bin you will be directed to a page with the endpoint urls for curl, wget, and echo. Copy the bin url for curl
 
 Note: If testing with an endpoint from your own custom application, make sure there are no issues with CORS preventing the data transmission from EventStoreDB.
 
