@@ -4,7 +4,7 @@ order: 3
 
 # Pulumi provider
 
-Event Store Cloud provides a Pulumi provider to automate the provisioning of EventStoreDB clusters. The provider is available via the [Pulumi Registry][pulumi provider].
+Kurrent Cloud provides a Pulumi provider to automate the provisioning of KurrentDB clusters. The provider is available via the [Pulumi Registry][pulumi provider].
 
 ## Installation
 
@@ -32,8 +32,8 @@ pulumi plugin install resource eventstorecloud v0.2.3 \
 
 The following configuration points are available for the `eventstorecloud` provider:
 
-- `eventstorecloud:organizationId` - the organization ID for an existing organization in Event Store Cloud
-- `eventstorecloud:token` - a valid refresh token for an Event Store Cloud account with admin access to the organization
+- `eventstorecloud:organizationId` - the organization ID for an existing organization in Kurrent Cloud
+- `eventstorecloud:token` - a valid refresh token for an Kurrent Cloud account with admin access to the organization
 
 ### Node.js (Java/TypeScript)
 
@@ -66,4 +66,3 @@ go get github.com/EventStore/pulumi-eventstorecloud/sdk/go/eventstorecloud
 Find comprehensive usage examples in the [Pulumi Registry][pulumi provider].
 
 [pulumi provider]: https://www.pulumi.com/registry/packages/eventstorecloud/
-
