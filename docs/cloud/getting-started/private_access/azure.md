@@ -7,7 +7,7 @@ order: 2
 For Microsoft Azure customers, Kurrent Cloud allows provisioning an KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
 
 ::: warning Azure considerations
-Microsoft Azure has a few differences that you need to consider when using Kurrent Cloud with Azure. We listed all currently known limitations [below on this page](#considerations-for-microsoft-azure). Please ensure you are aware of it before starting to use KurrentDB in Azure.
+Microsoft Azure has a few nuances that must be considered when using Kurrent Cloud with Azure. We listed all currently known limitations [below on this page](#considerations-for-microsoft-azure). Please ensure you are aware of them before starting to use KurrentDB in Azure.
 :::
 
 Pre-requisites:
@@ -28,7 +28,7 @@ The provisioning process consists of three steps:
 
 ## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
+In the Kurrent Cloud console, go to the [project context](../../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
 
 Click on the **New cluster** button to begin the cluster creation process.
 
@@ -74,7 +74,7 @@ Both system projections and user-defined projections produce new events. Careful
 
 ![Instance size](../images/cluster-new-size-topology.png)
 
-The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 If you find that your cluster is not performing as expected, you can always resize the cluster instances later. If you create a three-node cluster, a resize is done in a rolling fashion that should take only a few minutes and not impact the availability of the cluster.

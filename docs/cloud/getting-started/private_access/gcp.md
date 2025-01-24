@@ -20,7 +20,7 @@ The provisioning process consists of three steps:
 
 ## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
+In the Kurrent Cloud console, go to the [project context](../../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
 
 Click on the **New cluster** button to begin the cluster creation process.
 
@@ -102,7 +102,7 @@ Once you see the new cluster's status change to `Ok`, your cluster is ready to u
 
 ## Network peering
 
-When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the clusters in the new Network, you'd need to configure a peering link between your GCP VPC network and the Kurrent Cloud network. Besides services running on compute instances, your GCP VPC network would also be accessible by applications that you may want to connect to the new cloud KurrentDB cluster.
+When the cluster provisioning process finishes, you get a new cluster (or single instance), which is connected to the network created in the first step. You won't be able to connect to the cluster since the network is not exposed to the Internet. In order to get access to the clusters in the new Network, you must configure a peering link between your GCP VPC network and the Kurrent Cloud network. Besides services running on compute instances, your GCP VPC network would also be accessible by applications that you may want to connect to the new cloud KurrentDB cluster.
 
 For this example, we'll use a VPC network in GCP in the same region (`us-west3`).
 
@@ -177,12 +177,12 @@ The peering status in Kurrent Cloud console should also change to `Active`.
 ![Peering active](./images/gcp/gcp-peering-finished.png)
 
 ::: tip Peering issues
-You might see the peering request getting stuck. There are several reasons for this to happen, like your cloud account quota or overlapping CIDR blocks. Check the Event Console in the Cloud console for diagnostic details, and contact support if you need assistance.
+You might see the peering request getting stuck. There are several reasons this happen, such as cloud account quota or overlapping CIDR blocks. Check the Event Console in the Cloud console for diagnostic details, and contact support if you need assistance.
 :::
 
 At this point, you should be able to connect to the KurrentDB cluster in the cloud from any VM or application connected to your GCP VPC network.
 
-Depending on your setup, you might already have a connection available from your local machine to the GCP VPC using a site-to-site VPN. If not, ask your operations about the connection details.
+Depending on your setup, you might already have a connection available from your local machine to the GCP VPC using a site-to-site VPN. If not, ask your operations team about the connection details.
 
 ### Next steps
 

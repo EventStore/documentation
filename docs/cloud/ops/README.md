@@ -233,7 +233,7 @@ esc mesdb clusters upgrade \
 
 Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc)
 
-See also the cloud [sizing guide](../provision/sizing.md) for general guidance.
+See also the cloud [sizing guide](./sizing.md) for general guidance.
 
 ::: note Limitation
 After modifying a disk for a cluster in **AWS**, you must wait at least **six hours** before you can resize that volume again. See [here](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modify-volume.html#elastic-volumes-limitations) for more information.

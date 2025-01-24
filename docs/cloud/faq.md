@@ -118,7 +118,7 @@ You can also use our cloud automation tools ([Terraform](automation/terraform.md
 
 #### If a node goes down in a cluster, how is the cluster recovered and who does it?
 
-Staff will be alerted if a node goes down. We will investigate the issue and take the necessary actions to return the cluster to a healthy state.
+Kurrent Support staff will be alerted if a node goes down. We will investigate the issue and take the necessary actions to return the cluster to a healthy state.
 
 If it is a due to load related to the customer's usage of the cluster or exhaustion of disk space, our support staff will attempt to reach out to the customer to address the issue.
 
@@ -140,7 +140,7 @@ If you have specific questions please [contact us](https://www.kurrent.io/contac
 
 #### Has the system been independently audited?
 
-Security is top of mind for Kurrent. Every feature we build has security in mind. Our Cloud offering maintains [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certifications, which require annual independent internal audits, as well as external audits as part of our certification process.
+Security is a priority at Kurrent, and every feature we build has security in mind. Our Cloud offering maintains [SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) and [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html) certifications, which require annual independent internal audits, as well as external audits as part of our certification process.
 
 If you have specific questions please [contact us](https://www.kurrent.io/contact)
 
@@ -238,7 +238,7 @@ While networks and peering links at cloud providers are fault-tolerant, occasion
 
 #### Clusters
 
-In the event of a single availability zone failure, three-node topology clusters should continue to operate at a degraded level. If a leader node goes down, the remaining follower node will elect a new leader and the cluster will continue to function. When the leader node is able to re-join the cluster, it will join as a follower and catch up on any events that were written while it was down.
+In the event of a single availability zone failure, three-node topology clusters should continue to operate at a degraded level. If a leader node goes down, the remaining follower nodes will elect a new leader and the cluster will continue to function. When the leader node is able to re-join the cluster, it will join as a follower and catch up on any events that were written while it was down.
 
 In the event of a single availability zone failure, single node topology clusters may become unavailable until the service can be restored. Most failures will be handled by Kurrent Cloud, however there will be a period of lost connectivity.
 

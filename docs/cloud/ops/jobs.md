@@ -6,7 +6,7 @@ order: 3
 The Kurrent Cloud runs scheduled jobs on the user's behalf. All of these jobs consist of a human-readable description and a schedule.
 
 Currently, the following jobs are supported:
-* [Scheduled backups](#scheduled-backups)
+* [Scheduled backups](./#scheduled-backups)
 
 ### Job Schedules
 
