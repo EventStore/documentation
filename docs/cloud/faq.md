@@ -44,7 +44,7 @@ Yes. Learn more in the [Integrations](integrations/README.md) documentation sect
 
 Kurrent Cloud site reliability engineering (SRE) team manages cluster availability.
 
-More information about SLA levels provided by Kurrent Cloud can be found in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement).
+More information about SLA levels provided by Kurrent Cloud can be found in our [Service Level Agreement](https://www.kurrent.io/terms/agreements/kurrent-cloud-services-addendum).
 
 ## Providers
 
@@ -98,11 +98,11 @@ Currently, it's not possible due to security considerations. In the future, we p
 
 #### What is the SLA for Kurrent Cloud?
 
-You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement).
+You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/terms/agreements/kurrent-cloud-services-addendum).
 
 #### Are maintenance windows part of the SLA?
 
-You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement). Any scheduled maintenances will be posted in the Kurrent Cloud Console, as well as on the [Kurrent Cloud Status Page](https://status.eventstore.cloud/).
+You can find out about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/terms/agreements/kurrent-cloud-services-addendum). Any scheduled maintenances will be posted in the Kurrent Cloud Console, as well as on the [Kurrent Cloud Status Page](https://status.eventstore.cloud/).
 
 ## Support
 
@@ -124,7 +124,7 @@ If it is a due to load related to the customer's usage of the cluster or exhaust
 
 You can utilize our [integrations feature](integrations/README.md) to get notified of cluster events, such as high CPU usage, low disk space, or other events.
 
-Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/cloud-services-service-level-agreement).
+Please ensure to learn about the SLA levels provided by Kurrent Cloud in our [Service Level Agreement](https://www.kurrent.io/terms/agreements/kurrent-cloud-services-addendum).
 
 ## Security
 
