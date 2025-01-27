@@ -9,7 +9,7 @@ actions:
   type: primary
 - text: Start building
   icon: file-icons:easybuild
-  link: /clients/grpc/
+  link: /clients/grpc/getting-started.html
 
 highlights:
   - header: Jump start development

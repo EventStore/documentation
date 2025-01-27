@@ -19,9 +19,7 @@ export const seoPlugin: SeoPluginOptions = {
 
         if (maybeVersion && maybeVersion.startsWith("v") && (maybeVersion.indexOf(".") > 0 || maybeVersion === "v5") || maybeVersion === legacy) {
             head.push(["meta", {name: "es:version", content: maybeVersion}]);
-            console.log(`Path: ${page.pathInferred}; Version: ${maybeVersion}`);
         } else {
-            console.log(`Path: ${page.pathInferred}; No version found in ${maybeVersion}`);
         }
 
         const category = pathSplit.length > 0 ? pathSplit[1] : null;
@@ -37,7 +35,6 @@ export const seoPlugin: SeoPluginOptions = {
             .with("getting-started", () => "Getting Started")
             .otherwise(() => category);
         head.push(["meta", {name: "es:category", content: readableCategory}]);
-        console.log(`Path: ${page.pathInferred}; Category: ${readableCategory}`);
     },
 }
 

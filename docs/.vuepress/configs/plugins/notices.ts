@@ -1,4 +1,5 @@
-import {NoticePluginOptions} from '@vuepress/plugin-notice';
+import {type NoticePluginOptions} from '@vuepress/plugin-notice';
+import {instance as ver} from "../../lib/versioning";
 
 const actionLatest = {
     text: "View latest server documentation",

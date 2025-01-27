@@ -64,7 +64,7 @@ export default defineClientConfig({
             });
 
         // Router configuration
-        addFixedRoute("/http/", `${apiPath}/introduction`);
+        addFixedRoute("/http-api/", `${apiPath}/introduction`);
         addFixedRoute("/cloud/", `/cloud/introduction.html`);
         router.afterEach(() => {
             setTimeout(() => { // to ensure this runs after DOM updates
@@ -92,6 +92,7 @@ export default defineClientConfig({
                 return '/clients/grpc/getting-started.html';
             });
         addDynamicRoute('/latest/:pathMatch(.*)*', to => to.path.replace(/^\/latest/, `/${__VERSIONS__.latest}`));
+        addFixedRoute("/server/latest", `/${__VERSIONS__.latest}/quick-start/`);
         addFixedRoute("/latest", `/${__VERSIONS__.latest}/quick-start/`);
         addFixedRoute("/latest.html", `/${__VERSIONS__.latest}/quick-start/`);
 

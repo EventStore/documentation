@@ -3,16 +3,14 @@ import {path} from 'vuepress/utils';
 import log from "./log";
 import {createRequire} from 'node:module';
 import references from "../versions.json";
-import type {
-    EsSidebarGroupOptions, EsSidebarObjectOptions,
-    ImportedSidebarArrayOptions
-} from "./types";
 
 interface VersionDetail {
     version: string,
     path: string,
     startPage: string,
-    preview: boolean
+    preview: boolean,
+    deprecated: boolean,
+    hide: boolean
 }
 
 interface Version {
@@ -20,24 +18,6 @@ interface Version {
     group: string,
     basePath: string,
     versions: VersionDetail[]
-}
-
-const createSidebarItem = (item: EsSidebarGroupOptions, path: string, version: string, group: string): EsSidebarGroupOptions => {
-    const xp = `/${path}/`;
-    let ch = item.children as string[];
-    if (item.collapsible !== undefined) {
-        ch = ch.map(x => !x.startsWith('../') ? '../' + x : x);
-    }
-    const childPath = item.prefix ? `/${path}${item.prefix}` : xp;
-    const children = ch.map(x => x.split(xp).join(""));
-    return {
-        ...item,
-        children: children.map(x => `${childPath}${x}`),
-        prefix: undefined,
-        group,
-        version,
-        text: item.text || item.title || ""
-    }
 }
 
 export class versioning {
@@ -79,7 +59,6 @@ export class versioning {
             throw new Error("Server docs not found");
         }
         const releases = serverDocs.versions.filter(v => !v.preview);
-        console.log(releases[0])
         return `${serverDocs.basePath}/${releases[0].path}`;
     }
 
@@ -89,37 +68,8 @@ export class versioning {
 
     // Generate a single object that represents all versions from each sidebar
     getSidebars() {
-        let sidebars: EsSidebarObjectOptions = {};
-        const require = createRequire(import.meta.url);
-
-        this.versions.forEach(version => {
-            version.versions.forEach(v => {
-                console.log(`Processing ${JSON.stringify(v)}`);
-                const p = `${version.basePath}/${v.path}`;
-                const sidebarPath = path.resolve(__dirname, `../../${p}`);
-                const sidebarBase = path.join(sidebarPath, "sidebar");
-                const sidebarJs = `${sidebarBase}.js`;
-                const sidebarCjs = `${sidebarBase}.cjs`;
-
-                const importSidebar = (path: string) => {
-                    log.info(`Importing sidebar from ${path}`);
-                    const sidebar: ImportedSidebarArrayOptions = require(path);
-                    sidebars[`/${p}/`] = sidebar.map(item => createSidebarItem(item, p, v.version, version.group));
-                }
-
-                if (fs.existsSync(sidebarCjs)) {
-                    importSidebar(sidebarCjs);
-                } else if (fs.existsSync(sidebarJs)) {
-                    fs.copyFileSync(sidebarJs, sidebarCjs);
-                    importSidebar(sidebarCjs);
-                    fs.rmSync(sidebarCjs);
-                } else {
-                    log.info(`Sidebar file ${sidebarJs} not found`);
-                }
-            });
-        })
-
-        return sidebars;
+        const r = this.versions.map(v => v.versions.map(x => `/${v.basePath}/${x.path}/`)).flat();
+        return r.reduce((result, curr) => ({...result, [curr]: "structure"}), {});
     }
 
     version(id: string) {
@@ -128,21 +78,24 @@ export class versioning {
         return ret;
     }
 
-    // Build dropdown items for each version
-    linksFor(id: string, url?: string) {
-        const links: { text: string, link: string }[] = [];
+    getRecords(id: string, deprecated: boolean) {
         const version = this.version(id);
-        if (version === undefined) return links;
+        if (version === undefined) return [];
+        const filter = deprecated ? (v: VersionDetail) => v.deprecated && !v.hide : (v: VersionDetail) => !v.deprecated;
+        return version.versions.filter(filter);
+    }
 
-        version.versions.forEach(v => {
+    // Build dropdown items for each version
+    linksFor(id: string, deprecated: boolean) {
+        const version = this.version(id);
+        if (version === undefined) return [];
+
+        const getLink = (v: VersionDetail) => {
             const path = `${version.basePath}/${v.path}`;
-            const pageUrl = (url ? url : v.startPage ? v.startPage : "");
-            const link = `/${path}/${pageUrl}`;
-            const item = {text: v.version, link: link};
-            links.push(item);
-        });
-
-        return links;
+            const pageUrl = v.startPage ? v.startPage : "";
+            return {text: v.version, link: `/${path}/${pageUrl}`};
+        }
+        return this.getRecords(id, deprecated).map(v => getLink(v));
     }
 }
 
