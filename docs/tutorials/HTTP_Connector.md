@@ -167,11 +167,11 @@ Now we will head over to EventStoreDB and add events to have them transmitted th
 
 Let’s check that the newly created EventStoredb data has been transmitted to the connector endpoint.
 
-#### **Step 5.1: Navigate to the bin url (example: https://www.postb.in/b/1737399256387-4331883823033)**
+#### **Step 6.1: Navigate to the bin url (example: https://www.postb.in/b/1737399256387-4331883823033)**
 
 The bin url is the url you copied in the beginning of the tutorial after creating the bin at postb.in. Please note that you’ll need to add b/ before the bin id number as in the example above. If you get a 404 error it could mean that your http endpoint has expired. Each bin expires after 30 minutes. If that is the case just create another bin and follow the steps to create and start another connector (with the new bin http endpoint and a new unique identifier) then continue on with the next step.
 
-#### **Step 5.2: Scroll to the bottom of the page. If the data was transmitted successfully through the connector to the endpoint you should see the details of the message. Below is an example:**
+#### **Step 6.2: Scroll to the bottom of the page. If the data was transmitted successfully through the connector to the endpoint you should see the details of the message. Below is an example:**
 
 ### **Step 7: Stop the connector**
 
