@@ -18,7 +18,9 @@
         "version": "v24.6",
         "name": "release/oss-v24.6",
         "relativePath": ["server"],
-        "startPage": "quick-start/"
+        "startPage": "quick-start/",
+        "deprecated": true,
+        "hide": false
       },
       {
         "version": "v23.10",
@@ -36,7 +38,9 @@
         "version": "v5",
         "name": "release/oss-v5",
         "relativePath": ["server"],
-        "startPage": "introduction.html"
+        "startPage": "introduction.html",
+        "deprecated": true,
+        "hide": false
       }
     ],
     "postprocess": [

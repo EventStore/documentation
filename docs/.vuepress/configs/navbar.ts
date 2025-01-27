@@ -10,14 +10,17 @@ export const navbarEn: NavbarOptions = [
     {
         text: "Server",
         icon: "ion:server-outline",
-        children: ver.linksFor("server")
+        children: [
+            {text: "Current", children: ver.linksFor("server", false)},
+            {text: "Deprecated", children: ver.linksFor("server", true)}
+        ]
     },
     {
         text: "Clients & APIs",
         icon: "material-symbols:sdk",
         children: [
             {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/getting-started"}]},
-            {text: "HTTP API", children: ver.linksFor("http-api")},
+            {text: "HTTP API", children: ver.linksFor("http-api", false)},
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
     },

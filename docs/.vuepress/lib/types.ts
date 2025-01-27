@@ -15,5 +15,3 @@ export type EsSidebarItemOptions = SidebarLinkOptions | EsSidebarGroupOptions | 
 export type EsSidebarArrayOptions = EsSidebarItemOptions[];
 export type EsSidebarObjectOptions = Record<string, EsSidebarArrayOptions | "structure">;
 export type EsSidebarOptions = EsSidebarArrayOptions | EsSidebarObjectOptions;
-
-export type ImportedSidebarArrayOptions = EsSidebarGroupOptions[];
