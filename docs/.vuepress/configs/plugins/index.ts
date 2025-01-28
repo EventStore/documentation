@@ -4,6 +4,7 @@ import {notices} from "./notices";
 import {watermark} from "./watermark";
 import {seoPlugin} from "./seo";
 import {hostname} from "./shared";
+import {redirect} from "./redirect";
 
 export default {
     components: {
@@ -37,6 +38,7 @@ export default {
         },
     },
     watermark: watermark,
-    notice: notices
+    notice: notices,
+    redirect,
 
 } satisfies PluginsOptions;
