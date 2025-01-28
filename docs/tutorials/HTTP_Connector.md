@@ -199,12 +199,51 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### **Step 8: Delete the connector**
+### **Step 8: Reconfigure the connector**
+
+Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, where `{connector_id}` is the unique identifier used when the connector was created. This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
+
+#### **Step 8.1: Create a file name `reconfigure_connector.sh`**
+#### **Step 8.2: Add the following content to the file**
+
+@tab Bash
+```bash
+#!/bin/bash
+
+curl -i -X PUT \
+ http://localhost:2113/connectors/test-app/settings \
+ -H "Content-Type: application/json" \
+ -u "admin:changeit" \
+ -d '{
+     "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+     "Url": "https://www.postb.in/1738100652703-1518676236737",
+     "Subscription:Filter:Scope": "Stream",
+     "Subscription:Filter:Expression": "order-.*?"
+ }'
+```
+
+#### **Step 8.3: Create a new bin from Postb.in, copy the curl url and replace the value for “Url” with the curl url you copied from Postb.in**
+#### **Step 8.4: Run the `reconfigure_connector.sh` script**
+
+After running the script and reconfiguring the connector you should receive an HTTP 200 OK message similar to the one below:
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Tue, 28 Jan 2025 21:51:34 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+```
+
+#### **Step 8.5: Add events in EventStoreDB**
+#### **Step 8.6: Navigate to the bin url for the new bin you created and confirm that the connector has been reconfigured to transmit data to the new bin.**
+
+### **Step 9: Delete the connector**
 
 Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, where `{connector_id}` is the unique identifier of the connector (in this case test-app).
 
-#### **Step 8.1: Create a file name `delete_connector.sh`**
-#### **Step 8.2: Add the following content to the file**
+#### **Step 9.1: Create a file name `delete_connector.sh`**
+#### **Step 9.2: Add the following content to the file**
 
 @tab Bash
 ```bash
@@ -213,7 +252,7 @@ Delete the connector by sending a `DELETE` request to `connectors/{connector_id}
 curl -i -X DELETE http://localhost:2113/connectors/test-app
 ```
 
-#### **Step 8.3: Run the `delete_connector.sh` script**
+#### **Step 9.3: Run the `delete_connector.sh` script**
 
 After running the script and deleting the connector you should receive an HTTP 200 OK message similar to the one below:
 
