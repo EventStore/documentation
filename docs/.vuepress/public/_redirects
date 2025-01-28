@@ -17,6 +17,7 @@
 
 /latest.html                           /server/v24.10/quick-start/                            301
 /latest                                /server/v24.10/quick-start/                            301
+# Note: make sure to also update the latest version in the dynamic section
 
 # ######################
 # Clients
@@ -238,6 +239,9 @@
 /server/v24.2/*                             /server/v24.10/quick-start/               301
 /server/v24.6/*                             /server/v24.10/quick-start/               301
 /server/v24.10%20Preview%201/*              /server/v24.10/:splat                     301
+
+# latest to latest
+/server/latest/*                            /server/v24.10/:splat                     301
 
 
 # Hope migration
