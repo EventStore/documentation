@@ -41,6 +41,7 @@ Create a connector by sending a POST request to `connectors/{connector_id}`, whe
 #### **Step 2.1: Create a file named `create_connector.sh`**
 #### **Step 2.2: Add the following content to the file**
 
+::: tabs
 @tab Bash
 ```bash
 #!/bin/bash
@@ -57,6 +58,7 @@ curl -i -X POST \
    }
  }'
 ```
+:::
 
 #### **Step 2.3: Replace the value for “Url” with the curl URL you copied from Postb.in**
 
