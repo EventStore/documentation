@@ -154,25 +154,24 @@ Transfer-Encoding: chunked
 
 ### **Step 5: Add events in EventStoreDB**
 
-Now we will head over to EventStoreDB and add events to have them transmitted through the connector to the endpoint.
+You will now add events to EventStoreDB and a transmit them through the HTTP sink connector to the endpoint.
 
 #### **Step 5.1: Add events in EventStoreDB**
 
 1. Navigate to the EventStoreDB admin interface (located at localhost:2113)
 2. Click on Stream Browser → Add Event
-3. In this case the stream id should start with order- since we provided a filter in the connector settings to filter for order- streams. Put in order-123 as the stream id.
-4. The event type can be anything such as itemShipped
-5. Now add some data such as {“count”:”5”} and click Add at the bottom
+3. Use order-123 as the stream id.  Remember that you provided a "order-" filter in the connector settings to filter for order- streams in an earlier step. The event type can be anything, such as itemShipped
+4. Now add some data such as {"count":"5"} and click Add at the bottom of the page
 
 ### **Step 6: Verify data was sent to the endpoint**
 
-Let’s check that the newly created EventStoredb data has been transmitted to the connector endpoint.
+Check that the newly created EventStoreDB data has been transmitted to the connector endpoint.
 
 #### **Step 6.1: Navigate to the bin url (example: https://www.postb.in/b/1737399256387-4331883823033)**
 
-The bin url is the url you copied in the beginning of the tutorial after creating the bin at postb.in. Please note that you’ll need to add b/ before the bin id number as in the example above. If you get a 404 error it could mean that your http endpoint has expired. Each bin expires after 30 minutes. If that is the case just create another bin and follow the steps to create and start another connector (with the new bin http endpoint and a new unique identifier) then continue on with the next step.
+This is the bin url you copied at the beginning of the tutorial after creating the bin at postb.in. Please note that you’ll need to add b/ before the bin id number as illustrated in the example above. If you receive a 404 error, it could mean that your http endpoint has expired. Each bin expires after 30 minutes. If that is the case, create another bin and follow the steps to create and start another connector (with the new bin http endpoint and a new unique identifier), then continue to the next step.
 
-#### **Step 6.2: Scroll to the bottom of the page. If the data was transmitted successfully through the connector to the endpoint you should see the details of the message. Below is an example:**
+#### **Step 6.2: Scroll to the bottom of the page. If the data was transmitted successfully through the connector to the endpoint you should see the details of the message.**
 
 ### **Step 7: Stop the connector**
 
