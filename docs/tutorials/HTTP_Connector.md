@@ -175,7 +175,7 @@ This is the bin url you copied at the beginning of the tutorial after creating t
 
 ### **Step 7: Stop the connector**
 
-Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, where `{connector_id}` is the unique identifier of the connector (in this case test-app).
+Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
 
 #### **Step 7.1: Create a file name `stop_connector.sh`**
 
@@ -189,7 +189,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app3/stop
 ```
 
 #### **Step 7.3: Run the `stop_connector.sh` script**
-After running the script and stopping the connector you should receive an HTTP 200 OK message similar to the one below:
+After running the script and stopping the connector, you should receive an HTTP 200 OK message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
@@ -236,7 +236,7 @@ Transfer-Encoding: chunked
 ```
 
 #### **Step 8.5: Add events in EventStoreDB**
-#### **Step 8.6: Navigate to the bin url for the new bin you created and confirm that the connector has been reconfigured to transmit data to the new bin.**
+#### **Step 8.6: Navigate to the bin url for the new bin you created and confirm the connector has been reconfigured to transmit data to the latest bin.**
 
 ### **Step 9: Delete the connector**
 
@@ -254,7 +254,7 @@ curl -i -X DELETE http://localhost:2113/connectors/test-app
 
 #### **Step 9.3: Run the `delete_connector.sh` script**
 
-After running the script and deleting the connector you should receive an HTTP 200 OK message similar to the one below:
+After running the script and deleting the connector, you should receive an HTTP 200 OK message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
