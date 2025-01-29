@@ -1,10 +1,10 @@
 ---
-title: HTTP Connector
+title: HTTP Sink
 order: 3
 ---
-## **Tutorial: Setting up and using an HTTP Connector in EventStoreDB**
+## **Tutorial: Setting up and using an HTTP Sink in EventStoreDB**
 
-This step-by-step tutorial guides you through setting up and using an **HTTP Connector in EventStoreDB**. This feature allows EventStoreDB to push event data into an http endpoint.
+This step-by-step tutorial guides you through setting up and using the **HTTP Sink** in EventStoreDB. This feature allows EventStoreDB to push event data to an http endpoint.
 
 #### **Prerequisites**
 
@@ -12,19 +12,16 @@ This step-by-step tutorial guides you through setting up and using an **HTTP Con
 
 ### **Step 1: Set up an HTTP endpoint**
 
-Ensure you have an **HTTP endpoint** that can receive messages. In this example we will create an HTTP endpoint using a service named PostBin to receive the messages. 
+In this example, you will use PostBin to create an HTTP endpoint that will consume the events from EventStoreDB. The following steps outline the process to generate a unique PostBin URL to collect (GET, POST, PUT, PATCH, DELETE, etc.) requests from EventStoreDB.
 
 #### **Step 1.1: Create an HTTP bin at postb.in**
 
-1. Navigate to https://www.postb.in/ and click **create bin**
-
-   PostBin is used to collect **(GET, POST, PUT, PATCH, DELETE, etc)** requests to a URL. We are using it to create an HTTP endpoint to send EventStoreDB data. 
-
-2. Copy the bin url
+1. Navigate to https://www.postb.in/ and click **Create Bin**
+2. Copy the bin URL
 
    After clicking create bin you will be directed to a page with the endpoint urls for curl, wget, and echo. Copy the bin url for curl
 
-Note: If testing with an endpoint from your own custom application, make sure there are no issues with CORS preventing the data transmission from EventStoreDB.
+   Note: If you are testing with an endpoint from your custom application, ensure no CORS issues prevent the data from being transmitted from EventStoreDB.
 
 ### **Step 2: Create the connector**
 
