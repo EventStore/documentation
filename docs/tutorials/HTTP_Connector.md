@@ -4,7 +4,18 @@ order: 3
 ---
 ## **Tutorial: Setting up and using an HTTP Sink in EventStoreDB**
 
-This step-by-step tutorial guides you through setting up and using the **HTTP Sink** in EventStoreDB. This feature allows EventStoreDB to push event data to an http endpoint.
+Connectors make it easy to integrate EventStoreDB data into other systems. Each connector runs on the server-side and uses a catch-up subscription to receive events, filter or transform them, and push them to an external system via a sink.
+
+This step-by-step tutorial guides you through setting up a connector using the **HTTP Sink** in EventStoreDB. This feature allows EventStoreDB to push event data to an http endpoint.
+
+The following are the available sinks:
+
+1. Kafka Sink
+2. MongoDB Sink
+3. RabbitMQ Sink
+4. HTTP Sink
+5. Logger Sink
+6. Serilog Sink
 
 #### **Prerequisites**
 
@@ -48,37 +59,30 @@ curl -i -X POST \
  }'
 ```
 
-#### **Step 2.3: Replace the value for “Url” with the curl url you copied from Postb.in**
+#### **Step 2.3: Replace the value for “Url” with the curl URL you copied from Postb.in**
 
-Below discusses the important contents of the file.
+The following section outlines the important file contents.
 
 1. http://localhost:2113/connectors/test-app
 
-   This provides a **unique name identifier** for the connector (**test-app** in this case)
+   This URL provides a **unique name identifier** for the connector ("test-app" in this case)
    
 2. "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
    
-   This provides the type of connector sink (HTTP in this case). Connectors make it easy to integrate EventStoreDB data into other systems. Each connector runs on the server-side and uses a catch-up subscription to receive events, filter or transform them, and push them to an external system via a sink. The available sinks are listed below:
-   
-   1. Kafka
-   2. MongoDB
-   3. RabbitMQ
-   4. HTTP
-   5. Logger
-   6. Serilog
+   The instance type name provides the type of connector sink (HttpSink in this case). 
       
 3. "Url": "https://www.postb.in/1736471171412-2404703341890"
    
-   This provides the HTTP url endpoint where data will be sent.
+   The Url provides the HTTP URL endpoint where the EventStoreDB will send the data.
    
 4. "Subscription:Filter:Scope": "Stream",
 "Subscription:Filter:Expression": "order-.*?"
 
-   This filters the results for streams starting with order-
+   The “Filter” entries filter the results for streams starting with "order-".
 
 #### **Step 2.4: Run the `create_connector.sh` script**
 
-After running the script and creating the connector you should receive an HTTP 200 OK message similar to the one below:
+After running the script and creating the connector, you should receive an HTTP 200 OK message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
