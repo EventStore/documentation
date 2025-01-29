@@ -51,9 +51,8 @@ curl -i -X POST \
  -u "admin:changeit" \
  -d '{
    "settings": {
-     "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+     "InstanceTypeName": "http-sink",
      "Url": "https://www.postb.in/1736471171412-2404703341890",
-     "Subscription:Filter:Scope": "Stream",
      "Subscription:Filter:Expression": "order-.*?"
    }
  }'
@@ -75,10 +74,9 @@ The following section outlines the important file contents.
    
    The Url provides the HTTP URL endpoint where the EventStoreDB will send the data.
    
-4. "Subscription:Filter:Scope": "Stream",
-"Subscription:Filter:Expression": "order-.*?"
+4. "Subscription:Filter:Expression": "order-.*?"
 
-   The “Filter” entries filter the results for streams starting with "order-".
+   The “Filter” entry filters the results for streams starting with "order-".
 
 #### **Step 2.4: Run the `create_connector.sh` script**
 
@@ -215,10 +213,7 @@ curl -i -X PUT \
  -H "Content-Type: application/json" \
  -u "admin:changeit" \
  -d '{
-     "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
-     "Url": "https://www.postb.in/1738100652703-1518676236737",
-     "Subscription:Filter:Scope": "Stream",
-     "Subscription:Filter:Expression": "order-.*?"
+     "Url": "https://www.postb.in/1738100652703-1518676236737"
  }'
 ```
 
