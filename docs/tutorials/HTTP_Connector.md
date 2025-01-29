@@ -92,9 +92,9 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### **Step 3: Check the connector status (optional)**
+### **Step 3: Check the connector status**
 
-Now that you’ve created a connector you can check the status of the connector and its settings. This is useful for troubleshooting purposes. 
+Now that you’ve created a connector, you can check its status and settings. This process is useful for troubleshooting purposes.  
 
 #### **Step 3.1: Create a file named `status.sh`**
 
@@ -121,13 +121,13 @@ curl -X GET \
  http://localhost:2113/connectors
 ```
 
-#### **Step 3.2: Run the `status.sh` script**
+#### **Step 3.3: Run the `status.sh` script**
 
-After running the script you will receive the setting details of the connector that you added in a previous step. Check to see that the details you entered are listed. There is also a “state” field that will mention if the connector is stopped or running. For now, we haven’t yet started the connector so the state should be “CONNECTOR_STATE_STOPPED”.
+After running the script you will receive the setting details for the connector that you added in a previous step. Check to see that the details you entered are listed. The "state" field will also indicate whether the connector is stopped or running. You have not started the connector, so the state should be "CONNECTOR_STATE_STOPPED".
 
 ### **Step 4: Start the connector**
 
-Start the connector by sending a `POST` request to `connectors/{connector_id}/start`, where `{connector_id}` is the unique identifier of the connector (in this case test-app).
+Start the connector by sending a `POST` request to `connectors/{connector_id}/start`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
 
 #### **Step 4.1: Create a file named `start_connector.sh`**
 
@@ -142,7 +142,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app/start
 
 #### **Step 4.3: Run the `start_connector.sh` script**
 
-After running the script and starting the connector you should receive an HTTP 200 OK message similar to the one below:
+After running the script and starting the connector, you should receive an HTTP 200 OK message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
