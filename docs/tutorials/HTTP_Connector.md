@@ -100,7 +100,6 @@ Now that you’ve created a connector, you can check its status and settings. Th
 
 #### **Step 3.2: Add the following content to the file**
 
-@tab Bash
 ```bash
 #!/bin/bash
 
@@ -133,7 +132,6 @@ Start the connector by sending a `POST` request to `connectors/{connector_id}/st
 
 #### **Step 4.2: Add the following content to the file**
 
-@tab Bash
 ```bash
 #!/bin/bash
 
@@ -181,7 +179,6 @@ Stop the connector by sending a `POST` request to `connectors/{connector_id}/sto
 
 #### **Step 7.2: Add the following content to the file**
 
-@tab Bash
 ```bash
 #!/bin/bash
 
@@ -206,7 +203,6 @@ Reconfigure an existing connector by sending a `PUT` request to `/connectors/{co
 #### **Step 8.1: Create a file name `reconfigure_connector.sh`**
 #### **Step 8.2: Add the following content to the file**
 
-@tab Bash
 ```bash
 #!/bin/bash
 
@@ -242,7 +238,6 @@ Delete the connector by sending a `DELETE` request to `connectors/{connector_id}
 #### **Step 9.1: Create a file name `delete_connector.sh`**
 #### **Step 9.2: Add the following content to the file**
 
-@tab Bash
 ```bash
 #!/bin/bash
 
