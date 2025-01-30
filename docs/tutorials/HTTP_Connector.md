@@ -270,3 +270,7 @@ Date: Mon, 20 Jan 2025 19:13:42 GMT
 Server: Kestrel
 Transfer-Encoding: chunked
 ```
+
+### **Summary**
+
+By following this tutorial, you have successfully configured a connector using the **HTTP Sink** in EventStoreDB. This feature allows EventStoreDB to push event data to an http endpoint.
