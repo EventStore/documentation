@@ -10,12 +10,12 @@ This step-by-step tutorial guides you through setting up a connector using the *
 
 The following are the available sinks:
 
-1. Kafka Sink
-2. MongoDB Sink
-3. RabbitMQ Sink
-4. HTTP Sink
-5. Logger Sink
-6. Serilog Sink
+1. [Kafka Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/kafka.html)
+2. [MongoDB Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/mongo.html)
+3. [RabbitMQ Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/rabbitmq.html)
+4. [HTTP Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/http.html)
+5. [Logger Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/logger.html)
+6. [Serilog Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/serilog.html)
 
 #### **Prerequisites**
 
@@ -27,7 +27,7 @@ In this example, you will use PostBin to create an HTTP endpoint that will consu
 
 #### **Step 1.1: Create an HTTP bin at postb.in**
 
-1. Navigate to https://www.postb.in/ and click **Create Bin**
+1. Navigate to [https://www.postb.in](https://www.postb.in) and click **Create Bin**
 2. Copy the bin URL
 
    After clicking create bin you will be directed to a page with the endpoint urls for curl, wget, and echo. Copy the bin url for curl
@@ -64,19 +64,19 @@ curl -i -X POST \
 
 The following section outlines the important file contents.
 
-1. http://localhost:2113/connectors/test-app
+1. `http://localhost:2113/connectors/test-app`
 
    This URL provides a **unique name identifier** for the connector ("test-app" in this case)
    
-2. "InstanceTypeName": "EventStore.Connectors.Http.HttpSink",
+2. `"InstanceTypeName": "EventStore.Connectors.Http.HttpSink"`,
    
    The instance type name provides the type of connector sink (HttpSink in this case). 
       
-3. "Url": "https://www.postb.in/1736471171412-2404703341890"
+3. `"Url": "https://www.postb.in/1736471171412-2404703341890"`
    
    The Url provides the HTTP URL endpoint where the EventStoreDB will send the data.
    
-4. "Subscription:Filter:Expression": "order-.*?"
+4. `"Subscription:Filter:Expression": "order-.*?"`
 
    The “Filter” entry filters the results for streams starting with "order-".
 
@@ -100,6 +100,8 @@ Now that you’ve created a connector, you can check its status and settings. Th
 
 #### **Step 3.2: Add the following content to the file**
 
+::: tabs
+@tab Bash
 ```bash
 #!/bin/bash
 
@@ -119,6 +121,7 @@ curl -X GET \
  -d "$JSON" \
  http://localhost:2113/connectors
 ```
+:::
 
 #### **Step 3.3: Run the `status.sh` script**
 
@@ -132,11 +135,14 @@ Start the connector by sending a `POST` request to `connectors/{connector_id}/st
 
 #### **Step 4.2: Add the following content to the file**
 
+::: tabs
+@tab Bash
 ```bash
 #!/bin/bash
 
 curl -i -X POST http://localhost:2113/connectors/test-app/start
 ```
+:::
 
 #### **Step 4.3: Run the `start_connector.sh` script**
 
@@ -179,11 +185,14 @@ Stop the connector by sending a `POST` request to `connectors/{connector_id}/sto
 
 #### **Step 7.2: Add the following content to the file**
 
+::: tabs
+@tab Bash
 ```bash
 #!/bin/bash
 
 curl -i -X POST http://localhost:2113/connectors/test-app3/stop
 ```
+:::
 
 #### **Step 7.3: Run the `stop_connector.sh` script**
 After running the script and stopping the connector, you should receive an HTTP 200 OK message similar to the one below:
@@ -203,6 +212,8 @@ Reconfigure an existing connector by sending a `PUT` request to `/connectors/{co
 #### **Step 8.1: Create a file name `reconfigure_connector.sh`**
 #### **Step 8.2: Add the following content to the file**
 
+::: tabs
+@tab Bash
 ```bash
 #!/bin/bash
 
@@ -214,6 +225,7 @@ curl -i -X PUT \
      "Url": "https://www.postb.in/1738100652703-1518676236737"
  }'
 ```
+:::
 
 #### **Step 8.3: Create a new bin from Postb.in, copy the curl url and replace the value for “Url” with the curl url you copied from Postb.in**
 #### **Step 8.4: Run the `reconfigure_connector.sh` script**
@@ -238,11 +250,14 @@ Delete the connector by sending a `DELETE` request to `connectors/{connector_id}
 #### **Step 9.1: Create a file name `delete_connector.sh`**
 #### **Step 9.2: Add the following content to the file**
 
+::: tabs
+@tab Bash
 ```bash
 #!/bin/bash
 
 curl -i -X DELETE http://localhost:2113/connectors/test-app
 ```
+:::
 
 #### **Step 9.3: Run the `delete_connector.sh` script**
 
