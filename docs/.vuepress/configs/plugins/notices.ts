@@ -31,7 +31,7 @@ export const notices: NoticePluginOptions = {
             path: "/server/v23.10/",
             title: "EventStoreDB v23.10",
             content: "EventStoreDB v23.10 nearing end of life. Upgrade to the latest server version.",
-            confirm: true,
+            confirm: false,
             showOnce: true,
             actions: [actionLatest]
         },
