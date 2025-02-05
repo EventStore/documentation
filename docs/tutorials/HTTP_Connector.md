@@ -66,7 +66,7 @@ The following section provides additional information about the file contents:
       
 * `"Url": "https://www.postb.in/1736471171412-2404703341890"` provides the HTTP URL endpoint to which the EventStoreDB will send the data.
    
-* `"Subscription:Filter:Expression": "order-.*?"`: The “Filter” entry filters the results for streams starting with "order-".
+* `"Subscription:Filter:Expression": "order-.*?"` filters the results for streams starting with "order-".
 
 **2.3:** Run the `create_connector.sh` script.  After running the script and creating the connector, you should receive an HTTP 200 OK message similar to the one below:
 
