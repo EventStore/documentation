@@ -146,13 +146,13 @@ Transfer-Encoding: chunked
 
 You will now add events to EventStoreDB and transmit them to the endpoint through the HTTP Sink connector.
 
-**5.1:** Navigate to the EventStoreDB UI (located at localhost:2113).
+**5.1:** Navigate to the EventStoreDB UI (located at http://localhost:2113).
 
-**5.2:** Click on Stream Browser → Add Event.
+**5.2:** Click on **Stream Browser** → **Add Event**.
 
-**5.3:** Use order-123 as the stream id.  Remember that you provided an "order-" filter in the connector settings to filter for order- streams in an earlier step. The event type can be anything, such as itemShipped.
+**5.3:** Use order-123 as the stream id.  Remember that you provided an "order-" filter in the connector settings to filter for "order-" streams in an earlier step. The event type can be anything, such as `itemShipped`.
 
-**5.4:** Add some data such as {"count":"5"} and click Add at the bottom of the page.
+**5.4:** Add some data such as `{"count":"5"}` and click **Add** at the bottom of the page.
 
 ### **Step 6: Verify data was sent to the endpoint**
 
