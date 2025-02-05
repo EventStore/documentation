@@ -238,7 +238,7 @@ Transfer-Encoding: chunked
 
 ### **Step 9: Delete the connector**
 
-Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
+Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, replacing `{connector_id}` with your connector's unique identifier ("test-app" in this case).
 
 **9.1:** Create a file name `delete_connector.sh`.
 
@@ -255,7 +255,7 @@ curl -i -X DELETE http://localhost:2113/connectors/test-app
 
 **9.3:** Run the `delete_connector.sh` script.
 
-After running the script and deleting the connector, you should receive an HTTP 200 OK message similar to the one below:
+After running the script and deleting the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
@@ -269,10 +269,10 @@ Transfer-Encoding: chunked
 
 By following this tutorial, you have successfully: 
 
-* Configured a connector using the **HTTP Sink** in EventStoreDB to push event data to an http endpoint.
+* Configured a connector using the **HTTP Sink** in EventStoreDB to push event data to an HTTP endpoint.
 * Checked the connector status.
 * Started the connector.
-* Verified that data was successfully sent to the http endpoint.
+* Verified that data was successfully sent to the HTTP endpoint.
 * Stopped the connector.
 * Reconfigured the connector.
 * Deleted the connector.
