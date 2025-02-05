@@ -222,7 +222,7 @@ curl -i -X PUT \
 
 **8.4:** Run the `reconfigure_connector.sh` script.
 
-After running the script and reconfiguring the connector, you should receive an HTTP 200 OK message similar to the one below:
+After running the script and reconfiguring the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
