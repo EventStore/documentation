@@ -119,6 +119,16 @@
 /cloud/use/migration/replicator.html        /cloud/use/migration.html     301
 
 
+# Cloud docs update Jan 2025 (3184c4eda8e2746de38a1659e8db176c3821aa94@documentation)
+/cloud/provision/sizing                     /cloud/ops/sizing.html 
+/cloud/provision/sizing.html                /cloud/ops/sizing.html                            301
+/cloud/provision/aws                        /cloud/getting-started/private_access/aws.html    301
+/cloud/provision/aws.html                   /cloud/getting-started/private_access/aws.html    301
+/cloud/provision/azure                      /cloud/getting-started/private_access/azure.html  301
+/cloud/provision/azure.html                 /cloud/getting-started/private_access/azure.html  301
+/cloud/provision/gcp                        /cloud/getting-started/private_access/gcp.html    301
+/cloud/provision/gcp.html                   /cloud/getting-started/private_access/gcp.html    301
+
 # ######################
 # Db Server
 # ######################
