@@ -132,7 +132,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app/start
 
 **4.3:** Run the `start_connector.sh` script.
 
-After running the script and starting the connector, you should receive an HTTP 200 OK message similar to the one below:
+After running the script and starting the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
@@ -144,7 +144,7 @@ Transfer-Encoding: chunked
 
 ### **Step 5: Add events in EventStoreDB**
 
-You will now add events to EventStoreDB and transmit them to the endpoint through the HTTP sink connector.
+You will now add events to EventStoreDB and transmit them to the endpoint through the HTTP Sink connector.
 
 **5.1:** Navigate to the EventStoreDB UI (located at localhost:2113).
 
