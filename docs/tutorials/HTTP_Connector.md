@@ -168,7 +168,7 @@ If you receive a 404 error, it could mean that your http endpoint has expired. E
 
 ### **Step 7: Stop the connector**
 
-Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
+Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, where `{connector_id}` is the unique identifier of the connector ("test-app" in this case).
 
 **7.1:** Create a file name `stop_connector.sh`.
 
