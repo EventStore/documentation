@@ -33,7 +33,7 @@ In this tutorial, you will use PostBin to create an HTTP endpoint that consumes 
 
 ### **Step 2: Create the connector**
 
-Create a connector by sending a POST request to `connectors/{connector_id}`, where `{connector_id}` is a unique identifier of your choice for the connector.
+Create a connector by sending a `POST` request to `connectors/{connector_id}`, where `{connector_id}` is a unique identifier of your choice for the connector.
 
  **2.1:** Create a file named `create_connector.sh`.
  
@@ -68,7 +68,7 @@ The following section provides additional information about the file contents:
    
 * `"Subscription:Filter:Expression": "order-.*?"` filters the results for streams starting with "order-".
 
-**2.3:** Run the `create_connector.sh` script.  After running the script and creating the connector, you should receive an HTTP 200 OK message similar to the one below:
+**2.3:** Run the `create_connector.sh` script.  After running the script and creating the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
