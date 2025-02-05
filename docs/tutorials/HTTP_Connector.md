@@ -23,7 +23,7 @@ This step-by-step tutorial guides you through setting up a connector using the *
 
 ### **Step 1: Set up an HTTP endpoint using PostB.in**
 
-In this example, you will use PostBin to create an HTTP endpoint that consumes events from EventStoreDB. PostBin supports creating a unique URL to collect requests from EventStoreDB (GET, POST, PUT, PATCH, DELETE, etc.).
+In this tutorial, you will use PostBin to create an HTTP endpoint that consumes events from EventStoreDB. PostBin supports creating a unique URL to collect requests from EventStoreDB (GET, POST, PUT, PATCH, DELETE, etc.).
 
 **1.1** Navigate to [https://www.postb.in](https://www.postb.in) and click **Create Bin**.
 
