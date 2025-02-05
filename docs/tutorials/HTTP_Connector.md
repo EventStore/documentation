@@ -21,7 +21,7 @@ This step-by-step tutorial guides you through setting up a connector using the *
 
 * [EventStoreDB 24.10 LTS installed and running.](https://developers.eventstore.com/server/v24.10/quick-start/installation.html)   
 
-### **Step 1: Set up an HTTP endpoint using PostB.in**
+### **Step 1: Set up an HTTP endpoint using PostBin**
 
 In this tutorial, you will use PostBin to create an HTTP endpoint that consumes events from EventStoreDB. PostBin supports creating a unique URL to collect requests from EventStoreDB (GET, POST, PUT, PATCH, DELETE, etc.).
 
