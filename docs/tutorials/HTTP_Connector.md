@@ -162,7 +162,7 @@ Check that the newly created EventStoreDB data has been transmitted to the conne
 
 This is the bin URL you copied at the beginning of the tutorial after creating the bin at postb.in. Please note that you’ll need to add b/ before the unique bin id number, as illustrated in the example URL above. 
 
-If you receive a 404 error, it could mean that your http endpoint has expired. Each bin expires after 30 minutes. If that is the case, create another bin and follow the steps to create and start another connector (with the new bin http endpoint and a new unique identifier), then continue to the next step.
+If you receive a 404 error, it could mean that your http endpoint has expired. Each bin expires after 30 minutes. If that is the case, create another bin and follow the steps to create and start another connector (with the new bin HTTP endpoint and a new unique identifier), then continue to the next step.
 
 **6.2:** Scroll to the bottom of the page. If the data was transmitted successfully through the connector to the endpoint, you should see the details of the message.
 
