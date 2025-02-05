@@ -109,7 +109,7 @@ curl -X GET \
 ```
 :::
 
-**3.3:** Run the `status.sh` script
+**3.3:** Run the `status.sh` script.
 
 After running the script, you will receive the setting details for the connector added in a previous step. Check to see that the details you entered are listed. The "state" field will also indicate whether the connector is stopped or running. Since you have not started the connector, the state should be "CONNECTOR_STATE_STOPPED".
 
