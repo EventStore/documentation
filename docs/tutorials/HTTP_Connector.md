@@ -158,7 +158,7 @@ You will now add events to EventStoreDB and transmit them to the endpoint throug
 
 Check that the newly created EventStoreDB data has been transmitted to the connector endpoint.
 
-**6.1:** Navigate to the bin URL (example: https://www.postb.in/b/1737399256387-4331883823033).
+**6.1:** Navigate to the bin URL (example: `https://www.postb.in/b/1737399256387-4331883823033`).
 
 This is the bin URL you copied at the beginning of the tutorial after creating the bin at postb.in. Please note that you’ll need to add b/ before the unique bin id number, as illustrated in the example URL above. 
 
