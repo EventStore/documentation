@@ -62,7 +62,7 @@ The following section provides additional information about the file contents:
 
 * `http://localhost:2113/connectors/test-app` provides a **unique name identifier** for the connector ("test-app" in this case).
    
-* `"InstanceTypeName": "http-sink"`, provides the type of connector sink (Http Sink in this case). 
+* `"InstanceTypeName": "http-sink"` provides the type of connector sink (Http Sink in this case). 
       
 * `"Url": "https://www.postb.in/1736471171412-2404703341890"` provides the HTTP URL endpoint to which the EventStoreDB will send the data.
    
