@@ -168,7 +168,7 @@ If you receive a 404 error, it could mean that your http endpoint has expired. E
 
 ### **Step 7: Stop the connector**
 
-Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, where `{connector_id}` is the unique identifier of the connector ("test-app" in this case).
+Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, replacing `{connector_id}` with your connector's unique identifier ("test-app" in this case).
 
 **7.1:** Create a file name `stop_connector.sh`.
 
@@ -197,7 +197,7 @@ Transfer-Encoding: chunked
 
 ### **Step 8: Reconfigure the connector**
 
-Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, where `{connector_id}` is the unique identifier used when the connector was created. This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
+Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, replacing `{connector_id}` with the unique identifier used when the connector was created ("test-app" in this case). This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
 
 **8.1:** Create a file name `reconfigure_connector.sh`.
 
