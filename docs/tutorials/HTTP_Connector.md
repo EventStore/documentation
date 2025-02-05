@@ -115,7 +115,7 @@ After running the script, you will receive the setting details for the connector
 
 ### **Step 4: Start the connector**
 
-Start the connector by sending a `POST` request to `connectors/{connector_id}/start`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
+Start the connector by sending a `POST` request to `connectors/{connector_id}/start`, where `{connector_id}` is the unique identifier of the connector ("test-app" in this case).
 
 **4.1:** Create a file named `start_connector.sh`.
 
