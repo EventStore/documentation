@@ -29,7 +29,7 @@ In this example, you will use PostBin to create an HTTP endpoint that consumes e
 
 **1.2** You will be directed to a page with the endpoint URLs for curl, wget, and echo. Copy the bin URL for curl.
 
-   *Note: If you are testing with an endpoint from your custom application, ensure no CORS issues prevent the data from being transmitted from EventStoreDB.*
+   *Note: If you are testing with an endpoint from your custom application, ensure no Cross-Origin Resource Sharing (CORS) issues prevent the data from being transmitted from EventStoreDB.*
 
 ### **Step 2: Create the connector**
 
