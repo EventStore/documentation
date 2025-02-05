@@ -150,7 +150,7 @@ You will now add events to EventStoreDB and transmit them to the endpoint throug
 
 **5.2:** Click on **Stream Browser** → **Add Event**.
 
-**5.3:** Use order-123 as the stream id.  Remember that you provided an "order-" filter in the connector settings to filter for "order-" streams in an earlier step. The event type can be anything, such as `itemShipped`.
+**5.3:** Use `order-123` as the stream id.  Remember that you provided an "order-" filter in the connector settings to filter for "order-" streams in an earlier step. The event type can be anything, such as `itemShipped`.
 
 **5.4:** Add some data such as `{"count":"5"}` and click **Add** at the bottom of the page.
 
