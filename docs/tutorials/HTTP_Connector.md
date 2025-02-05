@@ -197,7 +197,7 @@ Transfer-Encoding: chunked
 
 ### **Step 8: Reconfigure the connector**
 
-Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, replacing `{connector_id}` with the unique identifier used when the connector was created ("test-app" in this case). This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
+Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, replacing `{connector_id}` with the unique identifier used when the connector was created (for example, "test-app"). This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
 
 **8.1:** Create a file name `reconfigure_connector.sh`.
 
@@ -238,7 +238,7 @@ Transfer-Encoding: chunked
 
 ### **Step 9: Delete the connector**
 
-Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, replacing `{connector_id}` with your connector's unique identifier ("test-app" in this case).
+Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, replacing `{connector_id}` with your connector's unique identifier (for example, "test-app").
 
 **9.1:** Create a file name `delete_connector.sh`.
 
