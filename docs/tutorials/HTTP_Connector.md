@@ -185,7 +185,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app3/stop
 
 **7.3:** Run the `stop_connector.sh` script.
 
-After running the script and stopping the connector, you should receive an HTTP 200 OK message similar to the one below:
+After running the script and stopping the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
 ```
 HTTP/1.1 200 OK
