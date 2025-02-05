@@ -218,9 +218,9 @@ curl -i -X PUT \
 ```
 :::
 
-**8.3:** Create a new bin from Postb.in, copy the curl URL, and replace the value for “Url” with the curl URL you copied from Postb.in.**
+**8.3:** Create a new bin from Postb.in, copy the curl URL, and replace the value for “Url” with the curl URL you copied from Postb.in.
 
-**8.4:** Run the `reconfigure_connector.sh` script**.
+**8.4:** Run the `reconfigure_connector.sh` script.
 
 After running the script and reconfiguring the connector, you should receive an HTTP 200 OK message similar to the one below:
 
@@ -232,7 +232,7 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-**8.5:** Add events in EventStoreDB
+**8.5:** Add events in EventStoreDB.
 
 **8.6:** Navigate to the bin URL for the new bin you created. Confirm the connector has been reconfigured to transmit data to the latest bin.
 
@@ -253,7 +253,7 @@ curl -i -X DELETE http://localhost:2113/connectors/test-app
 ```
 :::
 
-**9.3:** Run the `delete_connector.sh` script
+**9.3:** Run the `delete_connector.sh` script.
 
 After running the script and deleting the connector, you should receive an HTTP 200 OK message similar to the one below:
 
