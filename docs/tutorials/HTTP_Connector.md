@@ -25,7 +25,7 @@ This step-by-step tutorial guides you through setting up a connector using the *
 
 In this example, you will use PostBin to create an HTTP endpoint that consumes events from EventStoreDB. PostBin supports creating a unique URL to collect requests from EventStoreDB (GET, POST, PUT, PATCH, DELETE, etc.).
 
-**1.1** Navigate to [https://www.postb.in](https://www.postb.in) and click **Create Bin**
+**1.1** Navigate to [https://www.postb.in](https://www.postb.in) and click **Create Bin**.
 
 **1.2** After clicking "Create Bin," you will be directed to a page with the endpoint URLs for curl, wget, and echo. Copy the bin URL for curl.
 
@@ -35,7 +35,7 @@ In this example, you will use PostBin to create an HTTP endpoint that consumes e
 
 Create a connector by sending a POST request to `connectors/{connector_id}`, where `{connector_id}` is a unique identifier of your choice for the connector.
 
- **2.1:** Create a file named `create_connector.sh`
+ **2.1:** Create a file named `create_connector.sh`.
  
  **2.2:** Add the following content to the file.  *Ensure you **replace the value for “Url”** with the curl URL you copied from Postb.in.*
 
@@ -82,7 +82,7 @@ Transfer-Encoding: chunked
 
 Now that you’ve created a connector, you can check its status and settings. This process is helpful when troubleshooting.  
 
-**3.1:** Create a file named `status.sh`
+**3.1:** Create a file named `status.sh`.
 
 **3.2:** Add the following content to the file:
 
@@ -117,7 +117,7 @@ After running the script, you will receive the setting details for the connector
 
 Start the connector by sending a `POST` request to `connectors/{connector_id}/start`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
 
-**4.1:** Create a file named `start_connector.sh`
+**4.1:** Create a file named `start_connector.sh`.
 
 **4.2:** Add the following content to the file:
 
@@ -130,7 +130,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app/start
 ```
 :::
 
-**4.3:** Run the `start_connector.sh` script
+**4.3:** Run the `start_connector.sh` script.
 
 After running the script and starting the connector, you should receive an HTTP 200 OK message similar to the one below:
 
@@ -146,9 +146,9 @@ Transfer-Encoding: chunked
 
 You will now add events to EventStoreDB and transmit them to the endpoint through the HTTP sink connector.
 
-**5.1:** Navigate to the EventStoreDB UI (located at localhost:2113)
+**5.1:** Navigate to the EventStoreDB UI (located at localhost:2113).
 
-**5.2:** Click on Stream Browser → Add Event
+**5.2:** Click on Stream Browser → Add Event.
 
 **5.3:** Use order-123 as the stream id.  Remember that you provided an "order-" filter in the connector settings to filter for order- streams in an earlier step. The event type can be anything, such as itemShipped.
 
@@ -158,7 +158,7 @@ You will now add events to EventStoreDB and transmit them to the endpoint throug
 
 Check that the newly created EventStoreDB data has been transmitted to the connector endpoint.
 
-**6.1:** Navigate to the bin URL (example: https://www.postb.in/b/1737399256387-4331883823033)
+**6.1:** Navigate to the bin URL (example: https://www.postb.in/b/1737399256387-4331883823033).
 
 This is the bin URL you copied at the beginning of the tutorial after creating the bin at postb.in. Please note that you’ll need to add b/ before the unique bin id number, as illustrated in the example URL above. 
 
@@ -170,7 +170,7 @@ If you receive a 404 error, it could mean that your http endpoint has expired. E
 
 Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
 
-**7.1:** Create a file name `stop_connector.sh`
+**7.1:** Create a file name `stop_connector.sh`.
 
 **7.2:** Add the following content to the file:
 
@@ -183,7 +183,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app3/stop
 ```
 :::
 
-**7.3:** Run the `stop_connector.sh` script
+**7.3:** Run the `stop_connector.sh` script.
 
 After running the script and stopping the connector, you should receive an HTTP 200 OK message similar to the one below:
 
@@ -199,7 +199,7 @@ Transfer-Encoding: chunked
 
 Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, where `{connector_id}` is the unique identifier used when the connector was created. This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
 
-**8.1:** Create a file name `reconfigure_connector.sh`
+**8.1:** Create a file name `reconfigure_connector.sh`.
 
 **8.2:** Add the following content to the file:
 
@@ -220,7 +220,7 @@ curl -i -X PUT \
 
 **8.3:** Create a new bin from Postb.in, copy the curl URL, and replace the value for “Url” with the curl URL you copied from Postb.in.**
 
-**8.4:** Run the `reconfigure_connector.sh` script**
+**8.4:** Run the `reconfigure_connector.sh` script**.
 
 After running the script and reconfiguring the connector, you should receive an HTTP 200 OK message similar to the one below:
 
@@ -240,7 +240,7 @@ Transfer-Encoding: chunked
 
 Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, where `{connector_id}` is the unique identifier of the connector (in this case, test-app).
 
-**9.1:** Create a file name `delete_connector.sh`
+**9.1:** Create a file name `delete_connector.sh`.
 
 **9.2:** Add the following content to the file:
 
