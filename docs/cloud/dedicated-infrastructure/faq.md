@@ -1,5 +1,5 @@
 ---
-title: Cloud FAQ
+title: FAQ
 ---
 
 ## Cluster provisioning

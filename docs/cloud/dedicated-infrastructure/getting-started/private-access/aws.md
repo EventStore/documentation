@@ -35,9 +35,15 @@ Click on the **New cluster** button to begin the cluster creation process.
 
 Provide a descriptive name for the cluster in the **Cluster name** field.
 
+### Infrastructure type
+
+![Infrastructure type](../images/infra-type-dedicated.png)
+
+Select the `Dedicated` infrastructure type.
+
 ### Network
 
-![Create a network](./images/aws/aws-new-cluster-private-network.png)
+![Create a network](images/aws/aws-new-cluster-private-network.png)
 
 In the **Network** section, if you have not created a network yet, you will see fields for creating a new network. If you have any existing Networks, you will see those listed, as well as the option to create a new Network.
 
@@ -81,7 +87,7 @@ You will also need to specify the topology of the cluster. We recommend three-no
 
 ### Storage
 
-![Storage](./images/aws/aws-new-cluster-storage.png)
+![Storage](images/aws/aws-new-cluster-storage.png)
 
 Now you need to configure the storage for the cluster. For all three providers, only one disk type is available at the moment via the Cloud console. The storage capacity is gigabytes, with 8GiB being the minimum for AWS, and 10GiB for Azure and GCP. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
@@ -103,11 +109,11 @@ Since the network usage is billed based on actual usage, the estimated price wil
 
 When you click on **Create cluster**, the provisioning process starts. You will be redirected to the cluster details page, where you can follow the progress of the provisioning process. As the creation process progresses, you will see the status of the cluster change.
 
-![Cluster provisioning statuses](./images/aws/aws-cluster-creation-steps.png)
+![Cluster provisioning statuses](images/aws/aws-cluster-creation-steps.png)
 
 If you created a new network, it will be created first. You can see the status of the network creation in the **Networks** view.
 
-![Network status](./images/aws/aws-network-provisioning.png)
+![Network status](images/aws/aws-network-provisioning.png)
 
 Once you see the new cluster's status change to `Ok`, your cluster is ready to use, but you still need to setup a peering connection between your AWS VPC and the Kurrent Cloud network.
 
@@ -117,13 +123,13 @@ When the cluster provisioning process finishes, you get a new cluster (or single
 
 For this example, we'll use a VPC in AWS in the same region (`us-east-2`).
 
-![AWS VPC details](./images/aws/aws-vpc.png)
+![AWS VPC details](images/aws/aws-vpc.png)
 
 If you navigate to the VPC section of the AWS console, then select the VPC you want to setup the peering connection with, you will see a **CIDRs** tab. The information provided in this tab along with the VPC details is enough to start the peering process.
 
 In Kurrent Cloud console, while in the same project context as the new network and cluster, click on **Networks** under the **Networking** section. Select the network you want to peer with the AWS VPC, and click on the **Peerings** tab in the network details. You should see there are no peerings yet. To begin the peering process, click on the **Initiate peering** button.
 
-![Network with no peerings](./images/aws/aws-peering-1.png)
+![Network with no peerings](images/aws/aws-peering-1.png)
 
 You will be taken to the peering creation form. Here you can give the new peering a name and provide some details about the AWS VPC with which you would like to initiate the peering connection. The following table will help you identify the values from the AWS console to fill out the form in the Kurrent Cloud Console.
 
@@ -134,7 +140,7 @@ You will be taken to the peering creation form. Here you can give the new peerin
 | Peer routes         | One or more IPv4 CIDRs for the selected VPC |
 | AWS region          | VPC region (not shown in the VPC details)   |
 
-![Initiate AWS peering](./images/aws/aws-peering-2.png)
+![Initiate AWS peering](images/aws/aws-peering-2.png)
 
 You can specify more than one route if, for example, you want to peer a VPC with multiple subnets.
 
@@ -142,45 +148,45 @@ You can specify more than one route if, for example, you want to peer a VPC with
 
 When you click on the **Initiate peering** button, you'll be redirected back to the **Networks** screen, which should now show the new peering resource being provisioned.
 
-![Peering provisioning](./images/aws/aws-peering-3.png)
+![Peering provisioning](images/aws/aws-peering-3.png)
 
 After a few minutes, the Network's status will change to `Peering initiated`.
 
-![Peering initiated](./images/aws/aws-peering-4.png)
+![Peering initiated](images/aws/aws-peering-4.png)
 
 When the Network's status changes to `Peering initiated`, you can click on the **Peering Connection ID** link to be taken to the **Peering connections** section of the AWS console, where you should see the incoming peering request.
 
-![Incoming peering request](./images/aws/aws-peering-pending.png)
+![Incoming peering request](images/aws/aws-peering-pending.png)
 
 Select the pending peering and click on **Actions** - **Accept request**.
 
 Validate the request details and ensure that all the details match the peering, which you can see in Kurrent Cloud console. If everything is correct, click the **Accept request** button.
 
-![Accept peering request](./images/aws/aws-peering-accept.png)
+![Accept peering request](images/aws/aws-peering-accept.png)
 
 After you get a confirmation, you will see the peering in AWS console to become `Active`.
 
 Back in the Kurrent Cloud console, within a few moments the Network status will change to `Available` and the Peering status, under the Network details, will change to `Active`.
 
-![Peering active](./images/aws/aws-peering-active.png)
+![Peering active](images/aws/aws-peering-active.png)
 
 Now, although both networks are now connected, AWS does not create the necessary routes for the VPC to reach the Kurrent Cloud network automatically. You will need to add a route for the peering connection to each of the route table(s) associated to the subnets that you want to be able to reach the Kurrent Cloud clusters.
 
 To finish the setup, open the AWS VPC details and then click on the **Resource map** tab. There you will see a list of **Subnets** and **Route tables**.
 
-![AWS VPC resource map](./images/aws/aws-vpc-resource-map.png)
+![AWS VPC resource map](images/aws/aws-vpc-resource-map.png)
 
 From the Resource map, click on the link to the Route table for the subnet(s) you want to be able to reach the Kurrent Cloud clusters.
 
-![AWS VPC route table](./images/aws/aws-rtb-1.png)
+![AWS VPC route table](images/aws/aws-rtb-1.png)
 
 Click on **Edit routes** and then **Add route**. In the **Destination** field, enter the CIDR of the Kurrent Cloud network. For the **Target**, choose the **Peering Connection** option. The list of available peering connections will pop up. Select the recently created peering from the list and click on **Save changes**.
 
-![AWS route](./images/aws/aws-rtb-2.png)
+![AWS route](images/aws/aws-rtb-2.png)
 
 Once saved, the route table should look similar to this:
 
-![AWS route complete](./images/aws/aws-rtb-3.png)
+![AWS route complete](images/aws/aws-rtb-3.png)
 
 If you are using one or more subnets associated to this VPC, make sure you update the routing table for all of them, not only on the main route table of the VPC.
 

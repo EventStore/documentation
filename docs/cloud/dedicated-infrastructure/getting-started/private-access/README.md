@@ -1,7 +1,7 @@
 ---
 order: 3
 dir:
-  text: Private Access
+  text: Private Access Clusters
 ---
 
 # Overview

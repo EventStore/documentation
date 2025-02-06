@@ -28,7 +28,7 @@ The provisioning process consists of three steps:
 
 ## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
+In the Kurrent Cloud console, go to the [project context](../../../introduction.md#projects) under which you want to create the cluster and switch to **Clusters** view.
 
 Click on the **New cluster** button to begin the cluster creation process.
 
@@ -38,9 +38,15 @@ Click on the **New cluster** button to begin the cluster creation process.
 
 Provide a descriptive name for the cluster in the **Cluster name** field.
 
+### Infrastructure type
+
+![Infrastructure type](../images/infra-type-dedicated.png)
+
+Select the `Dedicated` infrastructure type.
+
 ### Network
 
-![Create a network](./images/azure/azure-new-cluster-network.png)
+![Create a network](images/azure/azure-new-cluster-network.png)
 
 In the **Network** section, if you have not created a network yet, you will see fields for creating a new network. If you have any existing Networks, you will see those listed, as well as the option to create a new Network.
 
@@ -74,7 +80,7 @@ Both system projections and user-defined projections produce new events. Careful
 
 ![Instance size](../images/cluster-new-size-topology.png)
 
-The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../../../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 If you find that your cluster is not performing as expected, you can always resize the cluster instances later. If you create a three-node cluster, a resize is done in a rolling fashion that should take only a few minutes and not impact the availability of the cluster.
@@ -84,7 +90,7 @@ You will also need to specify the topology of the cluster. We recommend three-no
 
 ### Storage
 
-![Storage](./images/azure/azure-new-cluster-storage.png)
+![Storage](images/azure/azure-new-cluster-storage.png)
 
 Now you need to configure the storage for the cluster. For all three providers, only one disk type is available at the moment via the Cloud console. The storage capacity is gigabytes, with 8GiB being the minimum for AWS, and 10GiB for Azure and GCP. Since we allow customers to expand the storage size online without service interruptions, you can start with smaller storage and expand it when you need more capacity.
 
@@ -100,11 +106,11 @@ Since the network usage is billed based on actual usage, the estimated price wil
 
 When you click on **Create cluster**, the provisioning process starts. You will be redirected to the cluster details page, where you can follow the progress of the provisioning process. As the creation process progresses, you will see the status of the cluster change.
 
-![Cluster provisioning statuses](./images/azure/azure-cluster-creation-steps.png)
+![Cluster provisioning statuses](images/azure/azure-cluster-creation-steps.png)
 
 If you created a new network, it will be created first. You can see the status of the network creation in the **Networks** view.
 
-![Network status](./images/azure/azure-network-provisioning.png)
+![Network status](images/azure/azure-network-provisioning.png)
 
 Once you see the new cluster's status change to `Ok`, your cluster is ready to use, but you still need to setup a peering link between your Azure Virtual Network and the Kurrent Cloud network.
 
@@ -116,7 +122,7 @@ For this example, we'll use an Azure network the same region (Central US).
 
 In Kurrent Cloud console, navigate to the **Networks** view and click on the Private Network you want to setup a peering link for and click on the **Initiate peering** button.
 
-![Network status](./images/azure/azure-network-ready.png)
+![Network status](images/azure/azure-network-ready.png)
 
 ### Azure Virtual Network details
 
@@ -133,17 +139,17 @@ You also need to find your tenant ID, which is only visible on the [Microsoft En
 
 Peer Network ID is the one that requires the most attention, because it's not very obvious how to find it. You can find it in the Azure portal, in the Virtual Network's properties page or in the JSON view of the network.
 
-![Azure network ID](./images/azure/azure-network-resource-id-example.png)
+![Azure network ID](images/azure/azure-network-resource-id-example.png)
 
 For our example, here is the complete form:
 
-![Azure peering - complete form](./images/azure/azure-peering-1.png)
+![Azure peering - complete form](images/azure/azure-peering-1.png)
 
 ### Initiate peering
 
 When you click on the `Next` button, Kurrent Cloud will check if it has permissions to create the peering (see [Azure Considerations](#network-peering-in-azure)). The Cloud console will display a set of pre-populated Azure CLI commands, which you need to execute in order for Kurrent Cloud to be able to create the peering.
 
-![Azure peering - sa](./images/azure/azure-peering-2.png)
+![Azure peering - sa](images/azure/azure-peering-2.png)
 
 ::: tip Service principal
 Kurrent Cloud uses one service principal. It means that once you created it, the principal will be used for all the peerings you create. Therefore, you only need to execute the command `az ad sp create` once.
@@ -159,11 +165,11 @@ If the status doesn't change after 10 minutes, delete the peering and try again,
 
 In a short while, the peering status in the Kurrent Cloud console should change to `Active`.
 
-![Azure peering - status](./images/azure/azure-peering-3.png)
+![Azure peering - status](images/azure/azure-peering-3.png)
 
 If you want to check the status of the peering in Azure, go back to Virtual Network in the Azure Portal and navigate to the `Peering` blade. There, you will see the newly provisioned peering, which should have `Connected` in the `Peering status` column.
 
-![Azure peering - status](./images/azure/azure-peering-blade.png)
+![Azure peering - status](images/azure/azure-peering-blade.png)
 
 ::: tip Peering issues
 You might see the peering request getting stuck. There are several reasons for this to happen, such as entering the incorrect region, overlapping CIDR blocks, or provider quota issues. You can find all the necessary diagnostics in the Event Console in Kurrent Cloud.
@@ -173,7 +179,7 @@ You should now be able to connect to the KurrentDB cluster in the cloud from sys
 
 ## Next steps
 
-You are now ready to start using the new KurrentDB cluster in the cloud. Head over to the [Operations](../../ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.
+You are now ready to start using the new KurrentDB cluster in the cloud. Head over to the [Operations](../../../ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.
 
 ## Considerations for Microsoft Azure
 

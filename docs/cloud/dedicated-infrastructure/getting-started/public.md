@@ -11,19 +11,27 @@ Pre-requisites:
 - Your organization has at least one project
 - You are the admin of the project
 
+Note, see the [Quick Start](../../introduction.md#cloud-quick-start) section for more details on how to configure these  items.
+
 ## Create a cluster
 
-In the Kurrent Cloud console, go to the [project context](../introduction.md#projects) and switch to **Clusters**. Then, click on the **New cluster** button to begin the cluster creation process.
+In the Kurrent Cloud console, go to the [project context](../../introduction.md#projects) and switch to **Clusters**. Then, click on the **New cluster** button to begin the cluster creation process.
 
 ### Cluster name
 
-![Cluster name](./images/new-cluster-name.png)
+![Cluster name](images/new-cluster-name.png)
 
 Provide a descriptive name for the cluster in the **Cluster name** field.
 
+### Infrastructure type
+
+![Infrastructure type](images/infra-type-dedicated.png)
+
+Select the `Dedicated` infrastructure type.
+
 ### Network
 
-![Create a network](./images/public/cluster-new-public-access-network.png)
+![Create a network](images/public/cluster-new-public-access-network.png)
 
 In the **Network** section, if you have not created a network yet, you will see fields for creating a new network. If you have any existing Networks, you will see those listed, as well as the option to create a new Network.
 
@@ -36,7 +44,7 @@ When creating a new network for a public access cluster, you will need to provid
 
 ### IP Access List
 
-![Create an IP Access List](./images/public/cluster-new-public-access-ip-access-list.png)
+![Create an IP Access List](images/public/cluster-new-public-access-ip-access-list.png)
 
 If you have not created an IP Access List yet, you will see fields for creating a new IP Access List. All clusters with public access enabled are protected by an IP Access List. This list is used to control access to the cluster from the public Internet.
 
@@ -60,7 +68,7 @@ Both system projections and user-defined projections produce new events. Careful
 
 ### Instance size
 
-The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
+The next section of the form allows choosing the instance size for cluster nodes. Use the provided [instance size guidelines](../../ops/sizing.md) to choose the right size for your cluster. Note that the `F1` size is using burstable VMs, which is not suitable for production use.
 
 ::: tip Vertical scaling
 If you find that your cluster is not performing as expected, you can always resize the cluster instances later. If you create a three-node cluster, a resize is done in a rolling fashion that should take only a few minutes and not impact the availability of the cluster.
@@ -92,4 +100,4 @@ When you click on **Create cluster**, the provisioning process starts. The clust
 
 ## Next steps
 
-You are now ready to start using the new Managed KurrentDB cluster in the cloud. Head over to the [Operations](../ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.
+You are now ready to start using the new Managed KurrentDB cluster in the cloud. Head over to the [Operations](../../dedicated-infrastructure/ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.

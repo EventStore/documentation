@@ -2,7 +2,7 @@
 index: false
 ---
 
-# Cloud
+# Shared Infrastructure
 
 Kurrent Cloud documentation.
 

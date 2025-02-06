@@ -7,7 +7,7 @@ dir:
 
 ## Viewing clusters
 
-When you create a cluster, from the Clusters view, you will see a list of all your currently provisioned clusters, as well as any clusters that have been deleted within the last 24 hours. For each cluster, you will see the cluster name, type (public or private), cluster ID, provider, region, type, KurrentDB version, status, and date of creation, as well as a set of icons for performing common actions, and a menu with additional actions.
+When you create a cluster, from the Clusters view, you will see a list of all your currently provisioned clusters, as well as any clusters that have been deleted within the last 24 hours. For each cluster, you will see the cluster name, type (shared, public or private), cluster ID, provider, region, type, KurrentDB version, status, and date of creation, as well as a set of icons for performing common actions, and a menu with additional actions.
 
 ![Clusters list](./images/clusters-list.png)
 
