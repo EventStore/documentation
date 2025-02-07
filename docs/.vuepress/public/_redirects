@@ -213,8 +213,8 @@
 # ######################
 
 # Cloud from Vuepress v1 to v2
-/cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301
-/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301
+#/cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301
+#/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301
 
 # ######################
 # Db Server
