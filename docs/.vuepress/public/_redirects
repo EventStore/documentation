@@ -90,10 +90,6 @@
 
 /cloud/quick-start.html                     /cloud/introduction.html   301
 
-# Cloud from Vuepress v1 to v2
-/cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide   301
-/cloud/provision/azure/considerations.html  /cloud/introduction.html                        301
-
 # Cloud docs deep links
 /cloud/provision/aws/network                /cloud/provision/aws.html#create-a-network            301
 /cloud/provision/aws/cluster                /cloud/provision/aws.html#deploy-a-managed-instance   301
@@ -113,11 +109,45 @@
 # Cloud hope migration
 /cloud/intro/                               /cloud/introduction.html      301
 
-# Cloud content fix (d3a7ba155f6f10297065362f3e9c1e0c10f0f6a8@documentation)
-/cloud/use/kubernetes/aks.html              /cloud/use/kubernetes.html    301
-/cloud/use/kubernetes/eks.html              /cloud/use/kubernetes.html    301
-/cloud/use/kubernetes/gke.html              /cloud/use/kubernetes.html    301
-/cloud/use/migration/replicator.html        /cloud/use/migration.html     301
+# Cloud docs update Jan 2025 (3184c4eda8e2746de38a1659e8db176c3821aa94@documentation)
+# Also redirects old and past links to the latest link 
+/cloud/automation/api.html                    /cloud/automation/                                            301
+/cloud/faq/cluster-provisioning.html          /cloud/faq/                                                   301
+/cloud/faq/cluster_provisioning.html          /cloud/faq/                                                   301
+/cloud/faq/operational-characteristics.html   /cloud/faq/                                                   301
+/cloud/faq/providers.html                     /cloud/faq/                                                   301
+/cloud/faq/roadmap.html                       /cloud/faq/                                                   301
+/cloud/faq/sla.html                           /cloud/faq/                                                   301
+/cloud/faq/support.html                       /cloud/faq/                                                   301
+/cloud/faq/troubleshooting.html               /cloud/faq/                                                   301
+/cloud/integration/issues.html                /cloud/integrations/                                          301
+/cloud/integration/notifications.html         /cloud/integrations/                                          301
+/cloud/intro/eventstore-cloud-status.html     /cloud/introduction.html                                      301
+/cloud/intro/preview.html                     /cloud/introduction.html                                      301
+/cloud/intro/quick-start.html                 /cloud/introduction.html                                      301
+/cloud/ops/backup.html                        /cloud/ops/backups.html                                       301
+/cloud/ops/disk_expand.html                   /cloud/ops/#expanding-disks                                   301
+/cloud/ops/manual_backups.html                /cloud/ops/backups.html                                       301
+/cloud/ops/restore.html                       /cloud/ops/backups.html#restore-from-backup                   301
+/cloud/ops/scheduled_backups.html             /cloud/ops/backups.html#scheduled-backups                     301
+/cloud/provision/                             /cloud/getting-started/private_access/                        301
+/cloud/provision/aws.html                     /cloud/getting-started/private_access/aws.html                301
+/cloud/provision/aws/                         /cloud/getting-started/private_access/aws.html                301
+/cloud/provision/azure.html                   /cloud/getting-started/private_access/azure.html              301
+/cloud/provision/azure/                       /cloud/getting-started/private_access/azure.html              301
+/cloud/provision/azure/considerations.html    /cloud/getting-started/private_access/azure.html#considerations-for-microsoft-azure   301
+/cloud/provision/cloud-instance-guidance/     /cloud/ops/sizing.html                                        301
+/cloud/provision/gcp.html                     /cloud/getting-started/private_access/gcp.html                301
+/cloud/provision/gcp/                         /cloud/getting-started/private_access/gcp.html                301
+/cloud/provision/sizing.html                  /cloud/ops/sizing.html                                        301
+/cloud/use/                                   /cloud/guides/                                                301
+/cloud/use/kubernetes.html                    /cloud/guides/kubernetes.html                                 301
+/cloud/use/kubernetes/aks.html                /cloud/guides/kubernetes.html#azure-kubernetes-services       301
+/cloud/use/kubernetes/eks.html                /cloud/guides/kubernetes.html#aws-elastic-kubernetes-services 301
+/cloud/use/kubernetes/gke.html                /cloud/guides/kubernetes.html#google-kubernetes-engine        301
+/cloud/use/migration.html                     /cloud/guides/migration.html                                  301
+/cloud/use/migration/replicator.html          /cloud/guides/migration.html#executing-the-migration          301
+/cloud/use/tailscale.html                     /cloud/guides/tailscale.html                                  301    
 
 
 # ######################
@@ -207,14 +237,6 @@
 /clients/http-api/v23.6/*           /http-api/v23.10/introduction.html                  301
 /clients/http-api/v23.10/*          /http-api/v23.10/introduction.html                  301
 /clients/http-api/v24.2/*           /http-api/v24.10/introduction.html                  301
-
-# ######################
-# Cloud
-# ######################
-
-# Cloud from Vuepress v1 to v2
-#/cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301
-#/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301
 
 # ######################
 # Db Server
