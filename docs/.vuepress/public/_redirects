@@ -15,8 +15,9 @@
 # General redirects
 # ######################
 
-/latest.html                           /server/v24.10/quick-start/                            301
-/latest                                /server/v24.10/quick-start/                            301
+/latest.html                           /server/latest/                            301
+/latest                                /server/latest/                            301
+/server                                /server/latest/                            301
 # Note: make sure to also update the latest version in the dynamic section
 
 # ######################
@@ -153,15 +154,12 @@
 # Project types
 /project-types.html                     /                                               301
 
-
-
 # ########################################################################################################################
 # DYNAMIC REDIRECTS
 #
 # This section must succeed STATIC REDIRECTS
 # https://developers.cloudflare.com/pages/configuration/redirects/#per-file
 # ########################################################################################################################
-
 
 # ######################
 # Clients
@@ -228,12 +226,12 @@
 
 /v5/*                                       /server/v5/introduction.html              301
 /server/5.0.8/*                             /server/v5/introduction.html              301
-/server/v20/*                               /server/v24.10/quick-start/               301
-/server/20.6/*                              /server/v24.10/quick-start/               301
-/server/v20.10/*                            /server/v24.10/quick-start/               301
-/server/v21.2/*                             /server/v24.10/quick-start/               301
-/server/v21.6/*                             /server/v24.10/quick-start/               301
-/server/v21.10/*                            /server/v24.10/quick-start/               301
+/server/v20/*                               /server/latest/               301
+/server/20.6/*                              /server/latest/               301
+/server/v20.10/*                            /server/latest/               301
+/server/v21.2/*                             /server/latest/               301
+/server/v21.6/*                             /server/latest/               301
+/server/v21.10/*                            /server/latest/               301
 /server/v22.6/*                             /server/v22.10/:splat                     301
 /server/v23.6/*                             /server/v23.10/quick-start/               301
 /server/v24.2/*                             /server/v24.10/quick-start/               301
@@ -242,7 +240,6 @@
 
 # latest to latest
 /server/latest/*                            /server/v24.10/:splat                     301
-
 
 # Hope migration
 /connectors/* /server/v24.10/features/connectors/ 301
@@ -266,3 +263,15 @@
 # ######################
 
 /resources/*            /         301
+
+# ###################################
+# Cloud split to Shared and Dedicated
+# ###################################
+
+/cloud/integrations/*         /cloud/dedicated/integrations/:splat       301
+/cloud/ops/*                  /cloud/dedicated/ops/:splat                301
+/cloud/networking/*           /cloud/dedicated/networking/:splat         301
+/cloud/automation/*           /cloud/dedicated/automation/:splat         301
+/cloud/guides/*               /cloud/dedicated/guides/:splat             301
+/cloud/faq.html               /cloud/dedicated/faq.html                  301
+
