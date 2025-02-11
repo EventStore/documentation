@@ -12,4 +12,4 @@ Disallow: /package.json
 Disallow: /serve.js
 Disallow: /yarn.lock
 
-Sitemap: https://developers.eventstore.com/sitemap.xml
+Sitemap: https://docs.kurrent.io/sitemap.xml

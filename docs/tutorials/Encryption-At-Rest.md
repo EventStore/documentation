@@ -3,29 +3,29 @@ title: Encryption-At-Rest
 order: 2
 ---
 
-## **Tutorial: Setting up and using Encryption-At-Rest in EventStoreDB**
+## Tutorial: Setting up and using Encryption-At-Rest in EventStoreDB
 
 The **Encryption-At-Rest** feature provides encryption for EventStoreDB to secure database chunk files, ensuring data protection even if an attacker gains access to the physical disk. This step-by-step guide will walk you through the process of enabling and configuring this feature, including generating master keys and applying encryption.
 
-#### **Prerequisites:**
+#### Prerequisites:
 
-* [EventStoreDB 24.10 LTS installed and running.](https://developers.eventstore.com/server/v24.10/quick-start/installation.html)  
-* [License key](https://developers.eventstore.com/server/v24.10/quick-start/installation.html#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
+* [EventStoreDB 24.10 LTS installed and running.](/server/v24.10/quick-start/installation.html)  
+* [License key](/server/v24.10/quick-start/installation.html#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
 * Basic understanding of EventStoreDB, encryption principles, and key management.
 
-### **Step 1: Verify license key**
+### Step 1: Verify license key
 
 Ensure you have a valid **license key** to use the Encryption-At-Rest feature. Without this license, the feature will not be functional.
 
-### **Step 2 (optional): Confirm Encryption-At-Rest availability**
+### Step 2 (optional): Confirm Encryption-At-Rest availability
 
 By default, Encryption-At-Rest is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
 
 `[INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316`
 
-Refer to the [log documentation](https://developers.eventstore.com/server/v24.10/diagnostics/logs.html) for instructions on accessing EventStoreDB logs.
+Refer to the [log documentation](/server/v24.10/diagnostics/logs.html) for instructions on accessing EventStoreDB logs.
 
-### **Step 3: Generate a master key**
+### Step 3: Generate a master key
 
 To encrypt the data, you must first generate a **master key** using the `es-cli` tool (available to be downloaded in Cloudsmith [here](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
 
@@ -35,12 +35,12 @@ es-cli encryption generate-master-key
 ```
 Place the generated master key in a secure directory on a **separate drive** from the database files, ensuring enhanced security. The key should be stored in the directory you will configure in the next step, for example, `/secure/keys/`.
 
-### **Step 4: Configure and enable Encryption-At-Rest** 
+### Step 4: Configure and enable Encryption-At-Rest
 
-#### **Step 4.1: Add the configuration file**
+#### Step 4.1: Add the configuration file
 
 1. Navigate to the `config` directory within the EventStoreDB installation.  
-   There are multiple [configuration mechanisms](https://developers.eventstore.com/server/v24.10/configuration/) available. Since options set in a JSON configuration override those set in a YAML configuration, here is an example using JSON. You can also find a [YAML configuration file example in the documentation](https://developers.eventstore.com/server/v24.10/security/#configuration).   
+   There are multiple [configuration mechanisms](/server/v24.10/configuration/) available. Since options set in a JSON configuration override those set in a YAML configuration, here is an example using JSON. You can also find a [YAML configuration file example in the documentation](https://developers.eventstore.com/server/v24.10/security/#configuration).   
      
    Create a new JSON configuration file (e.g., `encryption-config.json`) with the following content:   
    ```json
@@ -67,31 +67,33 @@ Place the generated master key in a secure directory on a **separate drive** fro
    ```
 2. Make sure to replace `/secure/keys/` with the actual path where the generated master key is stored.
 
-#### **Step 4.2: Set the encryption algorithm**
+#### Step 4.2: Set the encryption algorithm
 
 In the main EventStoreDB configuration file, add the following line to specify the encryption transformation:
 
-```bash code  
+```bash
 Transform: aes-gcm
 ```
 
 This ensures that the **AES Galois Counter Mode (AES-GCM)** encryption algorithm is applied to new chunks.
 
-### **Step 5: Confirm Encryption-At-Rest activation** 
+### Step 5: Confirm Encryption-At-Rest activation
 
 After configuring Encryption-At-Rest, you can confirm it is enabled and active by checking the log file. You should see the following log messages: 
 
-`...`  
-`[141828, 1,11:42:45.325,INF] Encryption-At-Rest: Loaded master key source: "File"`  
-`[141828, 1,11:42:45.340,INF] Encryption-At-Rest: (File) Loaded master key: 1 (256 bits)`  
-`[141828, 1,11:42:45.345,INF] Encryption-At-Rest: Active master key ID: 1`  
-`[141828, 1,11:42:45.345,INF] Encryption-At-Rest: Loaded encryption algorithm: "AesGcm"`  
-`[141828, 1,11:42:45.347,INF] Encryption-At-Rest: (AesGcm) Using key size: 256 bits`  
-`[141828, 1,11:42:45.401,INF] Loaded the following transforms: Identity, Encryption_AesGcm`  
-`[141828, 1,11:42:45.402,INF] Active transform set to: Encryption_AesGcm`  
-`...`
+```
+...
+[141828, 1,11:42:45.325,INF] Encryption-At-Rest: Loaded master key source: "File"
+[141828, 1,11:42:45.340,INF] Encryption-At-Rest: (File) Loaded master key: 1 (256 bits)
+[141828, 1,11:42:45.345,INF] Encryption-At-Rest: Active master key ID: 1
+[141828, 1,11:42:45.345,INF] Encryption-At-Rest: Loaded encryption algorithm: "AesGcm"
+[141828, 1,11:42:45.347,INF] Encryption-At-Rest: (AesGcm) Using key size: 256 bits
+[141828, 1,11:42:45.401,INF] Loaded the following transforms: Identity, Encryption_AesGcm
+[141828, 1,11:42:45.402,INF] Active transform set to: Encryption_AesGcm
+...
+```
 
-### **Step 6 (optional): Verify encryption**
+### Step 6 (optional): Verify encryption
 
 Once Encryption-At-Rest is enabled, new chunk files created or scavenged will be encrypted using the configured encryption algorithm. You can verify encryption with the following tests:
 
@@ -103,7 +105,7 @@ Once Encryption-At-Rest is enabled, new chunk files created or scavenged will be
   * Attempt to access encrypted files without proper keys to confirm they cannot be read.  
   * For example, you can attempt to read encrypted chunk files directly using a text editor, hexadecimal viewer, or unsupported tool. Without the proper master key, the contents should appear garbled or unreadable.
 
-### **Step 7: Important considerations**
+### Step 7: Important considerations
 
 * **Irreversible encryption:** Once encryption is enabled, you **cannot revert** to an unencrypted state if any new chunk file has been created or scavenged. To decrypt the encrypted chunks, special tooling would be required (currently unavailable).
 * **Master key management:**  
@@ -111,6 +113,6 @@ Once Encryption-At-Rest is enabled, new chunk files created or scavenged will be
   * If your master key is lost or corrupted, you’ll lose access to your data. Always keep a backup of your master key in a safe place.  
 * **Scope of protection**: Encryption-At-Rest encrypts chunk files but does not encrypt index files. Additionally, this feature does not protect against memory-dump-based attacks, which require separate mitigation strategies.
 
-### **Summary**
+### Summary
 
 By following this tutorial, you have successfully configured and enabled Encryption-At-Rest in EventStoreDB. This encryption setup ensures that your chunk files are securely encrypted, protecting your data from potential disk-based attacks.
