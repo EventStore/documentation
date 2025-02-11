@@ -83,43 +83,16 @@
 
 # General clients redirect
 # This rule should be last in this clients list otherwise it takes precedence.
-/clients                                                            /clients/grpc/getting-started.html   301
+/clients                                   /clients/grpc/getting-started.html   301
 
 # ######################
 # Cloud
 # ######################
 
-/cloud/quick-start.html                     /cloud/introduction.html   301
-
-# Cloud from Vuepress v1 to v2
-/cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide   301
-/cloud/provision/azure/considerations.html  /cloud/introduction.html                        301
-
-# Cloud docs deep links
-/cloud/provision/aws/network                /cloud/provision/aws.html#create-a-network            301
-/cloud/provision/aws/cluster                /cloud/provision/aws.html#deploy-a-managed-instance   301
-/cloud/provision/aws/peering                /cloud/provision/aws.html#network-peering             301
-/cloud/provision/aws/regions                /cloud/provision/aws.html#available-regions           301
-
-/cloud/provision/azure/network              /cloud/provision/azure.html#create-a-network          301
-/cloud/provision/azure/cluster              /cloud/provision/azure.html#deploy-a-managed-instance 301
-/cloud/provision/azure/peering              /cloud/provision/azure.html#network-peering           301
-/cloud/provision/azure/regions              /cloud/provision/azure.html#available-regions         301
-
-/cloud/provision/gcp/network                /cloud/provision/gcp.html#create-a-network          301
-/cloud/provision/gcp/cluster                /cloud/provision/gcp.html#deploy-a-managed-instance 301
-/cloud/provision/gcp/peering                /cloud/provision/gcp.html#network-peering           301
-/cloud/provision/gcp/regions                /cloud/provision/gcp.html#available-regions         301
-
-# Cloud hope migration
-/cloud/intro/                               /cloud/introduction.html      301
-
-# Cloud content fix (d3a7ba155f6f10297065362f3e9c1e0c10f0f6a8@documentation)
-/cloud/use/kubernetes/aks.html              /cloud/use/kubernetes.html    301
-/cloud/use/kubernetes/eks.html              /cloud/use/kubernetes.html    301
-/cloud/use/kubernetes/gke.html              /cloud/use/kubernetes.html    301
-/cloud/use/migration/replicator.html        /cloud/use/migration.html     301
-
+/cloud/quick-start.html                     /cloud/introduction.html    301
+/cloud/provision/*                /cloud/dedicated/getting-started/     301
+/cloud/intro/                               /cloud/introduction.html    301
+/cloud/use/*                                /cloud/dedicated/guides/    301
 
 # ######################
 # Db Server
@@ -207,20 +180,8 @@
 /clients/http-api/v24.2/*           /http-api/v24.10/introduction.html                  301
 
 # ######################
-# Cloud
-# ######################
-
-# Cloud from Vuepress v1 to v2
-/cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301
-/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301
-
-# ######################
 # Db Server
 # ######################
-
-# Database from Vuepress v1 to v2
-/server/:version/introduction/              /server/:version/                          301
-/server/:version/docs/*                     /server/:version/:splat                    301
 
 # Server deprecated
 
@@ -273,6 +234,5 @@
 /cloud/ops/*                  /cloud/dedicated/ops/:splat                301
 /cloud/networking/*           /cloud/dedicated/networking/:splat         301
 /cloud/automation/*           /cloud/dedicated/automation/:splat         301
-/cloud/guides/*               /cloud/dedicated/guides/:splat             301
 /cloud/faq.html               /cloud/dedicated/faq.html                  301
 

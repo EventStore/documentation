@@ -1,8 +1,6 @@
 ---
-title: Overview
-
 dir:
-  text: "Automations"
+  link: true
   order: 6
 ---
 

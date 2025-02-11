@@ -1,11 +1,10 @@
 ---
-title: Overview
 dir:
-  text: Integrations
+  link: true
   order: 7
 ---
 
-# Integrations overview
+# Integrations
 
 Kurrent Cloud offers integrations between internal sources such as cluster health, issue detection, notifications events, KurrentDB logs, KurrentDB metrics and sinks which include external services such as Slack and Amazon CloudWatch.
 

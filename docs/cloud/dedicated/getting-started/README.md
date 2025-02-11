@@ -1,10 +1,10 @@
 ---
 dir:
-    text: "Getting Started"
+    link: true
     order: 1
 ---
 
-# Overview
+# Getting started
 
 ## Provisioning
 

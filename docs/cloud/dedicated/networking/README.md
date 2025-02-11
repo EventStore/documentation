@@ -1,9 +1,10 @@
 ---
-title: Overview
 dir:
-  text: "Networking"
   order: 5
+  link: true
 ---
+
+# Networking
 
 Each major cloud provider implements the concept of a Virtual Private Cloud (VPC). AWS and GCP have VPCs, while Azure has Azure Virtual Network (VNet). A VPC gives you as the cloud user an isolated private network, to which you attach cloud compute resources (virtual machines, container orchestrators, etc) or managed resources, like database servers. VPCs are always in private network address spaces and therefore not directly accessible from the outside of the VPC without additional configuration and infrastructure.
 
