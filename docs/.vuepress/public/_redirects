@@ -90,10 +90,6 @@
 
 /cloud/quick-start.html                     /cloud/introduction.html   301
 
-# Cloud from Vuepress v1 to v2
-/cloud/provision/cloud-instance-guidance/   /cloud/provision/#cloud-instance-sizing-guide   301
-/cloud/provision/azure/considerations.html  /cloud/introduction.html                        301
-
 # Cloud docs deep links
 /cloud/provision/aws/network                /cloud/provision/aws.html#create-a-network            301
 /cloud/provision/aws/cluster                /cloud/provision/aws.html#deploy-a-managed-instance   301
@@ -113,11 +109,62 @@
 # Cloud hope migration
 /cloud/intro/                               /cloud/introduction.html      301
 
-# Cloud content fix (d3a7ba155f6f10297065362f3e9c1e0c10f0f6a8@documentation)
-/cloud/use/kubernetes/aks.html              /cloud/use/kubernetes.html    301
-/cloud/use/kubernetes/eks.html              /cloud/use/kubernetes.html    301
-/cloud/use/kubernetes/gke.html              /cloud/use/kubernetes.html    301
-/cloud/use/migration/replicator.html        /cloud/use/migration.html     301
+# Cloud docs update Jan 2025 (3184c4eda8e2746de38a1659e8db176c3821aa94@documentation, a9961eb03643546f018bfa82eab7672056e06a53@documentation)
+# Also redirects old and past links to the latest link 
+/cloud/automation/api.html                    /cloud/dedicated-infrastructure/automation/                                             301
+/cloud/automation/pulumi.html                 /cloud/dedicated-infrastructure/automation/pulumi.html                                  301
+/cloud/automation/terraform.html              /cloud/dedicated-infrastructure/automation/terraform.html                               301
+/cloud/faq.html                               /cloud/dedicated-infrastructure/faq.html                           301
+/cloud/faq/                                   /cloud/dedicated-infrastructure/faq.html                           301
+/cloud/faq/cluster-provisioning.html          /cloud/dedicated-infrastructure/faq.html#cluster-provisioning                           301
+/cloud/faq/cluster_provisioning.html          /cloud/dedicated-infrastructure/faq.html#cluster-provisioning                           301
+/cloud/faq/operational-characteristics.html   /cloud/dedicated-infrastructure/faq.html#operational-characteristics-of-kurrent-cloud   301
+/cloud/faq/providers.html                     /cloud/dedicated-infrastructure/faq.html#providers                                      301
+/cloud/faq/roadmap.html                       /cloud/introduction.html                                                                301
+/cloud/faq/sla.html                           /cloud/dedicated-infrastructure/faq.html#service-levels                                 301
+/cloud/faq/support.html                       /cloud/dedicated-infrastructure/faq.html#support                                        301
+/cloud/faq/troubleshooting.html               /cloud/dedicated-infrastructure/faq.html#troubleshooting                                301
+/cloud/integrations/                          /cloud/dedicated-infrastructure/integrations/                                           301
+/cloud/integrations/cloudwatch.html           /cloud/dedicated-infrastructure/integrations/cloudwatch.html                            301
+/cloud/integrations/issues.html               /cloud/dedicated-infrastructure/integrations/                                           301
+/cloud/integrations/notifications.html        /cloud/dedicated-infrastructure/integrations/                                           301
+/cloud/integrations/opsgenie.html             /cloud/dedicated-infrastructure/integrations/opsgenie.html                              301
+/cloud/integrations/slack.html                /cloud/dedicated-infrastructure/integrations/slack.html                                 301
+/cloud/intro/eventstore-cloud-status.html     /cloud/introduction.html                                                                301
+/cloud/intro/preview.html                     /cloud/introduction.html                                                                301
+/cloud/intro/quick-start.html                 /cloud/introduction.html#cloud-quick-start                                              301
+/cloud/networking/                            /cloud/dedicated-infrastructure/networking/                                             301
+/cloud/networking/private-network.html        /cloud/dedicated-infrastructure/networking/private-network.html                         301
+/cloud/networking/public-network.html         /cloud/dedicated-infrastructure/networking/public-network.html                          301
+/cloud/ops/                                   /cloud/dedicated-infrastructure/ops/                                                    301
+/cloud/ops/account-security.html              /cloud/dedicated-infrastructure/ops/account-security.html                               301
+/cloud/ops/backup.html                        /cloud/dedicated-infrastructure/ops/backups.html                                        301
+/cloud/ops/backups.html                       /cloud/dedicated-infrastructure/ops/backups.html                                        301
+/cloud/ops/disk_expand.html                   /cloud/dedicated-infrastructure/ops/#expanding-disks                                    301
+/cloud/ops/events.html                        /cloud/dedicated-infrastructure/ops/events.html                                         301
+/cloud/ops/jobs.html                          /cloud/dedicated-infrastructure/ops/jobs.html                                           301
+/cloud/ops/manual_backups.html                /cloud/dedicated-infrastructure/ops/backups.html#manual-backup                          301
+/cloud/ops/restore.html                       /cloud/dedicated-infrastructure/ops/backups.html#restore-from-backup                    301
+/cloud/ops/scheduled_backups.html             /cloud/dedicated-infrastructure/ops/backups.html#scheduled-backups                      301
+/cloud/ops/sizing.html                        /cloud/dedicated-infrastructure/ops/sizing.html                                         301
+/cloud/provision/                             /cloud/dedicated-infrastructure/getting-started/private_access/                         301
+/cloud/provision/aws.html                     /cloud/dedicated-infrastructure/getting-started/private_access/aws.html                 301
+/cloud/provision/aws/                         /cloud/dedicated-infrastructure/getting-started/private_access/aws.html                 301
+/cloud/provision/azure.html                   /cloud/dedicated-infrastructure/getting-started/private_access/azure.html               301
+/cloud/provision/azure/                       /cloud/dedicated-infrastructure/getting-started/private_access/azure.html               301
+/cloud/provision/azure/considerations.html    /cloud/dedicated-infrastructure/getting-started/private_access/azure.html#considerations-for-microsoft-azure   301
+/cloud/provision/cloud-instance-guidance/     /cloud/dedicated-infrastructure/ops/sizing.html                                          301
+/cloud/provision/gcp.html                     /cloud/dedicated-infrastructure/getting-started/private_access/gcp.html                 301
+/cloud/provision/gcp/                         /cloud/dedicated-infrastructure/getting-started/private_access/gcp.html                 301
+/cloud/provision/sizing.html                  /cloud/dedicated-infrastructure/ops/sizing.html                                          301
+/cloud/use/                                   /cloud/dedicated-infrastructure/guides/                                                 301
+/cloud/use/kubernetes.html                    /cloud/dedicated-infrastructure/guides/kubernetes.html                                  301
+/cloud/use/kubernetes/aks.html                /cloud/dedicated-infrastructure/guides/kubernetes.html#azure-kubernetes-services        301
+/cloud/use/kubernetes/eks.html                /cloud/dedicated-infrastructure/guides/kubernetes.html#aws-elastic-kubernetes-services  301
+/cloud/use/kubernetes/gke.html                /cloud/dedicated-infrastructure/guides/kubernetes.html#google-kubernetes-engine         301
+/cloud/use/migration.html                     /cloud/dedicated-infrastructure/guides/migration.html                                   301
+/cloud/use/migration/replicator.html          /cloud/dedicated-infrastructure/guides/migration.html#executing-the-migration           301
+/cloud/use/tailscale.html                     /cloud/dedicated-infrastructure/guides/tailscale.html                                   301    
 
 
 # ######################
@@ -207,14 +254,6 @@
 /clients/http-api/v23.6/*           /http-api/v23.10/introduction.html                  301
 /clients/http-api/v23.10/*          /http-api/v23.10/introduction.html                  301
 /clients/http-api/v24.2/*           /http-api/v24.10/introduction.html                  301
-
-# ######################
-# Cloud
-# ######################
-
-# Cloud from Vuepress v1 to v2
-/cloud/:firstpart/:filename.html            /cloud/:firstpart/                            301
-/cloud/:firstpart/:secondpart/              /cloud/:firstpart/                            301
 
 # ######################
 # Db Server
