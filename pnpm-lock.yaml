@@ -8490,7 +8490,7 @@ snapshots:
       caniuse-lite: 1.0.30001699
       fraction.js: 4.3.7
       normalize-range: 0.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.1
       postcss: 8.5.2
       postcss-value-parser: 4.2.0
 
