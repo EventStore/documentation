@@ -21,7 +21,7 @@ export default defineUserConfig({
     base: "/",
     dest: "public",
     bundler: viteBundler({viteOptions: {plugins: [vueDevTools(),],}}),
-    title: "EventStoreDB Documentation",
+    title: "Kurrent Resources",
     description: "The stream database built for Event Sourcing",
     define: {
         __VERSIONS__: {

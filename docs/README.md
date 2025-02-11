@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: Event Store Resources
+heroText: Kurrent Resources
 tagline: Event-native database for storing immutable facts as events, complex event processing, and event-driven architectures.
 actions:
 - text: Get started
@@ -79,5 +79,5 @@ highlights:
       details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
       link: /http/
 
-footer: Copyright © Event Store Limited
+footer: Copyright © Kurrent, Inc
 ---
