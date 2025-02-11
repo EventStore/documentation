@@ -1,6 +1,9 @@
 ---
 index: false
 breadcrumbExclude: true
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Legacy .NET Client

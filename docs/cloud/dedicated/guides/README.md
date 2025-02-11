@@ -1,9 +1,10 @@
 ---
-title: Overview
 dir:
-  text: "Guides"
+  link: true
   order: 8
 ---
+
+# Guides
 
 We have some guides to help you with specific use cases when using Kurrent Cloud.
 

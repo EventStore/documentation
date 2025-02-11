@@ -1,2 +1,2 @@
-export const hostname = "developers.eventstore.com";
+export const hostname = "docs.kurrent.io";
 export const baseUrl = `https://${hostname}`;

@@ -2,26 +2,27 @@
 title: HTTP Sink
 order: 3
 ---
-## **Tutorial: Setting up and using an HTTP Sink in EventStoreDB**
+
+## Tutorial: Setting up and using an HTTP Sink in EventStoreDB
 
 Connectors simplify the integration of EventStoreDB data into other systems. Each connector runs on the server-side and uses a catch-up subscription to receive events, filter or transform them, and push them to an external system via a sink.
 
 The following are the available Event Store sinks:
 
-1. [Kafka Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/kafka.html)
-2. [MongoDB Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/mongo.html)
-3. [RabbitMQ Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/rabbitmq.html)
-4. [HTTP Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/http.html)
-5. [Logger Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/logger.html)
-6. [Serilog Sink](https://developers.eventstore.com/server/v24.10/features/connectors/sinks/serilog.html)
+1. [Kafka Sink](/server/v24.10/features/connectors/sinks/kafka.html)
+2. [MongoDB Sink](/server/v24.10/features/connectors/sinks/mongo.html)
+3. [RabbitMQ Sink](/server/v24.10/features/connectors/sinks/rabbitmq.html)
+4. [HTTP Sink](/server/v24.10/features/connectors/sinks/http.html)
+5. [Logger Sink](/server/v24.10/features/connectors/sinks/logger.html)
+6. [Serilog Sink](/server/v24.10/features/connectors/sinks/serilog.html)
 
 This step-by-step tutorial guides you through setting up a connector using the **HTTP Sink** in EventStoreDB. This feature allows EventStoreDB to push event data to an http endpoint.
 
-#### **Prerequisites**
+#### Prerequisites
 
-* [EventStoreDB 24.10 LTS installed and running.](https://developers.eventstore.com/server/v24.10/quick-start/installation.html)   
+* [EventStoreDB 24.10 LTS installed and running](/server/v24.10/quick-start/installation.html)   
 
-### **Step 1: Set up an HTTP endpoint using PostBin**
+### Step 1: Set up an HTTP endpoint using PostBin
 
 In this tutorial, you will use PostBin to create an HTTP endpoint that consumes events from EventStoreDB. PostBin supports creating a unique URL to collect requests from EventStoreDB (GET, POST, PUT, PATCH, DELETE, etc.).
 
@@ -31,13 +32,13 @@ In this tutorial, you will use PostBin to create an HTTP endpoint that consumes 
 
    *Note: If you are testing with an endpoint from your custom application, ensure no Cross-Origin Resource Sharing (CORS) issues prevent the data from being transmitted from EventStoreDB.*
 
-### **Step 2: Create the connector**
+### Step 2: Create the connector
 
 Create a connector by sending a `POST` request to `connectors/{connector_id}`, where `{connector_id}` is a unique identifier of your choice for the connector.
 
  **2.1:** Create a file named `create_connector.sh`.
  
- **2.2:** Add the following content to the file.  *Ensure you **replace the value for “Url”** with the curl URL you copied from Postb.in.*
+ **2.2:** Add the following content to the file. Ensure you **replace the value for “Url”** with the curl URL you copied from Postb.in.
 
 ::: tabs
 @tab Bash
@@ -78,7 +79,7 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### **Step 3: Check the connector status**
+### Step 3: Check the connector status
 
 Now that you’ve created a connector, you can check its status and settings. This process is helpful when troubleshooting.  
 
@@ -113,7 +114,7 @@ curl -X GET \
 
 After running the script, you will receive the setting details for the connector added in **Step 2**. Check to see that the details you entered are listed. The "state" field will also indicate whether the connector is stopped or running. Since you have not started the connector, the state should be "CONNECTOR_STATE_STOPPED".
 
-### **Step 4: Start the connector**
+### Step 4: Start the connector
 
 Start the connector by sending a `POST` request to `connectors/{connector_id}/start`, where `{connector_id}` is the unique identifier of the connector ("test-app" in this case).
 
@@ -142,7 +143,7 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### **Step 5: Add events in EventStoreDB**
+### Step 5: Add events in EventStoreDB
 
 You will now add events to EventStoreDB and transmit them to the endpoint through the HTTP Sink connector.
 
@@ -154,7 +155,7 @@ You will now add events to EventStoreDB and transmit them to the endpoint throug
 
 **5.4:** Add some data such as `{"count":"5"}` and click **Add** at the bottom of the page.
 
-### **Step 6: Verify data was sent to the endpoint**
+### Step 6: Verify data was sent to the endpoint
 
 Check that the newly created EventStoreDB data has been transmitted to the connector endpoint.
 
@@ -166,7 +167,7 @@ If you receive a 404 error, it could mean that your http endpoint has expired. E
 
 **6.2:** Scroll to the bottom of the page. If the data was transmitted successfully through the connector to the endpoint, you should see the details of the message.
 
-### **Step 7: Stop the connector**
+### Step 7: Stop the connector
 
 Stop the connector by sending a `POST` request to `connectors/{connector_id}/stop`, replacing `{connector_id}` with your connector's unique identifier ("test-app" in this case).
 
@@ -195,7 +196,7 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### **Step 8: Reconfigure the connector**
+### Step 8: Reconfigure the connector
 
 Reconfigure an existing connector by sending a `PUT` request to `/connectors/{connector_id}/settings`, replacing `{connector_id}` with the unique identifier used when the connector was created (for example, "test-app"). This endpoint allows you to modify the settings of a connector without having to delete and recreate it.
 
@@ -236,7 +237,7 @@ Transfer-Encoding: chunked
 
 **8.6:** Navigate to the bin URL for the new bin you created. Confirm the connector has been reconfigured to transmit data to the latest bin.
 
-### **Step 9: Delete the connector**
+### Step 9: Delete the connector
 
 Delete the connector by sending a `DELETE` request to `connectors/{connector_id}`, replacing `{connector_id}` with your connector's unique identifier (for example, "test-app").
 
@@ -265,7 +266,7 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### **Summary**
+### Summary
 
 By following this tutorial, you have successfully: 
 

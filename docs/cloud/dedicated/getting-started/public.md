@@ -100,4 +100,4 @@ When you click on **Create cluster**, the provisioning process starts. The clust
 
 ## Next steps
 
-You are now ready to start using the new Managed KurrentDB cluster in the cloud. Head over to the [Operations](../../dedicated-infrastructure/ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.
+You are now ready to start using the new Managed KurrentDB cluster in the cloud. Head over to the [Operations](../ops/README.md#connecting-to-a-cluster) page to learn how to connect to your cluster.

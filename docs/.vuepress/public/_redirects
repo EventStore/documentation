@@ -15,8 +15,9 @@
 # General redirects
 # ######################
 
-/latest.html                           /server/v24.10/quick-start/                            301
-/latest                                /server/v24.10/quick-start/                            301
+/latest.html                           /server/latest/                            301
+/latest                                /server/latest/                            301
+/server                                /server/latest/                            301
 # Note: make sure to also update the latest version in the dynamic section
 
 # ######################
@@ -82,7 +83,7 @@
 
 # General clients redirect
 # This rule should be last in this clients list otherwise it takes precedence.
-/clients                                                            /clients/grpc/getting-started.html   301
+/clients                                   /clients/grpc/getting-started.html   301
 
 # ######################
 # Cloud
@@ -110,7 +111,7 @@
 /cloud/intro/                               /cloud/introduction.html      301
 
 # Cloud docs update Jan 2025 (3184c4eda8e2746de38a1659e8db176c3821aa94@documentation, a9961eb03643546f018bfa82eab7672056e06a53@documentation)
-# Also redirects old and past links to the latest link 
+# Also redirects old and past links to the latest link
 /cloud/automation/api.html                    /cloud/dedicated-infrastructure/automation/                                             301
 /cloud/automation/pulumi.html                 /cloud/dedicated-infrastructure/automation/pulumi.html                                  301
 /cloud/automation/terraform.html              /cloud/dedicated-infrastructure/automation/terraform.html                               301
@@ -164,7 +165,7 @@
 /cloud/use/kubernetes/gke.html                /cloud/dedicated-infrastructure/guides/kubernetes.html#google-kubernetes-engine         301
 /cloud/use/migration.html                     /cloud/dedicated-infrastructure/guides/migration.html                                   301
 /cloud/use/migration/replicator.html          /cloud/dedicated-infrastructure/guides/migration.html#executing-the-migration           301
-/cloud/use/tailscale.html                     /cloud/dedicated-infrastructure/guides/tailscale.html                                   301    
+/cloud/use/tailscale.html                     /cloud/dedicated-infrastructure/guides/tailscale.html                                   301
 
 
 # ######################
@@ -200,15 +201,12 @@
 # Project types
 /project-types.html                     /                                               301
 
-
-
 # ########################################################################################################################
 # DYNAMIC REDIRECTS
 #
 # This section must succeed STATIC REDIRECTS
 # https://developers.cloudflare.com/pages/configuration/redirects/#per-file
 # ########################################################################################################################
-
 
 # ######################
 # Clients
@@ -259,20 +257,16 @@
 # Db Server
 # ######################
 
-# Database from Vuepress v1 to v2
-/server/:version/introduction/              /server/:version/                          301
-/server/:version/docs/*                     /server/:version/:splat                    301
-
 # Server deprecated
 
 /v5/*                                       /server/v5/introduction.html              301
 /server/5.0.8/*                             /server/v5/introduction.html              301
-/server/v20/*                               /server/v24.10/quick-start/               301
-/server/20.6/*                              /server/v24.10/quick-start/               301
-/server/v20.10/*                            /server/v24.10/quick-start/               301
-/server/v21.2/*                             /server/v24.10/quick-start/               301
-/server/v21.6/*                             /server/v24.10/quick-start/               301
-/server/v21.10/*                            /server/v24.10/quick-start/               301
+/server/v20/*                               /server/latest/               301
+/server/20.6/*                              /server/latest/               301
+/server/v20.10/*                            /server/latest/               301
+/server/v21.2/*                             /server/latest/               301
+/server/v21.6/*                             /server/latest/               301
+/server/v21.10/*                            /server/latest/               301
 /server/v22.6/*                             /server/v22.10/:splat                     301
 /server/v23.6/*                             /server/v23.10/quick-start/               301
 /server/v24.2/*                             /server/v24.10/quick-start/               301
@@ -281,7 +275,6 @@
 
 # latest to latest
 /server/latest/*                            /server/v24.10/:splat                     301
-
 
 # Hope migration
 /connectors/* /server/v24.10/features/connectors/ 301

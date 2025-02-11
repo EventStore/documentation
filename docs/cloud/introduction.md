@@ -97,4 +97,4 @@ Within the project context, you can manage project clusters, backups, networks, 
 
 ### Provision a cluster
 
-You are now ready to start provisioning cloud resources with Kurrent Cloud. Please proceed to the [Getting Started guide](shared-infrastructure/getting-started/README.md) to learn how to provision your first cluster.
+You are now ready to start provisioning cloud resources with Kurrent Cloud. Please proceed to the [Getting Started guide](shared/getting-started/README.md) to learn how to provision your first cluster.

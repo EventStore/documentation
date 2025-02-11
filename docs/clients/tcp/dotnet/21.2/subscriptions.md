@@ -1,6 +1,8 @@
 ---
 order: 6
-sitemap.priority: 0.005
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Subscribe to changes

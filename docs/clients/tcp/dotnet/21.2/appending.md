@@ -1,6 +1,8 @@
 ---
 order: 4
-sitemap.priority: 0.005
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Appending events

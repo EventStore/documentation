@@ -1,10 +1,10 @@
 ---
 dir:
-    text: "Getting Started"
-    order: 1
+  link: true
+  order: 1
 ---
 
-# Overview
+# Getting started
 
 ::: important
 Please note that this feature is in <u>__preview__</u> and not recommended for production workloads yet.
