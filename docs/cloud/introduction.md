@@ -3,9 +3,9 @@ title: Introduction
 order: 1
 ---
 
-## What's Kurrent Cloud?
+## What is Kurrent Cloud?
 
-Kurrent Cloud allows you to deploy a managed KurrentDB cluster in AWS, GCP, and Azure. The cloud cluster is optimized for the specific provider and provisioned as a multi-zone VM set.
+Kurrent Cloud enables seamless deployment of managed KurrentDB clusters with major cloud providers. Deployments on both `shared` and `dedicated` infrastructure are supported.
 
 ::: tip Learn more
 Not using Kurrent Cloud and want to learn more? Find more information and sign up links [on our website](https://www.kurrent.io/kurrent-cloud).
@@ -14,6 +14,20 @@ Not using Kurrent Cloud and want to learn more? Find more information and sign u
 As a customer of Kurrent Cloud, you get access to the [Cloud console](https://console.kurrent.cloud), where you can provision and manage KurrentDB clusters, backup and restore your data, and establish the connection between Kurrent Cloud networks and your own cloud infrastructure.
 
 Kurrent Cloud operations can be automated using the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud), [Pulumi provider](https://www.pulumi.com/registry/packages/eventstorecloud/), and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
+
+## What is shared infrastructure?
+
+With this option, KurrentDB clusters are hosted in shared compute infrastructure. Each deployment is isolated from other tenants, making them highly secure and cost-effective.
+
+If you're looking to get started or experiment with KurrentDB, this option is best.
+
+::: important
+Please note that this feature is in <u>__preview__</u> and not recommended for production workloads yet.
+:::
+
+## What is dedicated infrastructure?
+
+With this option, KurrentDB clusters are hosted on dedicated compute infrastructure, ensuring that all resources are exclusively allocated to you. This setup is ideal for running production workloads that demand consistent performance and guaranteed resource availability.
 
 ## Cloud quick start
 
@@ -37,7 +51,7 @@ With the new account, you can log in to the [Cloud console](https://console.kurr
 
 In the console, you first get to the list of organizations you have access to.
 
-![Cloud organisations](./images/intro/cloud-console-orgs.png)
+![Cloud organisations](images/intro/cloud-console-orgs.png)
 
 You start with an empty list, so you must add an organization.
 
@@ -51,7 +65,7 @@ With your account, you might have more than one organization. Each organization 
 
 When you click on an organization in the list, you get to the projects screen, where you can see all the projects for the selected organization.
 
-![Projects within the organisation](./images/intro/cloud-org-projects.png)
+![Projects within the organisation](images/intro/cloud-org-projects.png)
 
 Within the organization's scope, you also have the list of users and roles, billing information, alerts, etc.
 
@@ -77,10 +91,10 @@ To create a new project, click the `New project` button. Then, enter the project
 
 You get to the project context screen when you click on a project in the project list.
 
-![Project context](./images/intro/cloud-project-screen.png)
+![Project context](images/intro/cloud-project-screen.png)
 
 Within the project context, you can manage project clusters, backups, networks, etc.
 
 ### Provision a cluster
 
-You are now ready to start provisioning cloud resources with Kurrent Cloud. Please proceed to the [Getting Started guide](./getting-started/) to learn how to provision your first cluster.
+You are now ready to start provisioning cloud resources with Kurrent Cloud. Please proceed to the [Getting Started guide](shared-infrastructure/getting-started/README.md) to learn how to provision your first cluster.
