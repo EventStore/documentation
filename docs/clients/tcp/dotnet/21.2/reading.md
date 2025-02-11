@@ -1,6 +1,8 @@
 ---
 order: 5
-sitemap.priority: 0.005
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Reading events

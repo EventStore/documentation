@@ -1,8 +1,8 @@
 ---
 order: 2
 sitemap:
-  - priority: 0.4
-  - changefreq: monthly
+  priority: 0.2
+  changefreq: monthly
 ---
 
 # Migration to gRPC client

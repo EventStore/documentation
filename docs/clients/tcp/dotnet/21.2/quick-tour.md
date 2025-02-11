@@ -1,6 +1,8 @@
 ---
 order: 1
-sitemap.priority: 0.005
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Quick tour

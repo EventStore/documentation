@@ -1,6 +1,8 @@
 ---
 order: 9
-sitemap.priority: 0.005
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Security

@@ -1,6 +1,8 @@
 ---
 order: 7
-sitemap.priority: 0.005
+sitemap:
+  priority: 0.1
+  changefreq: monthly
 ---
 
 # Stream metadata
