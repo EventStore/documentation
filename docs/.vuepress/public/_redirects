@@ -112,6 +112,7 @@
 
 # Cloud docs update Jan 2025 (3184c4eda8e2746de38a1659e8db176c3821aa94@documentation, a9961eb03643546f018bfa82eab7672056e06a53@documentation)
 # Also redirects old and past links to the latest link
+/cloud/automation/                            /cloud/dedicated/automation/                                             301
 /cloud/automation/api.html                    /cloud/dedicated/automation/                                             301
 /cloud/automation/pulumi.html                 /cloud/dedicated/automation/pulumi.html                                  301
 /cloud/automation/terraform.html              /cloud/dedicated/automation/terraform.html                               301
