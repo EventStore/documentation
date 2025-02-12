@@ -72,7 +72,7 @@
         t.type = "text/javascript";
         t.async = true;
         t.setAttribute("data-global-segment-analytics-key", globalAnalyticsKey)
-        t.src = "https://cloud.eventstore.com/segment/ajs/REDACTED";
+        t.src = "https://cloud.kurrent.io/segment/ajs/REDACTED";
 
         var first = document.getElementsByTagName("script")[0];
         first.parentNode.insertBefore(t, first);
