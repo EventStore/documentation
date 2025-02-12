@@ -2,6 +2,7 @@ import {defineClientConfig, useRoute} from 'vuepress/client';
 import "iconify-icon";
 import {onMounted} from "vue";
 import type {RouteLocationNormalized, Router} from "vue-router";
+import CloudBanner from "./components/CloudBanner.vue";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -47,6 +48,7 @@ const reload = () => {
 
 export default defineClientConfig({
     enhance({app, router, siteData}) {
+        app.component("CloudBanner", CloudBanner);
         const apiPath = __VERSIONS__.latest.replace("server", "http-api");
         const addFixedRoute = (from: string, to: string) => router.addRoute({
             path: from, redirect: _ => {
