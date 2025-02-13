@@ -36,9 +36,7 @@ If you have trouble with this quickstart, you can find more help in the ["EventS
 1. Choose one of the development languages/platforms below and click the Codespaces link:
 
 ::: tabs#dev-language-platform
-
 @tab Select >
-
 
 @tab Python
 |Quickstart Language/Platform|Link to Codespaces|
@@ -62,7 +60,7 @@ If you have trouble with this quickstart, you can find more help in the ["EventS
 
 :::
 
-2. Login to Github if required.
+2. Login to GitHub if required.
    
 3. Follow the instructions to create a new Codespace.
 
@@ -75,9 +73,7 @@ Hello!👋 Welcome to the EventStoreDB Getting Started Quickstart Guide.
 ```
 
 ::: tip
-
 For this quickstart, you can safely ignore and close any Codespaces notification that appears on the bottom right of the page.
-
 :::
 
 ## Step 2: Start the EventStoreDB Server
@@ -148,9 +144,7 @@ To view the source code in Github, click the link below:
 @tab Select >
 
 @tab Python
-
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
-
 
 @tab Java
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
@@ -161,7 +155,6 @@ To view the source code in Github, click the link below:
 @tab node.js
 [![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
 :::
-
 ::::
 :::::
 
@@ -180,7 +173,6 @@ To view the source code in Github, click the link below:
 1. In Codespace, run this command to install the package for the EventStoreDB client. This will be used in the sample codes:
 
 ::: tabs#dev-language-platform
-
 @tab Select >
 
 @tab Python

@@ -8,17 +8,9 @@ title: Concepts
 
 In EventStoreDB, an event is a factual occurrence from the past. It has an *event type* that headlines what happened and an *event body* that outlines the details:
 
-<div style="display: flex; max-height: 200px;">
+![What are events](./images/what-are-events.png#light =x200)
 
-![](./images/what-are-events.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 200px;">
-
-![](./images/what-are-events-dark.png#dark)
-
-</div>
+![What are events](./images/what-are-events-dark.png#dark =x200)
 
 An event usually represents a state change in an application, its entities, or business processes. In this case below:
 
@@ -26,18 +18,9 @@ An event usually represents a state change in an application, its entities, or b
 2. Bob approved the loan.
 3. A loan payment of $50 was received.
 
+![Examples of events](./images/examples-of-event.png#light)
 
-<div style="display: flex; max-height: 200px;">
-
-![](./images/examples-of-event.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 200px;">
-
-![](./images/examples-of-event-dark.png#dark)
-
-</div>
+![Examples of events](./images/examples-of-event-dark.png#dark)
 
 ::: note
 To learn more about how to perform basic operations around events, [click here](/clients/grpc/appending-events.md).
@@ -47,31 +30,15 @@ To learn more about how to perform basic operations around events, [click here](
 
 The event log is an append-only sequence of events stored within the database. It is the ultimate source of truth, capturing every event appended to EventStoreDB:
 
-<div style="display: flex; max-height: 200px;">
+![Event log](./images/event-log.png#light)
 
-![](./images/event-log.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 200px;">
-
-![](./images/event-log-dark.png#dark)
-
-</div>
+![Event log](./images/event-log-dark.png#dark)
 
 New events are added exclusively to the end of the log—never at the start or in the middle:
 
-<div style="display: flex; max-height: 200px;">
+![Immutable log](./images/event-log-is-append-only.png#light)
 
-![](./images/event-log-is-append-only.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 200px;">
-
-![](./images/event-log-is-append-only-dark.png#dark)
-
-</div>
+![Immutable log](./images/event-log-is-append-only-dark.png#dark)
 
 Internally, the event log consists of a series of data files that store events in the exact order in which they were appended.
 
@@ -83,17 +50,9 @@ Events are commonly arranged into smaller and logically related groups known as 
 
 An event stream is a sequenced group of events from the event log that is identified by a stream ID:
 
-<div style="display: flex; max-height: 200px;">
+![Event stream](./images/what-are-event-streams.png#light)
 
-![](./images/what-are-event-streams.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 200px;">
-
-![](./images/what-are-event-streams-dark.png#dark)
-
-</div>
+![Event stream](./images/what-are-event-streams-dark.png#dark)
 
 ### Example of Event Stream
 
@@ -109,18 +68,9 @@ Event stream improves the read and event retrieval performance through indexing.
 
 To append an event to EventStoreDB, it must be associated with a specific stream ID. This process simultaneously appends the event to the event log and the specified stream:
 
-<div style="display: flex; max-height: 300px;">
+![How events are appended](./images/how-events-are-appended.png#light)
 
-![](./images/how-events-are-appended.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 300px;">
-
-![](./images/how-events-are-appended-dark.png#dark)
-
-</div>
-
+![How events are appended](./images/how-events-are-appended-dark.png#dark)
 
 ::: note
 To learn more about streams, its structure and behaviors in detail, [click here](@server/features/streams.md).
@@ -130,19 +80,19 @@ To learn more about streams, its structure and behaviors in detail, [click here]
 
 In EventStoreDB, a stream typically represents an instance of an object, entity, or business process. For example:
 
-| Stream ID | Description |
-| --- | --- |
-| loan-123 | Represents loan application ID#123 |
-| customer-321 | Represents customer ID#321 |
-| payment-222 | Represents payment process ID#222 from an external payment gateway |
+| Stream ID    | Description                                                        |
+|--------------|--------------------------------------------------------------------|
+| loan-123     | Represents loan application ID#123                                 |
+| customer-321 | Represents customer ID#321                                         |
+| payment-222  | Represents payment process ID#222 from an external payment gateway |
 
 However, there are cases where it makes sense for a stream to encompass a more extensive set of events. In these cases, streams may align to a broader set of events: 
 
-| Stream ID | Description |
-| --- | --- |
-| loan | Represents all loan applications |
-| customer | Represents all customers |
-| payment-gateway | Represents all events from an external payment gateway  |
+| Stream ID       | Description                                            |
+|-----------------|--------------------------------------------------------|
+| loan            | Represents all loan applications                       |
+| customer        | Represents all customers                               |
+| payment-gateway | Represents all events from an external payment gateway |
 
 Designing streams and deciding which events belong to which stream involves balancing performance, scalability, and maintainability. Understanding the trade-offs is the starting point for designing streams that best suit organizational goals.
 
@@ -164,18 +114,9 @@ An EventStoreDB index entry is automatically created whenever an event is append
 - the event's number within the stream (also known as the version number or sequence number)
 - the event's position within the log
 
-<div style="display: flex; max-height: 400px;">
+![Conceptual model of the index](./images/conceptual-model-of-the-index.png#light)
 
-![](./images/conceptual-model-of-the-index.png#light)
-    
-</div>
-
-<div style="display: flex; max-height: 400px;">
-
-![](./images/conceptual-model-of-the-index-dark.png#dark)
-    
-</div>
-
+![Conceptual model of the index](./images/conceptual-model-of-the-index-dark.png#dark)
 
 Conceptually, this resembles a simple key-value store, where the stream's ID is the key, and the value is a set of pointers that direct you to the events within the event log.
 
@@ -189,17 +130,9 @@ To learn more about how indexing works in detail, [click here](@server/configura
 
 EventStoreDB ensures that all events in both the event log and its streams are consistently ordered by append time. Moreover, the event log maintains a global ordering of events across all streams.
 
-<div style="display: flex; max-height: 400px;">
+![Global order](./images/consistent-event-ordering.png#light)
 
-![](./images/consistent-event-ordering.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 400px;">
-
-![](./images/consistent-event-ordering-dark.png#dark)
-
-</div>
+![Global order](./images/consistent-event-ordering-dark.png#dark)
 
 Events within each stream also retain this global ordering, even though they are only a subset of events from the event log. This ordering is crucial for order-sensitive operations where the correct sequence of events is necessary. 
 
@@ -223,17 +156,9 @@ This is especially important when multiple writers try to append to the same str
 
 For example, a financial institution has a stream representing a digital wallet where overdrawing is prohibited. The stream contains deposit and withdrawal events specific to the wallet. EventStoreDB prevents someone from making multiple withdrawals simultaneously to draw funds that are not available.
 
-<div style="display: flex; max-height: 250px;">
+![Optimistic concurrency](./images/optimistic-concurrency-control.png#light)
 
-![](./images/optimistic-concurrency-control.png#light)
-
-</div>
-
-<div style="display: flex; max-height: 250px;">
-
-![](./images/optimistic-concurrency-control-dark.png#dark)
-
-</div>
+![Optimistic concurrency](./images/optimistic-concurrency-control-dark.png#dark)
 
 Optimistic concurrency control also operates without requiring resource locks, meaning these protections come without the performance hit of managing locks. This helps maintain high performance even when multiple concurrent writes occur.
 

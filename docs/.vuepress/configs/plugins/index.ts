@@ -4,6 +4,7 @@ import {notices} from "./notices";
 import {watermark} from "./watermark";
 import {seoPlugin} from "./seo";
 import {hostname} from "./shared";
+import type {SitemapPluginOptions} from "@vuepress/plugin-sitemap";
 
 export default {
     components: {
@@ -14,28 +15,12 @@ export default {
         indexName: process.env.ALGOLIA_INDEX_NAME,
         appId: process.env.ALGOLIA_APPLICATION_ID
     },
-    mdEnhance: {
-        figure: true,
-        imgLazyload: true,
-        imgMark: true,
-        imgSize: true,
-        tabs: true,
-        codetabs: true,
-        component: true,
-        mermaid: true,
-    },
     seo: seoPlugin,
     sitemap: {
         hostname: hostname,
         devServer: process.env.NODE_ENV === 'development',
         modifyTimeGetter: (page, app) => fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
-    },
-    shiki: {
-        themes: {
-            light: "one-light",
-            dark: "one-dark-pro",
-        },
-    },
+    } as SitemapPluginOptions,
     watermark: watermark,
     notice: notices
 

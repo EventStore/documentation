@@ -30,7 +30,12 @@ export default defineUserConfig({
             all: ver.all
         },
     },
-    markdown: {importCode: false, headers: {level: [2, 3]}},
+    markdown: {
+        importCode: false,
+        headers: {level: [2, 3]},
+        imgLazyload: true,
+        imgMark: true
+    },
     extendsMarkdown: md => {
         md.use(replaceLinkPlugin, {
             replaceLink: (link: string, _) => link
