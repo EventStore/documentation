@@ -14,6 +14,22 @@ export const themeOptions: ThemeOptions = {
     toc: true,
     pure: false,
     headerDepth: 3,
-    iconAssets: "iconify",
-    plugins: plugins
+    plugins: plugins,
+    markdown: {
+        figure: true,
+        imgLazyload: true,
+        imgMark: true,
+        imgSize: true,
+        tabs: true,
+        codeTabs: true,
+        component: true,
+        mermaid: true,
+        highlighter: {
+            type: "shiki",
+            themes: {
+                light: "one-light",
+                dark: "one-dark-pro",
+            }
+        }
+    }
 }

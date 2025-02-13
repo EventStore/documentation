@@ -29,6 +29,9 @@ importers:
       '@vuepress/plugin-seo':
         specifier: ^2.0.0-rc.74
         version: 2.0.0-rc.74(typescript@5.5.3)(vuepress@2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(sass@1.84.0)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
+      '@vuepress/plugin-sitemap':
+        specifier: ^2.0.0-rc.74
+        version: 2.0.0-rc.74(typescript@5.5.3)(vuepress@2.0.0-rc.19(@vuepress/bundler-vite@2.0.0-rc.19(sass@1.84.0)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.4.31(typescript@5.5.3)))
       dashjs:
         specifier: ^4.7.4
         version: 4.7.4
