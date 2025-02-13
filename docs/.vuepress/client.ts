@@ -18,7 +18,7 @@ const findMeta = (head, key) => {
     return head.map(x => findMetaKey(x, key)).find(x => x !== null);
 }
 
-const findEsMeta = (route) => {
+const findEsMeta = (route: RouteLocationNormalized) => {
     const head = route.meta?._pageChunk?.data?.frontmatter?.head;
     if (head === undefined) return;
     return {
@@ -101,6 +101,7 @@ export default defineClientConfig({
         router.afterEach((to, from) => {
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
             const esData = findEsMeta(to);
+            console.log(esData);
             const a = window.analytics;
             setTimeout(() => {
                 a.page({
