@@ -33,8 +33,6 @@ export default defineUserConfig({
     markdown: {
         importCode: false,
         headers: {level: [2, 3]},
-        imgLazyload: true,
-        imgMark: true
     },
     extendsMarkdown: md => {
         md.use(replaceLinkPlugin, {
