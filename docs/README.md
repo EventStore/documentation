@@ -26,6 +26,21 @@ highlights:
   - header: Deploy in your environment
     description: Deploy EventStoreDB in your environment using our binaries, Docker Compose, or Kubernetes Operator.
     features:
+      - title: AWS
+        icon: skill-icons:aws-dark
+        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        link: https://www.kurrent.io/kurrent-cloud
+
+      - title: Azure
+        icon: devicon:azure
+        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        link: https://www.kurrent.io/kurrent-cloud
+
+      - title: GCP
+        icon: devicon:googlecloud
+        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        link: https://www.kurrent.io/kurrent-cloud
+
       - title: Linux
         icon: devicon:linux
         details: Use Event Store package feeds for Ubuntu, Debian, CentOS, and Red Hat Enterprise Linux.
