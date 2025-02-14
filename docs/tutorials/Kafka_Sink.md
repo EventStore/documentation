@@ -166,7 +166,7 @@ After appending events to KurrentDB, you need to check whether they have been su
 
 Check events in the Kafka topic with the following steps:
 
-1. Log in to the Kafka cluster UI (i.e., [Confluent Cloud](https://confluent.cloud) in this tutorial**)**.  
+1. Log in to the Kafka cluster UI (i.e., [Confluent Cloud](https://confluent.cloud) in this tutorial).  
 2. Navigate to your Kafka cluster and open the **loans** topic.  
 3. View the appended events from KurrentDB.  
 4. If the Kafka Sink connector is working correctly, the events you added to KurrentDB should appear here, as shown in the image below.
