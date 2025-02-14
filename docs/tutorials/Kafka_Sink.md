@@ -174,7 +174,7 @@ Check events in the Kafka topic with the following steps:
 ![Verify events in Kafka ](images/kafka-sink-quickstart-verify-in-kafka.png =300x)
 
 
-### Step 5(optional): Stop the Kafka Sink connector
+### Step 5 (optional): Stop the Kafka Sink connector
 
 If the Kafka Sink connector is no longer needed, you can stop it to free up resources. Run the following command to send a POST request to the KurrentDB API and stop the connector.
 
