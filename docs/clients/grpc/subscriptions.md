@@ -192,7 +192,7 @@ This will subscribe to any stream with a name that begins with `account` or `sav
 
 ## Checkpointing
 
-When using catch-up subscription to process an `$all` stream that may contain millions of events, the last thing you want is for your application to crash midway, which forces you to restart processing all the way from the beginning.
+When catch-up subscription is used to process an `$all` stream that contains a huge number of events, the last thing you want is for your application to crash midway, which forces you to restart all the way from the beginning.
 
 ### What is a checkpoint?
 
