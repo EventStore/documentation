@@ -196,7 +196,7 @@ When catch-up subscription is used to process an `$all` stream that contains a h
 
 ### What is a checkpoint?
 
-A checkpoint the position of an event in the `$all` stream that your application has processed. By saving this position to a persistent store (e.g., a database), it allows your application to:
+A checkpoint the position of an event in the `$all` stream that your application has processed. By saving this position to a persistent store (e.g., a database), it allows your catch-up subscription to:
 - Recover from crashes by reading the checkpoint and resuming from that position
 - Avoid reprocessing all events from the start
 
