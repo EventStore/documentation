@@ -21,7 +21,9 @@ Ensure you have a valid **license key** to use the Encryption-At-Rest feature. W
 
 By default, Encryption-At-Rest is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
 
-`[INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316`
+```text:no-line-numbers
+[INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316
+```
 
 Refer to the [log documentation](/server/v24.10/diagnostics/logs.html) for instructions on accessing EventStoreDB logs.
 
@@ -30,9 +32,11 @@ Refer to the [log documentation](/server/v24.10/diagnostics/logs.html) for instr
 To encrypt the data, you must first generate a **master key** using the `es-cli` tool (available to be downloaded in Cloudsmith [here](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
 
 Run the following command to generate a master key:  
-```bash 
+
+```bash:no-line-numbers
 es-cli encryption generate-master-key
 ```
+
 Place the generated master key in a secure directory on a **separate drive** from the database files, ensuring enhanced security. The key should be stored in the directory you will configure in the next step, for example, `/secure/keys/`.
 
 ### Step 4: Configure and enable Encryption-At-Rest
@@ -71,7 +75,7 @@ Place the generated master key in a secure directory on a **separate drive** fro
 
 In the main EventStoreDB configuration file, add the following line to specify the encryption transformation:
 
-```bash
+```bash:no-line-numbers
 Transform: aes-gcm
 ```
 
@@ -81,7 +85,7 @@ This ensures that the **AES Galois Counter Mode (AES-GCM)** encryption algorithm
 
 After configuring Encryption-At-Rest, you can confirm it is enabled and active by checking the log file. You should see the following log messages: 
 
-```
+```text:no-line-numbers
 ...
 [141828, 1,11:42:45.325,INF] Encryption-At-Rest: Loaded master key source: "File"
 [141828, 1,11:42:45.340,INF] Encryption-At-Rest: (File) Loaded master key: 1 (256 bits)

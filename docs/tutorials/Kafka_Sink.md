@@ -24,7 +24,7 @@ The Kafka Sink connector must be configured to define how KurrentDB streams even
 
 Create a new file named `kafka-sink-config.json` with the following content:
 
-```json lines
+```json
 {
   "settings": {
     "instanceTypeName": "kafka-sink",
@@ -51,13 +51,13 @@ Create the Kafka Sink connector instance in KurrentDB by sending a `POST` reques
 
 ::: tabs
 @tab Powershell
-```PowerShell
+```powershell:no-line-numbers
 curl -i -L -u admin:password  `
 -H "content-type: application/json" -d '@kafka-sink-config.json' `
 -X POST https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart  
 ```
 @tab Bash
-```Bash
+```bash:no-line-numbers
 curl -i -L -u admin:password  \ 
 -H "content-type: application/json" -d '@kafka-sink-config.json' \
 -X POST https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart  
@@ -74,16 +74,17 @@ Run the following command to check the configuration:
 
 ::: tabs
 @tab Powershell
-```PowerShell
+```powershell:no-line-numbers
 curl -u admin:password  `
 -X GET https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/settings  
 ```
 @tab Bash
-```Bash
+```bash:no-line-numbers
 curl -u admin:password  \ 
 -X GET https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/settings  
 ```
 :::
+
 ::: note
 Replace `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
 :::
@@ -108,19 +109,18 @@ If successful, you should see a JSON response displaying your Kafka Sink configu
 }
 ```
 
-
 ### Step 2: Start the Kafka Sink connector
 
 After configuring the Kafka Sink connector, you need to start it to begin streaming events from KurrentDB to Kafka. To do this, send a `POST` request to the KurrentDB API:
 
 ::: tabs
 @tab Powershell
-```PowerShell
+```powershell:no-line-numbers
 curl -i -L -u admin:password  `
 -X POST https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/start  
 ```
 @tab Bash
-```Bash
+```bash:no-line-numbers
 curl -i -L -u admin:password  \ 
 -X POST https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/start  
 ```
@@ -132,11 +132,10 @@ Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-clu
 
 If the Kafka Sink connector starts successfully, it should return an `HTTP/1.1 200 OK` response, as shown below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
-
 
 ### Step 3: Append Events to KurrentDB
 
@@ -151,8 +150,8 @@ To test the Kafka Sink connector, append sample events to KurrentDB using the Ku
    * **Event Body**:  
       ```json
       {
-      "Amount": 10000,
-      "loanTerm": 12
+        "Amount": 10000,
+        "loanTerm": 12
       }
       ```
 5. Click **Add** to append the event to the `LoanRequest-1` stream.  
@@ -172,8 +171,7 @@ Check events in the Kafka topic with the following steps:
 3. View the appended events from KurrentDB.  
 4. If the Kafka Sink connector is working correctly, the events you added to KurrentDB should appear here, as shown in the image below.
 
-![Verify events in Kafka ](images/kafka-sink-quickstart-verify-in-kafka.png =300x)
-
+![Verify events in Kafka](images/kafka-sink-quickstart-verify-in-kafka.png =300x)
 
 ### Step 5 (optional): Stop the Kafka Sink connector
 
@@ -181,12 +179,12 @@ If the Kafka Sink connector is no longer needed, you can stop it to free up reso
 
 ::: tabs
 @tab Powershell
-```PowerShell
+```powershell:no-line-numbers
 curl -i -L -u admin:password  `
 -X POST https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/stop  
 ```
 @tab Bash
-```Bash
+```bash:no-line-numbers
 curl -i -L -u admin:password  \ 
 -X POST https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/stop  
 ```
@@ -198,7 +196,7 @@ Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-clu
 
 If the Kafka Sink connector stops successfully, it should return an `HTTP/1.1 200 OK` response, as shown below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
