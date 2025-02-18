@@ -170,7 +170,7 @@ Check events in the Kafka topic with the following steps:
 
 ### Step 5 (optional): Stop the Kafka Sink connector
 
-If the Kafka Sink connector is no longer needed, you can stop it to free up resources. Run the following command to send a POST request to the KurrentDB API and stop the connector.
+If the Kafka Sink connector is no longer needed, you can stop it to free up resources. Run the following command to send a `POST` request to the KurrentDB API and stop the connector.
 
 ::: tabs
 @tab Powershell
