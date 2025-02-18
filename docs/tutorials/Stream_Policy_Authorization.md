@@ -207,7 +207,7 @@ You can create custom stream policies if you want to manage access more granular
    ```
 
 4. **Specify default stream rules**    
-   You still need to specify default stream rules when you update the `$policies` stream.
+   You must still specify default stream rules when you update the `$policies` stream.
 
    ```json  
    "defaultStreamRules": {  
@@ -220,7 +220,7 @@ You can create custom stream policies if you want to manage access more granular
    now include the custom policies you defined and, unless you want to remove or change them, the default policies
    created by the EventStoreDB when Stream Policy Authorization is initially enabled.
 
-   ::: details Click here to view the full JSON code of the example above titled customPolicy.json.
+   ::: details Click here to view the complete JSON code of the example above titled customPolicy.json.
     ```json
     {
       "streamPolicies": {
@@ -370,7 +370,7 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
    | `user5` (a user not in the `salesTeam` or the `salesAdmin` group)     | `sales-10`    | Read, write, delete, metadata read, or metadata write | Failure                          |
    | `User6` (any user)                                                    | `account-123` | Read, write, delete, metadata read, or metadata write | Success                          |
 
-3. **Monitor logs for errors**
+3. **Monitor logs for errors**   
    Errors in policy applications are logged. If any issues arise, EventStoreDB maintains the last valid policy
    configuration. Adjust and repost policies as needed.
 4. **Fallback policy**  
