@@ -129,7 +129,7 @@ You can create custom stream policies if you want to manage access more granular
    For instance, you may identify the following users and their respective access permissions:
 
    | Users                             | Streams                                      | Access permissions                                 |
-       |:----------------------------------|:---------------------------------------------|:---------------------------------------------------|
+   |:----------------------------------|:---------------------------------------------|:---------------------------------------------------|
    | Users in the `financeTeam`        | Streams prefixed with `finance-`             | Read and metadata read permissions                 |
    | Users in the `financeAdmin` group | Streams prefixed with `finance-`             | Full permissions                                   |
    | Users in the `salesTeam`          | Streams prefixed with `sales-`               | Read, write, and metadata read permissions         |
@@ -357,7 +357,7 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
    For instance, given the code example in the tutorial, you should have the following test results:
 
    | Test users                                                            | Test streams  | Access attempts                                       | Expected result for each attempt |
-       |:----------------------------------------------------------------------|:--------------|:------------------------------------------------------|:---------------------------------|
+   |:----------------------------------------------------------------------|:--------------|:------------------------------------------------------|:---------------------------------|
    | `user1` (a user in the `financeTeam`)                                 | `finance-123` | Read or metadata read                                 | Success                          |
    | `user1` (a user in the `financeTeam`)                                 | `finance-123` | Write, delete, or metadata write                      | Failure                          |
    | `user2` (a user in the `financeAdmin` group)                          | `finance-45`  | Read, write, delete, metadata read, or metadata write | Success                          |
@@ -370,7 +370,7 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
    | `user5` (a user not in the `salesTeam` or the `salesAdmin` group)     | `sales-10`    | Read, write, delete, metadata read, or metadata write | Failure                          |
    | `User6` (any user)                                                    | `account-123` | Read, write, delete, metadata read, or metadata write | Success                          |
 
-3. **Monitor logs for errors**  
+3. **Monitor logs for errors**
    Errors in policy applications are logged. If any issues arise, EventStoreDB maintains the last valid policy
    configuration. Adjust and repost policies as needed.
 4. **Fallback policy**  

@@ -40,6 +40,7 @@ Create a new file named `kafka-sink-config.json` with the following content:
   }
 }
 ```
+
 ::: note
 Replace the placeholders (`your-kafka-cluster-url`, `your-username`, `your-password`) with your actual Kafka cluster details.
 :::
@@ -203,7 +204,6 @@ Content-Type: application/json; charset=utf-8
 ```
 
 The Kafka Sink connector has now stopped processing events. This temporarily pauses event streaming while keeping the connector configuration intact. You can restart it later by following **Step 2** without needing to reconfigure it.
-
 
 ### Summary
 
