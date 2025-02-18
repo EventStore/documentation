@@ -64,7 +64,7 @@ curl -i -L -u admin:password  \
 :::
 
 ::: note
-Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
+Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL. Do this in all following code snippets in this tutorial that contain `admin:password` and `your-kurrentdb-cluster-url`.
 :::
 
 #### 1.3: Verify the connector configuration
@@ -82,9 +82,6 @@ curl -u admin:password  `
 curl -u admin:password  \ 
 -X GET https://your-kurrentdb-cluster-url:2113/connectors/kafka-sink-quickstart/settings  
 ```
-:::
-::: note
-Replace `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
 :::
 
 If successful, you should see a JSON response displaying your Kafka Sink configuration, as shown in the example below:
@@ -125,9 +122,6 @@ curl -i -L -u admin:password  \
 ```
 :::
 
-::: note
-Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
-:::
 
 If the Kafka Sink connector starts successfully, it should return an `HTTP/1.1 200 OK` response, as shown below:
 
@@ -191,9 +185,6 @@ curl -i -L -u admin:password  \
 ```
 :::
 
-::: note
-Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
-:::
 
 If the Kafka Sink connector stops successfully, it should return an `HTTP/1.1 200 OK` response, as shown below:
 
