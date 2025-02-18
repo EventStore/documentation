@@ -20,7 +20,7 @@ This step-by-step tutorial guides you through configuring and deploying a **Kafk
 
 The Kafka Sink connector must be configured to define how KurrentDB streams events to Kafka. To do this, you need to create a configuration file that specifies the connection details for the Kafka cluster and the connector instance configuration.
 
-#### 1.1: Create the configuration file
+#### Step 1.1: Create the configuration file
 
 Create a new file named `kafka-sink-config.json` with the following content:
 
@@ -44,7 +44,7 @@ Create a new file named `kafka-sink-config.json` with the following content:
 Replace the placeholders (`your-kafka-cluster-url`, `your-username`, `your-password`) with your actual Kafka cluster details.
 :::
 
-#### 1.2: Deploy the Kafka Sink connector
+#### Step 1.2: Deploy the Kafka Sink connector
 
 Create the Kafka Sink connector instance in KurrentDB by sending a `POST` request to the KurrentDB API with the following `curl` command:
 
@@ -67,7 +67,7 @@ curl -i -L -u admin:password  \
 Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL. Do this in all following code snippets in this tutorial that contain `admin:password` and `your-kurrentdb-cluster-url`.
 :::
 
-#### 1.3: Verify the connector configuration
+#### Step 1.3: Verify the connector configuration
 
 Run the following command to check the configuration:
 
