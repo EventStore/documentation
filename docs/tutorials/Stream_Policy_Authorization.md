@@ -44,7 +44,7 @@ To enable stream policies, append an event of type `$authorization-policy-change
 ::: tabs
 @tab HTTP
 
-```http
+```http:no-line-numbers
 POST https://localhost:2113/streams/$authorization-policy-settings
 Authorization: Basic admin changeit
 Content-Type: application/json
@@ -58,7 +58,7 @@ ES-EventType: $authorization-policy-changed
 
 @tab Powershell
 
-```powershell
+```powershell:no-line-numbers
 $JSON = @"
 {
     "streamAccessPolicyType": "streampolicy"
@@ -76,7 +76,7 @@ curl.exe -X POST `
 
 @tab Bash
 
-```bash
+```bash:no-line-numbers
 JSON='{
     "streamAccessPolicyType": "streampolicy"
 }'
@@ -96,7 +96,7 @@ curl -X POST \
 After enabling Stream Policy Authorization, you can confirm it is active by checking the log file. You should see the
 following log messages:
 
-```
+```text:no-line-numbers
 [22860,28,17:30:42.247,INF] StreamBasedAuthorizationPolicyRegistry New Authorization Policy Settings event received
 [22860,28,17:30:42.249,INF] StreamBasedAuthorizationPolicyRegistry Starting factory streampolicy
 ...
@@ -129,7 +129,7 @@ You can create custom stream policies if you want to manage access more granular
    For instance, you may identify the following users and their respective access permissions:
 
    | Users                             | Streams                                      | Access permissions                                 |
-       |:----------------------------------|:---------------------------------------------|:---------------------------------------------------|
+   |:----------------------------------|:---------------------------------------------|:---------------------------------------------------|
    | Users in the `financeTeam`        | Streams prefixed with `finance-`             | Read and metadata read permissions                 |
    | Users in the `financeAdmin` group | Streams prefixed with `finance-`             | Full permissions                                   |
    | Users in the `salesTeam`          | Streams prefixed with `sales-`               | Read, write, and metadata read permissions         |
@@ -304,7 +304,7 @@ You can create custom stream policies if you want to manage access more granular
 
    ::: tabs
    @tab HTTP
-   ```http
+   ```http:no-line-numbers
    POST https://localhost:2113/streams/$policies
    Authorization: Basic admin changeit
    Content-Type: application/json
@@ -315,7 +315,7 @@ You can create custom stream policies if you want to manage access more granular
    ```
 
    @tab Powershell
-   ```powershell
+   ```powershell:no-line-numbers
    curl.exe -X POST `
      -H "Content-Type: application/json" `
      -H "ES-EventId: 8bc7c581-0f07-4987-bfcb-ab8f9404ca34" `
@@ -326,7 +326,7 @@ You can create custom stream policies if you want to manage access more granular
    ```
 
    @tab Bash
-   ```bash
+   ```bash:no-line-numbers
    curl -X POST \
      -H "Content-Type: application/json" \
      -H "ES-EventId: cb6a722d-c775-4831-929b-86870560c68e" \
@@ -342,7 +342,7 @@ You can create custom stream policies if you want to manage access more granular
 After updating the `$policies` stream, ensure your policy update is applied correctly by checking the logs. You should
 see the following log message:
 
-```
+```text:no-line-numbers
 [INF] StreamBasedPolicySelector      New policy found in $policies stream (1)
 [INF] StreamBasedPolicySelector      Successfully applied policy
 ```
@@ -357,7 +357,7 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
    For instance, given the code example in the tutorial, you should have the following test results:
 
    | Test users                                                            | Test streams  | Access attempts                                       | Expected result for each attempt |
-       |:----------------------------------------------------------------------|:--------------|:------------------------------------------------------|:---------------------------------|
+   |:----------------------------------------------------------------------|:--------------|:------------------------------------------------------|:---------------------------------|
    | `user1` (a user in the `financeTeam`)                                 | `finance-123` | Read or metadata read                                 | Success                          |
    | `user1` (a user in the `financeTeam`)                                 | `finance-123` | Write, delete, or metadata write                      | Failure                          |
    | `user2` (a user in the `financeAdmin` group)                          | `finance-45`  | Read, write, delete, metadata read, or metadata write | Success                          |
@@ -370,7 +370,7 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
    | `user5` (a user not in the `salesTeam` or the `salesAdmin` group)     | `sales-10`    | Read, write, delete, metadata read, or metadata write | Failure                          |
    | `User6` (any user)                                                    | `account-123` | Read, write, delete, metadata read, or metadata write | Success                          |
 
-3. **Monitor logs for errors**  
+3. **Monitor logs for errors**
    Errors in policy applications are logged. If any issues arise, EventStoreDB maintains the last valid policy
    configuration. Adjust and repost policies as needed.
 4. **Fallback policy**  
@@ -386,7 +386,7 @@ If you want to disable the stream policies authorization and revert to ACLs, you
 ::: tabs
 @tab HTTP
 
-```http
+```http:no-line-numbers
 ### Configure cluster to use acls
 POST https://localhost:2113/streams/$authorization-policy-settings
 Authorization: Basic admin changeit
@@ -401,7 +401,7 @@ ES-EventType: $authorization-policy-changed
 
 @tab Powershell
 
-```Powershell
+```powershell:no-line-numbers
 $JSON = @"
 {
     "streamAccessPolicyType": "acl"
@@ -419,7 +419,7 @@ curl.exe -X POST `
 
 @tab Bash
 
-```bash
+```bash:no-line-numbers
 JSON='{
     "streamAccessPolicyType": "acl"
 }'

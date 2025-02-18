@@ -42,7 +42,7 @@ Create a connector by sending a `POST` request to `connectors/{connector_id}`, w
 
 ::: tabs
 @tab Bash
-```bash
+```bash:no-line-numbers
 #!/bin/bash
 
 curl -i -X POST \
@@ -71,7 +71,7 @@ The following section provides additional information about the file contents:
 
 **2.3:** Run the `create_connector.sh` script.  After running the script and creating the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Date: Mon, 20 Jan 2025 18:20:43 GMT
@@ -89,7 +89,7 @@ Now that you’ve created a connector, you can check its status and settings. Th
 
 ::: tabs
 @tab Bash
-```bash
+```bash:no-line-numbers
 #!/bin/bash
 
 JSON=$(cat <<EOF
@@ -124,7 +124,7 @@ Start the connector by sending a `POST` request to `connectors/{connector_id}/st
 
 ::: tabs
 @tab Bash
-```bash
+```bash:no-line-numbers
 #!/bin/bash
 
 curl -i -X POST http://localhost:2113/connectors/test-app/start
@@ -135,7 +135,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app/start
 
 After running the script and starting the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Date: Mon, 20 Jan 2025 18:37:06 GMT
@@ -177,7 +177,7 @@ Stop the connector by sending a `POST` request to `connectors/{connector_id}/sto
 
 ::: tabs
 @tab Bash
-```bash
+```bash:no-line-numbers
 #!/bin/bash
 
 curl -i -X POST http://localhost:2113/connectors/test-app3/stop
@@ -188,7 +188,7 @@ curl -i -X POST http://localhost:2113/connectors/test-app3/stop
 
 After running the script and stopping the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Date: Mon, 20 Jan 2025 19:11:38 GMT
@@ -206,7 +206,7 @@ Reconfigure an existing connector by sending a `PUT` request to `/connectors/{co
 
 ::: tabs
 @tab Bash
-```bash
+```bash:no-line-numbers
 #!/bin/bash
 
 curl -i -X PUT \
@@ -225,7 +225,7 @@ curl -i -X PUT \
 
 After running the script and reconfiguring the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Date: Tue, 28 Jan 2025 21:51:34 GMT
@@ -247,7 +247,7 @@ Delete the connector by sending a `DELETE` request to `connectors/{connector_id}
 
 ::: tabs
 @tab Bash
-```bash
+```bash:no-line-numbers
 #!/bin/bash
 
 curl -i -X DELETE http://localhost:2113/connectors/test-app
@@ -258,7 +258,7 @@ curl -i -X DELETE http://localhost:2113/connectors/test-app
 
 After running the script and deleting the connector, you should receive an `HTTP 200 OK` message similar to the one below:
 
-```
+```text:no-line-numbers
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 Date: Mon, 20 Jan 2025 19:13:42 GMT
