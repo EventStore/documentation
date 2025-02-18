@@ -20,7 +20,7 @@ This step-by-step tutorial guides you through configuring and deploying a **Kafk
 
 The Kafka Sink connector must be configured to define how KurrentDB streams events to Kafka. To do this, you need to create a configuration file that specifies the connection details for the Kafka cluster and the connector instance configuration.
 
-#### 1.1: Create the configuration file
+#### Step 1.1: Create the configuration file
 
 Create a new file named `kafka-sink-config.json` with the following content:
 
@@ -45,7 +45,7 @@ Create a new file named `kafka-sink-config.json` with the following content:
 Replace the placeholders (`your-kafka-cluster-url`, `your-username`, `your-password`) with your actual Kafka cluster details.
 :::
 
-#### 1.2: Deploy the Kafka Sink connector
+#### Step 1.2: Deploy the Kafka Sink connector
 
 Create the Kafka Sink connector instance in KurrentDB by sending a `POST` request to the KurrentDB API with the following `curl` command:
 
@@ -65,10 +65,10 @@ curl -i -L -u admin:password  \
 :::
 
 ::: note
-Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
+Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL. Do this in all following code snippets in this tutorial that contain `admin:password` and `your-kurrentdb-cluster-url`.
 :::
 
-#### 1.3: Verify the connector configuration
+#### Step 1.3: Verify the connector configuration
 
 Run the following command to check the configuration:
 
@@ -85,9 +85,11 @@ curl -u admin:password  \
 ```
 :::
 
+
 ::: note
-Replace `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
+Replace `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL. Do this in all following code snippets in this tutorial that contain `admin:password` and `your-kurrentdb-cluster-url`.
 :::
+
 
 If successful, you should see a JSON response displaying your Kafka Sink configuration, as shown in the example below:
 
@@ -126,9 +128,6 @@ curl -i -L -u admin:password  \
 ```
 :::
 
-::: note
-Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
-:::
 
 If the Kafka Sink connector starts successfully, it should return an `HTTP/1.1 200 OK` response, as shown below:
 
@@ -175,7 +174,7 @@ Check events in the Kafka topic with the following steps:
 
 ### Step 5 (optional): Stop the Kafka Sink connector
 
-If the Kafka Sink connector is no longer needed, you can stop it to free up resources. Run the following command to send a POST request to the KurrentDB API and stop the connector.
+If the Kafka Sink connector is no longer needed, you can stop it to free up resources. Run the following command to send a `POST` request to the KurrentDB API and stop the connector.
 
 ::: tabs
 @tab Powershell
@@ -190,9 +189,6 @@ curl -i -L -u admin:password  \
 ```
 :::
 
-::: note
-Replace `admin:password` with your KurrentDB credentials and `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL.
-:::
 
 If the Kafka Sink connector stops successfully, it should return an `HTTP/1.1 200 OK` response, as shown below:
 
