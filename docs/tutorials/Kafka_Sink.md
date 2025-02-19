@@ -86,10 +86,6 @@ curl -u admin:password  \
 :::
 
 
-::: note
-Replace `your-kurrentdb-cluster-url` with the actual KurrentDB cluster URL. Do this in all following code snippets in this tutorial that contain `admin:password` and `your-kurrentdb-cluster-url`.
-:::
-
 
 If successful, you should see a JSON response displaying your Kafka Sink configuration, as shown in the example below:
 
