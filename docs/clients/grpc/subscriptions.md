@@ -192,18 +192,39 @@ This will subscribe to any stream with a name that begins with `account` or `sav
 
 ## Checkpointing
 
-There is one thing to consider with server-side filtering, and that is when events that match your filter are few and far between. In this scenario, you might find yourself in the situation where EventStoreDB has searched through 1 million events, and the last thing you want to happen is for the server to get to event 900k and then have your client crash. It won't have been able to take a checkpoint and upon a restart, you'd have to go back to the beginning and start again.
+When catch-up subscription is used to process an `$all` stream that contains a huge number of events, the last thing you want is for your application to crash midway, which forces you to restart all the way from the beginning.
 
-In this case you can make use of an additional delegate that will be triggered every n number of events (32 by default).
+### What is a checkpoint?
 
-To make use of it set up `checkpointReached` on the `SubscriptionFilterOptions` class.
+A checkpoint the position of an event in the `$all` stream that your application has processed. By saving this position to a persistent store (e.g., a database), it allows your catch-up subscription to:
+- Recover from crashes by reading the checkpoint and resuming from that position
+- Avoid reprocessing all events from the start
+
+To create a checkpoint, you should store either the event's commit position or prepare position.
+
+::: warning
+If your database contains events created by the legacy TCP client using the [transaction feature](https://docs.kurrent.io/clients/tcp/dotnet/21.2/appending.html#transactions), you should store both the commit and prepare positions together as your checkpoint.
+:::
+
+### Updating checkpoints at regular intervals
+The client SDK provides a way to notify your application after processing a configurable number of events. This allows you to periodically save a checkpoint at regular intervals.
 
 @[code{checkpoint}](@grpc:server_side_filtering.py;server-side-filtering.js;server-side-filtering.ts;server_side_filtering/ServerSideFiltering.java;server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering.rs)
 
-This will be called every `n` number of events. If you want to be specific about the number of events threshold you can also pass that as a parameter.
+By default, the checkpoint notification is sent after every 32 non-system events processed from $all.
+
+### Configuring the checkpoint interval
+You can adjust the checkpoint interval to change how often the client is notified. 
 
 @[code{checkpoint-with-interval}](@grpc:server_side_filtering.py;server-side-filtering.js;server-side-filtering.ts;server_side_filtering/ServerSideFiltering.java;server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering.rs)
-::: warning
-This number will be called every `n * 32` events.
-:::
 
+By configuring this parameter, you can balance between reducing checkpoint overhead and ensuring quick recovery in case of a failure.
+
+::: info
+The checkpoint interval parameter configures the database to notify the client after `n` * 32 number of events where `n` is defined by the parameter.
+
+For example:
+- If `n` = 1, a checkpoint notification is sent every 32 events.
+- If `n` = 2, the notification is sent every 64 events.
+- If `n` = 3, it is sent every 96 events, and so on.
+:::
