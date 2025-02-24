@@ -107,7 +107,7 @@ With fewer dependencies, decoupled systems can scale horizontally more efficient
 | **Aspect** | **State-Based Data Model** | **Event-Based Data Model** |
 | --- | --- | --- |
 | **Primary Focus** | Stores the current state of an object or entity. | Records and stores every event or change that occurs to an object or entity. |
-| **Data Representation** | Focuses on "what" the state is at any given time. | Focuses on "why" and "how" of the current state by tracking the sequence of changes over time as events. |
+| **Data Representation** | Focuses on "what" the state is currently. | Focuses on "why" and "how" of the current state by tracking the sequence of changes over time as events. |
 | **Historical Data** | Only the latest state is stored; previous states are overwritten. | Retains the full history of events, allowing reconstruction of any past state. |
 | **Storage Requirements** | Efficient in terms of storage as only the most recent state is saved. | Generally requires more storage since every event is retained. |
 | **Transparency & Traceability** | Lacks historical context, making it difficult to audit changes or trace past states. | Provides complete transparency, enabling detailed traceability and auditing. |

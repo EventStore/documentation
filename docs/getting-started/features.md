@@ -127,7 +127,7 @@ title: EventStoreDB Feature List
 
 | Feature Name                                                 | Description                                                                                                   |
 |--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| Backup and Restore                                           | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
+| [Backup and Restore](https://docs.kurrent.io/server/v24.10/operations/backup.html#backup)                                           | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
 | [Event Store Replicator](https://replicator.eventstore.org/) | Facilitate replication or migration of data between different EventStoreDB clusters or instances.             |
 
 ### <HopeIcon icon="carbon:tools" size="1.25em"/> Administrative Tool

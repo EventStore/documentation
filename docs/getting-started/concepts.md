@@ -46,7 +46,7 @@ Internally, the event log consists of a series of data files that store events i
 
 EventStoreDB's event log can store billions of events, many of which might be unrelated.
 
-Events are commonly arranged into smaller and logically related groups known as **event streams** to keep them organized and speed up retrieval.
+Events are commonly arranged into smaller, logically related groups known as **event streams** to keep them organized and speed up retrieval.
 
 An event stream is a sequenced group of events from the event log that is identified by a stream ID:
 
@@ -56,7 +56,7 @@ An event stream is a sequenced group of events from the event log that is identi
 
 ### Example of Event Stream
 
-Consider managing a loan system with millions of loan applications and customer events. Searching this vast event log for specific loan or customer details is slow and cumbersome. Instead, organizing events into fine-grained streams using a unique Loan ID or Customer ID allows faster access. 
+Consider managing a loan system with millions of loan applications and customer events. Searching a single, vast event log for specific loan or customer details is slow and cumbersome. Instead, organizing events into fine-grained streams using a unique Loan ID or Customer ID allows faster access. 
 
 For example, a stream named "loan-123" would hold only the events related to Loan ID #123, while "customer-321" would contain events specific to Customer ID #321. This setup enables quick access to relevant events without combing through the entire event log.
 
@@ -64,7 +64,7 @@ For example, a stream named "loan-123" would hold only the events related to Loa
 
 Event stream consists of a **stream ID** (a simple string) and a **sequence of events**. 
 
-Event stream improves the read and event retrieval performance through indexing. It also help enforce business constraints across related events using optimistic concurrency control.
+Event streams improve the read and event retrieval performance through indexing. It also helps enforce business constraints across related events using optimistic concurrency control.
 
 To append an event to EventStoreDB, it must be associated with a specific stream ID. This process simultaneously appends the event to the event log and the specified stream:
 
@@ -140,7 +140,7 @@ For example, running a complex fraud detection system relies on the precise orde
 
 ## Fine-grained Event Streams
 
-EventStoreDB natively supports billions of streams. This enables a design that leverages fine-grained streams, providing precise control to track and isolate individual entities, actions, or processes—even when working at a massive scale with millions or even billions of them.
+EventStoreDB natively supports billions of streams. This enables a design that leverages fine-grained streams, providing precise control to track and isolate individual entities, actions, or processes—even when working at a massive scale.
 
 Organizing events into smaller, more focused streams enhances the speed and efficiency of reads and boosts system performance by processing only the relevant events.
 

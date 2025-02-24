@@ -33,12 +33,12 @@ highlights:
 
       - title: Azure
         icon: devicon:azure
-        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        details: Kurrent Cloud allows you to provision a KurrentDB cluster in Azure.
         link: https://www.kurrent.io/kurrent-cloud
 
       - title: GCP
         icon: devicon:googlecloud
-        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        details: Kurrent Cloud allows you to provision a KurrentDB cluster in GCP.
         link: https://www.kurrent.io/kurrent-cloud
 
       - title: Linux
@@ -92,7 +92,7 @@ highlights:
     - title: HTTP API
       icon: catppuccin:http
       details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
-      link: /http/
+      link: https://docs.kurrent.io/http-api/v24.10/introduction.html
 
 footer: Copyright © Kurrent, Inc
 ---
