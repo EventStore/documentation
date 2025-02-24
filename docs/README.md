@@ -33,12 +33,12 @@ highlights:
 
       - title: Azure
         icon: devicon:azure
-        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        details: Kurrent Cloud allows you to provision a KurrentDB cluster in Azure.
         link: https://www.kurrent.io/kurrent-cloud
 
       - title: GCP
         icon: devicon:googlecloud
-        details: Spin up a managed deployment in Amazon Web Services for free, in less than 10 minutes.
+        details: Kurrent Cloud allows you to provision a KurrentDB cluster in Azure.
         link: https://www.kurrent.io/kurrent-cloud
 
       - title: Linux
