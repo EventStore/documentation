@@ -27,38 +27,6 @@ body:has(#kapa-widget-container) .vp-back-to-top-button {
   font-size: 1rem;
 }
 
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Light.woff2") format("woff2"),
-  url("/fonts/Solina-Light.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Regular.woff2") format("woff2"),
-  url("/fonts/Solina-Regular.woff") format("woff");
-  font-weight: 450;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Medium.woff2") format("woff2"),
-  url("/fonts/Solina-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Bold.woff2") format("woff2"),
-  url("/fonts/Solina-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
 .theme-hope-content:not(.custom)>p,
 .theme-hope-content:not(.custom)>ol p,
 .theme-hope-content:not(.custom)>ul p {
@@ -82,4 +50,8 @@ html[data-theme='dark'] #kapa-widget-portal {
 .vp-page.not-found .vp-toc-placeholder {
   text-align: initial;
   width: var(--content-width, 740px);
+}
+
+.vp-toc-link{
+  font-weight: 400
 }
