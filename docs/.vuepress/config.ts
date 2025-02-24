@@ -50,6 +50,15 @@ export default defineUserConfig({
         md.use(linkCheckPlugin);
         // @ts-ignore
         md.use(dl);
+
+        const originalHighlight = md.options.highlight || ((code, lang, attrs) => code);
+
+        md.options.highlight = (code, lang, attrs) => {
+        if (lang === "env") {
+            lang = "bash";
+        }
+        return originalHighlight(code, lang, attrs);
+        };
     },
     theme: hopeTheme(themeOptions),
     head: [
