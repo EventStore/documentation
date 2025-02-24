@@ -92,7 +92,7 @@ highlights:
     - title: HTTP API
       icon: catppuccin:http
       details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
-      link: /http/
+      link: https://docs.kurrent.io/http-api/v24.10/introduction.html
 
 footer: Copyright © Kurrent, Inc
 ---

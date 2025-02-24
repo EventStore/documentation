@@ -8,7 +8,7 @@ title: Introduction
 
 EventStoreDB is an event-native database designed specifically to store, process, and deliver application state changes, known as events.
 
-Each event captures a specific change in the state say when an order is placed, payment is processed, or item is shipped. By capturing all these incremental updates, EventStoreDB provides a complete audit trail of a business process.
+Each event captures a specific change in the state. Examples include when an order is placed, a payment is processed, or an item is shipped. By capturing all these incremental updates, EventStoreDB captures temporal context and provides a complete audit trail of a business process.
 
 EventStoreDB offers the following features:
 
@@ -16,7 +16,7 @@ EventStoreDB offers the following features:
 |---------|---------------------------------------------------------------------------------------------------------------------------|
 | [Append-only Event Log](./concepts.md#event-log) | A durable, sequential, and immutable log that captures events in a consistent order.                                      |
 | [Streams](./concepts.md#event-stream) | Groups and indexes events to organize and speed up retrieval.                                                             |
-| [Subscription](@server/features/persistent-subscriptions.md) and [Connectors](@server/features/connectors/README.md) | Delivers events to external systems through push or pull options.                                                         |
+| [Subscriptions](@server/features/persistent-subscriptions.md) and [Connectors](@server/features/connectors/README.md) | Delivers events to external systems through push or pull options.                                                         |
 | [Projection](@server/features/projections/README.md) | Transforms and filters events into different streams or state.                                                            |
 | [Multiple Hosting Options](https://eventstore.com/downloads) | Fully managed with [Event Store Cloud](/cloud/introduction.md), or self-managed on Linux, Windows, macOS, or with Docker. |
 | [Client SDK](@clients/grpc/getting-started.md) | Available in Python, Java, .NET, Node.js, Go, and Rust.                                                                   |
@@ -29,23 +29,25 @@ To learn more about the features of EventStoreDB, [click here](/getting-started/
 
 ## Why EventStoreDB?
 
-Traditional databases often focus on the current state and do this by overwriting data, discarding valuable information about the past.
+Traditional databases often focus only on current state and overwrite data, which discards valuable information about the past and the events that shaped the current state.
 
 In contrast, EventStoreDB keeps a complete history of changes, providing organizations with richer, and more contextual data that supports deeper insights - critical in today’s AI and data-driven environment.
 
 ::: details Use Case: Machine Learning
 
-A German tool manufacturer leveraged historical events from EventStoreDB on manufacturing times and tool specifications (such as length and diameter) to [predict manufacturing durations for custom tools](https://www.eventstore.com/blog/from-data-to-insights-using-event-log-data-to-train-machine-learning-models). This prediction was then integrated into an online quote system, generating instant quotes—a significant improvement over the previous method of manual quotes based on the sales team's experience.
+A German tool manufacturer leveraged historical events from EventStoreDB on manufacturing times and tool specifications (such as length and diameter) to [predict manufacturing durations for custom tools](https://www.eventstore.com/blog/from-data-to-insights-using-event-log-data-to-train-machine-learning-models). This prediction was then integrated into an online quote system, which automated the generation of instant, more accurate quotes—a significant improvement over the previous method of the sales team creating quotes based mainly on their experience.
 :::
 
 EventStoreDB also includes additional features that make it simple to develop event-native applications that enable real-time updates and minimize system dependencies while maintaining data consistency.
 
 ::: details Use Case: Real-time Streaming
 
-You can use EventStoreDB to streamline your payment process, just like Holcim, a global construction material provider, did. By [replacing batch processing with real-time streaming of payment statuses](https://www.eventstore.com/case-studies/holcim) from SAP system to depots, Holcim eliminated the previous day-long wait for payment verification and order collection. This significant improvement in customer service and operational efficiency can give you a competitive edge in your industry.
+You can use EventStoreDB to streamline your payment process. Holcim, a global construction material provider [replaced batch processing with real-time streaming of payment statuses](https://www.eventstore.com/case-studies/holcim) from SAP system to depots.  In doing so, Holcim eliminated the previous day-long wait for payment verification and order collection. 
+
+These types of significant improvements in customer service and operational efficiency can provide a competitive edge regardless of industry.
 :::
 
-Finally, EventStoreDB can reconstruct the current state of any object from its historical events, providing the best of both current and historical representations to answer the "what" and "why" within a single system.
+Finally, EventStoreDB can reconstruct the current state of any object from its historical events. In doing so, EventStoreDB provides the current and historical context that allows organizations to clearly understand the "what" and "why" (and "when") within a single system.
 
 ::: info Current State and Historical Events Representations
 
