@@ -1,5 +1,5 @@
-import { instance as ver } from "../lib/versioning";
 import type {EsSidebarOptions} from "../lib/types";
+import { instance as ver } from "../lib/versioning";
 
 export const sidebarEn: EsSidebarOptions = {
   "/getting-started/": [

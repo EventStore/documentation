@@ -1,18 +1,17 @@
+import {dl} from "@mdit/plugin-dl";
 import viteBundler from "@vuepress/bundler-vite";
-import {path} from 'vuepress/utils';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import dotenv from 'dotenv';
 import vueDevTools from 'vite-plugin-vue-devtools'
 import {defineUserConfig} from "vuepress";
+import {path} from 'vuepress/utils';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+import {hopeTheme} from "vuepress-theme-hope";
+import {themeOptions} from "./configs/theme";
 import {projectionSamplesPath, resolveMultiSamplesPath} from "./lib/samples";
 import {instance as ver} from "./lib/versioning";
 import {linkCheckPlugin} from "./markdown/linkCheck";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
-import {hopeTheme} from "vuepress-theme-hope";
-import {dl} from "@mdit/plugin-dl";
-import {themeOptions} from "./configs/theme";
 
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
 

@@ -1,4 +1,4 @@
-import {type PluginSimple} from "markdown-it";
+import type {PluginSimple} from "markdown-it";
 import {fs, logger, path} from "vuepress/utils";
 import type {MdToken} from "../types";
 
@@ -45,7 +45,7 @@ export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: bo
     if (ignorePlaceholders && href.startsWith("@")) return;
     // check the link
     const split = href.split("#");
-    const currentPath = href[0] == "/" ? path.resolve(__dirname, "../../..") : path.dirname(env.filePath);
+    const currentPath = href[0] === "/" ? path.resolve(__dirname, "../../..") : path.dirname(env.filePath);
     const p = path.join(currentPath, split[0]);
     fs.stat(p, (err, stat) => {
         if (err != null) {
