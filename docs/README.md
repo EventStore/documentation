@@ -38,7 +38,7 @@ highlights:
 
       - title: GCP
         icon: devicon:googlecloud
-        details: Kurrent Cloud allows you to provision a KurrentDB cluster in Azure.
+        details: Kurrent Cloud allows you to provision a KurrentDB cluster in GCP.
         link: https://www.kurrent.io/kurrent-cloud
 
       - title: Linux
