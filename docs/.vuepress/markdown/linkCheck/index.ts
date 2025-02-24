@@ -21,27 +21,29 @@ function findAnchor(filename: string, anchor: string): boolean {
 
     const href = `<a id="${anchor}">`;
     const lines = fs.readFileSync(filename).toString().split("\n");
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
+    for (const line of lines) {
         if (line.includes(href)) return true;
-
-        if (line.charAt(0) != "#") continue;
-
+    
+        if (line.charAt(0) !== "#") continue;
+    
         const lineAnchor = asAnchor(line);
         // if (enableLogs) logger.tip(lineAnchor)
-        if (lineAnchor === anchor || lineAnchor.replace("--", "-") === anchor) return true;
+        if (lineAnchor === anchor || lineAnchor.replace("--", "-") === anchor) {
+            return true;
+        }
     }
+    
     return false;
 }
 
-function checkLink(token: MdToken, attrName: string, env: MdEnv) {
+function checkLink(token: MdToken, attrName: string, env: MdEnv):void {
     const href = token.attrGet(attrName);
     if (href === null) return;
     if (href.startsWith("http") || href.endsWith(".html") || env.filePathRelative.startsWith("samples")) return;
     ensureLocalLink(href, env, true);
 }
 
-export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: boolean) {
+export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: boolean):void {
     if (ignorePlaceholders && href.startsWith("@")) return;
     // check the link
     const split = href.split("#");
@@ -63,11 +65,23 @@ export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: bo
             pathToCheck = env.filePath;
         }
         if (split.length > 1 && !split[0].endsWith(".md") && split[1] !== "light" && split[1] !== "dark") {
-            const anchorResolved = findAnchor(pathToCheck, split[1]);
+            let anchorResolved = findAnchor(pathToCheck, split[1]);
+            
+            // Find edge-case, where there are multiple anchors with the same name in the page, creating a numeric suffix
             if (!anchorResolved) {
-                logger.error(`Broken anchor link in ${env.filePathRelative}: ${split[1]} in file ${pathToCheck}`);
+              const match = split[1].match(/(.+)-\d+$/);
+              if (match) {
+                // Attempt to resolve the anchor without the numeric suffix.
+                anchorResolved = findAnchor(pathToCheck, match[1]);
+              }
             }
-        }
+            
+            if (!anchorResolved) {
+              logger.error(
+                `Broken anchor link in ${env.filePathRelative}: ${split[1]} in file ${pathToCheck}`
+              );
+            }
+          }
     });
 }
 
