@@ -10,8 +10,8 @@ This feature allows EventStoreDB administrators to define stream access policies
 
 #### Prerequisites
 
-* [EventStoreDB 24.10 LTS installed and running](/server/v24.10/quick-start/installation.html)
-* [License key](/server/v24.10/quick-start/installation.html#license-keys) for Stream Policy Authorization (a valid
+* [EventStoreDB 24.10 LTS installed and running](@server/quick-start/installation.md)
+* [License key](@server/quick-start/installation.md#license-keys) for Stream Policy Authorization (a valid
   license is required to use this feature).
 * Basic understanding of EventStoreDB, stream prefixes, and access control.
 
@@ -29,13 +29,13 @@ EventStoreDB logs. Look for the following log message:
 [INF] AuthorizationPolicyRegistryFactory Loaded Authorization Policy plugin: streampolicy
 ```
 
-Refer to the [log documentation](/server/v24.10/diagnostics/logs.html) for instructions on accessing EventStoreDB logs.
+Refer to the [log documentation](@server/diagnostics/logs.md) for instructions on accessing EventStoreDB logs.
 
 ### Step 3: Enable Stream Policy Authorization
 
 ::: note
 When Stream Policy Authorization is enabled, EventStoreDB will not enforce
-stream [Access Control Lists (ACLs)](/server/v24.10/security/user-authorization.html#access-control-lists).*
+stream [Access Control Lists (ACLs)](@server/security/user-authorization.md#access-control-lists).*
 :::
 
 To enable stream policies, append an event of type `$authorization-policy-changed` to the
@@ -106,7 +106,7 @@ following log messages:
 ```
 
 If no valid license is detected, Stream Policy Authorization logs errors and defaults to the ACL policy settings. Refer
-to the [Stream Policy Authorization documentation](/server/v24.10/security/user-authorization.html#troubleshooting) for
+to the [Stream Policy Authorization documentation](@server/security/user-authorization.md#troubleshooting) for
 a list of potential errors and their resolutions.
 
 ### Step 5: Configure stream policies and rules
