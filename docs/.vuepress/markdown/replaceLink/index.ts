@@ -1,6 +1,7 @@
 import type {PluginWithOptions} from "markdown-it";
 import {fs, logger, path} from "vuepress/utils";
 import {instance} from "../../lib/versioning";
+import { logInfo } from "../../util/log";
 import {ensureLocalLink} from "../linkCheck";
 import {resolveVersionedPath} from "../resolver";
 import type {MdEnv, MdToken} from "../types";
@@ -54,7 +55,7 @@ function replaceCrossLinks(token: MdToken, env: MdEnv): void {
         return;
     }
     token.attrSet("href", newRef);
-    logger.info(`Resolved ${href} to ${newRef}`);
+    logInfo(`Resolved ${href} to ${newRef}`);
 }
 
 export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (md, opts) => {
@@ -77,7 +78,7 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                     }
                 }
                 token.attrSet(attrName, replacement);
-                logger.info(`Replaced ${link} with ${replacement}`);
+                logInfo(`Replaced ${link} with ${replacement}`);
             };
 
             state.tokens.forEach((blockToken) => {
