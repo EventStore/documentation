@@ -57,6 +57,7 @@
     "debug": "vuepress dev docs --debug",
     "dev": "vuepress dev docs --clean-cache --clean-temp",
     "build": "vuepress build docs",
+    "build:verbose": "vuepress build docs -- --verbose",
     "build-prod": "pnpm run import && pnpm build",
     "import": "node ./import/import-client-docs.cjs",
     "serve": "node ./serve.js",

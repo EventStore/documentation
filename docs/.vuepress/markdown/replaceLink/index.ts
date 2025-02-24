@@ -1,18 +1,16 @@
-import {type PluginWithOptions} from "markdown-it";
+import type {PluginWithOptions} from "markdown-it";
 import {fs, logger, path} from "vuepress/utils";
-import version from "../../lib/version";
 import {instance} from "../../lib/versioning";
+import { logInfo } from "../../util/log";
 import {ensureLocalLink} from "../linkCheck";
-import type {MdEnv, MdToken} from "../types";
 import {resolveVersionedPath} from "../resolver";
+import type {MdEnv, MdToken} from "../types";
 
 export interface ReplaceLinkPluginOptions {
-    replaceLink?: (link: string, env: any) => string;
+    replaceLink?: (link: string, env: MdEnv) => string;
 }
 
-interface resolveFunction {
-    (filename: string): string;
-}
+type ResolveFunction = (filename: string) => string;
 
 function checkFile(filepath: string): boolean {
     const p = filepath.split("#");
@@ -28,7 +26,7 @@ function getNewPath(href: string, version: string): string {
     return base + sub;
 }
 
-function replaceCrossLinks(token: MdToken, env: MdEnv) {
+function replaceCrossLinks(token: MdToken, env: MdEnv): void {
     const href = token.attrGet("href");
     if (href === null) return;
 
@@ -36,7 +34,7 @@ function replaceCrossLinks(token: MdToken, env: MdEnv) {
 
     const fileVersion = (version.getVersion(env.filePathRelative) ?? instance.latest.split("/")[1]).replace("v", "");
 
-    const attemptResolve: resolveFunction[] = [
+    const attemptResolve: ResolveFunction[] = [
         x => x,
         x => `${x}.0`,
         x => `v${x}`,
@@ -57,7 +55,7 @@ function replaceCrossLinks(token: MdToken, env: MdEnv) {
         return;
     }
     token.attrSet("href", newRef);
-    logger.info(`Resolved ${href} to ${newRef}`);
+    logInfo(`Resolved ${href} to ${newRef}`);
 }
 
 export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (md, opts) => {
@@ -67,7 +65,7 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
         (state) => {
             if (opts?.replaceLink === undefined) return;
 
-            const replaceAttr = (token: MdToken, attrName: string) => {
+            const replaceAttr = (token: MdToken, attrName: string):void => {
                 const link = token.attrGet(attrName)!;
                 let replacement = opts.replaceLink!(link, state.env);
                 if (replacement === link) return;
@@ -80,7 +78,7 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                     }
                 }
                 token.attrSet(attrName, replacement);
-                logger.info(`Replaced ${link} with ${replacement}`);
+                logInfo(`Replaced ${link} with ${replacement}`);
             };
 
             state.tokens.forEach((blockToken) => {
@@ -91,7 +89,7 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                 blockToken.children.forEach((token) => {
                     const type = token.type;
                     switch (type) {
-                        case "link_open":
+                        case "link_open": {
                             const href = token.attrGet("href");
                             if (href === null) return;
                             replaceAttr(token, "href")
@@ -101,6 +99,7 @@ export const replaceLinkPlugin: PluginWithOptions<ReplaceLinkPluginOptions> = (m
                                 ensureLocalLink(replaced, state.env, false);
                             }
                             break;
+                        }
                         case "image":
                             replaceAttr(token, "src")
                             break;
