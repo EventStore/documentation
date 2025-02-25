@@ -13,6 +13,7 @@ export const themeOptions: ThemeOptions = {
     sidebar: sidebarEn,
     toc: true,
     pure: false,
+    darkmode:"toggle",
     headerDepth: 3,
     plugins: plugins,
     markdown: {
