@@ -147,7 +147,7 @@ Now, you can use MongoDB Compass or CLI to verify that the sample events you app
 1. Access your MongoDB client (e.g., MongoDB Compass, `mongosh`, or a cloud dashboard).  
 2. Connect using the same database and collection as defined in the configuration.  
 3. Run the query below to check for the streamed events, replacing `"your-collection-name"` with your MongoDB collection:  
-   bash  
+     
    `db.your-collection-name.find().pretty()`  
 4. If the MongoDB Sink connector is working correctly, you should see the appended events stored in your collection.
 
