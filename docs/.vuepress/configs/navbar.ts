@@ -8,7 +8,7 @@ export const navbarEn: NavbarOptions = [
         link: "/cloud/introduction",
     },
     {
-        text: "Kurrent Platform",
+        text: "KurrentDB",
         icon: "ion:server-outline",
         children: [
             {text: "Current", children: ver.linksFor("server", false)},
