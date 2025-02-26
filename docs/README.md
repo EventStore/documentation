@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: Kurrent Resources
+heroText: Welcome to Kurrent Docs
 tagline: Event-native database for storing immutable facts as events, complex event processing, and event-driven architectures.
 actions:
 - text: Get started
@@ -10,7 +10,7 @@ actions:
 - text: Start building
   icon: file-icons:easybuild
   link: /clients/grpc/getting-started.html
-
+  
 highlights:
   - header: Jump start development
     highlights:
