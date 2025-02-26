@@ -13,6 +13,7 @@ import {linkCheckPlugin} from "./markdown/linkCheck";
 import {replaceLinkPlugin} from "./markdown/replaceLink";
 import {importCodePlugin} from "./markdown/xode/importCodePlugin";
 
+
 dotenv.config({path: path.join(__dirname, '..', '..', '.algolia', '.env')});
 
 // noinspection JSUnusedGlobalSymbols
@@ -20,7 +21,7 @@ export default defineUserConfig({
     base: "/",
     dest: "public",
     bundler: viteBundler({viteOptions: {plugins: [vueDevTools(),],}}),
-    title: "Kurrent Resources",
+    title: "Kurrent Docs",
     description: "The stream database built for Event Sourcing",
     define: {
         __VERSIONS__: {
@@ -65,7 +66,7 @@ export default defineUserConfig({
         ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
             'data-website-id': '9ff147dd-2c68-495d-9859-de159901d8c5',
-            'data-project-name': 'Event Store',
+            'data-project-name': 'Kurrent',
             'data-project-color': '#631B3A',
             'data-project-logo': '/logo-white.png'
         }],

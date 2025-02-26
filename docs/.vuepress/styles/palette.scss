@@ -15,14 +15,22 @@ $vp-font-heading: 'Solina, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto
 $font-body: 15px;
 
 html[data-theme='dark'] {
-  --theme-color: #64EDBB;
-  --theme-color-light: #{color.scale(#64EDBB, $lightness: 10%)};
-  --theme-color-dark: #{color.scale(#64EDBB, $lightness: -10%)};
-  --theme-color-mask: #{color.change(#64EDBB, $alpha: 0.15)};
+  --theme-color: #A17689;
+  --vp-c-accent-hover:#A17689;
+  --vp-c-accent:#A17689;
+  --vp-c-accent-bg: #A17689;
+  --vp-c-accent-soft: #{color.scale(#A17689, $lightness: 85%)};
+  --theme-color-light: #{color.scale(#A17689, $lightness: -10%)};
+  --theme-color-dark: #{color.scale(#A17689, $lightness: 10%)};
+  --theme-color-mask: #{color.change(#A17689, $alpha: 0.15)};
 }
 
 html[data-theme='light'] {
   --theme-color: #631B3A;
+  --vp-c-accent-hover:#631B3A;
+  --vp-c-accent:#631B3A;
+  --vp-c-accent-bg: #631B3A;
+  --vp-c-accent-soft: #{color.scale(#631B3A, $lightness: 85%)};
   --theme-color-light: #{color.scale(#631B3A, $lightness: -10%)};
   --theme-color-dark: #{color.scale(#631B3A, $lightness: 10%)};
   --theme-color-mask: #{color.change(#631B3A, $alpha: 0.15)};
@@ -37,3 +45,4 @@ $vp-c-bg-elv-soft: (
    light: #fff,
    dark: #080B0D,
 );
+

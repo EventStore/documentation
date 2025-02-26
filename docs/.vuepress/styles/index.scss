@@ -16,13 +16,6 @@ body:has(#kapa-widget-container) .vp-back-to-top-button {
   font-size: 1.5em;
   vertical-align: middle;
 }
-
-//.vp-hero-image {
-//  width: 100%;
-  //height: 288px;
-  //max-width: 288px;
-//}
-
 .vp-nav-links {
   font-size: 1rem;
 }
@@ -82,4 +75,20 @@ html[data-theme='dark'] #kapa-widget-portal {
 .vp-page.not-found .vp-toc-placeholder {
   text-align: initial;
   width: var(--content-width, 740px);
+}
+
+.vp-hero-info{
+  text-align: center;
+}
+
+.DocSearch-Button-Keys{
+  display:none;
+}
+
+.DocSearch-Button-Placeholder{
+  padding-right: 30px;
+}
+
+#main-description{
+  max-width: 50rem;
 }

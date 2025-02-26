@@ -1,5 +1,6 @@
 import type {ThemeOptions} from "vuepress-theme-hope";
 import {navbarEn} from "./navbar";
+import {navbarLayout} from "./navbarLayout";
 import plugins from "./plugins";
 import {sidebarEn} from "./sidebar";
 
@@ -10,8 +11,12 @@ export const themeOptions: ThemeOptions = {
     editLink: false,
     lastUpdated: true,
     navbar: navbarEn,
+    navbarLayout,
     sidebar: sidebarEn,
     toc: true,
+    repo: "https://github.com/eventstore",
+    repoLabel: "GitHub",
+    repoDisplay: true,
     pure: false,
     darkmode:"toggle",
     headerDepth: 3,
@@ -34,3 +39,4 @@ export const themeOptions: ThemeOptions = {
         }
     }
 }
+
