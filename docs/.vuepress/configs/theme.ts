@@ -1,6 +1,6 @@
 import type {ThemeOptions} from "vuepress-theme-hope";
-import plugins from "./plugins";
 import {navbarEn} from "./navbar";
+import plugins from "./plugins";
 import {sidebarEn} from "./sidebar";
 
 export const themeOptions: ThemeOptions = {
@@ -13,8 +13,9 @@ export const themeOptions: ThemeOptions = {
     sidebar: sidebarEn,
     toc: true,
     pure: false,
+    darkmode:"toggle",
     headerDepth: 3,
-    plugins: plugins,
+    plugins,
     markdown: {
         figure: true,
         imgLazyload: true,
