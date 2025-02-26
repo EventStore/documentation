@@ -100,9 +100,9 @@ URL to the EventStoreDB Admin UI 👉: https://XXXXXXXXX.XXX
 
 `start_cluster.sh` is a custom script written for the quickstart that will: 
 - Check if Docker is currently running locally
-- Pull the EventStoreDB server Docker container,
-- Start the server in Docker, and
-- Print the EventStoreDB Admin UI URL in the terminal.
+- Pull the EventStoreDB server Docker container
+- Start the server in Docker
+- Print the EventStoreDB Admin UI URL in the terminal
 
 To see how to start the EventStoreDB server in Docker, follow these steps
 
@@ -274,7 +274,7 @@ The version of the EventStoreDB client above may be outdated. For more informati
 :::
 
 :::: info
-To view the source code in Github, click the link below:
+To view the source code in GitHub, click the link below:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -516,7 +516,7 @@ To learn more about other EventStoreDB client functions, [click here](@clients/g
 :::
 
 :::: info
-To view the source code in Github, click the link below:
+To view the source code in GitHub, click the link below:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -810,7 +810,7 @@ To view the source code in Github, click the link below:
 In this quickstart, you:
 
 1. Started the EventStoreDB server.
-2. Browsed to the Admin UI.
+2. Navigated to the Admin UI.
 3. Appended an event to EventStoreDB.
 4. Verified the event in the Admin UI.
 5. Read the event from EventStoreDB programmatically.
@@ -823,7 +823,7 @@ Now that you've completed the quickstart, you may want to explore the following:
 
 - [EventStoreDB "From Scratch" Series](https://academy.eventstore.com/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
 
-- [Install EventStoreDB locally](@server/quick-start/installation.md): Learn how to installEventStoreDB on your local machine for deeper exploration and integration with your projects.
+- [Install EventStoreDB locally](@server/quick-start/installation.md): Learn how to install EventStoreDB on your local machine for deeper exploration and integration with your projects.
 
 - [EventStoreDB Client SDK Documentation](@clients/grpc/getting-started.md): Understand how to interact with EventStoreDB programmatically with EventStoreDB clients.
 
