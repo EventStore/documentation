@@ -51,7 +51,8 @@ export default defineUserConfig({
         // @ts-ignore
         md.use(dl);
     },
-    theme: hopeTheme(themeOptions),
+    //allow to override with custom components
+    theme: hopeTheme(themeOptions,{custom: true}),
     head: [
         ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
@@ -61,5 +62,12 @@ export default defineUserConfig({
             'data-project-logo': '/logo-white.png'
         }],
         ['script', {src: "/js/snippet.js"}]
-    ]
+    ],
+    // add our own components for blog theme (Tutorials & Guides)
+    alias: {
+        //"@theme-hope/modules/blog/components/InfoList": path.resolve(__dirname, "./components/blogInfos.ts"),
+        "@theme-hope/modules/blog/components/InfoPanel": path.resolve(__dirname, "./components/infoPanel.ts"),
+        
+
+    }
 });
