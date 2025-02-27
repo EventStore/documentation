@@ -30,7 +30,23 @@ export const navbarEn: NavbarOptions = [
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
     },
-
+    {
+        text: "Tutorials & Guides",
+        link: "/resources/README.md",
+        icon: "hugeicons:mentoring",
+        // children:[
+        //     {
+        //         text: "Tutorials",
+        //         link: "/resources/tutorials",
+        //         icon:"hugeicons:mentoring"
+        //     },
+        //     {
+        //         text: "Guides",
+        //         link: "/resources/guides",
+        //         icon:"hugeicons:mentoring"
+        //     }
+        // ]
+    },
     {
         text: "Resources",
         icon: "material-symbols:support",

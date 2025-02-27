@@ -1,6 +1,13 @@
 ---
 title: Kafka Sink
-order: 4
+categories:
+  - Tutorial
+  - Operations
+  - Connectors
+tag:
+  - Connectors
+  - Sink
+  - Kafka
 ---
 
 ## Tutorial: Setting up and using a Kafka Sink connector in KurrentDB

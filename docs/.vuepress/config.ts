@@ -61,6 +61,7 @@ export default defineUserConfig({
         return originalHighlight(code, lang, attrs);
         };
     },
+    //allow to override with custom components
     theme: hopeTheme(themeOptions,{custom: true}),
     head: [
         ['script', {
@@ -74,9 +75,10 @@ export default defineUserConfig({
         ['script', { type: "text/javascript", src: "https://secure.businessintuition247.com/js/sc/264384.js" }],
         ['noscript', {}, '<img alt="" src="https://secure.businessintuition247.com/264384.png" style="display:none;" />']
     ],   
-    // add our own components for blog theme (Tutorials & Guides)
     alias: {
         "@theme-hope/components/BreadCrumb": path.resolve(__dirname, "./components/breadCrumb.ts"),
         "@theme-hope/modules/info/components/TOC": path.resolve(__dirname, "./components/TocWithFeedback.ts"),
+        // add our own components for blog theme (Tutorials & Guides)
+        "@theme-hope/modules/blog/components/InfoPanel": path.resolve(__dirname, "./components/infoPanel.ts"),
     }
 });

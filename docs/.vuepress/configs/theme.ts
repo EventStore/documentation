@@ -36,7 +36,15 @@ export const themeOptions: ThemeOptions = {
                 light: "one-light",
                 dark: "one-dark-pro",
             }
-        }
-    }
+        },
+        //allow inclusion of files in markdown and promote reuse.
+        include: true,
+    },
+    // display plurals for blog category and tag.
+    blogLocales: {
+        article: "Articles",
+        category: "Categories",
+        tag: "Tags",
+      },
 }
 

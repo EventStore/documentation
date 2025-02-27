@@ -149,3 +149,7 @@ div[style*="z-index: 2147483647"] {
 figure:hover {
   cursor: pointer;
 }
+/* Fix for height of hero text without image. */
+.vp-blog-hero {
+  height: auto,
+}

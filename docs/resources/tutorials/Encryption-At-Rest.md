@@ -1,6 +1,12 @@
 ---
 title: Encryption-At-Rest
-order: 2
+categories:
+  - Tutorial
+  - Database
+  - Operations
+tag:
+  - Encryption
+  - Security
 ---
 
 ## Tutorial: Setting up and using Encryption-At-Rest in EventStoreDB
