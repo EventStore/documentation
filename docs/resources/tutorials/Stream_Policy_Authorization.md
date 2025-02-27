@@ -1,6 +1,10 @@
 ---
 title: Stream Policy Authorization
-order: 1
+categories:
+  - Tutorial
+  - Operations
+tag:
+  - Security
 ---
 
 ## Tutorial: Setting up and using Stream Policy Authorization in EventStoreDB

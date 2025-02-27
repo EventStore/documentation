@@ -83,3 +83,8 @@ html[data-theme='dark'] #kapa-widget-portal {
   text-align: initial;
   width: var(--content-width, 740px);
 }
+
+/* Fix for height of hero text without image. */
+.vp-blog-hero {
+  height: auto,
+}

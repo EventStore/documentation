@@ -1,6 +1,13 @@
 ---
 title: HTTP Sink
-order: 3
+categories:
+  - Tutorial
+  - Operations
+  - Connectors
+tag:
+  - Connectors
+  - Sink
+  - HTTP
 ---
 
 ## Tutorial: Setting up and using an HTTP Sink in EventStoreDB

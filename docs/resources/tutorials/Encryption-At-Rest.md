@@ -1,6 +1,12 @@
 ---
 title: Encryption-At-Rest
-order: 2
+categories:
+  - Tutorial
+  - Database
+  - Operations
+tag:
+  - Encryption
+  - Security
 ---
 
 ## Tutorial: Setting up and using Encryption-At-Rest in EventStoreDB
@@ -9,8 +15,8 @@ The **Encryption-At-Rest** feature provides encryption for EventStoreDB to secur
 
 #### Prerequisites:
 
-* [EventStoreDB 24.10 LTS installed and running.](/server/v24.10/quick-start/installation.html)  
-* [License key](/server/v24.10/quick-start/installation.html#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
+* [EventStoreDB 24.10 LTS installed and running.](/server/v24.10/quick-start/installation.md)  
+* [License key](/server/v24.10/quick-start/installation.md#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
 * Basic understanding of EventStoreDB, encryption principles, and key management.
 
 ### Step 1: Verify license key
@@ -25,7 +31,7 @@ By default, Encryption-At-Rest is bundled with EventStoreDB 24.20 LTS. You can c
 [INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316
 ```
 
-Refer to the [log documentation](/server/v24.10/diagnostics/logs.html) for instructions on accessing EventStoreDB logs.
+Refer to the [log documentation](/server/v24.10/diagnostics/logs.md) for instructions on accessing EventStoreDB logs.
 
 ### Step 3: Generate a master key
 
@@ -44,7 +50,7 @@ Place the generated master key in a secure directory on a **separate drive** fro
 #### Step 4.1: Add the configuration file
 
 1. Navigate to the `config` directory within the EventStoreDB installation.  
-   There are multiple [configuration mechanisms](/server/v24.10/configuration/) available. Since options set in a JSON configuration override those set in a YAML configuration, here is an example using JSON. You can also find a [YAML configuration file example in the documentation](https://developers.eventstore.com/server/v24.10/security/#configuration).   
+   There are multiple [configuration mechanisms](/server/v24.10/configuration/README.md) available. Since options set in a JSON configuration override those set in a YAML configuration, here is an example using JSON. You can also find a [YAML configuration file example in the documentation](/server/v24.10/security/README.md#configuration).   
      
    Create a new JSON configuration file (e.g., `encryption-config.json`) with the following content:   
    ```json

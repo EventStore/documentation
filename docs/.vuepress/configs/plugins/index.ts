@@ -5,6 +5,7 @@ import {watermark} from "./watermark";
 import {seoPlugin} from "./seo";
 import {hostname} from "./shared";
 import type {SitemapPluginOptions} from "@vuepress/plugin-sitemap";
+import {blogOptions} from "./blog";
 
 export default {
     components: {
@@ -22,6 +23,7 @@ export default {
         modifyTimeGetter: (page, app) => fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
     } as SitemapPluginOptions,
     watermark: watermark,
-    notice: notices
+    notice: notices,
+    blog: blogOptions,
 
 } satisfies PluginsOptions;
