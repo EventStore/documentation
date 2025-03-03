@@ -32,4 +32,3 @@ Read the [local development guide](CONTRIBUTING.md#running-the-documentation-loc
 Documentation is using Algolia DocSearch service for indexing and searching through the contents. Currently, the search indexes are updated by Algolia Crawler and can only be configured on the Crawler dashboard.
 
 If you notice any issues with the search, please create an issue in this repository.
- 
