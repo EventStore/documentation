@@ -1,7 +1,7 @@
 ---
 title: Stream Policy Authorization
 categories:
-  - Tutorial
+  - Database
   - Operations
 tag:
   - Security
