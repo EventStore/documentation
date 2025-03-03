@@ -88,3 +88,7 @@ html[data-theme='dark'] #kapa-widget-portal {
 .vp-blog-hero {
   height: auto,
 }
+/* Fix display the "star" in the articles list of "/articles/" */
+.vp-article-type-wrapper > li.vp-article-type:nth-child(2) {
+  display: none;
+}

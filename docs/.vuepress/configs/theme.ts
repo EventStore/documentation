@@ -40,5 +40,8 @@ export const themeOptions: ThemeOptions = {
         article: "Articles",
         category: "Categories",
         tag: "Tags",
+        guide: "Guides",
+        tutorial: "Tutorials",
+        empty: "",
       },
 }
