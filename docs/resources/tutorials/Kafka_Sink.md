@@ -1,7 +1,6 @@
 ---
 title: Kafka Sink
 categories:
-  - Tutorial
   - Operations
   - Connectors
 tag:

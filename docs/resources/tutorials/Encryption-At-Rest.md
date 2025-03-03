@@ -1,7 +1,6 @@
 ---
 title: Encryption-At-Rest
 categories:
-  - Tutorial
   - Database
   - Operations
 tag:

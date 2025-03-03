@@ -1,8 +1,7 @@
 ---
 title: Starting KurrentDB in Docker
 categories:
-  - Guide
-  - Databse
+  - Database
   - Operations
 tag:
   - Install
@@ -12,7 +11,7 @@ tag:
 
 ## Guide: Starting KurrentDB in docker
 
-This guide will take you through installing and starting the KurrentDB database in Docker, either a single node or as a cluster.
+This guide will take you through installing and starting the KurrentDB database in Docker, either as a single node or as a cluster.
 <!-- more -->
 
 <!-- @include: ../snippets/start_KurrentDB.snippet.md#requirements -->
