@@ -1,7 +1,6 @@
 ---
 title: HTTP Sink
 categories:
-  - Tutorial
   - Operations
   - Connectors
 tag:
