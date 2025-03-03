@@ -20,7 +20,12 @@ export default {
     sitemap: {
         hostname: hostname,
         devServer: process.env.NODE_ENV === 'development',
-        modifyTimeGetter: (page, app) => fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString()
+        modifyTimeGetter: (page, app) => {
+            if (page.filePathRelative == null) {
+                return "";
+            } 
+            return fs.statSync(app.dir.source(page.filePathRelative!)).mtime.toISOString();
+        }
     } as SitemapPluginOptions,
     watermark: watermark,
     notice: notices,

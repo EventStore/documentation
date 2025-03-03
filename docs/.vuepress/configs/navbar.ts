@@ -37,12 +37,12 @@ export const navbarEn: NavbarOptions = [
         // children:[
         //     {
         //         text: "Tutorials",
-        //         link: "/resources/tutorials",
+        //         link: "/resources/tutorials/",
         //         icon:"hugeicons:mentoring"
         //     },
         //     {
         //         text: "Guides",
-        //         link: "/resources/guides",
+        //         link: "/resources/guides/",
         //         icon:"hugeicons:mentoring"
         //     }
         // ]

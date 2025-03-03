@@ -36,17 +36,21 @@ export const blogOptions: BlogOptions = {
 
             return info
         },
-        // type: [
-        //     {
-        //         key: "tutorial",
-        //         filter: (page) => page.frontmatter.layout === "tutorial",
-        //         frontmatter: () => ({title: "Tutorials"})
-        //     },
-        //     {
-        //         key: "guide",
-        //         filter: (page) => page.frontmatter.layout === "tutorial",
-        //         frontmatter: () => ({title: "Tutorials"})
-        //     }
-        // ]
+        type: [
+            {
+                key: "tutorial",
+                filter: (page) => Boolean(page.filePathRelative?.includes("tutorials/")),
+                path: "/resources/tutorials/",
+                frontmatter: () => ({title: "Tutorials", heroText: "Tutorials"}),
+                layout: "BlogType",
+            },
+            {
+                key: "guide",
+                filter: (page) => Boolean(page.filePathRelative?.includes("guides/")),
+                path: "/resources/guides/",
+                frontmatter: () => ({title: "Guides", heroText: "Guides"}),
+                layout: "BlogType",
+            }
+        ]
     
 }
