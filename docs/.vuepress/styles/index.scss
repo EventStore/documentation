@@ -1,15 +1,50 @@
 @use "vuepress-theme-hope/presets/shinning-feature-panel";
 
+@font-face {
+  font-family: "Solina";
+  src: url("/fonts/Solina-Light.woff2") format("woff2"),
+    url("/fonts/Solina-Light.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Solina";
+  src: url("/fonts/Solina-Regular.woff2") format("woff2"),
+    url("/fonts/Solina-Regular.woff") format("woff");
+  font-weight: 450;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Solina";
+  src: url("/fonts/Solina-Medium.woff2") format("woff2"),
+    url("/fonts/Solina-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Solina";
+  src: url("/fonts/Solina-Bold.woff2") format("woff2"),
+    url("/fonts/Solina-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* VuePress changes to match our style*/
+
 .vp-site-name {
   display: none;
 }
 
-body, html {
+body,
+html {
   font-size: 16px;
 }
 
 body:has(#kapa-widget-container) .vp-back-to-top-button {
-  bottom: 7.5rem!important;
+  bottom: 7.5rem !important;
 }
 
 .vp-feature-title .icon {
@@ -20,45 +55,13 @@ body:has(#kapa-widget-container) .vp-back-to-top-button {
   font-size: 1rem;
 }
 
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Light.woff2") format("woff2"),
-  url("/fonts/Solina-Light.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Regular.woff2") format("woff2"),
-  url("/fonts/Solina-Regular.woff") format("woff");
-  font-weight: 450;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Medium.woff2") format("woff2"),
-  url("/fonts/Solina-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Solina";
-  src: url("/fonts/Solina-Bold.woff2") format("woff2"),
-  url("/fonts/Solina-Bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-}
-
-.theme-hope-content:not(.custom)>p,
-.theme-hope-content:not(.custom)>ol p,
-.theme-hope-content:not(.custom)>ul p {
+.theme-hope-content:not(.custom) > p,
+.theme-hope-content:not(.custom) > ol p,
+.theme-hope-content:not(.custom) > ul p {
   text-align: left;
 }
 
-html[data-theme='dark'] #kapa-widget-portal {
+html[data-theme="dark"] #kapa-widget-portal {
   code {
     background: rgba(127, 127, 127, 0.12);
   }
@@ -77,26 +80,67 @@ html[data-theme='dark'] #kapa-widget-portal {
   width: var(--content-width, 740px);
 }
 
-.vp-hero-info{
+.vp-hero-info {
   text-align: center;
 }
 
-.DocSearch-Button-Keys{
-  display:none;
+.DocSearch-Button-Keys {
+  display: none;
 }
 
-.DocSearch-Button-Placeholder{
+.DocSearch-Button-Placeholder {
   padding-right: 30px;
 }
 
-#main-description{
+#main-description {
   max-width: 50rem;
 }
 
-.vp-highlight-header{
+.vp-highlight-header {
   text-align: center;
 }
 
-.vp-highlight-info-wrapper:only-child{
-  flex:1;
+.vp-highlight-info-wrapper:only-child {
+  flex: 1;
+}
+
+/*Remove deprecation notice*/
+div[style*="z-index: 2147483647"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+.vp-hero-title {
+  margin: 0.5rem 0;
+  background: linear-gradient(
+    120deg,
+    var(--vp-c-accent-hover),
+    var(--vp-c-accent) 30%,
+    var(--end-gradient) 120%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 3.6rem;
+  font-family: var(--vp-font);
+  line-height: 1.5;
+  -webkit-text-fill-color: transparent;
+}
+
+.vp-highlight-item {
+  list-style: none;
+}
+
+@media screen and (max-width: 480px) {
+  .vp-action,
+  .custom-class-kapa {
+    display: none;
+  }
+}
+
+.vp-highlight-title{
+  font-size: 1.4rem;
 }

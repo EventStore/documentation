@@ -14,7 +14,7 @@ actions:
 highlights:
   - header: Jump start development
     highlights:
-    - title: Start immediately in Kurrent Cloud
+    - title: Start immediately with Kurrent Cloud
       details: Sign in to Cloud Console and spin a cluster in your cloud provider.
       icon: hugeicons:cloud
       link: https://console.kurrent.cloud/
