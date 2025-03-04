@@ -1,6 +1,12 @@
 ---
 title: MongoDB Sink
-order: 5
+categories:
+  - Connectors
+  - Operations
+tag:
+  - Connectors
+  - Sink
+  - MongoDB
 ---
 
 ## Tutorial: Setting up and using a MongoDB Sink connector in KurrentDB
