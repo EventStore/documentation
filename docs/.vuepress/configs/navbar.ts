@@ -1,11 +1,16 @@
-import type {NavbarOptions} from "vuepress-theme-hope";
 import {instance as ver} from "../lib/versioning";
+import type {NavbarOptions} from "vuepress-theme-hope";
 
 export const navbarEn: NavbarOptions = [
     {
+        text: "Getting Started",
+        link: "/getting-started/quickstart/",
+        icon: "hugeicons:start-up-02"
+    },
+    {
         text: "Kurrent Cloud",
-        icon: "hugeicons:cloud",
         link: "/cloud/introduction",
+        icon: "hugeicons:cloud"
     },
     {
         text: "KurrentDB",
@@ -16,25 +21,25 @@ export const navbarEn: NavbarOptions = [
         ]
     },
     {
-        text: "Official Clients",
+        text: "Clients & APIs",
         icon: "material-symbols:sdk",
         children: [
-            {text: "C#", link: "/clients/grpc/getting-started"},
-            {text: "Go", link: "/clients/grpc/getting-started"},
-            {text: "Haskell", link: "/clients/grpc/getting-started"},
-            {text: "Java", link: "/clients/grpc/getting-started"},
-            {text: "NodeJS", link: "/clients/grpc/getting-started"},
-            {text: "Rust", link: "/clients/grpc/getting-started"},
-
-        ]
-    },
-    {
-        text: "HTTP APIs",
-        icon: "material-symbols:http",
-        children: [
+            {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/getting-started"}]},
             {text: "HTTP API", children: ver.linksFor("http-api", false)},
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
     },
-    
+
+    {
+        text: "Resources",
+        icon: "material-symbols:support",
+        children: [
+            {text: "Community forum", link: "https://discuss.eventstore.com"},
+            {text: "Community Discord ", link: "https://discord.gg/Phn9pmCw3t"},
+            {text: "Blogs", link: "https://eventstore.com/blog/articles/"},
+            {text: "Webinars", link: "https://eventstore.com/webinars/"},
+            {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
+            {text: "Event Store Academy", link: "https://academy.eventstore.com"}
+        ]
+    }
 ];
