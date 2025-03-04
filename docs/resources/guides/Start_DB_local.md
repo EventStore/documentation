@@ -18,8 +18,8 @@ This guide will take you through installing and starting the KurrentDB database 
 
 ### Starting KurrentDB
 
-:::tabs#starting
-@tab Single Node
+:::  tabs#starting
+@tab:active Single Node
 <!-- @include: ../snippets/start_KurrentDB.snippet.md#singlenode -->
 
 @tab Cluster
