@@ -20,7 +20,10 @@ docker run \
        --enable-atom-pub-over-http
 ```
 
-This will download the latest version of the database in insecure mode and start it as a docker image, exposing port `2113` in your `localhost`.
+This will download the latest version of the database and start it in [insecure mode](/server/v24.10/security/README.md#running-without-security) as a docker image, exposing port `2113` in your `localhost`.
+
+::: warning
+It is **not** reccommended to start the database in insecure mode in production environments.
 
 <!-- #endregion singlenode -->
 
@@ -35,27 +38,13 @@ EVENTSTORE_DISCOVER_VIA_DNS=false
 EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP=true
 EVENTSTORE_ADVERTISE_HOST_TO_CLIENT_AS=127.0.0.1
 EVENTSTORE_START_STANDARD_PROJECTIONS=true
+EVENTSTORE_INSECURE=true
 ```
 
 Then, create a docker compose file `docker-compose.yml` with the following:
 
 ```yaml
 services:
-  setup:
-    image: eventstore/es-gencert-cli:1.0.2
-    entrypoint: bash
-    user: "1000:1000"
-    command: >
-      -c "mkdir -p ./certs && cd /certs
-      && es-gencert-cli create-ca
-      && es-gencert-cli create-node -out ./node1 -ip-addresses 127.0.0.1,172.30.240.11 -dns-names localhost
-      && es-gencert-cli create-node -out ./node2 -ip-addresses 127.0.0.1,172.30.240.12 -dns-names localhost
-      && es-gencert-cli create-node -out ./node3 -ip-addresses 127.0.0.1,172.30.240.13 -dns-names localhost
-      && find . -type f -print0 | xargs -0 chmod 666"
-    container_name: setup
-    volumes:
-      - ./certs:/certs
-
   node1.eventstore: &template
     image: docker.eventstore.com/eventstore/eventstoredb-ee:latest
     container_name: node1.eventstore
@@ -66,11 +55,6 @@ services:
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2111
       - EVENTSTORE_AdvertiseNodePortToClientAs=2111
       - EVENTSTORE_GOSSIP_SEED=172.30.240.12:2113,172.30.240.13:2113
-      - EVENTSTORE_TRUSTED_ROOT_CERTIFICATES_PATH=/certs/ca
-      - EVENTSTORE_CERTIFICATE_FILE=/certs/node1/node.crt
-      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node1/node.key
-      - EVENTSTORE__TCPPLUGIN__NodeTcpPortAdvertiseAs=1111
-      - EVENTSTORE__TCPPLUGIN__NodeTcpPort=1113
     healthcheck:
       test:
         [
@@ -83,10 +67,6 @@ services:
     ports:
       - 1111:1113
       - 2111:2113
-    volumes:
-      - ./certs:/certs
-    depends_on:
-      - setup
     restart: always
     networks:
       clusternetwork:
@@ -102,11 +82,6 @@ services:
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2112
       - EVENTSTORE_AdvertiseNodePortToClientAs=2112
       - EVENTSTORE_GOSSIP_SEED=172.30.240.11:2113,172.30.240.13:2113
-      - EVENTSTORE_TRUSTED_ROOT_CERTIFICATES_PATH=/certs/ca
-      - EVENTSTORE_CERTIFICATE_FILE=/certs/node2/node.crt
-      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node2/node.key
-      - EVENTSTORE__TCPPLUGIN__NodeTcpPortAdvertiseAs=1112
-      - EVENTSTORE__TCPPLUGIN__NodeTcpPort=1113
     healthcheck:
       test:
         [
@@ -131,11 +106,6 @@ services:
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2113
       - EVENTSTORE_AdvertiseNodePortToClientAs=2113
       - EVENTSTORE_GOSSIP_SEED=172.30.240.11:2113,172.30.240.12:2113
-      - EVENTSTORE_TRUSTED_ROOT_CERTIFICATES_PATH=/certs/ca
-      - EVENTSTORE_CERTIFICATE_FILE=/certs/node3/node.crt
-      - EVENTSTORE_CERTIFICATE_PRIVATE_KEY_FILE=/certs/node3/node.key
-      - EVENTSTORE__TCPPLUGIN__NodeTcpPortAdvertiseAs=1113
-      - EVENTSTORE__TCPPLUGIN__NodeTcpPort=1113
     healthcheck:
       test:
         [
@@ -169,5 +139,10 @@ Next execute:
 ```bash
 docker compose up
 ```
+This will start up a database cluster of 3 nodes in [insecure mode](/server/v24.10/security/README.md#running-without-security).
+
+::: warning
+It is **not** reccommended to start the database in insecure mode in production environments.
+
 
 <!-- #endregion cluster -->
