@@ -92,3 +92,11 @@ html[data-theme='dark'] #kapa-widget-portal {
 #main-description{
   max-width: 50rem;
 }
+
+.vp-highlight-header{
+  text-align: center;
+}
+
+.vp-highlight-info-wrapper:only-child{
+  flex:1;
+}

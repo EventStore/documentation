@@ -14,7 +14,7 @@ function triggerKapa() {
       class="custom-class-kapa"
       type="button"
       data-button="true"
-      style="background-color: var(--theme-color); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px; border-radius: 10px; border: none; color: white; height: 32px; font-size: var(--secondary-font-size); position: relative; z-index: 1001; pointer-events: auto; cursor: pointer;"
+      style="background-color: var(--main-color); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px; border-radius: 10px; border: none; color: white; height: 32px; font-size: var(--secondary-font-size); position: relative; z-index: 1001; pointer-events: auto; cursor: pointer;"
       @click="triggerKapa"
     >
       <div>
