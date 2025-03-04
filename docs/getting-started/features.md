@@ -43,8 +43,8 @@ title: EventStoreDB Feature List
 | [Connector](@server/features/connectors/README.md) | <Badge type="tip" vertical="middle" text="v24.10"/><br><br>Fully configurable integration to external systems that can push events from EventStoreDB in real-time. Supports at least once delivery, retry, event filtering, event transformation, automatic checkpointing, leases, and high availability. |
 | [HTTP Sink](@server/features/connectors/sinks/http.md) | <Badge type="tip" vertical="middle" text="v24.10"/><br><br>Publishes events from EventStoreDB to an HTTP endpoint. |
 | [Kafka Sink](@server/features/connectors/sinks/kafka.md) | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to Kafka topic or partition using a key found in the events. Supports broker acknowledgment and basic authentication. |
-| RabbitMQ Sink | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a RabbitMQ exchange. Supports broker acknowledgment and basic authentication over a secured connection. |
-| MongoDB Sink | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a MongoDB collection or document. Supports basic authentication. |
+| [RabbitMQ Sink](@server/features/connectors/sinks/rabbit.md)  | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a RabbitMQ exchange. Supports broker acknowledgment and basic authentication over a secured connection. |
+| [MongoDB Sink](@server/features/connectors/sinks/mongo.md)  | <Badge type="tip" vertical="middle" text="v24.10"/><Badge type="info" vertical="middle" text="License Required"/><br><br>Publishes events from EventStoreDB to a MongoDB collection or document. Supports basic authentication. |
 
 ### <HopeIcon icon="grommet-icons:cluster" size="1.25em"/> Clustering
 
@@ -127,7 +127,7 @@ title: EventStoreDB Feature List
 
 | Feature Name                                                 | Description                                                                                                   |
 |--------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
-| [Backup and Restore](https://docs.kurrent.io/server/v24.10/operations/backup.html#backup)                                           | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
+| [Backup and Restore](@server/operations/backup.html#backup)                                           | Provide functionality for full or differential backups and restores over disk snapshots or file copy backups. |
 | [Event Store Replicator](https://replicator.eventstore.org/) | Facilitate replication or migration of data between different EventStoreDB clusters or instances.             |
 
 ### <HopeIcon icon="carbon:tools" size="1.25em"/> Administrative Tool
