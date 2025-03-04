@@ -21,51 +21,91 @@ function findAnchor(filename: string, anchor: string): boolean {
 
     const href = `<a id="${anchor}">`;
     const lines = fs.readFileSync(filename).toString().split("\n");
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
+    for (const line of lines) {
         if (line.includes(href)) return true;
-
-        if (line.charAt(0) != "#") continue;
-
+    
+        if (line.charAt(0) !== "#") continue;
+    
         const lineAnchor = asAnchor(line);
         // if (enableLogs) logger.tip(lineAnchor)
-        if (lineAnchor === anchor || lineAnchor.replace("--", "-") === anchor) return true;
+        if (lineAnchor === anchor || lineAnchor.replace("--", "-") === anchor) {
+            return true;
+        }
     }
+    
     return false;
 }
 
-function checkLink(token: MdToken, attrName: string, env: MdEnv) {
+function checkLink(token: MdToken, attrName: string, env: MdEnv):void {
     const href = token.attrGet(attrName);
     if (href === null) return;
     if (href.startsWith("http") || href.endsWith(".html") || env.filePathRelative.startsWith("samples")) return;
     ensureLocalLink(href, env, true);
 }
 
-export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: boolean) {
-    if (ignorePlaceholders && href.startsWith("@")) return;
-    // check the link
+export function ensureLocalLink(href: string, env: MdEnv, ignorePlaceholders: boolean): void {
+    // Skip external links and properly handled VuePress aliases
+    if (href.startsWith("http") || (ignorePlaceholders && href.startsWith("@"))) return;
+    
+    // Add additional base path patterns to this array as needed
+    const knownBasePaths = ['/cloud'];
+    
+    // Skip checking known base paths that are resolved by VuePress router
+    for (const basePath of knownBasePaths) {
+        if (href.startsWith(basePath)) return;
+    }
+    
+    // Split the link into path and anchor parts
     const split = href.split("#");
     const currentPath = href[0] === "/" ? path.resolve(__dirname, "../../..") : path.dirname(env.filePath);
     const p = path.join(currentPath, split[0]);
+    
     fs.stat(p, (err, stat) => {
+        // Handle file/directory not found
         if (err != null) {
-            if (!href.startsWith("http")) {
-                logger.error(`Broken link in ${env.filePathRelative}\r\nto: ${split[0]}`);
-            }
+            logger.error(`Broken link in ${env.filePathRelative}\r\nto: ${split[0]}`);
             return;
         }
+        
         let pathToCheck = p;
+        
+        // Directory handling - only check if it's missing a README file
         if (stat.isDirectory()) {
-            if (split[0] !== "") {
-                logger.warn(`Maybe broken link to directory in ${env.filePathRelative}\r\nto: ${href}`);
+            // Check if README.md exists in the directory
+            const readmePath = path.join(p, "README.md");
+            try {
+                fs.accessSync(readmePath, fs.constants.F_OK);
+                // If README.md exists, the directory link is valid
                 return;
+            } catch (readmeErr) {
+                // Only if no README.md, check if this is an empty path (current directory)
+                if (split[0] !== "") {
+                    logger.error(`Broken directory link in ${env.filePathRelative}\r\nto: ${href} (no README.md found)`);
+                    // It appears that some links reference a catalog, that is not indexed in the website. We need to check if that's the intended behavior
+                    return;
+                }
+                pathToCheck = env.filePath;
             }
-            pathToCheck = env.filePath;
         }
-        if (split.length > 1 && !split[0].endsWith(".md") && split[1] !== "light" && split[1] !== "dark") {
-            const anchorResolved = findAnchor(pathToCheck, split[1]);
+        
+        // Anchor link checking - skip known special anchors
+        const knownSpecialAnchors = ['light', 'dark', 'configuration', 'security'];
+        if (split.length > 1 && !split[0].endsWith(".md") && !knownSpecialAnchors.includes(split[1])) {
+            let anchorResolved = findAnchor(pathToCheck, split[1]);
+            
+            // Find edge-case, where there are multiple anchors with the same name in the page, creating a numeric suffix
             if (!anchorResolved) {
-                logger.error(`Broken anchor link in ${env.filePathRelative}: ${split[1]} in file ${pathToCheck}`);
+                const match = split[1].match(/(.+)-\d+$/);
+                if (match) {
+                    // Attempt to resolve the anchor without the numeric suffix.
+                    anchorResolved = findAnchor(pathToCheck, match[1]);
+                }
+            }
+            
+            if (!anchorResolved) {
+                logger.error(
+                    `Broken anchor link in ${env.filePathRelative}: ${split[1]} in file ${pathToCheck}`
+                );
             }
         }
     });
