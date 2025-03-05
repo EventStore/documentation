@@ -136,11 +136,12 @@ div[style*="z-index: 2147483647"] {
 
 @media screen and (max-width: 480px) {
   .vp-action,
-  .custom-class-kapa {
+  .custom-class-kapa,
+  .kapa-container {
     display: none;
   }
 }
 
-.vp-highlight-title{
+.vp-highlight-title {
   font-size: 1.4rem;
 }

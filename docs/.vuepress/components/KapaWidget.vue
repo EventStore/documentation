@@ -6,7 +6,7 @@ function triggerKapa() {
 </script>
 
 <template>
-  <span>or </span>
+  <span class="kapa-container">or </span>
   <div id="custom-kapa-widget-container" style="display:flex; align-items:center; position: relative; z-index: 1000;">
     <button class="custom-class-kapa" type="button" data-button="true"
       style="background-color: var(--main-color); box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px; border-radius: 10px; border: none; color: white; height: 32px; font-size: var(--secondary-font-size); position: relative; z-index: 1001; pointer-events: auto; cursor: pointer;"
