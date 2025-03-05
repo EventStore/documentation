@@ -3,12 +3,13 @@ import "iconify-icon";
 import {onMounted} from "vue";
 import type {RouteLocationNormalized, Router} from "vue-router";
 import CloudBanner from "./components/CloudBanner.vue";
+import KapaWidget from './components/KapaWidget.vue';
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
 const storageKey = "VUEPRESS_TAB_STORE";
 
-const findMetaKey = (record: Array, key: string) => {
+const findMetaKey = (record: any[], key: string) => {
     if (record[0] !== "meta") return null;
     const data = record[1];
     return data.name === key ? data.content : null;
@@ -49,6 +50,7 @@ const reload = () => {
 export default defineClientConfig({
     enhance({app, router, siteData}) {
         app.component("CloudBanner", CloudBanner);
+        app.component("KapaWidget", KapaWidget);
         const apiPath = __VERSIONS__.latest.replace("server", "http-api");
         const addFixedRoute = (from: string, to: string) => router.addRoute({
             path: from, redirect: _ => {
