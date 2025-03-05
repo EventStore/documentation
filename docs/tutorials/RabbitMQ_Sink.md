@@ -158,7 +158,7 @@ Alternatively, check the messages using the RabbitMQ CLI `rabbitmqctl`, which is
 
 1. You need to start the RabbitMQ service to use `rabbitmqctl`.
 
-   For Linux/macOS:
+   ##### For Linux/macOS:
 
     ::: tabs
     @tab Bash
@@ -177,7 +177,7 @@ Alternatively, check the messages using the RabbitMQ CLI `rabbitmqctl`, which is
     :::
    
 
-   For Windows:
+    ##### For Windows:
 
    Start RabbitMQ via the **Windows Services Manager** or run:  
    
