@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: Welcome to Kurrent Docs
-tagline: Event-native database for storing immutable facts as events, complex event processing, and event-driven architectures.
+tagline: The platform for event-driven architectures.
 actions:
 - text: Get started
   link: /getting-started/quickstart/
@@ -15,9 +15,9 @@ highlights:
   - header: Jump start development
     highlights:
     - title: Start immediately with Kurrent Cloud
-      details: Sign in to Cloud Console and spin a cluster in your cloud provider.
+      details: Sign in to Cloud Console and spin up a cluster with your cloud provider.
       icon: hugeicons:cloud
-      link: https://console.kurrent.cloud/
+      link: https://www.kurrent.io/kurrent-cloud
     - title: Start KurrentDB in a container
       details: Run <code>docker run eventstore/eventstore:latest --dev</code> to start EventStoreDB in developers mode.
       icon: simple-icons:docker
