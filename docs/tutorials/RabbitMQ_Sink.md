@@ -5,7 +5,7 @@ order: 6
 
 ## Tutorial: Setting up and using a RabbitMQ Sink connector in KurrentDB
 
-This step-by-step tutorial guides you through configuring and deploying a **RabbitMQ Sink** connector in KurrentDB. This connector allows real-time event streaming from KurrentDB to a RabbitMQ exchange, enabling message-based communication for microservices, task queues, and event-driven applications.
+This tutorial guides you through the configuration and deployment of a RabbitMQ Sink connector in KurrentDB. The connector streams events in real time from KurrentDB to a RabbitMQ exchange, enabling message-based communication for microservices, task queues, and event-driven applications.
 
 #### Prerequisites:
 
