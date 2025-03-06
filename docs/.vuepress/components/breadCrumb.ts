@@ -28,7 +28,6 @@ import "../styles/breadcrumb.scss";
 
 // Import your replacements JSON
 
-
 interface BreadCrumbConfig {
   title: string;
   icon?: string | undefined;
@@ -59,7 +58,7 @@ export default defineComponent({
         frontmatter.value.breadcrumbIcon ??
         themeLocale.value.breadcrumbIcon ??
         true,
-    ); 
+    );
 
     const getBreadCrumbConfig = (): void => {
       const breadcrumbConfig = getAncestorLinks(
@@ -79,6 +78,12 @@ export default defineComponent({
           if (replacement) {
             title = replacement;
           }
+
+          // Remove dashes, remove file extensions, and capitalize first letter
+          title = title.replace(/-/g, " ");
+          title = title.replace(/\..*$/, "");
+          title = title.trim();
+          title = title.charAt(0).toUpperCase() + title.slice(1);
 
           return {
             title,
