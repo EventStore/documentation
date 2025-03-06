@@ -25,3 +25,7 @@ This guide will take you through installing and starting the KurrentDB database 
 @tab Cluster
 <!-- @include: ../snippets/start_KurrentDB.snippet.md#cluster -->
 :::
+
+Once the database starts, go to [`http://localhost:2113`](http://localhost:2113). You should see the database UI like this:
+
+![Screenshot](images/eventstore_screenshot.png "Database UI screenshot")
