@@ -1,3 +1,5 @@
+import { useThemeLocaleData } from "@theme-hope/composables/index";
+import { getAncestorLinks } from "@theme-hope/utils/index";
 import { watchImmediate } from "@vueuse/core";
 import type { VNode } from "vue";
 import {
@@ -9,23 +11,23 @@ import {
   shallowRef,
 } from "vue";
 import {
-  RouteLink,
   resolveRoute,
+  RouteLink,
   usePageData,
   usePageFrontmatter,
   useRouteLocale,
   useRoutePath,
 } from "vuepress/client";
-
-import { useThemeLocaleData } from "@theme-hope/composables/index";
-import { getAncestorLinks } from "@theme-hope/utils/index";
-
 import type {
   PageInfoData,
   ThemeNormalPageFrontmatter,
 } from "../../shared/index.js";
+import breadcrumbReplacements from "../breadcrumb-replacements.json";
 
 import "../styles/breadcrumb.scss";
+
+// Import your replacements JSON
+
 
 interface BreadCrumbConfig {
   title: string;
@@ -57,7 +59,7 @@ export default defineComponent({
         frontmatter.value.breadcrumbIcon ??
         themeLocale.value.breadcrumbIcon ??
         true,
-    );
+    ); 
 
     const getBreadCrumbConfig = (): void => {
       const breadcrumbConfig = getAncestorLinks(
@@ -69,8 +71,17 @@ export default defineComponent({
 
           if (notFound || meta.breadcrumbExclude) return null;
 
+          // Get the original title from metadata or name
+          let title = meta.shortTitle || meta.title || name;
+
+          // Check if the title should be replaced
+          const replacement = breadcrumbReplacements[title.toLowerCase()];
+          if (replacement) {
+            title = replacement;
+          }
+
           return {
-            title: meta.shortTitle || meta.title || name,
+            title,
             icon: meta.icon,
             path,
           };
