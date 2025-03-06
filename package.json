@@ -40,17 +40,18 @@
     "@vuepress/plugin-notice": "^2.0.0-rc.74",
     "@vuepress/plugin-seo": "^2.0.0-rc.74",
     "@vuepress/plugin-sitemap": "^2.0.0-rc.74",
+    "@vueuse/core": "^12.8.2",
     "dashjs": "^4.7.4",
     "hls.js": "^1.5.14",
     "iconify-icon": "^2.1.0",
+    "mermaid": "^11.4.0",
     "sass-loader": "^15.0.0",
     "uglify-js": "^3.19.3",
     "vue": "^3.4.30",
     "vue-router": "^4.4.0",
     "vuepress": "2.0.0-rc.19",
     "vuepress-plugin-md-enhance": "^2.0.0-rc.71",
-    "vuepress-theme-hope": "^2.0.0-rc.71",
-    "mermaid": "^11.4.0"
+    "vuepress-theme-hope": "^2.0.0-rc.71"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",

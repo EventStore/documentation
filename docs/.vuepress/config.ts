@@ -61,7 +61,7 @@ export default defineUserConfig({
         return originalHighlight(code, lang, attrs);
         };
     },
-    theme: hopeTheme(themeOptions),
+    theme: hopeTheme(themeOptions,{custom: true}),
     head: [
         ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
@@ -71,5 +71,11 @@ export default defineUserConfig({
             'data-project-logo': '/logo-white.png'
         }],
         ['script', {src: "/js/snippet.js"}]
-    ]
+    ],
+    // add our own components for blog theme (Tutorials & Guides)
+    alias: {
+        "@theme-hope/components/BreadCrumb": path.resolve(__dirname, "./components/breadCrumb.ts"),
+        
+
+    }
 });
