@@ -16,6 +16,7 @@ $color-foreground-dark: #9fbbc5;
 $color-title-dark: #9fbbc5;
 
 $theme-color-light: color.mix(black, $main-color, 10%); // Darken by 10%
+$theme-color-soft: #{color.scale(#631b3a, $lightness: 85%)};
 $theme-color-dark: color.mix(white, $main-color, 10%); // Lighten by 10%
 $theme-color-mask: color.adjust(
   $secondary-color,
@@ -164,7 +165,7 @@ html[data-theme="light"] {
   --vp-c-accent-hover: var(--main-color);
   --vp-c-accent: var(--main-color);
   --vp-c-accent-bg: var(--main-color);
-  --vp-c-accent-soft: color.mix(white, $main-color, 85%);
+  --vp-c-accent-soft: #{$theme-color-soft};
   --theme-color-light: #{$theme-color-light};
   --theme-color-dark: #{$theme-color-dark};
   --theme-color-mask: #{$theme-color-mask};
@@ -203,6 +204,6 @@ $vp-c-text: (
   }
 }
 
-.vp-feature-item{
+.vp-feature-item {
   flex-basis: 21%;
 }
