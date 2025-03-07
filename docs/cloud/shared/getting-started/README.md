@@ -6,10 +6,6 @@ dir:
 
 # Getting started
 
-::: important
-Please note that this feature is in <u>__preview__</u> and not recommended for production workloads yet.
-:::
-
 ## Provisioning
 
 Kurrent Cloud allows you to provision managed KurrentDB clusters in AWS (_more providers will be added soon_) using shared infrastructure. Note that each database cluster is isolated from other tenants, making them highly secure and cost effective.
