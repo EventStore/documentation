@@ -56,7 +56,7 @@ The following subscribes to the stream `some-stream` at position `20`, this mean
 
 ### Subscribing to $all
 
-Subscribing to the `$all` stream is similar to subscribing to a regular stream. The only difference is how to specify the stream position. For the `$all` stream, you must provide a `Position` structure instead, consisting of two big integers - prepare and commit positions. The `Position` value can be `Start`, `End`, or a `Position` created from a commit and prepare position.
+Subscribing to the `$all` stream is similar to subscribing to a regular stream. The difference is how to specify the starting position. For the `$all` stream, provide a `Position` structure that consists of two big integers: the prepare and commit positions. Use `Start`, `End`, or create a `Position` from specific commit and prepare values.
 
 The corresponding `$all` subscription will subscribe from the event after the one at commit position `1056` and prepare position `1056`.
 
