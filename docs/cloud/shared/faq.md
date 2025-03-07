@@ -2,10 +2,6 @@
 title: FAQ
 ---
 
-## Preview
-
-During the preview, each organization can create up to two database instances at no cost.
-
 ## Cluster provisioning
 
 #### Is it possible to change the cluster instance size or topology?
@@ -40,7 +36,7 @@ Not yet, but it's on the roadmap for 2025.
 
 ## Support
 
-Support is not provided during the preview.
+Support is provided for AWS based shared clusters.
 
 ## Security
 
