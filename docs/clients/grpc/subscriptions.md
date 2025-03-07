@@ -172,7 +172,7 @@ This will subscribe to any event that begins with `user` or `company`.
 
 ### Filtering by stream name
 
-If you want to subscribe to a stream only with a given name, you have two options: you can use a regular expression or a prefix.
+To subscribe to a stream by name, choose either a regular expression or a prefix.
 
 #### Filtering by prefix
 
