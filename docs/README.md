@@ -15,7 +15,7 @@ highlights:
   - header: Jump start development
     highlights:
     - title: Start immediately with Kurrent Cloud
-      details: Sign in to Cloud Console and spin up a cluster with your cloud provider.
+      details: Sign in to Kurrent Cloud and spin up a cluster in AWS, Azure, or GCP.
       icon: hugeicons:cloud
       link: https://www.kurrent.io/kurrent-cloud
     - title: Start KurrentDB in a container
