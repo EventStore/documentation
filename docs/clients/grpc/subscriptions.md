@@ -184,7 +184,7 @@ This will only subscribe to all streams with a name that begins with `user-`.
 
 #### Filtering by regular expression
 
-If you want to subscribe to multiple streams, providing a regular expression might be better.
+To subscribe to multiple streams, use a regular expression.
 
 @[code{stream-regex}](@grpc:server_side_filtering.py;server-side-filtering.js;server-side-filtering.ts;server_side_filtering/ServerSideFiltering.java;server-side-filtering/Program.cs;serverSideFiltering.go;server_side_filtering.rs)
 
