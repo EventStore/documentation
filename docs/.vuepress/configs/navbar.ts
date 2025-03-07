@@ -8,7 +8,12 @@ export const navbarEn: NavbarOptions = [
         icon: "hugeicons:start-up-02"
     },
     {
-        text: "Server",
+        text: "Kurrent Cloud",
+        link: "/cloud/introduction",
+        icon: "hugeicons:cloud"
+    },
+    {
+        text: "KurrentDB",
         icon: "ion:server-outline",
         children: [
             {text: "Current", children: ver.linksFor("server", false)},
@@ -24,17 +29,14 @@ export const navbarEn: NavbarOptions = [
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
     },
+
     {
-        text: "Cloud",
-        link: "/cloud/introduction",
-        icon: "hugeicons:cloud"
-    },
-    {
-        text: "Need help?",
+        text: "Resources",
         icon: "material-symbols:support",
         children: [
             {text: "Community forum", link: "https://discuss.eventstore.com"},
-            {text: "Articles", link: "https://eventstore.com/blog/articles/"},
+            {text: "Community Discord ", link: "https://discord.gg/Phn9pmCw3t"},
+            {text: "Blogs", link: "https://eventstore.com/blog/articles/"},
             {text: "Webinars", link: "https://eventstore.com/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
             {text: "Event Store Academy", link: "https://academy.eventstore.com"}

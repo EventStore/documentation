@@ -1,7 +1,7 @@
 ---
 home: true
-heroText: Kurrent Resources
-tagline: Event-native database for storing immutable facts as events, complex event processing, and event-driven architectures.
+heroText: Welcome to Kurrent Docs
+tagline: The platform for event-driven architectures.
 actions:
 - text: Get started
   link: /getting-started/quickstart/
@@ -10,17 +10,21 @@ actions:
 - text: Start building
   icon: file-icons:easybuild
   link: /clients/grpc/getting-started.html
-
+  
 highlights:
   - header: Jump start development
     highlights:
-    - title: Start database in a container
+    - title: Start immediately with Kurrent Cloud
+      details: Sign in to Kurrent Cloud and spin up a cluster in AWS, Azure, or GCP.
+      icon: hugeicons:cloud
+      link: https://www.kurrent.io/kurrent-cloud
+    - title: Start KurrentDB in a container
       details: Run <code>docker run eventstore/eventstore:latest --dev</code> to start EventStoreDB in developers mode.
-      icon: devicon:docker
+      icon: simple-icons:docker
       link: /latest/quick-start/installation.html#docker
     - title: Start using the client
       details: Use one of our client libraries to start building your application.
-      icon: file-icons:easybuild
+      icon: material-symbols:sdk
       link: /clients/grpc/getting-started.html
 
   - header: Deploy in your environment
@@ -52,7 +56,7 @@ highlights:
         link: /latest/quick-start/installation.html#windows
 
       - title: Docker
-        icon: devicon:docker
+        icon: logos:docker-icon
         details: Use Docker Compose to pull images from Docker Hub and run EventStoreDB in containers.
         link: /latest/quick-start/installation.html#use-docker-compose
 
