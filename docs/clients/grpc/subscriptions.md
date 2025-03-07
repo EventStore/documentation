@@ -36,7 +36,7 @@ Subscribing to `$all` is similar to subscribing to a single stream. The handler 
 
 ## Subscribing from a specific position
 
-The previous examples subscribed to the stream from the beginning. This called the handler for every event in the stream and then waited for new events.
+The previous examples subscribed to the stream from the beginning. That subscription invoked the handler for every event in the stream before waiting for new events.
 
 Both stream and $all subscriptions accept a starting position if you want to read from a specific point onward. If events already exist at the position you subscribe to, they will be read on the server side and sent to the subscription.
 
