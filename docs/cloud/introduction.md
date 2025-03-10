@@ -21,10 +21,6 @@ With this option, KurrentDB clusters are hosted in shared compute infrastructure
 
 If you're looking to get started or experiment with KurrentDB, this option is best.
 
-::: important
-Please note that this feature is in <u>__preview__</u> and not recommended for production workloads yet.
-:::
-
 ## What is dedicated infrastructure?
 
 With this option, KurrentDB clusters are hosted on dedicated compute infrastructure, ensuring that all resources are exclusively allocated to you. This setup is ideal for running production workloads that demand consistent performance and guaranteed resource availability.

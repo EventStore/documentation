@@ -75,10 +75,7 @@ Use this option when an additional layer of security is required on top of `IP A
 
 ![Instance size](images/instance-size.png)
 
-During the preview, the instance size is fixed to a single node that uses:
-
-- 1 vCPU
-- 1GB RAM
+Select the tier that matches the expected workload, and proceed to pick a topology. For the `S2` tier, the recommendation is to use multiple nodes. Note that some tiers do not permit multiple nodes.
 
 ### Database
 
@@ -92,13 +89,9 @@ You will need to select the **Server Version**, and choose whether to start serv
 Both system projections and user-defined projections produce new events. Carefully consider the impact of enabled projections on database performance. Please refer to the [Performance impact](@server/features/projections/README.md#performance-impact) section of the projections documentation to learn more.
 :::
 
-### Storage
-
-During the preview, the storage size is fixed to 512mb which is backed by a GP3 volume in AWS.
-
 ### Pricing
 
-Finally, you will see the estimated monthly price for the selected cluster. **During the preview, each organization can create up to two database instances at no cost.**
+Finally, you will see the estimated monthly price for the selected cluster.
 
 ## Provisioning
 
