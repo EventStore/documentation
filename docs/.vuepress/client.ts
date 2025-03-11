@@ -110,6 +110,7 @@ export default defineClientConfig({
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
             const esData = findEsMeta(to);
             const a = window.analytics;
+            if(a){
             setTimeout(() => {
                 a.page({
                     site: "docs",
@@ -120,6 +121,7 @@ export default defineClientConfig({
                     $host: window.location.hostname
                 });
             }, 1000);
+        }
         });
         router.beforeEach((to, from) => leave(to, from));
     },
