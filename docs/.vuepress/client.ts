@@ -117,6 +117,7 @@ export default defineClientConfig({
                     title: to.meta.t,
                     version: esData?.version,
                     category: esData?.category,
+                    $host: window.location.hostname
                 });
             }, 1000);
         });

@@ -92,7 +92,8 @@
             loaded: (posthog) => {
                 analytics.page({
                     site: "docs",
-                    title: "Home"
+                    title: "Home",
+                    $host: window.location.hostname
                 })
             }
         });
