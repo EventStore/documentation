@@ -47,6 +47,12 @@ const reload = () => {
     }
 }
 
+const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+    if (from.path !== to.path && typeof window !== "undefined" && window.posthog !== undefined) {
+        window.posthog.capture('$pageleave');
+    }
+}
+
 export default defineClientConfig({
     enhance({app, router, siteData}) {
         app.component("CloudBanner", CloudBanner);
