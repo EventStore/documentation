@@ -47,6 +47,12 @@ const reload = () => {
     }
 }
 
+const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
+    if (from.path !== to.path && typeof window !== "undefined" && window.posthog !== undefined) {
+        window.posthog.capture('$pageleave');
+    }
+}
+
 export default defineClientConfig({
     enhance({app, router, siteData}) {
         app.component("CloudBanner", CloudBanner);
@@ -111,9 +117,11 @@ export default defineClientConfig({
                     title: to.meta.t,
                     version: esData?.version,
                     category: esData?.category,
+                    $host: window.location.hostname
                 });
             }, 1000);
         });
+        router.beforeEach((to, from) => leave(to, from));
     },
     setup() {
         onMounted(() => {
