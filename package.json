@@ -34,13 +34,15 @@
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.9",
     "@segment/analytics-next": "^1.74.0",
-    "@vuepress/bundler-vite": "2.0.0-rc.19",
+    "@vuepress/bundler-vite": "2.0.0-rc.20",
+    "@vuepress/helper": "^2.0.0-rc.80",
     "@vuepress/plugin-docsearch": "^2.0.0-rc.76",
     "@vuepress/plugin-google-analytics": "^2.0.0-rc.66",
     "@vuepress/plugin-notice": "^2.0.0-rc.74",
     "@vuepress/plugin-seo": "^2.0.0-rc.74",
     "@vuepress/plugin-sitemap": "^2.0.0-rc.74",
     "@vueuse/core": "^12.8.2",
+    "bowser": "^2.11.0",
     "dashjs": "^4.7.4",
     "hls.js": "^1.5.14",
     "iconify-icon": "^2.1.0",
@@ -49,9 +51,9 @@
     "uglify-js": "^3.19.3",
     "vue": "^3.4.30",
     "vue-router": "^4.4.0",
-    "vuepress": "2.0.0-rc.19",
+    "vuepress": "2.0.0-rc.20",
     "vuepress-plugin-md-enhance": "^2.0.0-rc.71",
-    "vuepress-theme-hope": "^2.0.0-rc.71"
+    "vuepress-theme-hope": "^2.0.0-rc.74"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
