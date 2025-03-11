@@ -86,7 +86,7 @@
 
     analytics.ready(() => {
         window.posthog.init("phc_DeHBgHGersY4LmDlADnPrsCPOAmMO7QFOH8f4DVEVmD", {
-            api_host: 'https://eu.i.posthog.com',
+            api_host: 'https://phog.kurrent.io',
             segment: analytics,
             capture_pageview: false,
             loaded: (posthog) => {
