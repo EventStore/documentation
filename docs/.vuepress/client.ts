@@ -48,8 +48,8 @@ const reload = () => {
 }
 
 const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
-    if (from.path !== to.path && typeof window !== "undefined" && window.posthog !== undefined) {
-        window.posthog.capture('$pageleave');
+    if (from.path !== to.path && typeof window !== "undefined" && window.analytics !== undefined) {
+        window.analytics.track({ event: "$pageleave" });
     }
 }
 
