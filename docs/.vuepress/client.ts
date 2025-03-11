@@ -121,6 +121,7 @@ export default defineClientConfig({
                 });
             }, 1000);
         });
+        router.beforeEach((to, from) => leave(to, from));
     },
     setup() {
         onMounted(() => {
