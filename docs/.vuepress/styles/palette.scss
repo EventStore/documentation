@@ -158,6 +158,10 @@ html[data-theme="dark"] {
   --theme-color-dark: #{$theme-color-dark};
   --theme-color-mask: #{$theme-color-mask};
   --end-gradient: #{$main-color};
+  --vp-c-bg: #080b0d;
+  --vp-c-bg-elv-soft: #080b0d;
+  --vp-c-text: #d1dce0;
+  --vp-c-text-mute: white;
 }
 
 html[data-theme="light"] {
@@ -169,27 +173,16 @@ html[data-theme="light"] {
   --theme-color-light: #{$theme-color-light};
   --theme-color-dark: #{$theme-color-dark};
   --theme-color-mask: #{$theme-color-mask};
+  --vp-c-bg: #fff;
+  --vp-c-bg-elv-soft: #fff;
+  --vp-c-text: #000;
+  --vp-c-text-mute: black;
 }
-
-$vp-c-bg: (
-  light: #fff,
-  dark: #080b0d,
-);
-
-$vp-c-bg-elv-soft: (
-  light: #fff,
-  dark: #080b0d,
-);
 
 $font-body: 15px;
 
 /* Override Code Block Background */
 $sidebar-width: 18rem;
-
-$vp-c-text: (
-  light: #000,
-  dark: #9fbbc5,
-);
 
 .hint-container.important a,
 .hint-container.info a,
