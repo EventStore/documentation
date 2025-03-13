@@ -98,5 +98,5 @@ highlights:
       details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
       link: https://docs.kurrent.io/http-api/v24.10/introduction.html
 
-footer: Copyright © Kurrent, Inc
+footer: Copyright © 2025 Kurrent, Inc
 ---
