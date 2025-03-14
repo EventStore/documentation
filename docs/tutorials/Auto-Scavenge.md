@@ -49,7 +49,7 @@ AutoScavenge:
 ```
 
 ::: note 
-Auto-scavenge cannot be enabled at the same time as dev mode or mem-db
+You cannot enable Auto-Scavenge while `dev mode` or `mem-db` is active.
 :::
 
 
