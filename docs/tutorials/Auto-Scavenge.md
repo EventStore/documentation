@@ -96,7 +96,7 @@ See the [Auto-Scavenge documentation](https://docs.kurrent.io/server/v24.10/oper
 
 ### Step 5 (optional): Pausing Auto-Scavenge
 
-If the status endpoint returns "state": "InProgress" and you want to pause Auto-Scavenge, submit a POST request to the `/auto-scavenge/pause` endpoint.
+If the status endpoint returns `"state": "InProgress"` and you want to pause Auto-Scavenge, submit a POST request to the `/auto-scavenge/pause` endpoint:
 
 ```
 POST https://127.0.0.1:2113/auto-scavenge/pause
