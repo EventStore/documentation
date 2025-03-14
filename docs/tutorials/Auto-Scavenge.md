@@ -106,7 +106,7 @@ Authorization: Basic admin:changeit
 
 ### Step 6 (optional): Resume Auto-Scavenge
 
-If the status endpoint returns "state": "Paused" and you want to resume Auto-Scavenge, submit a POST request to the `/auto-scavenge/resume` endpoint.
+If the status endpoint returns `"state": "Paused"` and you want to resume Auto-Scavenge, submit a POST request to the `/auto-scavenge/resume` endpoint:
 
 ```
 POST https://127.0.0.1:2113/auto-scavenge/resume
