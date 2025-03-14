@@ -7,7 +7,7 @@ order: 7
 
 This step-by-step tutorial guides you through using, scheduling and managing  **Auto-Scavenge** in EventStoreDB.
 
-The Auto-scavenge feature is designed to manage and automate cluster scavenges across multiple nodes efficiently. It operates on a scheduled basis using CRON expressions, ensuring that only one node scavenge occurs simultaneously to minimize disruption. The feature prioritizes non-leader nodes for scavenging, with the leader node resigning before its own scavenge is executed to reduce impact on cluster performance.
+The Auto-scavenge feature is designed to manage and automate cluster scavenges across multiple nodes efficiently. It operates on a scheduled basis using CRON expressions, ensuring that only one node scavenge occurs simultaneously to minimize disruption. To reduce impact on cluster performance the feature prioritizes non-leader nodes for scavenging, with the leader node resigning before its own scavenge is executed.
 
 Auto-scavenge also handles restarting or cancelling scavenges in case of node loss and allows for pausing and resuming of cluster scavenges as needed, providing a comprehensive and automated approach to maintaining cluster health and performance.
 
