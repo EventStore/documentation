@@ -75,7 +75,7 @@ Replace admin:changeit with your credentials, and the url with the correct addre
 
 ### Step 4: Checking Auto-Scavenge status
 
-A `GET` request to the http endpoint `/auto-scavenge/status` will return Auto-scavenge status.
+Submit a `GET` request to the http endpoint `/auto-scavenge/status` to return the Auto-scavenge status:
 
 ```
 GET https://127.0.0.1:2113/auto-scavenge/status
