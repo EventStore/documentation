@@ -11,7 +11,6 @@ The Auto-scavenge feature is designed to manage and automate cluster scavenges a
 
 Auto-scavenge restarts or cancels scavenges if a node is lost, and allows you to pause and resume cluster scavenges as needed. With this comprehensive, automated approach, you can maintain cluster health and performance more effectively.
 
-
 #### Prerequisites:
 
 * [EventStoreDB 24.10 LTS installed and running](http://@server/quick-start/installation.md)
