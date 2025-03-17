@@ -35,7 +35,7 @@ For instructions on accessing EventStoreDB logs, refer to the [log documentation
 If you do not see the "plugin enabled" entry in the log, check the configuration
  file to see if it has been disabled.
 
-```
+```yaml
 AutoScavenge:
   Enabled: false
 ```
