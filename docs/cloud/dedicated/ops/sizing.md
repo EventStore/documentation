@@ -12,7 +12,6 @@ Use this guide to assess the needs of your application performance, compared wit
 Performance of the managed KurrentDB cluster in ES Cloud depends primarily on the instance size for cluster members. In addition, the disk size could affect the instance IOPS limit when it comes to reading and writing events to the database.
 We rate instances based on the desired usage. Our current ratings include:
 
-* Micro
 * Development
 * Production
 
@@ -36,21 +35,11 @@ ZFS requires additional CPU and memory to provide these capabilities. As such a 
 
 KurrentDB requires CPU cycles to maintain indexes, and for other maintenance processes. Underpopulated or underloaded databases (such as demo or development setups) require little CPU time and overperform compared to fully populated systems with consistent throughput. Expect performance to level off as workloads increase.
 
-### Micro (F1) instance sizes
-
-F1 instance size is designed for a low-cost development environment. We recommend using it for the experiments like Proof of Concept or extremely low workload like 10–100 events a day per database (cluster). F1 instances are using a burstable CPU class to enable this goal across all supported public clouds.
-
-Due to the burstable CPU class, CPU shares are limited; this results in the following implications:
-- If CPU shares are not available and allocations are increasing, this may result in client timeouts to the cluster or an out of memory condition.
-- CPU shares are required to maintain the cluster state topology via constant gossip message propagation. It means that the cluster needs CPU shares to maintain cluster state even when it's been not under load.
-- If a continuous load is applied, it may be possible to exhaust the allowed CPU shares per time cycle, resulting in client timeouts or out of memory conditions.
-- When ESC exited Preview and went into GA we increased the size of the backing instance type as the original F1 instance size was too small to provide enough memory and CPU shares to maintain cluster state adequately even at extremely low volumes. A backup and restore is required to move to the new backing size.
 
 ## Available instance sizes
 
 | Size     | Rating                         | Working Set (streams) | Disk size (min) | Concurrent clients (max) |
 |:---------|:-------------------------------|:----------------------|:----------------|:-------------------------|
-| **F1**   | Micro                          | 100k                  | 50 GB           |                          |
 | **C4**   | Development                    | 500k                  | 100 GB          |                          |
 | **M8**   | Development                    | 1M                    | 250 GB          |                          |
 | **M16**  | Development / Light Production | 6M                    | 500 GB          | 20                       |
