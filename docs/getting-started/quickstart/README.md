@@ -81,7 +81,7 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 1. Once your Codespace is loaded, run the following command in the terminal to start the EventStoreDB server:
 
    ```sh
-   ./start_cluster.sh
+   ./start_db.sh
    ```
 
    This is a custom script written for this quickstart to help start EventStoreDB in Docker.
@@ -94,11 +94,11 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 URL to the EventStoreDB Admin UI 👉: https://XXXXXXXXX.XXX
 ```
 
-::::: details (Optional) Learn more about how to start EventStoreDB in Docker and the start_cluster.sh script 
+::::: details (Optional) Learn more about how to start EventStoreDB in Docker and the start_db.sh script 
 
-#### Understanding How to Start EventStoreDB Server in Docker and How `start_cluster.sh` Works
+#### Understanding How to Start EventStoreDB Server in Docker and How `start_db.sh` Works
 
-`start_cluster.sh` is a custom script written for the quickstart that will: 
+`start_db.sh` is a custom script written for the quickstart that will: 
 - Check if Docker is currently running locally
 - Pull the EventStoreDB server Docker container
 - Start the server in Docker
@@ -106,10 +106,10 @@ URL to the EventStoreDB Admin UI 👉: https://XXXXXXXXX.XXX
 
 To see how to start the EventStoreDB server in Docker, follow these steps
 
-1. Run the following command to open `start_cluster.sh`:
+1. Run the following command to open `start_db.sh`:
    
    ```sh
-   code ./start_cluster.sh
+   code ./start_db.sh
    ```
 
    ::: tip
