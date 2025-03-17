@@ -192,13 +192,13 @@ Backups are restored as new clusters. You will be then redirected to the **Resto
 
 As you cannot restore to the existing cluster, you should use the `source-backup-id` option of the `mesdb clusters create` command. When the backup id is provided, the CLI tool will create a new cluster using the provided backup.
 
-Example: restoring the backup with ID `c10dvoarh41lb9otkdrg` to an F1 single node instance.
+Example: restoring the backup with ID `c10dvoarh41lb9otkdrg` to an C4 single node instance.
 
 ```bash
 $ esc mesdb clusters create \
     --description "restore" \
     --source-backup-id c10dvoarh41lb9otkdrg \
-    --instance-type F1 --disk-size-in-gb 10 \
+    --instance-type C4 --disk-size-in-gb 10 \
     --disk-type gp3 --network-id c10dr5qrh41lbabqa2j0 \
     --projection-level off --server-version 24.10 \
     --topology single-node  --project-id c10d0h2rh41lba1v92k0
