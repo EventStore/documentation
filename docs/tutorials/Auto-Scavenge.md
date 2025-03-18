@@ -70,7 +70,7 @@ Authorization: Basic admin:changeit
     }
 ```
 
-Replace admin:changeit with your credentials, and the url with the correct address for your server.
+Replace `<admin:changeit>` with your credentials, and `<your-server-url>` with the correct address for your server.
 
 ### Step 4: Checking Auto-Scavenge status
 
