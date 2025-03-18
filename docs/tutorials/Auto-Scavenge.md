@@ -83,7 +83,7 @@ Authorization: Basic admin:changeit
 
 The response below shows that Auto-scavenge has been scheduled and will begin running in 13 hours, 14 minutes and 32.6999115 seconds.
 
-```
+```json
 {
   "state": "Waiting",
    "schedule": "0 3 * * *",
