@@ -2,40 +2,15 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
-      "request": "launch",
-      "name": "Debug VuePress",
-      "runtimeExecutable": "node",
-      "program": "${workspaceFolder}/node_modules/vuepress/bin/vuepress.js",
-      "args": [
-        "dev",
-        "docs",
-        "--debug"
-      ],
-      "autoAttachChildProcesses": true,
-      "console": "integratedTerminal",
-      "cwd": "${workspaceFolder}",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
-        "!**/node_modules/**"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/docs/.vuepress/.temp/**/*.js",
-        "${workspaceFolder}/docs/.vuepress/.cache/**/*.js",
-        "${workspaceFolder}/.temp/**/*.js"
-      ],
-      "env": {
-        "DEBUG": "vuepress*",
-        "NODE_OPTIONS": "--inspect"
-      },
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/node_modules/**",
-        "!**/node_modules/vuepress/**",
-        "!**/node_modules/@vuepress/**"
-      ],
-      "port": 9229
+        "type": "node",
+        "request": "launch",
+        "name": "Debug VuePress",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": [
+            "run-script",
+            "debug"
+        ],
+        "port": 9229
     }
   ]
 }
