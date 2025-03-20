@@ -1,7 +1,7 @@
 <template>
   <VPBanner
       title="Kurrent Cloud"
-      content="Spin up a managed instance of EventStoreDB and start building in minutes. Available in AWS, Azure or GCP."
+      content="Spin up a managed instance of KurrentDB and start building in minutes. Available in AWS, Azure and GCP."
       logo="/cloud.png"
       :actions='[
     {

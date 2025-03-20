@@ -98,6 +98,7 @@ export default defineClientConfig({
                 }
             }, 0);
         });
+        addDynamicRoute("/server/kubernetes-operator", to => `/server/kubernetes-operator/getting-started/`);
         addDynamicRoute("/server/:version", to => `/server/${to.params.version}/quick-start/`);
         addDynamicRoute('/client/:lang',
             to => {

@@ -37,6 +37,7 @@ export const sidebarEn: EsSidebarOptions = {
   ],
   "/clients/grpc/": "structure",
   "/cloud/": "structure",
+  "/server/kubernetes-operator/": "structure",
   ...ver.getSidebars(),
   "/clients/tcp/dotnet/21.2/": "structure",
 };
