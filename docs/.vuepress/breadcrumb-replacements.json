@@ -1,5 +1,6 @@
 {
     "cloud": "Kurrent Cloud",
-    "server": "KurrentDB"
+    "server": "KurrentDB",
+    "kubernetes-operator": "Kubernetes Operator"
   }
   
