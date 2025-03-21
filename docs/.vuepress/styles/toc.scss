@@ -60,7 +60,7 @@ $headings: (2, 3, 4, 5, 6);
 .vp-toc-header {
   padding: 0.5rem 1rem;
   font-weight: 600;
-  margin:0;
+  margin: 0;
 
   @media (min-width: hope-config.$pc) {
     padding-top: 0;
@@ -245,7 +245,6 @@ $headings: (2, 3, 4, 5, 6);
 .toc-survey-section {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-
 }
 
 /* Survey "Thank you" message */
@@ -301,10 +300,10 @@ $headings: (2, 3, 4, 5, 6);
   cursor: pointer;
 }
 
-.survey-thumb-button:hover{
-  color:var(--theme-color);
+.survey-thumb-button:hover {
+  color: var(--theme-color);
 }
 
-.survey-question{
+.survey-question {
   font-weight: 600;
 }

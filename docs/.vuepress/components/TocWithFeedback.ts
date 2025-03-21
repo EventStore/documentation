@@ -1,6 +1,7 @@
 import { useHeaders } from "@vuepress/helper/client";
-import { useToggle, watchImmediate } from "@vueuse/core";
+import { useToggle, useWindowSize, watchImmediate } from "@vueuse/core";
 import Bowser from "bowser";
+import type { PropType, SlotsType, VNode } from "vue";
 import {
   computed,
   defineComponent,
@@ -9,9 +10,9 @@ import {
   ref,
   resolveComponent,
   shallowRef,
+  Teleport,
   toRef,
 } from "vue";
-import type { PropType, SlotsType, VNode } from "vue";
 import type { GetHeadersOptions, PageHeader } from "vuepress/client";
 import {
   ClientOnly,
@@ -23,6 +24,8 @@ import PrintButton from "vuepress-theme-hope/modules/info/components/PrintButton
 import { useMetaLocale } from "vuepress-theme-hope/modules/info/composables/index";
 
 import "../styles/toc.scss";
+
+const TABLET_BREAKPOINT = 1440;
 
 export default defineComponent({
   name: "TOC",
@@ -46,6 +49,8 @@ export default defineComponent({
     const route = useRoute();
     const metaLocale = useMetaLocale();
     const [isExpanded, toggleExpanded] = useToggle();
+    const { width } = useWindowSize();
+    const isMobile = computed(() => width.value < TABLET_BREAKPOINT);
 
     const toc = shallowRef<HTMLElement>();
     const tocMarkerTop = ref("-1.7rem");
@@ -182,8 +187,8 @@ export default defineComponent({
     // Submit function
     const submitForm = async () => {
       const browserParser = Bowser.getParser(window.navigator.userAgent);
-      const browserName = browserParser.getBrowserName(); 
-      const platformType = browserParser.getPlatformType(); 
+      const browserName = browserParser.getBrowserName();
+      const platformType = browserParser.getPlatformType();
 
       const data = {
         thumbs: thumbsValue.value,
@@ -192,8 +197,8 @@ export default defineComponent({
         email: email.value,
         submittedAt: new Date().toString(),
         userAgent: navigator.userAgent,
-        browserName, 
-        platformType, 
+        browserName,
+        platformType,
         pageUrl: window.location.href,
       };
 
@@ -256,7 +261,7 @@ export default defineComponent({
       }
 
       return h("div", { class: "survey-form" }, [
-        h("h4", "Was this helpful?"),
+        h("p", { class: "survey-question" }, "Was this helpful?"),
         h("div", { class: "survey-thumbs" }, [
           renderThumbButton("up"),
           renderThumbButton("down"),
@@ -322,11 +327,13 @@ export default defineComponent({
         tocHeaders || before || after
           ? h("div", { class: "vp-toc-placeholder" }, [
               h("aside", { id: "toc", "vp-toc": "" }, [
+                // Optional "before" slot
                 before,
+                // The TOC itself
                 tocHeaders
                   ? [
                       h(
-                        "h4",
+                        "div",
                         { class: "vp-toc-header", onClick: toggleExpanded },
                         [
                           metaLocale.value.toc,
@@ -355,12 +362,27 @@ export default defineComponent({
                       ),
                     ]
                   : null,
+                // Optional "after" slot
                 after,
-                h("div", { class: "toc-survey-section" }, [renderSurveyForm()]),
+                // On desktop: render survey form inside the TOC container
+                !isMobile.value
+                  ? h("div", { class: "toc-survey-section" }, [
+                      renderSurveyForm(),
+                    ])
+                  : null,
               ]),
             ])
           : null;
-      return h(ClientOnly, () => tocContent);
+
+      return h(ClientOnly, () =>
+        h("div", {}, [
+          tocContent,
+          // On mobile: teleport the survey form to the element with class "theme-hope-content"
+          isMobile.value
+            ? h(Teleport, { to: ".theme-hope-content" }, [renderSurveyForm()])
+            : null,
+        ])
+      );
     };
   },
 });
