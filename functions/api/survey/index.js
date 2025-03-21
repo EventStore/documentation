@@ -28,12 +28,31 @@ export async function onRequestPost({ env, request }) {
   }
 }
 
+// Helper function to convert keys into a more readable format.
+function humanizeKey(key) {
+  const mappings = {
+    freeText: "Free text",
+    thumbs: "Positive/Negative",
+    submittedAt: "Submitted at",
+    userAgent: "User Agent",
+    browserName: "Browser Name",
+    platformType: "Platform Type",
+    pageUrl: "Page URL",
+  };
+  if (mappings[key]) {
+    return mappings[key];
+  }
+  // Convert camelCase to separate words and capitalize the first letter.
+  return key
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, (str) => str.toUpperCase());
+}
+
 // Helper function to save the feedback to KV
 async function saveFeedback(key, data, env) {
   return env.DOC_FEEDBACK.put(key, JSON.stringify(data));
 }
 
-// Helper function to build and send a formatted Slack message
 async function sendSlackMessage(data, env) {
   const lines = [];
 
@@ -62,22 +81,16 @@ async function sendSlackMessage(data, env) {
 
     if (prop === "thumbs") {
       if (value === "up") {
-        lines.push(`*Positive/Negative:* Positive✅`);
+        lines.push(`*${humanizeKey(prop)}:* Positive✅`);
       } else if (value === "down") {
-        lines.push(`*Positive/Negative:* Negative❌`);
+        lines.push(`*${humanizeKey(prop)}:* Negative❌`);
       } else {
-        lines.push(`*Positive/Negative:* ${value}`);
+        lines.push(`*${humanizeKey(prop)}:* ${value}`);
       }
       continue;
     }
 
-    if (prop === "freeText") {
-      lines.push(`*Free text:* ${value}`);
-      continue;
-    }
-
-    // Default: output the key in bold followed by its value.
-    lines.push(`*${prop}:* ${value}`);
+    lines.push(`*${humanizeKey(prop)}:* ${value}`);
   }
 
   const slackMessage = lines.join("\n");
