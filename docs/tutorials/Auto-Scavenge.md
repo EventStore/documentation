@@ -42,7 +42,7 @@ AutoScavenge:
 
 If Auto-scavenge has been disabled, enable it and restart the cluster.
 
-```
+```yaml
 AutoScavenge:
   Enabled: true
 ```
