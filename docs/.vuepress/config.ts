@@ -75,7 +75,6 @@ export default defineUserConfig({
     // add our own components for blog theme (Tutorials & Guides)
     alias: {
         "@theme-hope/components/BreadCrumb": path.resolve(__dirname, "./components/breadCrumb.ts"),
-        
-
+        "@theme-hope/modules/info/components/TOC": path.resolve(__dirname, "./components/TocWithFeedback.ts"),
     }
 });

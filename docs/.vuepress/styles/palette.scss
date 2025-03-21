@@ -162,6 +162,7 @@ html[data-theme="dark"] {
   --vp-c-bg-elv-soft: #080b0d;
   --vp-c-text: #d1dce0;
   --vp-c-text-mute: white;
+  --border-color:white;
 }
 
 html[data-theme="light"] {
@@ -177,6 +178,7 @@ html[data-theme="light"] {
   --vp-c-bg-elv-soft: #fff;
   --vp-c-text: #000;
   --vp-c-text-mute: black;
+  --border-color:black;
 }
 
 $font-body: 15px;
