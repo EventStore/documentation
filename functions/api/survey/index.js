@@ -1,7 +1,8 @@
 export async function onRequestPost({ env, request }) {
   try {
     const data = await request.json();
-    const envPrefix = process.env.PAGES_ENV === "preview" ? "preview" : "prod";
+    const envPrefix =
+      process.env.CF_PAGES_BRANCH === "main" ? "prod" : "preview";
     const key = `${envPrefix}-doc-feedback-${Date.now()}-${Math.random()
       .toString(36)
       .substring(2, 9)}`;
