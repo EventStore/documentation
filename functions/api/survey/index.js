@@ -7,7 +7,7 @@ export async function onRequestPost({ env, request }) {
       .toString(36)
       .substring(2, 9)}`;
 
-    await env.SURVEY_DATA.put(key, JSON.stringify(data));
+    await env["doc-feedback"].put(key, JSON.stringify(data));
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
