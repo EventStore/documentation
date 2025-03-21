@@ -55,11 +55,29 @@ async function sendSlackMessage(data, env) {
     lines.push("⚠️POSSIBLE SPAM SUBMISSION⚠️");
   }
 
-  // Append each non-empty property on a new line (skip submittedAt as it's already used)
+  // Style the message
   for (const [prop, value] of Object.entries(data)) {
-    if (prop === "submittedAt") continue;
+    if (prop === "submittedAt" || prop === "userAgent") continue;
     if (typeof value === "string" && value.trim() === "") continue;
-    lines.push(`${prop}: ${value}`);
+
+    if (prop === "thumbs") {
+      if (value === "up") {
+        lines.push(`*Positive/Negative:* Positive✅`);
+      } else if (value === "down") {
+        lines.push(`*Positive/Negative:* Negative❌`);
+      } else {
+        lines.push(`*Positive/Negative:* ${value}`);
+      }
+      continue;
+    }
+
+    if (prop === "freeText") {
+      lines.push(`*Free text:* ${value}`);
+      continue;
+    }
+
+    // Default: output the key in bold followed by its value.
+    lines.push(`*${prop}:* ${value}`);
   }
 
   const slackMessage = lines.join("\n");
