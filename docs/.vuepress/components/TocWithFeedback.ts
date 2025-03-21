@@ -192,11 +192,23 @@ export default defineComponent({
         true
     );
 
-    // Submit function with validations
+    // Submit function with validations, inline error messages, and localStorage caching
     const submitForm = async () => {
-      // Clear previous error messages
+      // Clear previous global error messages
       errorMessage.value = "";
-      // Note: emailError is not cleared here because we want to show it until the user types again.
+      // Note: emailError is kept until the user starts typing again
+
+      // Check if a submission exists in localStorage for this page (prevent multiple submissions within 12 hours)
+      const submissionKey = `DOC_FEEDBACK-${window.location.href}`;
+      const submissionDataStr = localStorage.getItem(submissionKey);
+      if (submissionDataStr) {
+        const submissionData = JSON.parse(submissionDataStr);
+        const twelveHours = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+        if (Date.now() - submissionData.timestamp < twelveHours) {
+          errorMessage.value = "You have already submitted feedback recently.";
+          return;
+        }
+      }
 
       // Check the honeypot field – if filled, ignore submission
       if (honeyPot.value) {
@@ -241,6 +253,11 @@ export default defineComponent({
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
+        // On successful submission, save the submission timestamp in localStorage
+        localStorage.setItem(
+          submissionKey,
+          JSON.stringify({ timestamp: Date.now() })
+        );
       } catch (err) {
         console.error("Survey submission failed", err);
       }
