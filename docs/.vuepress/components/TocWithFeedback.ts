@@ -287,7 +287,7 @@ export default defineComponent({
                 class: "survey-textarea",
               }),
               h("label", { class: "survey-email-label" }, [
-                "Leave your email if we can contact you (Optional)",
+                "Leave your email if you wish to be contacted (Optional)",
                 h("input", {
                   type: "email",
                   placeholder: "you@email.com",
