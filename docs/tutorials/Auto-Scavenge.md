@@ -63,7 +63,7 @@ See [https://en.wikipedia.org/wiki/Cron](https://en.wikipedia.org/wiki/Cron) for
 ```
 POST https://127.0.0.1:2113/auto-scavenge/configure
 Content-Type: application/json
-Authorization: Basic admin:changeit
+Authorization: Basic <admin:changeit>
 
    {
     "schedule": "0 3 * * *"
