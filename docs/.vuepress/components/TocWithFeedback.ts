@@ -152,6 +152,14 @@ export default defineComponent({
     const freeText = ref<string>("");
     const email = ref<string>("");
     const submitted = ref(false);
+    // New honeypot field for spam prevention
+    const honeyPot = ref<string>("");
+
+    // Global error message (for radio selection, etc.)
+    const errorMessage = ref<string>("");
+
+    // New email-specific error message for inline display
+    const emailError = ref<string>("");
 
     // Determine survey options and placeholder text
     const surveyOptions = computed(() => {
@@ -184,8 +192,33 @@ export default defineComponent({
         true
     );
 
-    // Submit function
+    // Submit function with validations
     const submitForm = async () => {
+      // Clear previous error messages
+      errorMessage.value = "";
+      // Note: emailError is not cleared here because we want to show it until the user types again.
+
+      // Check the honeypot field – if filled, ignore submission
+      if (honeyPot.value) {
+        console.warn("Spam submission detected, ignoring.");
+        return;
+      }
+
+      // Validate that a radio option is selected
+      if (!radioValue.value) {
+        errorMessage.value = "Please select an option before submitting.";
+        return;
+      }
+
+      // If an email is provided, validate it using a basic regex
+      if (email.value) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value)) {
+          emailError.value = "Invalid e-mail.";
+          return;
+        }
+      }
+
       const browserParser = Bowser.getParser(window.navigator.userAgent);
       const browserName = browserParser.getBrowserName();
       const platformType = browserParser.getPlatformType();
@@ -256,7 +289,7 @@ export default defineComponent({
         return h(
           "div",
           { class: "survey-thank-you" },
-          "Thank you for helping improve Kurrent's documentation!"
+          "Thank you for helping improve Kurrent's documentation! ✅"
         );
       }
 
@@ -268,6 +301,28 @@ export default defineComponent({
         ]),
         thumbsValue.value
           ? h("div", { class: "survey-details" }, [
+              // Global error message for other validations
+              errorMessage.value
+                ? h(
+                    "div",
+                    {
+                      class: "survey-error",
+                      style: { color: "red", marginBottom: "0.5rem" },
+                    },
+                    errorMessage.value
+                  )
+                : null,
+              // --- Honey-pot field (hidden) ---
+              h("input", {
+                type: "text",
+                value: honeyPot.value,
+                onInput: (e: Event) => {
+                  honeyPot.value = (e.target as HTMLInputElement).value;
+                },
+                style: { display: "none" },
+                tabindex: -1,
+                autocomplete: "off",
+              }),
               // Radio options
               ...surveyOptions.value.map((option) =>
                 h("label", { class: "survey-option-label" }, [
@@ -279,6 +334,7 @@ export default defineComponent({
                     onChange: (e: Event) => {
                       radioValue.value = (e.target as HTMLInputElement).value;
                     },
+                    required: true,
                   }),
                   " " + option,
                 ])
@@ -291,6 +347,7 @@ export default defineComponent({
                 },
                 class: "survey-textarea",
               }),
+              // Email field with inline error message for invalid email
               h("label", { class: "survey-email-label" }, [
                 "Leave your email if you wish to be contacted (Optional)",
                 h("input", {
@@ -299,13 +356,29 @@ export default defineComponent({
                   value: email.value,
                   onInput: (e: Event) => {
                     email.value = (e.target as HTMLInputElement).value;
+                    // Clear the email error when the user starts typing
+                    if (emailError.value) emailError.value = "";
                   },
                   class: "survey-email",
                 }),
+                emailError.value
+                  ? h(
+                      "div",
+                      {
+                        class: "survey-email-error",
+                        style: { color: "red", marginTop: "0.25rem" },
+                      },
+                      emailError.value
+                    )
+                  : null,
               ]),
               h(
                 "button",
-                { onClick: submitForm, class: "survey-submit-button" },
+                {
+                  onClick: submitForm,
+                  class: "survey-submit-button",
+                  disabled: !radioValue.value,
+                },
                 "Submit"
               ),
             ])
