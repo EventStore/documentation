@@ -1,5 +1,5 @@
-import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "vuepress-theme-hope";
+import {instance as ver} from "../lib/versioning";
 
 export const navbarEn: NavbarOptions = [
     {

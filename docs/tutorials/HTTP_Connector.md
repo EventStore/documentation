@@ -7,7 +7,7 @@ order: 3
 
 Connectors simplify the integration of EventStoreDB data into other systems. Each connector runs on the server-side and uses a catch-up subscription to receive events, filter or transform them, and push them to an external system via a sink.
 
-The following are the available Event Store sinks:
+The following are the available Kurrent sinks:
 
 1. [Kafka Sink](/server/v24.10/features/connectors/sinks/kafka.html)
 2. [MongoDB Sink](/server/v24.10/features/connectors/sinks/mongo.html)

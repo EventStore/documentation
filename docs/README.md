@@ -47,7 +47,7 @@ highlights:
 
       - title: Linux
         icon: devicon:linux
-        details: Use Event Store package feeds for Ubuntu, Debian, CentOS, and Red Hat Enterprise Linux.
+        details: Use Kurrent package feeds for Ubuntu, Debian, CentOS, and Red Hat Enterprise Linux.
         link: /latest/quick-start/installation.html#install-from-packagecloud
 
       - title: Windows

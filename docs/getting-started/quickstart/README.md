@@ -28,7 +28,7 @@ Before starting, ensure you have the following:
 - Familiarity with command-line operations.
 
 ::: tip
-If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Event Store Academy](https://academy.kurrent.io/from-scratch).
+If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Kurrent Academy](https://academy.kurrent.io/from-scratch).
 :::
 
 ## Step 1: Set up Your Codespace
@@ -829,6 +829,6 @@ Now that you've completed the quickstart, you may want to explore the following:
 
 - [EventStoreDB Server Configuration Documentation](@server/configuration/README.md): Explore how to configure EventStoreDB for your environment.
 
-- [Event Store Cloud](https://www.kurrent.io/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
+- [Kurrent Cloud](https://www.kurrent.io/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
 
 - [EventStoreDB Samples](https://github.com/EventStore/samples/tree/main): Experiment with different SDKs to interact with EventStoreDB using various programming languages.

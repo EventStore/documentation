@@ -18,7 +18,7 @@ EventStoreDB offers the following features:
 | [Streams](./concepts.md#event-stream) | Groups and indexes events to organize and speed up retrieval.                                                             |
 | [Subscriptions](@server/features/persistent-subscriptions.md) and [Connectors](@server/features/connectors/README.md) | Delivers events to external systems through push or pull options.                                                         |
 | [Projection](@server/features/projections/README.md) | Transforms and filters events into different streams or state.                                                            |
-| [Multiple Hosting Options](https://kurrent.io/downloads) | Fully managed with [Event Store Cloud](/cloud/introduction.md), or self-managed on Linux, Windows, macOS, or with Docker. |
+| [Multiple Hosting Options](https://kurrent.io/downloads) | Fully managed with [Kurrent Cloud](/cloud/introduction.md), or self-managed on Linux, Windows, macOS, or with Docker. |
 | [Client SDK](@clients/grpc/getting-started.md) | Available in Python, Java, .NET, Node.js, Go, and Rust.                                                                   |
 
 ::: note
@@ -90,6 +90,6 @@ To learn more where EventStoreDB fits in your business, [click here](/getting-st
 
 - [How EventStoreDB Supports your Business Processes](/getting-started/evaluate/business-process-support.md): Learn what EventStoreDB can do for you. 
 
-- [Event Store Essentials](https://academy.kurrent.io/essentials): Understand fundamental concepts around EventStoreDB.
+- [Kurrent Essentials](https://academy.kurrent.io/essentials): Understand fundamental concepts around EventStoreDB.
 
 - [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Receive step-by-step video tutorial to create a basic application.
