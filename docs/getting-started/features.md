@@ -18,7 +18,7 @@ title: EventStoreDB Feature List
 | [Stream Indexing](@server/configuration/indexes.md)                                                          | Events in streams are indexed to provide fast access to groups of events in the event log.                                                                                                                                                   |
 | [Fine Grained Stream](./concepts.md#fine-grained-event-streams)                                              | EventStore supports billions of streams, allowing granular event organization to efficiently track the lifecycle of every distinct entity within a system.                                                                                   |
 | [Optimistic Concurrency Control](./concepts.md#optimistic-concurrency-control)                               | Concurrent appends that lead to lost updates can be prevented with optimistic concurrency control. This is done in a lock-free manner, to reduce contention and performance overhead.                                                        |
-| [Multiple Hosting Options](https://www.eventstore.com/downloads)                                             | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/introduction.md) or self-managed on Linux, Windows, macOS, or with Docker                                                                                            |
+| [Multiple Hosting Options](https://www.kurrent.io/downloads)                                             | EventStoreDB is available fully managed with [Event Store Cloud](/cloud/introduction.md) or self-managed on Linux, Windows, macOS, or with Docker                                                                                            |
 
 ### <HopeIcon icon="streamline:projector-board" size="1.25em"/> Projection
 
@@ -142,8 +142,8 @@ title: EventStoreDB Feature List
 
 - [EventStoreDB Client Documentation](/clients/grpc/appending-events.md#handling-concurrency): Explore how to use these features with EventStoreDB clients.
   
-- [Event Store Essentials](https://academy.eventstore.com/essentials): Developer greater understanding of these features in this in-depth guide.
+- [Event Store Essentials](https://academy.kurrent.io/essentials): Developer greater understanding of these features in this in-depth guide.
 
-- [EventStoreDB From Scratch](https://academy.eventstore.com/from-scratch): Get hands-on and build a basic EventStoreDB application with this training series.
+- [EventStoreDB From Scratch](https://academy.kurrent.io/from-scratch): Get hands-on and build a basic EventStoreDB application with this training series.
 
 - [An End-To-End Example With EventStoreDB](https://www.youtube.com/watch?v=vIUw-jKpKfQ) Watch how to build an application with EventStoreDB
