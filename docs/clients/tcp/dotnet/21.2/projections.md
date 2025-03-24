@@ -23,7 +23,7 @@ First, we need a function to read JSON files and construct the list of `EventDat
 
 @[code{ReadEventsFunction}](./sample-code/GettingStarted/UserProjections.cs)
 
-Then, we can use this function and push events to EventStoreDB:
+Then, we can use this function and push events to KurrentDB:
 
 @[code{SeedEvents}](./sample-code/GettingStarted/UserProjections.cs)
 
@@ -37,7 +37,7 @@ The projection counts the number of 'XBox One S's that customers added to their 
 
 A projection starts with a selector, in this case `fromAll()`. Another possibility is `fromCategory({category})` which this step discusses later, but for now, `fromAll` should do.
 
-The second part of a projection is a set of filters. There is a special filter called `$init` that sets up an initial state. You want to start a counter from 0 and each time EventStoreDB observes an `ItemAdded` event for an 'Xbox One S,' increment the counter.
+The second part of a projection is a set of filters. There is a special filter called `$init` that sets up an initial state. You want to start a counter from 0 and each time KurrentDB observes an `ItemAdded` event for an 'Xbox One S,' increment the counter.
 
 Here is the projection code:
 
@@ -72,7 +72,7 @@ The server then returns the state for the partition:
 
 ## Emitting new events
 
-The above gives you the correct result but requires you to poll for the state of a projection. What if you wanted EventStoreDB to notify you about state updates via subscriptions?
+The above gives you the correct result but requires you to poll for the state of a projection. What if you wanted KurrentDB to notify you about state updates via subscriptions?
 
 ### Output state
 
@@ -120,7 +120,7 @@ Now you can read the result as above, but use the new stream name:
 
 The example in this step so far relied on a global state for the projection, but what if you wanted a count of the number of items in the shopping cart per shopping cart.
 
-EventStoreDB has a built-in `$by_category` projection that lets you select events from a particular list of streams. Enable this projection with the following command.
+KurrentDB has a built-in `$by_category` projection that lets you select events from a particular list of streams. Enable this projection with the following command.
 
 @[code{ProjectionsManager}](./sample-code/GettingStarted/UserProjections.cs)
 @[code{EnableCategoryProjection}](./sample-code/GettingStarted/UserProjections.cs)
@@ -147,7 +147,7 @@ Create the projection with the following request:
 
 ## Managing projections
 
-The EventStoreDB Client API includes helper methods that use the HTTP API to allow you to manage projections. This document describes the methods found in the `ProjectionsManager` class. All methods in this class are asynchronous.
+The KurrentDB Client API includes helper methods that use the HTTP API to allow you to manage projections. This document describes the methods found in the `ProjectionsManager` class. All methods in this class are asynchronous.
 
 ### Enable a projection
 

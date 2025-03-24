@@ -36,7 +36,7 @@ If you were using it in the .NET Standard library, you have to update it to the 
  </Project>
 ```
 
-If you use .NET Framework, you'll have to make sure that your application is targeting .NET Framework 4.8 or later. EventStoreDB only supports gRPC calls with HTTP/2, and it is only possible to use HTTP/2 on Windows 11 and Windows Server 2019 when building applications using .NET Framework. This limitation doesn't apply to .NET Core 3+ and .NET 5+. Check the compatibility note in [.NET documentation](https://learn.microsoft.com/en-us/aspnet/core/grpc/supported-platforms?view=aspnetcore-8.0#net-grpc-client-requirements).
+If you use .NET Framework, you'll have to make sure that your application is targeting .NET Framework 4.8 or later. KurrentDB only supports gRPC calls with HTTP/2, and it is only possible to use HTTP/2 on Windows 11 and Windows Server 2019 when building applications using .NET Framework. This limitation doesn't apply to .NET Core 3+ and .NET 5+. Check the compatibility note in [.NET documentation](https://learn.microsoft.com/en-us/aspnet/core/grpc/supported-platforms?view=aspnetcore-8.0#net-grpc-client-requirements).
 
 ## Update package references
 
@@ -231,7 +231,7 @@ Read more [here](@clients/grpc/getting-started.md#connection-string) about the c
 
 ## Security
 
-EventStoreDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
+KurrentDB from version 20.6 is secured by default. The gRPC clients follow that approach. You can use an insecure connection by providing `tls=false` in the connection string, but we don't recommend it for scenarios other than local development. Access Control List checks are not performed on an insecure connection.
 
 Read more in [database security docs](@server/security/protocol-security.md).
 
@@ -245,7 +245,7 @@ There are minor changes to the `EventData` signature:
 - We have allowed providing a content type. It _potentially_ enables more advanced serialisation scenarios (for example, using a few non-JSON serialisation formats). Instead of setting the `isJson` flag for the gRPC client, you should provide the text value of the content type. The default one is `application/json`, which is equivalent to setting `isJson` flag to `true`. If you're using the custom format, you should provide its name, e.g. `application/octet-stream`.
 
 ::: warning
-As per now, EventStoreDB only supports `application/json` and `application/octet-stream` content types. This limitation will be removed in the future.
+As per now, KurrentDB only supports `application/json` and `application/octet-stream` content types. This limitation will be removed in the future.
 :::
 
 ::: note
@@ -361,7 +361,7 @@ If you had wrapper methods similar to [presented above](#migration-strategies). 
 
 ### Transactions
 
-The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. The TCP client may perform multiple appends to EventStoreDB in one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. The gRPC client still supports appending more than one event to the single stream as an atomic operation. 
+The most significant breaking change in the gRPC client is that it **does not support transactions anymore**. The TCP client may perform multiple appends to KurrentDB in one transaction. The transaction can only append events to one stream. Transactions across multiple streams are not supported. The gRPC client still supports appending more than one event to the single stream as an atomic operation. 
 
 A transaction can be long-lived, and opening it for a stream doesn't lock it. Another process can write to the same stream. In this case, your transaction might fail if you use idempotent writes with the expected version. If you use transactions, we recommend reevaluating your consistency guarantees and stream modelling to reduce the need for appending events. If you still need to use them, you may consider adding your own Unit of Work implementation, as, for example:
 
@@ -623,7 +623,7 @@ You should be careful in defining the retry policy. Not all operations are idemp
 
 ## Catch-up Subscriptions
 
-We unified catch-up subscriptions API in the gRPC client. In the TCP client, you have multiple methods for subscribing to EventStoreDB, e.g., `SubscribeToStreamAsync`, `SubscribeToStreamFrom`, `FilteredSubscribeToAllAsync`, etc. Now you have two main options:
+We unified catch-up subscriptions API in the gRPC client. In the TCP client, you have multiple methods for subscribing to KurrentDB, e.g., `SubscribeToStreamAsync`, `SubscribeToStreamFrom`, `FilteredSubscribeToAllAsync`, etc. Now you have two main options:
 - subscribing to a single stream using `SubscribeToStreamAsync`,
 - subscribing to the `$all` stream using `SubscribeToAllAsync`.
 
@@ -697,7 +697,7 @@ await grpcClient.SubscribeToAllAsync(
 
 ### Events filtering
 
-EventStoreDB allows you to filter the events whilst you subscribe to the `$all` stream so that you only receive the events that you care about. The TCP client provides that option via the `FilteredSubscribeToAll` method. As was mentioned above, this method was unified with `SubscribeToAllAsync`. 
+KurrentDB allows you to filter the events whilst you subscribe to the `$all` stream so that you only receive the events that you care about. The TCP client provides that option via the `FilteredSubscribeToAll` method. As was mentioned above, this method was unified with `SubscribeToAllAsync`. 
 
 Thus, instead of such call in TCP:
 
@@ -774,7 +774,7 @@ await foreach (var message in subscription.Messages.WithCancellation(ct)) {
 
 ### Resolving linked events
 
-[Projections in EventStoreDB](@server/features/projections/README.md) let you append new events or link existing events to streams. Links won't contain the original event data. EventStoreDB can resolve it automatically depending on the value you passed to the operation call.
+[Projections in KurrentDB](@server/features/projections/README.md) let you append new events or link existing events to streams. Links won't contain the original event data. KurrentDB can resolve it automatically depending on the value you passed to the operation call.
 
 The TCP client by default resolved linked events. gRPC changes that behaviour to only resolve them if you ask for that explicitly.
 
