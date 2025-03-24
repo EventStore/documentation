@@ -36,10 +36,10 @@ export const navbarEn: NavbarOptions = [
         children: [
             {text: "Community forum", link: "https://discuss.eventstore.com"},
             {text: "Community Discord ", link: "https://discord.gg/Phn9pmCw3t"},
-            {text: "Blogs", link: "https://eventstore.com/blog/articles/"},
-            {text: "Webinars", link: "https://eventstore.com/webinars/"},
+            {text: "Blogs", link: "https://www.kurrent.io/blog/articles/"},
+            {text: "Webinars", link: "https://www.kurrent.io/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
-            {text: "Event Store Academy", link: "https://academy.eventstore.com"}
+            {text: "Event Store Academy", link: "https://academy.kurrent.io/"}
         ]
     }
 ];

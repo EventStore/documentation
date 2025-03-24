@@ -17,12 +17,12 @@ The binaries are available for the following platforms:
 
 | Processor | Operating system | Filename                                                                                          |
 |:----------|:-----------------|:--------------------------------------------------------------------------------------------------|
-| x64       | macOS            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip  |
-| x64       | FreeBSD          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip |
-| x64       | Linux            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip   |
-| x64       | Windows          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip |
-| arm64     | FreeBSD          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip |
-| arm64     | Linux            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip   |
+| x64       | macOS            | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip  |
+| x64       | FreeBSD          | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip |
+| x64       | Linux            | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip   |
+| x64       | Windows          | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip |
+| arm64     | FreeBSD          | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip |
+| arm64     | Linux            | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip   |
 
 ### Terraform 0.13+
 
@@ -76,11 +76,11 @@ Use the following command to get the access token using `esc-cli`:
 $ esc access tokens create --email <email>
 
 Password:
-Token created for audience https://api.eventstore.cloud
+Token created for audience https://api.kurrent.cloud
 FDGco0u_1Ypw9WVVIfAHtIJh0ioUI_XbMhxMlEpiCUlHR
 ```
 
-If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page, then click on "Request refresh token" button.
+If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.kurrent.cloud/authentication-tokens) page, then click on "Request refresh token" button.
 
 ![token in cloud console](images/token_console.png)
 
@@ -105,14 +105,14 @@ Using the Terraform provider, you can create, manipulate, and delete the followi
 
 | Terraform resource                | Kurrent Cloud resource                                          |
 |:----------------------------------|:----------------------------------------------------------------|
-| `eventstorecloud_project`         | [Project](#projects)                                            |
-| `eventstorecloud_network`         | [Network](#networks)                                            |
-| `eventstorecloud_peering`         | [Network peering](#network-peerings)                            |
-| `eventstorecloud_managed_cluster` | Managed KurrentDB instance or cluster                           |
+| `kurrentcloud_project`         | [Project](#projects)                                            |
+| `kurrentcloud_network`         | [Network](#networks)                                            |
+| `kurrentcloud_peering`         | [Network peering](#network-peerings)                            |
+| `kurrentcloud_managed_cluster` | Managed KurrentDB instance or cluster                           |
 
 ### Projects
 
-You can create Kurrent Cloud projects for the organisation using the `eventstorecloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
+You can create Kurrent Cloud projects for the organisation using the `kurrentcloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
 
 You need a project to provision any other resource.
 

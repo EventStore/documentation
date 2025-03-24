@@ -2,7 +2,7 @@ import {reactive} from "vue";
 import {getUrlParamValue} from "../../lib/url";
 import {getStorageValue, setStorageValue} from "../../lib/localStorage";
 
-const prefix = "eventstore-docs";
+const prefix = "kurrent-docs";
 const langStorageName = "codeLanguage";
 
 function getSelectedCodeLanguage() {
