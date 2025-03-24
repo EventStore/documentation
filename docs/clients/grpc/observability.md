@@ -4,7 +4,7 @@ order: 8
 
 # Observability
 
-The EventStoreDB gRPC clients are designed with observability in mind, offering
+The KurrentDB gRPC clients are designed with observability in mind, offering
 support for OpenTelemetry. This integration provides a set of distributed
 traces, enabling developers to gain deeper insights into their system.
 
@@ -22,7 +22,7 @@ You can click on the links below to view the full code for each client:
 
 ## Required packages
 
-OpenTelemetry support is included to the EventStoreDB Java client by default. For other clients, you need to install the dedicated package to enable OpenTelemetry support. 
+OpenTelemetry support is included to the KurrentDB Java client by default. For other clients, you need to install the dedicated package to enable OpenTelemetry support. 
 
 ### NodeJS
 

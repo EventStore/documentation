@@ -1,8 +1,8 @@
-# EventStoreDB documentation
+# KurrentDB documentation
 
-EventStoreDB is an open-source, functional database with Complex Event Processing in JavaScript.
+KurrentDB is an open-source, functional database with Complex Event Processing in JavaScript.
 
-This repository maintains documentation for EventStoreDB (imported from the server repository on build), Kurrent Cloud, client SDKs, and other tools and product provided by Kurrent.
+This repository maintains documentation for KurrentDB (imported from the server repository on build), Kurrent Cloud, client SDKs, and other tools and product provided by Kurrent.
 
 ## Contributing
 
@@ -10,13 +10,13 @@ Feel free to [create a GitHub](https://github.com/EventStore/documentation/issue
 
 We're open to any contribution. If you noticed some inconsistency, missing piece, or you'd like to extend existing docs - we'll be happy to [get your Pull Request](https://github.com/EventStore/documentation/compare).
 
-Note that EventStoreDB documentation is located in the [server repository](https://github.com/EventStore/EventStore). Open issues and PRs for server documentation in there.
+Note that KurrentDB documentation is located in the [server repository](https://github.com/EventStore/EventStore). Open issues and PRs for server documentation in there.
 
 Please make sure to follow the [contribution guidelines](CONTRIBUTING.md). It contains detailed information on how to contribute to the documentation.
 
 ## Samples
 
-EventStoreDB clients:
+KurrentDB clients:
 - C# - [see more](https://github.com/EventStore/EventStore-Client-Dotnet/tree/master/samples)
 - NodeJS - [see more](https://github.com/EventStore/EventStore-Client-NodeJS/tree/master/packages/test/src/samples)
 - Java - [see more](https://github.com/EventStore/EventStoreDB-Client-Java/tree/trunk/src/test/java/io/kurrent/dbclient/samples)

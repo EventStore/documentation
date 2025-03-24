@@ -37,7 +37,7 @@ The local build must complete successfully before you open a pull request.
 
 ## Importing documentation
 
-This repository contains documentation about Kurrent and its client SDKs. The documentation for EventStoreDB, including its HTTP API, is imported from the respective repositories on build. To import the documentation manually, run:
+This repository contains documentation about Kurrent and its client SDKs. The documentation for KurrentDB, including its HTTP API, is imported from the respective repositories on build. To import the documentation manually, run:
 
 ```bash
 pnpm run import
@@ -56,8 +56,8 @@ The documentation sources are located in the `/docs` directory. The `/docs/.vuep
 Other directors inside `/docs` include:
 - `clients`: documentation for current and legacy clients
 - `cloud`: Kurrent Cloud documentation
-- `server`: EventStoreDB documentation imported from the server repository
-- `http-api`: EventStoreDB HTTP API documentation imported from the server repository
+- `server`: KurrentDB documentation imported from the server repository
+- `http-api`: KurrentDB HTTP API documentation imported from the server repository
 - `samples`: imported code samples for the client SDKs, server, and HTTP API
 
 Directories with imported code like `server`, `http-api`, and `samples` are generated on build and should not be edited manually. They are also listed in `.gitignore` and won't be committed to the repository.

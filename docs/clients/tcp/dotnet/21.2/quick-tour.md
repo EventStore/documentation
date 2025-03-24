@@ -7,7 +7,7 @@ sitemap:
 
 # Quick tour
 
-This is a quick tour into the basic operations with EventStoreDB using the TCP client. We will look at creating a connection, appending an event and reading an event.
+This is a quick tour into the basic operations with KurrentDB using the TCP client. We will look at creating a connection, appending an event and reading an event.
 
 ::: warning
 The TCP client is considered legacy. We recommend migrating to [the latest client](@clients/grpc/README.md). Check the [migration guide to learn more](migration-to-gRPC.md).
@@ -22,7 +22,7 @@ These examples have the following requirements:
 
 ## Run the server
 
-To run the EventStoreDB, create a new file called `docker-compose.yml` and copy the following contents into it:
+To run the KurrentDB, create a new file called `docker-compose.yml` and copy the following contents into it:
 
 @[code](./sample-code/docker-compose.yml)
 
@@ -32,9 +32,9 @@ Then run the command.
 docker-compose up
 ```
 
-This will launch a new instance of the EventStoreDB server.
+This will launch a new instance of the KurrentDB server.
 
-## Connect to EventStoreDB
+## Connect to KurrentDB
 
 [Install the .NET client API](https://www.nuget.org/packages/EventStore.Client) package to your project using your preferred method.
 
@@ -46,7 +46,7 @@ To use a client API, you use port `1113` and create a connection:
 
 @[code{connect}](./sample-code/GettingStarted/Connection.cs)
 
-It will create a connection to EventStoreDB running locally in Docker container using the TCP protocol.
+It will create a connection to KurrentDB running locally in Docker container using the TCP protocol.
 
 ## Appending events
 

@@ -19,7 +19,7 @@ highlights:
       icon: hugeicons:cloud
       link: https://www.kurrent.io/kurrent-cloud
     - title: Start KurrentDB in a container
-      details: Run <code>docker run kurrentio/kurrent:latest --dev</code> to start EventStoreDB in developers mode.
+      details: Run <code>docker run kurrentio/kurrent:latest --dev</code> to start KurrentDB in developers mode.
       icon: simple-icons:docker
       link: /latest/quick-start/installation.html#docker
     - title: Start using the client
@@ -28,7 +28,7 @@ highlights:
       link: /clients/grpc/getting-started.html
 
   - header: Deploy in your environment
-    description: Deploy EventStoreDB in your environment using our binaries, Docker Compose, or Kubernetes Operator.
+    description: Deploy KurrentDB in your environment using our binaries, Docker Compose, or Kubernetes Operator.
     features:
       - title: AWS
         icon: skill-icons:aws-dark
@@ -52,12 +52,12 @@ highlights:
 
       - title: Windows
         icon: devicon:windows8
-        details: Download the Windows binaries or use Chocolatey to install EventStoreDB.
+        details: Download the Windows binaries or use Chocolatey to install KurrentDB.
         link: /latest/quick-start/installation.html#windows
 
       - title: Docker
         icon: logos:docker-icon
-        details: Use Docker Compose to pull images from Docker Hub and run EventStoreDB in containers.
+        details: Use Docker Compose to pull images from Docker Hub and run KurrentDB in containers.
         link: /latest/quick-start/installation.html#use-docker-compose
 
   - header: Develop in your language
@@ -75,27 +75,27 @@ highlights:
 
     - title: C#
       icon: devicon:csharp
-      details: Build .NET applications with EventStoreDB using the .NET client for latest .NET and legacy .NET Framework.
+      details: Build .NET applications with KurrentDB using the .NET client for latest .NET and legacy .NET Framework.
       link: /client/csharp
 
     - title: Python
       icon: devicon:python
-      details: Create applications and scripts in Python using the EventStoreDB client.
+      details: Create applications and scripts in Python using the KurrentDB client.
       link: /client/Python
 
     - title: Rust
       icon: skill-icons:rust
-      details: Bring EventStoreDB to your Rust applications using the Rust client.
+      details: Bring KurrentDB to your Rust applications using the Rust client.
       link: /client/Rust
 
     - title: Go
       icon: skill-icons:golang
-      details: Connect EventStoreDB with your Go applications using the Go client.
+      details: Connect KurrentDB with your Go applications using the Go client.
       link: /client/Go
 
     - title: HTTP API
       icon: catppuccin:http
-      details: Use EventStoreDB's HTTP API to interact with the database using any language or stack.
+      details: Use KurrentDB's HTTP API to interact with the database using any language or stack.
       link: https://docs.kurrent.io/http-api/v24.10/introduction.html
 
 footer: Copyright © 2025 Kurrent, Inc

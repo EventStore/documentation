@@ -1,6 +1,6 @@
 # Indexmap migration
 
-From EventStoreDB 5 onwards, the format of the indexmap file changed. The indexmap-migrate tool converts EventStoreDB 5 indexmap files to a format compatible with previous EventStoreDB versions. You will need this if you roll back from EventStoreDB 5 to an earlier version.
+From KurrentDB 5 onwards, the format of the indexmap file changed. The indexmap-migrate tool converts KurrentDB 5 indexmap files to a format compatible with previous KurrentDB versions. You will need this if you roll back from KurrentDB 5 to an earlier version.
 
 <!-- TODO: Refactor to VuePress -->
 
@@ -23,4 +23,4 @@ indexmap-migrate [options]
 | Option           | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
 | -h, -help        | Display help                                                 |
-| -s, -source-file | Path to the indexmap file in your EventStoreDB 5 installation |
+| -s, -source-file | Path to the indexmap file in your KurrentDB 5 installation |

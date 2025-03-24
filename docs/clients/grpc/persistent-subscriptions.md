@@ -31,7 +31,7 @@ The following sample shows how to create a subscription group for a persistent s
 
 ### Subscribing to $all
 
-The ability to subscribe to `$all` was introduced in EventStoreDB **21.10**. Persistent subscriptions to `$all` also support [filtering](subscriptions.md#server-side-filtering).
+The ability to subscribe to `$all` was introduced in KurrentDB **21.10**. Persistent subscriptions to `$all` also support [filtering](subscriptions.md#server-side-filtering).
 
 You can create a subscription group on $all much the same way you would create a subscription group on a stream:
 
@@ -108,7 +108,7 @@ This option can be seen as a fall-back scenario for high availability, when a si
 
 For use with an indexing projection such as the system `$by_category` projection.
 
-EventStoreDB inspects the event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects, its buckets are assigned to other clients. When a client connects, it is assigned some existing buckets. This naively attempts to maintain a balanced workload.
+KurrentDB inspects the event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects, its buckets are assigned to other clients. When a client connects, it is assigned some existing buckets. This naively attempts to maintain a balanced workload.
 
 The main aim of this strategy is to decrease the likelihood of concurrency and ordering issues while maintaining load balancing. This is **not a guarantee**, and you should handle the usual ordering and concurrency issues.
 

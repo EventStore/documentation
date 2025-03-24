@@ -37,7 +37,7 @@ For regular streams, the checkpoint is a sequence number of the event, which is 
 
 ### Use-case for catch-up subscription
 
-Catch-up subscriptions are typically used for producing _read models_ in event-sourced systems that use the CQRS pattern. Subscribers that update read models are often called _projections_ because they project the event payload to a piece of state in another database. Client-side projections use the same concept as EventStoreDB server-side projections but have a different purpose.
+Catch-up subscriptions are typically used for producing _read models_ in event-sourced systems that use the CQRS pattern. Subscribers that update read models are often called _projections_ because they project the event payload to a piece of state in another database. Client-side projections use the same concept as KurrentDB server-side projections but have a different purpose.
 
 ::: tip Storing checkpoints
 The best practice for subscriptions that project events to another storage, is to store checkpoints in the same storage. Projecting an event and storing the checkpoint in one transaction allows you t achieve the _exactly once_ event processing.
@@ -45,7 +45,7 @@ The best practice for subscriptions that project events to another storage, is t
 
 ### Subscribing to a stream
 
-You can subscribe to any individual event stream in EventStoreDB. It could be a normal stream, where your software append events, or a stream produced by the server-side projection, either a system projection (like `$et-SomethingHappened`) or a custom projection.
+You can subscribe to any individual event stream in KurrentDB. It could be a normal stream, where your software append events, or a stream produced by the server-side projection, either a system projection (like `$et-SomethingHappened`) or a custom projection.
 
 Use the `IEventStoreConnection.SubscribeToStreamFrom` method to initiate the subscription. The connection must be open by the time you call this method.
 
@@ -61,7 +61,7 @@ In this code, we create an instance of `CatchUpSubscriptionSettings`. You can al
 
 ### Subscribing to `$all`
 
-Subscribing to the global event stream enables you to create read models from many different event streams. It is a powerful method to create, for example, reporting models with aggregated and denormalized data without using common database operations like `JOIN`. You must, however, carefully evaluate your subscription performance, as when you subscribe to `$all`, you'll get absolutely everything what gets appended to the EventStoreDB cluster. You might also need to filter out system events by checking if the event type starts with `$`. In normal applications, you won't need to process system events.
+Subscribing to the global event stream enables you to create read models from many different event streams. It is a powerful method to create, for example, reporting models with aggregated and denormalized data without using common database operations like `JOIN`. You must, however, carefully evaluate your subscription performance, as when you subscribe to `$all`, you'll get absolutely everything what gets appended to the KurrentDB cluster. You might also need to filter out system events by checking if the event type starts with `$`. In normal applications, you won't need to process system events.
 
 As mentioned before, the checkpoint for `$all` is not a single numeric value, like it is for a single stream. You need to handle the checkpoint with two positions instead: commit and prepare position.
 
@@ -81,7 +81,7 @@ If you need to stop the subscription without closing the connection, you can use
 
 ## Persistent subscriptions
 
-In contrast to volatile and catch-up types, persistent subscriptions are not dropped when the connection is closed. Moreover, this subscription type supports the "[competing consumers](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html)" messaging pattern and is useful when you need to distribute messages to many workers. EventStoreDB saves the subscription state server-side and allows for at-least-once delivery guarantees across multiple consumers on the same stream. It is possible to have many groups of consumers compete on the same stream, with each group getting an at-least-once guarantee.
+In contrast to volatile and catch-up types, persistent subscriptions are not dropped when the connection is closed. Moreover, this subscription type supports the "[competing consumers](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CompetingConsumers.html)" messaging pattern and is useful when you need to distribute messages to many workers. KurrentDB saves the subscription state server-side and allows for at-least-once delivery guarantees across multiple consumers on the same stream. It is possible to have many groups of consumers compete on the same stream, with each group getting an at-least-once guarantee.
 
 ::: tip
 The Administration UI includes a _Persistent Subscriptions_ section where a user can create, update, delete and view subscriptions and their statuses.
@@ -188,7 +188,7 @@ This option can be seen as a fall-back scenario for high availability, when a si
 
 For use with an indexing projection such as the system `$by_category` projection.
 
-EventStoreDB inspects the event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects its buckets are assigned to other clients. When a client connects, it is assigned some of the existing buckets. This naively attempts to maintain a balanced workload.
+KurrentDB inspects the event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects its buckets are assigned to other clients. When a client connects, it is assigned some of the existing buckets. This naively attempts to maintain a balanced workload.
 
 The main aim of this strategy is to decrease the likelihood of concurrency and ordering issues while maintaining load balancing. _This is not a guarantee_, and you should handle the usual ordering and concurrency issues.
 

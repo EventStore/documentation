@@ -83,7 +83,7 @@ static async Task Main()
 
 ## Transactions
 
-You might perform multiple writes to EventStoreDB as one transaction. However, the transaction can only append events to one stream. Transactions across multiple streams are not supported.
+You might perform multiple writes to KurrentDB as one transaction. However, the transaction can only append events to one stream. Transactions across multiple streams are not supported.
 
 You can open a transaction by using the `StartTransactionAsync` method of the `IEventStoreConnection` instance. After you got the transaction instance, you can use it to append events. Finally, you can either commit or roll back the transaction.
 
@@ -182,7 +182,7 @@ If the optimistic concurrency check fails during appending, a `WrongExpectedVers
 
 ## Idempotence
 
-If identical append operations occur, EventStoreDB treats them in a way which makes it idempotent. If a append is treated in this manner, EventStoreDB acknowledges it as successful, but duplicate events are not appended. The idempotence check is based on the `EventId` and `stream`. It is possible to reuse an `EventId` across streams whilst maintaining idempotence.
+If identical append operations occur, KurrentDB treats them in a way which makes it idempotent. If a append is treated in this manner, KurrentDB acknowledges it as successful, but duplicate events are not appended. The idempotence check is based on the `EventId` and `stream`. It is possible to reuse an `EventId` across streams whilst maintaining idempotence.
 
 The level of idempotence guarantee depends on whether the optimistic concurrency check is not disabled during appending (by passing `ExpectedVersion.Any` as the `expectedVersion` for the append).
 

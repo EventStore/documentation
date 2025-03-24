@@ -5,19 +5,19 @@ sitemap:
   changefreq: monthly
 ---
 
-# Connecting to EventStoreDB
+# Connecting to KurrentDB
 
 Describe connecting to the single node and to the cluster.
 
 Gossip seeds, using ip addresses and DNS.
 
-The .NET Client API communicates with EventStoreDB over TCP, using length-prefixed serialised protocol buffers. The API allows for reading and appending operations, as well as for subscriptions to individual event streams or all events appended.
+The .NET Client API communicates with KurrentDB over TCP, using length-prefixed serialised protocol buffers. The API allows for reading and appending operations, as well as for subscriptions to individual event streams or all events appended.
 
 ## EventStoreConnection
 
-The `EventStoreConnection` class maintains a full-duplex connection between the client and the EventStoreDB server. `EventStoreConnection` is thread-safe, and we recommend that you create one node per application.
+The `EventStoreConnection` class maintains a full-duplex connection between the client and the KurrentDB server. `EventStoreConnection` is thread-safe, and we recommend that you create one node per application.
 
-EventStoreDB handles all connections asynchronously, returning either a `Task` or a `Task<T>`.
+KurrentDB handles all connections asynchronously, returning either a `Task` or a `Task<T>`.
 
 ::: tip
 To get maximum performance from a non-blocking connection, we recommend you use it asynchronously.
@@ -25,7 +25,7 @@ To get maximum performance from a non-blocking connection, we recommend you use 
 
 ## Quick start
 
-The code below shows how to connect to an EventStoreDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for connecting to a server using [connection string](#connection-string) and [connection settings](#connection-settings), [reading events](reading.md) and [appending to a stream](appending.md)
+The code below shows how to connect to an KurrentDB server, appends to a stream, and read back the events. For more detailed information, read the full pages for connecting to a server using [connection string](#connection-string) and [connection settings](#connection-settings), [reading events](reading.md) and [appending to a stream](appending.md)
 
 ::: tabs
 @tab JSON format event
@@ -42,7 +42,7 @@ We recommended using the JSON format for data and metadata.
 
 Many of the `EventStoreConnection.Create` overloads accept a connection string that you can use to control settings of the connection. A benefit to having these as a connection string instead of using the fluent API is that you can change them between environments without recompiling (i.e. a single node in `dev` and a cluster in `production`).
 
-For example, the following code will create a connection to an EventStoreDB local node, and then open the connection:
+For example, the following code will create a connection to an KurrentDB local node, and then open the connection:
 
 ```csharp
 var connectionString = "ConnectTo=tcp://admin:changeit@localhost:1113;";
@@ -54,8 +54,8 @@ Here are all available overloads for the `Create` methods of the `EventStoreConn
 
 | Method                                                               | Description                                                                                                       |
 |:---------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------|
-| `Create(string connectionString)`                                    | Connects to EventStoreDB with settings from connection string                                                     |
-| `Create(string connectionString, ConnectionSettingsBuilder builder)` | Connects to EventStoreDB by merging connection string settings with pre-populated builder for additional settings |
+| `Create(string connectionString)`                                    | Connects to KurrentDB with settings from connection string                                                     |
+| `Create(string connectionString, ConnectionSettingsBuilder builder)` | Connects to KurrentDB by merging connection string settings with pre-populated builder for additional settings |
 
 The connection string format should look familiar to those who have used connection strings in the past. It consists of a series of key/value pairs separated by semicolons.
 
@@ -156,12 +156,12 @@ Here are all available overloads for the `Create` methods of the `EventStoreConn
 
 | Method                                                                              | Description                                                                                                       |
 |:------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------|
-| `Create(ConnectionSettings connectionSettings)`                                     | Connects to EventStoreDB using specified settings                                                                 |
-| `Create(Uri uri)`                                                                   | Connects to EventStoreDB (see URIs below) with default settings                                                   |
-| `Create(ConnectionSettings connectionSettings, Uri uri)`                            | Connects to EventStoreDB (see URIs below) with specified settings                                                 |
-| `Create(string connectionString)`                                                   | Connects to EventStoreDB with settings from connection string                                                     |
-| `Create(string connectionString, ConnectionSettingsBuilder builder)`                | Connects to EventStoreDB by merging connection string settings with pre-populated builder for additional settings |
-| `Create(ConnectionSettings connectionSettings, IEndPointDiscover endPointDiscover)` | Connects to an EventStoreDB cluster with custom settings.                                                         |
+| `Create(ConnectionSettings connectionSettings)`                                     | Connects to KurrentDB using specified settings                                                                 |
+| `Create(Uri uri)`                                                                   | Connects to KurrentDB (see URIs below) with default settings                                                   |
+| `Create(ConnectionSettings connectionSettings, Uri uri)`                            | Connects to KurrentDB (see URIs below) with specified settings                                                 |
+| `Create(string connectionString)`                                                   | Connects to KurrentDB with settings from connection string                                                     |
+| `Create(string connectionString, ConnectionSettingsBuilder builder)`                | Connects to KurrentDB by merging connection string settings with pre-populated builder for additional settings |
+| `Create(ConnectionSettings connectionSettings, IEndPointDiscover endPointDiscover)` | Connects to an KurrentDB cluster with custom settings.                                                         |
 
 ::: tip
 The connection returned by these methods is inactive. Use the `ConnectAsync()` method to establish a connection with the server.
@@ -174,7 +174,7 @@ The create methods support passing of a URI to the connection as opposed to pass
 - **Single Node**: `tcp://user:password@myserver:11234`
 - **Cluster**: `discover://user:password@myserver:1234`
 
-Where the port number points to the TCP port of the EventStoreDB instance (1113 by default) or points to the manager gossip port for discovery purposes.
+Where the port number points to the TCP port of the KurrentDB instance (1113 by default) or points to the manager gossip port for discovery purposes.
 
 With the URI based mechanism you can pass a DNS name and the client will resolve it. The client performs a blocking DNS call for single node. If you are worried about blocking DNS due to network issues etc., you should resolve the DNS yourself and pass in an IP address.
 
@@ -195,7 +195,7 @@ By default, information about connection, disconnection and errors are logged, h
 
 ### User credentials
 
-EventStoreDB supports [Access Control Lists](security.md#access-control-lists) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
+KurrentDB supports [Access Control Lists](security.md#access-control-lists) that restrict permissions for a stream based on users and groups. `EventStoreConnection` allows you to supply credentials for each operation, however it is often more convenient to set default credentials for all operations on the connection.
 
 | Builder Method | Description |
 |:---------------|:------------|
@@ -210,9 +210,9 @@ settingsBuilder.SetDefaultUserCredentials(credentials);
 
 ### Security
 
-The .NET API and EventStoreDB can communicate either over SSL or an unencrypted channel (by default).
+The .NET API and KurrentDB can communicate either over SSL or an unencrypted channel (by default).
 
-To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the EventStoreDB for SSL, see [SSL Setup](security.md).
+To configure the client-side of the SSL connection, use the builder method below. For more information on setting up the server end of the KurrentDB for SSL, see [SSL Setup](security.md).
 
 ```csharp
 UseSslConnection(string targetHost, bool validateServer)
@@ -221,12 +221,12 @@ UseSslConnection(string targetHost, bool validateServer)
 Uses an SSL-encrypted connection where `targetHost` is the name specified on the SSL certificate installed on the server, and `validateServer` controls whether the connection validates the server certificate.
 
 ::: warning
-In production systems where credentials are sent from the client to EventStoreDB, you should always use SSL encryption and you should set `validateServer` to `true`.
+In production systems where credentials are sent from the client to KurrentDB, you should always use SSL encryption and you should set `validateServer` to `true`.
 :::
 
 ### Node preference
 
-When connecting to an EventStoreDB HA cluster you can specify that operations are performed on any node, or only on the node that is the master.
+When connecting to an KurrentDB HA cluster you can specify that operations are performed on any node, or only on the node that is the master.
 
 | Builder Method          | Description                                                                                                |
 |:------------------------|:-----------------------------------------------------------------------------------------------------------|
