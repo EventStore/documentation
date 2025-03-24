@@ -2,7 +2,7 @@
 
 EventStoreDB is an open-source, functional database with Complex Event Processing in JavaScript.
 
-This repository maintains documentation for EventStoreDB (imported from the server repository on build), Event Store Cloud, client SDKs, and other tools and product provided by Event Store.
+This repository maintains documentation for EventStoreDB (imported from the server repository on build), Kurrent Cloud, client SDKs, and other tools and product provided by Kurrent.
 
 ## Contributing
 

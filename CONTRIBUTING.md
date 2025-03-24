@@ -1,8 +1,8 @@
-# Contributing to Event Store Documentation
+# Contributing to Kurrent Documentation
 
 ## Working with the Git
 
-Event Store Documentation uses `master` as the main development branch. All the changes merged to this branch are deployed live. 
+Kurrent Documentation uses `master` as the main development branch. All the changes merged to this branch are deployed live. 
 
 We do our best to ensure a clean history. To do so, we ask contributors to squash their commits into a set or single logical commit. Alternatively, those who merge the PRs will use the Squash and Merge feature of GitHub.
 
@@ -37,7 +37,7 @@ The local build must complete successfully before you open a pull request.
 
 ## Importing documentation
 
-This repository contains documentation about Event Store and its client SDKs. The documentation for EventStoreDB, including its HTTP API, is imported from the respective repositories on build. To import the documentation manually, run:
+This repository contains documentation about Kurrent and its client SDKs. The documentation for EventStoreDB, including its HTTP API, is imported from the respective repositories on build. To import the documentation manually, run:
 
 ```bash
 pnpm run import
@@ -55,7 +55,7 @@ The documentation sources are located in the `/docs` directory. The `/docs/.vuep
 
 Other directors inside `/docs` include:
 - `clients`: documentation for current and legacy clients
-- `cloud`: Event Store Cloud documentation
+- `cloud`: Kurrent Cloud documentation
 - `server`: EventStoreDB documentation imported from the server repository
 - `http-api`: EventStoreDB HTTP API documentation imported from the server repository
 - `samples`: imported code samples for the client SDKs, server, and HTTP API

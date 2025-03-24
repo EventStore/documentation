@@ -1,5 +1,5 @@
-import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "vuepress-theme-hope";
+import {instance as ver} from "../lib/versioning";
 
 export const navbarEn: NavbarOptions = [
     {
@@ -39,7 +39,7 @@ export const navbarEn: NavbarOptions = [
             {text: "Blogs", link: "https://www.kurrent.io/blog/articles/"},
             {text: "Webinars", link: "https://www.kurrent.io/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
-            {text: "Event Store Academy", link: "https://academy.kurrent.io/"}
+            {text: "Kurrent Academy", link: "https://academy.kurrent.io/"}
         ]
     }
 ];

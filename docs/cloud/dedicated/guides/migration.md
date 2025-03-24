@@ -50,10 +50,10 @@ Links will not be replicated, as all the system events get filtered out (except 
 
 ## Executing the migration
 
-Kurrent provides a tool that allows you to replicate events between two clusters or instances. The tool is called Event Store Replicator, and it has its own [documentation website](https://replicator.eventstore.org).
+Kurrent provides a tool that allows you to replicate events between two clusters or instances. The tool is called Kurrent Replicator, and it has its own [documentation website](https://replicator.eventstore.org).
 
 ::: warning
-Event Store Replicator is an Open Source Software, provided as-is, without warranty, and not covered by the KurrentDB support contract that you might have.
+Kurrent Replicator is an Open Source Software, provided as-is, without warranty, and not covered by the KurrentDB support contract that you might have.
 :::
 
 ### Deployment
@@ -96,7 +96,7 @@ Here are the steps, which you can perform to migrate in one go:
 
 Another option is to move the subscriptions first:
 
-- Configure and deploy Event Store Replicator
+- Configure and deploy Kurrent Replicator
 - Wait until it gets in to the restart loop after all the historical events are replicated
 - Stop all the workloads, which write to the source database
 - Stop the subscription workload, and find the corresponding checkpoint value in the target database (stream position or global position in `$all`)

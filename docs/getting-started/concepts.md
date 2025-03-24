@@ -168,7 +168,7 @@ To learn more about how to apply optimistic concurrency control, [click here](/c
 
 ## Next Steps
 
-- [Event Store Essentials](https://academy.kurrent.io/essentials): Understand more about these features in this in-depth guide.
+- [Kurrent Essentials](https://academy.kurrent.io/essentials): Understand more about these features in this in-depth guide.
 
 - [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Learn more about the details around events, streams, and the event log.
 
