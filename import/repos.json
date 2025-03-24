@@ -9,6 +9,12 @@
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
       {
+        "version": "v25.0",
+        "name": "release/v25.0",
+        "relativePath": ["server"],
+        "startPage": "quick-start/"
+      },
+      {
         "version": "v24.10",
         "name": "release/v24.10",
         "relativePath": ["server"],
@@ -59,6 +65,11 @@
     "samplesRelativePath": ["samples", "http-api"],
     "repo": "https://github.com/EventStore/EventStore",
     "branches": [
+      {
+        "version": "v25.0",
+        "name": "release/v25.0",
+        "startPage": "introduction.html"
+      },
       {
         "version": "v24.10",
         "name": "release/v24.10",
