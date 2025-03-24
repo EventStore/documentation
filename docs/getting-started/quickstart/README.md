@@ -28,7 +28,7 @@ Before starting, ensure you have the following:
 - Familiarity with command-line operations.
 
 ::: tip
-If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Event Store Academy](https://academy.eventstore.com/from-scratch).
+If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Event Store Academy](https://academy.kurrent.io/from-scratch).
 :::
 
 ## Step 1: Set up Your Codespace
@@ -123,7 +123,7 @@ docker run                        # Start a new Docker container using the 'dock
      -d \                         # Run the container in detached mode (in the background)
      --name esdb-node \           # Assign the container a name ('esdb-node' in this case)
      -p 2113:2113 \               # Map port 2113 on the host to port 2113 in the Docker container. Required for the EventStoreDB
-     eventstore/eventstore:lts \  # Specify the Docker image to use, in this case, the EventStoreDB long-term support version (lts)
+     kurrentio/kurrent:lts \  # Specify the Docker image to use, in this case, the EventStoreDB long-term support version (lts)
      --insecure \                 # Run EventStoreDB in insecure mode, without authentication and SSL/TLS security (usually for development)
      --run-projections=All \      # Enable all projections in EventStoreDB, including system and user projections
      --enable-atom-pub-over-http  # Enable the AtomPub API over HTTP. Required for the EventStoreDB Admin UI
@@ -821,7 +821,7 @@ Feel free to experiment further by appending more events, reading them, or even 
 
 Now that you've completed the quickstart, you may want to explore the following:
 
-- [EventStoreDB "From Scratch" Series](https://academy.eventstore.com/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
+- [EventStoreDB "From Scratch" Series](https://academy.kurrent.io/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
 
 - [Install EventStoreDB locally](@server/quick-start/installation.md): Learn how to install EventStoreDB on your local machine for deeper exploration and integration with your projects.
 
@@ -829,6 +829,6 @@ Now that you've completed the quickstart, you may want to explore the following:
 
 - [EventStoreDB Server Configuration Documentation](@server/configuration/README.md): Explore how to configure EventStoreDB for your environment.
 
-- [Event Store Cloud](https://www.eventstore.com/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
+- [Event Store Cloud](https://www.kurrent.io/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
 
 - [EventStoreDB Samples](https://github.com/EventStore/samples/tree/main): Experiment with different SDKs to interact with EventStoreDB using various programming languages.

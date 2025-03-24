@@ -18,7 +18,7 @@ EventStoreDB offers the following features:
 | [Streams](./concepts.md#event-stream) | Groups and indexes events to organize and speed up retrieval.                                                             |
 | [Subscriptions](@server/features/persistent-subscriptions.md) and [Connectors](@server/features/connectors/README.md) | Delivers events to external systems through push or pull options.                                                         |
 | [Projection](@server/features/projections/README.md) | Transforms and filters events into different streams or state.                                                            |
-| [Multiple Hosting Options](https://eventstore.com/downloads) | Fully managed with [Event Store Cloud](/cloud/introduction.md), or self-managed on Linux, Windows, macOS, or with Docker. |
+| [Multiple Hosting Options](https://kurrent.io/downloads) | Fully managed with [Event Store Cloud](/cloud/introduction.md), or self-managed on Linux, Windows, macOS, or with Docker. |
 | [Client SDK](@clients/grpc/getting-started.md) | Available in Python, Java, .NET, Node.js, Go, and Rust.                                                                   |
 
 ::: note
@@ -35,14 +35,14 @@ In contrast, EventStoreDB keeps a complete history of changes, providing organiz
 
 ::: details Use Case: Machine Learning
 
-A German tool manufacturer leveraged historical events from EventStoreDB on manufacturing times and tool specifications (such as length and diameter) to [predict manufacturing durations for custom tools](https://www.eventstore.com/blog/from-data-to-insights-using-event-log-data-to-train-machine-learning-models). This prediction was then integrated into an online quote system, which automated the generation of instant, more accurate quotes—a significant improvement over the previous method of the sales team creating quotes based mainly on their experience.
+A German tool manufacturer leveraged historical events from EventStoreDB on manufacturing times and tool specifications (such as length and diameter) to [predict manufacturing durations for custom tools](https://www.kurrent.io/blog/from-data-to-insights-using-event-log-data-to-train-machine-learning-models). This prediction was then integrated into an online quote system, which automated the generation of instant, more accurate quotes—a significant improvement over the previous method of the sales team creating quotes based mainly on their experience.
 :::
 
 EventStoreDB also includes additional features that make it simple to develop event-native applications that enable real-time updates and minimize system dependencies while maintaining data consistency.
 
 ::: details Use Case: Real-time Streaming
 
-You can use EventStoreDB to streamline your payment process. Holcim, a global construction material provider [replaced batch processing with real-time streaming of payment statuses](https://www.eventstore.com/case-studies/holcim) from SAP system to depots.  In doing so, Holcim eliminated the previous day-long wait for payment verification and order collection. 
+You can use EventStoreDB to streamline your payment process. Holcim, a global construction material provider [replaced batch processing with real-time streaming of payment statuses](https://www.kurrent.io/case-studies/holcim) from SAP system to depots.  In doing so, Holcim eliminated the previous day-long wait for payment verification and order collection. 
 
 These types of significant improvements in customer service and operational efficiency can provide a competitive edge regardless of industry.
 :::
@@ -73,7 +73,7 @@ Application developers can leverage EventStoreDB’s granular events to build re
 
 ::: details Use Case: Modernize Legacy Systems
 
-Insureon, an independent marketplace for online delivery of small business insurance, used EventStoreDB to [modernize its legacy monolithic system](https://www.eventstore.com/case-studies/insureon), which was brittle and challenging to deploy. With EventStoreDB, Insureon could provide new solutions faster without sacrificing scalability. This dramatically improved the company's business creativity and agility.
+Insureon, an independent marketplace for online delivery of small business insurance, used EventStoreDB to [modernize its legacy monolithic system](https://www.kurrent.io/case-studies/insureon), which was brittle and challenging to deploy. With EventStoreDB, Insureon could provide new solutions faster without sacrificing scalability. This dramatically improved the company's business creativity and agility.
 :::
 
 ## Where to Use EventStoreDB?
@@ -90,6 +90,6 @@ To learn more where EventStoreDB fits in your business, [click here](/getting-st
 
 - [How EventStoreDB Supports your Business Processes](/getting-started/evaluate/business-process-support.md): Learn what EventStoreDB can do for you. 
 
-- [Event Store Essentials](https://academy.eventstore.com/essentials): Understand fundamental concepts around EventStoreDB.
+- [Event Store Essentials](https://academy.kurrent.io/essentials): Understand fundamental concepts around EventStoreDB.
 
 - [EventStoreDB Training Video Series](https://www.youtube.com/playlist?list=PLWG5TK2D4U_Nb4rWdiQw2jNWYSaBm7lT_): Receive step-by-step video tutorial to create a basic application.
