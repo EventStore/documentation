@@ -3,17 +3,17 @@ title: Stream Policy Authorization
 order: 1
 ---
 
-## Tutorial: Setting up and using Stream Policy Authorization in EventStoreDB
+## Tutorial: Setting up and using Stream Policy Authorization in KurrentDB
 
-This step-by-step tutorial guides you through enabling and configuring **Stream Policy Authorization** in EventStoreDB.
-This feature allows EventStoreDB administrators to define stream access policies based on stream prefixes.
+This step-by-step tutorial guides you through enabling and configuring **Stream Policy Authorization** in KurrentDB.
+This feature allows KurrentDB administrators to define stream access policies based on stream prefixes.
 
 #### Prerequisites
 
-* [EventStoreDB 24.10 LTS installed and running](@server/quick-start/installation.md)
+* [KurrentDB 24.10 LTS installed and running](@server/quick-start/installation.md)
 * [License key](@server/quick-start/installation.md#license-keys) for Stream Policy Authorization (a valid
   license is required to use this feature).
-* Basic understanding of EventStoreDB, stream prefixes, and access control.
+* Basic understanding of KurrentDB, stream prefixes, and access control.
 
 ### Step 1: Verify license key
 
@@ -22,19 +22,19 @@ not function.
 
 ### Step 2 (optional): Confirm Stream Policy Authorization availability
 
-By default, Stream Policy Authorization is bundled with EventStoreDB 24.10 LTS. You can confirm its availability in the
-EventStoreDB logs. Look for the following log message:
+By default, Stream Policy Authorization is bundled with KurrentDB 24.10 LTS. You can confirm its availability in the
+KurrentDB logs. Look for the following log message:
 
 ```
 [INF] AuthorizationPolicyRegistryFactory Loaded Authorization Policy plugin: streampolicy
 ```
 
-Refer to the [log documentation](@server/diagnostics/logs.md) for instructions on accessing EventStoreDB logs.
+Refer to the [log documentation](@server/diagnostics/logs.md) for instructions on accessing KurrentDB logs.
 
 ### Step 3: Enable Stream Policy Authorization
 
 ::: note
-When Stream Policy Authorization is enabled, EventStoreDB will not enforce
+When Stream Policy Authorization is enabled, KurrentDB will not enforce
 stream [Access Control Lists (ACLs)](@server/security/user-authorization.md#access-control-lists).*
 :::
 
@@ -111,11 +111,11 @@ a list of potential errors and their resolutions.
 
 ### Step 5: Configure stream policies and rules
 
-EventStoreDB creates default stream policies by adding a default policy event in the `$policies` stream when the feature
+KurrentDB creates default stream policies by adding a default policy event in the `$policies` stream when the feature
 is enabled for the first time. The default policies specified in that event include:
 
 * Restricts system streams (i.e., streams that start with `$`) to the `$admins` group.
-* Grants users outside of the `$ops` group access to user streams (i.e., streams created by users of EventStoreDB,
+* Grants users outside of the `$ops` group access to user streams (i.e., streams created by users of KurrentDB,
   excluding system streams) and their metadata.
 * Grants users outside of the `$ops` group read access to the default projection streams (i.e., streams that start with
   `$ce`,`$et`,`$bc`, `$category`, `$streams`) and their metadata.
@@ -218,7 +218,7 @@ You can create custom stream policies if you want to manage access more granular
 
    Combine the code from these three steps and follow the structure to configure a custom policy. The stream policies
    now include the custom policies you defined and, unless you want to remove or change them, the default policies
-   created by the EventStoreDB when Stream Policy Authorization is initially enabled.
+   created by the KurrentDB when Stream Policy Authorization is initially enabled.
 
    ::: details Click here to view the complete JSON code of the example above titled customPolicy.json.
     ```json
@@ -347,7 +347,7 @@ see the following log message:
 [INF] StreamBasedPolicySelector      Successfully applied policy
 ```
 
-If the policy is invalid, EventStoreDB continues running with the previous valid policy, and an error is logged.
+If the policy is invalid, KurrentDB continues running with the previous valid policy, and an error is logged.
 
 ### **Step 7 (optional): Testing and monitoring policies**
 
@@ -371,10 +371,10 @@ If the policy is invalid, EventStoreDB continues running with the previous valid
    | `User6` (any user)                                                    | `account-123` | Read, write, delete, metadata read, or metadata write | Success                          |
 
 3. **Monitor logs for errors**   
-   Errors in policy applications are logged. If any issues arise, EventStoreDB maintains the last valid policy
+   Errors in policy applications are logged. If any issues arise, KurrentDB maintains the last valid policy
    configuration. Adjust and repost policies as needed.
 4. **Fallback policy**  
-   If custom policies are invalid or the feature fails to load, EventStoreDB restricts access to admins only, ensuring
+   If custom policies are invalid or the feature fails to load, KurrentDB restricts access to admins only, ensuring
    security. To resolve this, either update the `$authorization-policy-settings` stream with valid settings or revert to
    ACLs as outlined below.
 
@@ -443,5 +443,5 @@ By following this tutorial, you should have successfully:
 * Applied stream access policies to specific stream prefixes.
 * Validated the stream policy configuration.
 
-This setup ensures that your EventStoreDB instance has tailored access control based on stream prefixes, making it
+This setup ensures that your KurrentDB instance has tailored access control based on stream prefixes, making it
 easier to manage permissions and secure access to streams in your environment. 
