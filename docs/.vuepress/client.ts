@@ -4,6 +4,7 @@ import {onMounted} from "vue";
 import type {RouteLocationNormalized, Router} from "vue-router";
 import CloudBanner from "./components/CloudBanner.vue";
 import KapaWidget from './components/KapaWidget.vue';
+import {usePostHog} from "./lib/usePosthog";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -48,18 +49,15 @@ const reload = () => {
 }
 
 const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
-    if (from.path !== to.path && typeof window !== "undefined" && window.analytics !== undefined) {
-        window.analytics.track({
-            event: "$pageleave",
-            properties: {
-                $host: window.location.hostname,
-            }
-        });
+    if (from.path !== to.path && typeof window !== "undefined") {
+        posthog.capture('$pageleave');
     }
 }
 
+const { posthog } = usePostHog();
+
 export default defineClientConfig({
-    enhance({app, router, siteData}) {
+    enhance({app, router, _}) {
         app.component("CloudBanner", CloudBanner);
         app.component("KapaWidget", KapaWidget);
         const apiPath = __VERSIONS__.latest.replace("server", "http-api");
@@ -113,8 +111,12 @@ export default defineClientConfig({
 
         router.afterEach((to, from) => {
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
-            console.log("Route changed");
             const esData = findEsMeta(to);
+            posthog.capture('$pageview', {
+                site: "docs",
+                version: esData?.version,
+                category: esData?.category,
+            });
             const a = window.analytics;
             if (a) {
                 setTimeout(() => {
@@ -124,7 +126,6 @@ export default defineClientConfig({
                         title: to.meta.t,
                         version: esData?.version,
                         category: esData?.category,
-                        $host: window.location.hostname,
                     });
                 }, 1000);
             }
