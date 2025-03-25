@@ -49,12 +49,12 @@ const reload = () => {
 
 const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
     if (from.path !== to.path && typeof window !== "undefined" && window.analytics !== undefined) {
-        const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
+        // const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
         window.analytics.track({
             event: "$pageleave",
             properties: {
                 $host: window.location.hostname,
-                $session_id: sessionId
+                // $session_id: sessionId
             }
         });
     }
