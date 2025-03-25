@@ -97,6 +97,7 @@
                     $session_id: posthog.getSessionId(),
                 });
                 window.posthog = posthog;
+                console.log(posthog);
             }
         });
     })
