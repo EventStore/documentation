@@ -1,5 +1,5 @@
-import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "vuepress-theme-hope";
+import {instance as ver} from "../lib/versioning";
 
 export const navbarEn: NavbarOptions = [
     {
@@ -24,7 +24,7 @@ export const navbarEn: NavbarOptions = [
         text: "Clients & APIs",
         icon: "material-symbols:sdk",
         children: [
-            {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/getting-started"}]},
+            {text: "Clients", children: [{text: "KurrentDB clients", link: "/clients/grpc/getting-started"}]},
             {text: "HTTP API", children: ver.linksFor("http-api", false)},
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]
@@ -36,10 +36,10 @@ export const navbarEn: NavbarOptions = [
         children: [
             {text: "Community forum", link: "https://discuss.eventstore.com"},
             {text: "Community Discord ", link: "https://discord.gg/Phn9pmCw3t"},
-            {text: "Blogs", link: "https://eventstore.com/blog/articles/"},
-            {text: "Webinars", link: "https://eventstore.com/webinars/"},
+            {text: "Blogs", link: "https://www.kurrent.io/blog/articles/"},
+            {text: "Webinars", link: "https://www.kurrent.io/webinars/"},
             {text: "Release notes", link: "https://eventstore.com/blog/release-notes/"},
-            {text: "Event Store Academy", link: "https://academy.eventstore.com"}
+            {text: "Kurrent Academy", link: "https://academy.kurrent.io/"}
         ]
     }
 ];
