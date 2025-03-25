@@ -85,20 +85,16 @@
 
     analytics.load("REDACTED");
     analytics.ready(() => {
-        console.log("Segment loaded");
         window.posthog.init("phc_DeHBgHGersY4LmDlADnPrsCPOAmMO7QFOH8f4DVEVmD", {
             api_host: 'https://phog.kurrent.io',
             segment: analytics,
             capture_pageview: false,
             loaded: (posthog) => {
-                console.log(posthog);
                 analytics.page({
                     site: "docs",
                     title: "Home",
                     $host: window.location.hostname,
-                    $session_id: posthog.getSessionId(),
                 });
-                window.posthog = posthog;
             }
         });
     });

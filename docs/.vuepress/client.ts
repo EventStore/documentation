@@ -49,12 +49,10 @@ const reload = () => {
 
 const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
     if (from.path !== to.path && typeof window !== "undefined" && window.analytics !== undefined) {
-        const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
         window.analytics.track({
             event: "$pageleave",
             properties: {
                 $host: window.location.hostname,
-                $session_id: sessionId
             }
         });
     }
@@ -115,10 +113,10 @@ export default defineClientConfig({
 
         router.afterEach((to, from) => {
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
+            console.log("Route changed");
             const esData = findEsMeta(to);
             const a = window.analytics;
             if (a) {
-                const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
                 setTimeout(() => {
                     a.page({
                         site: "docs",
@@ -127,7 +125,6 @@ export default defineClientConfig({
                         version: esData?.version,
                         category: esData?.category,
                         $host: window.location.hostname,
-                        $session_id: sessionId
                     });
                 }, 1000);
             }
