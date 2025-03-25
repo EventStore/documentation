@@ -4,6 +4,7 @@ import {onMounted} from "vue";
 import type {RouteLocationNormalized, Router} from "vue-router";
 import CloudBanner from "./components/CloudBanner.vue";
 import KapaWidget from './components/KapaWidget.vue';
+import UserFeedback from './components/TocWithFeedback';
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -64,6 +65,7 @@ export default defineClientConfig({
     enhance({app, router, siteData}) {
         app.component("CloudBanner", CloudBanner);
         app.component("KapaWidget", KapaWidget);
+        app.component("UserFeedback", UserFeedback);
         const apiPath = __VERSIONS__.latest.replace("server", "http-api");
         const addFixedRoute = (from: string, to: string) => router.addRoute({
             path: from, redirect: _ => {
