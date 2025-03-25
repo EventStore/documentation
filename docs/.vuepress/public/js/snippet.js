@@ -95,7 +95,8 @@
                     title: "Home",
                     $host: window.location.hostname,
                     $session_id: posthog.getSessionId(),
-                })
+                });
+                window.posthog = posthog;
             }
         });
     })
