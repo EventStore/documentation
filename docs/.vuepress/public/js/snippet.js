@@ -82,8 +82,6 @@
     };
     analytics._writeKey = "REDACTED";
     analytics.SNIPPET_VERSION = "5.2.1";
-    console.log("Loading Segment");
-    analytics.load("REDACTED");
 
     analytics.ready(() => {
         console.log("Segment loaded");
@@ -102,5 +100,8 @@
                 window.posthog = posthog;
             }
         });
-    })
+    });
+    console.log("Loading Segment");
+    analytics.load("REDACTED");
+    console.log("Called Segment load");
 })();
