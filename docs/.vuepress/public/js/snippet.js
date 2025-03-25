@@ -83,6 +83,7 @@
     analytics._writeKey = "REDACTED";
     analytics.SNIPPET_VERSION = "5.2.1";
 
+    analytics.load("REDACTED");
     analytics.ready(() => {
         console.log("Segment loaded");
         window.posthog.init("phc_DeHBgHGersY4LmDlADnPrsCPOAmMO7QFOH8f4DVEVmD", {
@@ -101,7 +102,4 @@
             }
         });
     });
-    console.log("Loading Segment");
-    analytics.load("REDACTED");
-    console.log("Called Segment load");
 })();
