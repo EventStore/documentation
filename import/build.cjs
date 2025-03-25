@@ -1,7 +1,7 @@
 // build-wrapper.cjs
 const { spawn } = require('child_process');
 
-const nodeOptions = '--max_old_space_size=4096';
+const nodeOptions = '--max_old_space_size=8192';
 
 const args = ['build', 'docs'];
 
