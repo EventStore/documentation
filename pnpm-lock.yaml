@@ -17,6 +17,9 @@ importers:
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.20
         version: 2.0.0-rc.20(sass@1.86.0)(stylus@0.56.0)(typescript@5.5.3)
+      '@vuepress/helper':
+        specifier: ^2.0.0-rc.80
+        version: 2.0.0-rc.86(typescript@5.5.3)(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(sass@1.86.0)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.5.13(typescript@5.5.3)))
       '@vuepress/plugin-docsearch':
         specifier: ^2.0.0-rc.86
         version: 2.0.0-rc.86(@algolia/client-search@5.20.2)(search-insights@2.15.0)(typescript@5.5.3)(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(sass@1.86.0)(stylus@0.56.0)(typescript@5.5.3))(typescript@5.5.3)(vue@3.5.13(typescript@5.5.3)))
@@ -35,6 +38,9 @@ importers:
       '@vueuse/core':
         specifier: ^12.8.2
         version: 12.8.2(typescript@5.5.3)
+      bowser:
+        specifier: ^2.11.0
+        version: 2.11.0
       dashjs:
         specifier: ^4.7.4
         version: 4.7.4
@@ -2452,6 +2458,9 @@ packages:
 
   boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
+
+  bowser@2.11.0:
+    resolution: {integrity: sha512-AlcaJBi/pqqJBIQ8U9Mcpc9i8Aqxn88Skv5d+xBX006BY5u8N3mGLHa5Lgppa7L/HfwgwLgZ6NYs+Ag6uUmJRA==}
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -8328,6 +8337,8 @@ snapshots:
   birpc@0.2.19: {}
 
   boolbase@1.0.0: {}
+
+  bowser@2.11.0: {}
 
   brace-expansion@1.1.11:
     dependencies:
