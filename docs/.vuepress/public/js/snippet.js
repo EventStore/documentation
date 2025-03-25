@@ -93,7 +93,8 @@
                 analytics.page({
                     site: "docs",
                     title: "Home",
-                    $host: window.location.hostname
+                    $host: window.location.hostname,
+                    $session_id: posthog.getSessionId(),
                 })
             }
         });

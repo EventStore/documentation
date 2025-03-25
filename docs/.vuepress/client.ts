@@ -49,7 +49,14 @@ const reload = () => {
 
 const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
     if (from.path !== to.path && typeof window !== "undefined" && window.analytics !== undefined) {
-        window.analytics.track({ event: "$pageleave" });
+        const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
+        window.analytics.track({
+            event: "$pageleave",
+            properties: {
+                $host: window.location.hostname,
+                $session_id: sessionId
+            }
+        });
     }
 }
 
@@ -79,7 +86,7 @@ export default defineClientConfig({
         router.afterEach(() => {
             setTimeout(() => { // to ensure this runs after DOM updates
                 try {
-                    const { code } = JSON.parse(localStorage.getItem('VUEPRESS_TAB_STORE'));
+                    const {code} = JSON.parse(localStorage.getItem('VUEPRESS_TAB_STORE'));
                     if (code) { // If a valid 'code' is found in localStorage
                         Array.from(document.querySelectorAll('.vp-tab-nav'))
                             .forEach((button: HTMLButtonElement) => {
@@ -110,18 +117,20 @@ export default defineClientConfig({
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
             const esData = findEsMeta(to);
             const a = window.analytics;
-            if(a){
-            setTimeout(() => {
-                a.page({
-                    site: "docs",
-                    url: window.location.origin + to.fullPath,
-                    title: to.meta.t,
-                    version: esData?.version,
-                    category: esData?.category,
-                    $host: window.location.hostname
-                });
-            }, 1000);
-        }
+            if (a) {
+                const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
+                setTimeout(() => {
+                    a.page({
+                        site: "docs",
+                        url: window.location.origin + to.fullPath,
+                        title: to.meta.t,
+                        version: esData?.version,
+                        category: esData?.category,
+                        $host: window.location.hostname,
+                        $session_id: sessionId
+                    });
+                }, 1000);
+            }
         });
         router.beforeEach((to, from) => leave(to, from));
     },
@@ -131,6 +140,6 @@ export default defineClientConfig({
             if (route.path !== "/") return;
             // console.log(route.meta._pageChunk.data.frontmatter.head);
         });
-        
+
     },
 } satisfies ClientConfig);
