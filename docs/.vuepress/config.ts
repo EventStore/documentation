@@ -70,7 +70,8 @@ export default defineUserConfig({
             'data-project-color': '#631B3A',
             'data-project-logo': '/logo-white.png'
         }],
-        ['script', {src: "/js/snippet.js"}]
+        ['script', { src: "/js/snippet.js" }],
+        ['script', { type: "text/javascript", src: "https://secure.businessintuition247.com/js/sc/264384.js" }]
     ],
     // add our own components for blog theme (Tutorials & Guides)
     alias: {
