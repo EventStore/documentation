@@ -16,7 +16,7 @@ This step-by-step tutorial guides you through configuring and deploying a **Mong
 * Access to KurrentDB UI and MongoDB tools (e.g., MongoDB Compass, `mongosh`).
 
 
-### Step 1: Configure the MongoDB Sink connector
+### Step 1: Configure the MongoDB Sink connector 
 
 To enable event streaming from KurrentDB to a MongoDB collection, you must configure the MongoDB Sink connector.
 
