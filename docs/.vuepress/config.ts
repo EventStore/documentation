@@ -71,8 +71,9 @@ export default defineUserConfig({
             'data-project-logo': '/logo-white.png'
         }],
         ['script', { src: "/js/snippet.js" }],
-        ['script', { type: "text/javascript", src: "https://secure.businessintuition247.com/js/sc/264384.js" }]
-    ],
+        ['script', { type: "text/javascript", src: "https://secure.businessintuition247.com/js/sc/264384.js" }],
+        ['noscript', {}, '<img alt="" src="https://secure.businessintuition247.com/264384.png" style="display:none;" />']
+    ],   
     // add our own components for blog theme (Tutorials & Guides)
     alias: {
         "@theme-hope/components/BreadCrumb": path.resolve(__dirname, "./components/breadCrumb.ts"),
