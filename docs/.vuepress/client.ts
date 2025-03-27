@@ -4,6 +4,7 @@ import {onMounted} from "vue";
 import type {RouteLocationNormalized, Router} from "vue-router";
 import CloudBanner from "./components/CloudBanner.vue";
 import KapaWidget from './components/KapaWidget.vue';
+import {usePostHog} from "./lib/usePosthog";
 import UserFeedback from './components/TocWithFeedback';
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
@@ -49,20 +50,15 @@ const reload = () => {
 }
 
 const leave = (to: RouteLocationNormalized, from: RouteLocationNormalized) => {
-    if (from.path !== to.path && typeof window !== "undefined" && window.analytics !== undefined) {
-        // const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
-        window.analytics.track({
-            event: "$pageleave",
-            properties: {
-                $host: window.location.hostname,
-                // $session_id: sessionId
-            }
-        });
+    if (from.path !== to.path && typeof window !== "undefined") {
+        posthog.capture('$pageleave');
     }
 }
 
+const { posthog } = usePostHog();
+
 export default defineClientConfig({
-    enhance({app, router, siteData}) {
+    enhance({app, router, _}) {
         app.component("CloudBanner", CloudBanner);
         app.component("KapaWidget", KapaWidget);
         app.component("UserFeedback", UserFeedback);
@@ -118,9 +114,13 @@ export default defineClientConfig({
         router.afterEach((to, from) => {
             if (typeof window === "undefined" || to.path === from.path || removeHtml(to.path) === removeHtml(from.path)) return;
             const esData = findEsMeta(to);
+            posthog.capture('$pageview', {
+                site: "docs",
+                version: esData?.version,
+                category: esData?.category,
+            });
             const a = window.analytics;
             if (a) {
-                const sessionId = (typeof window.posthog !== "undefined") ? window.posthog.getSessionId() : null;
                 setTimeout(() => {
                     a.page({
                         site: "docs",
@@ -128,8 +128,6 @@ export default defineClientConfig({
                         title: to.meta.t,
                         version: esData?.version,
                         category: esData?.category,
-                        $host: window.location.hostname,
-                        $session_id: sessionId
                     });
                 }, 1000);
             }
