@@ -22,6 +22,29 @@ export const sidebarEn: EsSidebarOptions = {
       text: "Features",
       link: "/getting-started/features.md",
       group: "Getting Started",
+    },    
+    {
+      text: "Use Cases",
+      collapsible: true,
+      expanded: false,
+      group: "Getting Started",
+      children: [
+        {
+          text: "Polyglot Persistence",
+          collapsible: true,
+          expanded: false,
+          group: "Getting Started",
+          children: [
+            "/getting-started/use-cases/what-is-polyglot-persistence.md",
+            "/getting-started/use-cases/polyglot-persistence-tutorial.md"
+          ]
+        },
+        "/getting-started/use-cases/outbox-out-of-the-box.md",
+        "/getting-started/use-cases/kurrentdb-in-microservices.md",
+        "/getting-started/use-cases/operational-audit-log.md",
+        "/getting-started/use-cases/temporal-query.md",
+        "/getting-started/use-cases/business-workflow.md",
+      ]
     },
     {
       text: "Evaluate",
