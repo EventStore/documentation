@@ -62,14 +62,14 @@ Add the `db-client-java` dependency to your Maven or Gradle project:
 @tab Maven
 ```xml
 <dependency>
-  <groupId>com.eventstore</groupId>
+  <groupId>io.kurrent</groupId>
   <artifactId>db-client-java</artifactId>
   <version>5.2.0</version>
 </dependency>
 ```
 @tab Gradle
 ```groovy
-implementation 'com.eventstore:db-client-java:5.2.0'
+implementation 'io.kurrent:db-client-java:5.2.0'
 ```
 :::
 
