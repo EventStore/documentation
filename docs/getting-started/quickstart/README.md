@@ -247,7 +247,7 @@ esdbclient==1.0.19
 @tab Java
 ```xml
 <dependency>
-   <groupId>com.eventstore</groupId>
+   <groupId>io.kurrent</groupId>
    <artifactId>db-client-java</artifactId>
    <version>5.3.2</version>
 </dependency>
@@ -314,7 +314,7 @@ To view the source code in GitHub, click the link below:
    ```sh
    java -cp \
       target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar \
-      com.eventstoredb_demo.SampleWrite
+      io.kurrentdb_demo.SampleWrite
    ```
 
 @tab .NET
@@ -566,7 +566,7 @@ To view the source code in GitHub, click the link below:
    ```sh
    java -cp \
       target/eventstoredb-demo-1.0-SNAPSHOT-jar-with-dependencies.jar \
-      com.eventstoredb_demo.SampleRead
+      io.kurrentdb_demo.SampleRead
    ```
 
 @tab .NET

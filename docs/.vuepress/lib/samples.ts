@@ -48,15 +48,15 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "cs": {
                 label: "C#",
-                path: "clients/dotnet/23.3.3"
+                path: "clients/dotnet/23.3.8"
             },
             "go": {
                 label: "Go",
-                path: "clients/go/3.3.0"
+                path: "clients/go/4.2.0"
             },
             "rs": {
                 label: "Rust",
-                path: "clients/rust/3.0.0"
+                path: "clients/rust/4.0.1"
             },
             "py": {
                 label: "Python",
@@ -64,7 +64,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "java": {
                 label: "Java",
-                path: "clients/java/5.3.1"
+                path: "clients/java/5.4.5"
             },
         }
     };
