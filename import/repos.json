@@ -6,7 +6,7 @@
     "docsRelativePath": ["docs"],
     "samplesRelativePath": ["samples", "server"],
     "currentBranch": "master",
-    "repo": "https://github.com/EventStore/EventStore",
+    "repo": "https://github.com/kurrent-io/EventStore",
     "branches": [
       {
         "version": "v25.0",
@@ -63,7 +63,7 @@
     "basePath": "http-api",
     "docsRelativePath": ["docs", "http-api"],
     "samplesRelativePath": ["samples", "http-api"],
-    "repo": "https://github.com/EventStore/EventStore",
+    "repo": "https://github.com/kurrent-io/EventStore",
     "branches": [
       {
         "version": "v25.0",
@@ -102,10 +102,10 @@
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/EventStore/EventStore-Client-Dotnet",
+    "repo": "https://github.com/kurrent-io/EventStore-Client-Dotnet",
     "branches": [
       {
-        "version": "23.3.3",
+        "version": "23.3.8",
         "name":"master"
       }
     ]
@@ -115,19 +115,18 @@
     "group": "Java SDK",
     "basePath": "clients/java",
     "samplesRelativePath": [
-      "db-client-java",
       "src",
       "test",
       "java",
-      "com",
-      "eventstore",
+      "io",
+      "kurrent",
       "dbclient",
       "samples"
     ],
-    "repo": "https://github.com/EventStore/EventStoreDB-Client-Java",
+    "repo": "https://github.com/kurrent-io/KurrentDB-Client-Java",
     "branches": [
       {
-        "version": "5.3.1",
+        "version": "5.4.5",
         "name": "trunk"
       }
     ]
@@ -137,10 +136,10 @@
     "group": "Rust SDK",
     "basePath": "clients/rust",
     "samplesRelativePath": ["examples"],
-    "repo": "https://github.com/EventStore/EventStoreDB-Client-Rust",
+    "repo": "https://github.com/kurrent-io/EventStoreDB-Client-Rust",
     "branches": [
       {
-        "version": "3.0.0",
+        "version": "4.0.1",
         "name": "master"
       }
     ]
@@ -155,7 +154,7 @@
       "src",
       "samples"
     ],
-    "repo": "https://github.com/EventStore/EventStore-Client-NodeJS",
+    "repo": "https://github.com/kurrent-io/KurrentDB-Client-NodeJS",
     "branches": [
       {
         "version": "6.2.1",
@@ -172,10 +171,10 @@
     "group": "Go SDK",
     "basePath": "clients/go",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/EventStore/EventStore-Client-Go",
+    "repo": "https://github.com/kurrent-io/EventStore-Client-Go",
     "branches": [
       {
-        "version": "3.3.0",
+        "version": "4.2.0",
         "name": "master"
       }
     ]
