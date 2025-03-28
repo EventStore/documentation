@@ -34,11 +34,11 @@ export const navbarEn: NavbarOptions = [
         text: "Resources",
         icon: "material-symbols:support",
         children: [
-            {text: "Community forum", link: "https://discuss.eventstore.com"},
+            {text: "Community forum", link: "https://discuss.kurrent.io/"},
             {text: "Community Discord ", link: "https://discord.gg/Phn9pmCw3t"},
-            {text: "Blogs", link: "https://eventstore.com/blog/articles/"},
-            {text: "Webinars", link: "https://eventstore.com/webinars/"},
-            {text: "Event Store Academy", link: "https://academy.eventstore.com"}
+            {text: "Blogs", link: "https://www.kurrent.io/blog"},
+            {text: "Webinars", link: "https://www.kurrent.io/webinars"},
+            {text: "Kurrent Academy", link: "https://academy.kurrent.io"}
         ]
     }
 ];
