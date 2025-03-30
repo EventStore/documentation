@@ -136,7 +136,7 @@
     "group": "Rust SDK",
     "basePath": "clients/rust",
     "samplesRelativePath": ["examples"],
-    "repo": "https://github.com/kurrent-io/EventStoreDB-Client-Rust",
+    "repo": "https://github.com/kurrent-io/KurrentDB-Client-Rust",
     "branches": [
       {
         "version": "4.0.1",
