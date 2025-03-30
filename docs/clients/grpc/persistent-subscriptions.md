@@ -31,7 +31,7 @@ The following sample shows how to create a subscription group for a persistent s
 
 ### Subscribing to $all
 
-The ability to subscribe to `$all` was introduced in KurrentDB **21.10**. Persistent subscriptions to `$all` also support [filtering](subscriptions.md#server-side-filtering).
+The ability to subscribe to `$all` was introduced in EventStoreDB **21.10**. Persistent subscriptions to `$all` also support [filtering](subscriptions.md#server-side-filtering).
 
 You can create a subscription group on $all much the same way you would create a subscription group on a stream:
 

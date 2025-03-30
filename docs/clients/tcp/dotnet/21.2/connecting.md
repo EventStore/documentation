@@ -5,7 +5,7 @@ sitemap:
   changefreq: monthly
 ---
 
-# Connecting to KurrentDB
+# Connecting to EventStoreDB
 
 Describe connecting to the single node and to the cluster.
 
