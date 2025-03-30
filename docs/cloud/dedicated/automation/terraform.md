@@ -92,7 +92,7 @@ That's how you do it with `esc-cli`:
 
 ```bash
 $ esc resources organizations list
-Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Kurrent Ltd"
+Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Kurrent, Inc"
 ```
 
 In the Cloud Console, open the [organisations page][cloud console organizations]. Then, select the organisation from the list and go to its settings. There, you can copy the organisation ID.
