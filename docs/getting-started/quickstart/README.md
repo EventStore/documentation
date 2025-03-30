@@ -123,7 +123,7 @@ docker run                        # Start a new Docker container using the 'dock
      -d \                         # Run the container in detached mode (in the background)
      --name esdb-node \           # Assign the container a name ('esdb-node' in this case)
      -p 2113:2113 \               # Map port 2113 on the host to port 2113 in the Docker container. Required for the KurrentDB
-     kurrentio/kurrent:lts \  # Specify the Docker image to use, in this case, the KurrentDB long-term support version (lts)
+     kurrent-lts/kurrentdb:lts \  # Specify the Docker image to use, in this case, the KurrentDB long-term support version (lts)
      --insecure \                 # Run KurrentDB in insecure mode, without authentication and SSL/TLS security (usually for development)
      --run-projections=All \      # Enable all projections in KurrentDB, including system and user projections
      --enable-atom-pub-over-http  # Enable the AtomPub API over HTTP. Required for the KurrentDB Admin UI

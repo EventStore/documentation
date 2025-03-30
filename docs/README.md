@@ -19,7 +19,7 @@ highlights:
       icon: hugeicons:cloud
       link: https://www.kurrent.io/kurrent-cloud
     - title: Start KurrentDB in a container
-      details: Run <code>docker run kurrentio/kurrent:latest --dev</code> to start KurrentDB in developers mode.
+      details: Run <code>docker run kurrent-lts/kurrentdb:lts --dev</code> to start KurrentDB in developers mode.
       icon: simple-icons:docker
       link: /latest/quick-start/installation.html#docker
     - title: Start using the client
