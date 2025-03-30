@@ -67,7 +67,7 @@ title: KurrentDB Feature List
 | Feature Name | Description |
 | --- | --- |
 | [Admin UI](@server/features/admin-ui.md) | The web-based KurrentDB user interface that manages events, streams, server configurations, monitoring, etc. |
-| [Kurrent Navigator](https://learn.eventstore.com/event-store-navigator-preview) | <Badge type="warning" vertical="middle" text="Preview"/><br><br>The next-generation KurrentDB user interface built as a native desktop application. |
+| [Kurrent Navigator](https://navigator.kurrent.io/) | <Badge type="warning" vertical="middle" text="Preview"/><br><br>The next-generation KurrentDB user interface built as a native desktop application. |
 
 ## Security
 
