@@ -275,7 +275,7 @@
 /server/v24.10%20Preview%201/*              /server/v24.10/:splat                     301
 
 # latest to latest
-/server/latest/*                            /server/v24.10/:splat                     301
+/server/latest/*                            /server/v25.0/:splat                     301
 
 # Hope migration
 /connectors/* /server/v24.10/features/connectors/ 301
