@@ -31,7 +31,7 @@ The Operator deployment process is managed via Helm. The following Kurrent repos
 
 ```bash
 helm repo add kurrentdb-operator-repo \
-  'https://packages.eventstore.com/basic/kurrentdb-operator/helm/charts/' \
+  'https://packages.kurrent.io/basic/kurrentdb-operator/helm/charts/' \
   --username $username \
   --password $password
 ```
