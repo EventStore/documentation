@@ -1,0 +1,14 @@
+[
+  {
+    "id": "kubernetes-operator",
+    "basePath": "server",
+    "group": "Kubernetes Operator",
+    "versions": [
+      {
+        "path": "kubernetes-operator",
+        "version": "v1.0.0",
+        "startPage": "getting-started/"
+      }
+    ]
+  }
+]

@@ -17,7 +17,8 @@ export const navbarEn: NavbarOptions = [
         icon: "ion:server-outline",
         children: [
             {text: "Current", children: ver.linksFor("server", false)},
-            {text: "Deprecated", children: ver.linksFor("server", true)}
+            {text: "Deprecated", children: ver.linksFor("server", true)},
+            {text: "Kubernetes Operator", children: ver.linksFor("kubernetes-operator", false)},
         ]
     },
     {
