@@ -15,6 +15,10 @@ This guide aims to:
 * Detail key features
 * Provide comprehensive instructions for installing and utilizing the Operator
 
+:::important
+The Operator is an Enterprise only feature, please [contact us](https://www.kurrent.io/contact) for more information.
+:::
+
 ## KurrentDB and Kubernetes: The Perfect Match
 
 Kubernetes is the modern Enterprise standard for deploying containerized applications at scale.  The Operator has been purpose built to streamline the deployment and management of KurrentDB.

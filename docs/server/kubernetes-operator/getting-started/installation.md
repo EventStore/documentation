@@ -6,7 +6,7 @@ order: 2
 This section covers the various aspects of installing the Operator.
 
 ::: important
-For production deployments, it is _highly_ recommended to follow the best practices described in this guide.
+The Operator is an Enterprise only feature, please [contact us](https://www.kurrent.io/contact) for more information.
 :::
 
 ## Prerequisites
