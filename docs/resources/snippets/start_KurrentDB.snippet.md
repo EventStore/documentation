@@ -12,9 +12,9 @@ To start a single node of KurrentDB in docker simply run the following command:
 ```bash
 docker run \
        -d \
-       --name esdb-node \
+       --name kurrentDB \
        -p 2113:2113 \
-       docker.eventstore.com/eventstore/eventstoredb-ee:latest \
+       docker.kurrent.io/eventstore/eventstoredb-ee:latest \
        --insecure \
        --run-projections=All \
        --enable-atom-pub-over-http
@@ -45,9 +45,9 @@ Then, create a docker compose file `docker-compose.yml` with the following:
 
 ```yaml
 services:
-  node1.eventstore: &template
-    image: docker.eventstore.com/eventstore/eventstoredb-ee:latest
-    container_name: node1.eventstore
+  node1.kurrentdb: &template
+    image: docker.kurrent.io/eventstore/eventstoredb-ee:latest
+    container_name: node1.kurrentdb
     env_file:
       - vars.env
     environment:
@@ -59,7 +59,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --insecure https://node1.eventstore:2113/health/live || exit 1",
+          "curl --fail --insecure https://node1.kurrentdb:2113/health/live || exit 1",
         ]
       interval: 5s
       timeout: 5s
@@ -72,9 +72,9 @@ services:
       clusternetwork:
         ipv4_address: 172.30.240.11
 
-  node2.eventstore:
+  node2.kurrentdb:
     <<: *template
-    container_name: node2.eventstore
+    container_name: node2.kurrentdb
     env_file:
       - vars.env
     environment:
@@ -86,7 +86,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --insecure https://node2.eventstore:2113/health/live || exit 1",
+          "curl --fail --insecure https://node2.kurrentdb:2113/health/live || exit 1",
         ]
       interval: 5s
       timeout: 5s
@@ -98,9 +98,9 @@ services:
       clusternetwork:
         ipv4_address: 172.30.240.12
 
-  node3.eventstore:
+  node3.kurrentdb:
     <<: *template
-    container_name: node3.eventstore
+    container_name: node3.kurrentdb
     environment:
       - EVENTSTORE_INT_IP=172.30.240.13
       - EVENTSTORE_ADVERTISE_HTTP_PORT_TO_CLIENT_AS=2113
@@ -110,7 +110,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --insecure https://node3.eventstore:2113/health/live || exit 1",
+          "curl --fail --insecure https://node3.kurrentdb:2113/health/live || exit 1",
         ]
       interval: 5s
       timeout: 5s
