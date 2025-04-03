@@ -16,16 +16,16 @@ Whether you are using Maven or Gradle, add the following dependencies.
 ```xml
 <dependencies>
     <dependency>
-	    <groupId>com.eventstore</groupId>
-	    <artifactId>db-client-java</artifactId>
-	    <version>5.4.3</version>
+	    <groupId>io.kurrent</groupId>
+	    <artifactId>kurrentdb-client</artifactId>
+	    <version>1.0.0</version>
     </dependency>
 </dependencies>
 ```
 @tab Gradle
 ```kotlin
 dependencies {
-  implementation('com.eventstore:db-client-java:5.4.3')
+  implementation('io.kurrent:kurrentdb-client:1.0.0')
 }
 ```
 :::
