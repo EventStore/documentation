@@ -4,7 +4,7 @@ order: 2
 
 # Appending events
 
-When you start working with EventStoreDB, it is empty. The first meaningful operation is to add one or more events to the database using one of the available client SDKs.
+When you start working with KurrentDB, it is empty. The first meaningful operation is to add one or more events to the database using one of the available client SDKs.
 
 ::: tip
 Check the [Getting Started](getting-started.md) guide to learn how to configure and use the client SDK.
@@ -12,7 +12,7 @@ Check the [Getting Started](getting-started.md) guide to learn how to configure 
 
 ## Append your first event
 
-The simplest way to append an event to EventStoreDB is to create an `EventData` object and call `AppendToStream` method.
+The simplest way to append an event to KurrentDB is to create an `EventData` object and call `AppendToStream` method.
 
 @[code{append-to-stream}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 
@@ -26,11 +26,11 @@ If you are new to Event Sourcing, please study the [Handling concurrency](#handl
 
 ## Working with EventData
 
-Events appended to EventStoreDB must be wrapped in an `EventData` object. This allows you to specify the event's content, the type of event, and whether it's in JSON format. In its simplest form, you need three arguments:  **eventId**, **type**, and **data**.
+Events appended to KurrentDB must be wrapped in an `EventData` object. This allows you to specify the event's content, the type of event, and whether it's in JSON format. In its simplest form, you need three arguments:  **eventId**, **type**, and **data**.
 
 ### eventId
 
-This takes the format of a `Uuid` and is used to uniquely identify the event you are trying to append. If two events with the same `Uuid` are appended to the same stream in quick succession, EventStoreDB will only append one of the events to the stream. 
+This takes the format of a `Uuid` and is used to uniquely identify the event you are trying to append. If two events with the same `Uuid` are appended to the same stream in quick succession, KurrentDB will only append one of the events to the stream. 
 
 For example, the following code will only append a single event:
 
@@ -46,19 +46,19 @@ It is common to see the explicit event code type name used as the type as it mak
 
 ### data
 
-Representation of your event data. It is recommended that you store your events as JSON objects.  This allows you to take advantage of all of EventStoreDB's functionality, such as projections. That said, you can save events using whatever format suits your workflow. Eventually, the data will be stored as encoded bytes.
+Representation of your event data. It is recommended that you store your events as JSON objects.  This allows you to take advantage of all of KurrentDB's functionality, such as projections. That said, you can save events using whatever format suits your workflow. Eventually, the data will be stored as encoded bytes.
 
 ### metadata
 
-Storing additional information alongside your event that is part of the event itself is standard practice. This can be correlation IDs, timestamps, access information, etc. EventStoreDB allows you to store a separate byte array containing this information to keep it separate.
+Storing additional information alongside your event that is part of the event itself is standard practice. This can be correlation IDs, timestamps, access information, etc. KurrentDB allows you to store a separate byte array containing this information to keep it separate.
 
 ### isJson
 
-Simple boolean field to tell EventStoreDB if the event is stored as json, true by default.
+Simple boolean field to tell KurrentDB if the event is stored as json, true by default.
 
 ## Handling concurrency
 
-When appending events to a stream, you can supply a *stream state* or *stream revision*. Your client uses this to inform EventStoreDB of the state or version you expect the stream to be in when appending an event. If the stream isn't in that state, an exception will be thrown. 
+When appending events to a stream, you can supply a *stream state* or *stream revision*. Your client uses this to inform KurrentDB of the state or version you expect the stream to be in when appending an event. If the stream isn't in that state, an exception will be thrown. 
 
 For example, if you try to append the same record twice, expecting both times that the stream doesn't exist, you will get an exception on the second:
 
@@ -69,7 +69,7 @@ There are three available stream states:
 - `NoStream`
 - `StreamExists`
 
-This check can be used to implement optimistic concurrency. When retrieving a stream from EventStoreDB, note the current version number. When you save it back, you can determine if somebody else has modified the record in the meantime.
+This check can be used to implement optimistic concurrency. When retrieving a stream from KurrentDB, note the current version number. When you save it back, you can determine if somebody else has modified the record in the meantime.
 
 @[code{append-with-concurrency-check}](@grpc:appending_events.py;appending-events.js;appending-events.ts;appending_events/AppendingEvents.java;appending-events/Program.cs;appendingEvents.go;appending_events.rs)
 

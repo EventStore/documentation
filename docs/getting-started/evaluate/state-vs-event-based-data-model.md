@@ -4,9 +4,9 @@ title: State vs Event-Based Data Model
 
 ## State vs Event-Based Data Model
 
-In today’s fast-evolving tech landscape, businesses need to evaluate the role and function of their databases and how data is stored. Traditional databases are designed to maintain only the current state of an application or system. In contrast, EventStoreDB leverages an event-based data model where the history of changes is immutably stored as events, which can be replayed to produce the current state. Understanding the differences and nuances between these data models can help organizations make more informed decisions on how to manage its data.
+In today’s fast-evolving tech landscape, businesses need to evaluate the role and function of their databases and how data is stored. Traditional databases are designed to maintain only the current state of an application or system. In contrast, KurrentDB leverages an event-based data model where the history of changes is immutably stored as events, which can be replayed to produce the current state. Understanding the differences and nuances between these data models can help organizations make more informed decisions on how to manage its data.
 
-This article examines the nuances between these models, the challenges they address, and how EventStoreDB provides an alternate approach to data management and system architecture.
+This article examines the nuances between these models, the challenges they address, and how KurrentDB provides an alternate approach to data management and system architecture.
 
 
 ## Two Perspectives: Current State and Historical Events
@@ -60,11 +60,11 @@ Batch processing, commonly used to handle large datasets, introduces delays betw
 
 Application development also faces challenges with systems that depend on state-based data models. Due to the centralized, transactional nature of RDBMS, these systems frequently lead to tightly coupled architectures. For example, in a healthcare application, updates to patient records might require changes to multiple interconnected internal and vendor services, making the system harder to scale and maintain as new features are added or the system grows more complex.
 
-## EventStoreDB and Event-Based Data Model
+## KurrentDB and Event-Based Data Model
 
-EventStoreDB, an event-native database, effectively solves many of the challenges posed by traditional state-based models by focusing on events as the core unit of data. 
+KurrentDB, an event-native database, effectively solves many of the challenges posed by traditional state-based models by focusing on events as the core unit of data. 
 
-EventStoreDB preserves the entire history of business processes by storing, processing, and delivering data as events, making it ideal for event-based data models. Unlike state-based data models, where updates overwrite previous data, EventStoreDB retains every event in its original form.
+KurrentDB preserves the entire history of business processes by storing, processing, and delivering data as events, making it ideal for event-based data models. Unlike state-based data models, where updates overwrite previous data, KurrentDB retains every event in its original form.
 
 While historical events can be replayed to reconstruct the current state, the inverse is impossible with state-based systems. Once reduced to a single state, the detailed history of the events that shape the current state is irretrievably lost. The event-based model, being more raw and granular than the state-based model, offers broad and in-depth historical insights. At the same time, it can be transformed into the current state for quick and efficient analysis. 
 
@@ -72,11 +72,11 @@ While historical events can be replayed to reconstruct the current state, the in
 Event-based models provide the best of both worlds, offering the flexibility to present data in both state and event-based data models.
 :::
 
-## EventStoreDB as a Solution to State-Based Challenges
+## KurrentDB as a Solution to State-Based Challenges
 
-*Summary of EventStoreDB Solution with Event-Based Data Model:*
+*Summary of KurrentDB Solution with Event-Based Data Model:*
 
-| **Challenge Area** | **EventStoreDB Solution with Event-Based Data Model** | **Example** |
+| **Challenge Area** | **KurrentDB Solution with Event-Based Data Model** | **Example** |
 | --- | --- | --- |
 | **Data Analytics** | - Provides granular insights into behaviors, actions, and system changes over time.<br>- Allows for time travel and temporal analysis.<br>- Enables tracking of system evolution and predicting future outcomes. | E-commerce: Track every step of a customer’s journey, from browsing to purchasing, to analyze buying patterns. |
 | **Data Integration** | - Processes events incrementally, reducing computational overhead.<br>- Handles real-time updates efficiently.<br>- Ensures fast synchronization with other systems. | Logistics: Process each package scan in real-time, ensuring timely updates without lengthy batch processing delays. |
@@ -84,19 +84,19 @@ Event-based models provide the best of both worlds, offering the flexibility to 
 
 ### Data Analytics
 
-For data analytics, EventStoreDB’s event-based model offers new possibilities by providing raw, granular insights into behaviors, actions, and system changes over time—far beyond the properties and attributes available in state-based models. For example, in an e-commerce system, analysts can track every step of a customer’s journey, from browsing products to final purchase, allowing for detailed behavioral analysis. 
+For data analytics, KurrentDB’s event-based model offers new possibilities by providing raw, granular insights into behaviors, actions, and system changes over time—far beyond the properties and attributes available in state-based models. For example, in an e-commerce system, analysts can track every step of a customer’s journey, from browsing products to final purchase, allowing for detailed behavioral analysis. 
 
 The historical context it preserves allows for time travel and temporal analysis, enabling analysts to track a system’s evolution, better understand past behaviors, reconstruct current states, and even predict future outcomes using machine learning models. For instance, understanding user purchase patterns over time could help predict future buying trends.
 
 ### System Integration
 
-For system integration, EventStoreDB offers significant advantages for real-time applications by processing events incrementally. This reduces computational overhead by handling individual changes (events) instead of processing entire datasets as in batch processing. 
+For system integration, KurrentDB offers significant advantages for real-time applications by processing events incrementally. This reduces computational overhead by handling individual changes (events) instead of processing entire datasets as in batch processing. 
 
 For example, in a logistics system, only specific updates—such as a package being scanned at a checkpoint—are processed in real-time rather than batch-processing millions of scans simultaneously. This triggers quick updates and immediate action to ensure fast, seamless synchronization that keeps systems up to date without delays.
 
 ### Application Development
 
-For application development, EventStoreDB’s event-based model effectively decouples the current state (e.g., a table) from the business logic and actions that manipulate it. 
+For application development, KurrentDB’s event-based model effectively decouples the current state (e.g., a table) from the business logic and actions that manipulate it. 
 
 With fewer dependencies, decoupled systems can scale horizontally more efficiently, allowing new functionality to be added incrementally without affecting other parts of the system. This leads to cleaner, more modular codebases that are less prone to breaking when changes are introduced, reducing the likelihood of bugs and issues.
 
@@ -121,6 +121,6 @@ With fewer dependencies, decoupled systems can scale horizontally more efficient
 - Data can be viewed from two perspectives: the current state, which presents the “what,“ and historical events, which present the "why" and "how"
 - Traditional state-based models are prevalent in relational database management systems (RDBMS) and store only the most recent data.
 - Despite technological advancements, state-based systems struggle with modern challenges like machine learning, real-time analytics, and scalability.
-- EventStoreDB is a practical database that leverages an event-based storage model.  Storing all historical events preserves detailed insights and enables replayability for reconstructing current (and past) states.
+- KurrentDB is a practical database that leverages an event-based storage model.  Storing all historical events preserves detailed insights and enables replayability for reconstructing current (and past) states.
 - Event-based models can generate the current state via replay of historical events. The inverse is not possible since state-based models can not be reduced to events that were not stored.
 - This event-based model offers transparency, real-time processing, and loosely coupled systems while addressing key challenges in data analytics, system integration, and application development.
