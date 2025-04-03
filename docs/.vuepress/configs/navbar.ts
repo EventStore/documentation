@@ -31,23 +31,6 @@ export const navbarEn: NavbarOptions = [
         ]
     },
     {
-        text: "Tutorials & Guides",
-        link: "/resources/README.md",
-        icon: "hugeicons:mentoring",
-        // children:[
-        //     {
-        //         text: "Tutorials",
-        //         link: "/resources/tutorials/",
-        //         icon:"hugeicons:mentoring"
-        //     },
-        //     {
-        //         text: "Guides",
-        //         link: "/resources/guides/",
-        //         icon:"hugeicons:mentoring"
-        //     }
-        // ]
-    },
-    {
         text: "Tutorials",
         link: "/resources/README.md",
         icon: "hugeicons:mentoring",
