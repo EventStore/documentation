@@ -1,6 +1,12 @@
 ---
 title: RabbitMQ Sink
-order: 6
+categories:
+  - Connectors
+  - Operations
+tag:
+  - Connectors
+  - Sink
+  - RabbitMQ
 ---
 
 ## Tutorial: Setting up and using a RabbitMQ Sink connector in KurrentDB

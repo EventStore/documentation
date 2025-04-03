@@ -1,6 +1,11 @@
 ---
 title: Auto-Scavenge
-order: 7
+categories:
+  - Database
+  - Operations
+tag:
+  - Scavenge
+  - Automation
 ---
 
 ## Tutorial: Using Auto-Scavenge
