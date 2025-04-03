@@ -132,17 +132,11 @@ export default defineComponent({
                             { class: "vp-blog-counts" },
                             countItems.map(([path, count, locale, infoType, icon]) =>
                                 h("aside", { class: "vp-blog-count" }, [
-                                    h("div", {
+                                    h("div", {onClick: () => {
+                                        activeType.value = infoType; }}, locale),
+                                    h("div", { class: "count",
                                         onClick: () => {
-                                            activeType.value = infoType;
-                                        }
-                                    }, locale),
-                                    h("div", {
-                                        class: "count",
-                                        onClick: () => {
-                                            activeType.value = infoType;
-                                        }
-                                    }, count),
+                                            activeType.value = infoType; }}, count),
                                     h("button", {
                                         type: "button", class: "vp-blog-type-button",
                                         onClick: () => {
