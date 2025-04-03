@@ -184,7 +184,7 @@
     "group": "Python SDK",
     "basePath": "clients/python",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/pyeventsourcing/esdbclient",
+    "repo": "https://github.com/pyeventsourcing/kurrentdbclient",
     "branches": [
       {
         "version": "1.0.17",
