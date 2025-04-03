@@ -64,13 +64,13 @@ export default defineComponent({
             () =>
                 // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
                 frontmatter.value.heroText ?? pageName
-              
-          );
 
-        const pageName = () : string => {
+        );
+
+        const pageName = (): string => {
             if (activeType.value === "article") { return article } else if (
                 activeType.value === "category") { return category } else {
-                return tag
+                return tag.name
             }
         };
 
@@ -132,11 +132,17 @@ export default defineComponent({
                             { class: "vp-blog-counts" },
                             countItems.map(([path, count, locale, infoType, icon]) =>
                                 h("aside", { class: "vp-blog-count" }, [
-                                    h("div", {onClick: () => {
-                                        activeType.value = infoType; }}, locale),
-                                    h("div", { class: "count",
+                                    h("div", {
                                         onClick: () => {
-                                            activeType.value = infoType; }}, count),
+                                            activeType.value = infoType;
+                                        }
+                                    }, locale),
+                                    h("div", {
+                                        class: "count",
+                                        onClick: () => {
+                                            activeType.value = infoType;
+                                        }
+                                    }, count),
                                     h("button", {
                                         type: "button", class: "vp-blog-type-button",
                                         onClick: () => {
