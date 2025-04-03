@@ -35,7 +35,7 @@ If you have trouble with this quickstart, you can find more help in the ["Kurren
 
 1. Click the button below to start Codespaces:
    
-   [![](https://github.com/codespaces/badge.svg)](https://codespaces.new/?repo=790993560&devcontainer_path=.devcontainer%2Fquickstart%2Fdevcontainer.json)
+   [![](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=951198039&skip_quickstart=true)
 
 2. Login to GitHub if required.
    
