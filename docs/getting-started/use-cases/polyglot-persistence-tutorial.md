@@ -58,7 +58,7 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 1. Once your Codespace is loaded, run the following command in the terminal to start the KurrentDB server:
 
    ```sh
-   ./start_cluster.sh
+   ./start.sh
    ```
 
    This is a custom script written for this quickstart to help start KurrentDB in Docker.
