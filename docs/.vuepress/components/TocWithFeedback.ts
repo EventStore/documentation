@@ -467,9 +467,9 @@ export default defineComponent({
       return h(ClientOnly, () =>
         h("div", {}, [
           tocContent,
-          // On mobile: teleport the survey form to the element with class "theme-hope-content"
+          // On mobile: teleport the survey form to the element with class "markdown-content"
           isMobile.value
-            ? h(Teleport, { to: ".theme-hope-content" }, [renderSurveyForm()])
+            ? h(Teleport, { to: ".markdown-content" }, [renderSurveyForm()])
             : null,
         ])
       );
