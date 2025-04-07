@@ -23,15 +23,8 @@ jobs:
       - name: Build website preview
         id: build
         run: |
-          set -o pipefail
-          pnpm run build-prod 2>&1 | tee build.log
+          pnpm run build-prod 
         continue-on-error: true
-      - name: Upload build log artifact
-        if: ${{ steps.build.outcome == 'failure' }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build.log
       - name: Comment on build failure with log link
         if: ${{ steps.build.outcome == 'failure' }}
         uses: peter-evans/create-or-update-comment@v2
