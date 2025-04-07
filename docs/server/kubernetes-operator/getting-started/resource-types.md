@@ -30,7 +30,7 @@ This resource type is used to define a database deployment.
 | Field                                                            | Required | Description                                                                    |
 |------------------------------------------------------------------|----------|--------------------------------------------------------------------------------|
 | `domain` _string_                                                | Yes                                                               | Domain used for external DNS e.g. advertised address exposed in the gossip state                                                         |
-| `loadBalancer` _[KurrentDbLoadBalancer](#kurrentdbloadbalancer)_ | Yes                                                               | Domain used for external DNS e.g. advertised address exposed in the gossip state                                                         |
+| `loadBalancer` _[KurrentDbLoadBalancer](#kurrentdbloadbalancer)_ | Yes                                                               | Defines a load balancer to use with the database                                                         |
 
 #### KurrentDbLoadBalancer
 
