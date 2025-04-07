@@ -1,0 +1,45 @@
+name: Build Docs Preview
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    name: Build Docs Preview
+    runs-on: ubuntu-latest
+    env:
+      ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+      ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+      ALGOLIA_SEARCH_API_KEY: ${{ secrets.ALGOLIA_SEARCH_API_KEY }}
+      NODE_OPTIONS: --max_old_space_size=8192
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build website preview
+        id: build
+        run: |
+          pnpm run build-prod 2>&1 | tee build.log
+        continue-on-error: true
+      - name: Upload build log artifact
+        if: ${{ steps.build.outcome == 'failure' }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-log
+          path: build.log
+      - name: Comment on build failure with log link
+        if: ${{ steps.build.outcome == 'failure' }}
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## Build Failed
+            The build has failed. You can review the full build logs and download the build log artifact via the [workflow run details](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
+      - name: Fail if build failed
+        if: ${{ steps.build.outcome == 'failure' }}
+        run: exit 1
