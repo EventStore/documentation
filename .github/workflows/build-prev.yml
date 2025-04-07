@@ -23,6 +23,7 @@ jobs:
       - name: Build website preview
         id: build
         run: |
+          set -o pipefail
           pnpm run build-prod 2>&1 | tee build.log
         continue-on-error: true
       - name: Upload build log artifact
