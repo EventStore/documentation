@@ -413,66 +413,62 @@ export default defineComponent({
       const before = slots.before?.();
       const after = slots.after?.();
 
-      const tocContent =
-        tocHeaders || before || after
-          ? h("div", { class: "vp-toc-placeholder" }, [
-              h("aside", { id: "toc", "vp-toc": "" }, [
-                // Optional "before" slot
-                before,
-                // The TOC itself
-                tocHeaders
-                  ? [
-                      h(
-                        "div",
-                        { class: "vp-toc-header", onClick: toggleExpanded },
-                        [
-                          metaLocale.value.toc,
-                          h(PrintButton),
-                          h("div", {
-                            class: ["arrow", isExpanded.value ? "down" : "end"],
-                          }),
-                        ]
-                      ),
-                      h(
-                        "div",
-                        {
-                          class: [
-                            "vp-toc-wrapper",
-                            isExpanded.value ? "open" : "",
-                          ],
-                          ref: toc,
-                        },
-                        [
-                          tocHeaders,
-                          h("div", {
-                            class: "vp-toc-marker",
-                            style: { top: tocMarkerTop.value },
-                          }),
-                        ]
-                      ),
+      return h(ClientOnly, () => {
+        if (!tocHeaders && !before && !after) return null;
+
+        // Main TOC container
+        const tocContent = h("div", { class: "vp-toc-placeholder" }, [
+          h("aside", { id: "toc", "vp-toc": "" }, [
+            before,
+            tocHeaders
+              ? [
+                  h(
+                    "div",
+                    {
+                      class: "vp-toc-header",
+                      onClick: () => toggleExpanded(),
+                    },
+                    [
+                      metaLocale.value.toc,
+                      h(PrintButton),
+                      h("div", {
+                        class: ["arrow", isExpanded.value ? "down" : "end"],
+                      }),
                     ]
-                  : null,
-                // Optional "after" slot
-                after,
-                // On desktop: render survey form inside the TOC container
-                !isMobile.value
-                  ? h("div", { class: "toc-survey-section" }, [
-                      renderSurveyForm(),
-                    ])
-                  : null,
-              ]),
-            ])
+                  ),
+                  h(
+                    "div",
+                    {
+                      class: ["vp-toc-wrapper", isExpanded.value ? "open" : ""],
+                      ref: toc,
+                    },
+                    [
+                      tocHeaders,
+                      h("div", {
+                        class: "vp-toc-marker",
+                        style: {
+                          top: tocMarkerTop.value,
+                        },
+                      }),
+                    ]
+                  ),
+                ]
+              : null,
+            after,
+            // Add survey form inside the TOC for desktop
+            !isMobile.value
+              ? h("div", { class: "toc-survey-section" }, [renderSurveyForm()])
+              : null,
+          ]),
+        ]);
+
+        // For mobile: create a separate teleported component
+        const mobileSurvey = isMobile.value
+          ? h(Teleport, { to: ".markdown-content" }, [renderSurveyForm()])
           : null;
 
-      return h(ClientOnly, () =>
-        h("div", {}, [
-          tocContent,
-          // On mobile: teleport the survey form to the element with class "theme-hope-content"
-          isMobile.value
-            ? h(Teleport, { to: ".theme-hope-content" }, [renderSurveyForm()])
-            : null,
-        ])
-      );
+        return mobileSurvey ? [tocContent, mobileSurvey] : tocContent;
+      });
     };
   },
 });
