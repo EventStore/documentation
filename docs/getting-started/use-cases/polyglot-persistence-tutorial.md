@@ -146,9 +146,9 @@ Are the contents of the Top 10 products table and Carts table in sync?
 
 1. Run the following command in the terminal to start a live data generator:
 
-```sh
-./tools/Kurrent.Extensions.Commerce/linux-x64/edb-commerce live-data-set --configuration ./data/datagen.live.config
-```
+   ```sh
+   ./scripts/3-start-live-data-gen.sh
+   ```
 
 2. While the tool is running, return to the EventStoreDB Web UI
 
