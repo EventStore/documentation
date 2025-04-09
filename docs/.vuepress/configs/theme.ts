@@ -14,7 +14,7 @@ export const themeOptions: ThemeOptions = {
     navbarLayout,
     sidebar: sidebarEn,
     toc: true,
-    repo: "https://github.com/eventstore",
+    repo: "https://github.com/kurrent-io",
     repoLabel: "GitHub",
     repoDisplay: true,
     contributors: false,
