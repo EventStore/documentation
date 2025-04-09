@@ -40,17 +40,18 @@ TBD
    
    [![](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=951198039&skip_quickstart=true)
 
-2. Login to GitHub if required.
+   Login to GitHub if required.
+
+2. For `Branch`, select `polyglot-tutorial`
    
-3. Follow the instructions to create a new Codespace.
+3. For `Dev container configuration`, select `Polyglot Persistence`
+   
+4. For `Region`, select `Southeast Asia`
 
-4. Wait for your Codespace to build. This can take up to a few minutes. 
+4. Click `Create codespace`
 
-5. Once complete, you will see a welcome message in the terminal:
+5. Wait for your Codespace to build. This can take up to a few minutes. 
 
-```
-Hello!👋 Welcome to the EventStoreDB Polyglot Persistence Use Case Tutorial (Work in Progress)
-```
 
 ::: tip
 For this quickstart, you can safely ignore and close any Codespaces notification that appears on the bottom right of the page.
@@ -92,9 +93,7 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 
 1. Under `Recently Changed Streams`, click `$ce-cart` link. 
 
-1. Click on the `JSON` link in the rightmost column of the table. 
-   
-1. You should see the content of the appended event. Here you will see shopping cart events for two shopping carts.
+2. You should see the content of the appended event. Here you will see shopping cart events for two shopping carts.
 
 ::: info Quick Quiz
 
@@ -156,11 +155,11 @@ Are the contents of the Top 10 products table and Carts table in sync?
 
 1. Under `Recently Changed Streams`, click `$ce-cart` link. Notice how new events are being appended to the stream in real time
 
-1. Return to the demo web UI and click on the `Top 10 Products` link from the top navigation bar. Notice how the Top 10 products are being updated in real-time
+2. Return to the demo web UI and click on the `Top 10 Products` link from the top navigation bar. Notice how the Top 10 products are being updated in real-time.
 
-1. Click on the `Cart Table` link from the top navigation bar. Notice how the table is being updated in real-time.
+3. Click on the `Cart Table` link from the top navigation bar. Notice how the table is being updated in real-time.
 
-1. Return to the terminal and stop the live data generator tool by inputting ctrl+c.
+4. Return to the terminal and stop the live data generator tool by inputting ctrl+c.
 
 ::: info Quick Quiz
 
