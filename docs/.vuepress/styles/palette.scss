@@ -163,6 +163,7 @@ html[data-theme="dark"] {
   --vp-c-text: #d1dce0;
   --vp-c-text-mute: white;
   --border-color:white;
+  --vp-c-gutter:black;
 }
 
 html[data-theme="light"] {
@@ -179,6 +180,7 @@ html[data-theme="light"] {
   --vp-c-text: #000;
   --vp-c-text-mute: black;
   --border-color:black;
+  --vp-c-gutter:white;
 }
 
 $font-body: 15px;

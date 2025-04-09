@@ -1,0 +1,43 @@
+name: Build Docs Preview
+
+permissions:
+  pull-requests: write  
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    name: Build Docs Preview
+    runs-on: ubuntu-latest
+    env:
+      ALGOLIA_APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+      ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+      ALGOLIA_SEARCH_API_KEY: ${{ secrets.ALGOLIA_SEARCH_API_KEY }}
+      NODE_OPTIONS: --max_old_space_size=8192
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build website preview
+        id: build
+        run: |
+          pnpm run build-prod 
+        continue-on-error: true
+      - name: Comment on build failure with log link
+        if: ${{ steps.build.outcome == 'failure' }}
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## Build Failed
+              The build has failed. You can review the full build logs and download the build log artifact via the [workflow run details](https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}).`
+            });
+      - name: Fail if build failed
+        if: ${{ steps.build.outcome == 'failure' }}
+        run: exit 1

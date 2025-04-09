@@ -17,10 +17,12 @@ export const themeOptions: ThemeOptions = {
     repo: "https://github.com/eventstore",
     repoLabel: "GitHub",
     repoDisplay: true,
+    contributors: false,
     pure: false,
     darkmode:"toggle",
     headerDepth: 3,
     plugins,
+    pageInfo: false,
     markdown: {
         figure: true,
         imgLazyload: true,
