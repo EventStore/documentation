@@ -19,7 +19,7 @@ Ensure you have a valid **license key** to use the Encryption-At-Rest feature. W
 
 ### Step 2 (optional): Confirm Encryption-At-Rest availability
 
-By default, Encryption-At-Rest is bundled with KurrentDB 24.20 LTS. You can confirm its availability in the KurrentDB logs. Look for the following log message:
+By default, Encryption-At-Rest is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the KurrentDB logs. Look for the following log message:
 
 ```text:no-line-numbers
 [INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316
