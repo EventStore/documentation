@@ -241,7 +241,7 @@ Alternatively, you can locate and open the file from the EXPLORER window on the 
 
 @tab Python
 ```
-esdbclient==1.0.19
+kurrentdbclient==1.0.19
 ```
 
 @tab Java
@@ -263,7 +263,7 @@ esdbclient==1.0.19
 @tab node.js
 ```json
 "dependencies": {
-   "@eventstore/db-client": "^6.1.0"
+   "@kurrent/kurrentdb-client": "^6.1.0"
 }
 ```
 :::

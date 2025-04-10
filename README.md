@@ -19,8 +19,8 @@ Please make sure to follow the [contribution guidelines](CONTRIBUTING.md). It co
 KurrentDB clients:
 - C# - [see more](https://github.com/EventStore/EventStore-Client-Dotnet/tree/master/samples)
 - NodeJS - [see more](https://github.com/EventStore/EventStore-Client-NodeJS/tree/master/packages/test/src/samples)
-- Java - [see more](https://github.com/EventStore/EventStoreDB-Client-Java/tree/trunk/src/test/java/io/kurrent/dbclient/samples)
-- Rust - [see more](https://github.com/EventStore/EventStoreDB-Client-Rust/tree/master/examples)
+- Java - [see more](https://github.com/kurrent-io/KurrentDB-Client-Java/tree/trunk/src/test/java/io/kurrent/dbclient/samples)
+- Rust - [see more](https://github.com/kurrent-io/KurrentDB-Client-Rust/tree/master/examples)
 - Go - [see more](https://github.com/EventStore/EventStore-Client-Go/tree/master/samples)
 
 ## Local development

@@ -20,35 +20,35 @@ Install the client SDK package to your project.
 
 #### Python
 
-Install the `esdbclient` package from PyPI or use Poetry:
+Install the `kurrentdbclient` package from PyPI or use Poetry:
 
 ::: tabs
 @tab pip
 ```bash
-pip install esdbclient
+pip install kurrentdbclient
 ```
 @tab Poetry
 ```bash
-poetry add esdbclient
+poetry add kurrentdbclient
 ```
 :::
 
 #### NodeJS
 
-Install the `@eventstore/db-client` package using NPM, Yarn or PNPM:
+Install the `@kurrent/kurrentdb-client` package using NPM, Yarn or PNPM:
 
 ::: tabs
 @tab npm
 ```bash
-npm install --save @eventstore/db-client
+npm install --save @kurrent/kurrentdb-client
 ```
 @tab yarn
 ```bash
-yarn add @eventstore/db-client
+yarn add @kurrent/kurrentdb-client
 ```
 @tab pnpm
 ```bash
-pnpm add @eventstore/db-client
+pnpm add @kurrent/kurrentdb-client
 ```
 :::
 
@@ -86,7 +86,7 @@ dotnet add package EventStore.Client.Grpc.Streams
 Install the `esdb` package using Go modules:
 
 ```bash
-go get github.com/EventStore/EventStore-Client-Go/v3.2.0/esdb
+go get github.com/kurrent-io/KurrentDB-Client-Go/kurrentdb
 ```
 
 #### Rust
