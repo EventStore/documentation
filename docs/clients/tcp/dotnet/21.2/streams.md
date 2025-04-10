@@ -7,9 +7,9 @@ sitemap:
 
 # Stream metadata
 
-Every stream in KurrentDB has metadata stream associated with it, prefixed by `$$`, so the metadata stream from a stream called `foo` is `$$foo`. Internally, the metadata includes information such as the ACL of the stream and the maximum count and age for the events in the stream. Client code can also put information into stream metadata for use with projections or through the client API.
+Every stream in EventStoreDB has metadata stream associated with it, prefixed by `$$`, so the metadata stream from a stream called `foo` is `$$foo`. Internally, the metadata includes information such as the ACL of the stream and the maximum count and age for the events in the stream. Client code can also put information into stream metadata for use with projections or through the client API.
 
-This information is not part of the actual event but is metadata associated with the event. KurrentDB stores stream metadata as JSON, and you can access it over the HTTP APIs.
+This information is not part of the actual event but is metadata associated with the event. EventStoreDB stores stream metadata as JSON, and you can access it over the HTTP APIs.
 
 ## Read stream metadata
 
@@ -111,14 +111,14 @@ Writing metadata may require that you pass credentials if you have security enab
 Although you cannot delete individual events from a stream, you can delete the whole stream. It's also possible to delete a head portion of the stream by updating [stream metadata](#stream-metadata).
 
 ::: note
-As KurrentDB normally works in append-only manner, deleting streams or updating streams metadata would not physically delete anything from the database. Events will be purged from the database when the next scavenge operation runs. You should, therefore, ensure that your database is regularly scavenged.
+As EventStoreDB normally works in append-only manner, deleting streams or updating streams metadata would not physically delete anything from the database. Events will be purged from the database when the next scavenge operation runs. You should, therefore, ensure that your database is regularly scavenged.
 :::
 
 ### Soft delete
 
-By default, when you delete a stream, KurrentDB soft-deletes it. You can recreate the stream by appending new events to it. If you try to read a soft deleted stream you receive an error response.
+By default, when you delete a stream, EventStoreDB soft-deletes it. You can recreate the stream by appending new events to it. If you try to read a soft deleted stream you receive an error response.
 
-Technically, stream deletion is done by setting `$tb` stream metadata property to `long.MaxValue`. Note that if a deleted stream gets new events appended to it, event numbers for newly appended events don't start from zero as it would happen for a new stream. Although the stream has been deleted, KurrentDB keeps the last known event number for all streams.
+Technically, stream deletion is done by setting `$tb` stream metadata property to `long.MaxValue`. Note that if a deleted stream gets new events appended to it, event numbers for newly appended events don't start from zero as it would happen for a new stream. Although the stream has been deleted, EventStoreDB keeps the last known event number for all streams.
 
 ```csharp
 Task<DeleteResult> DeleteStreamAsync(
@@ -129,7 +129,7 @@ Task<DeleteResult> DeleteStreamAsync(
 
 ### Hard delete
 
-If you want to prevent new events to be appended to a deleted stream, you should use the hard-delete function. When a stream is hard-deleted, KurrentDB will append a tombstone event to that stream. The tombstone event never gets scavenged, so the stream will forever be closed for appending new events.
+If you want to prevent new events to be appended to a deleted stream, you should use the hard-delete function. When a stream is hard-deleted, EventStoreDB will append a tombstone event to that stream. The tombstone event never gets scavenged, so the stream will forever be closed for appending new events.
 
 ::: warning
 A hard delete is permanent and the stream is not removed during scavenge. If you hard delete a stream, you cannot recreate the stream.
@@ -152,7 +152,7 @@ A catch-up subscription to `$all` gets all the events from all the streams in th
 
 #### Subscription to stream with links
 
-Default projections like `by-category` emit links to special streams, for example `$ce-Order`. Custom projections written in JavaScript can also emit links. Links are very small events, which point to linked events. Normally, when subscribing to a stream with links, you set the `ResolveLinkTos` subscription option to true as you want to get linked events. KurrentDB will check if the original event has been deleted, but it will still deliver a link to the subscription. The `Event` property in this case will be `null`, so you can skip those events, but can still update the subscription checkpoint.
+Default projections like `by-category` emit links to special streams, for example `$ce-Order`. Custom projections written in JavaScript can also emit links. Links are very small events, which point to linked events. Normally, when subscribing to a stream with links, you set the `ResolveLinkTos` subscription option to true as you want to get linked events. EventStoreDB will check if the original event has been deleted, but it will still deliver a link to the subscription. The `Event` property in this case will be `null`, so you can skip those events, but can still update the subscription checkpoint.
 
 #### Subscription to a normal stream
 

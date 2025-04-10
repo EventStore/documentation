@@ -83,7 +83,7 @@ static async Task Main()
 
 ## Transactions
 
-You might perform multiple writes to KurrentDB as one transaction. However, the transaction can only append events to one stream. Transactions across multiple streams are not supported.
+You might perform multiple writes to EventStoreDB as one transaction. However, the transaction can only append events to one stream. Transactions across multiple streams are not supported.
 
 You can open a transaction by using the `StartTransactionAsync` method of the `IEventStoreConnection` instance. After you got the transaction instance, you can use it to append events. Finally, you can either commit or roll back the transaction.
 
@@ -148,13 +148,13 @@ The stream will therefore contain events in the following order: `3, 1, 2, 4, 5`
 
 The writing methods all use a type named `EventData` to represent an event to be stored. Instances of `EventData` are immutable.
 
-Kurrent does not have any built-in serialisation, so the body and metadata for each event are represented in `EventData` as a `byte[]`.
+Event Store does not have any built-in serialisation, so the body and metadata for each event are represented in `EventData` as a `byte[]`.
 
 The members on `EventData` are:
 
 | Member | Description |
 | :---------------- | :------ |
-| `Guid EventId` | A unique identifier representing this event. Kurrent uses this for idempotency if you write the same event twice you should use the same identifier both times. |
+| `Guid EventId` | A unique identifier representing this event. Event Store uses this for idempotency if you write the same event twice you should use the same identifier both times. |
 | `string Type` | The name of the event type. You can use this for pattern matching in projections, so should be a "friendly" name rather than a CLR type name, for example. |
 | `bool IsJson` | If the data and metadata fields are serialized as JSON, you should set this to `true`. Setting this to `true` will cause the projections framework to attempt to deserialize the data and metadata later. |
 | `byte[] Data` | The serialized data representing the event to be stored. |
@@ -182,7 +182,7 @@ If the optimistic concurrency check fails during appending, a `WrongExpectedVers
 
 ## Idempotence
 
-If identical append operations occur, KurrentDB treats them in a way which makes it idempotent. If a append is treated in this manner, KurrentDB acknowledges it as successful, but duplicate events are not appended. The idempotence check is based on the `EventId` and `stream`. It is possible to reuse an `EventId` across streams whilst maintaining idempotence.
+If identical append operations occur, EventStoreDB treats them in a way which makes it idempotent. If a append is treated in this manner, EventStoreDB acknowledges it as successful, but duplicate events are not appended. The idempotence check is based on the `EventId` and `stream`. It is possible to reuse an `EventId` across streams whilst maintaining idempotence.
 
 The level of idempotence guarantee depends on whether the optimistic concurrency check is not disabled during appending (by passing `ExpectedVersion.Any` as the `expectedVersion` for the append).
 

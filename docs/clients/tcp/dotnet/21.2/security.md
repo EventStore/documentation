@@ -7,35 +7,35 @@ sitemap:
 
 # Security
 
-KurrentDB supports basic authentication for HTTP API and TCP calls, and supports access control lists (ACL) for streams.
+EventStoreDB supports basic authentication for HTTP API and TCP calls, and supports access control lists (ACL) for streams.
 
 ## Authentication and authorization
 
-KurrentDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](@clients/http-api/api.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
+EventStoreDB supports basic HTTP authentication to internal users. You create and manage these users with the RESTful API or the Admin UI. Read more in the [users management guide](@clients/http-api/api.md#create-a-user). Once you have added users, you can use their details with HTTP requests or native client's authorization process.
 
-Alternatively, you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with KurrentDB. Read more about [the trusted intermediary header](@server/security/user-authentication.md#trusted-intermediary).
+Alternatively, you can also use the 'trusted intermediary' header for externalized authentication that allows you to integrate almost any authentication system with EventStoreDB. Read more about [the trusted intermediary header](@server/security/user-authentication.md#trusted-intermediary).
 
-If you were to use the wrong user or no user when connecting to KurrentDB, you receive a `401 Unauthorized` response for HTTP API or Exception for the native client.
+If you were to use the wrong user or no user when connecting to EventStoreDB, you receive a `401 Unauthorized` response for HTTP API or Exception for the native client.
 
 ::: tip
 Remember to change the default password for default users and disable unused users after the cluster setup is complete.
 :::
 
-## Secure KurrentDB node
+## Secure EventStoreDB node
 
-We recommend you connect to KurrentDB over SSL to encrypt the user information. [Read this guide for instructions](@server/security/protocol-security.md).
+We recommend you connect to EventStoreDB over SSL to encrypt the user information. [Read this guide for instructions](@server/security/protocol-security.md).
 
 ::: warning
-Avoid exposing KurrentDB to the global internet network.
+Avoid exposing EventStoreDB to the global internet network.
 :::
 
 ## User management
 
-The KurrentDB .NET client includes helper methods that use the HTTP API to allow for the management of users. This section describes the methods found in the `UsersManager` class. All methods in this class are asynchronous.
+The EventStoreDB .NET client includes helper methods that use the HTTP API to allow for the management of users. This section describes the methods found in the `UsersManager` class. All methods in this class are asynchronous.
 
 ### Default users
 
-By default, KurrentDB has two users `admin` and `ops` with the password `changeit`.
+By default, EventStoreDB has two users `admin` and `ops` with the password `changeit`.
 
 ::: tip
 We recommend you create separate functional account with minimal access rights for any connected application or service.
@@ -43,13 +43,13 @@ We recommend you create separate functional account with minimal access rights f
 
 ### Default groups
 
-By default, KurrentDB has two user groups `$admins` `$ops`. However, it is possible to create custom groups with the .NET client.
+By default, EventStoreDB has two user groups `$admins` `$ops`. However, it is possible to create custom groups with the .NET client.
 
 ### Create UsersManager instance
 
 @[code{UserManager}](./sample-code/DotNetClient/UsersCreateUsersManager.cs)
 
-Resolving the host name may be especially useful if the KurrentDB Admin UI is not available under loopback address e.g., when container orchestrator assign dynamic DNS based on service name.
+Resolving the host name may be especially useful if the EventStoreDB Admin UI is not available under loopback address e.g., when container orchestrator assign dynamic DNS based on service name.
 
 ### Create a user
 
@@ -134,7 +134,7 @@ Task ResetPasswordAsync(
 
 ## Access control lists
 
-Alongside authentication, KurrentDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
+Alongside authentication, EventStoreDB supports per stream configuration of Access Control Lists (ACL). To configure the ACL of a stream go to its head and look for the `metadata` relationship link to fetch the metadata for the stream.
 
 For more information on the structure of Access Control Lists read [Access Control Lists](@server/security/user-authorization.md#access-control-lists).
 
