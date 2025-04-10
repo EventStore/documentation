@@ -83,7 +83,7 @@ dotnet add package EventStore.Client.Grpc.Streams
 
 #### Go
 
-Install the `esdb` package using Go modules:
+Install the `kurrentdb` package using Go modules:
 
 ```bash
 go get github.com/kurrent-io/KurrentDB-Client-Go/kurrentdb
