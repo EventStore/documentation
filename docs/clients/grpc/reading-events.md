@@ -4,16 +4,16 @@ order: 3
 
 # Reading events
 
-There are two options for reading events from EventStoreDB. You can either: 
+There are two options for reading events from KurrentDB. You can either: 
     1. Read from an individual stream, or 
     2. Read from the `$all` stream, which will return all events in the store.
 
-Each event in EventStoreDB belongs to an individual stream. When reading events, pick the name of the stream from which you want to read the events and choose whether to read the stream forwards or backwards. 
+Each event in KurrentDB belongs to an individual stream. When reading events, pick the name of the stream from which you want to read the events and choose whether to read the stream forwards or backwards. 
 
 All events have a `StreamPosition` and a `Position`.  `StreamPosition` is a *big int* (unsigned 64-bit integer) and represents the place of the event in the stream. `Position` is the event's logical position, and is represented by `CommitPosition` and a `PreparePosition`. Note that when reading events you will supply a different "position" depending on whether you are reading from an individual stream or the `$all` stream.
 
 :::tip
-Check [connecting to EventStoreDB instructions](getting-started.md#required-packages) to learn how to configure and use the client SDK.
+Check [connecting to KurrentDB instructions](getting-started.md#required-packages) to learn how to configure and use the client SDK.
 :::
 
 ## Reading from a stream
@@ -38,7 +38,7 @@ Passing in the max count will limit the number of events returned.
 
 #### resolveLinkTos
 
-When using projections to create new events, you can set whether the generated events are pointers to existing events. Setting this value to `true` tells EventStoreDB to return the event as well as the event linking to it.
+When using projections to create new events, you can set whether the generated events are pointers to existing events. Setting this value to `true` tells KurrentDB to return the event as well as the event linking to it.
 
 #### configureOperationOptions
 
@@ -98,13 +98,13 @@ Passing in the max count allows you to limit the number of events that returned.
 
 #### resolveLinkTos
 
-When using projections to create new events you can set whether the generated events are pointers to existing events. Setting this value to true will tell EventStoreDB to return the event as well as the event linking to it.
+When using projections to create new events you can set whether the generated events are pointers to existing events. Setting this value to true will tell KurrentDB to return the event as well as the event linking to it.
 
 @[code{read-from-all-stream-resolving-link-Tos}](@grpc:reading_events.py;reading-events.js;reading-events.ts;reading_events/ReadingEvents.java;reading-events/Program.cs;readingEvents.go;reading_events.rs)
 
 #### configureOperationOptions
 
-This argument is generic setting class for all operations that can be set on all operations executed against EventStoreDB.
+This argument is generic setting class for all operations that can be set on all operations executed against KurrentDB.
 
 #### userCredentials
 The credentials used to read the data can be used by the subscription as follows. This will override the default credentials set on the connection.
@@ -123,7 +123,7 @@ Read one event backwards to find the last position in the `$all` stream.
 
 ### Handling system events
 
-EventStoreDB will also return system events when reading from the `$all` stream. In most cases you can ignore these events.
+KurrentDB will also return system events when reading from the `$all` stream. In most cases you can ignore these events.
 
 All system events begin with `$` or `$$` and can be easily ignored by checking the `EventType` property.
 

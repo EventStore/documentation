@@ -13,7 +13,7 @@ Auto-scavenge restarts or cancels scavenges if a node is lost, and allows you to
 
 #### Prerequisites:
 
-* [EventStoreDB 24.10 LTS installed and running](http://@server/quick-start/installation.md)
+* [EventStoreDB 24.10 LTS or later installed and running](http://@server/quick-start/installation.md)
 * [License key](http://@server/quick-start/installation.md#license-keys) for Auto-Scavenge (a valid license is required to use this feature)
 * Requires `$ops` or `$admin` role
 

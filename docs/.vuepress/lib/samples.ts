@@ -52,7 +52,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "go": {
                 label: "Go",
-                path: "clients/go/4.2.0"
+                path: "clients/go/1.0.0"
             },
             "rs": {
                 label: "Rust",

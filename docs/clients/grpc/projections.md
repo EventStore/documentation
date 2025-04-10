@@ -21,22 +21,22 @@ Install the client SDK package to your project.
 
 ### NodeJS
 
-Add `@eventstore/db-client` to your project using Yarn, NPM, or pnpm.
+Add `@kurrent/kurrentdb-client` to your project using Yarn, NPM, or pnpm.
 
 TypeScript type declarations are included in the package.
 
 ::: tabs
 @tab npm
 ```bash
-npm install --save @eventstore/db-client
+npm install --save @kurrent/kurrentdb-client
 ```
 @tab yarn
 ```bash
-yarn add @eventstore/db-client
+yarn add @kurrent/kurrentdb-client
 ```
 @tab pnpm
 ```bash
-pnpm add @eventstore/db-client
+pnpm add @kurrent/kurrentdb-client
 ```
 :::
 
