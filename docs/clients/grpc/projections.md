@@ -68,6 +68,29 @@ For .NET projects, install the `EventStore.Client.Grpc.ProjectionManagement` pac
 dotnet add package EventStore.Client.Grpc.ProjectionManagement --version 23.*
 ```
 
+### Python
+
+Install the `kurrentdbclient` package from PyPI or use Poetry:
+
+::: tabs
+@tab pip
+```bash
+pip install kurrentdbclient
+```
+@tab Poetry
+```bash
+poetry add kurrentdbclient
+```
+:::
+
+### Go
+
+Install the `kurrentdb` package using Go modules:
+
+```bash
+go get github.com/kurrent-io/KurrentDB-Client-Go/kurrentdb
+```
+
 ### Other languages
 
 Go, Rust and Python clients does not have a dedicated projection management client yet.
