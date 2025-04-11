@@ -50,14 +50,16 @@ Add the `db-client-java` dependency to your project using Maven or Gradle.
 <dependency>
   <groupId>io.kurrent</groupId>
   <artifactId>db-client-java</artifactId>
-  <version>5.2.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 @tab Gradle
 ```
-implementation 'io.kurrent:db-client-java:5.2.0'
+implementation 'io.kurrent:db-client-java:1.0.0'
 ```
+
+For the most recent version of the KurrentDB client package, see [Maven Central](https://mvnrepository.com/artifact/io.kurrent/kurrentdb-client).
 :::
 
 ### .NET

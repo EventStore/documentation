@@ -249,9 +249,11 @@ kurrentdbclient==1.0.19
 <dependency>
    <groupId>io.kurrent</groupId>
    <artifactId>db-client-java</artifactId>
-   <version>5.3.2</version>
+   <version>1.0.0</version>
 </dependency>
 ```
+
+For the most recent version of the KurrentDB client package, see [Maven Central](https://mvnrepository.com/artifact/io.kurrent/kurrentdb-client).
 
 @tab .NET
 ```xml
