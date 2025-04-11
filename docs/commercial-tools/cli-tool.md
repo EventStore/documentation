@@ -1,6 +1,6 @@
 # Node administration CLI tool <Badge type="warning" vertical="middle" text="Commercial"/>
 
-This CLI tool is a command line interface for administering EventStoreDB nodes. It allows you to run tasks similar to those available in the web admin interface and SDKs, including administrating users, projections and configuration.
+This CLI tool is a command line interface for administering KurrentDB nodes. It allows you to run tasks similar to those available in the web admin interface and SDKs, including administrating users, projections and configuration.
 
 ## Download
 
@@ -20,7 +20,7 @@ es-cli admin shutdown
 
 ### Connecting and authentication
 
-Using the CLI tool requires specifying an EventStoreDB node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
+Using the CLI tool requires specifying an KurrentDB node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
 
 ```bash
 es-cli --serverurl="http://localhost:2113" --username=admin --password=changeit
@@ -63,13 +63,13 @@ es-cli [<options>] <command> [<args>]
 
 | Option        | Description                                              |
 |---------------|----------------------------------------------------------|
-| `--version`   | Get the version of EventStoreDB CLI                      |
+| `--version`   | Get the version of KurrentDB CLI                      |
 | `--help`      | Display help                                             |
 | `--output`    | How output should be formatted (`text` or `json`)        |
 | `--password`  | The admin password                                       |
-| `--serverurl` | The url of the EventStoreDB server                       |
+| `--serverurl` | The url of the KurrentDB server                       |
 | `--username`  | The admin username                                       |
-| `--verbose`   | Verbose output of requests sent to the EventStoreDB node |
+| `--verbose`   | Verbose output of requests sent to the KurrentDB node |
 
 ### Commands summary
 
@@ -91,18 +91,18 @@ es-cli admin [--version] [--help] <command> [<args>]
 
 | Command                                                 | Description                                                                                |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------|
-| [azure_backup](#admin-azure_backup)                     | Backs up the EventStoreDB database to the specified container in Azure Blob Storage        |
-| [azure_restore](#admin-azure_restore)                   | Restores an EventStoreDB database from a specified container in Azure Blob Storage         |
-| [backup](#admin-backup)                                 | Backs up the EventStoreDB database to the destination directory                            |
+| [azure_backup](#admin-azure_backup)                     | Backs up the KurrentDB database to the specified container in Azure Blob Storage        |
+| [azure_restore](#admin-azure_restore)                   | Restores an KurrentDB database from a specified container in Azure Blob Storage         |
+| [backup](#admin-backup)                                 | Backs up the KurrentDB database to the destination directory                            |
 | [calculate_stream_size](#admin-calculate_stream_size)   | Calculates the size on disk of the give stream                                             |
 | [clear_scavenge_streams](#admin-clear_scavenge_streams) | Deletes all the scavenge history streams                                                   |
 | [delete_streams](#admin-delete_streams)                 | Deletes streams matching the specified regular expression                                  |
-| [merge_indexes](#admin-merge_indexes)                   | Manually merge indexes of EventStoreDB                                                     |
-| [restore](#admin-restore)                               | Restores the EventStoreDB database from the provided location to the destination directory |
-| [s3_backup](#admin-s3_backup)                           | Backs up the EventStoreDB to an S3 bucket                                                  |
-| [s3_restore](#admin-s3_restore)                         | Restores EventStoreDB from an S3 bucket                                                    |
-| [scavenge](#admin-scavenge)                             | Schedule a scavenge on EventStoreDB                                                        |
-| [shutdown](#admin-shutdown)                             | Shutdown the EventStoreDB instance                                                         |
+| [merge_indexes](#admin-merge_indexes)                   | Manually merge indexes of KurrentDB                                                     |
+| [restore](#admin-restore)                               | Restores the KurrentDB database from the provided location to the destination directory |
+| [s3_backup](#admin-s3_backup)                           | Backs up the KurrentDB to an S3 bucket                                                  |
+| [s3_restore](#admin-s3_restore)                         | Restores KurrentDB from an S3 bucket                                                    |
+| [scavenge](#admin-scavenge)                             | Schedule a scavenge on KurrentDB                                                        |
+| [shutdown](#admin-shutdown)                             | Shutdown the KurrentDB instance                                                         |
 | [verify_db](#admin-verify_db)                           | Verify the integrity of an EventStore database                                             |
 
 #### admin azure_backup
@@ -111,12 +111,12 @@ es-cli admin [--version] [--help] <command> [<args>]
 es-cli admin azure_backup [options]
 ```
 
-Backs up the EventStoreDB database to the specified container in Azure Blob Storage.
+Backs up the KurrentDB database to the specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
-| `-databasesource`     | The location of the EventStoreDB database                                                 |
-| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                    |
+| `-databasesource`     | The location of the KurrentDB database                                                 |
+| `-indexsource`        | The location of the KurrentDB index (default: databasesource/index)                    |
 | `-differential`       | Backup only new or changed files                                                          |
 | `-deleteextra`        | Delete extraneous files from the destination (with -differential only)                    |
 | `-storageaccountname` | The name of the storage account                                                           |
@@ -132,12 +132,12 @@ Backs up the EventStoreDB database to the specified container in Azure Blob Stor
 es-cli admin azure_restore [options]
 ```
 
-Restores an EventStoreDB database from a specified container in Azure Blob Storage.
+Restores an KurrentDB database from a specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
-| `-databasesource`     | The location of the EventStoreDB database                                                 |
-| `-indexsource`        | The location of the EventStoreDB index (default: databasesource/index)                    |
+| `-databasesource`     | The location of the KurrentDB database                                                 |
+| `-indexsource`        | The location of the KurrentDB index (default: databasesource/index)                    |
 | `-storageaccountname` | The name of the storage account                                                           |
 | `-storageaccountkey`  | The account key of the storage account (found in **security** > **access keys** on azure) |
 | `-databasecontainer`  | The container of the database backup                                                      |
@@ -151,11 +151,11 @@ Restores an EventStoreDB database from a specified container in Azure Blob Stora
 es-cli admin backup [options]
 ```
 
-Backs up the EventStoreDB database to the destination directory.
+Backs up the KurrentDB database to the destination directory.
 
 | Option                 | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
-| `-databasesource`      | The location of the EventStoreDB database                                   |
+| `-databasesource`      | The location of the KurrentDB database                                   |
 | `-databasedestination` | The backup destination                                                      |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
 | `-indexdestination`    | The index backup destination (default: databasedestination/index)           |
@@ -209,7 +209,7 @@ No options.
 es-cli admin restore [options]
 ```
 
-Restores the EventStoreDB database from the provided location to the destination directory.
+Restores the KurrentDB database from the provided location to the destination directory.
 
 | Option                 | Description                                                               |
 |------------------------|---------------------------------------------------------------------------|
@@ -225,11 +225,11 @@ Restores the EventStoreDB database from the provided location to the destination
 es-cli admin s3_backup [options]
 ```
 
-Backs up an EventStoreDB database to the destination S3 bucket.
+Backs up an KurrentDB database to the destination S3 bucket.
 
 | Option                 | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
-| `-databasesource`      | The location of the EventStoreDB database                                   |
+| `-databasesource`      | The location of the KurrentDB database                                   |
 | `-databasedestination` | The backup destination in the s3 bucket                                     |
 | `-s3bucket`            | The name of the S3 bucket                                                   |
 | `-indexsource`         | The location of the Index files (default: databasesource/index)             |
@@ -248,7 +248,7 @@ Backs up an EventStoreDB database to the destination S3 bucket.
 es-cli admin s3_restore [options]
 ```
 
-Restores an EventStoreDB database from an S3 bucket.
+Restores an KurrentDB database from an S3 bucket.
 
 | Option                 | Description                                                                       |
 |------------------------|-----------------------------------------------------------------------------------|
@@ -277,12 +277,12 @@ No options.
 es-cli admin verify_db [options]
 ```
 
-Verify the integrity of an EventStoreDB database.
+Verify the integrity of an KurrentDB database.
 
 | Option             | Description                                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
-| `-databasepath`    | The path to the EventStoreDB database directory on disk                             |
-| `-indexpath`       | The path to the EventStoreDB index directory on disk  (default: databasepath/index) |
+| `-databasepath`    | The path to the KurrentDB database directory on disk                             |
+| `-indexpath`       | The path to the KurrentDB index directory on disk  (default: databasepath/index) |
 | `-skipdbverify`    | Skip database verification (default: false)                                         |
 | `-skipindexverify` | Skip index verification (default: false)                                            |
 
@@ -630,9 +630,9 @@ General options:
 
 | Option             | Description                                         |
 |--------------------|-----------------------------------------------------|
-| `-db`              | The location of the EventStoreDB database           |
-| `-index`           | The location of the EventStoreDB index              |
-| `-log`             | The location of the EventStoreDB logs               |
+| `-db`              | The location of the KurrentDB database           |
+| `-index`           | The location of the KurrentDB index              |
+| `-log`             | The location of the KurrentDB logs               |
 | `-run_projections` | The level of projections to run (none, system, all) |
 
 Cluster options:
@@ -699,5 +699,5 @@ If you encounter any issues, please open a ticket on freshdesk.
 
 ### 1.1.0
 
--   There was an issue with versions prior to 3.7.0 of EventStoreDB where bad events could be appended to $scavenge-{id} and the $scavenges streams.
+-   There was an issue with versions prior to 3.7.0 of KurrentDB where bad events could be appended to $scavenge-{id} and the $scavenges streams.
 -   With the release of version 1.1.0 of the CLI we have included a clear_scavenge_streams command under the admin section which will read through the $all stream and delete the $scavenges-{id} and $scavenges streams.

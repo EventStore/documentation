@@ -4,11 +4,11 @@ order: 1
 
 # Getting started
 
-Get started by connecting your application to EventStoreDB. 
+Get started by connecting your application to KurrentDB. 
 
-## Connecting to EventStoreDB
+## Connecting to KurrentDB
 
-For your application to start communicating with EventStoreDB, you need to instantiate the client and configure it accordingly. Below are instructions for supported SDKs.
+For your application to start communicating with KurrentDB, you need to instantiate the client and configure it accordingly. Below are instructions for supported SDKs.
 
 ::: tip Insecure clusters
 All our GRPC clients are secure by default and must be configured to connect to an insecure server via [a connection string](#connection-string) or the client's configuration.
@@ -20,35 +20,35 @@ Install the client SDK package to your project.
 
 #### Python
 
-Install the `esdbclient` package from PyPI or use Poetry:
+Install the `kurrentdbclient` package from PyPI or use Poetry:
 
 ::: tabs
 @tab pip
 ```bash
-pip install esdbclient
+pip install kurrentdbclient
 ```
 @tab Poetry
 ```bash
-poetry add esdbclient
+poetry add kurrentdbclient
 ```
 :::
 
 #### NodeJS
 
-Install the `@eventstore/db-client` package using NPM, Yarn or PNPM:
+Install the `@kurrent/kurrentdb-client` package using NPM, Yarn or PNPM:
 
 ::: tabs
 @tab npm
 ```bash
-npm install --save @eventstore/db-client
+npm install --save @kurrent/kurrentdb-client
 ```
 @tab yarn
 ```bash
-yarn add @eventstore/db-client
+yarn add @kurrent/kurrentdb-client
 ```
 @tab pnpm
 ```bash
-pnpm add @eventstore/db-client
+pnpm add @kurrent/kurrentdb-client
 ```
 :::
 
@@ -86,7 +86,7 @@ dotnet add package EventStore.Client.Grpc.Streams
 Install the `esdb` package using Go modules:
 
 ```bash
-go get github.com/EventStore/EventStore-Client-Go/v3.2.0/esdb
+go get github.com/kurrent-io/KurrentDB-Client-Go/kurrentdb
 ```
 
 #### Rust
@@ -96,7 +96,7 @@ No additional configuration is needed having Rust installed. Go check [https://r
 ### Connection string
 
 Each SDK has its own way of configuring the client, but the connection string can always be used. 
-The EventStoreDB connection string supports two schemas: `esdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `esdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
+The KurrentDB connection string supports two schemas: `esdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `esdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
 Since version 22.10, ESDB supports gossip on single-node deployments, so `esdb+discover://` schema can be used for connecting to any topology.
 
 The connection string has the following format:
@@ -141,7 +141,7 @@ The client instance can be used as a singleton across the whole application. It 
 
 ### Creating an event
 
-You can write anything to EventStoreDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object, and it's up to you to choose the serialization method.
+You can write anything to KurrentDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object, and it's up to you to choose the serialization method.
 
 ::: tip Server-side projections
 User-defined server-side projections require events to be serialized in JSON format.

@@ -171,11 +171,11 @@
     "group": "Go SDK",
     "basePath": "clients/go",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/kurrent-io/EventStore-Client-Go",
+    "repo": "https://github.com/kurrent-io/KurrentDB-Client-Go",
     "branches": [
       {
-        "version": "4.2.0",
-        "name": "master"
+        "version": "1.0.0",
+        "name": "main"
       }
     ]
   },
