@@ -4,11 +4,11 @@ title: Explanation
 
 #
 
-# What is Polyglot Persistence?
+# What is Multimodal Data Transformation?
 
 ![](./images/polyglot-persistence-use-the-right-database-for-the-job.png)
 
-**Polyglot persistence** means using different types of databases or storage technologies for different parts of your application — for example, using PostgreSQL for reports, Redis for fast lookups, and MongoDB for web frontends. It matters because no single database is great at everything. By choosing the right tool for the job, you can optimize performance, scalability, and developer productivity.
+**Multimodal Data Transformation** means using different types of databases or storage technologies for different parts of your application — for example, using PostgreSQL for reports, Redis for fast lookups, and MongoDB for web frontends. It matters because no single database is great at everything. By choosing the right tool for the job, you can optimize performance, scalability, and developer productivity.
 
 ---
 
@@ -16,7 +16,7 @@ title: Explanation
 
 ![](./images/polyglot-persistence-traditional.png)
 
-In most CRUD or state-based systems, all reads and writes go through a single relational database. To enable polyglot persistence, developers usually bolt on sync mechanisms to replicate data into other databases. This might involve:
+In most CRUD or state-based systems, all reads and writes go through a single relational database. To enable Multimodal Data Transformation, developers usually bolt on sync mechanisms to replicate data into other databases. This might involve:
 
 - **Manual sync jobs** that run periodically to copy data.
 - **Message brokers** (like Kafka or RabbitMQ) that try to capture updates and fan them out to other services.
@@ -32,11 +32,11 @@ This adds extra work for developers to ensure the synchronization is robust.
 
 ---
 
-# Enable Polyglot Persistence Easily with KurrentDB
+# Enable Multimodal Data Transformation Easily with KurrentDB
 
 KurrentDB is designed for **event sourcing**. Instead of storing only the latest state, it stores all changes (events) that happened to your system — for example: `OrderPlaced`, `OrderShipped`, or `ItemAddedToCart`.
 
-This unlocks polyglot persistence in a clean, reliable way:
+This unlocks Multimodal Data Transformation in a clean, reliable way:
 
 1. **Write once, project anytime/anywhere**\
    Events are the single source of truth. You can project any number of read models, each tailored for a specific need and stored in the best-fit database. New ones can be added anytime by replaying the event stream.
@@ -55,7 +55,7 @@ This makes it much easier for developer to build applications that synchronizes 
 
 ---
 
-# How to Enable Polyglot Persistence with KurrentDB
+# How to Enable Multimodal Data Transformation with KurrentDB
 
 Model your system using events – Define domain events like OrderPlaced or PaymentReceived that capture the intent of each change.
 

@@ -4,7 +4,7 @@ title: Tutorial
 
 ## Overview
 
-This tutorial will guide you through the polyglot persistence sample with EventStoreDB using GitHub Codespaces.
+This tutorial will guide you through the Multimodal Data Transformation sample with KurrentDB using GitHub Codespaces.
 
 ::: info
 GitHub Codespaces provides an instant and preconfigured development environment in your browser for this quickstart. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
@@ -26,10 +26,6 @@ Before starting, ensure you have the following:
 - Basic knowledge of one of the development languages/platforms below.
 - Familiarity with command-line operations.
 
-::: tip
-If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Event Store Academy](https://academy.eventstore.com/from-scratch).
-:::
-
 ## Architecture
 
 TBD
@@ -44,7 +40,7 @@ TBD
 
 2. For `Branch`, select `polyglot-tutorial`
    
-3. For `Dev container configuration`, select `Polyglot Persistence`
+3. For `Dev container configuration`, select `Multimodal Data Transformation`
    
 4. For `Region`, select `Southeast Asia`
 
@@ -57,24 +53,24 @@ TBD
 For this quickstart, you can safely ignore and close any Codespaces notification that appears on the bottom right of the page.
 :::
 
-## Step 2: Initialize EventStoreDB with sample data
+## Step 2: Initialize KurrentDB with sample data
 
-1. Once your Codespace is loaded, run the following command in the terminal to append sample events to EventStoreDB:
+1. Once your Codespace is loaded, run the following command in the terminal to append sample events to KurrentDB:
 
    ```sh
    ./scripts/1-init-data.sh
    ```
 
-   This is a custom script written for this quickstart to help start EventStoreDB in Docker.
+   This is a custom script written for this quickstart to help start KurrentDB in Docker.
 
 2. You will see the below message printed in the terminal:
 
    ```
-   🚀 EventStoreDB Server has started!! 🚀
+   🚀 KurrentDB Server has started!! 🚀
 
-   URL to the EventStoreDB Admin UI 👉: https://XXXXXXXXX.XXX
+   URL to the KurrentDB Admin UI 👉: https://XXXXXXXXX.XXX
 
-   Appended sample data to EventStoreDB
+   Appended sample data to KurrentDB
    ```
 
 3. Copy the URL printed in the terminal from last step.
@@ -83,9 +79,9 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 
 5. In the address bar of the new tab, paste the URL to and navigate to it.
 
-6. This will display the EventStoreDB Admin UI.
+6. This will display the KurrentDB Admin UI.
    
-![EventStoreDB Admin UI Dashboard](images/admin-ui.png =300x)
+![KurrentDB Admin UI Dashboard](images/admin-ui.png =300x)
 
 ## Step 3: Browse Sample Data
 
@@ -103,7 +99,7 @@ How many products and quantity is currently in the carts based on the events?
 
 ## Step 4: Start the Postgres and Redis Projections
 
-1. Run the following command in the terminal to append sample events to EventStoreDB:
+1. Run the following command in the terminal to append sample events to KurrentDB:
 
    ```sh
    ./scripts/2-start-projections.sh
@@ -149,7 +145,7 @@ Are the contents of the Top 10 products table and Carts table in sync?
    ./scripts/3-start-live-data-gen.sh
    ```
 
-2. While the tool is running, return to the EventStoreDB Web UI
+2. While the tool is running, return to the KurrentDB Web UI
 
 1. Click the `Stream Browser` link from the top navigation bar.
 
