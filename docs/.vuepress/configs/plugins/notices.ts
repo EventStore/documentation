@@ -21,7 +21,7 @@ export const notices: NoticePluginOptions = {
         },
         {
             path: "/server/v5/",
-            title: "This documentation is for the unsupported KurrentDB version",
+            title: "This documentation is for the unsupported EventStoreDB version",
             content: "EventStoreDB v5 and below are out of support. Please migrate to the latest server version.",
             actions: [actionLatest]
         },

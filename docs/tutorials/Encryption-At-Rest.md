@@ -9,7 +9,7 @@ The **Encryption-At-Rest** feature provides encryption for KurrentDB to secure d
 
 #### Prerequisites:
 
-* [KurrentDB 24.10 LTS installed and running.](@server/quick-start/installation.md)  
+* [EventStoreDB 24.10 LTS or later  installed and running.](@server/quick-start/installation.md)  
 * [License key](@server/quick-start/installation.md#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
 * Basic understanding of KurrentDB, encryption principles, and key management.
 

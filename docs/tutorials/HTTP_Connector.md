@@ -20,7 +20,7 @@ This step-by-step tutorial guides you through setting up a connector using the *
 
 #### Prerequisites
 
-* [KurrentDB 24.10 LTS installed and running](/server/v24.10/quick-start/installation.html)   
+* [EventStoreDB 24.10 LTS or later installed and running](/server/v24.10/quick-start/installation.html)   
 
 ### Step 1: Set up an HTTP endpoint using PostBin
 

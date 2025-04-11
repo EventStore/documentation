@@ -53,7 +53,7 @@ Links will not be replicated, as all the system events get filtered out (except 
 Kurrent provides a tool that allows you to replicate events between two clusters or instances. The tool is called Kurrent Replicator, and it has its own [documentation website](https://replicator.eventstore.org).
 
 ::: warning
-Kurrent Replicator is an Open Source Software, provided as-is, without warranty, and not covered by the KurrentDB support contract that you might have.
+Kurrent Replicator is an Open Source Software, provided as-is, without warranty, and not covered by the Kurrent support contract that you might have.
 :::
 
 ### Deployment
