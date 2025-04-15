@@ -94,7 +94,7 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 URL to the KurrentDB Admin UI 👉: https://XXXXXXXXX.XXX
 ```
 
-::::: details (Optional) Learn more about how to start KurrentDB in Docker and the start_db.sh script 
+::::: details (Optional) Learn more about how to start KurrentDB in Docker and the `start_db.sh` script 
 
 #### Understanding How to Start KurrentDB Server in Docker and How `start_db.sh` Works
 
@@ -119,14 +119,14 @@ To see how to start the KurrentDB server in Docker, follow these steps
 2. In step 3 of the script, review how KurrentDB is started with the `docker run` command:
 
 ```bash
-docker run                        # Start a new Docker container using the 'docker run' command
-     -d \                         # Run the container in detached mode (in the background)
-     --name esdb-node \           # Assign the container a name ('esdb-node' in this case)
-     -p 2113:2113 \               # Map port 2113 on the host to port 2113 in the Docker container. Required for the KurrentDB
-     kurrent-lts/kurrentdb:lts \  # Specify the Docker image to use, in this case, the KurrentDB long-term support version (lts)
-     --insecure \                 # Run KurrentDB in insecure mode, without authentication and SSL/TLS security (usually for development)
-     --run-projections=All \      # Enable all projections in KurrentDB, including system and user projections
-     --enable-atom-pub-over-http  # Enable the AtomPub API over HTTP. Required for the KurrentDB Admin UI
+docker run                               # Start a new Docker container using the 'docker run' command
+     -d \                                # Run the container in detached mode (in the background)
+     --name esdb-node \                  # Assign the container a name ('esdb-node' in this case)
+     -p 2113:2113 \                      # Map port 2113 on the host to port 2113 in the Docker container. Required for the KurrentDB
+     kurrentplatform/kurrentdb:latest \  # Specify the Docker image to use, in this case, the latest supported version of KurrentDB
+     --insecure \                        # Run KurrentDB in insecure mode, without authentication and SSL/TLS security (usually for development)
+     --run-projections=All \             # Enable all projections in KurrentDB, including system and user projections
+     --enable-atom-pub-over-http         # Enable the AtomPub API over HTTP. Required for the KurrentDB Admin UI
 ```
 
 3. Review other parts of the script if you wish.
