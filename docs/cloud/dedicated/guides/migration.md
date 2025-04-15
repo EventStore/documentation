@@ -108,4 +108,4 @@ As the replication process will continue endlessly, you can move some of the sub
 
 Find out more about replicator features, limitations, as well as deployment guidelines [in the documentation](https://replicator.eventstore.org).
 
-If you experience an issue when using Replicator, or you'd like to suggest a new feature, please open an issue in the [GitHub project](https://github.com/EventStore/replicator).
+If you experience an issue when using Replicator, or you'd like to suggest a new feature, please open an issue in the [GitHub project](https://github.com/kurrent-io/replicator).

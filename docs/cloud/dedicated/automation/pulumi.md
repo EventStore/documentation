@@ -18,14 +18,14 @@ Use the following command to add the plugin to your environment:
 
 ```bash
 pulumi plugin install resource eventstorecloud [version] \
-  --server https://github.com/EventStore/pulumi-eventstorecloud/releases/download/[version]
+  --server https://github.com/kurrent-io/pulumi-eventstorecloud/releases/download/[version]
 ```
 
 Example:
 
 ```bash
 pulumi plugin install resource eventstorecloud v0.2.3 \
-  --server https://github.com/EventStore/pulumi-eventstorecloud/releases/download/v0.2.7
+  --server https://github.com/kurrent-io/pulumi-eventstorecloud/releases/download/v0.2.7
 ```
 
 ### Configuration

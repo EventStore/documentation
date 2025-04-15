@@ -7,7 +7,7 @@ It is important to take regular backups of your clusters. Besides providing a sa
 
 There are two types of backups:
 
-- **Manual Backups**: These are backups that you create on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
+- **Manual Backups**: These are backups that you create on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc).
 - **Scheduled Backups**: These are backups that are created automatically by a [Scheduled Job](./jobs.md) that defines the frequency and number of backups to keep at a time.
 
 Both types of backups can be viewed in the **Backups** view of the console. All backups created by the same job will be grouped together in one row, which can be expanded by clicking the down arrow icon on the right side of the row.
@@ -16,7 +16,7 @@ Both types of backups can be viewed in the **Backups** view of the console. All 
 
 ## Manual Backup
 
-Backups can be created on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
+Backups can be created on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc).
 
 You can customise the backup label using a combination of free-text and predefined variables:
 - **index—**: the auto-incremented value with the number of backups. You can format it as:
@@ -71,7 +71,7 @@ linked_resource: None }
 
 ## Scheduled Backups
 
-Scheduled backups can be created through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc)
+Scheduled backups can be created through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc)
 
 Scheduled backup jobs can be run as frequently as once an hour. After each successful backup, older backups created by the same job will be automatically deleted based on the provided configuration.
 
@@ -165,7 +165,7 @@ esc orchestrate history list --job-id <job-id>
 
 ## Restore from backup
 
-Restores can be done on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
+Restores can be done on demand using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc).
 
 The topology of the new cluster does not need to be the same as the source of the backup: you can restore a 3 nodes cluster backup to a single node one. Additionally, you can restore a backup to a different network in the same cloud provider and region in the same project or another
 
@@ -240,7 +240,7 @@ The output will be similar to:
         "tcp": [
             "c1mnqjdo0aembuk4ljo0.mesdb.eventstore.cloud:1113"
         ],
-    "grpc": "esdb://c1mnqjdo0aembuk4ljo0.mesdb.eventstore.cloud:2113",
+    "grpc": "kurrentdb://c1mnqjdo0aembuk4ljo0.mesdb.eventstore.cloud:2113",
     "ui": "https://c1mnqjdo0aembuk4ljo0.mesdb.eventstore.cloud:2113"
     }
 }

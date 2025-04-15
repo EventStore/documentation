@@ -13,7 +13,7 @@ Not using Kurrent Cloud and want to learn more? Find more information and sign u
 
 As a customer of Kurrent Cloud, you get access to the [Cloud console](https://console.kurrent.cloud), where you can provision and manage KurrentDB clusters, backup and restore your data, and establish the connection between Kurrent Cloud networks and your own cloud infrastructure.
 
-Kurrent Cloud operations can be automated using the [Terraform provider](https://github.com/EventStore/terraform-provider-eventstorecloud), [Pulumi provider](https://www.pulumi.com/registry/packages/eventstorecloud/), and the [CLI tool](https://github.com/EventStore/esc) which is built on top of the same API.
+Kurrent Cloud operations can be automated using the [Terraform provider](https://github.com/kurrent-io/terraform-provider-eventstorecloud), [Pulumi provider](https://www.pulumi.com/registry/packages/eventstorecloud/), and the [CLI tool](https://github.com/kurrent-io/esc) which is built on top of the same API.
 
 ## What is shared infrastructure?
 

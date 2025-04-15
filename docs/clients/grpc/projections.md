@@ -13,7 +13,7 @@ Currently not all clients fully expose all operations.
 
 For a detailed explanation of projections, see the [server documentation](@server/features/projections/README.md).
 
-You can find the full sample code from this documentation page in the respective [clients repositories](https://github.com/eventStore/?q=client).
+You can find the full sample code from this documentation page in the respective [clients repositories](https://github.com/kurrent-io/?q=client).
 
 ## Required packages
 

@@ -356,14 +356,14 @@ Make sure you used the correct organisation ID. Use [these guidelines](#provider
 
 Ensure you entered the correct project name. Remember that data source names are case-sensitive. See [here](#project).
 
-[terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
-[terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
-[terraform github samples]: https://github.com/EventStore/terraform-provider-eventstorecloud/tree/trunk/examples
+[terraform github releases]: https://github.com/kurrent-io/terraform-provider-eventstorecloud/releases
+[terraform github]: https://github.com/kurrent-io/terraform-provider-eventstorecloud
+[terraform github samples]: https://github.com/kurrent-io/terraform-provider-eventstorecloud/tree/trunk/examples
 [terraform registry]: https://registry.terraform.io/providers/EventStore/eventstorecloud/latest
 [esc]: https://eventstore.com/event-store-cloud/
-[esc cli github]: https://github.com/EventStore/esc
-[esc cli github releases]: https://github.com/EventStore/esc/releases
+[esc cli github]: https://github.com/kurrent-io/esc
+[esc cli github releases]: https://github.com/kurrent-io/esc/releases
 [cloud console]: https://console.eventstore.cloud/
 [cloud console tokens]:https://console.eventstore.cloud/authentication-tokens
 [cloud console organizations]:https://console.eventstore.cloud/organizations
-[pulumi provider]: https://github.com/EventStore/pulumi-eventstorecloud
+[pulumi provider]: https://github.com/kurrent-io/pulumi-eventstorecloud
