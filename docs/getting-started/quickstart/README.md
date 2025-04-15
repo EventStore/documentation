@@ -144,16 +144,16 @@ To view the source code in Github, click the link below:
 @tab Select >
 
 @tab Python
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 ::::
 :::::
@@ -283,17 +283,17 @@ To view the source code in GitHub, click the link below:
 
 @tab Python
 
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -392,35 +392,33 @@ Alternatively, you can locate and open the file from the EXPLORER window on the 
 
 @tab Python
 ```python
-# Create an instance of EventStoreDBClient, connecting to the KurrentDB at localhost without TLS
-client = EventStoreDBClient(uri="esdb://localhost:2113?tls=false")  
+# Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+client = KurrentDBClient(uri="kurrentdb://localhost:2113?tls=false")  
 ```
 
 @tab Java
 ```java
 // configure the settings to connect to KurrentDB locally without TLS
-EventStoreDBClientSettings settings = EventStoreDBConnectionString.
-   parseOrThrow("esdb://localhost:2113?tls=false");
-
+KurrentDBClientSettings settings = KurrentDBConnectionString.parseOrThrow("kurrentdb://localhost:2113?tls=false");
 // apply the settings and create an instance of the client
-EventStoreDBClient client = EventStoreDBClient.create(settings); 
+KurrentDBClient client = KurrentDBClient.create(settings);
 ```
 
 @tab .NET
 ```c#
-// Create an instance of EventStoreDBClient, connecting to the KurrentDB at localhost without TLS
-var settings = EventStoreClientSettings.Create("esdb://localhost:2113?tls=false");
+// Create an instance of EventStoreClientSettings, connecting to the KurrentDB at localhost without TLS
+var settings = EventStoreClientSettings.Create("kurrentdb://localhost:2113?tls=false");
 await using var client = new EventStoreClient(settings);
 ```
 
 @tab node.js
 ```js
-// Create an instance of EventStoreDBClient, connecting to the KurrentDB at localhost without TLS
-const client = EventStoreDBClient.connectionString("esdb://localhost:2113?tls=false");
+// Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+const client = KurrentDBClient.connectionString("kurrentdb://localhost:2113?tls=false");
 ```
 :::
 
-3. In step 2 of the code, review how a new event is initiated:
+1. In step 2 of the code, review how a new event is initiated:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -525,17 +523,17 @@ To view the source code in GitHub, click the link below:
 
 @tab Python
 
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -643,31 +641,31 @@ Alternatively, you can locate and open the file from the EXPLORER window on the 
 
 @tab Python
 ```python
-# Create an instance of EventStoreDBClient, connecting to the KurrentDB at localhost without TLS
-client = EventStoreDBClient(uri="esdb://localhost:2113?tls=false")  
+# Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+client = KurrentDBClient(uri="kurrentdb://localhost:2113?tls=false")  
 ```
 
 @tab Java
 ```java
 // configure the settings to connect to KurrentDB locally without TLS
-EventStoreDBClientSettings settings = EventStoreDBConnectionString.
-   parseOrThrow("esdb://localhost:2113?tls=false");
+KurrentDBClientSettings settings = EventStoreDBConnectionString.
+   parseOrThrow("kurrentdb://localhost:2113?tls=false");
 
 // apply the settings and create an instance of the client
-EventStoreDBClient client = EventStoreDBClient.create(settings); 
+KurrentDBClient client = KurrentDBClient.create(settings); 
 ```
 
 @tab .NET
 ```c#
-// Create an instance of EventStoreDBClient, connecting to the KurrentDB at localhost without TLS
-var settings = EventStoreClientSettings.Create("esdb://localhost:2113?tls=false");
+// Create an instance of EventStoreClientSettings, connecting to the KurrentDB at localhost without TLS
+var settings = EventStoreClientSettings.Create("kurrentdb://localhost:2113?tls=false");
 await using var client = new EventStoreClient(settings);
 ```
 
 @tab node.js
 ```js
-// Create an instance of EventStoreDBClient, connecting to the KurrentDB at localhost without TLS
-const client = EventStoreDBClient.connectionString("esdb://localhost:2113?tls=false");
+// Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+const client = KurrentDBClient.connectionString("kurrentdb://localhost:2113?tls=false");
 ```
 :::
 
@@ -790,17 +788,17 @@ To view the source code in Github, click the link below:
 
 @tab Python
 
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -833,4 +831,4 @@ Now that you've completed the quickstart, you may want to explore the following:
 
 - [Kurrent Cloud](https://www.kurrent.io/event-store-cloud): Run KurrentDB from the fully managed environment without the need to host it yourself.
 
-- [KurrentDB Samples](https://github.com/EventStore/samples/tree/main): Experiment with different SDKs to interact with KurrentDB using various programming languages.
+- [KurrentDB Samples](https://github.com/kurrent-io/samples/tree/main): Experiment with different SDKs to interact with KurrentDB using various programming languages.
