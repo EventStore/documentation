@@ -33,7 +33,7 @@ pulumi plugin install resource eventstorecloud v0.2.3 \
 The following configuration points are available for the `eventstorecloud` provider:
 
 - `eventstorecloud:organizationId` - the organization ID for an existing organization in Kurrent Cloud
-- `eventstorecloud:token` - a valid refresh token for an Kurrent Cloud account with admin access to the organization
+- `eventstorecloud:token` - a valid refresh token for a Kurrent Cloud account with admin access to the organization
 
 ### Node.js (Java/TypeScript)
 

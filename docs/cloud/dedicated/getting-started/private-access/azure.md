@@ -4,7 +4,7 @@ order: 2
 
 # Microsoft Azure
 
-For Microsoft Azure customers, Kurrent Cloud allows provisioning an KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
+For Microsoft Azure customers, Kurrent Cloud allows provisioning a KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
 
 ::: warning Azure considerations
 Microsoft Azure has a few nuances that must be considered when using Kurrent Cloud with Azure. We listed all currently known limitations [below on this page](#considerations-for-microsoft-azure). Please ensure you are aware of them before starting to use KurrentDB in Azure.
