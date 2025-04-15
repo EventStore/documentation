@@ -180,6 +180,6 @@ To learn more about how to apply optimistic concurrency control, [click here](/c
 
 - [KurrentDB Client Documentation](/clients/grpc/getting-started.md): Understand how to work with events and streams programmatically.
 
-- [KurrentDB Client Documentation - Handling Concurrency](/clients/grpc/appending-events.md#handling-concurrency): Understand how use optimistic concurrency control with an KurrentDB client.
+- [KurrentDB Client Documentation - Handling Concurrency](/clients/grpc/appending-events.md#handling-concurrency): Understand how use optimistic concurrency control with a KurrentDB client.
 
 - [An End-To-End Example With KurrentDB](https://www.youtube.com/watch?v=vIUw-jKpKfQ) Watch how to build an application with KurrentDB

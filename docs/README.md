@@ -19,7 +19,7 @@ highlights:
       icon: hugeicons:cloud
       link: https://www.kurrent.io/kurrent-cloud
     - title: Start KurrentDB in a container
-      details: Run <code>docker run kurrent-lts/kurrentdb:lts --dev</code> to start KurrentDB in developers mode.
+      details: Run <code>docker run kurrentplatform/kurrentdb:latest --dev</code> to start KurrentDB in developers mode.
       icon: simple-icons:docker
       link: /latest/quick-start/installation.html#docker
     - title: Start using the client
@@ -57,7 +57,7 @@ highlights:
 
       - title: Docker
         icon: logos:docker-icon
-        details: Use Docker Compose to pull images from Docker Hub and run KurrentDB in containers.
+        details: Use Docker Compose to pull images from Cloudsmith and run KurrentDB in containers.
         link: /latest/quick-start/installation.html#use-docker-compose
 
   - header: Develop in your language
