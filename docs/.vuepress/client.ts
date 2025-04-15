@@ -4,8 +4,8 @@ import {onMounted} from "vue";
 import type {RouteLocationNormalized, Router} from "vue-router";
 import CloudBanner from "./components/CloudBanner.vue";
 import KapaWidget from './components/KapaWidget.vue';
-import {usePostHog} from "./lib/usePosthog";
 import UserFeedback from './components/TocWithFeedback';
+import {usePostHog} from "./lib/usePosthog";
 
 declare const __VERSIONS__: { latest: string, selected: string, all: string[] }
 
@@ -132,14 +132,33 @@ export default defineClientConfig({
                     });
                 }, 1000);
             }
+            
+            // Check for 404 page after navigation completes
+            setTimeout(() => {
+                // Check for the specific elements with classes error-code and error-hint
+                const errorCodeElement = document.querySelector('p.error-code');
+                const errorHintElement = document.querySelector('p.error-hint');
+                
+                // If both elements exist, we're on a 404 page
+                if (errorCodeElement && errorHintElement) {
+                    // Capture the 404 event in PostHog
+                    if (window && window.posthog) {
+                        window.posthog.capture("page_not_found", {
+                            url: window.location.href,
+                            referrer: document.referrer,
+                            path: to.path,
+                            attemptedPath: to.path.replace('.html', '')
+                        });
+                    }
+                }
+            }, 50); 
         });
         router.beforeEach((to, from) => leave(to, from));
     },
     setup() {
         onMounted(() => {
             const route = useRoute();
-            if (route.path !== "/") return;
-            // console.log(route.meta._pageChunk.data.frontmatter.head);
+            if (route.path !== "/");
         });
 
     },
