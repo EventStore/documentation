@@ -102,7 +102,7 @@
     "group": ".NET SDK",
     "basePath": "clients/dotnet",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/kurrent-io/KurrentDB-Client-Dotnet",
+    "repo": "https://github.com/kurrent-io/EventStore-Client-Dotnet",
     "branches": [
       {
         "version": "23.3.8",

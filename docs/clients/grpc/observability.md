@@ -18,7 +18,7 @@ You can click on the links below to view the full code for each client:
 
 - [NodeJS](https://github.com/kurrent-io/KurrentDB-Client-NodeJS/blob/master/packages/test/src/samples/opentelemetry.ts)
 - [Java](https://github.com/kurrent-io/KurrentDBDB-Client-Java/blob/trunk/src/test/java/io/kurrent/dbclient/samples/opentelemetry/Instrumentation.java)
-- [C#](https://github.com/kurrent-io/KurrentDB-Client-Dotnet/blob/master/samples/diagnostics/Program.cs)
+- [C#](https://github.com/kurrent-io/EventStore-Client-Dotnet/blob/master/samples/diagnostics/Program.cs)
 
 ## Required packages
 

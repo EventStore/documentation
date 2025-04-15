@@ -17,7 +17,7 @@ Please make sure to follow the [contribution guidelines](CONTRIBUTING.md). It co
 ## Samples
 
 KurrentDB clients:
-- C# - [see more](https://github.com/kurrent-io/KurrentDB-Client-Dotnet/tree/master/samples)
+- C# - [see more](https://github.com/kurrent-io/EventStore-Client-Dotnet/tree/master/samples)
 - NodeJS - [see more](https://github.com/kurrent-io/KurrentDB-Client-NodeJS/tree/master/packages/test/src/samples)
 - Java - [see more](https://github.com/kurrent-io/KurrentDB-Client-Java/tree/trunk/src/test/java/io/kurrent/dbclient/samples)
 - Rust - [see more](https://github.com/kurrent-io/KurrentDB-Client-Rust/tree/master/examples)
