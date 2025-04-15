@@ -4,7 +4,7 @@ order: 3
 
 # Google Cloud Platform
 
-For Google Cloud customers, Kurrent Cloud allows provisioning an KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
+For Google Cloud customers, Kurrent Cloud allows provisioning a KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
 
 Pre-requisites:
 - You have an organization registered in Cloud console

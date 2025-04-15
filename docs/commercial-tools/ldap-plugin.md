@@ -57,7 +57,7 @@ If there is a misconfiguration an error is logged to the server's log file in mo
 
 ### The LDAP server is unavailable.
 
--   Verify connectivity to the LDAP server from an KurrentDB node (e.g. using `netcat` or `telnet`)
+-   Verify connectivity to the LDAP server from a KurrentDB node (e.g. using `netcat` or `telnet`)
 -   Verify the `Host` and `Port` parameters
 -   Verify that the server certificate is valid. If it is a self-signed certificate, set `ValidateServerCertificate` to `false`.
 

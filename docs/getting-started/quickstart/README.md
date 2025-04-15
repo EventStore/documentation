@@ -14,7 +14,7 @@ GitHub Codespaces provides an instant and preconfigured development environment 
 
 In this quickstart, you will:
 
-- Start an KurrentDB server using Docker in GitHub Codespaces.
+- Start a KurrentDB server using Docker in GitHub Codespaces.
 - Append an event to KurrentDB with sample code.
 - View the appended event using the Admin UI.
 - Read the appended event with sample code using the KurrentDB client.

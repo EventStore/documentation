@@ -108,7 +108,7 @@ While events can not be updated, streams can be truncated for housekeeping purpo
 
 ## Stream Indexing
 
-An KurrentDB index entry is automatically created whenever an event is appended to the event log. The index uses the hash of the stream ID as the key, with the corresponding index entry as the value. Each entry consists of:
+A KurrentDB index entry is automatically created whenever an event is appended to the event log. The index uses the hash of the stream ID as the key, with the corresponding index entry as the value. Each entry consists of:
 
 - the stream ID
 - the event's number within the stream (also known as the version number or sequence number)

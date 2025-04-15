@@ -249,7 +249,7 @@ Here is an example how to initiate a peering from Kurrent Cloud to your own AWS 
 
 ### Managed KurrentDB
 
-Use the `eventstorecloud_managed_cluster` resource to provision an KurrentDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
+Use the `eventstorecloud_managed_cluster` resource to provision a KurrentDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
 
 #### Arguments
 

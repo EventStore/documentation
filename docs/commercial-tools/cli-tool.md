@@ -20,7 +20,7 @@ es-cli admin shutdown
 
 ### Connecting and authentication
 
-Using the CLI tool requires specifying an KurrentDB node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
+Using the CLI tool requires specifying a KurrentDB node by passing the URL with the `--serveurl` option, and your admin credentials with the `--username` and `--password` options:
 
 ```bash
 es-cli --serverurl="http://localhost:2113" --username=admin --password=changeit
@@ -92,7 +92,7 @@ es-cli admin [--version] [--help] <command> [<args>]
 | Command                                                 | Description                                                                                |
 |---------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | [azure_backup](#admin-azure_backup)                     | Backs up the KurrentDB database to the specified container in Azure Blob Storage        |
-| [azure_restore](#admin-azure_restore)                   | Restores an KurrentDB database from a specified container in Azure Blob Storage         |
+| [azure_restore](#admin-azure_restore)                   | Restores a KurrentDB database from a specified container in Azure Blob Storage         |
 | [backup](#admin-backup)                                 | Backs up the KurrentDB database to the destination directory                            |
 | [calculate_stream_size](#admin-calculate_stream_size)   | Calculates the size on disk of the give stream                                             |
 | [clear_scavenge_streams](#admin-clear_scavenge_streams) | Deletes all the scavenge history streams                                                   |
@@ -132,7 +132,7 @@ Backs up the KurrentDB database to the specified container in Azure Blob Storage
 es-cli admin azure_restore [options]
 ```
 
-Restores an KurrentDB database from a specified container in Azure Blob Storage.
+Restores a KurrentDB database from a specified container in Azure Blob Storage.
 
 | Option                | Description                                                                               |
 |-----------------------|-------------------------------------------------------------------------------------------|
@@ -225,7 +225,7 @@ Restores the KurrentDB database from the provided location to the destination di
 es-cli admin s3_backup [options]
 ```
 
-Backs up an KurrentDB database to the destination S3 bucket.
+Backs up a KurrentDB database to the destination S3 bucket.
 
 | Option                 | Description                                                                 |
 |------------------------|-----------------------------------------------------------------------------|
@@ -248,7 +248,7 @@ Backs up an KurrentDB database to the destination S3 bucket.
 es-cli admin s3_restore [options]
 ```
 
-Restores an KurrentDB database from an S3 bucket.
+Restores a KurrentDB database from an S3 bucket.
 
 | Option                 | Description                                                                       |
 |------------------------|-----------------------------------------------------------------------------------|
@@ -277,7 +277,7 @@ No options.
 es-cli admin verify_db [options]
 ```
 
-Verify the integrity of an KurrentDB database.
+Verify the integrity of a KurrentDB database.
 
 | Option             | Description                                                                         |
 |--------------------|-------------------------------------------------------------------------------------|
