@@ -79,16 +79,16 @@ An example of a trace is shown below:
 Activity.TraceId:            8da04787239dbb85c1f9c6fba1b1f0d6
 Activity.SpanId:             4352ec4a66a20b95
 Activity.TraceFlags:         Recorded
-Activity.ActivitySourceName: eventstoredb
+Activity.ActivitySourceName: kurrentdb
 Activity.DisplayName:        streams.append
 Activity.Kind:               Client
 Activity.StartTime:          2024-05-29T06:50:41.2519016Z
 Activity.Duration:           00:00:00.1500707
 Activity.Tags:
-    db.eventstoredb.stream: d7caa2a5-1e19-4108-9541-58d5fba02d42
+    db.kurrentdb.stream: d7caa2a5-1e19-4108-9541-58d5fba02d42
     server.address: localhost
     server.port: 2113
-    db.system: eventstoredb
+    db.system: kurrentdb
     db.operation: streams.append
 StatusCode: Ok
 Resource associated with Activity:

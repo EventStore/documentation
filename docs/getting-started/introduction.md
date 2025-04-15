@@ -69,7 +69,7 @@ Data engineers can provide context-rich events from KurrentDB to data pipelines 
 To learn more about KurrentDB's role in a data pipeline, [click here](/getting-started/evaluate/data-pipeline.md).
 :::
 
-Application developers can leverage EventStoreDB’s granular events to build real-time, distributed enterprise applications and break down tightly coupled systems. Events are typically simpler, self-contained, and independent. Unlike the tables and rows in traditional databases that are often interdependent with various functions.
+Application developers can leverage KurrentDB's granular events to build real-time, distributed enterprise applications and break down tightly coupled systems. Events are typically simpler, self-contained, and independent. Unlike the tables and rows in traditional databases that are often interdependent with various functions.
 
 ::: details Use Case: Modernize Legacy Systems
 

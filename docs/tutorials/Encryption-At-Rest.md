@@ -9,7 +9,7 @@ The **Encryption-At-Rest** feature provides encryption for KurrentDB to secure d
 
 #### Prerequisites:
 
-* [EventStoreDB 24.10 LTS or later  installed and running.](@server/quick-start/installation.md)  
+* [KurrentDB 25.0 or later, or EventStoreDB 24.10  installed and running.](@server/quick-start/installation.md)  
 * [License key](@server/quick-start/installation.md#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
 * Basic understanding of KurrentDB, encryption principles, and key management.
 
@@ -19,7 +19,7 @@ Ensure you have a valid **license key** to use the Encryption-At-Rest feature. W
 
 ### Step 2 (optional): Confirm Encryption-At-Rest availability
 
-By default, Encryption-At-Rest is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the KurrentDB logs. Look for the following log message:
+By default, Encryption-At-Rest is bundled with KurrentDB 25.0 or later, or EventStoreDB 24.20 LTS. You can confirm its availability in the KurrentDB logs. Look for the following log message:
 
 ```text:no-line-numbers
 [INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316
@@ -29,7 +29,7 @@ Refer to the [log documentation](@server/diagnostics/logs.md) for instructions o
 
 ### Step 3: Generate a master key
 
-To encrypt the data, you must first generate a **master key** using the `es-cli` tool (available to be downloaded in Cloudsmith [here](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
+To encrypt the data, you must first generate a **master key** using the `es-cli` tool ([available to be downloaded in Cloudsmith](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
 
 Run the following command to generate a master key:  
 

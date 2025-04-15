@@ -10,7 +10,7 @@ This feature allows KurrentDB administrators to define stream access policies ba
 
 #### Prerequisites
 
-* [EventStoreDB 24.10 LTS or later installed and running](@server/quick-start/installation.md)
+* [KurrentDB 25.0 or later, or EventStoreDB 24.10 installed and running](@server/quick-start/installation.md)
 * [License key](@server/quick-start/installation.md#license-keys) for Stream Policy Authorization (a valid
   license is required to use this feature).
 * Basic understanding of KurrentDB, stream prefixes, and access control.

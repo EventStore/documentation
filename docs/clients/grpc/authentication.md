@@ -9,10 +9,11 @@ X.509 certificates are digital certificates that use the X.509 public key infras
 
 ### Prerequisites
 
-1. EventStoreDB 24.2.0 or greater with commercial license.
-2. A valid x.509 certificate, which can be created using version `1.3` or higher of the [gencert tool](https://github.com/kurrent-io/es-gencert-cli).
-3. The server must run in secure mode. See [Security Options](@server/security/protocol-security.md) for more information.
-4. [Enable User Certificates plugin on the server](@server/security/user-authentication.md#user-x509-certificates)
+1. KurrentDB 25.0 or greater, or EventStoreDB 24.10.
+2. A commercial license with the User Certificates entitlement.
+3. A valid x.509 certificate, which can be created using version `1.3` or higher of the [gencert tool](https://github.com/kurrent-io/es-gencert-cli).
+4. The server must run in secure mode. See [Security Options](@server/security/protocol-security.md) for more information.
+5. [Enable User Certificates plugin on the server](@server/security/user-authentication.md#user-x509-certificates)
 
 #### Generate user certificates
 
