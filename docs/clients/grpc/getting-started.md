@@ -99,19 +99,19 @@ No additional configuration is needed having Rust installed. Go check [https://r
 ### Connection string
 
 Each SDK has its own way of configuring the client, but the connection string can always be used. 
-The KurrentDB connection string supports two schemas: `kurrentdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `kurrentdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
-Since version 22.10, ESDB supports gossip on single-node deployments, so `esdb+discover://` schema can be used for connecting to any topology.
+The KurrentDB connection string supports two schemas: `kurrentdb://` for connecting to a single-node server, and `kurrentdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `kurrentdb://`, the client will connect directly to the node; with `kurrentdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
+Since version 22.10, ESDB supports gossip on single-node deployments, so `kurrentdb+discover://` schema can be used for connecting to any topology.
 
 The connection string has the following format:
 
 ```
-esdb+discover://admin:changeit@cluster.dns.name:2113
+kurrentdb+discover://admin:changeit@cluster.dns.name:2113
 ```
 
 There, `cluster.dns.name` is the name of a DNS `A` record that points to all the cluster nodes. Alternatively, you can list cluster nodes separated by comma instead of the cluster DNS name:
 
 ```
-esdb+discover://admin:changeit@node1.dns.name:2113,node2.dns.name:2113,node3.dns.name:2113
+kurrentdb+discover://admin:changeit@node1.dns.name:2113,node2.dns.name:2113,node3.dns.name:2113
 ```
 
 There are a number of query parameters that can be used in the connection string to instruct the cluster how and where the connection should be established. All query parameters are optional.

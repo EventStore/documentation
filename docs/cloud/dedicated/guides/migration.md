@@ -68,7 +68,7 @@ replicator:
     connectionString: ConnectTo=tcp://admin:changeit@my-instance.acme.company:1113; HeartBeatTimeout=500; UseSslConnection=false;
     protocol: tcp
   sink:
-    connectionString: esdb+discover://username:password@clusterid.mesdb.eventstore.cloud:2113
+    connectionString: kurrentdb+discover://username:password@clusterid.mesdb.eventstore.cloud:2113
     protocol: grpc
     partitionCount: 1
     bufferSize: 1000
