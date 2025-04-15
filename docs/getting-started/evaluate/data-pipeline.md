@@ -53,7 +53,7 @@ KurrentDB serves as a repository, hub, or distribution center for events, centra
 
 ### Four Major Functions of KurrentDB in a Data Pipeline
 
-![](./images/four-major-functions-of-eventstoredb-in-a-data-pipeline.png)
+![](./images/four-major-functions-of-kurrentdb-in-a-data-pipeline)
 
 In a data pipeline, KurrentDB performs four major functions:
 
@@ -64,7 +64,7 @@ In a data pipeline, KurrentDB performs four major functions:
 
 ### KurrentDB in a Pipeline
 
-![](./images/eventstoredb-in-data-pipeline.png)
+![](./images/kurrentdb-in-data-pipeline.png)
 
 #### Input from Data Pipeline
 
