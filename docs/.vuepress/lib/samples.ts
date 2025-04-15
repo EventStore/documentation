@@ -92,4 +92,4 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     return {label: lang.label, path: path.resolve(__dirname, p)};
 }
 
-export const projectionSamplesPath = "https://raw.githubusercontent.com/EventStore/EventStore/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/";
+export const projectionSamplesPath = "https://raw.githubusercontent.com/kurrent-io/KurrentDB/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/";
