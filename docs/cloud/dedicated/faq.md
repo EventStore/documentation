@@ -114,7 +114,7 @@ Our support response time windows are provided in GMT time zone. We are expandin
 
 Customers do not have direct access to the compute instances where the database cluster nodes are running. However, most management functions are available via the HTTP API, which is available for customers to access and use.
 
-You can also use our cloud automation tools ([Terraform](automation/terraform.md) and [Pulumi](automation/pulumi.md) providers and the [Kurrent Cloud CLI](https://github.com/EventStore/esc)) to manage your cloud resources.
+You can also use our cloud automation tools ([Terraform](automation/terraform.md) and [Pulumi](automation/pulumi.md) providers and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc)) to manage your cloud resources.
 
 #### If a node goes down in a cluster, how is the cluster recovered and who does it?
 

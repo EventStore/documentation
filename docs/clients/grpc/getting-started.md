@@ -99,7 +99,7 @@ No additional configuration is needed having Rust installed. Go check [https://r
 ### Connection string
 
 Each SDK has its own way of configuring the client, but the connection string can always be used. 
-The KurrentDB connection string supports two schemas: `esdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `esdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
+The KurrentDB connection string supports two schemas: `kurrentdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `kurrentdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
 Since version 22.10, ESDB supports gossip on single-node deployments, so `esdb+discover://` schema can be used for connecting to any topology.
 
 The connection string has the following format:
@@ -132,7 +132,7 @@ There are a number of query parameters that can be used in the connection string
 | `userCertFile`        | String, file path                                 | None     | User certificate file for X.509 authentication.                                                                                                |
 | `userKeyFile`         | String, file path                                 | None     | Key file for the user certificate used for X.509 authentication.                                                                               |
 
-When connecting to an insecure instance, specify `tls=false` parameter. For example, for a node running locally use `esdb://localhost:2113?tls=false`. Note that usernames and passwords aren't provided there because insecure deployments don't support authentication and authorisation.
+When connecting to an insecure instance, specify `tls=false` parameter. For example, for a node running locally use `kurrentdb://localhost:2113?tls=false`. Note that usernames and passwords aren't provided there because insecure deployments don't support authentication and authorisation.
 
 ### Creating a client
 
