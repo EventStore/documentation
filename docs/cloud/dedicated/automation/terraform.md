@@ -17,12 +17,12 @@ The binaries are available for the following platforms:
 
 | Processor | Operating system | Filename                                                                                          |
 |:----------|:-----------------|:--------------------------------------------------------------------------------------------------|
-| x64       | macOS            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip  |
-| x64       | FreeBSD          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip |
-| x64       | Linux            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip   |
-| x64       | Windows          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip |
-| arm64     | FreeBSD          | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip |
-| arm64     | Linux            | terraform-provider-eventstorecloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip   |
+| x64       | macOS            | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_darwin_amd64.zip  |
+| x64       | FreeBSD          | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_freebsd_amd64.zip |
+| x64       | Linux            | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_linux_amd64.zip   |
+| x64       | Windows          | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_windows_amd64.zip |
+| arm64     | FreeBSD          | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_freebsd_arm64.zip |
+| arm64     | Linux            | terraform-provider-kurrentcloud_{{ $frontmatter.terraform_current_version }}_linux_arm64.zip   |
 
 ### Terraform 0.13+
 
@@ -76,11 +76,11 @@ Use the following command to get the access token using `esc-cli`:
 $ esc access tokens create --email <email>
 
 Password:
-Token created for audience https://api.eventstore.cloud
+Token created for audience https://api.kurrent.cloud
 FDGco0u_1Ypw9WVVIfAHtIJh0ioUI_XbMhxMlEpiCUlHR
 ```
 
-If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.eventstore.cloud/authentication-tokens) page, then click on "Request refresh token" button.
+If you prefer to use the Cloud Console, navigate to the [Authentication Tokens](https://console.kurrent.cloud/authentication-tokens) page, then click on "Request refresh token" button.
 
 ![token in cloud console](images/token_console.png)
 
@@ -92,7 +92,7 @@ That's how you do it with `esc-cli`:
 
 ```bash
 $ esc resources organizations list
-Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Event Store Ltd"
+Organization { id: OrgId("9bdf0s5qr76g981z5820"), name: "Kurrent, Inc"
 ```
 
 In the Cloud Console, open the [organisations page][cloud console organizations]. Then, select the organisation from the list and go to its settings. There, you can copy the organisation ID.
@@ -105,14 +105,14 @@ Using the Terraform provider, you can create, manipulate, and delete the followi
 
 | Terraform resource                | Kurrent Cloud resource                                          |
 |:----------------------------------|:----------------------------------------------------------------|
-| `eventstorecloud_project`         | [Project](#projects)                                            |
-| `eventstorecloud_network`         | [Network](#networks)                                            |
-| `eventstorecloud_peering`         | [Network peering](#network-peerings)                            |
-| `eventstorecloud_managed_cluster` | Managed KurrentDB instance or cluster                           |
+| `kurrentcloud_project`         | [Project](#projects)                                            |
+| `kurrentcloud_network`         | [Network](#networks)                                            |
+| `kurrentcloud_peering`         | [Network peering](#network-peerings)                            |
+| `kurrentcloud_managed_cluster` | Managed KurrentDB instance or cluster                           |
 
 ### Projects
 
-You can create Kurrent Cloud projects for the organisation using the `eventstorecloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
+You can create Kurrent Cloud projects for the organisation using the `kurrentcloud_project` resource. You only need to provide the new project name, which must be unique within the organisation.
 
 You need a project to provision any other resource.
 
@@ -249,7 +249,7 @@ Here is an example how to initiate a peering from Kurrent Cloud to your own AWS 
 
 ### Managed KurrentDB
 
-Use the `eventstorecloud_managed_cluster` resource to provision an KurrentDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
+Use the `eventstorecloud_managed_cluster` resource to provision a KurrentDB cluster or instance. You will need the [Project](#projects) and the [Network](#networks) resource information from previously created resources.
 
 #### Arguments
 
@@ -356,14 +356,14 @@ Make sure you used the correct organisation ID. Use [these guidelines](#provider
 
 Ensure you entered the correct project name. Remember that data source names are case-sensitive. See [here](#project).
 
-[terraform github releases]: https://github.com/EventStore/terraform-provider-eventstorecloud/releases
-[terraform github]: https://github.com/EventStore/terraform-provider-eventstorecloud
-[terraform github samples]: https://github.com/EventStore/terraform-provider-eventstorecloud/tree/trunk/examples
+[terraform github releases]: https://github.com/kurrent-io/terraform-provider-eventstorecloud/releases
+[terraform github]: https://github.com/kurrent-io/terraform-provider-eventstorecloud
+[terraform github samples]: https://github.com/kurrent-io/terraform-provider-eventstorecloud/tree/trunk/examples
 [terraform registry]: https://registry.terraform.io/providers/EventStore/eventstorecloud/latest
 [esc]: https://eventstore.com/event-store-cloud/
-[esc cli github]: https://github.com/EventStore/esc
-[esc cli github releases]: https://github.com/EventStore/esc/releases
+[esc cli github]: https://github.com/kurrent-io/esc
+[esc cli github releases]: https://github.com/kurrent-io/esc/releases
 [cloud console]: https://console.eventstore.cloud/
 [cloud console tokens]:https://console.eventstore.cloud/authentication-tokens
 [cloud console organizations]:https://console.eventstore.cloud/organizations
-[pulumi provider]: https://github.com/EventStore/pulumi-eventstorecloud
+[pulumi provider]: https://github.com/kurrent-io/pulumi-eventstorecloud

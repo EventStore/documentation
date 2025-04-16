@@ -114,7 +114,7 @@ Our support response time windows are provided in GMT time zone. We are expandin
 
 Customers do not have direct access to the compute instances where the database cluster nodes are running. However, most management functions are available via the HTTP API, which is available for customers to access and use.
 
-You can also use our cloud automation tools ([Terraform](automation/terraform.md) and [Pulumi](automation/pulumi.md) providers and the [Kurrent Cloud CLI](https://github.com/EventStore/esc)) to manage your cloud resources.
+You can also use our cloud automation tools ([Terraform](automation/terraform.md) and [Pulumi](automation/pulumi.md) providers and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc)) to manage your cloud resources.
 
 #### If a node goes down in a cluster, how is the cluster recovered and who does it?
 
@@ -160,12 +160,12 @@ It is possible that your local network may be using a transparent web proxy whic
 
 #### DNS resolution issues
 
-For clusters on private networks, the DNS name will resolve to the private IP addresses of the cluster nodes. Some Internet providers, routers, and DNS servers will not resolve or filter out answers to DNS queries for `xxxx.mesdb.eventstore.cloud` because the DNS name resolves to a private IP range.
+For clusters on private networks, the DNS name will resolve to the private IP addresses of the cluster nodes. Some Internet providers, routers, and DNS servers will not resolve or filter out answers to DNS queries for `xxxx.mesdb.kurrent.cloud` because the DNS name resolves to a private IP range.
 
 You can check if that's the issue you're experiencing by running the following `nslookup` query. Replace the domain name by your cluster DNS name.
 
 ``` bash
-nslookup buh63kqrh41nfqpviing.mesdb.eventstore.cloud
+nslookup buh63kqrh41nfqpviing.mesdb.kurrent.cloud
 ```
 
 If the answer looks like the following, you're having the issue we just described:
@@ -175,13 +175,13 @@ Server:         192.168.192.1
 Address:        192.168.192.1#53
 
 Non-authoritative answer:
-*** Can't find buh63kqrh41nfqpviing.mesdb.eventstore.cloud: No answer
+*** Can't find buh63kqrh41nfqpviing.mesdb.kurrent.cloud: No answer
 ```
 
 To check if the domain exists, perform the same check with a specific DNS server:
 
 ``` bash
-nslookup buh63kqrh41nfqpviing.mesdb.eventstore.cloud 1.1.1.1
+nslookup buh63kqrh41nfqpviing.mesdb.kurrent.cloud 1.1.1.1
 ```
 
 Most probably, you will get a proper DNS resolution answer:
@@ -191,7 +191,7 @@ Server:  one.one.one.one
 Address:  1.1.1.1
 
 Non-authoritative answer:
-Name:    buh63kqrh41nfqpviing.mesdb.eventstore.cloud
+Name:    buh63kqrh41nfqpviing.mesdb.kurrent.cloud
 Addresses:  172.29.98.189
 172.29.98.150
 172.29.98.108

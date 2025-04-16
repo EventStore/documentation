@@ -52,7 +52,7 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
             },
             "go": {
                 label: "Go",
-                path: "clients/go/4.2.0"
+                path: "clients/go/1.0.0"
             },
             "rs": {
                 label: "Rust",
@@ -92,4 +92,4 @@ export function resolveSamplesPath(src: string, srcCat: string | undefined) {
     return {label: lang.label, path: path.resolve(__dirname, p)};
 }
 
-export const projectionSamplesPath = "https://raw.githubusercontent.com/EventStore/EventStore/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/";
+export const projectionSamplesPath = "https://raw.githubusercontent.com/kurrent-io/KurrentDB/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/";

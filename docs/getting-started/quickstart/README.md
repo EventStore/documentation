@@ -2,9 +2,9 @@
 title: Quickstart
 ---
 
-# EventStoreDB Quickstart
+# KurrentDB Quickstart
 
-This quickstart will guide you through getting started with EventStoreDB using GitHub Codespaces.
+This quickstart will guide you through getting started with KurrentDB using GitHub Codespaces.
 
 ::: info
 GitHub Codespaces provides an instant and preconfigured development environment in your browser for this quickstart. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
@@ -14,10 +14,10 @@ GitHub Codespaces provides an instant and preconfigured development environment 
 
 In this quickstart, you will:
 
-- Start an EventStoreDB server using Docker in GitHub Codespaces.
-- Append an event to EventStoreDB with sample code.
+- Start a KurrentDB server using Docker in GitHub Codespaces.
+- Append an event to KurrentDB with sample code.
 - View the appended event using the Admin UI.
-- Read the appended event with sample code using the EventStoreDB client.
+- Read the appended event with sample code using the KurrentDB client.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Before starting, ensure you have the following:
 - Familiarity with command-line operations.
 
 ::: tip
-If you have trouble with this quickstart, you can find more help in the ["EventStoreDB From Scratch" tutorial series on Event Store Academy](https://academy.eventstore.com/from-scratch).
+If you have trouble with this quickstart, you can find more help in the ["KurrentDB From Scratch" tutorial series on Kurrent Academy](https://academy.kurrent.io/from-scratch).
 :::
 
 ## Step 1: Set up Your Codespace
@@ -69,42 +69,42 @@ If you have trouble with this quickstart, you can find more help in the ["EventS
 5. Once complete, you will see a welcome message in the terminal:
 
 ```
-Hello!👋 Welcome to the EventStoreDB Getting Started Quickstart Guide.
+Hello!👋 Welcome to the KurrentDB Getting Started Quickstart Guide.
 ```
 
 ::: tip
 For this quickstart, you can safely ignore and close any Codespaces notification that appears on the bottom right of the page.
 :::
 
-## Step 2: Start the EventStoreDB Server
+## Step 2: Start the KurrentDB Server
 
-1. Once your Codespace is loaded, run the following command in the terminal to start the EventStoreDB server:
+1. Once your Codespace is loaded, run the following command in the terminal to start the KurrentDB server:
 
    ```sh
    ./start_db.sh
    ```
 
-   This is a custom script written for this quickstart to help start EventStoreDB in Docker.
+   This is a custom script written for this quickstart to help start KurrentDB in Docker.
 
 2. You will see the below message printed in the terminal:
 
 ```
-🚀 EventStoreDB Server has started!! 🚀
+🚀 KurrentDB Server has started!! 🚀
 
-URL to the EventStoreDB Admin UI 👉: https://XXXXXXXXX.XXX
+URL to the KurrentDB Admin UI 👉: https://XXXXXXXXX.XXX
 ```
 
-::::: details (Optional) Learn more about how to start EventStoreDB in Docker and the start_db.sh script 
+::::: details (Optional) Learn more about how to start KurrentDB in Docker and the `start_db.sh` script 
 
-#### Understanding How to Start EventStoreDB Server in Docker and How `start_db.sh` Works
+#### Understanding How to Start KurrentDB Server in Docker and How `start_db.sh` Works
 
 `start_db.sh` is a custom script written for the quickstart that will: 
 - Check if Docker is currently running locally
-- Pull the EventStoreDB server Docker container
+- Pull the KurrentDB server Docker container
 - Start the server in Docker
-- Print the EventStoreDB Admin UI URL in the terminal
+- Print the KurrentDB Admin UI URL in the terminal
 
-To see how to start the EventStoreDB server in Docker, follow these steps
+To see how to start the KurrentDB server in Docker, follow these steps
 
 1. Run the following command to open `start_db.sh`:
    
@@ -116,17 +116,17 @@ To see how to start the EventStoreDB server in Docker, follow these steps
    Alternatively, you can locate and open the file from the EXPLORER window found on the left side of Codespaces. You can find the path to the file in the command above.
    :::
 
-2. In step 3 of the script, review how EventStoreDB is started with the `docker run` command:
+2. In step 3 of the script, review how KurrentDB is started with the `docker run` command:
 
 ```bash
-docker run                        # Start a new Docker container using the 'docker run' command
-     -d \                         # Run the container in detached mode (in the background)
-     --name esdb-node \           # Assign the container a name ('esdb-node' in this case)
-     -p 2113:2113 \               # Map port 2113 on the host to port 2113 in the Docker container. Required for the EventStoreDB
-     eventstore/eventstore:lts \  # Specify the Docker image to use, in this case, the EventStoreDB long-term support version (lts)
-     --insecure \                 # Run EventStoreDB in insecure mode, without authentication and SSL/TLS security (usually for development)
-     --run-projections=All \      # Enable all projections in EventStoreDB, including system and user projections
-     --enable-atom-pub-over-http  # Enable the AtomPub API over HTTP. Required for the EventStoreDB Admin UI
+docker run                               # Start a new Docker container using the 'docker run' command
+     -d \                                # Run the container in detached mode (in the background)
+     --name esdb-node \                  # Assign the container a name ('esdb-node' in this case)
+     -p 2113:2113 \                      # Map port 2113 on the host to port 2113 in the Docker container. Required for the KurrentDB
+     kurrentplatform/kurrentdb:latest \  # Specify the Docker image to use, in this case, the latest supported version of KurrentDB
+     --insecure \                        # Run KurrentDB in insecure mode, without authentication and SSL/TLS security (usually for development)
+     --run-projections=All \             # Enable all projections in KurrentDB, including system and user projections
+     --enable-atom-pub-over-http         # Enable the AtomPub API over HTTP. Required for the KurrentDB Admin UI
 ```
 
 3. Review other parts of the script if you wish.
@@ -134,7 +134,7 @@ docker run                        # Start a new Docker container using the 'dock
 4. Feel free to modify and re-run the script in your Codespace.
 
 ::: info
-For more information about other EventStoreDB parameters and settings, [click here](@server/configuration/README.md).
+For more information about other KurrentDB parameters and settings, [click here](@server/configuration/README.md).
 :::
 
 :::: info
@@ -144,33 +144,33 @@ To view the source code in Github, click the link below:
 @tab Select >
 
 @tab Python
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 ::::
 :::::
 
-## Step 3: Navigate to the EventStoreDB Admin UI
+## Step 3: Navigate to the KurrentDB Admin UI
 
-1. In Codespaces, copy the URL to EventStoreDB Admin UI printed in the terminal from last step.
+1. In Codespaces, copy the URL to KurrentDB Admin UI printed in the terminal from last step.
 2. Open a new browser tab. 
 3. In the address bar of the new tab, paste the URL to and navigate to it.
-4. This will display the EventStoreDB Admin UI.
+4. This will display the KurrentDB Admin UI.
 5. Keep the Admin UI open for the next steps.
 
-![EventStoreDB Admin UI Dashboard](images/hello-world/admin-ui.png =300x)
+![KurrentDB Admin UI Dashboard](images/hello-world/admin-ui.png =300x)
 
 ## Step 4: Install Required Package for Sample Code
 
-1. In Codespace, run this command to install the package for the EventStoreDB client. This will be used in the sample codes:
+1. In Codespace, run this command to install the package for the KurrentDB client. This will be used in the sample codes:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -194,11 +194,11 @@ To view the source code in Github, click the link below:
    ```
 :::
 
-::::: details (Optional) Learn more about the EventStoreDB client packages
+::::: details (Optional) Learn more about the KurrentDB client packages
 
-#### Understanding Required Packages for EventStoreDB Development
+#### Understanding Required Packages for KurrentDB Development
 
-The EventStoreDB client packages enable your code to connect to the database, append events, and read events from streams in the language/platform of your choice.
+The KurrentDB client packages enable your code to connect to the database, append events, and read events from streams in the language/platform of your choice.
 
 To understand what packages are installed, follow these steps:
 
@@ -233,7 +233,7 @@ code ./package.json
 Alternatively, you can locate and open the file from the EXPLORER window on the left of Codespaces. You can find the path to the file in the command above.
 :::
 
-2. Review the EventStoreDB client packages listed as dependencies:
+2. Review the KurrentDB client packages listed as dependencies:
 
 ::: tabs#dev-language-platform
 
@@ -241,7 +241,7 @@ Alternatively, you can locate and open the file from the EXPLORER window on the 
 
 @tab Python
 ```
-esdbclient==1.0.19
+kurrentdbclient==1.0.19
 ```
 
 @tab Java
@@ -249,9 +249,11 @@ esdbclient==1.0.19
 <dependency>
    <groupId>io.kurrent</groupId>
    <artifactId>db-client-java</artifactId>
-   <version>5.3.2</version>
+   <version>1.0.0</version>
 </dependency>
 ```
+
+For the most recent version of the KurrentDB client package, see [Maven Central](https://mvnrepository.com/artifact/io.kurrent/kurrentdb-client).
 
 @tab .NET
 ```xml
@@ -263,14 +265,14 @@ esdbclient==1.0.19
 @tab node.js
 ```json
 "dependencies": {
-   "@eventstore/db-client": "^6.1.0"
+   "@kurrent/kurrentdb-client": "^6.1.0"
 }
 ```
 :::
 
 
 ::: note
-The version of the EventStoreDB client above may be outdated. For more information about the client, [click here](@clients/grpc/getting-started.md).
+The version of the KurrentDB client above may be outdated. For more information about the client, [click here](@clients/grpc/getting-started.md).
 :::
 
 :::: info
@@ -281,26 +283,26 @@ To view the source code in GitHub, click the link below:
 
 @tab Python
 
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 
 ::::
 
 :::::
 
-## Step 5: Append an Event to EventStoreDB
+## Step 5: Append an Event to KurrentDB
 
-1. In Codespaces, run this command to execute the sample. This appends an event to EventStoreDB:
+1. In Codespaces, run this command to execute the sample. This appends an event to KurrentDB:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -343,11 +345,11 @@ Event Body: {"id":"1","importantData":"some value"}
 
 #### Understanding How the Append Sample Works
 
-To deepen your understanding of how events are appended to EventStoreDB programmatically, you will explore the sample code used in this step. 
+To deepen your understanding of how events are appended to KurrentDB programmatically, you will explore the sample code used in this step. 
 
 The sample code demonstrates:
 
-- **Establishing a Connection**: Connect to EventStoreDB using the client library.
+- **Establishing a Connection**: Connect to KurrentDB using the client library.
 - **Creating an Event**: Create a new event with a specific type and data payload.
 - **Appending the Event to a Stream**: Append the new event to a specific stream.
 
@@ -383,42 +385,40 @@ code ./sample_append.js
 Alternatively, you can locate and open the file from the EXPLORER window on the left of Codespaces. You can find the path to the file in the command above.
 :::
 
-2. In step 1 of the code, review how the client connects to EventStoreDB:
+2. In step 1 of the code, review how the client connects to KurrentDB:
 
 ::: tabs#dev-language-platform
 @tab Select >
 
 @tab Python
 ```python
-# Create an instance of EventStoreDBClient, connecting to the EventStoreDB at localhost without TLS
-client = EventStoreDBClient(uri="esdb://localhost:2113?tls=false")  
+# Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+client = KurrentDBClient(uri="kurrentdb://localhost:2113?tls=false")  
 ```
 
 @tab Java
 ```java
-// configure the settings to connect to EventStoreDB locally without TLS
-EventStoreDBClientSettings settings = EventStoreDBConnectionString.
-   parseOrThrow("esdb://localhost:2113?tls=false");
-
+// configure the settings to connect to KurrentDB locally without TLS
+KurrentDBClientSettings settings = KurrentDBConnectionString.parseOrThrow("kurrentdb://localhost:2113?tls=false");
 // apply the settings and create an instance of the client
-EventStoreDBClient client = EventStoreDBClient.create(settings); 
+KurrentDBClient client = KurrentDBClient.create(settings);
 ```
 
 @tab .NET
 ```c#
-// Create an instance of EventStoreDBClient, connecting to the EventStoreDB at localhost without TLS
-var settings = EventStoreClientSettings.Create("esdb://localhost:2113?tls=false");
+// Create an instance of EventStoreClientSettings, connecting to the KurrentDB at localhost without TLS
+var settings = EventStoreClientSettings.Create("kurrentdb://localhost:2113?tls=false");
 await using var client = new EventStoreClient(settings);
 ```
 
 @tab node.js
 ```js
-// Create an instance of EventStoreDBClient, connecting to the EventStoreDB at localhost without TLS
-const client = EventStoreDBClient.connectionString("esdb://localhost:2113?tls=false");
+// Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+const client = KurrentDBClient.connectionString("kurrentdb://localhost:2113?tls=false");
 ```
 :::
 
-3. In step 2 of the code, review how a new event is initiated:
+1. In step 2 of the code, review how a new event is initiated:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -434,7 +434,7 @@ new_event = NewEvent(                                 # Create a new event with 
 
 @tab Java
 ```java
-// Build the EventStoreDB event data structure
+// Build the KurrentDB event data structure
 String eventType = "SampleEventType";                                  // Define the name of the event type for the new event
 byte[] eventBody = "{\"id\":\"1\", \"importantData\":\"some value\"}"  // Define the body of the event in a UTF8 encoded byte array
       .getBytes(StandardCharsets.UTF_8);
@@ -467,7 +467,7 @@ const event = jsonEvent({                      // Create a new event with a type
 ```
 :::
 
-4. In step 3 of the code, review how the client appends the new event to EventStoreDB:
+4. In step 3 of the code, review how the client appends the new event to KurrentDB:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -512,7 +512,7 @@ await client.appendToStream(eventStream, event);  // append the event to the str
 5. Feel free to modify and re-run the sample in your Codespace.
 
 ::: info
-To learn more about other EventStoreDB client functions, [click here](@clients/grpc/getting-started.md).
+To learn more about other KurrentDB client functions, [click here](@clients/grpc/getting-started.md).
 :::
 
 :::: info
@@ -523,17 +523,17 @@ To view the source code in GitHub, click the link below:
 
 @tab Python
 
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -550,9 +550,9 @@ To view the source code in GitHub, click the link below:
    
 4. You should see the content of the appended event.
 
-## Step 7: Read the Event from EventStoreDB Programmatically
+## Step 7: Read the Event from KurrentDB Programmatically
 
-1. In Codespaces, run this command to execute the sample. This reads the event from EventStoreDB:
+1. In Codespaces, run this command to execute the sample. This reads the event from KurrentDB:
 
 ::: tabs#dev-language-platform
 @tab Select >
@@ -595,9 +595,9 @@ Event Body: {"id":"1","importantData":"some value"}
 
 #### Understanding How the Read Sample Works
 
-You will explore the sample code used in this step to further understand how events are read from EventStoreDB programmatically. 
+You will explore the sample code used in this step to further understand how events are read from KurrentDB programmatically. 
 The sample code demonstrates the following:
-- **Establishing a Connection**: Illustrates how to connect to EventStoreDB using the client library.
+- **Establishing a Connection**: Illustrates how to connect to KurrentDB using the client library.
 - **Reading Events from a Stream**: Reads events from a specific stream.
 - **Processing Retrieved Events**: Iterates over the events retrieved from the stream.
 - **Deserializing Event Data**: Extracts and deserializes the event data from the retrieved events.
@@ -634,38 +634,38 @@ Alternatively, you can locate and open the file from the EXPLORER window on the 
 :::
 
 
-2. In step 1 of the code, review how the client connects to EventStoreDB:
+2. In step 1 of the code, review how the client connects to KurrentDB:
 
 ::: tabs#dev-language-platform
 @tab Select >
 
 @tab Python
 ```python
-# Create an instance of EventStoreDBClient, connecting to the EventStoreDB at localhost without TLS
-client = EventStoreDBClient(uri="esdb://localhost:2113?tls=false")  
+# Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+client = KurrentDBClient(uri="kurrentdb://localhost:2113?tls=false")  
 ```
 
 @tab Java
 ```java
-// configure the settings to connect to EventStoreDB locally without TLS
-EventStoreDBClientSettings settings = EventStoreDBConnectionString.
-   parseOrThrow("esdb://localhost:2113?tls=false");
+// configure the settings to connect to KurrentDB locally without TLS
+KurrentDBClientSettings settings = EventStoreDBConnectionString.
+   parseOrThrow("kurrentdb://localhost:2113?tls=false");
 
 // apply the settings and create an instance of the client
-EventStoreDBClient client = EventStoreDBClient.create(settings); 
+KurrentDBClient client = KurrentDBClient.create(settings); 
 ```
 
 @tab .NET
 ```c#
-// Create an instance of EventStoreDBClient, connecting to the EventStoreDB at localhost without TLS
-var settings = EventStoreClientSettings.Create("esdb://localhost:2113?tls=false");
+// Create an instance of EventStoreClientSettings, connecting to the KurrentDB at localhost without TLS
+var settings = EventStoreClientSettings.Create("kurrentdb://localhost:2113?tls=false");
 await using var client = new EventStoreClient(settings);
 ```
 
 @tab node.js
 ```js
-// Create an instance of EventStoreDBClient, connecting to the EventStoreDB at localhost without TLS
-const client = EventStoreDBClient.connectionString("esdb://localhost:2113?tls=false");
+// Create an instance of KurrentDBClient, connecting to the KurrentDB at localhost without TLS
+const client = KurrentDBClient.connectionString("kurrentdb://localhost:2113?tls=false");
 ```
 :::
 
@@ -777,7 +777,7 @@ for await (const resolvedEvent of events) {                                  // 
 5. Feel free to modify and re-run the sample in your Codespace.
 
 ::: info
-To learn more about other EventStoreDB client functions, [click here](@clients/grpc/getting-started.md).
+To learn more about other KurrentDB client functions, [click here](@clients/grpc/getting-started.md).
 :::
 
 :::: info
@@ -788,17 +788,17 @@ To view the source code in Github, click the link below:
 
 @tab Python
 
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Python)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Python-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Python)
 
 
 @tab Java
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Java)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Java-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Java)
 
 @tab .NET
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Dotnet)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20.NET-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Dotnet)
 
 @tab node.js
-[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/EventStore/EventStoreDB-From-Scratch-Nodejs)
+[![](https://img.shields.io/badge/GitHub-EventStoreDB%20From%20Scratch%20Node.js-blue?logo=github)](https://github.com/kurrent-io/KurrentDBDB-From-Scratch-Nodejs)
 :::
 
 ::::
@@ -809,26 +809,26 @@ To view the source code in Github, click the link below:
 
 In this quickstart, you:
 
-1. Started the EventStoreDB server.
+1. Started the KurrentDB server.
 2. Navigated to the Admin UI.
-3. Appended an event to EventStoreDB.
+3. Appended an event to KurrentDB.
 4. Verified the event in the Admin UI.
-5. Read the event from EventStoreDB programmatically.
+5. Read the event from KurrentDB programmatically.
 
-Feel free to experiment further by appending more events, reading them, or even exploring advanced features of EventStoreDB!
+Feel free to experiment further by appending more events, reading them, or even exploring advanced features of KurrentDB!
 
 ## Next Steps
 
 Now that you've completed the quickstart, you may want to explore the following:
 
-- [EventStoreDB "From Scratch" Series](https://academy.eventstore.com/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
+- [KurrentDB "From Scratch" Series](https://academy.kurrent.io/from-scratch): Find more explanations about the scripts and samples used in this quickstart along with other beginner tutorials.
 
-- [Install EventStoreDB locally](@server/quick-start/installation.md): Learn how to install EventStoreDB on your local machine for deeper exploration and integration with your projects.
+- [Install KurrentDB locally](@server/quick-start/installation.md): Learn how to install KurrentDB on your local machine for deeper exploration and integration with your projects.
 
-- [EventStoreDB Client SDK Documentation](@clients/grpc/getting-started.md): Understand how to interact with EventStoreDB programmatically with EventStoreDB clients.
+- [KurrentDB Client SDK Documentation](@clients/grpc/getting-started.md): Understand how to interact with KurrentDB programmatically with KurrentDB clients.
 
-- [EventStoreDB Server Configuration Documentation](@server/configuration/README.md): Explore how to configure EventStoreDB for your environment.
+- [KurrentDB Server Configuration Documentation](@server/configuration/README.md): Explore how to configure KurrentDB for your environment.
 
-- [Event Store Cloud](https://www.eventstore.com/event-store-cloud): Run EventStoreDB from the fully managed environment without the need to host it yourself.
+- [Kurrent Cloud](https://www.kurrent.io/event-store-cloud): Run KurrentDB from the fully managed environment without the need to host it yourself.
 
-- [EventStoreDB Samples](https://github.com/EventStore/samples/tree/main): Experiment with different SDKs to interact with EventStoreDB using various programming languages.
+- [KurrentDB Samples](https://github.com/kurrent-io/samples/tree/main): Experiment with different SDKs to interact with KurrentDB using various programming languages.

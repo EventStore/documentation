@@ -4,7 +4,7 @@ order: 8
 
 # Observability
 
-The EventStoreDB gRPC clients are designed with observability in mind, offering
+The KurrentDB gRPC clients are designed with observability in mind, offering
 support for OpenTelemetry. This integration provides a set of distributed
 traces, enabling developers to gain deeper insights into their system.
 
@@ -16,13 +16,13 @@ subscribe operations, which includes both 'Catchup' and 'Persistent' modes.
 
 You can click on the links below to view the full code for each client:
 
-- [NodeJS](https://github.com/EventStore/EventStore-Client-NodeJS/blob/master/packages/test/src/samples/opentelemetry.ts)
-- [Java](https://github.com/EventStore/EventStoreDB-Client-Java/blob/trunk/src/test/java/io/kurrent/dbclient/samples/opentelemetry/Instrumentation.java)
-- [C#](https://github.com/EventStore/EventStore-Client-Dotnet/blob/master/samples/diagnostics/Program.cs)
+- [NodeJS](https://github.com/kurrent-io/KurrentDB-Client-NodeJS/blob/master/packages/test/src/samples/opentelemetry.ts)
+- [Java](https://github.com/kurrent-io/KurrentDBDB-Client-Java/blob/trunk/src/test/java/io/kurrent/dbclient/samples/opentelemetry/Instrumentation.java)
+- [C#](https://github.com/kurrent-io/EventStore-Client-Dotnet/blob/master/samples/diagnostics/Program.cs)
 
 ## Required packages
 
-OpenTelemetry support is included to the EventStoreDB Java client by default. For other clients, you need to install the dedicated package to enable OpenTelemetry support. 
+OpenTelemetry support is included to the KurrentDB Java client by default. For other clients, you need to install the dedicated package to enable OpenTelemetry support. 
 
 ### NodeJS
 
@@ -79,16 +79,16 @@ An example of a trace is shown below:
 Activity.TraceId:            8da04787239dbb85c1f9c6fba1b1f0d6
 Activity.SpanId:             4352ec4a66a20b95
 Activity.TraceFlags:         Recorded
-Activity.ActivitySourceName: eventstoredb
+Activity.ActivitySourceName: kurrentdb
 Activity.DisplayName:        streams.append
 Activity.Kind:               Client
 Activity.StartTime:          2024-05-29T06:50:41.2519016Z
 Activity.Duration:           00:00:00.1500707
 Activity.Tags:
-    db.eventstoredb.stream: d7caa2a5-1e19-4108-9541-58d5fba02d42
+    db.kurrentdb.stream: d7caa2a5-1e19-4108-9541-58d5fba02d42
     server.address: localhost
     server.port: 2113
-    db.system: eventstoredb
+    db.system: kurrentdb
     db.operation: streams.append
 StatusCode: Ok
 Resource associated with Activity:

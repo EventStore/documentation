@@ -13,7 +13,7 @@ Currently not all clients fully expose all operations.
 
 For a detailed explanation of projections, see the [server documentation](@server/features/projections/README.md).
 
-You can find the full sample code from this documentation page in the respective [clients repositories](https://github.com/eventStore/?q=client).
+You can find the full sample code from this documentation page in the respective [clients repositories](https://github.com/kurrent-io/?q=client).
 
 ## Required packages
 
@@ -21,22 +21,22 @@ Install the client SDK package to your project.
 
 ### NodeJS
 
-Add `@eventstore/db-client` to your project using Yarn, NPM, or pnpm.
+Add `@kurrent/kurrentdb-client` to your project using Yarn, NPM, or pnpm.
 
 TypeScript type declarations are included in the package.
 
 ::: tabs
 @tab npm
 ```bash
-npm install --save @eventstore/db-client
+npm install --save @kurrent/kurrentdb-client
 ```
 @tab yarn
 ```bash
-yarn add @eventstore/db-client
+yarn add @kurrent/kurrentdb-client
 ```
 @tab pnpm
 ```bash
-pnpm add @eventstore/db-client
+pnpm add @kurrent/kurrentdb-client
 ```
 :::
 
@@ -50,14 +50,16 @@ Add the `db-client-java` dependency to your project using Maven or Gradle.
 <dependency>
   <groupId>io.kurrent</groupId>
   <artifactId>db-client-java</artifactId>
-  <version>5.2.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 @tab Gradle
 ```
-implementation 'io.kurrent:db-client-java:5.2.0'
+implementation 'io.kurrent:db-client-java:1.0.0'
 ```
+
+For the most recent version of the KurrentDB client package, see [Maven Central](https://mvnrepository.com/artifact/io.kurrent/kurrentdb-client).
 :::
 
 ### .NET

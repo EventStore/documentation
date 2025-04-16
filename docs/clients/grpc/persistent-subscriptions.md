@@ -108,7 +108,7 @@ This option can be seen as a fall-back scenario for high availability, when a si
 
 For use with an indexing projection such as the system `$by_category` projection.
 
-EventStoreDB inspects the event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects, its buckets are assigned to other clients. When a client connects, it is assigned some existing buckets. This naively attempts to maintain a balanced workload.
+KurrentDB inspects the event for its source stream id, hashing the id to one of 1024 buckets assigned to individual clients. When a client disconnects, its buckets are assigned to other clients. When a client connects, it is assigned some existing buckets. This naively attempts to maintain a balanced workload.
 
 The main aim of this strategy is to decrease the likelihood of concurrency and ordering issues while maintaining load balancing. This is **not a guarantee**, and you should handle the usual ordering and concurrency issues.
 

@@ -1,5 +1,5 @@
-import {instance as ver} from "../lib/versioning";
 import type {NavbarOptions} from "vuepress-theme-hope";
+import {instance as ver} from "../lib/versioning";
 
 export const navbarEn: NavbarOptions = [
     {
@@ -25,7 +25,7 @@ export const navbarEn: NavbarOptions = [
         text: "Clients & APIs",
         icon: "material-symbols:sdk",
         children: [
-            {text: "Clients", children: [{text: "EventStoreDB clients", link: "/clients/grpc/getting-started"}]},
+            {text: "Clients", children: [{text: "KurrentDB clients", link: "/clients/grpc/getting-started"}]},
             {text: "HTTP API", children: ver.linksFor("http-api", false)},
             {text: "Deprecated", children: [{text: "Legacy TCP clients", link: "/clients/tcp/"}]},
         ]

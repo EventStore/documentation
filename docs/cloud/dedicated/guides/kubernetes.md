@@ -7,7 +7,7 @@ Below, you can find instructions for connecting workloads running cloud-managed 
 
 ## AWS Elastic Kubernetes Services
 
-In this section, you find instructions on how to set up an AWS Elastic Kubernetes Services (EKS) cluster, so it can connect to an KurrentDB cluster in Kurrent Cloud. As a prerequisite, you have experience with Kubernetes, AWS and networking in Kubernetes, as well as in AWS cloud platform.
+In this section, you find instructions on how to set up an AWS Elastic Kubernetes Services (EKS) cluster, so it can connect to a KurrentDB cluster in Kurrent Cloud. As a prerequisite, you have experience with Kubernetes, AWS and networking in Kubernetes, as well as in AWS cloud platform.
 
 EKS clusters require at least two subnets, which are connected to internet using an Internet Gateway. Both subnets must have the auto-assign public IP setting enabled, otherwise the node group won't get properly provisioned.
 
@@ -64,7 +64,7 @@ At this moment, any workload deployed to the EKS cluster should be able to conne
 
 ## Google Kubernetes Engine
 
-In this section, you find instructions on how to set up a Google Kubernetes Engine (GKE) cluster, so it can connect to an KurrentDB cluster in Kurrent Cloud. As a prerequisite, you have experience with Kubernetes, GKE and networking in Kubernetes as well as in Google Cloud Platform (GCP).
+In this section, you find instructions on how to set up a Google Kubernetes Engine (GKE) cluster, so it can connect to a KurrentDB cluster in Kurrent Cloud. As a prerequisite, you have experience with Kubernetes, GKE and networking in Kubernetes as well as in Google Cloud Platform (GCP).
 
 Before you provision a cluster in Kurrent Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR.
 
@@ -162,7 +162,7 @@ The overall network topology would look like this, when we complement the initia
 
 ## Azure Kubernetes Services
 
-In this section, you find instructions on how to set up an Azure Kubernetes Services (AKS) cluster, so it can connect to an KurrentDB cluster in Kurrent Cloud. As a prerequisite, you have experience with Kubernetes, Azure and networking in Kubernetes as well as in Azure Cloud platform.
+In this section, you find instructions on how to set up an Azure Kubernetes Services (AKS) cluster, so it can connect to a KurrentDB cluster in Kurrent Cloud. As a prerequisite, you have experience with Kubernetes, Azure and networking in Kubernetes as well as in Azure Cloud platform.
 
 Before you provision a cluster in Kurrent Cloud, you need to have a network, to which the cluster nodes will connect. Nodes in the cluster will get IP addresses from the specified network CIDR block.
 

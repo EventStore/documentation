@@ -4,11 +4,11 @@ order: 1
 
 # Getting started
 
-Get started by connecting your application to EventStoreDB. 
+Get started by connecting your application to KurrentDB. 
 
-## Connecting to EventStoreDB
+## Connecting to KurrentDB
 
-For your application to start communicating with EventStoreDB, you need to instantiate the client and configure it accordingly. Below are instructions for supported SDKs.
+For your application to start communicating with KurrentDB, you need to instantiate the client and configure it accordingly. Below are instructions for supported SDKs.
 
 ::: tip Insecure clusters
 All our GRPC clients are secure by default and must be configured to connect to an insecure server via [a connection string](#connection-string) or the client's configuration.
@@ -20,35 +20,35 @@ Install the client SDK package to your project.
 
 #### Python
 
-Install the `esdbclient` package from PyPI or use Poetry:
+Install the `kurrentdbclient` package from PyPI or use Poetry:
 
 ::: tabs
 @tab pip
 ```bash
-pip install esdbclient
+pip install kurrentdbclient
 ```
 @tab Poetry
 ```bash
-poetry add esdbclient
+poetry add kurrentdbclient
 ```
 :::
 
 #### NodeJS
 
-Install the `@eventstore/db-client` package using NPM, Yarn or PNPM:
+Install the `@kurrent/kurrentdb-client` package using NPM, Yarn or PNPM:
 
 ::: tabs
 @tab npm
 ```bash
-npm install --save @eventstore/db-client
+npm install --save @kurrent/kurrentdb-client
 ```
 @tab yarn
 ```bash
-yarn add @eventstore/db-client
+yarn add @kurrent/kurrentdb-client
 ```
 @tab pnpm
 ```bash
-pnpm add @eventstore/db-client
+pnpm add @kurrent/kurrentdb-client
 ```
 :::
 
@@ -56,7 +56,7 @@ TypeScript Declarations are included in the package.
 
 #### Java
 
-Add the `db-client-java` dependency to your Maven or Gradle project:
+Add the `db-client-java` dependency to your Maven or Gradle project. 
 
 ::: tabs
 @tab Maven
@@ -64,13 +64,16 @@ Add the `db-client-java` dependency to your Maven or Gradle project:
 <dependency>
   <groupId>io.kurrent</groupId>
   <artifactId>db-client-java</artifactId>
-  <version>5.2.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
+
 @tab Gradle
 ```groovy
-implementation 'io.kurrent:db-client-java:5.2.0'
+implementation 'io.kurrent:db-client-java:1.0.0'
 ```
+
+For the most recent version of the KurrentDB client package, see [Maven Central](https://mvnrepository.com/artifact/io.kurrent/kurrentdb-client).
 :::
 
 #### .NET
@@ -83,10 +86,10 @@ dotnet add package EventStore.Client.Grpc.Streams
 
 #### Go
 
-Install the `esdb` package using Go modules:
+Install the `kurrentdb` package using Go modules:
 
 ```bash
-go get github.com/EventStore/EventStore-Client-Go/v3.2.0/esdb
+go get github.com/kurrent-io/KurrentDB-Client-Go/kurrentdb
 ```
 
 #### Rust
@@ -96,19 +99,19 @@ No additional configuration is needed having Rust installed. Go check [https://r
 ### Connection string
 
 Each SDK has its own way of configuring the client, but the connection string can always be used. 
-The EventStoreDB connection string supports two schemas: `esdb://` for connecting to a single-node server, and `esdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `esdb://`, the client will connect directly to the node; with `esdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
-Since version 22.10, ESDB supports gossip on single-node deployments, so `esdb+discover://` schema can be used for connecting to any topology.
+The KurrentDB connection string supports two schemas: `kurrentdb://` for connecting to a single-node server, and `kurrentdb+discover://` for connecting to a multi-node cluster. The difference between the two schemas is that when using `kurrentdb://`, the client will connect directly to the node; with `kurrentdb+discover://` schema the client will use the gossip protocol to retrieve the cluster information and choose the right node to connect to.
+Since version 22.10, ESDB supports gossip on single-node deployments, so `kurrentdb+discover://` schema can be used for connecting to any topology.
 
 The connection string has the following format:
 
 ```
-esdb+discover://admin:changeit@cluster.dns.name:2113
+kurrentdb+discover://admin:changeit@cluster.dns.name:2113
 ```
 
 There, `cluster.dns.name` is the name of a DNS `A` record that points to all the cluster nodes. Alternatively, you can list cluster nodes separated by comma instead of the cluster DNS name:
 
 ```
-esdb+discover://admin:changeit@node1.dns.name:2113,node2.dns.name:2113,node3.dns.name:2113
+kurrentdb+discover://admin:changeit@node1.dns.name:2113,node2.dns.name:2113,node3.dns.name:2113
 ```
 
 There are a number of query parameters that can be used in the connection string to instruct the cluster how and where the connection should be established. All query parameters are optional.
@@ -129,7 +132,7 @@ There are a number of query parameters that can be used in the connection string
 | `userCertFile`        | String, file path                                 | None     | User certificate file for X.509 authentication.                                                                                                |
 | `userKeyFile`         | String, file path                                 | None     | Key file for the user certificate used for X.509 authentication.                                                                               |
 
-When connecting to an insecure instance, specify `tls=false` parameter. For example, for a node running locally use `esdb://localhost:2113?tls=false`. Note that usernames and passwords aren't provided there because insecure deployments don't support authentication and authorisation.
+When connecting to an insecure instance, specify `tls=false` parameter. For example, for a node running locally use `kurrentdb://localhost:2113?tls=false`. Note that usernames and passwords aren't provided there because insecure deployments don't support authentication and authorisation.
 
 ### Creating a client
 
@@ -141,7 +144,7 @@ The client instance can be used as a singleton across the whole application. It 
 
 ### Creating an event
 
-You can write anything to EventStoreDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object, and it's up to you to choose the serialization method.
+You can write anything to KurrentDB as events. The client needs a byte array as the event payload. Normally, you'd use a serialized object, and it's up to you to choose the serialization method.
 
 ::: tip Server-side projections
 User-defined server-side projections require events to be serialized in JSON format.

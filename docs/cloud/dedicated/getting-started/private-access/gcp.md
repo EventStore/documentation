@@ -4,7 +4,7 @@ order: 3
 
 # Google Cloud Platform
 
-For Google Cloud customers, Kurrent Cloud allows provisioning an KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
+For Google Cloud customers, Kurrent Cloud allows provisioning a KurrentDB cluster in the same cloud. You can create a cluster in the same region to ensure the lowest latency.
 
 Pre-requisites:
 - You have an organization registered in Cloud console
@@ -142,7 +142,7 @@ Multiple peer routes are useful in case you want to peer with a subnet that has 
 :::
 
 ::: warning
-After you create a peering, you can't change the peer routes. If you would need to modify the routes, delete the peering and create it again with the updated set of peer routes. The limitation applies even in cases where a cloud provider supports dynamic route updates, e.g. in GCP. The reason is that the EventStore automation creates firewall rules for the peer routes when the peering is created. The firewall rules are not updated dynamically to prevent security breaches.
+After you create a peering, you can't change the peer routes. If you would need to modify the routes, delete the peering and create it again with the updated set of peer routes. The limitation applies even in cases where a cloud provider supports dynamic route updates, e.g. in GCP. The reason is that the KurrentDB automation creates firewall rules for the peer routes when the peering is created. The firewall rules are not updated dynamically to prevent security breaches.
 :::
 
 ### Initiate peering

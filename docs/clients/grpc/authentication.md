@@ -9,14 +9,15 @@ X.509 certificates are digital certificates that use the X.509 public key infras
 
 ### Prerequisites
 
-1. EventStoreDB 24.2.0 or greater with commercial license.
-2. A valid x.509 certificate, which can be created using version `1.3` or higher of the [gencert tool](https://github.com/EventStore/es-gencert-cli).
-3. The server must run in secure mode. See [Security Options](@server/security/protocol-security.md) for more information.
-4. [Enable User Certificates plugin on the server](@server/security/user-authentication.md#user-x509-certificates)
+1. KurrentDB 25.0 or greater, or EventStoreDB 24.10.
+2. A commercial license with the User Certificates entitlement.
+3. A valid x.509 certificate, which can be created using version `1.3` or higher of the [gencert tool](https://github.com/kurrent-io/es-gencert-cli).
+4. The server must run in secure mode. See [Security Options](@server/security/protocol-security.md) for more information.
+5. [Enable User Certificates plugin on the server](@server/security/user-authentication.md#user-x509-certificates)
 
 #### Generate user certificates
 
-The following command uses the [gencert tool](https://github.com/EventStore/es-gencert-cli) to generate a user certificate for the user `admin` that will expire in 10 days:
+The following command uses the [gencert tool](https://github.com/kurrent-io/es-gencert-cli) to generate a user certificate for the user `admin` that will expire in 10 days:
 
 ::: tabs#os
 @tab bash
@@ -29,9 +30,9 @@ The following command uses the [gencert tool](https://github.com/EventStore/es-g
 ```
 :::
 
-### Connect to EventStoreDB using an x.509 certificate
+### Connect to KurrentDB using an x.509 certificate
 
-To connect to EventStoreDB using an x.509 certificate, you need to provide the
+To connect to KurrentDB using an x.509 certificate, you need to provide the
 certificate and the private key to the client. If both username/password and
 certificate authentication data are supplied, the client prioritizes user
 credentials for authentication. The client will throw an error if the

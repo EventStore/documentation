@@ -3,11 +3,11 @@ title: HTTP Sink
 order: 3
 ---
 
-## Tutorial: Setting up and using an HTTP Sink in EventStoreDB
+## Tutorial: Setting up and using an HTTP Sink in KurrentDB
 
-Connectors simplify the integration of EventStoreDB data into other systems. Each connector runs on the server-side and uses a catch-up subscription to receive events, filter or transform them, and push them to an external system via a sink.
+Connectors simplify the integration of KurrentDB data into other systems. Each connector runs on the server-side and uses a catch-up subscription to receive events, filter or transform them, and push them to an external system via a sink.
 
-The following are the available Event Store sinks:
+The following are the available Kurrent sinks:
 
 1. [Kafka Sink](/server/v24.10/features/connectors/sinks/kafka.html)
 2. [MongoDB Sink](/server/v24.10/features/connectors/sinks/mongo.html)
@@ -16,21 +16,21 @@ The following are the available Event Store sinks:
 5. [Logger Sink](/server/v24.10/features/connectors/sinks/logger.html)
 6. [Serilog Sink](/server/v24.10/features/connectors/sinks/serilog.html)
 
-This step-by-step tutorial guides you through setting up a connector using the **HTTP Sink** in EventStoreDB. This feature allows EventStoreDB to push event data to an http endpoint.
+This step-by-step tutorial guides you through setting up a connector using the **HTTP Sink** in KurrentDB. This feature allows KurrentDB to push event data to an http endpoint.
 
 #### Prerequisites
 
-* [EventStoreDB 24.10 LTS installed and running](/server/v24.10/quick-start/installation.html)   
+* [KurrentDB 25.0 or later, or EventStoreDB 24.10 installed and running](/server/v24.10/quick-start/installation.html)   
 
 ### Step 1: Set up an HTTP endpoint using PostBin
 
-In this tutorial, you will use PostBin to create an HTTP endpoint that consumes events from EventStoreDB. PostBin supports creating a unique URL to collect requests from EventStoreDB (GET, POST, PUT, PATCH, DELETE, etc.).
+In this tutorial, you will use PostBin to create an HTTP endpoint that consumes events from KurrentDB. PostBin supports creating a unique URL to collect requests from KurrentDB (GET, POST, PUT, PATCH, DELETE, etc.).
 
 **1.1** Navigate to [https://www.postb.in](https://www.postb.in) and click **Create Bin**.
 
 **1.2** You will be directed to a page with the endpoint URLs for curl, wget, and echo. Copy the bin URL for curl.
 
-   *Note: If you are testing with an endpoint from your custom application, ensure no Cross-Origin Resource Sharing (CORS) issues prevent the data from being transmitted from EventStoreDB.*
+   *Note: If you are testing with an endpoint from your custom application, ensure no Cross-Origin Resource Sharing (CORS) issues prevent the data from being transmitted from KurrentDB.*
 
 ### Step 2: Create the connector
 
@@ -65,7 +65,7 @@ The following section provides additional information about the file contents:
    
 * `"InstanceTypeName": "http-sink"` provides the type of connector sink (Http Sink in this case). 
       
-* `"Url": "https://www.postb.in/1736471171412-2404703341890"` provides the HTTP URL endpoint to which the EventStoreDB will send the data.
+* `"Url": "https://www.postb.in/1736471171412-2404703341890"` provides the HTTP URL endpoint to which the KurrentDB will send the data.
    
 * `"Subscription:Filter:Expression": "order-.*?"` filters the results for streams starting with "order-".
 
@@ -143,11 +143,11 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-### Step 5: Add events in EventStoreDB
+### Step 5: Add events in KurrentDB
 
-You will now add events to EventStoreDB and transmit them to the endpoint through the HTTP Sink connector.
+You will now add events to KurrentDB and transmit them to the endpoint through the HTTP Sink connector.
 
-**5.1:** Navigate to the EventStoreDB UI (located at http://localhost:2113).
+**5.1:** Navigate to the KurrentDB UI (located at http://localhost:2113).
 
 **5.2:** Click on **Stream Browser** → **Add Event**.
 
@@ -157,7 +157,7 @@ You will now add events to EventStoreDB and transmit them to the endpoint throug
 
 ### Step 6: Verify data was sent to the endpoint
 
-Check that the newly created EventStoreDB data has been transmitted to the connector endpoint.
+Check that the newly created KurrentDB data has been transmitted to the connector endpoint.
 
 **6.1:** Navigate to the bin URL (example: `https://www.postb.in/b/1737399256387-4331883823033`).
 
@@ -233,7 +233,7 @@ Server: Kestrel
 Transfer-Encoding: chunked
 ```
 
-**8.5:** Add events in EventStoreDB.
+**8.5:** Add events in KurrentDB.
 
 **8.6:** Navigate to the bin URL for the new bin you created. Confirm the connector has been reconfigured to transmit data to the latest bin.
 
@@ -270,7 +270,7 @@ Transfer-Encoding: chunked
 
 By following this tutorial, you have successfully: 
 
-* Configured a connector using the **HTTP Sink** in EventStoreDB to push event data to an HTTP endpoint.
+* Configured a connector using the **HTTP Sink** in KurrentDB to push event data to an HTTP endpoint.
 * Checked the connector status.
 * Started the connector.
 * Verified that data was successfully sent to the HTTP endpoint.

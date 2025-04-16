@@ -50,10 +50,10 @@ Links will not be replicated, as all the system events get filtered out (except 
 
 ## Executing the migration
 
-Kurrent provides a tool that allows you to replicate events between two clusters or instances. The tool is called Event Store Replicator, and it has its own [documentation website](https://replicator.eventstore.org).
+Kurrent provides a tool that allows you to replicate events between two clusters or instances. The tool is called Kurrent Replicator, and it has its own [documentation website](https://replicator.eventstore.org).
 
 ::: warning
-Event Store Replicator is an Open Source Software, provided as-is, without warranty, and not covered by the KurrentDB support contract that you might have.
+Kurrent Replicator is an Open Source Software, provided as-is, without warranty, and not covered by the Kurrent support contract that you might have.
 :::
 
 ### Deployment
@@ -68,7 +68,7 @@ replicator:
     connectionString: ConnectTo=tcp://admin:changeit@my-instance.acme.company:1113; HeartBeatTimeout=500; UseSslConnection=false;
     protocol: tcp
   sink:
-    connectionString: esdb+discover://username:password@clusterid.mesdb.eventstore.cloud:2113
+    connectionString: kurrentdb+discover://username:password@clusterid.mesdb.eventstore.cloud:2113
     protocol: grpc
     partitionCount: 1
     bufferSize: 1000
@@ -96,7 +96,7 @@ Here are the steps, which you can perform to migrate in one go:
 
 Another option is to move the subscriptions first:
 
-- Configure and deploy Event Store Replicator
+- Configure and deploy Kurrent Replicator
 - Wait until it gets in to the restart loop after all the historical events are replicated
 - Stop all the workloads, which write to the source database
 - Stop the subscription workload, and find the corresponding checkpoint value in the target database (stream position or global position in `$all`)
@@ -108,4 +108,4 @@ As the replication process will continue endlessly, you can move some of the sub
 
 Find out more about replicator features, limitations, as well as deployment guidelines [in the documentation](https://replicator.eventstore.org).
 
-If you experience an issue when using Replicator, or you'd like to suggest a new feature, please open an issue in the [GitHub project](https://github.com/EventStore/replicator).
+If you experience an issue when using Replicator, or you'd like to suggest a new feature, please open an issue in the [GitHub project](https://github.com/kurrent-io/replicator).

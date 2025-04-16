@@ -11,7 +11,7 @@ This page provides an example of using [user-defined projections](@server/featur
 
 ## Adding sample data
 
-[Download](https://github.com/EventStore/documentation/tree/master/docs/clients/tcp/dotnet/21.2/sample-code/Seed) the following files that contain sample data used throughout this step of the getting started guide.
+[Download](https://github.com/kurrent-io/documentation/tree/master/docs/clients/tcp/dotnet/21.2/sample-code/Seed) the following files that contain sample data used throughout this step of the getting started guide.
 
 - [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json](https://raw.githubusercontent.com/EventStore/EventStore/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1164.json)
 - [shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json](https://raw.githubusercontent.com/EventStore/EventStore/53f84e55ea56ccfb981aff0e432581d72c23fbf6/samples/http-api/data/shoppingCart-b989fe21-9469-4017-8d71-9820b8dd1165.json)

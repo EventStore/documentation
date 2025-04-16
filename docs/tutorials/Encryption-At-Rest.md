@@ -3,15 +3,15 @@ title: Encryption-At-Rest
 order: 2
 ---
 
-## Tutorial: Setting up and using Encryption-At-Rest in EventStoreDB
+## Tutorial: Setting up and using Encryption-At-Rest in KurrentDB
 
-The **Encryption-At-Rest** feature provides encryption for EventStoreDB to secure database chunk files, ensuring data protection even if an attacker gains access to the physical disk. This step-by-step guide will walk you through the process of enabling and configuring this feature, including generating master keys and applying encryption.
+The **Encryption-At-Rest** feature provides encryption for KurrentDB to secure database chunk files, ensuring data protection even if an attacker gains access to the physical disk. This step-by-step guide will walk you through the process of enabling and configuring this feature, including generating master keys and applying encryption.
 
 #### Prerequisites:
 
-* [EventStoreDB 24.10 LTS installed and running.](@server/quick-start/installation.md)  
+* [KurrentDB 25.0 or later, or EventStoreDB 24.10  installed and running.](@server/quick-start/installation.md)  
 * [License key](@server/quick-start/installation.md#license-keys) for Encryption-At-Rest (a valid license is required to use this feature).  
-* Basic understanding of EventStoreDB, encryption principles, and key management.
+* Basic understanding of KurrentDB, encryption principles, and key management.
 
 ### Step 1: Verify license key
 
@@ -19,17 +19,17 @@ Ensure you have a valid **license key** to use the Encryption-At-Rest feature. W
 
 ### Step 2 (optional): Confirm Encryption-At-Rest availability
 
-By default, Encryption-At-Rest is bundled with EventStoreDB 24.20 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
+By default, Encryption-At-Rest is bundled with KurrentDB 25.0 or later, or EventStoreDB 24.10 LTS. You can confirm its availability in the KurrentDB logs. Look for the following log message:
 
 ```text:no-line-numbers
 [INF] ClusterVNodeHostedService Loaded SubsystemsPlugin plugin: encryption-at-rest 24.10.0.1316
 ```
 
-Refer to the [log documentation](@server/diagnostics/logs.md) for instructions on accessing EventStoreDB logs.
+Refer to the [log documentation](@server/diagnostics/logs.md) for instructions on accessing KurrentDB logs.
 
 ### Step 3: Generate a master key
 
-To encrypt the data, you must first generate a **master key** using the `es-cli` tool (available to be downloaded in Cloudsmith [here](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
+To encrypt the data, you must first generate a **master key** using the `es-cli` tool ([available to be downloaded in Cloudsmith](https://cloudsmith.io/~eventstore/repos/eventstore/packages/?q=es-cli)). This key is used to derive the data keys that will encrypt chunk files.
 
 Run the following command to generate a master key:  
 
@@ -43,7 +43,7 @@ Place the generated master key in a secure directory on a **separate drive** fro
 
 #### Step 4.1: Add the configuration file
 
-1. Navigate to the `config` directory within the EventStoreDB installation.  
+1. Navigate to the `config` directory within the KurrentDB installation.  
    There are multiple [configuration mechanisms](@server/configuration/) available. Since options set in a JSON configuration override those set in a YAML configuration, here is an example using JSON. You can also find a [YAML configuration file example in the documentation](@server/security/#configuration).   
      
    Create a new JSON configuration file (e.g., `encryption-config.json`) with the following content:   
@@ -73,7 +73,7 @@ Place the generated master key in a secure directory on a **separate drive** fro
 
 #### Step 4.2: Set the encryption algorithm
 
-In the main EventStoreDB configuration file, add the following line to specify the encryption transformation:
+In the main KurrentDB configuration file, add the following line to specify the encryption transformation:
 
 ```bash:no-line-numbers
 Transform: aes-gcm
@@ -119,4 +119,4 @@ Once Encryption-At-Rest is enabled, new chunk files created or scavenged will be
 
 ### Summary
 
-By following this tutorial, you have successfully configured and enabled Encryption-At-Rest in EventStoreDB. This encryption setup ensures that your chunk files are securely encrypted, protecting your data from potential disk-based attacks.
+By following this tutorial, you have successfully configured and enabled Encryption-At-Rest in KurrentDB. This encryption setup ensures that your chunk files are securely encrypted, protecting your data from potential disk-based attacks.

@@ -5,7 +5,7 @@ order: 7
 
 ## Tutorial: Using Auto-Scavenge
 
-This step-by-step tutorial guides you through using, scheduling and managing  **Auto-Scavenge** in EventStoreDB.
+This step-by-step tutorial guides you through using, scheduling and managing  **Auto-Scavenge** in KurrentDB.
 
 The Auto-scavenge feature is designed to manage and automate cluster scavenges across multiple nodes efficiently. It operates on a scheduled basis using CRON expressions, ensuring that only one node scavenge occurs simultaneously to minimize disruption. To reduce impact on cluster performance the feature prioritizes non-leader nodes for scavenging, with the leader node resigning before its own scavenge is executed.
 
@@ -13,7 +13,7 @@ Auto-scavenge restarts or cancels scavenges if a node is lost, and allows you to
 
 #### Prerequisites:
 
-* [EventStoreDB 24.10 LTS installed and running](http://@server/quick-start/installation.md)
+* [KurrentDB 25.0 or later, or EventStoreDB 24.10 LTS installed and running](http://@server/quick-start/installation.md)
 * [License key](http://@server/quick-start/installation.md#license-keys) for Auto-Scavenge (a valid license is required to use this feature)
 * Requires `$ops` or `$admin` role
 
@@ -24,13 +24,13 @@ Ensure you have a valid **license key** to utilize Auto-Scavenge. Without the li
 
 ### Step 2: Confirm Auto-Scavenge availability
 
-By default, Auto-scavenge is bundled with EventStoreDB 24.10 LTS. You can confirm its availability in the EventStoreDB logs. Look for the following log message:
+By default, Auto-scavenge is bundled with KurrentDB 25.0 or later, or EventStoreDB 24.10 LTS. You can confirm its availability in the KurrentDB logs. Look for the following log message:
 
 ```
 [INF] "AutoScavenge" "24.10.1" plugin enabled.
 ```
 
-For instructions on accessing EventStoreDB logs, refer to the [log documentation](http://@server/diagnostics/logs.md).
+For instructions on accessing KurrentDB logs, refer to the [log documentation](http://@server/diagnostics/logs.md).
 
 If you do not see the "plugin enabled" entry in the log, check the configuration
  file to see if it has been disabled.
@@ -117,8 +117,8 @@ Authorization: Basic admin:changeit
 
 By following this tutorial, you should have successfully:
 
-* Scheduled Auto-scavenge to run on EventStoreDB
-* Verified Auto-scavenge status from EventStoreDB
+* Scheduled Auto-scavenge to run on KurrentDB
+* Verified Auto-scavenge status from KurrentDB
 * (Optional) Paused Auto-scavenge
 * (Optional) Resumed Auto-scavenge
 

@@ -111,7 +111,7 @@ While the enterprise version of KurrentDB supports authentications methods such 
 
 ## Resizing cluster nodes
 
-Clusters can be scaled up or down on-demand to optimize for cost or performance through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc). When you resize a cluster, the compute instances that make up the cluster are resized. You can resize a cluster to a larger or smaller node size, but you cannot change the topology of the cluster.
+Clusters can be scaled up or down on-demand to optimize for cost or performance through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc). When you resize a cluster, the compute instances that make up the cluster are resized. You can resize a cluster to a larger or smaller node size, but you cannot change the topology of the cluster.
 
 See also the [sizing guide](./sizing.md) for general guidance.
 
@@ -171,7 +171,7 @@ esc mesdb clusters resize \
 
 ## Upgrading KurrentDB version
 
-The KurrentDB version of a cluster can be changed on-demand to any compatible version that is in support through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc). You can upgrade to the latest patch release or to a new major version.
+The KurrentDB version of a cluster can be changed on-demand to any compatible version that is in support through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc). You can upgrade to the latest patch release or to a new major version.
 
 ::: tip
 If a cluster's current version of KurrentDB is compatible with an older version, you can use the upgrade process to downgrade to that older version.
@@ -231,7 +231,7 @@ esc mesdb clusters upgrade \
 
 ## Expanding disks
 
-Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc)
+Disks can be expanded on-demand, to accommodate database growth, through the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc)
 
 See also the cloud [sizing guide](./sizing.md) for general guidance.
 
@@ -270,7 +270,7 @@ esc mesdb clusters expand \
 
 ## Protecting cluster from deletion
 
-Cluster can be protected from accidental deletion using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/EventStore/esc).
+Cluster can be protected from accidental deletion using the [Cloud Console](https://console.kurrent.cloud/) and the [Kurrent Cloud CLI](https://github.com/kurrent-io/esc).
 
 
 ### Enable Protection

@@ -6,7 +6,7 @@
     "docsRelativePath": ["docs"],
     "samplesRelativePath": ["samples", "server"],
     "currentBranch": "master",
-    "repo": "https://github.com/kurrent-io/EventStore",
+    "repo": "https://github.com/kurrent-io/KurrentDB",
     "branches": [
       {
         "version": "v25.0",
@@ -63,7 +63,7 @@
     "basePath": "http-api",
     "docsRelativePath": ["docs", "http-api"],
     "samplesRelativePath": ["samples", "http-api"],
-    "repo": "https://github.com/kurrent-io/EventStore",
+    "repo": "https://github.com/kurrent-io/KurrentDB",
     "branches": [
       {
         "version": "v25.0",
@@ -171,11 +171,11 @@
     "group": "Go SDK",
     "basePath": "clients/go",
     "samplesRelativePath": ["samples"],
-    "repo": "https://github.com/kurrent-io/EventStore-Client-Go",
+    "repo": "https://github.com/kurrent-io/KurrentDB-Client-Go",
     "branches": [
       {
-        "version": "4.2.0",
-        "name": "master"
+        "version": "1.0.0",
+        "name": "main"
       }
     ]
   },

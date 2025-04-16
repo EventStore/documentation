@@ -11,7 +11,7 @@ export const notices: NoticePluginOptions = {
         {
             path: "/clients/tcp/dotnet/21.2/",
             title: "This documentation is for the legacy TCP client",
-            content: "This client is no longer supported because newer versions of EventStoreDB only support gRPC-based client protocol. Please use the latest client libraries.",
+            content: "This client is no longer supported because newer versions of KurrentDB only support gRPC-based client protocol. Please use the latest client libraries.",
             actions: [
                 {
                     text: "Migration guide",
