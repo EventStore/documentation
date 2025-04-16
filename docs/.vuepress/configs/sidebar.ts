@@ -30,7 +30,7 @@ export const sidebarEn: EsSidebarOptions = {
       group: "Getting Started",
       children: [
         {
-          text: "Multimodal Data Transformation",
+          text: "Polyglot Persistence",
           collapsible: true,
           expanded: false,
           group: "Getting Started",
