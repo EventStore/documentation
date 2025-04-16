@@ -4,7 +4,7 @@ title: Section 3 - Project KurrentDB Events in Real-Time
 
 # Section 3: Project KurrentDB Events in Real-Time 
 
-Now that the read models on the databases are synchronized with events on KurrentDB, you will learn how to synchonize the read models in real-time.
+Now that the read models on the databases are synchronized with events on KurrentDB, you will learn how to synchronize the read models in real time.
 
 ## Step 9: Browse the Demo Web Page
 
@@ -14,7 +14,7 @@ Now that the read models on the databases are synchronized with events on Kurren
    ./scripts/3-start-demo-web-page.sh
    ```
 
-   You will see the below message printed in the terminal:
+   You will see the following message printed in the terminal:
 
    ```
    URL to the Demo web UI 👉: https://XXXXXXXXX.XXX
@@ -22,23 +22,23 @@ Now that the read models on the databases are synchronized with events on Kurren
 
 1. Open a new browser tab.
 
-2. In the address bar of the new tab, paste the URL to and navigate to it.
+2. In the address bar of the new tab, paste the URL and navigate to it.
 
-3. This will display a demo web app for this sample. This page displays the top 10 products that has been added to cart in the past 24 hours. This table is retrieved with data from Redis that was generated from the Redis projection.
+3. This will display a demo web app for this sample. This page displays the top 10 products added to carts in the past 24 hours. This table is retrieved with data from Redis generated from the Redis projection.
 
-4. Click on `Carts Table (Postgres)` in the header
+4. Click `Carts Table (Postgres)` in the header.
 
-5. This page displays the contents of the cart and items tables from Postgres that was generated from the Postgres projection
+5. This page displays the contents of the cart and items tables in Postgres, which were generated from the Postgres projection.
 
 ::: info Quick Quiz
 
-Do the products and quantity in the carts match what you queried in Step 5's quick quiz?
+Do the products and quantity in the carts match what you calculated and queried in previous Quick Quizzes?
 
 :::
 
 ::: info Quick Quiz
 
-Are the contents of the Top 10 products table and Carts table in sync?
+Are the contents of the Top 10 Products (Redis) table and the Carts Table (Postgres) in sync?
 
 :::
 
@@ -50,7 +50,7 @@ Are the contents of the Top 10 products table and Carts table in sync?
    ./scripts/4-start-live-data-gen.sh
    ```
 
-   You will see the below message printed in the terminal:
+   You will see the following message printed in the terminal:
 
    ```
    URL to the KurrentDB Admin UI 👉: https://XXXXXXXXX.XXX
@@ -78,9 +78,9 @@ Are the contents of the Top 10 products table and Carts table in sync?
 
 6. Return to the Demo Web Page and click on the `Top 10 Products` link from the top navigation bar. Notice how the Top 10 products are being updated in real-time.
 
-7. Click on the `Cart Table` link from the top navigation bar. Notice how the data is updated and new carts in the Postgres tables are now available. You can click the `Refresh` button to see the most updated data.
+7. Click on the `Carts Table` link from the top navigation bar. Notice how the data is updated and that new carts are available in the Postgres tables. Click the `Refresh` button to see the most recent data.
 
-8. Return to the terminal and stop the live data generator tool by inputting ctrl+c.
+8. Return to the terminal and stop the live data generator tool by typing Ctrl + C.
 
 ## Step 12: Understanding Catch-up Subscription and Real-Time Processing
 
@@ -90,7 +90,7 @@ Are the contents of the Top 10 products table and Carts table in sync?
    code ./PostgresProjection/program.cs
    ```
 
-2. Locate and examine code that subscribes to stream
+2. Locate and examine the code that subscribes to stream
 
 ```cs
 await using var subscription = esdb.SubscribeToStream(                   // Subscribe events..
@@ -101,9 +101,9 @@ await using var subscription = esdb.SubscribeToStream(                   // Subs
 
 The subscription will only retrieve events starting from `streamPosition` in the stream.
 
-If `streamPosition` is not at the end of the stream, then the subscription will first return all the events from that position to the end of the stream. Afterwards, it will listen for any new events appended in real-time.
+If `streamPosition` is not at the end of the stream, the subscription will first return all the events from that position to the end of the stream. Afterwards, it will listen for any new events appended in real time.
 
-If `streamPosition` is at the end of stream, then the subscription will automatically listen to new events in real time.
+If `streamPosition` is at the end of the stream, then the subscription will automatically listen to new events in real time.
 
 ::: info 
 
