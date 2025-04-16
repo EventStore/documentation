@@ -47,6 +47,16 @@ export const sidebarEn: EsSidebarOptions = {
       ]
     },
     {
+      text: "Best Practices",
+      collapsible: true,
+      expanded: false,
+      group: "Getting Started",
+      children: [
+        "/getting-started/best-practices/checkpoint.md",
+        "/getting-started/best-practices/exactly-once-processing.md"
+      ]
+    },
+    {
       text: "Evaluate",
       collapsible: true,
       expanded: false,
