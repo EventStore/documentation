@@ -41,7 +41,7 @@ The second part of a projection is a set of filters. There is a special filter c
 
 Here is the projection code:
 
-@[code](@httpapi/xbox-one-s-counter.js)
+<!-- @[code](@httpapi/xbox-one-s-counter.js) -->
 
 You create a projection by calling the projection API and providing it with the definition of the projection. Here you decide how to run the projection, declaring that you want the projection to start from the beginning and keep running.
 
@@ -68,7 +68,7 @@ You can partition the projection state to only include some events for aggregati
 
 The server then returns the state for the partition:
 
-@[code](@httpapi/projections/read-state-partition.json)
+<!-- @[code](@httpapi/projections/read-state-partition.json) -->
 
 ## Emitting new events
 
@@ -80,7 +80,7 @@ Update the projection to output the state to a stream by calling the `outputStat
 
 Below is the updated projection:
 
-@[code](@httpapi/xbox-one-s-counter-outputState.js)
+<!-- @[code](@httpapi/xbox-one-s-counter-outputState.js) -->
 
 To update the projection, edit the projection definition with the following request:
 
@@ -101,7 +101,7 @@ You can now read the events in the result stream by issuing a read request.
 
 You can configure properties of the projection by updating values of the `options` object. For example, the following projection changes the name of the results stream:
 
-@[code{2}](@httpapi/projections/update-projection-options.js)
+<!-- @[code{2}](@httpapi/projections/update-projection-options.js) -->
 
 Then send the update to the projection:
 
@@ -139,7 +139,7 @@ You want to define a projection that produces a count per stream for a category,
 
 Below is the projection:
 
-@[code](@httpapi/projections/shopping-cart-counter.js)
+<!-- @[code](@httpapi/projections/shopping-cart-counter.js) -->
 
 Create the projection with the following request:
 
