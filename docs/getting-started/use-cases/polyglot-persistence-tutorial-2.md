@@ -7,18 +7,18 @@ title: Section 1 - Setup and Initialize KurrentDB
 In this section, you will start a GitHub Codespaces session in your browser.
 
 ::: info
-GitHub Codespaces provides an instant and preconfigured development environment all within in your browser. This environment contains all the tools and code for you to complete this tutorial. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
+GitHub Codespaces provides an instant and preconfigured development environment all within your browser. This environment contains all the tools and code to complete this tutorial. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
 :::
 
-You will then initialize KurrentDB by appending some sample events that mimics an e-commerce application. The events are appending using a data generator program.
+You will then initialize KurrentDB by appending sample events that mimic an e-commerce application. The events are appended using a data generator program.
 
 ## Step 1: Set up Your Codespaces
 
-1. Click the button below to start Codespaces:
+1. Click the button below to initiate Codespaces, then follow steps 2-5 to configure and start your environment:
    
    [![](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=951198039&skip_quickstart=true)
 
-   Login to GitHub if required.
+   Log in to GitHub if required.
 
 2. For `Branch`, select `polyglot-tutorial`
    
@@ -32,7 +32,7 @@ You will then initialize KurrentDB by appending some sample events that mimics a
 
 
 ::: tip
-For this quickstart, you can safely ignore and close any Codespaces notification that appears on the bottom right of the page.
+For this quickstart, you can safely ignore and close any Codespaces notifications that appear on the bottom right of the page.
 :::
 
 ## Step 2: Start and Initialize KurrentDB with Sample Events
@@ -43,9 +43,9 @@ For this quickstart, you can safely ignore and close any Codespaces notification
    ./scripts/1-init-data.sh
    ```
 
-   This is a custom script written for this quickstart to help start KurrentDB in Docker.
+   This is a custom script for this quickstart to help start KurrentDB in Docker.
 
-2. You will see the below message printed in the terminal:
+2. You will see the following message printed in the terminal:
 
    ```
    🚀 KurrentDB Server has started!! 🚀
@@ -55,11 +55,11 @@ For this quickstart, you can safely ignore and close any Codespaces notification
    Appended sample data to KurrentDB
    ```
 
-3. Copy the URL printed in the terminal from last step.
+3. Copy the URL printed in the terminal from the last step.
 
 4. Open a new browser tab. 
 
-5. In the address bar of the new tab, paste the URL to and navigate to it.
+5. In the address bar of the new tab, paste the URL and navigate to it.
 
 6. This will display the KurrentDB Admin UI.
    
@@ -69,12 +69,12 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 
 1. Click the `Stream Browser` link from the top navigation bar.
 
-1. Under `Recently Changed Streams`, click `$ce-cart` link. 
+1. Under `Recently Changed Streams`, click the `$ce-cart` link. 
 
-2. You should see the content of the appended event. Here you will see shopping cart events for two shopping carts.
+2. You should see an ordered list of the appended events associated with two distinct, virtual shopping carts.
 
 ::: info Introducing shopping cart events
-In KurrentDB, events for each shopping cart are appended to a stream like `cart-2fbe05d1dcf043d782ea24923298ae3a`, where `2fbeone05d1dcf043d782ea24923298ae3a` is the id of the cart.
+In KurrentDB, events for each shopping cart are appended to a stream like `cart-2fbe05d1dcf043d782ea24923298ae3a`, where `2fbeone05d1dcf043d782ea24923298ae3a` is the cart's unique ID.
 
 The cart will contain events like these:
 
@@ -82,7 +82,7 @@ The cart will contain events like these:
 |---------------------------|-------------------------------------------------------------------------------------------------|
 | `VisitorStartedShopping`  | When a visitor starts shopping and a cart is created.                     |
 | `CustomerStartedShopping` | When a known customer starts shopping and a cart is associated with their ID.   |
-| `CartShopperGotIdentified`| When a customer's identity is linked to a cart (e.g. a visitor logged in)                            |
+| `CartShopperGotIdentified`| When a customer's identity is linked to a cart (e.g., a visitor logged in)                            |
 | `ItemGotAdded`            | When an item is added to the cart, including details like quantity, price, and tax. |
 | `ItemGotRemoved`          | When an item is removed from the cart, including the quantity removed.    |
 | `CartGotCheckedOut`       | When a cart is checked out and converted into an order.                   |
@@ -91,6 +91,6 @@ The cart will contain events like these:
 
 ::: info Quick Quiz
 
-What products are in each cart and with what quantity?
+What were the quantities of each product in the shopping carts before they were abandoned?
 
 :::
