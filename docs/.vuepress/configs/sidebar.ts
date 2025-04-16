@@ -36,7 +36,18 @@ export const sidebarEn: EsSidebarOptions = {
           group: "Getting Started",
           children: [
             "/getting-started/use-cases/what-is-polyglot-persistence.md",
-            "/getting-started/use-cases/polyglot-persistence-tutorial.md"
+            {
+              text: "Tutorial",
+              collapsible: true,
+              expanded: false,
+              group: "Getting Started",
+              children: [                
+                "/getting-started/use-cases/polyglot-persistence-tutorial-1.md",
+                "/getting-started/use-cases/polyglot-persistence-tutorial-2.md",
+                "/getting-started/use-cases/polyglot-persistence-tutorial-3.md",
+                "/getting-started/use-cases/polyglot-persistence-tutorial-4.md"
+              ]
+            }
           ]
         },
         "/getting-started/use-cases/outbox-out-of-the-box.md",
