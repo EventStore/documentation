@@ -463,6 +463,58 @@ kubectl apply -f cluster.yaml
 Once deployed, navigate to the [Viewing Deployments](#viewing-deployments) section.
 
 
+## Deploying With Scheduling Constraints
+
+The pods created for a KurrentDB resource can be configured with any of the constraints commonly applied to pods:
+
+- [Node Selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector)
+- [Affinity and Anti-Affinity](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity)
+- [Topology Spread Constraints](https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/)
+- [Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/)
+- [Node Name](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodename)
+
+For example, the following KurrentDB resource would schedule KurrentDB pods onto nodes labeled with `machine-size:large`, preferring to spread the replicas each in their own availability zone:
+
+```yaml
+apiVersion: kubernetes.kurrent.io/v1
+kind: KurrentDB
+metadata:
+  name: my-kurrentdb-cluster
+  namespace: kurrent
+spec:
+  replicas: 3
+  image: docker.kurrent.io/kurrent-latest/kurrentdb:25.0.0
+  resources:
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+  storage:
+    volumeMode: "Filesystem"
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 512Mi
+  network:
+    domain: kurrentdb-cluster.kurrent.test
+    loadBalancer:
+      enabled: true
+  nodeSelector:
+    machine-size: large
+  topologySpreadConstraints:
+    maxSkew: 1
+    topologyKey: zone
+    labelSelector:
+      matchLabels:
+        app.kubernetes.io/part-of: kurrentdb-operator
+        app.kubernetes.io/name: my-kurrentdb-cluster
+    whenUnsatisfiable: DoNotSchedule
+
+```
+
+If no scheduling constraints are configured, the operator sets a default soft constraint configuring pod anti-affinity such that multiple replicas will prefer to run on different nodes, for better fault tolerance.
+
+
 ## Viewing Deployments
 
 Using the k9s tool, navigate to the namespaces list using the command `:namespaces`, it should show a screen similar to:
@@ -488,7 +540,7 @@ Scrolling further will also show the events related to the deployment, such as:
 
 ### External
 
-The Operator will create services of type `LoadBalancer` to access a KurrentDB cluster (for each node) when the `spec.network.loadBalancer.enabled` flag is set to `true`. 
+The Operator will create services of type `LoadBalancer` to access a KurrentDB cluster (for each node) when the `spec.network.loadBalancer.enabled` flag is set to `true`.
 
 Each service is annotated with `external-dns.alpha.kubernetes.io/hostname: {external cluster endpoint}` to allow the third-party tool [ExternalDNS](https://github.com/kubernetes-sigs/external-dns) to configure external access.
 
