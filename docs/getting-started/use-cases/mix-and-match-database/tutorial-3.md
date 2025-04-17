@@ -68,19 +68,19 @@ Are the contents of the Top 10 Products (Redis) table and the Carts Table (Postg
 
 ## Step 11: Watch the Read Models Update in Real-Time
 
-2. Navigate to the KurrentDB Admin UI
+1. Navigate to the KurrentDB Admin UI
 
-3. Click the `Stream Browser` link from the top navigation bar.
+2. Click the `Stream Browser` link from the top navigation bar.
 
-4. Under `Recently Changed Streams`, click `$ce-cart` link. 
+3. Under `Recently Changed Streams`, click `$ce-cart` link. 
  
-5. Notice how new events are being appended to the stream in real time
+4. Notice how new events are being appended to the stream in real time
 
-6. Return to the Demo Web Page and click on the `Top 10 Products` link from the top navigation bar. Notice how the Top 10 products are being updated in real-time.
+5. Return to the Demo Web Page and click on the `Top 10 Products` link from the top navigation bar. Notice how the Top 10 products are being updated in real-time.
 
-7. Click on the `Carts Table` link from the top navigation bar. Notice how the data is updated and that new carts are available in the Postgres tables. Click the `Refresh` button to see the most recent data.
+6. Click on the `Carts Table` link from the top navigation bar. Notice how the data is updated and that new carts are available in the Postgres tables. Click the `Refresh` button to see the most recent data.
 
-8. Return to the terminal and stop the live data generator tool by typing Ctrl + C.
+7. Return to the terminal and stop the live data generator tool by typing Ctrl + C.
 
 ## Step 12: Understanding Catch-up Subscription and Real-Time Processing
 
@@ -92,21 +92,21 @@ Are the contents of the Top 10 Products (Redis) table and the Carts Table (Postg
 
 2. Locate and examine the code that subscribes to stream
 
-```cs
-await using var subscription = esdb.SubscribeToStream(                   // Subscribe events..
-    "$ce-cart",                                                          // from the cart category system projection..        
-    streamPosition,                                                      // from this position..
-    true);                                                               // with linked events automatically resolved (required for system projections)
-```
+   ```cs
+   await using var subscription = esdb.SubscribeToStream(                   // Subscribe events..
+      "$ce-cart",                                                          // from the cart category system projection..        
+      streamPosition,                                                      // from this position..
+      true);                                                               // with linked events automatically resolved (required for system projections)
+   ```
 
-The subscription will only retrieve events starting from `streamPosition` in the stream.
+   The subscription will only retrieve events starting from `streamPosition` in the stream.
 
-If `streamPosition` is not at the end of the stream, the subscription will first return all the events from that position to the end of the stream. Afterwards, it will listen for any new events appended in real time.
+   If `streamPosition` is not at the end of the stream, the subscription will first return all the events from that position to the end of the stream. Afterwards, it will listen for any new events appended in real time.
 
-If `streamPosition` is at the end of the stream, then the subscription will automatically listen to new events in real time.
+   If `streamPosition` is at the end of the stream, then the subscription will automatically listen to new events in real time.
 
-::: info 
+   ::: info 
 
-For more info on subscribing to a stream for live updates, [click here](https://docs.kurrent.io/clients/grpc/subscriptions.html#subscribing-to-a-stream-for-live-updates)
+   For more info on subscribing to a stream for live updates, [click here](https://docs.kurrent.io/clients/grpc/subscriptions.html#subscribing-to-a-stream-for-live-updates)
 
-:::
+   :::

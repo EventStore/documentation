@@ -6,9 +6,9 @@ title: Section 1 - Setup and Initialize KurrentDB
 
 In this section, you will start a GitHub Codespaces session in your browser.
 
-::: info
-GitHub Codespaces provides an instant and preconfigured development environment all within your browser. This environment contains all the tools and code to complete this tutorial. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
-:::
+   ::: info
+   GitHub Codespaces provides an instant and preconfigured development environment all within your browser. This environment contains all the tools and code to complete this tutorial. To learn more about Github Codespaces, [click here](https://github.com/features/codespaces).
+   :::
 
 You will then initialize KurrentDB by appending sample events that mimic an e-commerce application. The events are appended using a data generator program.
 
@@ -29,7 +29,6 @@ You will then initialize KurrentDB by appending sample events that mimic an e-co
 4. Click `Create codespace`
 
 5. Wait for your Codespace to build. This can take up to a few minutes. 
-
 
 ::: tip
 For this quickstart, you can safely ignore and close any Codespaces notifications that appear on the bottom right of the page.
@@ -63,7 +62,7 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 
 6. This will display the KurrentDB Admin UI.
    
-![KurrentDB Admin UI Dashboard](images/admin-ui.png =300x)
+   ![KurrentDB Admin UI Dashboard](images/admin-ui.png =300x)
 
 ## Step 3: Browse Sample Events in KurrentDB's Admin UI
 
@@ -73,24 +72,24 @@ For this quickstart, you can safely ignore and close any Codespaces notification
 
 2. You should see an ordered list of the appended events associated with two distinct, virtual shopping carts.
 
-::: info Introducing shopping cart events
-In KurrentDB, events for each shopping cart are appended to a stream like `cart-2fbe05d1dcf043d782ea24923298ae3a`, where `2fbeone05d1dcf043d782ea24923298ae3a` is the cart's unique ID.
+   ::: info Introducing shopping cart events
+   In KurrentDB, events for each shopping cart are appended to a stream like `cart-2fbe05d1dcf043d782ea24923298ae3a`, where `2fbeone05d1dcf043d782ea24923298ae3a` is the cart's unique ID.
 
-The cart will contain events like these:
+   The cart will contain events like these:
 
-| Event                     | Description                                                                                     |
-|---------------------------|-------------------------------------------------------------------------------------------------|
-| `VisitorStartedShopping`  | When a visitor starts shopping and a cart is created.                     |
-| `CustomerStartedShopping` | When a known customer starts shopping and a cart is associated with their ID.   |
-| `CartShopperGotIdentified`| When a customer's identity is linked to a cart (e.g., a visitor logged in)                            |
-| `ItemGotAdded`            | When an item is added to the cart, including details like quantity, price, and tax. |
-| `ItemGotRemoved`          | When an item is removed from the cart, including the quantity removed.    |
-| `CartGotCheckedOut`       | When a cart is checked out and converted into an order.                   |
-| `CartGotAbandoned`        | When a cart is abandoned after being idle for a specified duration.       |
-:::
+   | Event                     | Description                                                                                     |
+   |---------------------------|-------------------------------------------------------------------------------------------------|
+   | `VisitorStartedShopping`  | When a visitor starts shopping and a cart is created.                     |
+   | `CustomerStartedShopping` | When a known customer starts shopping and a cart is associated with their ID.   |
+   | `CartShopperGotIdentified`| When a customer's identity is linked to a cart (e.g., a visitor logged in)                            |
+   | `ItemGotAdded`            | When an item is added to the cart, including details like quantity, price, and tax. |
+   | `ItemGotRemoved`          | When an item is removed from the cart, including the quantity removed.    |
+   | `CartGotCheckedOut`       | When a cart is checked out and converted into an order.                   |
+   | `CartGotAbandoned`        | When a cart is abandoned after being idle for a specified duration.       |
+   :::
 
-::: info Quick Quiz
+   ::: info Quick Quiz
 
-What were the quantities of each product in the shopping carts before they were abandoned?
+   What were the quantities of each product in the shopping carts before they were abandoned?
 
-:::
+   :::

@@ -26,7 +26,7 @@ This is also popularly known as **Polyglot Persistence**.
 
 Traditionally, systems use a single relational database for all operations and it is not simple or reliable to push updates to other data stores.
 
-. To distribute data across multiple databases, developers typically implement synchronization mechanisms like:
+To distribute data across multiple databases, developers typically implement synchronization mechanisms like:
 
 - **Manual synchronization and ETL jobs** to periodically replicate data.
 - **Message brokers** (e.g., Kafka, RabbitMQ) that propagate updates to various services.
