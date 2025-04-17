@@ -75,7 +75,6 @@ export default defineComponent({
       }
     };
 
-
     /* ----------------------------- */
     /* Survey Form State & Logic  */
     /* ----------------------------- */
@@ -364,7 +363,7 @@ export default defineComponent({
     // ——— On mount: Teleport guard + watchers ———
     onMounted(() => {
       hasMobileTarget.value =
-        !!document.querySelector<HTMLDivElement>(".markdown-content");
+        !!document.querySelector<HTMLDivElement>("#markdown-content");
 
       // scroll on hash change
       watchImmediate(
@@ -444,7 +443,11 @@ export default defineComponent({
         // only teleport on mobile if target exists
         const mobileSurvey =
           isMobile.value && hasMobileTarget.value
-            ? h(Teleport, { to: ".markdown-content" }, [renderSurveyForm()])
+            ? h(
+                Teleport,
+                { to: "#markdown-content", disabled: !hasMobileTarget.value },
+                [renderSurveyForm()]
+              )
             : null;
 
         return mobileSurvey ? [tocBlock, mobileSurvey] : tocBlock;
