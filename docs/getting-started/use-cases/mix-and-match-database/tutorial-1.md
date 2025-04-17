@@ -22,7 +22,7 @@ You will then initialize KurrentDB by appending sample events that mimic an e-co
 
 2. For `Branch`, select `polyglot-tutorial`
    
-3. For `Dev container configuration`, select `Multimodal Data Transformation`
+3. For `Dev container configuration`, select `polyglot-persistence`
    
 4. For `Region`, select `Southeast Asia`
 

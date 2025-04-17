@@ -27,25 +27,25 @@ export const sidebarEn: EsSidebarOptions = {
       text: "Use Cases",
       collapsible: true,
       expanded: false,
-      group: "Getting Started",
+      group: "Use Cases",
       children: [
         {
-          text: "Polyglot Persistence",
+          text: "Mix-and-Match Database",
           collapsible: true,
           expanded: false,
-          group: "Getting Started",
+          group: "Mix-and-Match Database",
           children: [
-            "/getting-started/use-cases/what-is-polyglot-persistence.md",
+            "/getting-started/use-cases/mix-and-match-database/explanation.md",
             {
               text: "Tutorial",
               collapsible: true,
               expanded: false,
-              group: "Getting Started",
+              group: "Mix-and-Match Database Tutorial",
               children: [                
-                "/getting-started/use-cases/polyglot-persistence-tutorial-1.md",
-                "/getting-started/use-cases/polyglot-persistence-tutorial-2.md",
-                "/getting-started/use-cases/polyglot-persistence-tutorial-3.md",
-                "/getting-started/use-cases/polyglot-persistence-tutorial-4.md"
+                "/getting-started/use-cases/mix-and-match-database/tutorial-intro.md",
+                "/getting-started/use-cases/mix-and-match-database/tutorial-1.md",
+                "/getting-started/use-cases/mix-and-match-database/tutorial-2.md",
+                "/getting-started/use-cases/mix-and-match-database/tutorial-3.md"
               ]
             }
           ]
@@ -61,7 +61,7 @@ export const sidebarEn: EsSidebarOptions = {
       text: "Best Practices",
       collapsible: true,
       expanded: false,
-      group: "Getting Started",
+      group: "Best Practices",
       children: [
         "/getting-started/best-practices/checkpoint.md",
         "/getting-started/best-practices/exactly-once-processing.md"

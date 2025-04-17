@@ -4,7 +4,7 @@ title: Introduction
 
 # Introduction
 
-This tutorial will guide you through the Polyglot Persistence sample with KurrentDB using GitHub Codespaces.
+This tutorial will guide you through the Mix-and-Match Database sample with KurrentDB using GitHub Codespaces.
 
 ## Objectives
 
