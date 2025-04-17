@@ -6,14 +6,14 @@ title: Section 2 - Project KurrentDB Events to Other Databases
 
 Now that KurrentDB is filled with shopping cart events, you will learn how to project these events to other databases as read models.
 
-You will do this by executing a few sample applications written for this section:
+You will do this by executing a few sample applications written for this section.
 
 ### Introducing the Postgres Projection Application
 This application projects KurrentDB events to Postgres relational tables. The tables can be queried for reporting using standard SQL queries.
 
-To do this, it subscribes to the shopping cart events. For each event it receives, it inserts/updates a record to a cart and cart_item table in Postgres. 
+To do this, the application subscribes to the shopping cart events. For each event it receives, it inserts or updates a record to a cart and cart_item table in Postgres. 
 
-The schema of the tables are as follows:
+The schemas of the tables are as follows:
 
 `carts` Table
 ```sql
@@ -41,9 +41,9 @@ CREATE TABLE IF NOT EXISTS cart_items (
 ```
 
 ### Introducing the Redis Projection Application
-This application projects KurrentDB events to Redis sorted sets. This is used to calculate the top 10 products across all carts over the past 24 hours.
+This application projects KurrentDB events to Redis sorted sets to calculate the top 10 products across all carts over the past 24 hours.
 
-To do this, it subscribes to the shopping cart events. For each item added or removed event it receives, it will increment/decrement its product's quantity in a Redis sorted set for the current hour.
+To do this, it subscribes to the shopping cart events. Each item added or removed event the application receives will increment/decrement the product's quantity in a Redis sorted set for the current hour.
 
 ## Step 4: Execute Projection Application
 
@@ -57,13 +57,13 @@ To do this, it subscribes to the shopping cart events. For each item added or re
 
 In this step, you will review the records in the `carts` and `cart_items` tables that were created from executing the applications in the previous step:
 
-1. Run the following command in the terminal to start postgres cli:
+1. Run the following command in the terminal to start Postgres CLI:
    
    ```sh
    docker exec -it postgres psql -U postgres
    ```
 
-   You will a message, like below, printed in the termnal:
+   You will receive a message, like below, printed in the terminal:
 
    ```
    psql (16.8 (Debian 16.8-1.pgdg120+1))
@@ -72,21 +72,21 @@ In this step, you will review the records in the `carts` and `cart_items` tables
    postgres=#
    ```
 
-2. Run the following command in postgres cli to list the shopping carts projected from the events:
+2. Run the following command in Postgres CLI to list the shopping carts projected from the events:
 
    ```sql
    select * from carts;
    ``` 
 
-   You will see two carts in the table.
+   You should see two carts in the table.
 
 ::: info Quick Quiz
 
-The carts should be checked out or abandonned according to the status. Does this match the events found in step 3?
+The carts' status should be checked out or abandoned. Do the cart statuses match those you saw when manually calculating the number of events in each cart during step 3 in the last section?
 
 :::
 
-3. Run the following command in postgres cli to list the items in each cart:
+3. Type `\q` and press Return to access the Postgres CLI prompt, then run the following command to list the items in each cart:
 
    ```sql
    select * from cart_items;
@@ -96,11 +96,11 @@ The carts should be checked out or abandonned according to the status. Does this
 
 ::: info Quick Quiz
 
-Do the products and quantity in the carts match what the events indicate in step 3 ?
+Do the products and their quantities in the carts match the totals calculated in step 3 in the last section?
 
 :::
 
-4. Exit postgres cli by running the command:
+4. Exit Postgres CLI by running the command:
 
 ```
 exit
@@ -108,9 +108,9 @@ exit
 
 ## Step 6. Examine the Postgres Projection Application Codebase
 
-Projecting KurrentDB events to read models in another database often follows the following pattern:
-1. Retrieve last checkpoint
-2. Subscribe events from a stream from checkpoint
+Projecting KurrentDB events to read models in another database often adheres to the following pattern:
+1. Retrieve the last checkpoint
+2. Subscribe to events from a stream from the checkpoint
 3. Process each event by updating the read model and checkpoint in the database
 
 You will examine how this pattern is applied to the Postgres projection application.
@@ -121,9 +121,9 @@ You will examine how this pattern is applied to the Postgres projection applicat
    code ./PostgresProjection/program.cs
    ```
 
-   Code snippets below in this step can mostly be found within this file.
+   Most of the code snippets leveraged in this step can be found within this file in Codespaces.
 
-2. Locate and examine code that retrieves the last checkpoint
+2. Locate and examine the code that retrieves the last checkpoint
 
 Checkpoints for database projections can often be saved to a separate checkpoint table similar to this:
 
@@ -135,12 +135,13 @@ CREATE TABLE IF NOT EXISTS checkpoints (
 ```
 
 ::: info Understanding Checkpoint
-Checkpoint is often used by a projection to recover the position of the last processed event. This way, the projection does not have to process all the events it previously processed when an application unexpectedly crashes midway.
+A projection often uses a checkpoint to recover the position of the last processed event. This way, when an application unexpectedly crashes mid-process, the projection does not have to process all the previously processed events.
 
 For more information about checkpoints, [click here](../best-practices/checkpoint.md)
+
 :::
 
-The checkpoint can be retrieved by a `SELECT` statement. If no checkpoint is found or it is the first time the application is executed, we can retrieve the default start position:
+A `SELECT` statement can retrieve the checkpoint. If no checkpoint is found or it is the first time the application is executed, we can retrieve the default start position:
 
 ```cs
 var checkpointValue = postgres.QueryFirstOrDefault<long?>(               // Get the checkpoint value from PostgreSQL checkpoint table
@@ -154,9 +155,9 @@ var streamPosition = checkpointValue.HasValue                            // Chec
                                                // otherwise, subscribe from the start of the stream
 ```
 
-3. Locate and examine code that subscribes to stream
+3. Locate and examine the code that subscribes to stream
 
-A subscription is created that subscribes to events from the `$ce-carts` stream. The subscription will only retrieve events starting from `streamPosition` in the stream (i.e. the checkpoint retrieve from previous step).
+A subscription is created that subscribes to events from the `$ce-carts` stream. The subscription will only retrieve events starting from `streamPosition` in the stream (i.e., the checkpoint retrieved from the previous step).
 
 ```cs
 await using var subscription = esdb.SubscribeToStream(                   // Subscribe events..
@@ -166,18 +167,18 @@ await using var subscription = esdb.SubscribeToStream(                   // Subs
 ```
 
 ::: info Different Types of Subscriptions
-This sample uses catch-up subscription to subscribe to events. You can also use persistent subscription or connectors to achieve similar result. 
+This sample uses catch-up subscriptions to subscribe to events. You can also use persistent subscriptions or connectors to achieve a similar result. 
 
-For more information about catch-up subscription, [click here](https://docs.kurrent.io/clients/grpc/subscriptions.html).
-For more information about persistent subscription, [click here](https://docs.kurrent.io/clients/grpc/persistent-subscriptions.html). 
+For more information about catch-up subscriptions, [click here](https://docs.kurrent.io/clients/grpc/subscriptions.html).
+For more information about persistent subscriptions, [click here](https://docs.kurrent.io/clients/grpc/persistent-subscriptions.html). 
 For more information about connectors, [click here](https://docs.kurrent.io/server/v24.10/features/connectors/)
 :::
 
 ::: info Understanding Category System Projection
-The `$ce-cart` stream contains events from all the carts in KurrentDB. This uses the category system projection stream feature. For more information [click here](https://docs.kurrent.io/server/v24.10/features/projections/system.html#by-category).
+The `$ce-cart` stream contains events from all the carts in KurrentDB. This uses the category system projection stream feature. For more information, [click here](https://docs.kurrent.io/server/v24.10/features/projections/system.html#by-category).
 :::
 
-4. Locate and examine code that processes each event
+4. Locate and examine the code that processes each event
 
 For each event, the projection will:
 - Start a database transaction,
@@ -186,7 +187,7 @@ For each event, the projection will:
 - Commit the database transaction
 
 ::: tip 
-The updates to the read model and checkpoint tables should be committed within the same transaction to atomicity and consistency. This guarantees that both updates succeed or fail together, preventing data inconsistencies like outdated read models or incorrect checkpoint positions. It also simplifies error recovery and ensures the system remains in sync.
+To ensure atomicity and consistency, the updates to the read model and checkpoint tables should be committed within the same transaction. This guarantees that both updates succeed or fail together, preventing data inconsistencies like outdated read models or incorrect checkpoint positions. It also simplifies error recovery and ensures the system remains in sync.
 :::
 
 ::: info Exactly-once processing
@@ -224,9 +225,9 @@ await foreach (var message in subscription.Messages)                     // Iter
 }
 ```
 
-The `CartProjection.Project(e)` function above returns a sql command that updates the read model depending on the event. 
+The `CartProjection.Project(e)` function above returns a SQL command that updates the read model depending on the event. 
 
-For example, this returns a command that inserts a cart if `CustomerStartedShopping` event i received:
+For example, this returns a command that inserts a cart if `CustomerStartedShopping` event is received:
 
 ```cs
 private static IEnumerable<CommandDefinition>? Project(CustomerStartedShopping evt)
@@ -257,7 +258,7 @@ private static IEnumerable<CommandDefinition>? Project(CartGotCheckedOut evt)
 }
 ```
 
-These function as well as other ones can be found in `/PostgresProjection/CartProjection.cs`.
+These functions and others can be found in `/PostgresProjection/CartProjection.cs`.
 
 ::: info Quick Quick
 What does `CartProjection.Project()` return when `ItemGotRemoved` is received?
@@ -268,19 +269,19 @@ What does `CartProjection.Project()` return when `ItemGotRemoved` is received?
 
 In this step, you will review the top 10 products that were recorded in Redis from executing the applications in a previous step:
 
-1. Run the following command in the terminal to start postgres cli:
+1. Run the following command in the terminal to start Redis CLI:
    
    ```sh
    docker exec -it redis redis-cli
    ```
 
-   You will see a message, like below, printed in the termnal:
+   You will see a message, like below, printed in the terminal:
 
    ```
    127.0.0.1:6379>
    ```
 
-2. Run the following command in redis-cli to list all keys in Redis:
+2. Run the following command in the Redis CLI to list all keys in Redis:
 
    ```
    KEYS *
@@ -294,7 +295,7 @@ In this step, you will review the top 10 products that were recorded in Redis fr
    3) "top-10-products:2025041508"
    ```
 
-3. Run the following command in redis-cli to list the most popular products added to cart so far. Replace top-10-product:YYYYMMDDHH with the actual top-10-products key listed in the previous step.
+3. Run the following command in the Redis CLI to list the most popular products added to a cart. Replace top-10-product:YYYYMMDDHH with the actual top-10-products key listed in the previous step.
 
    ```
    ZREVRANGE top-10-product:YYYYMMDDHH 0 9 WITHSCORES
@@ -313,13 +314,13 @@ In this step, you will review the top 10 products that were recorded in Redis fr
    8) "1"
    ```
 
-   The 13 digit number is the product ID, followed by its quantity across all shopping carts. In this case, `5449310139799` is the most popular product with 9 of them across all carts
+   The 13-digit number is the product ID, followed by its quantity across all shopping carts. In this case, `5449310139799` is the most popular product with 9 of them across all carts.
 
 ::: info Quick Quiz
-Given the quantity for a product above is the total add minus total removed from a cart, pick one of the products above and see if it matches what the events in step 3 indicate.
+Given that the quantity for a product above is the total added minus the total removed from a cart, pick one of the products above and confirm it matches what the events in step 3 from the previous section indicate.
 :::
 
-4. Exit redis-cli by running the command:
+4. Exit the Redis CLI by running the command:
 
 ```
 exit
@@ -328,8 +329,8 @@ exit
 ## Step 8. Examine the Redis Projection Application Codebase
 
 Similar to step 6, projecting KurrentDB events to read models in another database like Redis can also follow the same pattern:
-1. Retrieve last checkpoint
-2. Subscribe events from a stream from checkpoint
+1. Retrieve the last checkpoint
+2. Subscribe to events in a stream from the checkpoint
 3. Process each event by updating the read model and checkpoint in the database
 
 You will examine how this pattern is applied to the Redis projection application.
@@ -340,22 +341,22 @@ You will examine how this pattern is applied to the Redis projection application
    code ./RedisProjection/program.cs
    ```
 
-   Code snippets below in this step can mostly be found within this file.
+   Most of the code snippets included in this step can be found in this file.
 
-2. Locate and examine code that retrieves the last checkpoint
+2. Locate and examine the code that retrieves the last checkpoint
 
-The checkpoint can be retrieved by the `redis.StringGet()` statement. If no checkpoint is found or it is the first time the application is executed, we can retrieve the default start position:
+The `redis.StringGet()` statement can retrieve the checkpoint. If no checkpoint is found or it is the first time the application is executed, we can retrieve the default start position:
 
 ```cs
 var checkpointValue = redis.StringGet("checkpoint");                     // Get the checkpoint value from redis
 var streamPosition = long.TryParse(checkpointValue, out var checkpoint)  // Check if it exists and convertible to long
     ? FromStream.After(StreamPosition.FromInt64(checkpoint))             // If so, set var to subscribe events from stream after checkpoint
-    : FromStream.Start;                                                  // Otherwise, set var to subscribe events from stream from the start
+    : FromStream.Start;                                                  // Otherwise, set var to subscribe to events from the stream from the start.
 ```
 
-3. Locate and examine code that subscribes to stream
+3. Locate and examine the code that subscribes to stream
 
-A catch-up subscription is created that subscribes to events from the `$ce-carts` stream. The subscription will only retrieve events starting from `streamPosition` in the stream (i.e. the checkpoint retrieve from previous step).
+A catch-up subscription is created that subscribes to events from the `$ce-carts` stream. The subscription will only retrieve events starting from `streamPosition` in the stream (i.e., the checkpoint retrieved from the previous step).
 
 ```cs
 await using var subscription = esdb.SubscribeToStream(                   // Subscribe events..
@@ -363,13 +364,13 @@ await using var subscription = esdb.SubscribeToStream(                   // Subs
     streamPosition,                                                      // from this position..
     true);                                                               // with linked events automatically resolved (required for system projections)
 ```
-4. Locate and examine code that processes each event
+4. Locate and examine the code that processes each event
 
 For each event, the projection will:
-- Start a redi transaction,
+- Start a Redis transaction,
 - Save the appropriate key-value pairs in the database,
 - Update the `checkpoint` key in the database,
-- Commit the redis transaction
+- Commit the Redis transaction
 
 
 ```cs
@@ -387,11 +388,11 @@ await foreach (var message in subscription.Messages)                     // Iter
 }
 ```
 
-The `CartProjection.TryProject()` function above will try to project the event into the appropriate key-value pair in redis. 
+The `CartProjection.TryProject()` function above will try to project the event into the appropriate key-value pair in Redis. 
 
-If the event is `ItemGotAdded` then a Redis sort set is incremented with the product key for that particular hour.
+If the event is `ItemGotAdded`, then a Redis sort set is incremented with the product key for that particular hour.
 
-A hash set is also used to map product Ids to product names (Used later in the Demo Web Page to construct a top 10 products table).
+A hash set is also used to map product IDs to product names (this is used later in the Demo Web Page to construct a table of the top 10 products).
 
 ```cs
 public static void Project(ITransaction txn, ItemGotAdded addedEvent)
@@ -409,7 +410,7 @@ public static void Project(ITransaction txn, ItemGotAdded addedEvent)
 ```
 
 
-If the event is `ItemGotRemoved` then a Redis sort set is decremented with the product key for that particular hour.
+If the event is `ItemGotRemoved`, then a Redis sort set is decremented with the product key for that particular hour.
 
 ```cs
 public static void Project(ITransaction txn, ItemGotRemoved removedEvent)
@@ -425,4 +426,4 @@ public static void Project(ITransaction txn, ItemGotRemoved removedEvent)
 }
 ```
 
-These function as well can be found in `/RedisProjection/CartProjection.cs`.
+These functions can also be found in `/RedisProjection/CartProjection.cs`.
