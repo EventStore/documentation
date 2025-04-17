@@ -54,95 +54,27 @@ export default defineComponent({
 
     const toc = shallowRef<HTMLElement>();
     const tocMarkerTop = ref("-1.7rem");
+    const hasMobileTarget = ref(false);
 
-    const scrollTo = (top: number): void => {
+    const scrollTo = (top: number) => {
       toc.value?.scrollTo({ top, behavior: "smooth" });
     };
 
-    const updateTocMarker = (): void => {
-      if (toc.value) {
-        const activeTocItem = document.querySelector(".vp-toc-item.active");
-        if (activeTocItem) {
-          tocMarkerTop.value = `${
-            activeTocItem.getBoundingClientRect().top -
-            toc.value.getBoundingClientRect().top +
-            toc.value.scrollTop
-          }px`;
-        } else {
-          tocMarkerTop.value = "-1.7rem";
-        }
+    const updateTocMarker = () => {
+      if (!toc.value) {
+        tocMarkerTop.value = "-1.7rem";
+        return;
+      }
+      const active = document.querySelector<HTMLElement>(".vp-toc-item.active");
+      if (active) {
+        const a = active.getBoundingClientRect();
+        const t = toc.value.getBoundingClientRect();
+        tocMarkerTop.value = `${a.top - t.top + toc.value.scrollTop}px`;
+      } else {
+        tocMarkerTop.value = "-1.7rem";
       }
     };
 
-    onMounted(() => {
-      // Scroll to active toc item when route hash changes
-      watchImmediate(
-        () => route.hash,
-        (hash): void => {
-          if (toc.value) {
-            const activeTocItem = document.querySelector(
-              `#toc a.vp-toc-link[href$="${hash}"]`
-            );
-            if (!activeTocItem) return;
-            const { top: tocTop, height: tocHeight } =
-              toc.value.getBoundingClientRect();
-            const { top: activeTocItemTop, height: activeTocItemHeight } =
-              activeTocItem.getBoundingClientRect();
-
-            if (activeTocItemTop < tocTop) {
-              scrollTo(toc.value.scrollTop + activeTocItemTop - tocTop);
-            } else if (
-              activeTocItemTop + activeTocItemHeight >
-              tocTop + tocHeight
-            ) {
-              scrollTo(
-                toc.value.scrollTop +
-                  activeTocItemTop +
-                  activeTocItemHeight -
-                  tocTop -
-                  tocHeight
-              );
-            }
-          }
-        },
-        { flush: "post" }
-      );
-
-      watchImmediate(() => route.fullPath, updateTocMarker, { flush: "post" });
-    });
-
-    const renderHeader = ({ title, level, slug }: PageHeader): VNode =>
-      h(
-        RouteLink,
-        {
-          to: `#${slug}`,
-          class: ["vp-toc-link", `level${level}`],
-          onClick: () => toggleExpanded(),
-        },
-        () => title
-      );
-
-    const renderChildren = (headers: PageHeader[]): VNode | null =>
-      headers.length
-        ? h("ul", { class: "vp-toc-list" }, [
-            ...headers.map((header) => {
-              const children = renderChildren(header.children);
-              return [
-                h(
-                  "li",
-                  {
-                    class: [
-                      "vp-toc-item",
-                      { active: route.hash === `#${header.slug}` },
-                    ],
-                  },
-                  renderHeader(header)
-                ),
-                children ? h("li", children) : null,
-              ];
-            }),
-          ])
-        : null;
 
     /* ----------------------------- */
     /* Survey Form State & Logic  */
@@ -266,29 +198,22 @@ export default defineComponent({
 
     const hoveredThumb = ref<"up" | "down" | null>(null);
 
-    const renderThumbButton = (thumb: "up" | "down") => {
-      const iconName =
-        thumb === "up"
-          ? "material-symbols:thumb-up"
-          : "material-symbols:thumb-down";
-      return h(
+    const renderThumbButton = (thumb: "up" | "down"): VNode =>
+      h(
         "button",
         {
-          onClick: () => {
-            thumbsValue.value = thumb;
-          },
-          onMouseenter: () => {
-            hoveredThumb.value = thumb;
-          },
-          onMouseleave: () => {
-            hoveredThumb.value = null;
-          },
+          onClick: () => (thumbsValue.value = thumb),
+          onMouseenter: () => (hoveredThumb.value = thumb),
+          onMouseleave: () => (hoveredThumb.value = null),
           class: "survey-thumb-button",
         },
         [
           enableIcon.value
             ? h(resolveComponent("VPIcon"), {
-                icon: iconName,
+                icon:
+                  thumb === "up"
+                    ? "material-symbols:thumb-up"
+                    : "material-symbols:thumb-down",
                 size: "1.5rem",
                 color:
                   hoveredThumb.value === thumb || thumbsValue.value === thumb
@@ -298,7 +223,6 @@ export default defineComponent({
             : null,
         ]
       );
-    };
 
     // Render the survey form
     const renderSurveyForm = (): VNode => {
@@ -403,9 +327,77 @@ export default defineComponent({
       ]);
     };
 
-    /* ----------------------------- */
-    /*    Final Render               */
-    /* ----------------------------- */
+    // ——— TOC rendering helpers ———
+    const renderHeader = ({ title, level, slug }: PageHeader): VNode =>
+      h(
+        RouteLink,
+        {
+          to: `#${slug}`,
+          class: ["vp-toc-link", `level${level}`],
+          onClick: toggleExpanded,
+        },
+        () => title
+      );
+
+    const renderChildren = (list: PageHeader[]): VNode | null =>
+      list.length
+        ? h("ul", { class: "vp-toc-list" }, [
+            ...list.map((hdr) => {
+              const children = renderChildren(hdr.children);
+              return [
+                h(
+                  "li",
+                  {
+                    class: [
+                      "vp-toc-item",
+                      { active: route.hash === `#${hdr.slug}` },
+                    ],
+                  },
+                  renderHeader(hdr)
+                ),
+                children ? h("li", children) : null,
+              ];
+            }),
+          ])
+        : null;
+
+    // ——— On mount: Teleport guard + watchers ———
+    onMounted(() => {
+      hasMobileTarget.value =
+        !!document.querySelector<HTMLDivElement>(".markdown-content");
+
+      // scroll on hash change
+      watchImmediate(
+        () => route.hash,
+        (hash) => {
+          if (!toc.value) return;
+          const sel = `#toc a.vp-toc-link[href$="${hash}"]`;
+          const activeEl = document.querySelector<HTMLElement>(sel);
+          if (!activeEl) return;
+          const tRect = toc.value.getBoundingClientRect();
+          const aRect = activeEl.getBoundingClientRect();
+          if (aRect.top < tRect.top) {
+            scrollTo(toc.value.scrollTop + aRect.top - tRect.top);
+          } else if (aRect.top + aRect.height > tRect.top + tRect.height) {
+            scrollTo(
+              toc.value.scrollTop +
+                aRect.top +
+                aRect.height -
+                tRect.top -
+                tRect.height
+            );
+          }
+        },
+        { flush: "post" }
+      );
+
+      // update marker on path change
+      watchImmediate(() => route.fullPath, updateTocMarker, {
+        flush: "post",
+      });
+    });
+
+    // ——— Final render ———
     return () => {
       const tocHeaders = props.items?.length
         ? renderChildren(props.items)
@@ -416,58 +408,46 @@ export default defineComponent({
       return h(ClientOnly, () => {
         if (!tocHeaders && !before && !after) return null;
 
-        // Main TOC container
-        const tocContent = h("div", { class: "vp-toc-placeholder" }, [
+        const tocBlock = h("div", { class: "vp-toc-placeholder" }, [
           h("aside", { id: "toc", "vp-toc": "" }, [
             before,
-            tocHeaders
-              ? [
-                  h(
-                    "div",
-                    {
-                      class: "vp-toc-header",
-                      onClick: () => toggleExpanded(),
-                    },
-                    [
-                      metaLocale.value.toc,
-                      h(PrintButton),
-                      h("div", {
-                        class: ["arrow", isExpanded.value ? "down" : "end"],
-                      }),
-                    ]
-                  ),
-                  h(
-                    "div",
-                    {
-                      class: ["vp-toc-wrapper", isExpanded.value ? "open" : ""],
-                      ref: toc,
-                    },
-                    [
-                      tocHeaders,
-                      h("div", {
-                        class: "vp-toc-marker",
-                        style: {
-                          top: tocMarkerTop.value,
-                        },
-                      }),
-                    ]
-                  ),
+            tocHeaders && [
+              h("div", { class: "vp-toc-header", onClick: toggleExpanded }, [
+                metaLocale.value.toc,
+                h(PrintButton),
+                h("div", {
+                  class: ["arrow", isExpanded.value ? "down" : "end"],
+                }),
+              ]),
+              h(
+                "div",
+                {
+                  class: ["vp-toc-wrapper", isExpanded.value ? "open" : ""],
+                  ref: toc,
+                },
+                [
+                  tocHeaders,
+                  h("div", {
+                    class: "vp-toc-marker",
+                    style: { top: tocMarkerTop.value },
+                  }),
                 ]
-              : null,
+              ),
+            ],
             after,
-            // Add survey form inside the TOC for desktop
-            !isMobile.value
-              ? h("div", { class: "toc-survey-section" }, [renderSurveyForm()])
-              : null,
+            // desktop survey
+            !isMobile.value &&
+              h("div", { class: "toc-survey-section" }, [renderSurveyForm()]),
           ]),
         ]);
 
-        // For mobile: create a separate teleported component
-        const mobileSurvey = isMobile.value
-          ? h(Teleport, { to: ".markdown-content" }, [renderSurveyForm()])
-          : null;
+        // only teleport on mobile if target exists
+        const mobileSurvey =
+          isMobile.value && hasMobileTarget.value
+            ? h(Teleport, { to: ".markdown-content" }, [renderSurveyForm()])
+            : null;
 
-        return mobileSurvey ? [tocContent, mobileSurvey] : tocContent;
+        return mobileSurvey ? [tocBlock, mobileSurvey] : tocBlock;
       });
     };
   },
