@@ -6,9 +6,11 @@ title: Explanation
 
 ![](./images/use-the-right-database-for-the-job.png)
 
-## What does Mix-and-Match Database mean?
+## Mix-and-Match Database
 
-**Mix-and-Match Database** means using multiple types of databases or data models for different parts of your application. For example:
+Modern applications often deal with diverse data access patterns that a single database can’t efficiently handle. That’s where you can leverage a database mix-and-match approach where different types of databases for different parts of your system can be used based on their strengths.
+
+For example:
 
 - **PostgreSQL** for general queries.
 - **Redis** for fast lookups.
