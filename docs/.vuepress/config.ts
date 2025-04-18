@@ -64,6 +64,21 @@ export default defineUserConfig({
     theme: hopeTheme(themeOptions,{custom: true}),
     head: [
         ['script', {
+            id: 'Cookiebot',
+            src: 'https://consent.cookiebot.com/uc.js',
+            'data-cbid': 'ee971b30-e872-46e8-b421-706ef26d9dcc',
+            'data-blockingmode': 'auto',
+            type: 'text/javascript',
+          }],
+
+          ['script', {
+            id: 'CookieDeclaration',
+            src: 'https://consent.cookiebot.com/ee971b30-e872-46e8-b421-706ef26d9dcc/cd.js',
+            type: 'text/javascript',
+            async: true
+          }],
+
+        ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
             'data-website-id': '9ff147dd-2c68-495d-9859-de159901d8c5',
             'data-project-name': 'Kurrent',
