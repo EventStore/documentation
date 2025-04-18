@@ -107,6 +107,10 @@ export default defineUserConfig({
             'data-project-color': '#631B3A',
             'data-project-logo': '/logo-white.png'
         }],
+
+        ['style', {}, `
+            #redirect-modal-mask { display: none !important; }
+          `],
     ],   
     // add our own components for blog theme (Tutorials & Guides)
     alias: {
