@@ -248,7 +248,7 @@ kurrentdbclient==1.0.19
 ```xml
 <dependency>
    <groupId>io.kurrent</groupId>
-   <artifactId>db-client-java</artifactId>
+   <artifactId>kurrentdb-client</artifactId>
    <version>1.0.0</version>
 </dependency>
 ```
