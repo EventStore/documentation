@@ -42,21 +42,21 @@ pnpm add @kurrent/kurrentdb-client
 
 ### Java
 
-Add the `db-client-java` dependency to your project using Maven or Gradle.
+Add the `kurrentdb-client` dependency to your project using Maven or Gradle.
 
 ::: tabs
 @tab Maven
 ```xml
 <dependency>
   <groupId>io.kurrent</groupId>
-  <artifactId>db-client-java</artifactId>
+  <artifactId>kurrentdb-client</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
 
 @tab Gradle
 ```
-implementation 'io.kurrent:db-client-java:1.0.0'
+implementation 'io.kurrent:kurrentdb-client:1.0.0'
 ```
 
 For the most recent version of the KurrentDB client package, see [Maven Central](https://mvnrepository.com/artifact/io.kurrent/kurrentdb-client).
