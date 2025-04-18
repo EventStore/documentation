@@ -63,31 +63,50 @@ export default defineUserConfig({
     },
     theme: hopeTheme(themeOptions,{custom: true}),
     head: [
+
+        // Business Institution 247, before the user accepts cookie
         ['script', {
+            type: 'text/javascript',
+            src: 'https://secure.businessintuition247.com/js/264384.js',
+          }],
+          ['noscript', {},
+            '<img alt="" src="https://secure.businessintuition247.com/264384.png" style="display:none;" />'
+          ],
+      
+          // Cookiebot banner 
+          ['script', {
             id: 'Cookiebot',
             src: 'https://consent.cookiebot.com/uc.js',
             'data-cbid': 'ee971b30-e872-46e8-b421-706ef26d9dcc',
             'data-blockingmode': 'auto',
             type: 'text/javascript',
           }],
-
+      
+          // Cookiebot declaration
           ['script', {
             id: 'CookieDeclaration',
             src: 'https://consent.cookiebot.com/ee971b30-e872-46e8-b421-706ef26d9dcc/cd.js',
             type: 'text/javascript',
-            async: true
+            async: true,
           }],
 
-        ['script', {
+          ['script', { src: '/js/snippet.js' }],
+      
+          // Business Institution 247 “consent‑only” loader 
+          ['script', {
+            type: 'text/plain',
+            'data-cookiecategory': 'marketing',
+            src: 'https://secure.businessintuition247.com/js/sc/264384.js',
+          }],
+
+          // Kapa helper widget
+          ['script', {
             src: 'https://widget.kapa.ai/kapa-widget.bundle.js',
             'data-website-id': '9ff147dd-2c68-495d-9859-de159901d8c5',
             'data-project-name': 'Kurrent',
             'data-project-color': '#631B3A',
             'data-project-logo': '/logo-white.png'
         }],
-        ['script', { src: "/js/snippet.js" }],
-        ['script', { type: "text/javascript", src: "https://secure.businessintuition247.com/js/sc/264384.js" }],
-        ['noscript', {}, '<img alt="" src="https://secure.businessintuition247.com/264384.png" style="display:none;" />']
     ],   
     // add our own components for blog theme (Tutorials & Guides)
     alias: {
