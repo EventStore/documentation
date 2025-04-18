@@ -64,7 +64,11 @@ export default defineUserConfig({
     theme: hopeTheme(themeOptions,{custom: true}),
     head: [
 
-        
+        // Business Institution 247, before the user accepts cookie
+        ['script', {
+            type: 'text/javascript',
+            src: 'https://secure.businessintuition247.com/js/264384.js',
+          }],
           ['noscript', {},
             '<img alt="" src="https://secure.businessintuition247.com/264384.png" style="display:none;" />'
           ],
