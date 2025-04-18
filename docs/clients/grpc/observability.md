@@ -26,20 +26,20 @@ OpenTelemetry support is included to the KurrentDB Java client by default. For o
 
 ### NodeJS
 
-Install the `@eventstore/opentelemetry` package using your package manager of choice. TypeScript type declarations are included in the package.
+Install the `@kurrent/opentelemetry` package using your package manager of choice. TypeScript type declarations are included in the package.
 
 ::: tabs
 @tab npm
 ```bash
-npm install --save @eventstore/opentelemetry
+npm install --save @kurrent/opentelemetry
 ```
 @tab yarn
 ```bash
-yarn add @eventstore/opentelemetry
+yarn add @kurrent/opentelemetry
 ```
 @tab pnpm
 ```bash
-pnpm add @eventstore/opentelemetry
+pnpm add @kurrent/opentelemetry
 ```
 :::
 
