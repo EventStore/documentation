@@ -4,7 +4,7 @@ dir:
   order: 3
 ---
 
-# Dedicated Infrastructure
+# Kurrent Cloud
 
 Kurrent Cloud documentation.
 
