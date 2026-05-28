@@ -61,16 +61,6 @@ body:has(#kapa-widget-container) .vp-back-to-top-button {
   text-align: left;
 }
 
-html[data-theme="dark"] #kapa-widget-portal {
-  code {
-    background: rgba(127, 127, 127, 0.12);
-  }
-
-  blockquote {
-    border-color: #eee;
-  }
-}
-
 /* Fix for center-alignment issue on `.not-found` pages */
 .vp-page.not-found .theme-hope-content,
 .vp-page.not-found .vp-breadcrumb,
