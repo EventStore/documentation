@@ -33,6 +33,16 @@ export const sidebarEn: EsSidebarOptions = {
             link: "/getting-started/going-further.md",
             group: "Getting Started",
         },
+        {
+            text: "Agent Skills",
+            link: "/getting-started/agent-skills.md",
+            group: "Getting Started",
+        },
+        {
+            text: "MCP Servers",
+            link: "/getting-started/mcp.md",
+            group: "Getting Started",
+        },
 
     ],
     "/clients/grpc/": "structure",
