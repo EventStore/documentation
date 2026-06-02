@@ -108,6 +108,18 @@ highlights:
         details: Interact with KurrentDB from any stack using the REST-style HTTP API
         link: /server/v25.0/http-api/introduction.html
 
+  - header: ⚡ Code with AI
+    description: Give your coding agent first-class knowledge of Kurrent
+    features:
+      - title: Agent Skills
+        details: Pre-built skills that teach coding agents how to build, connect, debug and deploy applications with Kurrent
+        link: /getting-started/agent-skills.html
+
+      - title: MCP
+        icon: simple-icons:modelcontextprotocol
+        details: Talk to KurrentDB and drive projection development from your coding assistant
+        link: /getting-started/mcp.html
+
   - header: 🔌 Connect and Manage
     description: Manage and integrate KurrentDB
     features:
