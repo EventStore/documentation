@@ -180,3 +180,50 @@ the following issuers should be visible in the `kurrent` namespace:
 Describing the issuer should yield:
 
 ![Issuers](images/certs/ca-issuer-details.png)
+
+## Migrating Certificate Authorities
+
+If for some reason you need to migrate Certificate Authorities (for example, switching from one
+self-signed CA to another), the process follows three steps:
+
+1. Update your `KurrentDB.spec.security.certificateAuthoritySecret`:
+   - First, ensure the named Secret contains only CAs; the database will not start if you have your
+     TLS keys or other contents in the same Secret.
+   - Add your new CA as a new key to the Secret, leaving the old CA in place.
+   - Remove the `.keyName` field to indicate you want all keys of the Secret mounted into database
+     pods as trusted CAs.
+   - Wait for the KurrentDB resource to return to the `database-healthy` state.
+   - Handle possible race condition; see below.
+
+2. Update your `KurrentDB.spec.security.certificateSecret`:
+   - Switch to the TLS keypair signed by the new CA.  You may either configure the your KurrentDB to
+     reference a new Secret (which will cause a rolling restart) or update the content of the
+     currently-referenced Secret (which will cause a config reload, no node downtime).
+   - Wait for the KurrentDB resource to return to the `database-healthy` state.
+
+3. Update your `KurrentDB.spec.security.certificateAuthoritySecret` again:
+   - Remove the old CA you no longer wish to trust.
+   - Restore the `.keyName` if desired.
+   - Wait for the KurrentDB resource to return to the `database-healthy` state.
+
+During step 1, the Operator requests the mounted pod secrets to be resynced, then waits 10 seconds,
+then requests the database pods to reload their configs (including trusted CA list).  If the kubelet
+is under very heavy load, it may not have actually synced the secrets into the pods by the time the
+database reloads.  For TLS key pair changes, the Operator can detect and remediate that race
+condition.  However, with CA list changes, the Operator cannot tell if the race occurred.  The race
+condition is rare, however, if it occurs and it is unaddressed, then step 2 will result in a full
+restart, which is unnecessary downtime.
+
+To guarantee no unnecessary downtime, you may take one of the following actions:
+
+- You can exec into the pods, confirm that your updates appear in `/kurrentdb/ca` directory (or
+  `/eventstore/ca` for older database versions), then trigger another config reload by bumping the
+  `.spec.configReloadKey` string to any new value.
+
+- You can simply wait a few minutes then bump the `.spec.configReloadKey`.  How long you need to
+  wait is governed by the kubelet's `syncFrequency` and `configMapAndSecretChangeDetectionStrategy`
+  strategy.  For default kubelet settings, you need to wait at least one minute.
+
+- If you have multiple nodes, you may issue an immediate rolling restart by bumping the
+  `.spec.rollingRestartKey` string to any new value.  When nodes restart they are guaranteed to
+  mount the latest secrets.

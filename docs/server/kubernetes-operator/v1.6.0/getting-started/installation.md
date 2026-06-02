@@ -46,7 +46,7 @@ To install in this way, run:
 
 ```bash
 helm install kurrentdb-operator kurrent-latest/kurrentdb-operator \
-  --version 1.5.0 \
+  --version 1.6.0 \
   --create-namespace \
   --namespace kurrent-system \
   --set-file operator.license.key=/path/to/license.key \
@@ -97,7 +97,7 @@ install the CRDs before the Helm installation (and again with each upgrade):
 
 ```bash
 # Download the kurrentdb-operator Helm chart
-helm pull kurrent-latest/kurrentdb-operator --version 1.5.0 --untar
+helm pull kurrent-latest/kurrentdb-operator --version 1.6.0 --untar
 
 # Install the CRDs
 kubectl apply -f kurrentdb-operator/templates/crds
@@ -139,7 +139,7 @@ helm upgrade kurrentdb-operator kurrent-latest/kurrentdb-operator \
 Here's what these commands do:
 - Refresh the local Helm repository index
 - Locate an existing operator installation in namespace `kurrent`
-- Select the target upgrade version `{version}` e.g. `1.5.0`
+- Select the target upgrade version `{version}` e.g. `1.6.0`
 - Perform the upgrade, preserving values that were set during installation
 
 ## Install Using OLM
@@ -237,7 +237,7 @@ spec:
   name: kurrentdb-operator
   source: kurrentdb-operator
   sourceNamespace: default
-  startingCSV: kurrentdb-operator.v1.5.0
+  startingCSV: kurrentdb-operator.v1.6.0
 EOF
 ```
 

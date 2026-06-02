@@ -223,10 +223,11 @@ Note that changing the `loadBalancerClass` will require deleting the old load ba
 | `certificateSecret` _[CertificateSecret](#certificatesecret)_          | Yes      | Secret containing the TLS certificate to use.  Updates trigger a config reload.                                       |
 | `certificateSubjectName` _string_                                      | No       | Deprecated field.  The value of this field is always ignored.                                                         |
 
-Note that in `certificateAuthoritySecret`, only `.name` is required.  `.keyName` is optional; if
-provided only that Secret key will be mounted into the pod as a CA.  If not provided, all Secret
-keys will be mounted as CAs, which allows for rotating CAs without downtime, by trusting both old
-and new CAs for a period of time.  `.privateKeyName` is deprecated and ignored.
+Note that in `certificateAuthoritySecret`, only `.name` needs to be non-empty.  If `.keyName` is
+non-empty, only that Secret key will be mounted into the pod as a CA.  If it is set to the empty
+string (`""`), all Secret keys will be mounted as CAs, which allows for rotating CAs without
+downtime, by trusting both old and new CAs for a period of time.  `.privateKeyName` is deprecated
+and ignored.
 
 #### CertificateSecret
 

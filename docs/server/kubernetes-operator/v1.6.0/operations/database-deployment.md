@@ -3,9 +3,9 @@ title: Example Deployments
 order: 1
 ---
 
-This page shows various deployment examples of KurrentDB.  Each example assumes the that the
-Operator has been installed in a way that it can at least control KurrentDB resources in the
-`kurrent` namespace.
+This page shows various deployment examples of KurrentDB.  Each example assumes that the Operator
+has been installed in a way that it can at least control KurrentDB resources in the `kurrent`
+namespace.
 
 Each example is designed to illustrate specific techniques:
 
@@ -83,8 +83,8 @@ spec:
 Note that read-only replicas are only supported by KurrentDB in clustered configurations, that is,
 with multiple quorum nodes.
 
-The following `KurrentDB` resource type defines a four node cluster (three quorum nodes plus a
-read-only replica) with the following properties:
+The following `KurrentDB` resource type defines a five node cluster (three quorum nodes plus two
+read-only replicas) with the following properties:
 - Security is not enabled
 - 1 GB of memory will be used per quorum node, but read-only replicas will have 2 GB of memory
 - The quorum nodes will be exposed as `kurrentdb-{idx}.kurrent.test`
@@ -122,7 +122,7 @@ spec:
 ## Three Node Insecure Cluster with Archiving
 
 Note that archiver nodes are a special kind of read-only replica node.  So, like read-only replicas,
-archving can only be enabled in clustered configurations.
+archiving can only be enabled in clustered configurations.
 
 Also note that Archiving is an enterprise feature requiring a KurrentDB license, which is distinct
 from the Operator license provided during the Helm installation.  We provide the KurrentDB license
@@ -217,8 +217,8 @@ The following `KurrentDB` resource type defines a three node cluster with the fo
 - Servers will dial each other by Kubernetes service name (`*.kurrent.svc.cluster.local`)
 - Clients will dial servers by the FQDN (`*.kurrent.test`)
 - The self-signed certificate is valid for both service name and FQDN.
-- The `admin`, `ops`, are configured at database creation, so at no point is there a deployment with
-  the default `admin:changeit` credentials.
+- The `admin` and `ops` users are configured at database creation, so at no point is there a
+  deployment with the default `admin:changeit` credentials.
 - A custom user (named `custom`) is also created the first time the db appears healthy.
 
 ```yaml
@@ -543,7 +543,7 @@ spec:
     domain: kurrent.test
     loadBalancer:
       enabled: true
-    fqdnTemplate: '{podName}-sa.{domain}'
+    fqdnTemplate: '{podName}-rr.{domain}'
     internodeTrafficStrategy: SplitDNS
     clientTrafficStrategy: FQDN
   security:

@@ -32,40 +32,31 @@ Operator streamlines deployment and management of KurrentDB clusters.
 * Configure KurrentDB initial users and passwords
 * Perform rolling upgrades and update configurations
 
-### New in 1.5.0
+### New in 1.6.0
 
-* Support Archiver nodes.  Archiver nodes are a KurrentDB feature that lets you offload your old,
-  less-frequently-accessed data into blob storage.  See [an example][arx].
-* Support for running KurrentDB pods under a specific `ServiceAccount`, to support IRSA access to
-  cloud storage for archiving.  See the [serviceAccountName setting][san] setting.
-* Management of initial user configuration.  The `admin` and `ops` passwords can be set on database
-  creation, as well as fully custom users.  See [an example of a secure deployment][usr].
-* Automatically detect TLS certificate updates and load them into the database with zero downtime.
-  With cert-manager (or any automated cert renewal system), certificate rotation now requires zero
-  administrator action.
-* Support multiple custom certificate authorities.  This supports migrating from one CA to another
-  without downtime, and also supports multi-kubernetes-cluster topologies with self-signed
-  certificates without having to transfer root CA private keys between clusters. See the
-  [certificateAuthoritySecret setting][sec].
-* Support 5-node clusters.  A 5-node cluster ensures that, even during a rolling restart, you can
-  still lose one node without risk of data loss.
-* Support telemetry opt-out.  See the [telemetryOptOut setting][tlm].
-* Support loadBalancerClass configuration.  See the [loadBalancerClass setting][lbs].
-* Support for non-`cluster.local` cluster domains (automatically detected).
-* Label pods with their current role in the KurrentDB cluster.  The label is updated after every
-  successful health check, which is about once every minute.
-* Support NodePort configuration.
-* Allow administrators to explicitly request configuration reloads, rolling restarts, or full
-  restarts of a KurrentDB cluster.  See the [Manually Triggering Reload or Restarts][trg] for
-  details.
+* Fix downtime during node pool upgrades.  The operator now deploys and maintains a
+  `PodDisruptionBudget` to ensure that external tooling knows when it is safe to drain a pod from
+  the cluster.  See [`podDisruptionBudgets.disable`][pdbs] if you need to disable them for some
+  reason.
+* Improved health check logic.  Before, health checks were done once every 60 seconds, in the
+  `database-health-check` state.   A normal cluster would bounce between that state and
+  `database-healthy`.  Now, pod-level health issues are detected immediately, and gossip checks are
+  executed every 10 seconds, all while staying in the `database-healthy` state.  This change
+  improves both the freshness of the reported status and the ease for external monitoring, since a
+  healthy cluster should always stay in `database-healthy`.
+* Support online license checks in addition to offline license checks.  If your operator license
+  file is missing or expired, the operator can continue as long as your license key is valid and
+  your internet connection is working.
+* Expose operator license status through Kubernetes API.  Now you can set up automated monitoring
+  or reminders for license renewals by examining your KurrentDB's `.status.operatorLicense`.
+* Fix PVC selection logic during disk resize handling.  Previously, clusters with PVCs that were
+  migrated manually from non-operator-environments could sometimes fail to get resized.
+* Fix health check bug after scaling down read-only replicas, which caused the operator to wrongly
+  label post-scaledown clusters as `database-unhealthy` for a long while.
+* Fix various bugs identified by an AI code audit.  Most were associated with rarely-used options,
+  and none had been reported by customers.
 
-[arx]: ../operations/database-deployment.md#three-node-insecure-cluster-with-archiving
-[san]: resource-types.md#kurrentdbspec
-[usr]: ../operations/database-deployment.md#three-node-secure-cluster-using-self-signed-certificates
-[sec]: resource-types.md#kurrentdbsecurity
-[tlm]: resource-types.md#kurrentdbspec
-[lbs]: resource-types.md#kurrentdbloadbalancer
-[trg]: ../operations/modify-deployments.md#manually-triggering-reload-or-restart
+[pdbs]: resource-types.md#poddisruptionbudgetsspec
 
 ## Supported KurrentDB Versions
 

@@ -36,6 +36,7 @@ This resource type is used to define a database deployment.
 | `serviceAccountName` _string_                            | No       | A ServiceAccount for pods to run as (defaults to `default` in the current namespace).  Useful for IRSA, see [archiver example][arx].     |
 | `telemetryOptOut` _boolean_                              | No       | Opt-out of telemetry in the KurrentDB cluster.                                                                                           |
 | `users` _KurrentDBUsersSpec_                             | No       | Initial user configuration.  No deployment should be considered secure without configure initial user passwords.                         |
+| `podDisruptionBudgets` _[PodDisruptionBudgetsSpec][dA]_  | No       | Configure PodDisruptionBudget that the operator creates to protect the database during Kubernetes-level maintenance.                     |
 | `configReloadKey` _string_                               | No       | Has no effect, except a change to this value triggers a config reload.  See [Manually Triggering Reload or Restart][trg].                |
 | `rollingRestartKey` _string_                             | No       | Has no effect, except a change to this value triggers a rolling restart.  See [Manually Triggering Reload or Restart][trg].              |
 | `fullRestartKey` _string_                                | No       | Has no effect, except a change to this value triggers a full restart.  See [Manually Triggering Reload or Restart][trg].                 |
@@ -50,6 +51,7 @@ This resource type is used to define a database deployment.
 [d7]: #kurrentdbreadonlyreplicasspec
 [d8]: #kurrentdbarchiverspec
 [d9]: #kurrentdbextrametadataspec
+[dA]: #poddisruptionbudgetsspec
 [ror]: ../operations/database-deployment.md#deploying-standalone-read-only-replicas
 [arx]: ../operations/database-deployment.md#three-node-insecure-cluster-with-archiving
 [trg]: ../operations/modify-deployments.md#manually-triggering-reload-or-restart
@@ -111,6 +113,7 @@ Other than `enabled`, each of the fields in `KurrentDBArchiverSpec` default to t
 | `headlessServices` _[ExtraMetadataSpec][m1]_       | No       | Extra annotations and labels for the per-cluster headless Services. |
 | `headlessPodServices` _[ExtraMetadataSpec][m1]_    | No       | Extra annotations and labels for the per-pod headless Services.     |
 | `loadBalancers` _[ExtraMetadataSpec][m1]_          | No       | Extra annotations and labels for LoadBalancer-type Services.        |
+| `podDisruptionBudgets` _[ExtraMetadataSpec][m1]_   | No       | Extra annotations and labels for PodDisruptionBudgets.              |
 
 [m1]: #extrametadataspec
 
@@ -118,19 +121,24 @@ Note that select kinds of extra metadata support template expansion to allow mul
 a child resource to be distinguished from one another.  In particular, `ConfigMaps`, `StatefulSets`,
 and `HeadlessServices` support "per-node-kind" template expansions:
 - `{name}` expands to KurrentDB.metadata.name
-- `{namespace}` expands to KurretnDB.metadata.namespace
-- `{domain}` expands to the KurrnetDBNetwork.domain
+- `{namespace}` expands to KurrentDB.metadata.namespace
+- `{domain}` expands to the KurrentDBNetwork.domain
 - `{nodeTypeSuffix}` expands to `""` for a quorum node, `"-replica"` for a read-only replica node,
   or `"-archiver"` for an archiver node.
 
 Additionally, `HeadlessPodServices` and `LoadBalancers` support "per-pod" template expansions:
 - `{name}` expands to KurrentDB.metadata.name
-- `{namespace}` expands to KurretnDB.metadata.namespace
-- `{domain}` expands to the KurrnetDBNetwork.domain
+- `{namespace}` expands to KurrentDB.metadata.namespace
+- `{domain}` expands to the KurrentDBNetwork.domain
 - `{nodeTypeSuffix}` expands to `""` for a quorum node, `"-replica"` for a read-only replica node,
   or `"-archiver"` for an archiver node.
 - `{podName}` expands to the name of the pod corresponding to the resource
 - `{podOrdinal}` the ordinal assigned to the pod corresponding to the resource
+
+PodDisruptionBudgets are per-KurrentDB and so support only the following template extensions:
+- `{name}` expands to KurrentDB.metadata.name
+- `{namespace}` expands to KurrentDB.metadata.namespace
+- `{domain}` expands to the KurrentDBNetwork.domain
 
 Notably, `Pods` and `PersistentVolumeClaims` do not support any template expansions, due to how
 `StatefulSets` work.
@@ -163,8 +171,8 @@ Notably, `Pods` and `PersistentVolumeClaims` do not support any template expansi
 
 Note that `fqdnTemplate` supports the following expansions:
 - `{name}` expands to KurrentDB.metadata.name
-- `{namespace}` expands to KurretnDB.metadata.namespace
-- `{domain}` expands to the KurrnetDBNetwork.domain
+- `{namespace}` expands to KurrentDB.metadata.namespace
+- `{domain}` expands to the KurrentDBNetwork.domain
 - `{nodeTypeSuffix}` expands to `""` for a quorum node, `"-replica"` for a read-only replica node,
   or `"-archiver"` for an archiver node.
 - `{podName}` expands to the name of the pod
@@ -216,25 +224,43 @@ Note that changing the `loadBalancerClass` will require deleting the old load ba
 
 #### KurrentDBSecurity
 
-| Field                                                                  | Required | Description                                                                                                           |
-|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
-| `certificateReservedNodeCommonName` _string_                           | No       | Common name for the TLS certificate (this maps directly to the database property `CertificateReservedNodeCommonName`) |
-| `certificateAuthoritySecret` _[CertificateSecret](#certificatesecret)_ | No       | Secret containing the CA TLS certificate.  Updates trigger a config reload.  Only `.name` is required; See below.     |
-| `certificateSecret` _[CertificateSecret](#certificatesecret)_          | Yes      | Secret containing the TLS certificate to use.  Updates trigger a config reload.                                       |
-| `certificateSubjectName` _string_                                      | No       | Deprecated field.  The value of this field is always ignored.                                                         |
+| Field                                                                                    | Required | Description                                                                                       |
+|------------------------------------------------------------------------------------------|----------|---------------------------------------------------------------------------------------------------|
+| `certificateReservedNodeCommonName` _string_                                             | No       | Common name for the TLS certificate (same as database config `CertificateReservedNodeCommonName`) |
+| `certificateAuthoritySecret` _[CertificateAuthoritySecret](#certificateauthoritysecret)_ | No       | Secret containing the CA TLS certificate.  See below.                                             |
+| `certificateSecret` _[CertificateSecret](#certificatesecret)_                            | Yes      | Secret containing the TLS certificate to use.  See below.                                         |
+| `certificateSubjectName` _string_                                                        | No       | Deprecated field.  The value of this field is always ignored.                                     |
 
-Note that in `certificateAuthoritySecret`, only `.name` is required.  `.keyName` is optional; if
-provided only that Secret key will be mounted into the pod as a CA.  If not provided, all Secret
-keys will be mounted as CAs, which allows for rotating CAs without downtime, by trusting both old
-and new CAs for a period of time.  `.privateKeyName` is deprecated and ignored.
+The operator takes special care when monitoring changes to security-related specs and values.
+
+Changes that disrupt inter-node communication, such as turning TLS on or off, require full restarts
+and unavoidable cluster down time.
+
+Changes to the subfields of `certificateAuthoritySecret` or `certificateSecret` typically require
+changing how pods are deployed and so require at least a rolling restart.
+
+Changes to the Secret named at `certificateAuthoritySecret.name` or `certificateSecret.name` may
+often be applied as config reloads, causing no downtime at all.  This is how automatic TLS renewal
+always works.  It is also possible to migrate CAs without triggering a full restart but you need to
+follow [this procedure][migrateca].
+
+[migrateca]: ../operations/managing-certificates.md#migrating-certificate-authorities
+
+#### CertificateAuthoritySecret
+
+| Field                     | Required | Description                                                                                                                              |
+|---------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
+| `name` _string_           | Yes      | Name of the Secret holding the certificate details                                                                                       |
+| `keyName` _string_        | No       | Key within the Secret containing the CA certificate.  If missing or empty, all keys in the Secret must be CA certs and will be trusted. |
+| `privateKeyName` _string_ | No       | Deprecated field.  The value of this field is always ignored.                                                                            |
 
 #### CertificateSecret
 
 | Field                     | Required | Description                                                      |
 |---------------------------|----------|------------------------------------------------------------------|
-| `name` _string_           | Yes      | Name of the secret holding the certificate details               |
-| `keyName` _string_        | Yes      | Key within the secret containing the TLS certificate             |
-| `privateKeyName` _string_ | No       | Key within the secret containing the TLS certificate private key |
+| `name` _string_           | Yes      | Name of the Secret holding the certificate details               |
+| `keyName` _string_        | Yes      | Key within the Secret containing the TLS certificate             |
+| `privateKeyName` _string_ | No       | Key within the Secret containing the TLS certificate private key |
 
 #### KurrentDBUsersSpec
 
@@ -273,6 +299,18 @@ listed in `.groups` are in addition to that default behavior.
 The Operator does not currently support updates to the intial user configuration.  The Secrets
 referenced here are not read after the first time the KurrentDB cluster reaches a healhty state,
 and may safely be deleted.
+
+#### PodDisruptionBudgetsSpec
+
+A `PodDisruptionBudget` is created by the operator to protect the database pods from external tools,
+such as a node pool upgrade that might otherwise evict all kurrentdb nodes simultaneously, resulting
+in database downtime.
+
+Presently, the only configuration available is to disable it entirely, which is not recommended.
+
+| Field               | Required | Description                                                                                 |
+|---------------------|----------|---------------------------------------------------------------------------------------------|
+| `disable` _boolean_ | No       | Disable the PodDisruptionBudget for this KurrentDB (not recommended).  Defaults to `false`. |
 
 ## KurrentDBBackup
 
