@@ -32,6 +32,12 @@ export const navbarEn: NavbarOptions = [
         ],
     },
     {
+        text: "Tooling",
+        children: [
+            {text: "Gaffer (Projections tooling)", link: "https://gaffer.kurrent.io"},
+        ],
+    },
+    {
         text: "Developer Resources",
         children:
             [
