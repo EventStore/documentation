@@ -520,6 +520,17 @@ export function getLlmsPluginOptions(versioning: Versioning) {
     { limit: 25 }
   );
 
+  // --- Gaffer: static list pointing to the separate gaffer.kurrent.io site (projection development toolkit).
+  // Gaffer is its own Astro/Starlight site, so these are external URLs, not pages in this build. It owns its
+  // own llms.txt; we lead with that so tooling can fetch Gaffer's full index rather than relying on this list. ---
+  const gaffer: TemplateGetter = () => {
+    return `- [Gaffer - Projection Development Toolkit](https://gaffer.kurrent.io): Developer toolkit for KurrentDB projections - scaffold, run, debug, and test the same JavaScript projection engine that ships inside KurrentDB, locally.
+- [Gaffer - llms.txt](https://gaffer.kurrent.io/llms.txt): Gaffer's own AI index; use [llms-full.txt](https://gaffer.kurrent.io/llms-full.txt) for the complete Gaffer docs in one file.
+- [Gaffer - Install (CLI and VS Code extension)](https://gaffer.kurrent.io/getting-started/install/): Install the Gaffer CLI and VS Code extension.
+- [Gaffer - MCP server setup](https://gaffer.kurrent.io/cli/mcp/): Configure the \`gaffer mcp\` server for VS Code, Claude Code, Cursor, and Claude Desktop.
+- [Gaffer - Testing projections](https://gaffer.kurrent.io/testing/nodejs/): Test projections with \`@kurrent/projections-testing\`.`;
+  };
+
   // --- Community & Learning: static list of Kurrent site, forum, blog, Discord, GitHub, Academy ---
   const community: TemplateGetter = () => {
     return `- [Kurrent – Main website](https://www.kurrent.io): Event-native data platform for event sourcing and event-driven architecture.
@@ -535,7 +546,7 @@ export function getLlmsPluginOptions(versioning: Versioning) {
   /**
    * Markdown template for llms.txt. Placeholders {overview}, {concepts}, etc. are
    * replaced by the corresponding getter's output. Section order is by importance
-   * for LLMs (overview → concepts → clients → APIs → config → … → community).
+   * for LLMs (overview → concepts → clients → APIs → config → … → cloud → gaffer → … → community).
    */
   const CURATED_TEMPLATE = `# Kurrent Docs – Human-Readable Index for AI (llms.txt)
 
@@ -605,6 +616,11 @@ For exhaustive coverage (all documentation pages in one file), use \`llms-full.t
 
 ---
 
+## Gaffer (Projection Development Toolkit)
+{gaffer}
+
+---
+
 ## Tutorials & Use Cases
 {tutorials}
 
@@ -630,6 +646,7 @@ For exhaustive coverage (all documentation pages in one file), use \`llms-full.t
     clients,
     apis,
     concepts,
+    gaffer,
     connectorsSinks,
     operations,
     security,
