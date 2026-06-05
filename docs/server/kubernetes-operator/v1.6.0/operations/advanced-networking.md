@@ -37,7 +37,7 @@ Servers advertise how they should be dialed by clients according to the
 
 * `"FQDN"` (default): clients dial servers using the server's FQDN.
 
-Note that the `"SplitDNS"` settings is not an option for the `clientTrafficStrategy`, simply because
+Note that the `"SplitDNS"` setting is not an option for the `clientTrafficStrategy`, simply because
 the KurrentDB Operator does not deploy your clients and so cannot inject a DNS sidecar container
 into your client pods.  However, it is possible to write a [CoreDNS rewrite rule][rr] to
 accomplish a similar effect as `"SplitDNS"` but for client-to-server traffic.
@@ -167,7 +167,7 @@ easy:
 
 * Set `clientTrafficStrategy` to `"ServiceName"`.
 
-* Use cert-manager to configure a certificate based on the KurrentDB based around service names.
+* Use cert-manager to configure a certificate based on the KurrentDB service names.
 
 * Use trust-manager to configure clients to trust the self-signed certificates.
 
@@ -187,7 +187,7 @@ simplest configurations:
 * Use cert-manager to automatically create certificates through an ACME provider like LetsEncrypt.
 
 * If clients may be outside of Kubernetes or multiple Kubernetes clusters are in play, set
-  `KurrentDB.spec.network.loadBalancer.enable` to `true`, making your servers publicly accessible.
+  `KurrentDB.spec.network.loadBalancer.enabled` to `true`, making your servers publicly accessible.
 
 This solution is still highly secure, provided your domain's DNS management is tightly
 controlled.  It also supports virtually every server and client topology.  Server hairpin traffic

@@ -3,14 +3,14 @@ title: Managing Certificates
 order: 6
 ---
 
-The Operator expects consumers to leverage a thirdparty tool to generate TLS certificates that can be wired in to [KurrentDB](../getting-started/resource-types.md#kurrentdb) deployments using secrets. The sections below describe how certificates can be generated using popular vendors.
+The Operator expects consumers to leverage a third-party tool to generate TLS certificates that can be wired in to [KurrentDB](../getting-started/resource-types.md#kurrentdb) deployments using secrets. The sections below describe how certificates can be generated using popular vendors.
 
 ## Picking certificate names
 
 Each node in each KurrentDB cluster you create will advertise a fully-qualified domain name (FQDN).
 Clients will expect those advertised names to match the names you configure on your TLS
 certificates.  You will need to understand how the FQDN is calculated for each node in order to
-request a TLS certificate that is valid for each node of your kurrentdb cluster.
+request a TLS certificate that is valid for each node of your KurrentDB cluster.
 
 By default, the [network.fqdnTemplate field of your KurrentDB spec](
 ../getting-started/resource-types.md#kurrentdbnetwork) is
@@ -29,11 +29,11 @@ Before following the instructions in this section, these requirements should be 
 * You have the required permissions to create/manage new resources on the Kubernetes cluster
 * The following CLI tools are installed and configured to interact with your Kubernetes cluster. This means the tool must be accessible from your shell's `$PATH`, and your `$KUBECONFIG` environment variable must point to the correct Kubernetes configuration file:
     * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
-    * [k9s](https://k9scli.io/topics/install/)
+    * [k9s](https://k9scli.io/topics/install/), optional
 
 ### Using trusted certificates via LetsEncrypt
 
-To use self-signed certficates with KurrentDB, follow these steps:
+To use LetsEncrypt certificates with KurrentDB, follow these steps:
 
 1. Create a [LetsEncrypt Issuer](#letsencrypt-issuer)
 2. Future certificates should be created using the `letsencrypt` issuer
@@ -75,12 +75,12 @@ This can be deployed using the following steps:
 - Run the following command:
 
 ```bash
-kubectl -n kurrent apply -f issuer.yaml
+kubectl apply -f issuer.yaml
 ```
 
 ### Using Self-Signed certificates
 
-To use self-signed certficates with KurrentDB, follow these steps:
+To use self-signed certificates with KurrentDB, follow these steps:
 
 1. Create a [Self-Signed Issuer](#self-signed-issuer)
 2. Create a [Self-Signed Certificate Authority](#self-signed-certificate-authority)
@@ -105,7 +105,7 @@ This can be deployed using the following steps:
 - Run the following command:
 
 ```bash
-kubectl -n kurrent apply -f issuer.yaml
+kubectl apply -f issuer.yaml
 ```
 
 ### Self-Signed Certificate Authority
@@ -117,6 +117,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: selfsigned-ca
+  namespace: kurrent
 spec:
   isCA: true
   commonName: ca
@@ -146,7 +147,7 @@ This can be deployed using the following steps:
 - Run the following command:
 
 ```bash
-kubectl -n kurrent apply -f ca.yaml
+kubectl apply -f ca.yaml
 ```
 
 ### Self-Signed Certificate Authority Issuer
@@ -158,6 +159,7 @@ apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
   name: ca-issuer
+  namespace: kurrent
 spec:
   ca:
     secretName: ca-tls
@@ -169,7 +171,7 @@ This can be deployed using the following steps:
 - Run the following command:
 
 ```bash
-kubectl -n kurrent apply -f ca-issuer.yaml
+kubectl apply -f ca-issuer.yaml
 ```
 
 Once this step is complete, future certificates can be generated using the self-signed certificate authority. Using k9s,
@@ -196,7 +198,7 @@ self-signed CA to another), the process follows three steps:
    - Handle possible race condition; see below.
 
 2. Update your `KurrentDB.spec.security.certificateSecret`:
-   - Switch to the TLS keypair signed by the new CA.  You may either configure the your KurrentDB to
+   - Switch to the TLS keypair signed by the new CA.  You may either configure your KurrentDB to
      reference a new Secret (which will cause a rolling restart) or update the content of the
      currently-referenced Secret (which will cause a config reload, no node downtime).
    - Wait for the KurrentDB resource to return to the `database-healthy` state.

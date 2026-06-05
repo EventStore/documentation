@@ -29,7 +29,7 @@ Each example is designed to illustrate specific techniques:
   #three-node-secure-cluster-using-letsencrypt) illustrates how to secure a cluster with
   LetsEncrypt.
 
-* [Deploying Standalone Read-only Replicas](#deploying-standalone-read-only-replicas) illustrates
+* [Deploying Standalone Read-Only Replicas](#deploying-standalone-read-only-replicas) illustrates
   an advanced topology where a pair of read-only replicas is deployed in a different Kubernetes
   cluster than where the quorum nodes are deployed.
 
@@ -43,19 +43,19 @@ Each example is designed to illustrate specific techniques:
 
 The following `KurrentDB` resource type defines a single node cluster with the following properties:
 
-- The database will be deployed in the `kurrent` namespace with the name `kurrentdb-cluster`
+- The database will be deployed in the `kurrent` namespace with the name `mydb`
 - Security is not enabled
 - KurrentDB v26.x will be used
 - 1 vCPU will be requested as the minimum (upper bound is unlimited)
-- 1 GB of memory will be used
-- 512 MB of storage will be allocated for the data disk
-- The KurrentDB instance that is provisioned will be exposed as `kurrentdb-0.kurrent.test`
+- 1 GiB of memory will be used
+- 512 MiB of storage will be allocated for the data disk
+- The KurrentDB instance that is provisioned will be exposed as `mydb-0.kurrent.test`
 
 ```yaml
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 1
@@ -86,15 +86,15 @@ with multiple quorum nodes.
 The following `KurrentDB` resource type defines a five node cluster (three quorum nodes plus two
 read-only replicas) with the following properties:
 - Security is not enabled
-- 1 GB of memory will be used per quorum node, but read-only replicas will have 2 GB of memory
-- The quorum nodes will be exposed as `kurrentdb-{idx}.kurrent.test`
-- The read-only replicas will be exposed as `kurrentdb-replica-{idx}.kurrent.test`
+- 1 GiB of memory will be used per quorum node, but read-only replicas will have 2 GiB of memory
+- The quorum nodes will be exposed as `mydb-{idx}.kurrent.test`
+- The read-only replicas will be exposed as `mydb-replica-{idx}.kurrent.test`
 
 ```yaml
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 3
@@ -139,9 +139,9 @@ archiving read-only replica) with the following properties:
 - Security is not enabled
 - All pods run as `my-irsa-service-account`, which is annotated for an AWS Role ARN that is
   [configured on the AWS side][irsaaws] to allow IRSA from this service account.
-- The quorum nodes will be exposed as `kurrentdb-{idx}.kurrent.test`
+- The quorum nodes will be exposed as `mydb-{idx}.kurrent.test`
 - The archiver node (there cannot be multiple) will be exposed as
-  `kurrentdb-archiver-0.kurrent.test`.
+  `mydb-archiver-0.kurrent.test`.
 - All nodes have 2GiB of disk size requested, and are configured to retain 1GiB of data locally;
   older data will be read from cloud storage.
 
@@ -170,7 +170,7 @@ metadata:
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 3
@@ -213,9 +213,9 @@ spec:
 
 The following `KurrentDB` resource type defines a three node cluster with the following properties:
 - Security is enabled using self-signed certificates
-- The KurrentDB servers will be exposed as `kurrentdb-{idx}.kurrent.test`
+- The KurrentDB servers will be exposed as `mydb-{idx}.kurrent.test`
 - Servers will dial each other by Kubernetes service name (`*.kurrent.svc.cluster.local`)
-- Clients will dial servers by the FQDN (`*.kurrent.test`)
+- Clients will also dial servers by the service name (`*.kurrent.svc.cluster.local`)
 - The self-signed certificate is valid for both service name and FQDN.
 - The `admin` and `ops` users are configured at database creation, so at no point is there a
   deployment with the default `admin:changeit` credentials.
@@ -225,10 +225,10 @@ The following `KurrentDB` resource type defines a three node cluster with the fo
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
-  secretName: kurrentdb-cluster-tls
+  secretName: mydb-tls
   isCA: false
   usages:
     - client auth
@@ -242,8 +242,8 @@ spec:
     organizationalUnits:
       - Cloud
   dnsNames:
-    - '*.kurrentdb-cluster.kurrent.svc.cluster.local'
-    - '*.kurrentdb-cluster-replica.kurrent.svc.cluster.local'
+    - '*.mydb.kurrent.svc.cluster.local'
+    - '*.mydb-replica.kurrent.svc.cluster.local'
   privateKey:
     algorithm: RSA
     encoding: PKCS1
@@ -266,7 +266,7 @@ stringData:
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 3
@@ -295,7 +295,7 @@ spec:
       name: ca-tls
       keyName: ca.crt
     certificateSecret:
-      name: kurrentdb-cluster-tls
+      name: mydb-tls
       keyName: tls.crt
       privateKeyName: tls.key
   users:
@@ -322,7 +322,7 @@ managing-certificates.md#using-self-signed-certificates).
 
 The following `KurrentDB` resource type defines a three node cluster with the following properties:
 - Security is enabled using certificates from LetsEncrypt
-- The KurrentDB instance that is provisioned will be exposed as `kurrentdb-{idx}.kurrent.test`
+- The KurrentDB instance that is provisioned will be exposed as `mydb-{idx}.kurrent.test`
 - The LetsEncrypt certificate is only valid for the FQDN (`*.kurrent.test`)
 - Clients will dial servers by FQDN
 - Server will dial each other by FQDN but because of the `SplitDNS` feature, they will still connect
@@ -335,10 +335,10 @@ The following `KurrentDB` resource type defines a three node cluster with the fo
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
-  secretName: kurrentdb-cluster-tls
+  secretName: mydb-tls
   isCA: false
   usages:
     - client auth
@@ -375,7 +375,7 @@ stringData:
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 3
@@ -401,7 +401,7 @@ spec:
   security:
     certificateReservedNodeCommonName: '*.kurrent.test'
     certificateSecret:
-      name: kurrentdb-cluster-tls
+      name: mydb-tls
       keyName: tls.crt
       privateKeyName: tls.key
   users:
@@ -424,7 +424,7 @@ spec:
 Before deploying this cluster, be sure to follow the steps in [Using LetsEncrypt Certificates](
 managing-certificates.md#using-trusted-certificates-via-letsencrypt).
 
-## Deploying Standalone Read-only Replicas
+## Deploying Standalone Read-Only Replicas
 
 This example illustrates an advanced topology where a pair of read-only replicas is deployed in a
 different Kubernetes cluster than where the quorum nodes are deployed.
@@ -573,7 +573,7 @@ does that, and also requires KurrentDB to schedule pods onto nodes labeled with
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: my-kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 3
@@ -603,7 +603,7 @@ spec:
       labelSelector:
         matchLabels:
           app.kubernetes.io/part-of: kurrentdb-operator
-          app.kubernetes.io/name: my-kurrentdb-cluster
+          app.kubernetes.io/name: mydb
       whenUnsatisfiable: DoNotSchedule
 ```
 
@@ -616,7 +616,7 @@ fault tolerance.
 If custom parameters are required in the underlying database configuration then these can be
 specified using the `configuration` YAML block within a `KurrentDB`. The parameters which are
 defaulted or overridden by the operator are listed [in the CRD reference](
-../getting-started/resource-types.md#configuring-kurrent-db).
+../getting-started/resource-types.md#configuring-kurrentdb).
 
 For example, to enable projections, the deployment configuration looks as follows:
 
@@ -624,7 +624,7 @@ For example, to enable projections, the deployment configuration looks as follow
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 1

@@ -18,44 +18,44 @@ there is special logic in place around resizing the number of replicas in a clus
 - Replicas (node count)
 - Configuration
 
-To update the specification of a `KurrentDB` instance, simply issue a patch command via the kubectl tool. In the examples below, the cluster name is `kurrentdb-cluster`. Once patched, the Operator will take care of augmenting the underlying resources, which will cause database pods to be recreated.
+To update the specification of a `KurrentDB` instance, simply issue a patch command via the kubectl tool. In the examples below, the cluster name is `mydb`. Once patched, the Operator will take care of augmenting the underlying resources, which will cause database pods to be recreated.
 
 ### Container Image
 
 ```bash
-kubectl -n kurrent patch kurrentdb kurrentdb-cluster --type=merge -p '{"spec":{"image": "docker.kurrent.io/kurrent-latest/kurrentdb:26.0.1"}}'
+kubectl -n kurrent patch kurrentdb mydb --type=merge -p '{"spec":{"image": "docker.kurrent.io/kurrent-latest/kurrentdb:26.0.1"}}'
 ```
 
 ### Memory
 
 ```bash
-kubectl -n kurrent patch kurrentdb kurrentdb-cluster --type=merge -p '{"spec":{"resources": {"requests": {"memory": "2048Mi"}}}}'
+kubectl -n kurrent patch kurrentdb mydb --type=merge -p '{"spec":{"resources": {"requests": {"memory": "2048Mi"}}}}'
 ```
 
 ### CPU
 
 ```bash
-kubectl -n kurrent patch kurrentdb kurrentdb-cluster --type=merge -p '{"spec":{"resources": {"requests": {"cpu": "2000m"}}}}'
+kubectl -n kurrent patch kurrentdb mydb --type=merge -p '{"spec":{"resources": {"requests": {"cpu": "2000m"}}}}'
 ```
 
 ### Volume Size
 
 ```bash
-kubectl -n kurrent patch kurrentdb kurrentdb-cluster --type=merge -p '{"spec":{"storage": {"resources": {"requests": {"storage": "2048Mi"}}}}}'
+kubectl -n kurrent patch kurrentdb mydb --type=merge -p '{"spec":{"storage": {"resources": {"requests": {"storage": "2048Mi"}}}}}'
 ```
 
 ### Replicas
 
 ```bash
-kubectl -n kurrent patch kurrentdb kurrentdb-cluster --type=merge -p '{"spec":{"replicas": 3}}'
+kubectl -n kurrent patch kurrentdb mydb --type=merge -p '{"spec":{"replicas": 3}}'
 ```
 
-Note that the actual count of replicas in a cluster may take time to update.  See [Updating Replica Count](#updating-replica-count), below.
+Note that the actual count of replicas in a cluster may take time to update.  See [Updating Primary Replica Count](#updating-primary-replica-count), below.
 
 ### Configuration
 
 ```bash
-kubectl -n kurrent patch kurrentdb kurrentdb-cluster --type=merge -p '{"spec":{"configuration": {"ProjectionsLevel": "all", "StartStandardProjections": "true"}}}'
+kubectl -n kurrent patch kurrentdb mydb --type=merge -p '{"spec":{"configuration": {"RunProjections": "all", "StartStandardProjections": true}}}'
 ```
 
 ## Updating Primary Replica Count
@@ -108,7 +108,7 @@ against the database at the time when you downsize your cluster.
 
 ## Updating Read-Only Replica Count
 
-Since Read-Only Replica nodes are not electable as leaders, it is simpler to increase or decrease
+Since read-only replica nodes are not electable as leaders, it is simpler to increase or decrease
 the number of running read-only replicas.  Still, when adding new read-only replicas, the Operator
 uses VolumeSnapshots to expedite the initial catch-up reads for new read-only replicas.
 

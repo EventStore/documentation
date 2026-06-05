@@ -7,16 +7,17 @@ The sections below detail how database backups can be performed. Refer to the [K
 
 ## Backing up the leader
 
-Assuming there is a cluster called `kurrentdb-cluster` that resides in the `kurrent` namespace, the following `KurrentDBBackup` resource can be defined:
+Assuming there is a cluster called `mydb` that resides in the `kurrent` namespace, the following `KurrentDBBackup` resource can be defined:
 
 ```yaml
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDBBackup
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
+  namespace: kurrent
 spec:
   volumeSnapshotClassName: ebs-vs
-  clusterName: kurrentdb-cluster
+  clusterName: mydb
 ```
 
 In the example above, the backup definition leverages the `ebs-vs` volume snapshot class to perform the underlying volume snapshot. This class name will vary per Kubernetes cluster/Cloud provider, please consult with your Kubernetes administrator to determine this value.
@@ -25,17 +26,18 @@ The `KurrentDBBackup` type takes an optional `nodeName`. If left blank, the lead
 
 ## Backing up a specific node
 
-Assuming there is a cluster called `kurrentdb-cluster` that resides in the `kurrent` namespace, the following `KurrentDBBackup` resource can be defined:
+Assuming there is a cluster called `mydb` that resides in the `kurrent` namespace, the following `KurrentDBBackup` resource can be defined:
 
 ```yaml
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDBBackup
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
+  namespace: kurrent
 spec:
   volumeSnapshotClassName: ebs-vs
-  clusterName: kurrentdb-cluster
-  nodeName: kurrentdb-1
+  clusterName: mydb
+  nodeName: mydb-1
 ```
 
 In the example above, the backup definition leverages the `ebs-vs` volume snapshot class to perform the underlying volume snapshot. This class name will vary per Kubernetes cluster, please consult with your Kubernetes administrator to determine this value.
@@ -44,23 +46,30 @@ In the example above, the backup definition leverages the `ebs-vs` volume snapsh
 
 A `KurrentDB` cluster can be restored from a backup by specifying an additional field `sourceBackup` as part of the cluster definition.
 
-For example, if an existing `KurrentDBBackup` exists called `kurrentdb-cluster-backup`, the following snippet could be used to restore it:
+For example, if an existing `KurrentDBBackup` exists called `mydb-backup`, the following snippet could be used to restore it:
 
 
 ```yaml
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDB
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
   namespace: kurrent
 spec:
   replicas: 1
   image: docker.kurrent.io/kurrent-latest/kurrentdb:26.0.1
-  sourceBackup: kurrentdb-cluster-backup
+  sourceBackup: mydb-backup
   resources:
     requests:
       cpu: 1000m
       memory: 1Gi
+  storage:
+    volumeMode: "Filesystem"
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 512Mi
   network:
     domain: kurrent.test
     loadBalancer:
@@ -76,10 +85,11 @@ its creation.  For example, to delete the backup 5 days after it was created:
 apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDBBackup
 metadata:
-  name: kurrentdb-cluster
+  name: mydb
+  namespace: kurrent
 spec:
   volumeSnapshotClassName: ebs-vs
-  clusterName: kurrentdb-cluster
+  clusterName: mydb
   ttl: 5d
 ```
 
@@ -102,6 +112,7 @@ apiVersion: kubernetes.kurrent.io/v1
 kind: KurrentDBBackupSchedule
 metadata:
   name: my-backup-schedule
+  namespace: kurrent
 spec:
   schedule: "0 0 * * *"
   timeZone: Etc/UTC
@@ -110,6 +121,6 @@ spec:
       name: my-backup
     spec:
       volumeSnapshotClassName: ebs-vs
-      clusterName: kurrentdb-cluster
+      clusterName: mydb
   keep: 7
 ```

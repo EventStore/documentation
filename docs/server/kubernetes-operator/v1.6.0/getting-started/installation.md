@@ -5,9 +5,8 @@ order: 2
 
 This section covers the various aspects of installing the Operator.
 
-The Operator supports installation [via Helm](#install-using-helm) and
-[via the Operator Lifecycle Manager (OLM)](#install-using-olm).  OLM is the recommended way to
-install on Red Hat OpenShift clusters, where OLM is installed by default.
+The Operator supports installation [via Helm](#install-using-helm), [via Red Hat's OperatorHub](
+#install-on-openshift) and [via the Operator Lifecycle Manager (OLM)](#manual-olm-install).
 
 ::: important
 The Operator is an Enterprise-only feature, please [contact us](https://www.kurrent.io/contact) for more information.
@@ -58,7 +57,7 @@ This command:
 - Creates `kurrent-system` and deploys the Operator into it.
 - Deploys CRDs.
 - Applies the Operator license.
-- Populates a new Helm release called `kurrentdb-operator` in the `kurrent` namespace.
+- Populates a new Helm release called `kurrentdb-operator` in the `kurrent-system` namespace.
 
 *Expected Output*:
 
@@ -131,25 +130,24 @@ The Operator can be upgraded using the following `helm` commands:
 ```bash
 helm repo update kurrent-latest
 helm upgrade kurrentdb-operator kurrent-latest/kurrentdb-operator \
-  --namespace kurrent \
+  --namespace kurrent-system \
   --version {version} \
   --reset-then-reuse-values
 ```
 
 Here's what these commands do:
 - Refresh the local Helm repository index
-- Locate an existing operator installation in namespace `kurrent`
+- Locate an existing operator installation in namespace `kurrent-system`
 - Select the target upgrade version `{version}` e.g. `1.6.0`
 - Perform the upgrade, preserving values that were set during installation
 
-## Install Using OLM
+## Install on OpenShift
 
 ### Prerequisites
 
-* An OpenShift cluster (version 4.17 or newer), or Kubernetes with OLM installed.
+* An OpenShift cluster (version 4.17 or newer).
 * Permission to create resources, deploy the Operator and install CRDs in the target cluster.
-* `oc` (or `kubectl`) installed, on installed, on your shell’s `$PATH`, with `$KUBECONFIG` pointing
-  to your cluster
+* `oc` (or `kubectl`) installed on your shell’s `$PATH`, with `$KUBECONFIG` pointing to your cluster
 * A valid Operator license. Please [contact us](https://www.kurrent.io/contact) for more information.
 
 ### Configure Namespaces
@@ -162,7 +160,8 @@ your operator to control.  Create the namespaces now:
 oc create namespace kurrent-system
 
 # namespaces we want the operator to control
-oc create namespace foo bar
+oc create namespace foo
+oc create namespace bar
 ```
 
 ### Create A `Secret`
@@ -175,6 +174,27 @@ oc create secret generic -n kurrent-system kurrentdb-operator \
     --from-file=licenseKey=/path/to/license.key \
     --from-file=licenseFile=/path/to/license.lic
 ```
+
+### Install via OperatorHub
+
+Finish the installation using Red Hat's OperatorHub to install an operator into `kurrent-system`,
+targeting namespaces `foo` and `bar`.
+
+## Manual OLM Installation
+
+### Prerequisites
+
+* Kubernetes with OLM installed.
+* Permission to create resources, deploy the Operator and install CRDs in the target cluster.
+* `oc` (or `kubectl`) installed on your shell’s `$PATH`, with `$KUBECONFIG` pointing to your cluster
+* A valid Operator license. Please [contact us](https://www.kurrent.io/contact) for more information.
+
+### Configure Namespaces and Create A `Secret`
+
+Follow the first two steps described above for [Install On OpenShift](#install-on-openshift).
+
+However, instead of using Red Hat's OperatorHub, we'll manually create the `CatalogSource`,
+`OperatorGroup`, and `Subscription` resources (below).
 
 ### Create A `CatalogSource`
 
@@ -236,7 +256,7 @@ spec:
   installPlanApproval: Automatic
   name: kurrentdb-operator
   source: kurrentdb-operator
-  sourceNamespace: default
+  sourceNamespace: olm
   startingCSV: kurrentdb-operator.v1.6.0
 EOF
 ```

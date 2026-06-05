@@ -18,24 +18,25 @@ This resource type is used to define a database deployment.
 
 | Field                                                    | Required | Description                                                                                                                              |
 |----------------------------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `replicas` _integer_                                     | Yes      | Number of nodes in a database cluster.  May be 1, 3, 5, or, for [standalone ReadOnly-Replicas][ror], it may be 0.                        |
+| `replicas` _integer_                                     | Yes      | Number of nodes in a database cluster.  May be 1, 3, 5, or, for [standalone read-only replicas][ror], it may be 0.                       |
 | `image` _string_                                         | Yes      | KurrentDB container image URL.  See [Selecting An Image][img], below.                                                                    |
-| `resources` _[ResourceRequirements][d1]_                 | No       | Database container resource limits and requests                                                                                          |
+| `resources` _[ResourceRequirements][d1]_                 | Yes      | Database container resource limits and requests                                                                                          |
 | `storage` _[PersistentVolumeClaim][d2]_                  | Yes      | Persistent volume claim settings for the underlying data volume                                                                          |
 | `network` _[KurrentDBNetwork][d3]_                       | Yes      | Defines the network configuration to use with the database                                                                               |
-| `configuration` _yaml_                                   | No       | Additional configuration to use with the database, see [below](#configuring-kurrent-db)                                                  |
+| `configuration` _yaml_                                   | No       | Additional configuration to use with the database, see [below](#configuring-kurrentdb)                                                   |
 | `environmentSecret` _string_                             | No       | The name of a Secret to populate environment variables.  If the secret changes a rolling restart occurs.                                 |
 | `sourceBackup` _string_                                  | No       | Backup name to restore a cluster from                                                                                                    |
 | `security` _[KurrentDBSecurity][d4]_                     | No       | Security configuration to use for the database. This is optional, if not specified the cluster will be created without security enabled. |
 | `licenseSecret` _[SecretKeySelector][d5]_                | No       | A secret that contains the Enterprise license for the database                                                                           |
-| `constraints` _[KurrentDBConstraints][d6]_               | No       | Scheduling constraints for the Kurrent DB pod.                                                                                           |
-| `readOnlyReplicas` _[KurrentDBReadOnlyReplicasSpec][d7]_ | No       | Read-only replica configuration for the Kurrent DB Cluster.                                                                              |
-| `archiver` _[KurrentDBArchiverSpec][d8]_                 | No       | Archiver replica configuration for the Kurrent DB Cluster.                                                                               |
+| `constraints` _[KurrentDBConstraints][d6]_               | No       | Scheduling constraints for the KurrentDB pod.                                                                                            |
+| `readOnlyReplicas` _[KurrentDBReadOnlyReplicasSpec][d7]_ | No       | Read-only replica configuration for the KurrentDB cluster.                                                                               |
+| `archiver` _[KurrentDBArchiverSpec][d8]_                 | No       | Archiver replica configuration for the KurrentDB cluster.                                                                                |
+| `volumeSnapshotClassName` _string_                       | No       | The volume snapshot class used when snapshotting this cluster.  See [Volume Snapshot Class Selection][vsc].                              |
 | `extraMetadata` _[KurrentDBExtraMetadataSpec][d9]_       | No       | Additional annotations and labels for child resources.                                                                                   |
-| `quorumNodes` _string array_                             | No       | A list of endpoints (in host:port notation) to reach the quorum nodes when .Replicas is zero, see [standalone ReadOnlyReplicas][ror]     |
+| `quorumNodes` _string array_                             | No       | A list of endpoints (in host:port notation) to reach the quorum nodes when .Replicas is zero, see [standalone read-only replicas][ror]   |
 | `serviceAccountName` _string_                            | No       | A ServiceAccount for pods to run as (defaults to `default` in the current namespace).  Useful for IRSA, see [archiver example][arx].     |
 | `telemetryOptOut` _boolean_                              | No       | Opt-out of telemetry in the KurrentDB cluster.                                                                                           |
-| `users` _KurrentDBUsersSpec_                             | No       | Initial user configuration.  No deployment should be considered secure without configure initial user passwords.                         |
+| `users` _KurrentDBUsersSpec_                             | No       | Initial user configuration.  No deployment should be considered secure without configuring initial user passwords.                       |
 | `podDisruptionBudgets` _[PodDisruptionBudgetsSpec][dA]_  | No       | Configure PodDisruptionBudget that the operator creates to protect the database during Kubernetes-level maintenance.                     |
 | `configReloadKey` _string_                               | No       | Has no effect, except a change to this value triggers a config reload.  See [Manually Triggering Reload or Restart][trg].                |
 | `rollingRestartKey` _string_                             | No       | Has no effect, except a change to this value triggers a rolling restart.  See [Manually Triggering Reload or Restart][trg].              |
@@ -55,6 +56,7 @@ This resource type is used to define a database deployment.
 [ror]: ../operations/database-deployment.md#deploying-standalone-read-only-replicas
 [arx]: ../operations/database-deployment.md#three-node-insecure-cluster-with-archiving
 [trg]: ../operations/modify-deployments.md#manually-triggering-reload-or-restart
+[vsc]: #volume-snapshot-class-selection
 
 #### KurrentDBReadOnlyReplicasSpec
 
@@ -62,11 +64,11 @@ Other than `replicas`, each of the fields in `KurrentDBReadOnlyReplicasSpec` def
 
 | Field                                        | Required | Description                                                      |
 |----------------------------------------------|----------|------------------------------------------------------------------|
-| `replicas` _integer_                         | No       | Number of read-only replicas in the cluster.  Defaults to zero.  |
+| `replicas` _integer_                         | Yes      | Number of read-only replicas in the cluster.                     |
 | `resources` _[ResourceRequirements][r1]_     | No       | Database container resource limits and requests.                 |
 | `storage` _[PersistentVolumeClaim][r2]_      | No       | Persistent volume claim settings for the underlying data volume. |
 | `configuration` _yaml_                       | No       | Additional configuration to use with the database.               |
-| `constraints` _[KurrentDBConstraints][r3]_   | No       | Scheduling constraints for the Kurrent DB pod.                   |
+| `constraints` _[KurrentDBConstraints][r3]_   | No       | Scheduling constraints for the KurrentDB pod.                    |
 
 [r1]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#resourcerequirements-v1-core
 [r2]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#persistentvolumeclaimspec-v1-core
@@ -82,7 +84,7 @@ Other than `enabled`, each of the fields in `KurrentDBArchiverSpec` default to t
 | `resources` _[ResourceRequirements][a1]_     | No       | Database container resource limits and requests.                         |
 | `storage` _[PersistentVolumeClaim][a2]_      | No       | Persistent volume claim settings for the underlying data volume.         |
 | `configuration` _yaml_                       | No       | Additional configuration to use with the database.                       |
-| `constraints` _[KurrentDBConstraints][a3]_   | No       | Scheduling constraints for the Kurrent DB pod.                           |
+| `constraints` _[KurrentDBConstraints][a3]_   | No       | Scheduling constraints for the KurrentDB pod.                            |
 
 [a1]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#resourcerequirements-v1-core
 [a2]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#persistentvolumeclaimspec-v1-core
@@ -92,10 +94,10 @@ Other than `enabled`, each of the fields in `KurrentDBArchiverSpec` default to t
 
 | Field                                                                | Required | Description                                                                               |
 |----------------------------------------------------------------------|----------|-------------------------------------------------------------------------------------------|
-| `nodeSelector` _yaml_                                                | No       | Identifies nodes that the Kurrent DB may consider during scheduling.                      |
-| `affinity` _[Affinity][c1]_                                          | No       | The node affinity, pod affinity, and pod anti-affinity for scheduling the Kurrent DB pod. |
-| `tolerations` _list of [Toleration][c2]_                             | No       | The tolerations for scheduling the Kurrent DB pod.                                        |
-| `topologySpreadConstraints` _list of [TopologySpreadConstraint][c3]_ | No       | The topology spread constraints for scheduling the Kurrent DB pod.                        |
+| `nodeSelector` _yaml_                                                | No       | Identifies nodes that the KurrentDB pod may consider during scheduling.                     |
+| `affinity` _[Affinity][c1]_                                          | No       | The node affinity, pod affinity, and pod anti-affinity for scheduling the KurrentDB pod.  |
+| `tolerations` _list of [Toleration][c2]_                             | No       | The tolerations for scheduling the KurrentDB pod.                                         |
+| `topologySpreadConstraints` _list of [TopologySpreadConstraint][c3]_ | No       | The topology spread constraints for scheduling the KurrentDB pod.                         |
 
 [c1]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#affinity-v1-core
 [c2]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#toleration-v1-core
@@ -155,14 +157,14 @@ Notably, `Pods` and `PersistentVolumeClaims` do not support any template expansi
 | Field                                        | Required | Description                                                                                                         |
 |----------------------------------------------|----------|---------------------------------------------------------------------------------------------------------------------|
 | `domain` _string_                            | Yes      | Domain used for external DNS e.g. advertised address exposed in the gossip state                                    |
-| `loadBalancer` _[KurrentDBLoadBalancer][n1]_ | Yes      | Defines a load balancer to use with the database                                                                    |
+| `loadBalancer` _[KurrentDBLoadBalancer][n1]_ | No       | Defines a load balancer to use with the database                                                                    |
 | `fqdnTemplate` _string_                      | No       | The template string used to define the external advertised address of a node.  See below.                           |
 | `internodeTrafficStrategy` _string_          | No       | How servers dial each other.  One of `"ServiceName"` (default), `"FQDN"`, or `"SplitDNS"`.  See [details][n2].      |
 | `clientTrafficStrategy` _string_             | No       | How clients dial servers.  One of `"ServiceName"` or `"FQDN"` (default).  See [details][n2].                        |
 | `splitDNSExtraRules` _list of [DNSRule][n3]_ | No       | Advanced configuration for when `internodeTrafficStrategy` is set to `"SplitDNS"`.                                  |
-| `nodePort` _integer_                         | No       | The HTTP port that KurrentDB listens on.  Defaults to 2113.  For priviliged ports, see below.                       |
-| `replicationPort` _integer_                  | No       | The TCP port for replication traffic from other nodes.  Defaults to 1112.  For priviliged ports, see below.         |
-| `nodeTcpPort` _integer_                      | No       | The TCP port for legacy TCP client traffic.  Defaults to 1113.  For priviliged ports, see below.                    |
+| `nodePort` _integer_                         | No       | The HTTP port that KurrentDB listens on.  Defaults to 2113.  For privileged ports, see below.                       |
+| `replicationPort` _integer_                  | No       | The TCP port for replication traffic from other nodes.  Defaults to 1112.  For privileged ports, see below.         |
+| `nodeTcpPort` _integer_                      | No       | The TCP port for legacy TCP client traffic.  Defaults to 1113.  For privileged ports, see below.                    |
 
 [n0]: #KurrentDBNetwork
 [n1]: #kurrentdbloadbalancer
@@ -180,7 +182,7 @@ Note that `fqdnTemplate` supports the following expansions:
 When `fqdnTemplate` is empty, it defaults to `{podName}.{name}{nodeTypeSuffix}.{domain}`.
 
 The ports for `nodePort`, `replicationPort`, and `nodeTcpPort` may be chosen arbitrarily, but note
-that the Operator always runs nodes as non-root.  Therefore, to utilize priviliged ports (port
+that the Operator always runs nodes as non-root.  Therefore, to utilize privileged ports (port
 numbers less than 1024), you will need to use images with `setcap cap_net_bind_service+ep` applied
 to the `kurrentd` binary inside the image.  Kurrent offers Red Hat-certified images which meet this
 criteria, see [Selecting An Image][img], below.
@@ -217,10 +219,12 @@ regex: true
 | Field                        | Required | Description                                                                    |
 |------------------------------|----------|--------------------------------------------------------------------------------|
 | `enabled` _boolean_          | Yes      | Determines if a load balancer should be deployed for each node                 |
-| `allowedIps` _string array_  | No       | List of IP ranges allowed by the load balancer (default will allow all access) |
+| `allowedIPs` _string array_  | No       | List of IP ranges allowed by the load balancer (default will allow all access) |
 | `loadBalancerClass` _string_ | No       | The `Service.spec.loadBalancerClass` to use.  Defaults to empty.               |
 
-Note that changing the `loadBalancerClass` will require deleting the old load balancer Service completely and recreating it (which make take a while) because `loadBalancerClass` is an immutable field of a Service.
+Note that changing the `loadBalancerClass` will require deleting the old load balancer Service
+completely and recreating it (which may take a while) because `loadBalancerClass` is an immutable
+field of a Service.
 
 #### KurrentDBSecurity
 
@@ -270,16 +274,16 @@ follow [this procedure][migrateca].
 | opsPasswordSecret _[SecretKeySelector][u1]_    | Yes      | Secret containing initial password for `ops` user.   |
 | customUsers _[KurrentDBUserSpec][u2] array_    | No       | Custom users to add to the database.                 |
 
-The `admin` and `ops` passwords are required if users are configured at all.  Those paswords are set
-by initial database creation; when set, the database will never accept the default password
-(`changeit)`.  No deployment should be considered secure without configuring these two passwords.
+The `admin` and `ops` passwords are required if users are configured at all.  Those passwords are
+set by initial database creation; when set, the database will never accept the default password
+(`changeit`).  No deployment should be considered secure without configuring these two passwords.
 
-The additioanl users described in `customUsers` are optional, and are configured by the Operator
+The additional users described in `customUsers` are optional, and are configured by the Operator
 after the first successful health check.
 
-The Operator does not currently support updates to the intial user configuration.  The Secrets
-referenced here are not read after the first time the KurrentDB cluster reaches a healhty state,
-and may safely be deleted.
+The Operator does not currently support updates to the initial user configuration.  The Secrets
+referenced here are not read after the first time the KurrentDB cluster reaches a healthy state, and
+may safely be deleted.
 
 [u1]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#secretkeyselector-v1-core
 [u2]: #kurrentdbuserspec
@@ -296,14 +300,14 @@ and may safely be deleted.
 Note that KurrentDB always adds every new user to a group matching its login name, so the groups
 listed in `.groups` are in addition to that default behavior.
 
-The Operator does not currently support updates to the intial user configuration.  The Secrets
-referenced here are not read after the first time the KurrentDB cluster reaches a healhty state,
+The Operator does not currently support updates to the initial user configuration.  The Secrets
+referenced here are not read after the first time the KurrentDB cluster reaches a healthy state,
 and may safely be deleted.
 
 #### PodDisruptionBudgetsSpec
 
 A `PodDisruptionBudget` is created by the operator to protect the database pods from external tools,
-such as a node pool upgrade that might otherwise evict all kurrentdb nodes simultaneously, resulting
+such as a node pool upgrade that might otherwise evict all KurrentDB nodes simultaneously, resulting
 in database downtime.
 
 Presently, the only configuration available is to disable it entirely, which is not recommended.
@@ -328,7 +332,7 @@ Resources of this type must be created within the same namespace as the target d
 |----------------------------------------------------------|----------|----------------------------------------------------------------------------------------------------------|
 | `clusterName` _string_                                   | Yes      | Name of the source database cluster                                                                      |
 | `nodeName` _string_                                      | No       | Specific node name within the database cluster to use as the backup. If unspecified, the leader is used. |
-| `volumeSnapshotClassName` _string_                       | Yes      | The name of the underlying volume snapshot class to use.                                                 |
+| `volumeSnapshotClassName` _string_                       | No       | The volume snapshot class to use.  See [Volume Snapshot Class Selection][vsc].                           |
 | `extraMetadata` _[KurrentDBBackupExtraMetadataSpec][b1]_ | No       | Additional annotations and labels for child resources.                                                   |
 | `ttl` _string_                                           | No       | A time-to-live for this backup.  If unspecified, the TTL is treated as infinite.                         |
 
@@ -336,6 +340,21 @@ Resources of this type must be created within the same namespace as the target d
 
 The format of the `ttl` may be in years (`y`), weeks (`w`), days (`d`), hours (`h`), or seconds
 (`s`), or a combination like `1d12h`
+
+#### Volume Snapshot Class Selection
+
+The Operator creates VolumeSnapshots when creating backups and when scaling up a cluster.  The
+Operator chooses the VolumeSnapshotClass by checking the following places, in order of
+decreasing precedence:
+
+1. The backup-specific setting (for backups only): `KurrentDBBackup.spec.volumeSnapshotClassName`
+2. The KurrentDB-wide setting: `KurrentDB.spec.volumeSnapshotClassName`
+3. The Operator-wide setting: `operator.volumeSnapshotClassName` (in the helm chart)
+4. The Kubernetes-wide [default VolumeSnapshotClass][k8s-default-vsc]
+
+If none of those are configured, operations requiring a VSC will fail.
+
+[k8s-default-vsc]: https://kubernetes.io/docs/concepts/storage/volume-snapshot-classes/
 
 #### KurrentDBBackupExtraMetadataSpec
 
@@ -350,13 +369,13 @@ This resource type is used to define a schedule for creating database backups an
 
 #### KurrentDBBackupScheduleSpec
 
-| Field                              | Required | Description                                                                                                                  |
-|------------------------------------|----------|------------------------------------------------------------------------------------------------------------------------------|
-| `schedule` _string_                | Yes      | A CronJob-style schedule.  See [Writing a CronJob Spec][s2].                                                                 |
-| `timeZone` _string_                | No       | A timezone specification.  Defaults to `Etc/UTC`.                                                                            |
-| `template` _[KurrentDBBackup][s1]_ | Yes      | A `KurrentDBBackup` template.                                                                                                |
-| `keep` _integer_                   | No       | The maximum of complete backups this schedule will accumulate before it prunes the oldes ones.  If unset, there is no limit. |
-| `suspend` _boolean_                | No       |
+| Field                              | Required | Description                                                                                                                          |
+|------------------------------------|----------|--------------------------------------------------------------------------------------------------------------------------------------|
+| `schedule` _string_                | Yes      | A CronJob-style schedule.  See [Writing a CronJob Spec][s2].                                                                         |
+| `timeZone` _string_                | No       | A timezone specification.  Defaults to `Etc/UTC`.                                                                                    |
+| `template` _[KurrentDBBackup][s1]_ | Yes      | A `KurrentDBBackup` template.                                                                                                        |
+| `keep` _integer_                   | No       | The maximum number of complete backups this schedule will accumulate before it prunes the oldest ones.  If unset, there is no limit. |
+| `suspend` _boolean_                | No       | While true, pauses the creation of new backups for this schedule.                                                                    |
 
 [s1]: #kurrentdbbackupspec
 [s2]: https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#writing-a-cronjob-spec
@@ -396,7 +415,7 @@ available without a Red Hat account directly from Kurrent.  This is useful if yo
 ## Configuring KurrentDB
 
 The [`KurrentDB.spec.configuration` yaml field](#kurrentdbspec) may contain any valid configuration
-values for Kurrent DB.  However, some values may be unnecessary, as the Operator provides some
+values for KurrentDB.  However, some values may be unnecessary, as the Operator provides some
 defaults, while other values may be ignored, as the Operator may override them.
 
 The Operator-defined default configuration values, which may be overridden by the user's
@@ -406,7 +425,6 @@ The Operator-defined default configuration values, which may be overridden by th
 |------------------------------|---------------|
 | DisableLogFile               | true          |
 | EnableAtomPubOverHTTP        | true          |
-| Insecure                     | false         |
 | PrepareTimeoutMs             | 3000          |
 | CommitTimeoutMs              | 3000          |
 | GossipIntervalMs             | 2000          |
@@ -436,7 +454,7 @@ The Operator-managed configuration values, which take precedence over the user's
 | ReplicationIp                | 0.0.0.0 (to accept traffic from outside pod)                 |
 | NodeHostAdvertiseAs          | Derived from pod name                                        |
 | ReplicationHostAdvertiseAs   | Derived from pod name                                        |
-| AdveritseHostToClientAs      | Derived from `KurrentDB.spec.newtork.fqdnTemplate`           |
+| AdvertiseHostToClientAs      | Derived from `KurrentDB.spec.network.fqdnTemplate`           |
 | ClusterSize                  | Derived from `KurrentDB.spec.replicas`                       |
 | GossipSeed                   | Derived from pod list                                        |
 | ReadOnlyReplica              | Automatically set for ReadOnlyReplica and Archiver pods      |
