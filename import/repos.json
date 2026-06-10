@@ -262,6 +262,11 @@
     "repo": "https://github.com/pyeventsourcing/kurrentdbclient",
     "branches": [
       {
+        "version": "v1.3",
+        "name": "1.3",
+        "startPage": "getting-started"
+      },
+      {
         "version": "v1.2",
         "name": "1.2",
         "startPage": "getting-started"
