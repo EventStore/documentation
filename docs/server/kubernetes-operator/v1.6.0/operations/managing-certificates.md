@@ -40,37 +40,38 @@ To use LetsEncrypt certificates with KurrentDB, follow these steps:
 
 ### LetsEncrypt Issuer
 
-The following example shows how a LetsEncrypt issuer can be deployed that leverages [AWS Route53](https://cert-manager.io/docs/configuration/acme/dns01/route53/):
+`cert-manager` documents how to integrate with [each of their supported DNS providers][cm-dns01],
+and the following example shows how a LetsEncrypt Issuer can be deployed after you have
+[integrated cert-manager with AzureDNS][cm-az]:
+
+[cm-dns01]: https://cert-manager.io/docs/configuration/acme/dns01/
+[cm-az]: https://cert-manager.io/docs/configuration/acme/dns01/#supported-dns01-providers
 
 ```yaml
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: letsencrypt
+  namespace: kurrent
 spec:
   acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: <YOUR_EMAIL_ADDRESS>
     privateKeySecretRef:
       name: letsencrypt-issuer-key
-    email: { email }
-    preferredChain: ""
-    server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
-      - dns01:
-          route53:
-            region: { region }
-            hostedZoneID: { hostedZoneId }
-            accessKeyID: { accessKeyId }
-            secretAccessKeySecretRef:
-              name: aws-route53-credentials
-              key: secretAccessKey
-        selector:
-          dnsZones:
-            - { domain }
-            - "*.{ domain }"
+    - dns01:
+        azureDNS:
+          hostedZoneName: <YOUR_AZURE_ZONE_NAME>
+          resourceGroupName: <YOUR_AZURE_RESOURCE_GROUP>
+          subscriptionID: <YOUR_AZURE_SUBSCRIPTION_ID>
+          environment: AzurePublicCloud
+          managedIdentity:
+            clientID: <YOUR_LETSENCRYPT_CLIENT_ID>
 ```
 
 This can be deployed using the following steps:
-- Replace the variables `{...}` with the appropriate values
+- Replace the variables `<...>` with the appropriate values
 - Copy the YAML snippet above to a file called `issuer.yaml`
 - Run the following command:
 
@@ -93,9 +94,10 @@ The following example shows how a self-signed issuer can be deployed:
 
 ```yaml
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Issuer
 metadata:
   name: selfsigned-issuer
+  namespace: kurrent
 spec:
   selfSigned: {}
 ```
@@ -110,7 +112,8 @@ kubectl apply -f issuer.yaml
 
 ### Self-Signed Certificate Authority
 
-The following example shows how a self-signed certificate authority can be generated once a [self-signed issuer](#self-signed-issuer) has been deployed:
+The following example shows how a self-signed certificate authority can be generated once a
+[self-signed issuer](#self-signed-issuer) has been deployed:
 
 ```yaml
 apiVersion: cert-manager.io/v1
@@ -133,7 +136,7 @@ spec:
     size: 2048
   issuerRef:
     name: selfsigned-issuer
-    kind: ClusterIssuer
+    kind: Issuer
     group: cert-manager.io
 ```
 
@@ -152,7 +155,8 @@ kubectl apply -f ca.yaml
 
 ### Self-Signed Certificate Authority Issuer
 
-The following example shows how a self-signed certificate authority issuer can be generated once a [CA certificate](#self-signed-certificate-authority) has been created:
+The following example shows how a self-signed certificate authority issuer can be generated once a
+[CA certificate](#self-signed-certificate-authority) has been created:
 
 ```yaml
 apiVersion: cert-manager.io/v1

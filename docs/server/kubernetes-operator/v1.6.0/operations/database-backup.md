@@ -61,8 +61,8 @@ spec:
   sourceBackup: mydb-backup
   resources:
     requests:
-      cpu: 1000m
-      memory: 1Gi
+      cpu: 4000m
+      memory: 16Gi
   storage:
     volumeMode: "Filesystem"
     accessModes:
