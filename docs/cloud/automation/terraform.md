@@ -61,14 +61,20 @@ If you prefer to install from source, use the `make install` target in this [rep
 
 ## Provider configuration
 
-The Kurrent Cloud provider must be configured with an access token. There are several additional options that may be useful. Provider configuration options are:
+The Kurrent Cloud provider authenticates either with an access token or, from provider version 3.1.0, with a [service account](../access-control/service-accounts.md)'s credentials. There are several additional options that may be useful. Provider configuration options are:
 
 | Option            | Environment Variable | Description                                                                                                         |
 |:------------------|:---------------------|:--------------------------------------------------------------------------------------------------------------------|
-| `token`           | `ESC_TOKEN`          | *Required*, your access token for Kurrent Cloud.                                                                |
+| `token`           | `ESC_TOKEN`          | Your access token for Kurrent Cloud. Required unless service account credentials are set.                       |
+| `client_id`       | `ESC_CLIENT_ID`      | The client ID of a service account.                                                                                 |
+| `client_secret`   | `ESC_CLIENT_SECRET`  | A client secret of the service account. When set, the provider authenticates as the service account and `token` is ignored. |
 | `organization_id` | `ESC_ORG_ID`         | *Required*, your Kurrent Cloud organization ID.                                                                 |
 | `url`             | `ESC_URL`            | *Optional*, the URL of the Kurrent Cloud API. This defaults to the public cloud instance of Kurrent Cloud.  |
 | `token_store`     | `ESC_TOKEN_STORE`    | *Optional*, the location on the local filesystem of the token cache. This is shared with the Kurrent Cloud CLI. |
+
+### Authenticating as a service account
+
+Service accounts are the recommended identity for automation, so that plans and applies do not depend on one person's token. Create a service account and a client secret as described in [Service Accounts](../access-control/service-accounts.md), then set `client_id` and `client_secret` (or `ESC_CLIENT_ID` / `ESC_CLIENT_SECRET`). The service account must carry a policy granting access to the resources you manage.
 
 ### Obtaining the access token
 

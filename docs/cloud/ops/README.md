@@ -2,7 +2,7 @@
 title: Clusters
 dir:
   text: "Operations"
-  order: 3
+  order: 4
 ---
 
 ## Viewing clusters

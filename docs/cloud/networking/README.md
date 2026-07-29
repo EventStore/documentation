@@ -1,6 +1,6 @@
 ---
 dir:
-  order: 5
+  order: 6
   link: true
 ---
 

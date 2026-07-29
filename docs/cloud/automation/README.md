@@ -1,7 +1,7 @@
 ---
 dir:
   link: true
-  order: 6
+  order: 7
 ---
 
 # Automations
