@@ -59,15 +59,11 @@ You can always switch to another organization by clicking on the selected organi
 
 ### Access control
 
-Each organization has its own access control, which includes the list of users who have access to the organization, groups, roles, policies, and identity providers.
+Each organization has its own access control, covering the members who can access the organization, the groups, roles, and policies that govern what they can do, single sign-on through your own identity provider, and service accounts for automation.
 
-When you create an organization, you become its admin by default. To invite more people, click on the `Access control` menu and switch to `Invitations`. You will see the `Invite member` button, which opens the invite screen. You must enter the new member's email address and the group to which the invited member will be added when they accept the invite.
+When you create an organization, you become its admin by default. The automatically created `Organization admins` group grants its members full access to the organization, and each project gets its own `Project admins` group.
 
-When you invite someone, the invitation remains inactive in the `Invitations` list until the invite is accepted. If the invitee accidentally removes it from their inbox, it can be resent.
-
-Groups allow you to fine-tune access so that not every organization member is the admin. The `Organization admins` group is automatically created when you create a new organization, and members of this group have full access to the organization.
-
-Each project also gets its own `Project admins` group.
+For the full model — inviting members, managing groups and policies, configuring single sign-on, and creating service accounts — see [Access Control](access-control/README.md).
 
 ### Projects
 

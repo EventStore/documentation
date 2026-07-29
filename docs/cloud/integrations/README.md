@@ -1,7 +1,7 @@
 ---
 dir:
   link: true
-  order: 7
+  order: 8
 ---
 
 # Integrations
