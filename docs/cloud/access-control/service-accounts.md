@@ -145,9 +145,14 @@ audit logs clearer about which automation performed an action.
 
 ## Use with Terraform and Pulumi
 
-Service accounts are the recommended identity for infrastructure automation.
-Configure the [Terraform](../automation/terraform.md) or
-[Pulumi](../automation/pulumi.md) provider with a service account's credentials
+Service accounts are the recommended identity for infrastructure automation,
 so that plans and applies run under an identity that is not tied to a single
-person. See the [Automations](../automation/README.md) section for provider
-setup.
+person. The [Terraform](../automation/terraform.md) provider supports service
+account credentials from version 3.1.0: set the `client_id` and
+`client_secret` provider options (or the `ESC_CLIENT_ID` and
+`ESC_CLIENT_SECRET` environment variables) to the values from the service
+account's [Authentication](#authentication) tab.
+
+The [Pulumi](../automation/pulumi.md) provider does not yet accept service
+account credentials and is still configured with a token. See the
+[Automations](../automation/README.md) section for each provider's setup.

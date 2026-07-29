@@ -53,13 +53,13 @@ When you click on an organization in the list, you get to the projects screen, w
 
 ![Projects within the organisation](images/intro/cloud-org-projects.png)
 
-Within the organization's scope, you also have the list of users and roles, billing information, alerts, etc.
+Within the organization's scope, you also have the organization's members and groups, billing information, alerts, etc.
 
 You can always switch to another organization by clicking on the selected organization name, either selecting it from the list or clicking on `All organizations` to return to the list.
 
 ### Access control
 
-Each organization has its own access control, covering the members who can access the organization, the groups, roles, and policies that govern what they can do, single sign-on through your own identity provider, and service accounts for automation.
+Each organization has its own access control, covering the members who can access the organization, the groups and policies that govern what they can do, single sign-on through your own identity provider, and service accounts for automation.
 
 When you create an organization, you become its admin by default. The automatically created `Organization admins` group grants its members full access to the organization, and each project gets its own `Project admins` group.
 
